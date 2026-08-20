@@ -58,9 +58,24 @@ interface SidebarProps {
   onAddFolder: (collectionId: string, parentFolderId?: string | null) => void
   onDeleteFolder: (folderId: string) => void
   onRenameFolder?: (id: string, newName: string) => void
+  onRenameRequest?: (id: string, newName: string) => void
   onImportPostman: () => void
   onImportCurl?: () => void
   onExportCollection: (c: CollectionItem) => void
+  onMoveRequest?: (
+    requestId: string,
+    targetCollectionId: string,
+    targetFolderId: string | null,
+    targetRequestId?: string,
+    position?: 'before' | 'after',
+  ) => void
+  onMoveFolder?: (
+    folderId: string,
+    targetCollectionId: string,
+    targetParentFolderId: string | null,
+    targetFolderId?: string,
+    position?: 'before' | 'after',
+  ) => void
   onRestoreHistory: (item: HistoryItem) => void
   onDeleteHistoryItem: (id: string) => void
   onClearHistory: () => void
@@ -97,9 +112,12 @@ export function Sidebar({
   onAddFolder,
   onDeleteFolder,
   onRenameFolder,
+  onRenameRequest,
   onImportPostman,
   onImportCurl,
   onExportCollection,
+  onMoveRequest,
+  onMoveFolder,
   onRestoreHistory,
   onDeleteHistoryItem,
   onClearHistory,
@@ -110,7 +128,10 @@ export function Sidebar({
   const [isEditingEnv, setIsEditingEnv] = useState<boolean>(false)
   const [tempEnvName, setTempEnvName] = useState<string>('')
 
-  const currentEnvId = activeEnvironment?.id || activeEnvironmentId || environments[0]?.id || ''
+  const currentEnvId =
+    activeEnvironmentId === 'NO_ENV'
+      ? 'NO_ENV'
+      : activeEnvironment?.id || activeEnvironmentId || environments[0]?.id || ''
 
   useEffect(() => {
     if (activeEnvironment && !isEditingEnv) {
@@ -220,7 +241,8 @@ export function Sidebar({
               className={`icon-button icon-button-sm ${isEditingEnv ? 'is-active' : ''}`}
               title="Rename Environment"
               onClick={handleStartRename}
-              style={{ cursor: 'pointer' }}
+              disabled={!activeEnvironment}
+              style={{ cursor: !activeEnvironment ? 'not-allowed' : 'pointer' }}
             >
               <Pencil size={12} style={{ pointerEvents: 'none' }} />
             </button>
@@ -229,8 +251,8 @@ export function Sidebar({
               className="icon-button icon-button-sm"
               onClick={() => onDeleteEnvironment(currentEnvId)}
               title="Delete Entire Environment"
-              disabled={environments.length <= 1}
-              style={{ cursor: environments.length <= 1 ? 'not-allowed' : 'pointer' }}
+              disabled={!activeEnvironment || environments.length <= 1}
+              style={{ cursor: !activeEnvironment || environments.length <= 1 ? 'not-allowed' : 'pointer' }}
             >
               <Trash2 size={12} style={{ pointerEvents: 'none' }} />
             </button>
@@ -292,6 +314,7 @@ export function Sidebar({
             aria-label="Active environment"
             style={{ fontWeight: 650, marginBottom: 6 }}
           >
+            <option value="NO_ENV">No Environment</option>
             {environments.map((env) => (
               <option key={env.id} value={env.id}>
                 {env.name}
@@ -300,80 +323,88 @@ export function Sidebar({
           </select>
         )}
 
-        <div className="env-grid">
-          {activeEnvironment?.variables.map((item) => (
-            <div key={item.id} className="env-row">
-              <input
-                aria-label={`Enable ${item.key || 'environment variable'}`}
-                type="checkbox"
-                checked={item.enabled}
-                onChange={(event) =>
-                  onUpdateEnvironmentVariable(activeEnvironment.id, item.id, {
-                    enabled: event.target.checked,
-                  })
-                }
-              />
-              <input
-                className="input input-sm"
-                value={item.key}
-                onChange={(event) =>
-                  onUpdateEnvironmentVariable(activeEnvironment.id, item.id, {
-                    key: event.target.value,
-                  })
-                }
-                placeholder="key"
-                aria-label="Environment variable key"
-                style={{ fontFamily: 'var(--font-mono)' }}
-              />
-              <input
-                className={`input input-sm env-value ${item.secret ? 'input-secret' : ''}`}
-                type={item.secret ? 'password' : 'text'}
-                value={item.value}
-                onChange={(event) =>
-                  onUpdateEnvironmentVariable(activeEnvironment.id, item.id, {
-                    value: event.target.value,
-                  })
-                }
-                placeholder={item.secret ? 'secret' : 'value'}
-                aria-label="Environment variable value"
-                style={{ fontFamily: 'var(--font-mono)' }}
-              />
-              <button
-                className="icon-button secret-toggle"
-                type="button"
-                onClick={() =>
-                  onUpdateEnvironmentVariable(activeEnvironment.id, item.id, {
-                    secret: !item.secret,
-                  })
-                }
-                title={
-                  item.secret
-                    ? 'Secret variable (stored only in memory)'
-                    : 'Mark as secret'
-                }
-              >
-                {item.secret ? <EyeOff size={12} /> : <Eye size={12} />}
-              </button>
-              <button
-                className="icon-button env-delete-btn"
-                type="button"
-                onClick={() => onDeleteEnvironmentVariable(activeEnvironment.id, item.id)}
-                title="Delete this variable"
-              >
-                <Trash2 size={12} />
-              </button>
+        {!activeEnvironment ? (
+          <div className="meta-text" style={{ fontStyle: 'italic', padding: '6px 2px', fontSize: 11 }}>
+            No active environment selected. Template variables like <code>{'{{Domain}}'}</code> will not be resolved.
+          </div>
+        ) : (
+          <>
+            <div className="env-grid">
+              {activeEnvironment.variables.map((item) => (
+                <div key={item.id} className="env-row">
+                  <input
+                    aria-label={`Enable ${item.key || 'environment variable'}`}
+                    type="checkbox"
+                    checked={item.enabled}
+                    onChange={(event) =>
+                      onUpdateEnvironmentVariable(activeEnvironment.id, item.id, {
+                        enabled: event.target.checked,
+                      })
+                    }
+                  />
+                  <input
+                    className="input input-sm"
+                    value={item.key}
+                    onChange={(event) =>
+                      onUpdateEnvironmentVariable(activeEnvironment.id, item.id, {
+                        key: event.target.value,
+                      })
+                    }
+                    placeholder="key"
+                    aria-label="Environment variable key"
+                    style={{ fontFamily: 'var(--font-mono)' }}
+                  />
+                  <input
+                    className={`input input-sm env-value ${item.secret ? 'input-secret' : ''}`}
+                    type={item.secret ? 'password' : 'text'}
+                    value={item.value}
+                    onChange={(event) =>
+                      onUpdateEnvironmentVariable(activeEnvironment.id, item.id, {
+                        value: event.target.value,
+                      })
+                    }
+                    placeholder={item.secret ? 'secret' : 'value'}
+                    aria-label="Environment variable value"
+                    style={{ fontFamily: 'var(--font-mono)' }}
+                  />
+                  <button
+                    className="icon-button secret-toggle"
+                    type="button"
+                    onClick={() =>
+                      onUpdateEnvironmentVariable(activeEnvironment.id, item.id, {
+                        secret: !item.secret,
+                      })
+                    }
+                    title={
+                      item.secret
+                        ? 'Secret variable (stored only in memory)'
+                        : 'Mark as secret'
+                    }
+                  >
+                    {item.secret ? <EyeOff size={12} /> : <Eye size={12} />}
+                  </button>
+                  <button
+                    className="icon-button env-delete-btn"
+                    type="button"
+                    onClick={() => onDeleteEnvironmentVariable(activeEnvironment.id, item.id)}
+                    title="Delete this variable"
+                  >
+                    <Trash2 size={12} />
+                  </button>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        <button
-          className="button button-sm"
-          style={{ marginTop: 6, width: '100%', height: 22 }}
-          onClick={onAddEnvironmentVariable}
-        >
-          <Plus size={11} />
-          <span>Variable</span>
-        </button>
+            <button
+              className="button button-sm"
+              style={{ marginTop: 6, width: '100%', height: 22 }}
+              onClick={onAddEnvironmentVariable}
+            >
+              <Plus size={11} />
+              <span>Variable</span>
+            </button>
+          </>
+        )}
       </div>
 
       {/* Main Sidebar Scroll Area */}
@@ -395,9 +426,12 @@ export function Sidebar({
             onAddFolder={onAddFolder}
             onDeleteFolder={onDeleteFolder}
             onRenameFolder={onRenameFolder}
+            onRenameRequest={onRenameRequest}
             onImportPostman={onImportPostman}
             onImportCurl={onImportCurl}
             onExportCollection={onExportCollection}
+            onMoveRequest={onMoveRequest}
+            onMoveFolder={onMoveFolder}
           />
         ) : (
           <HistoryList

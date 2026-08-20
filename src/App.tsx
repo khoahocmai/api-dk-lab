@@ -49,6 +49,7 @@ import {
 } from './services/graphqlService'
 import { parseUrlToQueryParams } from './utils/urlHelper'
 import { exportPostmanCollectionV2, importPostmanCollectionV2 } from './utils/postmanHelper'
+import { moveFolderItem, moveRequestItem } from './utils/treeHelper'
 import { runTestScript } from './utils/testRunner'
 import { MobileNav } from './components/layout/MobileNav'
 import { Sidebar } from './components/layout/Sidebar'
@@ -58,6 +59,8 @@ import { Modal } from './components/common/Modal'
 import { CurlImportModal } from './components/request/CurlImportModal'
 import { SettingsModal } from './components/settings/SettingsModal'
 import { CodeSnippetModal } from './components/common/CodeSnippetModal'
+import { SaveRequestModal } from './components/request/SaveRequestModal'
+import { Toast, type ToastData } from './components/common/Toast'
 
 const MAX_HISTORY_ITEMS = 100
 
@@ -78,7 +81,7 @@ function App() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
   const [isExplorerOpen, setIsExplorerOpen] = useState(false)
 
-  // Modal States
+  // Modal & Toast States
   const [importCurlModalOpen, setImportCurlModalOpen] = useState(false)
   const [importPostmanModalOpen, setImportPostmanModalOpen] = useState(false)
   const [importPostmanText, setImportPostmanText] = useState('')
@@ -90,8 +93,17 @@ function App() {
     collectionId: '',
     parentId: null,
   })
+  const [saveRequestModalOpen, setSaveRequestModalOpen] = useState(false)
   const [settingsModalOpen, setSettingsModalOpen] = useState(false)
   const [codeSnippetModalOpen, setCodeSnippetModalOpen] = useState(false)
+  const [toast, setToast] = useState<ToastData | null>(null)
+
+  const showToast = (
+    message: string,
+    type: 'success' | 'info' | 'warning' | 'error' = 'success',
+  ) => {
+    setToast({ id: createId(), message, type })
+  }
 
   const [graphExplorer, setGraphExplorer] = useState<GraphExplorerState>({
     loading: false,
@@ -111,13 +123,15 @@ function App() {
     [tabs, activeTabId],
   )
 
-  const activeEnvironment = useMemo(
-    () =>
+  const activeEnvironment = useMemo(() => {
+    if (activeEnvironmentId === 'NO_ENV') return null
+    if (!activeEnvironmentId) return environments[0] ?? null
+    return (
       environments.find((item) => item.id === activeEnvironmentId) ??
       environments[0] ??
-      null,
-    [environments, activeEnvironmentId],
-  )
+      null
+    )
+  }, [environments, activeEnvironmentId])
 
   const domainWarning = useMemo(
     () => shouldWarnDomainMismatch(activeTab, activeEnvironment),
@@ -193,7 +207,9 @@ function App() {
           setActiveTabId(targetTabId)
         }
 
-        if (
+        if (settingsData.activeEnvironmentId === 'NO_ENV') {
+          setActiveEnvironmentId('NO_ENV')
+        } else if (
           settingsData.activeEnvironmentId &&
           loadedEnvs.some((e) => e.id === settingsData.activeEnvironmentId)
         ) {
@@ -232,7 +248,7 @@ function App() {
     if (!activeTabId && tabs[0]) {
       setActiveTabId(tabs[0].id)
     }
-    if (!activeEnvironmentId && environments[0]) {
+    if (!activeEnvironmentId && activeEnvironmentId !== 'NO_ENV' && environments[0]) {
       setActiveEnvironmentId(environments[0].id)
     }
     if (!expandedCollectionIds.length && collections[0]) {
@@ -356,6 +372,9 @@ function App() {
     const duplicate: RequestItem = {
       ...source,
       id: createId(),
+      savedRequestId: undefined,
+      collectionId: undefined,
+      folderId: undefined,
       name: `${source.name} Copy`,
       response: null,
       loading: false,
@@ -367,43 +386,93 @@ function App() {
   }
 
   const saveCurrentRequest = () => {
-    if (!activeTab || !collections[0]) return
+    if (!activeTab) return
 
-    const existing = savedRequests.find(
-      (item) => item.name === activeTab.name && item.collectionId === collections[0].id,
-    )
-    const payload = stripTransientRequest(activeTab)
-
-    if (existing) {
+    // Case 1: Tab is linked to an existing saved request in collections
+    if (activeTab.savedRequestId && savedRequests.some((r) => r.id === activeTab.savedRequestId)) {
+      const payload = stripTransientRequest(activeTab)
       setSavedRequests((current) =>
         current.map((item) =>
-          item.id === existing.id
-            ? { ...item, request: payload, updatedAt: new Date().toISOString() }
+          item.id === activeTab.savedRequestId
+            ? {
+                ...item,
+                name: activeTab.name,
+                request: payload,
+                updatedAt: new Date().toISOString(),
+              }
             : item,
         ),
       )
+      showToast('Request updated successfully')
       return
     }
 
-    setSavedRequests((current) => [
-      ...current,
-      {
-        id: createId(),
-        collectionId: collections[0].id,
-        name: activeTab.name,
-        request: payload,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-      },
-    ])
+    // Case 2: Unsaved / new request -> open Save Request modal
+    setSaveRequestModalOpen(true)
+  }
 
-    if (!expandedCollectionIds.includes(collections[0].id)) {
-      setExpandedCollectionIds((current) => [...current, collections[0].id])
+  const handleSaveNewRequest = (
+    targetName: string,
+    targetCollectionId: string,
+    targetFolderId: string | null,
+  ) => {
+    if (!activeTab) return
+
+    const newSavedId = createId()
+    const updatedTabItem: RequestItem = {
+      ...activeTab,
+      name: targetName,
+      savedRequestId: newSavedId,
+      collectionId: targetCollectionId,
+      folderId: targetFolderId,
     }
+    const payload = stripTransientRequest(updatedTabItem)
+
+    const newSavedRequest: SavedRequestItem = {
+      id: newSavedId,
+      collectionId: targetCollectionId,
+      folderId: targetFolderId,
+      name: targetName,
+      request: payload,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    }
+
+    setSavedRequests((current) => [...current, newSavedRequest])
+    updateActiveTab({
+      name: targetName,
+      savedRequestId: newSavedId,
+      collectionId: targetCollectionId,
+      folderId: targetFolderId,
+    })
+
+    if (!expandedCollectionIds.includes(targetCollectionId)) {
+      setExpandedCollectionIds((current) => [...current, targetCollectionId])
+    }
+    if (targetFolderId && !expandedFolderIds.includes(targetFolderId)) {
+      setExpandedFolderIds((current) => [...current, targetFolderId])
+    }
+
+    setSaveRequestModalOpen(false)
+    showToast('Request saved successfully')
   }
 
   const openSavedRequest = (saved: SavedRequestItem) => {
-    const opened = reviveRequest({ ...saved.request, id: createId() })
+    const existingTab = tabs.find((item) => item.savedRequestId === saved.id)
+    if (existingTab) {
+      setActiveTabId(existingTab.id)
+      setMobileView('REQUEST')
+      return
+    }
+
+    const opened = reviveRequest({
+      ...saved.request,
+      id: createId(),
+      savedRequestId: saved.id,
+      collectionId: saved.collectionId,
+      folderId: saved.folderId,
+      name: saved.name,
+    })
     setTabs((current) => [...current, opened])
     setActiveTabId(opened.id)
     setMobileView('REQUEST')
@@ -411,6 +480,13 @@ function App() {
 
   const removeSavedRequest = (savedId: string) => {
     setSavedRequests((current) => current.filter((item) => item.id !== savedId))
+    setTabs((current) =>
+      current.map((t) =>
+        t.savedRequestId === savedId
+          ? { ...t, savedRequestId: undefined, collectionId: undefined, folderId: undefined }
+          : t,
+      ),
+    )
   }
 
   const toggleCollection = (collectionId: string) => {
@@ -444,9 +520,19 @@ function App() {
 
   const handleDeleteCollection = (collectionId: string) => {
     if (collections.length <= 1) return
+    const deletedRequestIds = new Set(
+      savedRequests.filter((r) => r.collectionId === collectionId).map((r) => r.id),
+    )
     setCollections((prev) => prev.filter((c) => c.id !== collectionId))
     setFolders((prev) => prev.filter((f) => f.collectionId !== collectionId))
     setSavedRequests((prev) => prev.filter((r) => r.collectionId !== collectionId))
+    setTabs((prev) =>
+      prev.map((t) =>
+        t.savedRequestId && deletedRequestIds.has(t.savedRequestId)
+          ? { ...t, savedRequestId: undefined, collectionId: undefined, folderId: undefined }
+          : t,
+      ),
+    )
   }
 
   const handleOpenAddFolder = (collectionId: string, parentId: string | null = null) => {
@@ -482,9 +568,22 @@ function App() {
       })
     }
 
+    const deletedRequestIds = new Set(
+      savedRequests
+        .filter((r) => r.folderId && folderIdsToDelete.has(r.folderId))
+        .map((r) => r.id),
+    )
+
     setFolders((prev) => prev.filter((f) => !folderIdsToDelete.has(f.id)))
     setSavedRequests((prev) =>
       prev.filter((r) => !r.folderId || !folderIdsToDelete.has(r.folderId)),
+    )
+    setTabs((prev) =>
+      prev.map((t) =>
+        t.savedRequestId && deletedRequestIds.has(t.savedRequestId)
+          ? { ...t, savedRequestId: undefined, collectionId: undefined, folderId: undefined }
+          : t,
+      ),
     )
   }
 
@@ -497,6 +596,106 @@ function App() {
   const handleRenameFolder = (folderId: string, newName: string) => {
     setFolders((prev) =>
       prev.map((f) => (f.id === folderId ? { ...f, name: newName.trim() || f.name } : f)),
+    )
+  }
+
+  const handleRenameRequest = (requestId: string, newName: string) => {
+    const trimmed = newName.trim()
+    if (!trimmed) return
+
+    setSavedRequests((prev) =>
+      prev.map((r) =>
+        r.id === requestId
+          ? {
+              ...r,
+              name: trimmed,
+              request: { ...r.request, name: trimmed },
+              updatedAt: new Date().toISOString(),
+            }
+          : r,
+      ),
+    )
+
+    setTabs((prev) =>
+      prev.map((t) => (t.savedRequestId === requestId ? { ...t, name: trimmed } : t)),
+    )
+
+    showToast('Request renamed successfully')
+  }
+
+  const handleMoveRequest = (
+    requestId: string,
+    targetCollectionId: string,
+    targetFolderId: string | null,
+    targetRequestId?: string,
+    position?: 'before' | 'after',
+  ) => {
+    setSavedRequests((prev) =>
+      moveRequestItem(
+        prev,
+        requestId,
+        targetCollectionId,
+        targetFolderId,
+        targetRequestId,
+        position,
+      ),
+    )
+    setTabs((prev) =>
+      prev.map((t) =>
+        t.savedRequestId === requestId
+          ? { ...t, collectionId: targetCollectionId, folderId: targetFolderId }
+          : t,
+      ),
+    )
+    if (targetFolderId) {
+      setExpandedFolderIds((prev) =>
+        prev.includes(targetFolderId) ? prev : [...prev, targetFolderId],
+      )
+    }
+    setExpandedCollectionIds((prev) =>
+      prev.includes(targetCollectionId) ? prev : [...prev, targetCollectionId],
+    )
+  }
+
+  const handleMoveFolder = (
+    folderId: string,
+    targetCollectionId: string,
+    targetParentFolderId: string | null,
+    targetFolderId?: string,
+    position?: 'before' | 'after',
+  ) => {
+    const result = moveFolderItem(
+      folders,
+      savedRequests,
+      folderId,
+      targetCollectionId,
+      targetParentFolderId,
+      targetFolderId,
+      position,
+    )
+    setFolders(result.folders)
+    setSavedRequests(result.requests)
+    setTabs((prev) =>
+      prev.map((t) => {
+        if (!t.savedRequestId) return t
+        const matchingSaved = result.requests.find((r) => r.id === t.savedRequestId)
+        if (matchingSaved && matchingSaved.collectionId !== t.collectionId) {
+          return {
+            ...t,
+            collectionId: matchingSaved.collectionId,
+            folderId: matchingSaved.folderId,
+          }
+        }
+        return t
+      }),
+    )
+    if (targetParentFolderId) {
+      setExpandedFolderIds((prev) =>
+        prev.includes(targetParentFolderId) ? prev : [...prev, targetParentFolderId],
+      )
+    }
+    setExpandedCollectionIds((prev) =>
+      prev.includes(targetCollectionId) ? prev : [...prev, targetCollectionId],
     )
   }
 
@@ -1016,6 +1215,8 @@ function App() {
             tabs={tabs}
             activeTabId={activeTabId}
             activeTab={activeTab}
+            environments={environments}
+            activeEnvironmentId={activeEnvironmentId}
             activeEnvironment={activeEnvironment}
             previewUrl={previewUrl}
             domainWarning={domainWarning}
@@ -1023,6 +1224,9 @@ function App() {
             editorFontSize={settings.editorFontSize}
             isSidebarCollapsed={isSidebarCollapsed}
             isExplorerOpen={isExplorerOpen}
+            onSelectEnvironment={setActiveEnvironmentId}
+            onAddEnvironment={addEnvironment}
+            onOpenManageEnvironments={() => setIsSidebarCollapsed(false)}
             onToggleSidebar={() => setIsSidebarCollapsed((prev) => !prev)}
             onToggleExplorer={() => setIsExplorerOpen((prev) => !prev)}
             onToggleSplitLayout={() =>
@@ -1085,9 +1289,12 @@ function App() {
                 onAddFolder={handleOpenAddFolder}
                 onDeleteFolder={handleDeleteFolder}
                 onRenameFolder={handleRenameFolder}
+                onRenameRequest={handleRenameRequest}
                 onImportPostman={() => setImportPostmanModalOpen(true)}
                 onImportCurl={() => setImportCurlModalOpen(true)}
                 onExportCollection={handleExportPostmanCollection}
+                onMoveRequest={handleMoveRequest}
+                onMoveFolder={handleMoveFolder}
                 onRestoreHistory={handleRestoreHistory}
                 onDeleteHistoryItem={handleDeleteHistoryItem}
                 onClearHistory={handleClearHistory}
@@ -1218,6 +1425,23 @@ function App() {
           environment={activeEnvironment}
         />
       )}
+
+      {/* Modal: Save Request */}
+      {activeTab && (
+        <SaveRequestModal
+          isOpen={saveRequestModalOpen}
+          onClose={() => setSaveRequestModalOpen(false)}
+          initialName={activeTab.name}
+          collections={collections}
+          folders={folders}
+          defaultCollectionId={activeTab.collectionId || collections[0]?.id}
+          defaultFolderId={activeTab.folderId}
+          onSave={handleSaveNewRequest}
+        />
+      )}
+
+      {/* Toast Notifications */}
+      <Toast toast={toast} onClose={() => setToast(null)} />
     </div>
   )
 }

@@ -10,6 +10,8 @@ interface MainPanelProps {
   tabs: RequestItem[]
   activeTabId: string
   activeTab: RequestItem | undefined
+  environments: EnvironmentItem[]
+  activeEnvironmentId: string
   activeEnvironment: EnvironmentItem | null
   previewUrl: string
   domainWarning: boolean
@@ -17,6 +19,9 @@ interface MainPanelProps {
   editorFontSize?: number
   isSidebarCollapsed?: boolean
   isExplorerOpen?: boolean
+  onSelectEnvironment: (id: string) => void
+  onAddEnvironment?: () => void
+  onOpenManageEnvironments?: () => void
   onToggleSidebar?: () => void
   onToggleExplorer?: () => void
   onToggleSplitLayout: () => void
@@ -40,6 +45,8 @@ export function MainPanel({
   tabs,
   activeTabId,
   activeTab,
+  environments,
+  activeEnvironmentId,
   activeEnvironment,
   previewUrl,
   domainWarning,
@@ -47,6 +54,9 @@ export function MainPanel({
   editorFontSize,
   isSidebarCollapsed,
   isExplorerOpen,
+  onSelectEnvironment,
+  onAddEnvironment,
+  onOpenManageEnvironments,
   onToggleSidebar,
   onToggleExplorer,
   onToggleSplitLayout,
@@ -69,8 +79,14 @@ export function MainPanel({
       <RequestTabs
         tabs={tabs}
         activeTabId={activeTabId}
+        environments={environments}
+        activeEnvironmentId={activeEnvironmentId}
+        activeEnvironment={activeEnvironment}
         isSidebarCollapsed={isSidebarCollapsed}
         isExplorerOpen={isExplorerOpen}
+        onSelectEnvironment={onSelectEnvironment}
+        onAddEnvironment={onAddEnvironment}
+        onOpenManageEnvironments={onOpenManageEnvironments}
         onToggleSidebar={onToggleSidebar}
         onToggleExplorer={onToggleExplorer}
         onSelectTab={onSelectTab}

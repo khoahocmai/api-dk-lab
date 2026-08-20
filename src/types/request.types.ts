@@ -36,6 +36,9 @@ export type ResponseState = {
 
 export type RequestItem = {
   id: string
+  savedRequestId?: string
+  collectionId?: string
+  folderId?: string | null
   name: string
   mode: Mode
   method: HttpMethod

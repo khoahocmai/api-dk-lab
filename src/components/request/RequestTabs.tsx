@@ -1,11 +1,18 @@
 import { BookOpen, Copy, PanelRightClose, PanelRightOpen, Plus, X } from 'lucide-react'
-import type { Mode, RequestItem } from '../../types'
+import type { EnvironmentItem, Mode, RequestItem } from '../../types'
+import { EnvironmentSelector } from '../common/EnvironmentSelector'
 
 interface RequestTabsProps {
   tabs: RequestItem[]
   activeTabId: string
+  environments: EnvironmentItem[]
+  activeEnvironmentId: string
+  activeEnvironment: EnvironmentItem | null
   isSidebarCollapsed?: boolean
   isExplorerOpen?: boolean
+  onSelectEnvironment: (id: string) => void
+  onAddEnvironment?: () => void
+  onOpenManageEnvironments?: () => void
   onToggleSidebar?: () => void
   onToggleExplorer?: () => void
   onSelectTab: (id: string) => void
@@ -17,8 +24,14 @@ interface RequestTabsProps {
 export function RequestTabs({
   tabs,
   activeTabId,
+  environments,
+  activeEnvironmentId,
+  activeEnvironment,
   isSidebarCollapsed,
   isExplorerOpen,
+  onSelectEnvironment,
+  onAddEnvironment,
+  onOpenManageEnvironments,
   onToggleSidebar,
   onToggleExplorer,
   onSelectTab,
@@ -103,19 +116,30 @@ export function RequestTabs({
         </button>
       </div>
 
-      {/* Right side: Sidebar (Collections & Env) Toggle Button */}
-      {onToggleSidebar && (
-        <button
-          type="button"
-          className={`button button-sm ${!isSidebarCollapsed ? 'button-primary' : ''}`}
-          onClick={onToggleSidebar}
-          title={isSidebarCollapsed ? 'Open Sidebar (Ctrl+B)' : 'Collapse Sidebar (Ctrl+B)'}
-          style={{ height: 26, padding: '0 8px', marginLeft: 4 }}
-        >
-          {isSidebarCollapsed ? <PanelRightOpen size={13} /> : <PanelRightClose size={13} />}
-          <span>Sidebar</span>
-        </button>
-      )}
+      {/* Right side: Environment Selector & Sidebar Toggle Button */}
+      <div className="row" style={{ gap: 6, marginLeft: 4, flexShrink: 0 }}>
+        <EnvironmentSelector
+          environments={environments}
+          activeEnvironmentId={activeEnvironmentId}
+          activeEnvironment={activeEnvironment}
+          onSelectEnvironment={onSelectEnvironment}
+          onAddEnvironment={onAddEnvironment}
+          onOpenManageEnvironments={onOpenManageEnvironments}
+        />
+
+        {onToggleSidebar && (
+          <button
+            type="button"
+            className={`button button-sm ${!isSidebarCollapsed ? 'button-primary' : ''}`}
+            onClick={onToggleSidebar}
+            title={isSidebarCollapsed ? 'Open Sidebar (Ctrl+B)' : 'Collapse Sidebar (Ctrl+B)'}
+            style={{ height: 26, padding: '0 8px' }}
+          >
+            {isSidebarCollapsed ? <PanelRightOpen size={13} /> : <PanelRightClose size={13} />}
+            <span>Sidebar</span>
+          </button>
+        )}
+      </div>
     </div>
   )
 }

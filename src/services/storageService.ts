@@ -82,6 +82,9 @@ export function createDefaultEnvironment(name: string, domain: string): Environm
 export function stripTransientRequest(request: RequestItem): PersistedRequestItem {
   return {
     id: request.id,
+    savedRequestId: request.savedRequestId,
+    collectionId: request.collectionId,
+    folderId: request.folderId,
     name: request.name,
     mode: request.mode,
     method: request.method,
@@ -113,6 +116,9 @@ export function reviveRequest(request: Partial<PersistedRequestItem>): RequestIt
   return {
     ...def,
     ...request,
+    savedRequestId: request.savedRequestId,
+    collectionId: request.collectionId,
+    folderId: request.folderId,
     url,
     params: request.params ?? parseUrlToQueryParams(url).params,
     headersList:

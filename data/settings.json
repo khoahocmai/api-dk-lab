@@ -4,12 +4,15 @@
     "rejectUnauthorized": true,
     "editorFontSize": 13
   },
-  "activeEnvironmentId": "ab200199-1137-40c1-822a-3ea3d74259e8",
-  "activeTabId": "4f51a9c5-33a1-4c69-a65a-8056cba70696",
+  "activeEnvironmentId": "36eefd5b-4f5f-4a32-9b61-ae9b1ab57e32",
+  "activeTabId": "e4a006ef-9451-4671-94c3-8ff5e721e46e",
   "tabs": [
     {
-      "id": "4f51a9c5-33a1-4c69-a65a-8056cba70696",
-      "name": "Health",
+      "id": "e4a006ef-9451-4671-94c3-8ff5e721e46e",
+      "savedRequestId": "ffde20c0-eda2-479d-9298-891f9032458b",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8",
+      "name": "Find delivery store",
       "mode": "GRAPHQL",
       "method": "POST",
       "url": "{{Domain}}/graphql",
@@ -43,10 +46,10 @@
       "rawText": "",
       "formData": [],
       "urlencoded": [],
-      "gqlQuery": "query Health {\n  health {\n    message\n  }\n}",
-      "gqlVariables": "{}",
+      "gqlQuery": "query FindDeliveryStore($input: StoreGetDeliveryStoreDto) {\n  findDeliveryStore(input: $input) {\n    id\n    code\n    name\n    status\n    address\n    addressEn\n    alertOverloadPercent\n    backupStoreIds\n    cooldownTime\n    countryId\n    countyId\n    countyName\n    distance\n    eHoaDonAddress\n    eHoaDonCompanyName\n    eHoaDonInvoiceSerial\n  }\n}",
+      "gqlVariables": "{\n  \"input\": {\n    \"address\": \"Crescent Mall, 101 Tôn Dật Tiên, Tân Mỹ, Hồ Chí Minh\",\n    \"latitude\": 10.729084,\n    \"longitude\": 106.718872\n  }\n}",
       "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
-      "editorTab": "BODY",
+      "editorTab": "VARIABLES",
       "responseTab": "PRETTY"
     }
   ],
