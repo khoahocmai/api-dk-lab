@@ -1,0 +1,40 @@
+[
+  {
+    "id": "36eefd5b-4f5f-4a32-9b61-ae9b1ab57e32",
+    "name": "Dxp-local",
+    "variables": [
+      {
+        "id": "14f1f89c-b50b-444b-817a-cdef87f5a8e2",
+        "key": "Domain",
+        "value": "http://localhost:3030",
+        "enabled": true
+      },
+      {
+        "id": "68e78681-e640-4795-8c0d-f92c307a183f",
+        "key": "token",
+        "value": "",
+        "enabled": true,
+        "secret": true
+      }
+    ]
+  },
+  {
+    "id": "ab200199-1137-40c1-822a-3ea3d74259e8",
+    "name": "Dxp-dev",
+    "variables": [
+      {
+        "id": "2ba61a28-af51-4818-a65d-330683e8236d",
+        "key": "Domain",
+        "value": "https://api.dxpdemos.com/",
+        "enabled": true
+      },
+      {
+        "id": "c30b2312-1442-4af3-af04-71d99b7f105f",
+        "key": "token",
+        "value": "",
+        "enabled": true,
+        "secret": true
+      }
+    ]
+  }
+]

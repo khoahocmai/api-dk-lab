@@ -1,6 +1,10 @@
 import { contextBridge, ipcRenderer } from 'electron'
 
-const allowedInvokeChannels = new Set<string>(['http-request'])
+const allowedInvokeChannels = new Set<string>([
+  'http-request',
+  'storage:read',
+  'storage:write',
+])
 const allowedSendChannels = new Set<string>([])
 const allowedOnChannels = new Set<string>(['main-process-message'])
 
@@ -25,5 +29,13 @@ contextBridge.exposeInMainWorld('desktopApi', {
     }
 
     return ipcRenderer.invoke(channel, ...args)
+  },
+
+  readStorage(fileName: string) {
+    return ipcRenderer.invoke('storage:read', fileName)
+  },
+
+  writeStorage(fileName: string, data: unknown) {
+    return ipcRenderer.invoke('storage:write', fileName, data)
   },
 })

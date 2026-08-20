@@ -1,0 +1,76 @@
+[
+  {
+    "id": "e4c89448-25ec-438b-9d63-9faa4de09421",
+    "timestamp": "2026-08-20T06:49:30.114Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "https://api.dxpdemos.com//graphql",
+    "status": 200,
+    "duration": 64,
+    "request": {
+      "id": "28f84967-14b9-4538-bc55-57edba24cc28",
+      "name": "Health",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "json",
+      "restBody": "{\n  \"name\": \"API Lab User\"\n}",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query Health {\n  health {\n    message\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "64 ms",
+      "size": "36 B",
+      "data": {
+        "data": {
+          "health": {
+            "message": "Ok"
+          }
+        }
+      },
+      "headers": {
+        "server": "nginx/1.24.0 (Ubuntu)",
+        "date": "Thu, 20 Aug 2026 06:49:33 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "37",
+        "connection": "close",
+        "cache-control": "no-store",
+        "vary": "Origin"
+      },
+      "isNetworkError": false
+    }
+  }
+]

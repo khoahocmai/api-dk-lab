@@ -12,7 +12,6 @@ import type {
   HttpRequestOptions,
   MobileView,
   Mode,
-  PersistedWorkspace,
   RequestItem,
   ResponseState,
   SavedRequestItem,
@@ -35,10 +34,12 @@ import { sendHttpRequest } from './services/httpService'
 import {
   createDefaultEnvironment,
   createDefaultRequest,
-  readPersistedWorkspace,
+  loadAllWorkspaceData,
   reviveRequest,
-  savePersistedWorkspace,
-  stripSecretValues,
+  saveCollections,
+  saveEnvironments,
+  saveHistory,
+  saveSettings,
   stripTransientRequest,
 } from './services/storageService'
 import {
@@ -63,17 +64,12 @@ const MAX_HISTORY_ITEMS = 100
 function App() {
   const [tabs, setTabs] = useState<RequestItem[]>([createDefaultRequest('GRAPHQL')])
   const [activeTabId, setActiveTabId] = useState('')
-  const [collections, setCollections] = useState<CollectionItem[]>([
-    { id: createId(), name: 'Default Collection' },
-  ])
+  const [collections, setCollections] = useState<CollectionItem[]>([])
   const [folders, setFolders] = useState<FolderItem[]>([])
   const [savedRequests, setSavedRequests] = useState<SavedRequestItem[]>([])
   const [expandedCollectionIds, setExpandedCollectionIds] = useState<string[]>([])
   const [expandedFolderIds, setExpandedFolderIds] = useState<string[]>([])
-  const [environments, setEnvironments] = useState<EnvironmentItem[]>([
-    createDefaultEnvironment('Local', 'http://localhost:3030'),
-    createDefaultEnvironment('Dev', 'https://dev.example.com'),
-  ])
+  const [environments, setEnvironments] = useState<EnvironmentItem[]>([])
   const [activeEnvironmentId, setActiveEnvironmentId] = useState('')
   const [mobileView, setMobileView] = useState<MobileView>('REQUEST')
   const [splitLayout, setSplitLayout] = useState<SplitLayout>('horizontal')
@@ -155,33 +151,91 @@ function App() {
     return resolveTemplates(activeTab.url, activeEnvironment)
   }, [activeTab, activeEnvironment])
 
+  // Hydrate workspace from JSON storage files on startup
   useEffect(() => {
-    const saved = readPersistedWorkspace()
+    let isMounted = true
 
-    if (saved?.tabs?.length) {
-      setTabs(saved.tabs.map(reviveRequest))
-      setActiveTabId(saved.activeTabId || saved.tabs[0].id)
+    async function hydrate() {
+      try {
+        const {
+          environments: loadedEnvs,
+          collectionsData,
+          history: loadedHistory,
+          settingsData,
+        } = await loadAllWorkspaceData()
+
+        if (!isMounted) return
+
+        setEnvironments(loadedEnvs)
+
+        setCollections(collectionsData.collections)
+        setFolders(collectionsData.folders || [])
+        setSavedRequests(collectionsData.savedRequests || [])
+        setExpandedCollectionIds(
+          collectionsData.expandedCollectionIds && collectionsData.expandedCollectionIds.length > 0
+            ? collectionsData.expandedCollectionIds
+            : collectionsData.collections[0]
+              ? [collectionsData.collections[0].id]
+              : [],
+        )
+        setExpandedFolderIds(collectionsData.expandedFolderIds || [])
+
+        setHistory(loadedHistory)
+
+        setSettings(settingsData.settings)
+
+        if (settingsData.tabs && settingsData.tabs.length > 0) {
+          const revivedTabs = settingsData.tabs.map(reviveRequest)
+          setTabs(revivedTabs)
+          const targetTabId =
+            settingsData.activeTabId && revivedTabs.some((t) => t.id === settingsData.activeTabId)
+              ? settingsData.activeTabId
+              : revivedTabs[0].id
+          setActiveTabId(targetTabId)
+        }
+
+        if (
+          settingsData.activeEnvironmentId &&
+          loadedEnvs.some((e) => e.id === settingsData.activeEnvironmentId)
+        ) {
+          setActiveEnvironmentId(settingsData.activeEnvironmentId)
+        } else if (loadedEnvs[0]) {
+          setActiveEnvironmentId(loadedEnvs[0].id)
+        }
+
+        if (settingsData.splitLayout) setSplitLayout(settingsData.splitLayout)
+        if (settingsData.isSidebarCollapsed !== undefined) {
+          setIsSidebarCollapsed(settingsData.isSidebarCollapsed)
+        }
+        if (settingsData.isExplorerOpen !== undefined) {
+          setIsExplorerOpen(settingsData.isExplorerOpen)
+        }
+      } catch (error) {
+        console.error('Failed to load workspace data:', error)
+      } finally {
+        if (isMounted) {
+          didHydrateRef.current = true
+        }
+      }
     }
 
-    if (saved?.collections?.length) setCollections(saved.collections)
-    if (saved?.folders?.length) setFolders(saved.folders)
-    if (saved?.savedRequests) setSavedRequests(saved.savedRequests)
-    if (saved?.expandedCollectionIds) setExpandedCollectionIds(saved.expandedCollectionIds)
-    if (saved?.expandedFolderIds) setExpandedFolderIds(saved.expandedFolderIds)
-    if (saved?.environments?.length) setEnvironments(saved.environments)
-    if (saved?.activeEnvironmentId) setActiveEnvironmentId(saved.activeEnvironmentId)
-    if (saved?.splitLayout) setSplitLayout(saved.splitLayout)
-    if (saved?.history) setHistory(saved.history)
-    if (saved?.settings) setSettings(saved.settings)
-    if (saved?.isSidebarCollapsed !== undefined) setIsSidebarCollapsed(saved.isSidebarCollapsed)
-    if (saved?.isExplorerOpen !== undefined) setIsExplorerOpen(saved.isExplorerOpen)
+    void hydrate()
 
-    didHydrateRef.current = true
+    return () => {
+      isMounted = false
+    }
   }, [])
 
+  // Keep active selections valid
   useEffect(() => {
-    if (!activeTabId && tabs[0]) setActiveTabId(tabs[0].id)
-    if (!activeEnvironmentId && environments[0]) setActiveEnvironmentId(environments[0].id)
+    if (!didHydrateRef.current) return
+
+    if (!activeTabId && tabs[0]) {
+      setActiveTabId(tabs[0].id)
+    }
+    if (!activeEnvironmentId && environments[0]) {
+      setActiveEnvironmentId(environments[0].id)
+    }
     if (!expandedCollectionIds.length && collections[0]) {
       setExpandedCollectionIds([collections[0].id])
     }
@@ -194,45 +248,53 @@ function App() {
     expandedCollectionIds.length,
   ])
 
+  // Realtime Save: Environments (data/environments.json)
+  useEffect(() => {
+    if (!didHydrateRef.current) return
+    void saveEnvironments(environments)
+  }, [environments])
+
+  // Realtime Save: Collections & Folders & Saved Requests (data/collections.json)
+  useEffect(() => {
+    if (!didHydrateRef.current) return
+    void saveCollections({
+      collections,
+      folders,
+      savedRequests,
+      expandedCollectionIds,
+      expandedFolderIds,
+    })
+  }, [collections, folders, savedRequests, expandedCollectionIds, expandedFolderIds])
+
+  // Realtime Save: History (data/history.json)
+  useEffect(() => {
+    if (!didHydrateRef.current) return
+    void saveHistory(history)
+  }, [history])
+
+  // Realtime Save: Settings & UI Workspace State (data/settings.json)
   useEffect(() => {
     if (!didHydrateRef.current) return
 
     const timeout = window.setTimeout(() => {
-      const payload: PersistedWorkspace = {
-        version: 4,
-        tabs: tabs.map(stripTransientRequest),
-        activeTabId,
-        collections,
-        folders,
-        savedRequests,
-        expandedCollectionIds,
-        expandedFolderIds,
-        environments: stripSecretValues(environments),
-        activeEnvironmentId,
-        splitLayout,
-        history,
+      void saveSettings({
         settings,
+        activeEnvironmentId,
+        activeTabId,
+        tabs: tabs.map(stripTransientRequest),
+        splitLayout,
         isSidebarCollapsed,
         isExplorerOpen,
-      }
-
-      savePersistedWorkspace(payload)
-    }, 350)
+      })
+    }, 250)
 
     return () => window.clearTimeout(timeout)
   }, [
-    tabs,
-    activeTabId,
-    collections,
-    folders,
-    savedRequests,
-    expandedCollectionIds,
-    expandedFolderIds,
-    environments,
-    activeEnvironmentId,
-    splitLayout,
-    history,
     settings,
+    activeEnvironmentId,
+    activeTabId,
+    tabs,
+    splitLayout,
     isSidebarCollapsed,
     isExplorerOpen,
   ])

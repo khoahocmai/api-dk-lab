@@ -1,0 +1,64 @@
+{
+  "collections": [
+    {
+      "id": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "name": "Dxp"
+    }
+  ],
+  "folders": [],
+  "savedRequests": [
+    {
+      "id": "3c5f15e6-11bb-4c53-94d5-2c12590c9f88",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "name": "Health",
+      "request": {
+        "id": "4f51a9c5-33a1-4c69-a65a-8056cba70696",
+        "name": "Health",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "enabled": true
+          }
+        ],
+        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
+        "auth": {
+          "type": "none",
+          "bearerToken": "",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "json",
+        "restBody": "{\n  \"name\": \"API Lab User\"\n}",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query Health {\n  health {\n    message\n  }\n}",
+        "gqlVariables": "{}",
+        "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-20T06:48:21.666Z",
+      "updatedAt": "2026-08-20T06:49:25.424Z"
+    }
+  ],
+  "expandedCollectionIds": [
+    "925ff10c-6428-4f56-b1e6-bd84786a0fb2"
+  ],
+  "expandedFolderIds": []
+}

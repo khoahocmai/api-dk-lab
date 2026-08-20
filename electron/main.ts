@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import https from 'node:https'
 import axios, { AxiosRequestConfig } from 'axios'
+import { registerStorageIpcHandlers } from './storage'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -157,5 +158,6 @@ app.on('activate', () => {
 
 app.whenReady().then(() => {
   registerIpcHandlers()
+  registerStorageIpcHandlers()
   createWindow()
 })
