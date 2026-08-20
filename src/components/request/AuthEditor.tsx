@@ -1,12 +1,14 @@
 import { Key, Lock, Shield, User } from 'lucide-react'
-import type { ApiKeyAddTo, AuthConfig, AuthType } from '../../types'
+import type { ApiKeyAddTo, AuthConfig, AuthType, EnvironmentItem } from '../../types'
+import { TemplateInput } from '../common/TemplateInput'
 
 interface AuthEditorProps {
   auth: AuthConfig
   onChange: (auth: AuthConfig) => void
+  environment?: EnvironmentItem | null
 }
 
-export function AuthEditor({ auth, onChange }: AuthEditorProps) {
+export function AuthEditor({ auth, onChange, environment }: AuthEditorProps) {
   const handleTypeChange = (type: AuthType) => {
     onChange({ ...auth, type })
   }
@@ -37,17 +39,15 @@ export function AuthEditor({ auth, onChange }: AuthEditorProps) {
       {auth.type === 'bearer' && (
         <div className="stack" style={{ maxWidth: 480, gap: 8, marginTop: 4 }}>
           <div className="caps">Token</div>
-          <div className="row" style={{ position: 'relative' }}>
-            <Lock size={13} style={{ position: 'absolute', left: 8, color: 'var(--text-dim)' }} />
-            <input
-              className="input input-sm"
-              type="text"
-              value={auth.bearerToken}
-              onChange={(e) => onChange({ ...auth, bearerToken: e.target.value })}
-              placeholder="e.g. {{token}} or eyJhbGciOi..."
-              style={{ paddingLeft: 28, fontFamily: 'var(--font-mono)' }}
-            />
-          </div>
+          <TemplateInput
+            size="sm"
+            startIcon={<Lock size={13} />}
+            value={auth.bearerToken}
+            onChange={(val) => onChange({ ...auth, bearerToken: val })}
+            placeholder="e.g. {{token}} or Bearer {{token}}"
+            environment={environment}
+            aria-label="Bearer Token"
+          />
           <div className="banner banner-success" style={{ fontSize: 11, padding: '6px 8px' }}>
             <Shield size={13} />
             <span>Header <code>Authorization: Bearer &lt;token&gt;</code> is automatically injected on send.</span>
@@ -59,31 +59,29 @@ export function AuthEditor({ auth, onChange }: AuthEditorProps) {
         <div className="stack" style={{ maxWidth: 480, gap: 8, marginTop: 4 }}>
           <div className="stack" style={{ gap: 4 }}>
             <div className="caps">Username</div>
-            <div className="row" style={{ position: 'relative' }}>
-              <User size={13} style={{ position: 'absolute', left: 8, color: 'var(--text-dim)' }} />
-              <input
-                className="input input-sm"
-                value={auth.basicUsername}
-                onChange={(e) => onChange({ ...auth, basicUsername: e.target.value })}
-                placeholder="Username (e.g. admin or {{user}})"
-                style={{ paddingLeft: 28 }}
-              />
-            </div>
+            <TemplateInput
+              size="sm"
+              startIcon={<User size={13} />}
+              value={auth.basicUsername}
+              onChange={(val) => onChange({ ...auth, basicUsername: val })}
+              placeholder="Username (e.g. admin or {{user}})"
+              environment={environment}
+              aria-label="Basic Auth Username"
+            />
           </div>
 
           <div className="stack" style={{ gap: 4 }}>
             <div className="caps">Password</div>
-            <div className="row" style={{ position: 'relative' }}>
-              <Lock size={13} style={{ position: 'absolute', left: 8, color: 'var(--text-dim)' }} />
-              <input
-                className="input input-sm"
-                type="password"
-                value={auth.basicPassword}
-                onChange={(e) => onChange({ ...auth, basicPassword: e.target.value })}
-                placeholder="Password (e.g. {{password}})"
-                style={{ paddingLeft: 28 }}
-              />
-            </div>
+            <TemplateInput
+              size="sm"
+              type="password"
+              startIcon={<Lock size={13} />}
+              value={auth.basicPassword}
+              onChange={(val) => onChange({ ...auth, basicPassword: val })}
+              placeholder="Password (e.g. {{password}})"
+              environment={environment}
+              aria-label="Basic Auth Password"
+            />
           </div>
 
           <div className="banner banner-success" style={{ fontSize: 11, padding: '6px 8px' }}>
@@ -97,26 +95,26 @@ export function AuthEditor({ auth, onChange }: AuthEditorProps) {
         <div className="stack" style={{ maxWidth: 480, gap: 8, marginTop: 4 }}>
           <div className="stack" style={{ gap: 4 }}>
             <div className="caps">Key Name</div>
-            <div className="row" style={{ position: 'relative' }}>
-              <Key size={13} style={{ position: 'absolute', left: 8, color: 'var(--text-dim)' }} />
-              <input
-                className="input input-sm"
-                value={auth.apiKeyName}
-                onChange={(e) => onChange({ ...auth, apiKeyName: e.target.value })}
-                placeholder="e.g. X-API-Key or api_key"
-                style={{ paddingLeft: 28 }}
-              />
-            </div>
+            <TemplateInput
+              size="sm"
+              startIcon={<Key size={13} />}
+              value={auth.apiKeyName}
+              onChange={(val) => onChange({ ...auth, apiKeyName: val })}
+              placeholder="e.g. X-API-Key or api_key"
+              environment={environment}
+              aria-label="API Key Name"
+            />
           </div>
 
           <div className="stack" style={{ gap: 4 }}>
             <div className="caps">Key Value</div>
-            <input
-              className="input input-sm"
+            <TemplateInput
+              size="sm"
               value={auth.apiKeyValue}
-              onChange={(e) => onChange({ ...auth, apiKeyValue: e.target.value })}
+              onChange={(val) => onChange({ ...auth, apiKeyValue: val })}
               placeholder="e.g. {{apiKey}} or secret_key_123"
-              style={{ fontFamily: 'var(--font-mono)' }}
+              environment={environment}
+              aria-label="API Key Value"
             />
           </div>
 
@@ -152,3 +150,4 @@ export function AuthEditor({ auth, onChange }: AuthEditorProps) {
     </div>
   )
 }
+

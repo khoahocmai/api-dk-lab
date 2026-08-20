@@ -1,5 +1,5 @@
 import { FlaskConical, Trash2, Wand2 } from 'lucide-react'
-import type { BodyType, KeyValueRow, RequestItem } from '../../types'
+import type { BodyType, EnvironmentItem, KeyValueRow, RequestItem } from '../../types'
 import {
   buildUrlWithQueryParams,
   convertRowsToHeadersJson,
@@ -12,6 +12,7 @@ import { TestScriptEditor } from './TestScriptEditor'
 interface RequestEditorProps {
   activeTab: RequestItem
   editorFontSize?: number
+  environment?: EnvironmentItem | null
   onUpdateTab: (patch: Partial<RequestItem>) => void
   onFormat: () => void
   onClear: () => void
@@ -20,6 +21,7 @@ interface RequestEditorProps {
 export function RequestEditor({
   activeTab,
   editorFontSize,
+  environment,
   onUpdateTab,
   onFormat,
   onClear,
@@ -58,51 +60,83 @@ export function RequestEditor({
     <section className="request-editor">
       <div className="section-header">
         <div className="row wrap">
-          {!isGraphQL && (
-            <button
-              onClick={() => onUpdateTab({ editorTab: 'PARAMS' })}
-              className={`editor-tab ${activeTab.editorTab === 'PARAMS' ? 'is-active' : ''}`}
-            >
-              Params {activeParamCount > 0 && <span className="tab-counter">{activeParamCount}</span>}
-            </button>
+          {isGraphQL ? (
+            /* GraphQL Mode Tab Order: Query -> Variables -> Headers -> Auth -> Tests */
+            <>
+              <button
+                onClick={() => onUpdateTab({ editorTab: 'BODY' })}
+                className={`editor-tab ${activeTab.editorTab === 'BODY' ? 'is-active' : ''}`}
+              >
+                Query
+              </button>
+
+              <button
+                onClick={() => onUpdateTab({ editorTab: 'VARIABLES' })}
+                className={`editor-tab ${activeTab.editorTab === 'VARIABLES' ? 'is-active' : ''}`}
+              >
+                Variables
+              </button>
+
+              <button
+                onClick={() => onUpdateTab({ editorTab: 'HEADERS' })}
+                className={`editor-tab ${activeTab.editorTab === 'HEADERS' ? 'is-active' : ''}`}
+              >
+                Headers {activeHeaderCount > 0 && <span className="tab-counter">{activeHeaderCount}</span>}
+              </button>
+
+              <button
+                onClick={() => onUpdateTab({ editorTab: 'AUTH' })}
+                className={`editor-tab ${activeTab.editorTab === 'AUTH' ? 'is-active' : ''}`}
+              >
+                Auth {hasAuth && <span className="tab-counter">✓</span>}
+              </button>
+
+              <button
+                onClick={() => onUpdateTab({ editorTab: 'TESTS' })}
+                className={`editor-tab ${activeTab.editorTab === 'TESTS' ? 'is-active' : ''}`}
+              >
+                Tests {hasTestScript && <span className="tab-counter"><FlaskConical size={10} /></span>}
+              </button>
+            </>
+          ) : (
+            /* REST Mode Tab Order: Params -> Body -> Headers -> Auth -> Tests */
+            <>
+              <button
+                onClick={() => onUpdateTab({ editorTab: 'PARAMS' })}
+                className={`editor-tab ${activeTab.editorTab === 'PARAMS' ? 'is-active' : ''}`}
+              >
+                Params {activeParamCount > 0 && <span className="tab-counter">{activeParamCount}</span>}
+              </button>
+
+              <button
+                onClick={() => onUpdateTab({ editorTab: 'BODY' })}
+                className={`editor-tab ${activeTab.editorTab === 'BODY' ? 'is-active' : ''}`}
+              >
+                Body
+              </button>
+
+              <button
+                onClick={() => onUpdateTab({ editorTab: 'HEADERS' })}
+                className={`editor-tab ${activeTab.editorTab === 'HEADERS' ? 'is-active' : ''}`}
+              >
+                Headers {activeHeaderCount > 0 && <span className="tab-counter">{activeHeaderCount}</span>}
+              </button>
+
+              <button
+                onClick={() => onUpdateTab({ editorTab: 'AUTH' })}
+                className={`editor-tab ${activeTab.editorTab === 'AUTH' ? 'is-active' : ''}`}
+              >
+                Auth {hasAuth && <span className="tab-counter">✓</span>}
+              </button>
+
+              <button
+                onClick={() => onUpdateTab({ editorTab: 'TESTS' })}
+                className={`editor-tab ${activeTab.editorTab === 'TESTS' ? 'is-active' : ''}`}
+              >
+                Tests {hasTestScript && <span className="tab-counter"><FlaskConical size={10} /></span>}
+              </button>
+            </>
           )}
-
-          <button
-            onClick={() => onUpdateTab({ editorTab: 'HEADERS' })}
-            className={`editor-tab ${activeTab.editorTab === 'HEADERS' ? 'is-active' : ''}`}
-          >
-            Headers {activeHeaderCount > 0 && <span className="tab-counter">{activeHeaderCount}</span>}
-          </button>
-
-          <button
-            onClick={() => onUpdateTab({ editorTab: 'AUTH' })}
-            className={`editor-tab ${activeTab.editorTab === 'AUTH' ? 'is-active' : ''}`}
-          >
-            Auth {hasAuth && <span className="tab-counter">✓</span>}
-          </button>
-
-          <button
-            onClick={() => onUpdateTab({ editorTab: 'BODY' })}
-            className={`editor-tab ${activeTab.editorTab === 'BODY' ? 'is-active' : ''}`}
-          >
-            {isGraphQL ? 'Query' : 'Body'}
-          </button>
-
-          {isGraphQL && (
-            <button
-              onClick={() => onUpdateTab({ editorTab: 'VARIABLES' })}
-              className={`editor-tab ${activeTab.editorTab === 'VARIABLES' ? 'is-active' : ''}`}
-            >
-              Variables
-            </button>
-          )}
-
-          <button
-            onClick={() => onUpdateTab({ editorTab: 'TESTS' })}
-            className={`editor-tab ${activeTab.editorTab === 'TESTS' ? 'is-active' : ''}`}
-          >
-            Tests {hasTestScript && <span className="tab-counter"><FlaskConical size={10} /></span>}
-          </button>
         </div>
 
         <div className="row wrap">
@@ -136,6 +170,7 @@ export function RequestEditor({
               valuePlaceholder="Parameter Value"
               descriptionPlaceholder="Description"
               title="Query Parameters"
+              environment={environment}
             />
           </div>
         )}
@@ -150,6 +185,7 @@ export function RequestEditor({
               valuePlaceholder="Header Value (e.g. application/json)"
               descriptionPlaceholder="Description"
               title="Request Headers"
+              environment={environment}
             />
           </div>
         )}
@@ -160,6 +196,7 @@ export function RequestEditor({
             <AuthEditor
               auth={activeTab.auth}
               onChange={(auth) => onUpdateTab({ auth })}
+              environment={environment}
             />
           </div>
         )}
@@ -238,6 +275,7 @@ export function RequestEditor({
                       keyPlaceholder="Form Key"
                       valuePlaceholder="Form Value"
                       title="Multipart / Form-Data"
+                      environment={environment}
                     />
                   </div>
                 ) : (
@@ -248,6 +286,7 @@ export function RequestEditor({
                       keyPlaceholder="Urlencoded Key"
                       valuePlaceholder="Urlencoded Value"
                       title="x-www-form-urlencoded"
+                      environment={environment}
                     />
                   </div>
                 )}

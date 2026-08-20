@@ -99,7 +99,7 @@ export function MainPanel({
           <div className="resizable-editor-container">
             <Group
               orientation={splitLayout}
-              id={`dk-req-resp-${splitLayout}`}
+              id={`api-lab-req-resp-${splitLayout}`}
               style={{ height: '100%', width: '100%' }}
             >
               <Panel
@@ -111,6 +111,7 @@ export function MainPanel({
                 <RequestEditor
                   activeTab={activeTab}
                   editorFontSize={editorFontSize}
+                  environment={activeEnvironment}
                   onUpdateTab={onUpdateActiveTab}
                   onFormat={onFormat}
                   onClear={onClear}
@@ -131,6 +132,7 @@ export function MainPanel({
               >
                 <ResponseViewer
                   activeTab={activeTab}
+                  activeEnvironment={activeEnvironment}
                   editorFontSize={editorFontSize}
                   onUpdateTab={onUpdateActiveTab}
                   onCopyResponse={onCopyResponse}

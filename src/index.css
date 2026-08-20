@@ -9,28 +9,39 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* Modern Deep Slate / Dark Zinc Theme Palette */
-  --bg-app: #090a0f;
-  --bg: #090a0f;
-  --bg-panel: #12141a;
-  --bg-sidebar: #101217;
-  --bg-card: #171a22;
-  --bg-input: #191c25;
-  --bg-hover: #1f232e;
-  --bg-active: #252a37;
+  /* ==========================================================================
+     API Lab - Standard Surface Palette Hierarchy (Dark Mode)
+     ========================================================================== */
+  /* Background Gốc / Khung ngoài */
+  --bg-app: #0f1117;
+  --bg: #0f1117;
 
-  --panel-soft: #171a22;
-  --panel-strong: #1f232e;
+  /* Sidebar, Explorer Panel, Tabbar Background & Header Strips */
+  --bg-sidebar: #161822;
 
-  --border: #222631;
-  --border-subtle: #191c24;
-  --border-strong: #2f3442;
+  /* Workspace / Panels */
+  --bg-panel: #13151f;
+
+  /* Cards, Active Panels, Inputs & Modals */
+  --bg-card: #1a1d2b;
+  --bg-input: #1e2230;
+  --bg-hover: #282e42;
+  --bg-active: #323952;
+
+  --panel-soft: #1a1d2b;
+  --panel-strong: #282e42;
+
+  /* Borders & Dividers */
+  --border: #2a2f42;
+  --border-subtle: #212536;
+  --border-strong: #383f58;
   --border-focus: #3b82f6;
 
-  --text: #f1f5f9;
-  --text-primary: #f8fafc;
+  /* Typography / Text Palette */
+  --text: #e2e8f0;
+  --text-primary: #e2e8f0;
   --text-soft: #cbd5e1;
-  --text-secondary: #cbd5e1;
+  --text-secondary: #94a3b8;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
   --text-faint: #475569;
@@ -45,19 +56,19 @@
 
   /* Status Colors */
   --success: #10b981;
-  --success-bg: rgba(16, 185, 129, 0.1);
-  --success-border: rgba(16, 185, 129, 0.25);
+  --success-bg: rgba(16, 185, 129, 0.12);
+  --success-border: rgba(16, 185, 129, 0.3);
 
   --warning: #f59e0b;
-  --warning-bg: rgba(245, 158, 11, 0.1);
-  --warning-border: rgba(245, 158, 11, 0.25);
+  --warning-bg: rgba(245, 158, 11, 0.12);
+  --warning-border: rgba(245, 158, 11, 0.3);
 
   --danger: #ef4444;
-  --danger-bg: rgba(239, 68, 68, 0.1);
-  --danger-border: rgba(239, 68, 68, 0.25);
+  --danger-bg: rgba(239, 68, 68, 0.12);
+  --danger-border: rgba(239, 68, 68, 0.3);
 
   --info: #0ea5e9;
-  --info-bg: rgba(14, 165, 233, 0.1);
+  --info-bg: rgba(14, 165, 233, 0.12);
 
   /* HTTP Method Colors */
   --method-get: #10b981;
@@ -150,12 +161,12 @@ select {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #252934;
+  background: var(--border);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #363b49;
+  background: var(--border-strong);
 }
 
 @media (prefers-reduced-motion: reduce) {

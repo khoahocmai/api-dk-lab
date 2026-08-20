@@ -149,7 +149,7 @@ export function Sidebar({
       {/* Workspace Header */}
       <div className="panel-header" style={{ padding: '8px 10px' }}>
         <div className="row-between" style={{ marginBottom: 8 }}>
-          <div className="workspace-title">API Client</div>
+          <div className="workspace-title">API Lab</div>
           <div className="row" style={{ gap: 2 }}>
             <button
               type="button"
@@ -258,9 +258,9 @@ export function Sidebar({
                 fontWeight: 650,
                 flex: 1,
                 height: 26,
-                background: '#12141a',
+                background: 'var(--bg-input)',
                 borderColor: 'var(--primary)',
-                color: '#ffffff',
+                color: 'var(--text-primary)',
               }}
             />
             <button

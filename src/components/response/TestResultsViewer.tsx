@@ -50,9 +50,9 @@ export function TestResultsViewer({ report }: TestResultsViewerProps) {
           >
             <div className="row" style={{ gap: 8, alignItems: 'flex-start' }}>
               {res.passed ? (
-                <CheckCircle2 size={16} style={{ color: '#22c55e', marginTop: 2 }} />
+                <CheckCircle2 size={16} style={{ color: 'var(--success)', marginTop: 2 }} />
               ) : (
-                <XCircle size={16} style={{ color: '#ef4444', marginTop: 2 }} />
+                <XCircle size={16} style={{ color: 'var(--danger)', marginTop: 2 }} />
               )}
               <div className="stack" style={{ gap: 3, flex: 1 }}>
                 <div style={{ fontWeight: 750, fontSize: 13, color: res.passed ? 'var(--text)' : '#fca5a5' }}>
@@ -75,7 +75,7 @@ export function TestResultsViewer({ report }: TestResultsViewerProps) {
           <div className="stack" style={{ gap: 4 }}>
             {envKeys.map((k) => (
               <div key={k} className="row" style={{ fontSize: 12, fontFamily: 'monospace' }}>
-                <span style={{ color: '#60a5fa' }}>{k}</span>
+                <span style={{ color: 'var(--primary-bright)' }}>{k}</span>
                 <span style={{ color: 'var(--text-faint)' }}>=</span>
                 <span style={{ color: 'var(--text-soft)' }}>{report.envMutations[k]}</span>
               </div>

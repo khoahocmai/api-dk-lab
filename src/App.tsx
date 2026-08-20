@@ -918,7 +918,7 @@ function App() {
 
       <Group
         orientation="horizontal"
-        id="dk-main-layout-horizontal"
+        id="api-lab-main-layout-horizontal"
         className="app-layout-panels"
       >
         {/* Left Panel: GraphQL Explorer */}

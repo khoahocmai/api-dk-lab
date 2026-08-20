@@ -1,6 +1,7 @@
 import { Plus, Trash2 } from 'lucide-react'
-import type { KeyValueRow } from '../../types'
+import type { EnvironmentItem, KeyValueRow } from '../../types'
 import { createId } from '../../utils/formatters'
+import { TemplateInput } from '../common/TemplateInput'
 
 interface KeyValueTableProps {
   rows: KeyValueRow[]
@@ -9,6 +10,7 @@ interface KeyValueTableProps {
   valuePlaceholder?: string
   descriptionPlaceholder?: string
   title?: string
+  environment?: EnvironmentItem | null
 }
 
 export function KeyValueTable({
@@ -18,6 +20,7 @@ export function KeyValueTable({
   valuePlaceholder = 'Value',
   descriptionPlaceholder = 'Description',
   title,
+  environment,
 }: KeyValueTableProps) {
   const updateRow = (id: string, patch: Partial<KeyValueRow>, index: number) => {
     const nextRows = rows.map((row) => (row.id === id ? { ...row, ...patch } : row))
@@ -99,11 +102,13 @@ export function KeyValueTable({
               />
             </div>
             <div className="kv-col-val">
-              <input
-                className="input input-sm kv-input"
+              <TemplateInput
+                size="sm"
                 placeholder={valuePlaceholder}
                 value={row.value}
-                onChange={(e) => updateRow(row.id, { value: e.target.value }, index)}
+                onChange={(val) => updateRow(row.id, { value: val }, index)}
+                environment={environment}
+                aria-label="Parameter value"
               />
             </div>
             <div className="kv-col-desc">

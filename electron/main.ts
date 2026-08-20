@@ -106,6 +106,7 @@ function registerIpcHandlers() {
 
 function createWindow() {
   win = new BrowserWindow({
+    title: 'API Lab',
     width: 1440,
     height: 920,
     minWidth: 1024,

@@ -15,11 +15,12 @@ import {
 import type { EnvironmentItem, HttpMethod, Mode, RequestItem, SplitLayout } from '../../types'
 import { generateCurlCommand, parseCurlCommand } from '../../utils/curlHelper'
 import { parseUrlToQueryParams } from '../../utils/urlHelper'
+import { TemplateUrlInput } from '../common/TemplateUrlInput'
 
 interface UrlBarProps {
   activeTab: RequestItem
   activeEnvironment: EnvironmentItem | null
-  previewUrl: string
+  previewUrl?: string
   domainWarning: boolean
   splitLayout: SplitLayout
   onToggleSplitLayout: () => void
@@ -42,7 +43,6 @@ const METHOD_COLORS: Record<HttpMethod, string> = {
 export function UrlBar({
   activeTab,
   activeEnvironment,
-  previewUrl,
   domainWarning,
   splitLayout,
   onToggleSplitLayout,
@@ -181,18 +181,22 @@ export function UrlBar({
           </select>
         )}
 
-        <input
-          className="input"
-          type="text"
+        <TemplateUrlInput
           value={activeTab.url}
-          onChange={(event) => handleUrlChange(event.target.value)}
+          onChange={handleUrlChange}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && !activeTab.loading) {
+              e.preventDefault()
+              void onSend()
+            }
+          }}
           placeholder={
             activeTab.mode === 'GRAPHQL'
               ? '{{Domain}}/graphql'
               : '{{Domain}}/api/v1/resource (or paste cURL)'
           }
-          aria-label="Request URL"
-          style={{ flex: 1, fontFamily: 'var(--font-mono)' }}
+          environment={activeEnvironment}
+          ariaLabel="Request URL"
         />
 
         {activeTab.loading ? (
@@ -213,15 +217,7 @@ export function UrlBar({
         </button>
       </div>
 
-      {/* Subtitle Resolved URL info */}
-      <div className="row-between wrap" style={{ marginTop: 6, fontSize: 11, color: 'var(--text-dim)' }}>
-        <div className="row" style={{ gap: 4, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-          <span>Resolved:</span>
-          <span style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
-            {previewUrl || '-'}
-          </span>
-        </div>
-      </div>
+      {/* Error Banners */}
 
       {domainWarning && (
         <div className="banner banner-warning" style={{ marginTop: 8 }}>
@@ -240,3 +236,4 @@ export function UrlBar({
     </div>
   )
 }
+

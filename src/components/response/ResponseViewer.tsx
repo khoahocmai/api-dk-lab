@@ -1,12 +1,14 @@
 import { Check, Copy, FlaskConical, WifiOff } from 'lucide-react'
 import { useState } from 'react'
-import type { RequestItem } from '../../types'
+import type { EnvironmentItem, RequestItem } from '../../types'
+import { resolveTemplates } from '../../services/templateService'
 import { CodeEditor } from '../common/CodeEditor'
 import { StatusBadge } from './StatusBadge'
 import { TestResultsViewer } from './TestResultsViewer'
 
 interface ResponseViewerProps {
   activeTab: RequestItem
+  activeEnvironment?: EnvironmentItem | null
   editorFontSize?: number
   onUpdateTab: (patch: Partial<RequestItem>) => void
   onCopyResponse: () => Promise<void>
@@ -14,6 +16,7 @@ interface ResponseViewerProps {
 
 export function ResponseViewer({
   activeTab,
+  activeEnvironment,
   editorFontSize,
   onUpdateTab,
   onCopyResponse,
@@ -41,6 +44,8 @@ export function ResponseViewer({
       activeTab.response?.status === 0 ||
       (!activeTab.response?.status && activeTab.response?.error && !activeTab.response?.data),
   )
+
+  const resolvedUrl = resolveTemplates(activeTab.url || '', activeEnvironment)
 
   const rawContent =
     typeof activeTab.response?.data === 'string'
@@ -152,25 +157,25 @@ export function ResponseViewer({
                   width: 44,
                   height: 44,
                   borderRadius: '50%',
-                  background: 'rgba(239, 68, 68, 0.15)',
-                  border: '1px solid rgba(239, 68, 68, 0.3)',
+                  background: 'var(--danger-bg)',
+                  border: '1px solid var(--danger-border)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: '#f87171',
+                  color: 'var(--danger)',
                   flexShrink: 0,
                 }}
               >
                 <WifiOff size={22} />
               </div>
               <div>
-                <div style={{ fontSize: 15, fontWeight: 750, color: '#ffffff', marginBottom: 2 }}>
+                <div style={{ fontSize: 15, fontWeight: 750, color: 'var(--text-primary)', marginBottom: 2 }}>
                   Could not get any response
                 </div>
                 <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>
                   There was an error connecting to{' '}
                   <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--primary-bright)' }}>
-                    {activeTab.url || 'the server'}
+                    {resolvedUrl || 'the server'}
                   </span>
                 </div>
               </div>
@@ -180,8 +185,8 @@ export function ResponseViewer({
             {activeTab.response.error && (
               <div
                 style={{
-                  background: '#11131a',
-                  border: '1px solid rgba(239, 68, 68, 0.3)',
+                  background: 'var(--bg-input)',
+                  border: '1px solid var(--danger-border)',
                   borderRadius: 6,
                   padding: '10px 14px',
                   fontFamily: 'var(--font-mono)',

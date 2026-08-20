@@ -8,13 +8,10 @@ export function StatusBadge({ status, statusText, isNetworkError }: StatusBadgeP
   if (status === 0 || isNetworkError) {
     return (
       <span
-        className="badge"
+        className="badge badge-5xx"
         style={{
           fontFamily: 'var(--font-mono)',
           fontWeight: 750,
-          background: 'rgba(239, 68, 68, 0.15)',
-          color: '#f87171',
-          borderColor: 'rgba(239, 68, 68, 0.3)',
         }}
         title="Could not connect to server"
       >

@@ -10,7 +10,7 @@ import { DEFAULT_APP_SETTINGS } from '../types/settings.types'
 import { createId } from '../utils/formatters'
 import { parseHeadersTextToRows, parseUrlToQueryParams } from '../utils/urlHelper'
 
-export const STORAGE_KEY = 'dk-api-tester:v4'
+export const STORAGE_KEY = 'api-lab:v4'
 
 export function createDefaultAuth(): AuthConfig {
   return {
@@ -39,7 +39,7 @@ export function createDefaultRequest(mode: Mode = 'GRAPHQL'): RequestItem {
     headersText: defaultHeaders,
     auth: createDefaultAuth(),
     bodyType: 'json',
-    restBody: `{\n  "name": "DKAPI User"\n}`,
+    restBody: `{\n  "name": "API Lab User"\n}`,
     rawText: '',
     formData: [],
     urlencoded: [],
@@ -135,7 +135,7 @@ export function stripSecretValues(environments: EnvironmentItem[]): EnvironmentI
 
 export function readPersistedWorkspace(): Partial<PersistedWorkspace> | null {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY)
+    const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('dk-api-tester:v4')
     if (!raw) return null
     const parsed = JSON.parse(raw) as Partial<PersistedWorkspace>
     if (!parsed || typeof parsed !== 'object') return null
