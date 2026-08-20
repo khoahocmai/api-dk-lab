@@ -4,8 +4,8 @@
     "rejectUnauthorized": true,
     "editorFontSize": 13
   },
-  "activeEnvironmentId": "36eefd5b-4f5f-4a32-9b61-ae9b1ab57e32",
-  "activeTabId": "28f84967-14b9-4538-bc55-57edba24cc28",
+  "activeEnvironmentId": "ab200199-1137-40c1-822a-3ea3d74259e8",
+  "activeTabId": "4f51a9c5-33a1-4c69-a65a-8056cba70696",
   "tabs": [
     {
       "id": "4f51a9c5-33a1-4c69-a65a-8056cba70696",
@@ -48,51 +48,9 @@
       "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
       "editorTab": "BODY",
       "responseTab": "PRETTY"
-    },
-    {
-      "id": "28f84967-14b9-4538-bc55-57edba24cc28",
-      "name": "Health",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
-          "key": "Content-Type",
-          "value": "application/json",
-          "enabled": true
-        },
-        {
-          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
-          "key": "Authorization",
-          "value": "Bearer {{token}}",
-          "enabled": true
-        }
-      ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
-      "auth": {
-        "type": "none",
-        "bearerToken": "",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "json",
-      "restBody": "{\n  \"name\": \"API Lab User\"\n}",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query Health {\n  health {\n    message\n  }\n}",
-      "gqlVariables": "{}",
-      "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
     }
   ],
   "splitLayout": "horizontal",
-  "isSidebarCollapsed": true,
+  "isSidebarCollapsed": false,
   "isExplorerOpen": false
 }

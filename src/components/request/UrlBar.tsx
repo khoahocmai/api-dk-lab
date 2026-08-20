@@ -3,7 +3,6 @@ import {
   AlertTriangle,
   Check,
   Code,
-  Code2,
   Columns2,
   Copy,
   Rows2,
@@ -11,6 +10,7 @@ import {
   Send,
   ShieldAlert,
   StopCircle,
+  Terminal,
 } from 'lucide-react'
 import type { EnvironmentItem, HttpMethod, Mode, RequestItem, SplitLayout } from '../../types'
 import { generateCurlCommand, parseCurlCommand } from '../../utils/curlHelper'
@@ -56,8 +56,13 @@ export function UrlBar({
   const [copiedCurl, setCopiedCurl] = useState(false)
 
   const handleUrlChange = (newUrl: string) => {
-    if (newUrl.trim().toLowerCase().startsWith('curl ')) {
-      const parsed = parseCurlCommand(newUrl)
+    const trimmed = newUrl.trim()
+    if (
+      trimmed.toLowerCase().startsWith('curl') ||
+      trimmed.startsWith('$ curl') ||
+      trimmed.startsWith('> curl')
+    ) {
+      const parsed = parseCurlCommand(trimmed)
       if (parsed) {
         onUpdateTab(parsed)
         return
@@ -71,11 +76,28 @@ export function UrlBar({
     })
   }
 
+  const handleUrlPaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+    const text = e.clipboardData.getData('text')
+    const trimmed = text.trim()
+    if (
+      trimmed.toLowerCase().startsWith('curl') ||
+      trimmed.startsWith('$ curl') ||
+      trimmed.startsWith('> curl') ||
+      trimmed.startsWith('PS > curl')
+    ) {
+      const parsed = parseCurlCommand(trimmed)
+      if (parsed) {
+        e.preventDefault()
+        onUpdateTab(parsed)
+      }
+    }
+  }
+
   const handleCopyAsCurl = async () => {
     const curl = generateCurlCommand(activeTab, activeEnvironment)
     await navigator.clipboard.writeText(curl)
     setCopiedCurl(true)
-    setTimeout(() => setCopiedCurl(false), 2000)
+    setTimeout(() => setCopiedCurl(false), 1500)
   }
 
   return (
@@ -127,8 +149,8 @@ export function UrlBar({
             onClick={onOpenImportCurlModal}
             title="Import cURL command"
           >
-            <Code2 size={12} />
-            <span>cURL</span>
+            <Terminal size={12} />
+            <span>Import cURL</span>
           </button>
 
           <button
@@ -137,8 +159,17 @@ export function UrlBar({
             onClick={() => void handleCopyAsCurl()}
             title="Copy as cURL"
           >
-            {copiedCurl ? <Check size={12} style={{ color: 'var(--success)' }} /> : <Copy size={12} />}
-            <span>{copiedCurl ? 'Copied' : 'Copy cURL'}</span>
+            {copiedCurl ? (
+              <>
+                <Check size={12} style={{ color: 'var(--success)' }} />
+                <span style={{ color: 'var(--success)' }}>Copied to Clipboard!</span>
+              </>
+            ) : (
+              <>
+                <Copy size={12} />
+                <span>Copy cURL</span>
+              </>
+            )}
           </button>
 
           <button
@@ -184,6 +215,7 @@ export function UrlBar({
         <TemplateUrlInput
           value={activeTab.url}
           onChange={handleUrlChange}
+          onPaste={handleUrlPaste}
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !activeTab.loading) {
               e.preventDefault()

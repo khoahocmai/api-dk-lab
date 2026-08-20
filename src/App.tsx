@@ -48,7 +48,6 @@ import {
   getGraphFieldKey,
 } from './services/graphqlService'
 import { parseUrlToQueryParams } from './utils/urlHelper'
-import { parseCurlCommand } from './utils/curlHelper'
 import { exportPostmanCollectionV2, importPostmanCollectionV2 } from './utils/postmanHelper'
 import { runTestScript } from './utils/testRunner'
 import { MobileNav } from './components/layout/MobileNav'
@@ -56,6 +55,7 @@ import { Sidebar } from './components/layout/Sidebar'
 import { MainPanel } from './components/layout/MainPanel'
 import { ExplorerPanel } from './components/layout/ExplorerPanel'
 import { Modal } from './components/common/Modal'
+import { CurlImportModal } from './components/request/CurlImportModal'
 import { SettingsModal } from './components/settings/SettingsModal'
 import { CodeSnippetModal } from './components/common/CodeSnippetModal'
 
@@ -80,7 +80,6 @@ function App() {
 
   // Modal States
   const [importCurlModalOpen, setImportCurlModalOpen] = useState(false)
-  const [importCurlText, setImportCurlText] = useState('')
   const [importPostmanModalOpen, setImportPostmanModalOpen] = useState(false)
   const [importPostmanText, setImportPostmanText] = useState('')
   const [newCollectionModalOpen, setNewCollectionModalOpen] = useState(false)
@@ -547,19 +546,6 @@ function App() {
       setImportPostmanModalOpen(false)
     } catch {
       alert('Postman Collection JSON không hợp lệ. Vui lòng kiểm tra lại.')
-    }
-  }
-
-  // Import cURL
-  const handleImportCurl = () => {
-    if (!importCurlText.trim()) return
-    const parsed = parseCurlCommand(importCurlText)
-    if (parsed) {
-      updateActiveTab(parsed)
-      setImportCurlText('')
-      setImportCurlModalOpen(false)
-    } else {
-      alert('Lệnh cURL không hợp lệ. Vui lòng kiểm tra lại.')
     }
   }
 
@@ -1053,10 +1039,7 @@ function App() {
             onFormat={handleFormat}
             onClear={handleClear}
             onCopyResponse={handleCopyResponse}
-            onOpenImportCurlModal={() => {
-              setImportCurlText('')
-              setImportCurlModalOpen(true)
-            }}
+            onOpenImportCurlModal={() => setImportCurlModalOpen(true)}
             onOpenCodeSnippetModal={() => setCodeSnippetModalOpen(true)}
           />
         </Panel>
@@ -1103,6 +1086,7 @@ function App() {
                 onDeleteFolder={handleDeleteFolder}
                 onRenameFolder={handleRenameFolder}
                 onImportPostman={() => setImportPostmanModalOpen(true)}
+                onImportCurl={() => setImportCurlModalOpen(true)}
                 onExportCollection={handleExportPostmanCollection}
                 onRestoreHistory={handleRestoreHistory}
                 onDeleteHistoryItem={handleDeleteHistoryItem}
@@ -1116,39 +1100,11 @@ function App() {
       </Group>
 
       {/* Modal: Import cURL */}
-      <Modal
+      <CurlImportModal
         isOpen={importCurlModalOpen}
         onClose={() => setImportCurlModalOpen(false)}
-        title="Import cURL Command"
-        maxWidth="620px"
-      >
-        <div className="stack">
-          <div className="meta-text">
-            Dán lệnh cURL của bạn vào ô dưới đây để tự động phân tích Method, URL, Headers và Body.
-          </div>
-          <textarea
-            className="textarea"
-            style={{ minHeight: 180 }}
-            value={importCurlText}
-            onChange={(e) => setImportCurlText(e.target.value)}
-            placeholder="curl --location --request POST 'https://api.example.com/users' \
-  --header 'Content-Type: application/json' \
-  --data '{\&quot;name\&quot;: \&quot;John\&quot;}'"
-          />
-          <div className="modal-footer">
-            <button className="button" onClick={() => setImportCurlModalOpen(false)}>
-              Cancel
-            </button>
-            <button
-              className="button button-primary"
-              onClick={handleImportCurl}
-              disabled={!importCurlText.trim()}
-            >
-              Import to Active Tab
-            </button>
-          </div>
-        </div>
-      </Modal>
+        onImport={updateActiveTab}
+      />
 
       {/* Modal: Import Postman Collection v2.1 */}
       <Modal

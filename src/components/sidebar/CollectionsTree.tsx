@@ -8,6 +8,7 @@ import {
   FolderPlus,
   Pencil,
   Plus,
+  Terminal,
   Trash2,
   Upload,
 } from 'lucide-react'
@@ -30,6 +31,7 @@ interface CollectionsTreeProps {
   onDeleteFolder: (folderId: string) => void
   onRenameFolder?: (id: string, newName: string) => void
   onImportPostman: () => void
+  onImportCurl?: () => void
   onExportCollection: (c: CollectionItem) => void
 }
 
@@ -50,6 +52,7 @@ export function CollectionsTree({
   onDeleteFolder,
   onRenameFolder,
   onImportPostman,
+  onImportCurl,
   onExportCollection,
 }: CollectionsTreeProps) {
   const [editingCollectionId, setEditingCollectionId] = useState<string | null>(null)
@@ -210,6 +213,16 @@ export function CollectionsTree({
       <div className="row-between" style={{ padding: '0 4px 8px 4px' }}>
         <div className="caps">Collections ({collections.length})</div>
         <div className="row" style={{ gap: 4 }}>
+          {onImportCurl && (
+            <button
+              type="button"
+              className="icon-button icon-button-sm"
+              onClick={onImportCurl}
+              title="Import cURL command"
+            >
+              <Terminal size={14} />
+            </button>
+          )}
           <button
             type="button"
             className="icon-button icon-button-sm"

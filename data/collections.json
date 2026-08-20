@@ -5,7 +5,14 @@
       "name": "Dxp"
     }
   ],
-  "folders": [],
+  "folders": [
+    {
+      "id": "bbe24b51-62c6-4249-8de3-a781ba19ae86",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": null,
+      "name": "Store"
+    }
+  ],
   "savedRequests": [
     {
       "id": "3c5f15e6-11bb-4c53-94d5-2c12590c9f88",
@@ -60,5 +67,7 @@
   "expandedCollectionIds": [
     "925ff10c-6428-4f56-b1e6-bd84786a0fb2"
   ],
-  "expandedFolderIds": []
+  "expandedFolderIds": [
+    "bbe24b51-62c6-4249-8de3-a781ba19ae86"
+  ]
 }

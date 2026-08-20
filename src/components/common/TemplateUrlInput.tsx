@@ -6,6 +6,7 @@ export interface TemplateUrlInputProps {
   value: string
   onChange: (value: string) => void
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>
+  onPaste?: React.ClipboardEventHandler<HTMLInputElement>
   placeholder?: string
   environment?: EnvironmentItem | null
   ariaLabel?: string
@@ -16,6 +17,7 @@ export function TemplateUrlInput({
   value,
   onChange,
   onKeyDown,
+  onPaste,
   placeholder,
   environment,
   ariaLabel = 'Request URL',
@@ -26,6 +28,7 @@ export function TemplateUrlInput({
       value={value}
       onChange={onChange}
       onKeyDown={onKeyDown}
+      onPaste={onPaste}
       placeholder={placeholder}
       environment={environment}
       aria-label={ariaLabel}

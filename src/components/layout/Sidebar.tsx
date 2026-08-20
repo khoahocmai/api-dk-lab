@@ -59,6 +59,7 @@ interface SidebarProps {
   onDeleteFolder: (folderId: string) => void
   onRenameFolder?: (id: string, newName: string) => void
   onImportPostman: () => void
+  onImportCurl?: () => void
   onExportCollection: (c: CollectionItem) => void
   onRestoreHistory: (item: HistoryItem) => void
   onDeleteHistoryItem: (id: string) => void
@@ -97,6 +98,7 @@ export function Sidebar({
   onDeleteFolder,
   onRenameFolder,
   onImportPostman,
+  onImportCurl,
   onExportCollection,
   onRestoreHistory,
   onDeleteHistoryItem,
@@ -394,6 +396,7 @@ export function Sidebar({
             onDeleteFolder={onDeleteFolder}
             onRenameFolder={onRenameFolder}
             onImportPostman={onImportPostman}
+            onImportCurl={onImportCurl}
             onExportCollection={onExportCollection}
           />
         ) : (
