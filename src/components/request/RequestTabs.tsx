@@ -113,7 +113,6 @@ export function RequestTabs({
                 onClick={() => onCloseTab(item.id)}
                 aria-label={`Close ${item.name}`}
                 title="Close Tab"
-                disabled={tabs.length === 1}
                 style={{ width: 18, height: 18 }}
               >
                 <X size={11} />

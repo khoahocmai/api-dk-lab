@@ -608,27 +608,35 @@ export function CollectionsTree({
               ) : (
                 <div
                   className="collection-header row-between group-hover-row"
+                  onClick={() => onToggleCollection(collection.id)}
+                  style={{ cursor: 'pointer' }}
                   onDragOver={(e) => handleCollectionDragOver(e, collection.id)}
                   onDragLeave={() => {
                     if (dropTarget?.id === collection.id) setDropTarget(null)
                   }}
                   onDrop={(e) => handleCollectionDrop(e, collection.id)}
                 >
-                  <button
+                  <div
                     className="collection-button"
-                    onClick={() => onToggleCollection(collection.id)}
                     aria-expanded={isExpanded}
                   >
                     {isExpanded ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
                     <Folder size={14} style={{ color: 'var(--primary-bright)' }} />
                     <span className="collection-title-text">{collection.name}</span>
-                  </button>
+                  </div>
 
-                  <div className="row hover-actions" style={{ gap: 2 }}>
+                  <div
+                    className="row hover-actions"
+                    style={{ gap: 2 }}
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     <button
                       type="button"
                       className="icon-button icon-button-sm"
-                      onClick={() => handleStartRenameCollection(collection)}
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        handleStartRenameCollection(collection)
+                      }}
                       title="Rename Collection"
                     >
                       <Pencil size={12} />
@@ -636,7 +644,10 @@ export function CollectionsTree({
                     <button
                       type="button"
                       className="icon-button icon-button-sm"
-                      onClick={() => onAddFolder(collection.id, null)}
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        onAddFolder(collection.id, null)
+                      }}
                       title="Add Folder"
                     >
                       <FolderPlus size={12} />
@@ -644,7 +655,10 @@ export function CollectionsTree({
                     <button
                       type="button"
                       className="icon-button icon-button-sm"
-                      onClick={() => onExportCollection(collection)}
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        onExportCollection(collection)
+                      }}
                       title="Export as Postman Collection v2.1"
                     >
                       <Download size={12} />
@@ -652,7 +666,10 @@ export function CollectionsTree({
                     <button
                       type="button"
                       className="icon-button icon-button-sm"
-                      onClick={() => onDeleteCollection(collection.id)}
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        onDeleteCollection(collection.id)
+                      }}
                       title="Delete Collection"
                       disabled={collections.length === 1}
                     >

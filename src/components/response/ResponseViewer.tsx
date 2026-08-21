@@ -74,13 +74,6 @@ export function ResponseViewer({
           </button>
           <button
             type="button"
-            className={`editor-tab ${activeTab.responseTab === 'RAW' ? 'is-active' : ''}`}
-            onClick={() => onUpdateTab({ responseTab: 'RAW' })}
-          >
-            Raw
-          </button>
-          <button
-            type="button"
             className={`editor-tab ${activeTab.responseTab === 'HEADERS' ? 'is-active' : ''}`}
             onClick={() => onUpdateTab({ responseTab: 'HEADERS' })}
           >
@@ -148,7 +141,7 @@ export function ResponseViewer({
           <div className="response-empty">
             Nhấn <strong>Send</strong> (hoặc <code>Cmd/Ctrl + Enter</code>) để gửi request.
           </div>
-        ) : isNetworkError && (activeTab.responseTab === 'PRETTY' || activeTab.responseTab === 'RAW') ? (
+        ) : isNetworkError && activeTab.responseTab === 'PRETTY' ? (
           /* NETWORK ERROR / SERVER OFFLINE BANNER */
           <div style={{ padding: '24px 20px', maxWidth: 640, margin: '0 auto' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
@@ -251,18 +244,6 @@ export function ResponseViewer({
               <CodeEditor
                 value={rawContent}
                 language="json"
-                readOnly
-                height="100%"
-                minHeight="350px"
-                fontSize={editorFontSize}
-              />
-            )}
-
-            {/* RAW TAB */}
-            {activeTab.responseTab === 'RAW' && (
-              <CodeEditor
-                value={rawContent}
-                language="text"
                 readOnly
                 height="100%"
                 minHeight="350px"

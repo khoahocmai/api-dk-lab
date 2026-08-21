@@ -39,7 +39,7 @@ interface ExplorerProps {
 }
 
 export function Explorer({
-  activeTab,
+  activeTab: _activeTab,
   graphExplorer,
   setGraphExplorer,
   selectedGraphFieldKeys,
@@ -132,7 +132,7 @@ export function Explorer({
             <button
               className="button button-sm"
               onClick={() => void onLoadSchema()}
-              disabled={!activeTab || graphExplorer.loading}
+              disabled={graphExplorer.loading}
               style={{ height: 24, padding: '0 6px' }}
               title="Introspect GraphQL Schema"
             >

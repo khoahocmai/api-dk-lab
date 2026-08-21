@@ -1,4 +1,5 @@
 import { Group, Panel, Separator } from 'react-resizable-panels'
+import { Globe, Layers3, Plus } from 'lucide-react'
 import type { EnvironmentItem, Mode, RequestItem, SplitLayout } from '../../types'
 import { RequestTabs } from '../request/RequestTabs'
 import { UrlBar } from '../request/UrlBar'
@@ -95,7 +96,7 @@ export function MainPanel({
         onAddTab={onAddTab}
       />
 
-      {activeTab && (
+      {activeTab ? (
         <>
           <UrlBar
             activeTab={activeTab}
@@ -157,6 +158,40 @@ export function MainPanel({
             </Group>
           </div>
         </>
+      ) : (
+        <div className="empty-workspace-container">
+          <div className="empty-workspace-content">
+            <div className="empty-workspace-icon-wrapper">
+              <Layers3 size={38} className="empty-workspace-icon" />
+            </div>
+            <h2 className="empty-workspace-title">No Open Requests</h2>
+            <p className="empty-workspace-desc">
+              Chọn một request từ Collection, mở API từ GraphQL Explorer, hoặc tạo mới request.
+            </p>
+            <div className="empty-workspace-actions">
+              <button
+                type="button"
+                className="button button-primary"
+                onClick={() => onAddTab('GRAPHQL')}
+              >
+                <Plus size={14} />
+                <span>New GraphQL Request</span>
+              </button>
+              <button
+                type="button"
+                className="button"
+                onClick={() => onAddTab('REST')}
+              >
+                <Globe size={13} style={{ color: 'var(--method-get)' }} />
+                <span>New REST Request</span>
+              </button>
+            </div>
+            <div className="empty-workspace-shortcuts">
+              <span><kbd>Ctrl</kbd> + <kbd>T</kbd> New Tab</span>
+              <span><kbd>Ctrl</kbd> + <kbd>B</kbd> Toggle Sidebar</span>
+            </div>
+          </div>
+        </div>
       )}
     </main>
   )

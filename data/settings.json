@@ -5,13 +5,13 @@
     "editorFontSize": 13
   },
   "activeEnvironmentId": "36eefd5b-4f5f-4a32-9b61-ae9b1ab57e32",
-  "activeTabId": "5fe68b66-4428-44aa-82f6-637fe6626c0d",
+  "activeTabId": "3b572414-4c82-4427-b0e1-8c0410bc1aa4",
   "tabs": [
     {
-      "id": "5fe68b66-4428-44aa-82f6-637fe6626c0d",
+      "id": "3b572414-4c82-4427-b0e1-8c0410bc1aa4",
       "savedRequestId": "3c5f15e6-11bb-4c53-94d5-2c12590c9f88",
       "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": null,
+      "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
       "name": "orderPaginationList",
       "mode": "GRAPHQL",
       "method": "POST",
@@ -66,67 +66,6 @@
       "gqlVariables": "{\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  },\n  \"filters\": {\n    \"keywords\": \"\"\n  }\n}",
       "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
       "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    {
-      "id": "155ed1e8-4c92-4b3f-b50a-9d88ae7146b7",
-      "savedRequestId": "ffde20c0-eda2-479d-9298-891f9032458b",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8",
-      "name": "Find delivery store",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
-          "key": "Content-Type",
-          "value": "application/json",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
-          "key": "Authorization",
-          "value": "Bearer {{token}}",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "81f4c996-751b-40b5-8440-f64a3a1ee83c",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "f19ddf45-3d43-446f-90f1-7806c24f78f7",
-          "key": "",
-          "value": "",
-          "enabled": true,
-          "description": ""
-        }
-      ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "none",
-        "bearerToken": "",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "json",
-      "restBody": "{\n  \"name\": \"API Lab User\"\n}",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query FindDeliveryStore($input: StoreGetDeliveryStoreDto) {\n  findDeliveryStore(input: $input) {\n    id\n    code\n    name\n    status\n    address\n    addressEn\n    alertOverloadPercent\n    backupStoreIds\n    cooldownTime\n    countryId\n    countyId\n    countyName\n    distance\n    eHoaDonAddress\n    eHoaDonCompanyName\n    eHoaDonInvoiceSerial\n  }\n}",
-      "gqlVariables": "{\n  \"input\": {\n    \"address\": \"Crescent Mall, 101 Tôn Dật Tiên, Tân Mỹ, Hồ Chí Minh\",\n    \"latitude\": 10.729084,\n    \"longitude\": 106.718872\n  }\n}",
-      "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
-      "editorTab": "HEADERS",
       "responseTab": "PRETTY"
     }
   ],

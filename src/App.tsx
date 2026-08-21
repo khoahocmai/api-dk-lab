@@ -261,17 +261,12 @@ function App() {
     if (!activeEnvironmentId && activeEnvironmentId !== 'NO_ENV' && environments[0]) {
       setActiveEnvironmentId(environments[0].id)
     }
-    if (!expandedCollectionIds.length && collections[0]) {
-      setExpandedCollectionIds([collections[0].id])
-    }
   }, [
     isHydrated,
     tabs,
     activeTabId,
     environments,
     activeEnvironmentId,
-    collections,
-    expandedCollectionIds.length,
   ])
 
   // Realtime Save: Environments (data/environments.json)
@@ -352,9 +347,17 @@ function App() {
         return
       }
 
-      if (event.key.toLowerCase() === 't') {
+      if (event.key.toLowerCase() === 't' || event.key.toLowerCase() === 'n') {
         event.preventDefault()
         addTab('REST')
+        return
+      }
+
+      if (event.key.toLowerCase() === 'w') {
+        event.preventDefault()
+        if (activeTabId) {
+          closeTab(activeTabId)
+        }
         return
       }
 
@@ -391,10 +394,15 @@ function App() {
   }
 
   const closeTab = (tabId: string) => {
-    if (tabs.length === 1) return
     const currentIndex = tabs.findIndex((item) => item.id === tabId)
     const nextTabs = tabs.filter((item) => item.id !== tabId)
+
     setTabs(nextTabs)
+    if (nextTabs.length === 0) {
+      setActiveTabId('')
+      return
+    }
+
     if (activeTabId === tabId) {
       setActiveTabId(nextTabs[Math.max(0, currentIndex - 1)]?.id || nextTabs[0].id)
     }
@@ -1105,9 +1113,38 @@ function App() {
   }
 
   const loadGraphSchema = async () => {
-    const targetUrl = activeTab && activeTab.url.trim() ? activeTab.url.trim() : '{{Domain}}/graphql'
-    let finalUrl = resolveTemplates(targetUrl, activeEnvironment)
-    if (!finalUrl) return
+    // 1. Determine rawUrl according to priority:
+    // Priority 1: URL from activeTab (if present and non-empty)
+    let rawUrl = activeTab?.url?.trim()
+
+    // Priority 2: When no active tab or activeTab.url is empty, get from activeEnvironment 'Domain' variable
+    if (!rawUrl) {
+      const domainVar = activeEnvironment?.variables.find(
+        (v) => v.enabled && v.key.trim().toLowerCase() === 'domain',
+      )?.value?.trim()
+
+      if (domainVar) {
+        rawUrl = `${domainVar.replace(/\/+$/, '')}/graphql`
+      } else {
+        rawUrl = '{{Domain}}/graphql'
+      }
+    }
+
+    // Resolve templates like {{Domain}} with activeEnvironment
+    let finalUrl = resolveTemplates(rawUrl, activeEnvironment).trim()
+
+    // Check if unresolved template remains or URL is empty
+    if (!finalUrl || finalUrl.includes('{{Domain}}') || finalUrl === '/graphql') {
+      const msg = 'Vui lòng cấu hình biến {{Domain}} trong Environment để tải Schema.'
+      showToast(msg)
+      setGraphExplorer((current) => ({
+        ...current,
+        loading: false,
+        error: msg,
+      }))
+      return
+    }
+
     if (!finalUrl.startsWith('http://') && !finalUrl.startsWith('https://')) {
       finalUrl = `http://${finalUrl}`
     }
@@ -1115,16 +1152,38 @@ function App() {
     setGraphExplorer((current) => ({ ...current, loading: true, error: '' }))
 
     try {
-      const rawHeaders = resolveHeadersList(
-        activeTab?.headersList || [],
-        activeTab?.headersText || '{}',
-        activeEnvironment,
-      )
-      const headers = injectAuthToHeaders(
-        rawHeaders,
-        activeTab?.auth || createDefaultAuth(),
-        activeEnvironment,
-      )
+      let headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+      }
+
+      if (activeTab) {
+        const rawHeaders = resolveHeadersList(
+          activeTab.headersList || [],
+          activeTab.headersText || '{}',
+          activeEnvironment,
+        )
+        headers = injectAuthToHeaders(
+          { ...headers, ...rawHeaders },
+          activeTab.auth || createDefaultAuth(),
+          activeEnvironment,
+        )
+      } else {
+        // Fallback: check if activeEnvironment has 'token' or 'Authorization' variable
+        const tokenVar = activeEnvironment?.variables.find(
+          (v) =>
+            v.enabled &&
+            (v.key.trim().toLowerCase() === 'token' ||
+              v.key.trim().toLowerCase() === 'authorization' ||
+              v.key.trim().toLowerCase() === 'bearer'),
+        )?.value?.trim()
+
+        if (tokenVar) {
+          headers['Authorization'] = tokenVar.startsWith('Bearer ')
+            ? tokenVar
+            : `Bearer ${tokenVar}`
+        }
+      }
+
       const extracted = await fetchGraphQLSchema(finalUrl, headers)
 
       setGraphExplorer((current) => ({
@@ -1135,12 +1194,15 @@ function App() {
         mutationFields: extracted.mutationFields,
       }))
       setSelectedGraphFieldKeys([])
+      showToast(
+        `Đã tải Schema thành công (${extracted.queryFields.length} Queries, ${extracted.mutationFields.length} Mutations)`,
+      )
     } catch (error) {
+      const errorMsg = error instanceof Error ? error.message : 'Load schema thất bại'
       setGraphExplorer((current) => ({
         ...current,
         loading: false,
-        error:
-          error instanceof Error ? error.message : 'Load schema thất bại',
+        error: errorMsg,
       }))
     }
   }
@@ -1291,6 +1353,25 @@ function App() {
           )
         })
       }
+
+      const nextKeysArr = Array.from(nextKeys)
+      setSelectedGraphFieldKeys(nextKeysArr)
+
+      // If active tab is a saved request from collection, or not GraphQL, or is a different request:
+      // ALWAYS open a new tab to preserve the active tab!
+      const shouldCreateNewTab =
+        !activeTab ||
+        activeTab.savedRequestId !== undefined ||
+        activeTab.mode !== 'GRAPHQL' ||
+        (activeTab.name !== field.name &&
+          !activeTab.name.startsWith('New ') &&
+          !activeTab.name.startsWith('Untitled'))
+
+      if (shouldCreateNewTab) {
+        createGraphRequestTab(currentGraphOperationKind, [field], nextKeysArr)
+      } else {
+        syncExplorerToActiveTab(nextKeysArr, currentGraphOperationKind)
+      }
     } else {
       // Remove this field and all its argument/input/output keys
       const prefix = `${fieldKey}:`
@@ -1299,11 +1380,11 @@ function App() {
           (item) => item !== fieldKey && !item.startsWith(prefix),
         ),
       )
-    }
 
-    const nextKeysArr = Array.from(nextKeys)
-    setSelectedGraphFieldKeys(nextKeysArr)
-    syncExplorerToActiveTab(nextKeysArr, currentGraphOperationKind)
+      const nextKeysArr = Array.from(nextKeys)
+      setSelectedGraphFieldKeys(nextKeysArr)
+      syncExplorerToActiveTab(nextKeysArr, currentGraphOperationKind)
+    }
   }
 
   const toggleGraphArg = (field: GraphField, arg: GraphArg, checked: boolean) => {
