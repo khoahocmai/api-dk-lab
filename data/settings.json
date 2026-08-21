@@ -5,33 +5,50 @@
     "editorFontSize": 13
   },
   "activeEnvironmentId": "ab200199-1137-40c1-822a-3ea3d74259e8",
-  "activeTabId": "1ecf989f-737e-4204-be5d-ca6c9ea7a4dd",
+  "activeTabId": "3a853088-608d-4c96-8291-391c82685701",
   "tabs": [
     {
-      "id": "1ecf989f-737e-4204-be5d-ca6c9ea7a4dd",
-      "name": "New GraphQL Request",
-      "graphqlRootField": "health",
+      "id": "3a853088-608d-4c96-8291-391c82685701",
+      "savedRequestId": "f7131e69-0126-4d33-b35b-68034993c842",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
+      "name": "Order pagination list",
+      "graphqlRootField": "orderPaginationList",
       "mode": "GRAPHQL",
       "method": "POST",
       "url": "{{Domain}}/graphql",
       "params": [],
       "headersList": [
         {
-          "id": "36a29049-c11e-4322-abf1-8d4efd10d097",
+          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
           "key": "Content-Type",
           "value": "application/json",
           "enabled": true,
           "description": ""
         },
         {
-          "id": "8632d82e-d379-4c32-9200-55d1c9a6403d",
+          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
           "key": "Authorization",
           "value": "Bearer {{token}}",
           "enabled": true,
           "description": ""
+        },
+        {
+          "id": "333c833b-9ada-48da-afa3-c737d8e6ae78",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "143f7dc1-67b4-4046-b9db-3453c8b570fd",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
         }
       ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
       "auth": {
         "type": "none",
         "bearerToken": "",
@@ -46,14 +63,14 @@
       "rawText": "",
       "formData": [],
       "urlencoded": [],
-      "gqlQuery": "query Health {\n  health {\n    message\n  }\n}",
-      "gqlVariables": "{}",
+      "gqlQuery": "query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\n  orderPaginationList(params: $params, filters: $filters) {\n    total\n    items {\n      id\n      code\n    }\n  }\n}",
+      "gqlVariables": "{\n  \"params\": {\n    \"page\": 0,\n    \"pageSize\": 0,\n    \"sortBy\": \"\",\n    \"sortDirection\": \"\"\n  },\n  \"filters\": {\n    \"keywords\": \"\",\n    \"orderStatus\": [],\n    \"financialStatus\": []\n  }\n}",
       "testScript": "",
-      "editorTab": "BODY",
+      "editorTab": "VARIABLES",
       "responseTab": "PRETTY"
     }
   ],
   "splitLayout": "horizontal",
-  "isSidebarCollapsed": false,
-  "isExplorerOpen": true
+  "isSidebarCollapsed": true,
+  "isExplorerOpen": false
 }

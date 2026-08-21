@@ -2451,95 +2451,120 @@
 }
 
 /* ==========================================================================
-   GRAPHQL UNIFIED QUERY & VARIABLES PANE (Postman Style)
+   GRAPHQL UNIFIED QUERY & VARIABLES PANE (Vertical Resizable Split Pane)
    ========================================================================== */
 
-.graphql-unified-container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  overflow: hidden;
-}
-
-.graphql-query-pane {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  overflow: hidden;
-}
-
-.graphql-variables-drawer {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
+.gql-editor-panels-group {
+  height: 100% !important;
+  max-height: 100% !important;
+  width: 100% !important;
+  overflow: hidden !important;
   background: var(--bg-panel);
-  overflow: hidden;
 }
 
-.graphql-vars-header {
-  height: 30px;
-  min-height: 30px;
-  background: #141721;
+.gql-query-panel,
+.gql-variables-panel {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  background: var(--bg-panel);
+}
+
+.gql-pane-toolbar {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 6px 12px;
+  border-bottom: 1px solid var(--border);
+  background: #141720;
+}
+
+.gql-pane-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.gql-pane-editor-container {
+  flex: 1 1 0%;
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.gql-pane-editor-inner {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Vertical Splitter / Resize Handle */
+[data-panel-resize-handle][data-panel-group-direction="vertical"],
+[data-separator][data-panel-group-direction="vertical"],
+.gql-resize-handle {
+  height: 4px !important;
+  background-color: #1e2230 !important;
+  cursor: row-resize !important;
+  transition: background-color 0.15s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+
+[data-panel-resize-handle][data-panel-group-direction="vertical"]:hover,
+[data-panel-resize-handle][data-panel-group-direction="vertical"][data-resize-handle-state="drag"],
+[data-separator][data-panel-group-direction="vertical"]:hover,
+[data-separator][data-panel-group-direction="vertical"][data-separator-state="active"],
+.gql-resize-handle:hover,
+.gql-resize-handle[data-separator-state="active"] {
+  background-color: var(--primary) !important;
+}
+
+.graphql-vars-header {
+  height: 32px;
+  min-height: 32px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   cursor: pointer;
   user-select: none;
+  background: #141720;
+  border-top: 1px solid var(--border);
   transition: background 0.12s ease;
+  flex-shrink: 0;
 }
 
 .graphql-vars-header:hover {
-  background: #1a1e2b;
+  background: #1a1d28;
 }
 
 .graphql-vars-header.is-collapsed {
   border-top: 1px solid var(--border);
-  border-bottom: 0;
 }
 
-.graphql-vars-header-left {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
+.graphql-vars-title {
+  font-size: 12px;
   font-weight: 600;
   color: var(--text-secondary);
 }
 
-.graphql-vars-header:hover .graphql-vars-header-left {
-  color: var(--text-primary);
-}
-
-.graphql-vars-title {
-  letter-spacing: 0.02em;
-}
-
+.graphql-vars-tag,
 .graphql-vars-badge {
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 700;
-  padding: 1px 4px;
-  border-radius: 3px;
-  background: rgba(59, 130, 246, 0.15);
-  color: #60a5fa;
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.12);
+  padding: 1px 5px;
+  border-radius: var(--radius-xs);
   font-family: var(--font-mono);
-}
-
-.graphql-vars-header-actions {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.graphql-vars-editor-wrap {
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
 }

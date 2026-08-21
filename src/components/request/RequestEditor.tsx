@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Group, Panel, Separator } from 'react-resizable-panels'
 import {
   Check,
   ChevronDown,
@@ -198,113 +199,186 @@ export function RequestEditor({
       {/* 2. NỘI DUNG CHÍNH (BẮT BUỘC CHIẾM TRỌN DIỆN TÍCH flex-1 min-h-0) */}
       <div className="editor-body" style={{ flex: '1 1 0%', minHeight: 0, height: '100%', width: '100%', display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden' }}>
         
-        {/* GRAPHQL UNIFIED QUERY & VARIABLES PANE */}
+        {/* GRAPHQL UNIFIED QUERY & VARIABLES PANE (VERTICAL RESIZABLE SPLIT PANE) */}
         {isGraphQL && isQueryTabActive && (
           <div style={{ flex: '1 1 0%', display: 'flex', flexDirection: 'column', height: '100%', width: '100%', minHeight: 0, overflow: 'hidden' }}>
-            
-            {/* TOOLBAR TRÊN (Format, Sync, Clear) - CỐ ĐỊNH */}
-            <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '6px 12px', borderBottom: '1px solid #232736', background: '#141720' }}>
-              <span style={{ fontSize: '11px', fontWeight: 700, color: 'var(--text-dim)', letterSpacing: '0.05em' }}>
-                GRAPHQL QUERY / MUTATION
-              </span>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <button onClick={onFormat} className="button button-sm" type="button">
-                  <Wand2 size={12} />
-                  <span>Format</span>
-                </button>
-                {onSyncToExplorer && (
-                  <button
-                    onClick={handleSyncClick}
-                    className={`button button-sm ${isSynced ? 'text-emerald-400 border-emerald-500/40 bg-emerald-500/10' : ''}`}
-                    title="Đồng bộ các trường trong Editor ngược lại cây chọn GraphQL Explorer bên trái"
-                    type="button"
-                  >
-                    {isSynced ? <Check size={12} className="text-emerald-400" /> : <RefreshCw size={12} />}
-                    <span>{isSynced ? 'Synced!' : 'Sync to Explorer'}</span>
-                  </button>
-                )}
-                <button onClick={onClear} className="button button-sm" type="button">
-                  <Trash2 size={12} />
-                  <span>Clear</span>
-                </button>
-              </div>
-            </div>
-
-            {/* KHU VỰC SOẠN THẢO GRAPHQL QUERY (BUNG FULL CHIỀU CAO TRÊN + BẬT CUỘN NỘI BỘ) */}
-            <div style={{ flex: '1 1 0%', minHeight: 0, width: '100%', overflow: 'hidden', position: 'relative' }}>
-              <div style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', overflow: 'hidden' }}>
-                <CodeEditor
-                  value={activeTab.gqlQuery || ''}
-                  onChange={(val) => onUpdateTab({ gqlQuery: val })}
-                  language="graphql"
-                  placeholder="query { ... }"
-                  height="100%"
-                  minHeight="100%"
-                  fontSize={editorFontSize}
-                />
-              </div>
-            </div>
-
-            {/* NGĂN KÉO VARIABLES DẠNG ACCORDION Ở ĐÁY */}
-            <div style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', borderTop: '1px solid #232736', background: '#141720' }}>
-              
-              {/* THANH TOGGLE BAR CỦA VARIABLES (LUÔN HIỂN THỊ CỐ ĐỊNH ~32px) */}
-              <div
-                style={{ height: '32px', minHeight: '32px', padding: '0 12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', userSelect: 'none', background: '#141720' }}
-                className="graphql-vars-header"
-                onClick={() => setIsVariablesOpen(!isVariablesOpen)}
+            {isVariablesOpen ? (
+              <Group
+                orientation="vertical"
+                id="gql-editor-layout"
+                className="gql-editor-panels-group"
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  {isVariablesOpen ? (
-                    <ChevronDown size={14} style={{ color: 'var(--text-muted)' }} />
-                  ) : (
-                    <ChevronUp size={14} style={{ color: 'var(--text-muted)' }} />
-                  )}
-                  <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text-secondary)' }}>Variables</span>
-                  <span style={{ fontSize: '10px', color: '#34d399', background: 'rgba(52, 211, 153, 0.12)', padding: '1px 5px', borderRadius: '3px', fontFamily: 'var(--font-mono)' }}>
-                    JSON
+                {/* PANEL 1: GRAPHQL QUERY EDITOR */}
+                <Panel
+                  id="gql-query-panel"
+                  defaultSize="65%"
+                  minSize="25%"
+                  className="gql-query-panel panel-resizable-item"
+                >
+                  {/* TOOLBAR TRÊN (Format, Sync, Clear) - CỐ ĐỊNH */}
+                  <div className="gql-pane-toolbar">
+                    <span className="gql-pane-title">
+                      GRAPHQL QUERY / MUTATION
+                    </span>
+                    <div className="row" style={{ gap: '6px' }}>
+                      <button onClick={onFormat} className="button button-sm" type="button">
+                        <Wand2 size={12} />
+                        <span>Format</span>
+                      </button>
+                      {onSyncToExplorer && (
+                        <button
+                          onClick={handleSyncClick}
+                          className={`button button-sm ${isSynced ? 'text-emerald-400 border-emerald-500/40 bg-emerald-500/10' : ''}`}
+                          title="Đồng bộ các trường trong Editor ngược lại cây chọn GraphQL Explorer bên trái"
+                          type="button"
+                        >
+                          {isSynced ? <Check size={12} className="text-emerald-400" /> : <RefreshCw size={12} />}
+                          <span>{isSynced ? 'Synced!' : 'Sync to Explorer'}</span>
+                        </button>
+                      )}
+                      <button onClick={onClear} className="button button-sm" type="button">
+                        <Trash2 size={12} />
+                        <span>Clear</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* KHU VỰC SOẠN THẢO GRAPHQL QUERY */}
+                  <div className="gql-pane-editor-container">
+                    <div className="gql-pane-editor-inner">
+                      <CodeEditor
+                        value={activeTab.gqlQuery || ''}
+                        onChange={(val) => onUpdateTab({ gqlQuery: val })}
+                        language="graphql"
+                        placeholder="query { ... }"
+                        height="100%"
+                        minHeight="100%"
+                        fontSize={editorFontSize}
+                      />
+                    </div>
+                  </div>
+                </Panel>
+
+                {/* THANH KÉO RESIZE NGANG (VERTICAL SPLITTER) */}
+                <Separator className="resize-handle horizontal-handle gql-resize-handle" />
+
+                {/* PANEL 2: VARIABLES DRAWER */}
+                <Panel
+                  id="gql-variables-panel"
+                  defaultSize="35%"
+                  minSize="15%"
+                  className="gql-variables-panel panel-resizable-item"
+                >
+                  {/* HEADER VARIABLES (CLICK TOGGLE / FORMAT / CLEAR) */}
+                  <div
+                    className="graphql-vars-header"
+                    onClick={() => setIsVariablesOpen(false)}
+                  >
+                    <div className="row" style={{ gap: '8px' }}>
+                      <ChevronDown size={14} style={{ color: 'var(--text-muted)' }} />
+                      <span className="graphql-vars-title">Variables</span>
+                      <span className="graphql-vars-tag">
+                        JSON
+                      </span>
+                    </div>
+
+                    <div className="row" style={{ gap: '4px' }} onClick={(e) => e.stopPropagation()}>
+                      <button
+                        type="button"
+                        title="Format JSON"
+                        className="button button-xs"
+                        onClick={handleFormatVariables}
+                      >
+                        Format
+                      </button>
+                      <button
+                        type="button"
+                        title="Clear JSON"
+                        className="button button-xs"
+                        onClick={handleClearVariables}
+                      >
+                        Clear
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* KHUNG SOẠN THẢO JSON VARIABLES */}
+                  <div className="gql-pane-editor-container" style={{ borderTop: '1px solid #232736', background: '#12141a' }}>
+                    <div className="gql-pane-editor-inner">
+                      <CodeEditor
+                        value={activeTab.gqlVariables || '{}'}
+                        onChange={(val) => onUpdateTab({ gqlVariables: val })}
+                        language="json"
+                        placeholder="{\n  \n}"
+                        height="100%"
+                        minHeight="100%"
+                        fontSize={editorFontSize}
+                      />
+                    </div>
+                  </div>
+                </Panel>
+              </Group>
+            ) : (
+              /* KHI THU GỌN: QUERY FULL 100%, THANH BAR Ở ĐÁY */
+              <div style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%', minHeight: 0, overflow: 'hidden' }}>
+                {/* TOOLBAR TRÊN */}
+                <div className="gql-pane-toolbar">
+                  <span className="gql-pane-title">
+                    GRAPHQL QUERY / MUTATION
                   </span>
+                  <div className="row" style={{ gap: '6px' }}>
+                    <button onClick={onFormat} className="button button-sm" type="button">
+                      <Wand2 size={12} />
+                      <span>Format</span>
+                    </button>
+                    {onSyncToExplorer && (
+                      <button
+                        onClick={handleSyncClick}
+                        className={`button button-sm ${isSynced ? 'text-emerald-400 border-emerald-500/40 bg-emerald-500/10' : ''}`}
+                        title="Đồng bộ các trường trong Editor ngược lại cây chọn GraphQL Explorer bên trái"
+                        type="button"
+                      >
+                        {isSynced ? <Check size={12} className="text-emerald-400" /> : <RefreshCw size={12} />}
+                        <span>{isSynced ? 'Synced!' : 'Sync to Explorer'}</span>
+                      </button>
+                    )}
+                    <button onClick={onClear} className="button button-sm" type="button">
+                      <Trash2 size={12} />
+                      <span>Clear</span>
+                    </button>
+                  </div>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }} onClick={(e) => e.stopPropagation()}>
-                  <button
-                    type="button"
-                    title="Format JSON"
-                    className="button button-xs"
-                    onClick={handleFormatVariables}
-                  >
-                    Format
-                  </button>
-                  <button
-                    type="button"
-                    title="Clear JSON"
-                    className="button button-xs"
-                    onClick={handleClearVariables}
-                  >
-                    Clear
-                  </button>
-                </div>
-              </div>
-
-              {/* KHUNG SOẠN THẢO JSON VARIABLES (HIỂN THỊ KHI OPEN - CỐ ĐỊNH 180PX + BẬT CUỘN NỘI BỘ) */}
-              {isVariablesOpen && (
-                <div style={{ height: '180px', minHeight: '180px', maxHeight: '180px', borderTop: '1px solid #232736', background: '#12141a', overflow: 'hidden', position: 'relative' }}>
-                  <div style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', overflow: 'hidden' }}>
+                {/* KHU VỰC SOẠN THẢO GRAPHQL QUERY */}
+                <div className="gql-pane-editor-container">
+                  <div className="gql-pane-editor-inner">
                     <CodeEditor
-                      value={activeTab.gqlVariables || '{}'}
-                      onChange={(val) => onUpdateTab({ gqlVariables: val })}
-                      language="json"
-                      placeholder="{\n  \n}"
+                      value={activeTab.gqlQuery || ''}
+                      onChange={(val) => onUpdateTab({ gqlQuery: val })}
+                      language="graphql"
+                      placeholder="query { ... }"
                       height="100%"
                       minHeight="100%"
                       fontSize={editorFontSize}
                     />
                   </div>
                 </div>
-              )}
 
-            </div>
-
+                {/* THANH TOGGLE GỌN Ở ĐÁY */}
+                <div
+                  className="graphql-vars-header is-collapsed"
+                  onClick={() => setIsVariablesOpen(true)}
+                >
+                  <div className="row" style={{ gap: '8px' }}>
+                    <ChevronUp size={14} style={{ color: 'var(--text-muted)' }} />
+                    <span className="graphql-vars-title">Variables</span>
+                    <span className="graphql-vars-tag">
+                      JSON
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         )}
 

@@ -1,5 +1,275 @@
 [
   {
+    "id": "4e118a0c-b1e9-413e-83d8-4913e74d102a",
+    "timestamp": "2026-08-21T10:44:37.853Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "https://api.dxpdemos.com/graphql",
+    "status": 200,
+    "duration": 198,
+    "request": {
+      "id": "3a853088-608d-4c96-8291-391c82685701",
+      "savedRequestId": "f7131e69-0126-4d33-b35b-68034993c842",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
+      "name": "Order pagination list",
+      "graphqlRootField": "orderPaginationList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "333c833b-9ada-48da-afa3-c737d8e6ae78",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "143f7dc1-67b4-4046-b9db-3453c8b570fd",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\n  orderPaginationList(params: $params, filters: $filters) {\n    total\n    items {\n      id\n      code\n    }\n  }\n}",
+      "gqlVariables": "{\n  \"params\": {\n    \"page\": 0,\n    \"pageSize\": 0,\n    \"sortBy\": \"\",\n    \"sortDirection\": \"\"\n  },\n  \"filters\": {\n    \"keywords\": \"\",\n    \"orderStatus\": [],\n    \"financialStatus\": []\n  }\n}",
+      "testScript": "",
+      "editorTab": "VARIABLES",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "198 ms",
+      "size": "1.2 KB",
+      "data": {
+        "data": {
+          "orderPaginationList": {
+            "total": 121,
+            "items": [
+              {
+                "id": "019f5fdb-dd48-777c-ad49-00fa1df83733",
+                "code": null
+              },
+              {
+                "id": "019f5fe0-52b0-7195-9d70-cd2745ccec56",
+                "code": null
+              },
+              {
+                "id": "019f5fe8-caf5-736e-a145-0512ba9b0d72",
+                "code": null
+              },
+              {
+                "id": "019f600f-ffa2-75dc-9493-50bc09655d72",
+                "code": null
+              },
+              {
+                "id": "019f601c-9737-707c-8727-ec104926432e",
+                "code": null
+              },
+              {
+                "id": "019f63b4-2e87-72c8-8ead-c087fd995d24",
+                "code": null
+              },
+              {
+                "id": "019f63ec-c9c8-739d-a1db-0680d322f11d",
+                "code": null
+              },
+              {
+                "id": "019f64dd-d758-7539-8ec2-87fe7ed891b6",
+                "code": null
+              },
+              {
+                "id": "019f689c-e8df-77f7-ae14-e6ce504d1429",
+                "code": null
+              },
+              {
+                "id": "019f6dd6-7f18-708e-83e1-c5ef48b8f177",
+                "code": null
+              },
+              {
+                "id": "019f6df6-d892-7169-a9d8-256768f7450c",
+                "code": null
+              },
+              {
+                "id": "019f6ee7-f648-704f-afed-3054301bbb47",
+                "code": null
+              },
+              {
+                "id": "019f8798-1347-77bb-bbd4-6c30df8d2a35",
+                "code": null
+              },
+              {
+                "id": "019f87a4-679d-705f-98d3-bdcd97666058",
+                "code": null
+              },
+              {
+                "id": "019f87a7-8023-70cc-936d-efac7c07e9fc",
+                "code": null
+              },
+              {
+                "id": "019f88df-1af3-7759-aba4-93c51eb5884f",
+                "code": null
+              },
+              {
+                "id": "019f88e2-8bb2-756f-a0a7-f19eb621aad4",
+                "code": null
+              },
+              {
+                "id": "019f9246-294a-7079-a92b-21cd196e4300",
+                "code": null
+              },
+              {
+                "id": "019f9249-491e-717b-905c-0a8b21038bd1",
+                "code": null
+              },
+              {
+                "id": "019f924b-d698-71df-8f6b-4857de190756",
+                "code": null
+              }
+            ]
+          }
+        }
+      },
+      "headers": {
+        "server": "nginx/1.24.0 (Ubuntu)",
+        "date": "Fri, 21 Aug 2026 10:44:42 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "1217",
+        "connection": "keep-alive",
+        "cache-control": "no-store",
+        "vary": "Origin"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "fdcc2faa-f9bf-45d7-a4f2-724d0625130f",
+    "timestamp": "2026-08-21T10:44:13.986Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "https://api.dxpdemos.com/graphql",
+    "status": 200,
+    "duration": 469,
+    "request": {
+      "id": "3a853088-608d-4c96-8291-391c82685701",
+      "savedRequestId": "f7131e69-0126-4d33-b35b-68034993c842",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
+      "name": "Order pagination list",
+      "graphqlRootField": "orderPaginationList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "333c833b-9ada-48da-afa3-c737d8e6ae78",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "143f7dc1-67b4-4046-b9db-3453c8b570fd",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\n  orderPaginationList(params: $params, filters: $filters) {\n    total\n  }\n}",
+      "gqlVariables": "{\n  \"params\": {\n    \"page\": 0,\n    \"pageSize\": 0,\n    \"sortBy\": \"\",\n    \"sortDirection\": \"\"\n  },\n  \"filters\": {\n    \"keywords\": \"\",\n    \"orderStatus\": [],\n    \"financialStatus\": []\n  }\n}",
+      "testScript": "",
+      "editorTab": "VARIABLES",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "469 ms",
+      "size": "46 B",
+      "data": {
+        "data": {
+          "orderPaginationList": {
+            "total": 121
+          }
+        }
+      },
+      "headers": {
+        "server": "nginx/1.24.0 (Ubuntu)",
+        "date": "Fri, 21 Aug 2026 10:44:19 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "47",
+        "connection": "keep-alive",
+        "cache-control": "no-store",
+        "vary": "Origin"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
     "id": "f70f11d3-2a3c-4ebc-ad85-6abe8c8710b1",
     "timestamp": "2026-08-21T10:25:12.851Z",
     "method": "GQL",
