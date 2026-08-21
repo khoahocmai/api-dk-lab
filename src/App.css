@@ -305,18 +305,21 @@
 
 .tab-chip {
   min-width: 120px;
-  max-width: 200px;
-  height: 28px;
+  max-width: 220px;
+  height: 30px;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   border: 1px solid var(--border);
   border-bottom: 0;
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   background: var(--bg-card);
-  padding: 0 4px 0 8px;
+  padding: 0 6px 0 10px;
   color: var(--text-muted);
   font-size: 12px;
+  flex-shrink: 0;
+  cursor: pointer;
+  user-select: none;
   transition: all 0.12s ease;
 }
 
@@ -346,10 +349,12 @@
   font-size: 12px;
   padding: 0;
   text-align: left;
+  overflow: hidden;
 }
 
 .tab-name {
   min-width: 0;
+  flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

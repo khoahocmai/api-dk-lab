@@ -88,20 +88,38 @@ export function RequestTabs({
         {tabs.map((item) => {
           const active = item.id === activeTabId
           return (
-            <div key={item.id} className={`tab-chip ${active ? 'is-active' : ''}`}>
-              <button className="tab-main-button" onClick={() => onSelectTab(item.id)}>
+            <div
+              key={item.id}
+              className={`tab-chip ${active ? 'is-active' : ''}`}
+              onClick={() => onSelectTab(item.id)}
+              ref={active ? (el) => el?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' }) : undefined}
+            >
+              <button
+                type="button"
+                className="tab-main-button"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  onSelectTab(item.id)
+                }}
+              >
                 <span
                   className={`method-tag ${
                     item.mode === 'GRAPHQL' ? 'method-graphql' : 'method-rest'
                   }`}
                 >
-                  {item.mode === 'GRAPHQL' ? 'GQL' : item.method}
+                  {item.mode === 'GRAPHQL' ? 'GQL' : item.method || 'GET'}
                 </span>
-                <span className="tab-name">{item.name}</span>
+                <span className="tab-name" title={item.name}>
+                  {item.name?.trim() || (item.mode === 'GRAPHQL' ? 'New GraphQL Request' : 'New Request')}
+                </span>
               </button>
               <button
+                type="button"
                 className="icon-button"
-                onClick={() => onDuplicateTab(item)}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  onDuplicateTab(item)
+                }}
                 aria-label={`Duplicate ${item.name}`}
                 title="Duplicate Tab"
                 style={{ width: 18, height: 18 }}
@@ -109,8 +127,12 @@ export function RequestTabs({
                 <Copy size={11} />
               </button>
               <button
+                type="button"
                 className="icon-button"
-                onClick={() => onCloseTab(item.id)}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  onCloseTab(item.id)
+                }}
                 aria-label={`Close ${item.name}`}
                 title="Close Tab"
                 style={{ width: 18, height: 18 }}
@@ -121,16 +143,18 @@ export function RequestTabs({
           )
         })}
 
-        {/* Compact Add Tab Button with Dropdown */}
+        {/* Compact Add Tab Button with Direct Click + Dropdown */}
         <div className="add-tab-container" ref={menuRef}>
           <button
             type="button"
-            className={`add-tab-btn ${isMenuOpen ? 'is-open' : ''}`}
-            onClick={() => setIsMenuOpen((prev) => !prev)}
-            title="New Request (Ctrl+T)"
+            className="add-tab-btn"
+            onClick={() => onAddTab('REST')}
+            onContextMenu={(e) => {
+              e.preventDefault()
+              setIsMenuOpen((prev) => !prev)
+            }}
+            title="New Request (Ctrl+T) - Right-click for more"
             aria-label="Create new request"
-            aria-haspopup="true"
-            aria-expanded={isMenuOpen}
           >
             <Plus size={14} />
           </button>

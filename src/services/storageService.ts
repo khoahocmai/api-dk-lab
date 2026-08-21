@@ -41,13 +41,13 @@ export function createDefaultAuth(): AuthConfig {
   }
 }
 
-export function createDefaultRequest(mode: Mode = 'GRAPHQL'): RequestItem {
+export function createDefaultRequest(mode: Mode = 'REST'): RequestItem {
   const defaultHeaders = `{\n  "Content-Type": "application/json",\n  "Authorization": "Bearer {{token}}"\n}`
-  const initialUrl = mode === 'GRAPHQL' ? '{{Domain}}/graphql' : '{{Domain}}/api'
+  const initialUrl = mode === 'GRAPHQL' ? '{{Domain}}/graphql' : ''
 
   return {
     id: createId(),
-    name: mode === 'GRAPHQL' ? 'New GraphQL' : 'New REST Request',
+    name: mode === 'GRAPHQL' ? 'New GraphQL Request' : 'New Request',
     mode,
     method: mode === 'GRAPHQL' ? 'POST' : 'GET',
     url: initialUrl,
@@ -55,20 +55,23 @@ export function createDefaultRequest(mode: Mode = 'GRAPHQL'): RequestItem {
     headersList: parseHeadersTextToRows(defaultHeaders),
     headersText: defaultHeaders,
     auth: createDefaultAuth(),
-    bodyType: 'json',
-    restBody: `{\n  "name": "API Lab User"\n}`,
+    bodyType: 'none',
+    restBody: '',
     rawText: '',
     formData: [],
     urlencoded: [],
-    gqlQuery: `query Health {\n  health {\n    message\n  }\n}`,
+    gqlQuery: mode === 'GRAPHQL' ? `query Health {\n  health {\n    message\n  }\n}` : '',
     gqlVariables: '{}',
-    testScript: `pm.test("Status code is 200", function () {\n    pm.response.to.have.status(200);\n});`,
+    testScript: '',
     testResults: null,
     editorTab: mode === 'GRAPHQL' ? 'BODY' : 'PARAMS',
     responseTab: 'PRETTY',
     response: null,
     loading: false,
     clientError: '',
+    savedRequestId: undefined,
+    collectionId: undefined,
+    folderId: undefined,
   }
 }
 

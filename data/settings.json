@@ -5,49 +5,30 @@
     "editorFontSize": 13
   },
   "activeEnvironmentId": "36eefd5b-4f5f-4a32-9b61-ae9b1ab57e32",
-  "activeTabId": "801d9ebb-224f-4a92-b472-24b3d7bacf21",
+  "activeTabId": "7fe454cc-33c4-4111-bdb4-e68915becb49",
   "tabs": [
     {
-      "id": "8e968535-95d0-4523-864a-c36a5398365a",
-      "savedRequestId": "dd5a240e-64a4-4e3d-814b-26f703ade0b8",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": null,
-      "name": "Health",
+      "id": "7fe454cc-33c4-4111-bdb4-e68915becb49",
+      "name": "health",
       "mode": "GRAPHQL",
       "method": "POST",
       "url": "{{Domain}}/graphql",
       "params": [],
       "headersList": [
         {
-          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
+          "id": "e69992ed-43d7-475e-b529-0a6c750dfc88",
           "key": "Content-Type",
           "value": "application/json",
-          "enabled": true,
-          "description": ""
+          "enabled": true
         },
         {
-          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
+          "id": "e7c4d016-bfdf-4e6e-bbd8-49f7e0166e59",
           "key": "Authorization",
           "value": "Bearer {{token}}",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "333c833b-9ada-48da-afa3-c737d8e6ae78",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "143f7dc1-67b4-4046-b9db-3453c8b570fd",
-          "key": "",
-          "value": "",
-          "enabled": true,
-          "description": ""
+          "enabled": true
         }
       ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
       "auth": {
         "type": "none",
         "bearerToken": "",
@@ -57,58 +38,39 @@
         "apiKeyValue": "",
         "apiKeyAddTo": "header"
       },
-      "bodyType": "json",
-      "restBody": "{\n  \"name\": \"API Lab User\"\n}",
+      "bodyType": "none",
+      "restBody": "",
       "rawText": "",
       "formData": [],
       "urlencoded": [],
       "gqlQuery": "query Health {\n  health {\n    message\n  }\n}",
       "gqlVariables": "{}",
-      "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
+      "testScript": "",
       "editorTab": "BODY",
       "responseTab": "PRETTY"
     },
     {
-      "id": "801d9ebb-224f-4a92-b472-24b3d7bacf21",
-      "savedRequestId": "3c5f15e6-11bb-4c53-94d5-2c12590c9f88",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
-      "name": "orderPaginationList",
+      "id": "2b999884-e7a9-44a4-b015-142a75722dfb",
+      "name": "tenantGetList",
       "mode": "GRAPHQL",
       "method": "POST",
       "url": "{{Domain}}/graphql",
       "params": [],
       "headersList": [
         {
-          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
+          "id": "e69992ed-43d7-475e-b529-0a6c750dfc88",
           "key": "Content-Type",
           "value": "application/json",
-          "enabled": true,
-          "description": ""
+          "enabled": true
         },
         {
-          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
+          "id": "e7c4d016-bfdf-4e6e-bbd8-49f7e0166e59",
           "key": "Authorization",
           "value": "Bearer {{token}}",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "333c833b-9ada-48da-afa3-c737d8e6ae78",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "143f7dc1-67b4-4046-b9db-3453c8b570fd",
-          "key": "",
-          "value": "",
-          "enabled": true,
-          "description": ""
+          "enabled": true
         }
       ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
       "auth": {
         "type": "none",
         "bearerToken": "",
@@ -118,14 +80,14 @@
         "apiKeyValue": "",
         "apiKeyAddTo": "header"
       },
-      "bodyType": "json",
-      "restBody": "{\n  \"name\": \"API Lab User\"\n}",
+      "bodyType": "none",
+      "restBody": "",
       "rawText": "",
       "formData": [],
       "urlencoded": [],
-      "gqlQuery": "query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\n  orderPaginationList(params: $params, filters: $filters) {\n    items {\n      id\n      paymentPartnerTend {\n        id\n      }\n    }\n  }\n}",
-      "gqlVariables": "{\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  },\n  \"filters\": {\n    \"keywords\": \"\"\n  }\n}",
-      "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
+      "gqlQuery": "query GeneratedQuery {\n  health {\n    message\n  }\n  tenantGetList {\n    id\n    name\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
       "editorTab": "BODY",
       "responseTab": "PRETTY"
     }
