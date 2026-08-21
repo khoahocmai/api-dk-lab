@@ -1259,46 +1259,149 @@ function App() {
     setMobileView('REQUEST')
   }
 
-  const syncExplorerToActiveTab = (nextKeys: string[], kind: 'query' | 'mutation') => {
+  const syncExplorerToFieldTab = (
+    field: GraphField,
+    nextKeys: string[],
+    kind: 'query' | 'mutation',
+  ) => {
     const fields = kind === 'mutation' ? graphExplorer.mutationFields : graphExplorer.queryFields
-    const selectedFields = fields.filter((field) =>
-      nextKeys.includes(getGraphFieldKey(kind, field.name)),
+    const selectedFields = fields.filter((f) =>
+      nextKeys.includes(getGraphFieldKey(kind, f.name)),
     )
 
     if (selectedFields.length === 0) return
 
     const generated = buildGraphOperationFromFields(kind, selectedFields, nextKeys)
 
-    // Parse current variables from activeTab to preserve user-entered values
-    let currentVars: Record<string, unknown> = {}
-    if (activeTab?.gqlVariables?.trim()) {
-      try {
-        currentVars = JSON.parse(activeTab.gqlVariables)
-      } catch {
-        currentVars = {}
+    // 1. Guard check: Is activeTab a valid unsaved matching scratch tab for this API?
+    const isCurrentTabMatching =
+      Boolean(activeTab) &&
+      activeTab?.savedRequestId === undefined &&
+      activeTab?.mode === 'GRAPHQL' &&
+      (activeTab?.name === field.name ||
+        activeTab?.name.startsWith('New ') ||
+        activeTab?.name.startsWith('Untitled'))
+
+    if (isCurrentTabMatching && activeTab) {
+      // Parse current variables from activeTab to preserve user-entered values
+      let currentVars: Record<string, unknown> = {}
+      if (activeTab.gqlVariables?.trim()) {
+        try {
+          currentVars = JSON.parse(activeTab.gqlVariables)
+        } catch {
+          currentVars = {}
+        }
       }
+
+      const mergedVars = deepMergePreserveVariables(
+        currentVars,
+        generated.variables,
+      ) as Record<string, unknown>
+      const varJson =
+        Object.keys(mergedVars).length > 0
+          ? JSON.stringify(mergedVars, null, 2)
+          : '{}'
+
+      const patch: Partial<RequestItem> = {
+        mode: 'GRAPHQL',
+        method: 'POST',
+        gqlQuery: generated.query,
+        gqlVariables: varJson,
+      }
+
+      if (activeTab.name.startsWith('New ') || activeTab.name.startsWith('Untitled')) {
+        patch.name = field.name
+      }
+
+      setTabs((current) =>
+        current.map((t) => (t.id === activeTab.id ? { ...t, ...patch } : t)),
+      )
+      return
     }
 
-    const mergedVars = deepMergePreserveVariables(currentVars, generated.variables) as Record<string, unknown>
-    const varJson =
-      Object.keys(mergedVars).length > 0
-        ? JSON.stringify(mergedVars, null, 2)
-        : '{}'
+    // 2. Active tab is NOT matching (e.g. Health from Collection, REST request, or different API tab)
+    // Check if an unsaved tab for this API is already open on the Tabbar:
+    const existingMatchingTab = tabs.find(
+      (t) =>
+        t.name === field.name &&
+        t.savedRequestId === undefined &&
+        t.mode === 'GRAPHQL',
+    )
 
-    const patch: Partial<RequestItem> = {
+    if (existingMatchingTab) {
+      let currentVars: Record<string, unknown> = {}
+      if (existingMatchingTab.gqlVariables?.trim()) {
+        try {
+          currentVars = JSON.parse(existingMatchingTab.gqlVariables)
+        } catch {
+          currentVars = {}
+        }
+      }
+
+      const mergedVars = deepMergePreserveVariables(
+        currentVars,
+        generated.variables,
+      ) as Record<string, unknown>
+      const varJson =
+        Object.keys(mergedVars).length > 0
+          ? JSON.stringify(mergedVars, null, 2)
+          : '{}'
+
+      setTabs((current) =>
+        current.map((t) =>
+          t.id === existingMatchingTab.id
+            ? {
+                ...t,
+                mode: 'GRAPHQL',
+                method: 'POST',
+                gqlQuery: generated.query,
+                gqlVariables: varJson,
+              }
+            : t,
+        ),
+      )
+      setActiveTabId(existingMatchingTab.id)
+      setMobileView('REQUEST')
+      return
+    }
+
+    // 3. Otherwise: Create a brand new tab for this field to protect the current active tab!
+    const baseRequest = createDefaultRequest('GRAPHQL')
+    const inheritedUrl =
+      activeTab && activeTab.url.trim() ? activeTab.url.trim() : baseRequest.url
+    const inheritedHeadersList =
+      activeTab && activeTab.headersList && activeTab.headersList.length > 0
+        ? activeTab.headersList
+        : baseRequest.headersList
+    const inheritedHeadersText =
+      activeTab && activeTab.headersText
+        ? activeTab.headersText
+        : baseRequest.headersText
+    const inheritedAuth =
+      activeTab && activeTab.auth ? activeTab.auth : baseRequest.auth
+
+    const newTab: RequestItem = {
+      ...baseRequest,
+      id: createId(),
+      name: field.name,
       mode: 'GRAPHQL',
       method: 'POST',
+      url: inheritedUrl,
+      params: parseUrlToQueryParams(inheritedUrl).params,
+      headersList: inheritedHeadersList,
+      headersText: inheritedHeadersText,
+      auth: inheritedAuth,
+      editorTab: 'BODY',
       gqlQuery: generated.query,
-      gqlVariables: varJson,
+      gqlVariables: JSON.stringify(generated.variables, null, 2),
+      savedRequestId: undefined,
+      collectionId: undefined,
+      folderId: undefined,
     }
 
-    if (activeTab && (activeTab.name.startsWith('New ') || selectedFields.length === 1)) {
-      if (selectedFields.length === 1) {
-        patch.name = selectedFields[0].name
-      }
-    }
-
-    updateActiveTab(patch)
+    setTabs((current) => [...current, newTab])
+    setActiveTabId(newTab.id)
+    setMobileView('REQUEST')
   }
 
   const insertGraphField = (field: GraphField) => {
@@ -1353,25 +1456,6 @@ function App() {
           )
         })
       }
-
-      const nextKeysArr = Array.from(nextKeys)
-      setSelectedGraphFieldKeys(nextKeysArr)
-
-      // If active tab is a saved request from collection, or not GraphQL, or is a different request:
-      // ALWAYS open a new tab to preserve the active tab!
-      const shouldCreateNewTab =
-        !activeTab ||
-        activeTab.savedRequestId !== undefined ||
-        activeTab.mode !== 'GRAPHQL' ||
-        (activeTab.name !== field.name &&
-          !activeTab.name.startsWith('New ') &&
-          !activeTab.name.startsWith('Untitled'))
-
-      if (shouldCreateNewTab) {
-        createGraphRequestTab(currentGraphOperationKind, [field], nextKeysArr)
-      } else {
-        syncExplorerToActiveTab(nextKeysArr, currentGraphOperationKind)
-      }
     } else {
       // Remove this field and all its argument/input/output keys
       const prefix = `${fieldKey}:`
@@ -1380,11 +1464,11 @@ function App() {
           (item) => item !== fieldKey && !item.startsWith(prefix),
         ),
       )
-
-      const nextKeysArr = Array.from(nextKeys)
-      setSelectedGraphFieldKeys(nextKeysArr)
-      syncExplorerToActiveTab(nextKeysArr, currentGraphOperationKind)
     }
+
+    const nextKeysArr = Array.from(nextKeys)
+    setSelectedGraphFieldKeys(nextKeysArr)
+    syncExplorerToFieldTab(field, nextKeysArr, currentGraphOperationKind)
   }
 
   const toggleGraphArg = (field: GraphField, arg: GraphArg, checked: boolean) => {
@@ -1425,7 +1509,7 @@ function App() {
 
     const nextKeysArr = Array.from(nextKeys)
     setSelectedGraphFieldKeys(nextKeysArr)
-    syncExplorerToActiveTab(nextKeysArr, currentGraphOperationKind)
+    syncExplorerToFieldTab(field, nextKeysArr, currentGraphOperationKind)
   }
 
   const toggleGraphInputField = (
@@ -1472,7 +1556,7 @@ function App() {
 
     const nextKeysArr = Array.from(nextKeys)
     setSelectedGraphFieldKeys(nextKeysArr)
-    syncExplorerToActiveTab(nextKeysArr, currentGraphOperationKind)
+    syncExplorerToFieldTab(field, nextKeysArr, currentGraphOperationKind)
   }
 
   const toggleGraphOutputField = (
@@ -1528,7 +1612,7 @@ function App() {
 
     const nextKeysArr = Array.from(nextKeys)
     setSelectedGraphFieldKeys(nextKeysArr)
-    syncExplorerToActiveTab(nextKeysArr, currentGraphOperationKind)
+    syncExplorerToFieldTab(field, nextKeysArr, currentGraphOperationKind)
   }
 
   const clearGraphSelection = () => {
