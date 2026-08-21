@@ -76,7 +76,7 @@
       "name": "orderPaginationList",
       "mode": "GRAPHQL",
       "method": "POST",
-      "url": "http://127.0.0.1:3030/graphql",
+      "url": "{{Domain}}/graphql",
       "params": [],
       "headersList": [
         {

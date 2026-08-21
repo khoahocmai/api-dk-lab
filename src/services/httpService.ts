@@ -25,10 +25,14 @@ export async function sendHttpRequest(options: HttpRequestOptions): Promise<Http
     const config: AxiosRequestConfig = {
       method: options.method || 'GET',
       url: options.url,
-      headers: options.headers || {},
+      headers: {
+        'Accept-Encoding': 'gzip, deflate, br',
+        ...(options.headers || {}),
+      },
       data: options.data,
-      timeout: options.timeout ?? 30000,
+      timeout: options.timeout ?? 60000,
       validateStatus: () => true,
+      proxy: false,
     }
 
     const response = await axios(config)

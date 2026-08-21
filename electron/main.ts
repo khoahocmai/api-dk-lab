@@ -1,6 +1,7 @@
 import { app, BrowserWindow, shell, ipcMain } from 'electron'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
+import http from 'node:http'
 import https from 'node:https'
 import axios, { AxiosRequestConfig } from 'axios'
 import { registerStorageIpcHandlers } from './storage'
@@ -24,6 +25,39 @@ function bytesToReadable(bytes: number) {
   return `${(bytes / (1024 * 1024)).toFixed(2)} MB`
 }
 
+// Persistent HTTP and HTTPS agents with keepAlive and socket pooling
+const defaultHttpAgent = new http.Agent({
+  keepAlive: true,
+  maxSockets: 100,
+  timeout: 60000,
+})
+
+const defaultHttpsAgent = new https.Agent({
+  keepAlive: true,
+  maxSockets: 100,
+  rejectUnauthorized: true,
+  timeout: 60000,
+})
+
+const insecureHttpsAgent = new https.Agent({
+  keepAlive: true,
+  maxSockets: 100,
+  rejectUnauthorized: false,
+  timeout: 60000,
+})
+
+// Base Axios instance with proxy scan disabled (bypasses Windows OS proxy scan delays on localhost/127.0.0.1)
+const httpClient = axios.create({
+  proxy: false,
+  httpAgent: defaultHttpAgent,
+  httpsAgent: defaultHttpsAgent,
+  timeout: 60000,
+  maxBodyLength: Infinity,
+  maxContentLength: Infinity,
+  validateStatus: () => true,
+  decompress: true,
+})
+
 function registerIpcHandlers() {
   ipcMain.handle('http-request', async (_event, options: {
     method?: string
@@ -33,27 +67,37 @@ function registerIpcHandlers() {
     timeout?: number
     rejectUnauthorized?: boolean
   }) => {
-    const startTime = Date.now()
+    // High-precision timing using process.hrtime.bigint()
+    const startTime = process.hrtime.bigint()
     try {
       const isRejectUnauthorized = options.rejectUnauthorized ?? true
-      const httpsAgent = new https.Agent({
-        rejectUnauthorized: isRejectUnauthorized,
-      })
+      const selectedHttpsAgent = isRejectUnauthorized ? defaultHttpsAgent : insecureHttpsAgent
+
+      const customHeaders = options.headers || {}
+      // Automatically include Accept-Encoding for gzip/deflate/br compression
+      const headers = {
+        'Accept-Encoding': 'gzip, deflate, br',
+        ...customHeaders,
+      }
 
       const config: AxiosRequestConfig = {
         method: options.method || 'GET',
         url: options.url,
-        headers: options.headers || {},
+        headers,
         data: options.data,
-        timeout: options.timeout ?? 30000,
+        timeout: options.timeout ?? 60000,
         validateStatus: () => true,
         maxBodyLength: Infinity,
         maxContentLength: Infinity,
-        httpsAgent,
+        proxy: false,
+        httpAgent: defaultHttpAgent,
+        httpsAgent: selectedHttpsAgent,
+        decompress: true,
       }
 
-      const response = await axios(config)
-      const duration = Date.now() - startTime
+      const response = await httpClient.request(config)
+      const endTime = process.hrtime.bigint()
+      const duration = Math.max(1, Number((endTime - startTime) / 1000000n))
 
       const responseHeaders: Record<string, string | string[]> = {}
       if (response.headers) {
@@ -77,7 +121,8 @@ function registerIpcHandlers() {
         size,
       }
     } catch (error: unknown) {
-      const duration = Date.now() - startTime
+      const endTime = process.hrtime.bigint()
+      const duration = Math.max(1, Number((endTime - startTime) / 1000000n))
       const isAxios = axios.isAxiosError(error)
       const errorMessage = error instanceof Error ? error.message : 'Network request failed'
       const details = isAxios ? error.response?.data : undefined
