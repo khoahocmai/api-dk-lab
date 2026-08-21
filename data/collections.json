@@ -102,16 +102,17 @@
       "folderId": "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8"
     },
     {
-      "id": "dd5a240e-64a4-4e3d-814b-26f703ade0b8",
+      "id": "f7131e69-0126-4d33-b35b-68034993c842",
       "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": null,
-      "name": "Health",
+      "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
+      "name": "Order pagination list",
       "request": {
-        "id": "2c9a5e58-df9d-4770-bb10-39e1cd93a894",
-        "savedRequestId": "dd5a240e-64a4-4e3d-814b-26f703ade0b8",
+        "id": "91b081c7-c7d9-4cf0-9a31-d899c8bfa342",
+        "savedRequestId": "f7131e69-0126-4d33-b35b-68034993c842",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": null,
-        "name": "Health",
+        "name": "Order pagination list",
+        "graphqlRootField": "orderPaginationList",
         "mode": "GRAPHQL",
         "method": "POST",
         "url": "{{Domain}}/graphql",
@@ -156,126 +157,112 @@
           "apiKeyValue": "",
           "apiKeyAddTo": "header"
         },
-        "bodyType": "json",
-        "restBody": "{\n  \"name\": \"API Lab User\"\n}",
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\n  orderPaginationList(params: $params, filters: $filters) {\n    total\n  }\n}",
+        "gqlVariables": "{\n  \"params\": {\n    \"page\": 0,\n    \"pageSize\": 0,\n    \"sortBy\": \"\",\n    \"sortDirection\": \"\"\n  },\n  \"filters\": {\n    \"keywords\": \"\",\n    \"orderStatus\": [],\n    \"financialStatus\": []\n  }\n}",
+        "testScript": "",
+        "editorTab": "VARIABLES",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-21T05:25:09.085Z",
+      "updatedAt": "2026-08-21T05:25:59.841Z"
+    },
+    {
+      "id": "e0c7a17f-afa5-4166-abb3-5eb22132a9e6",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": null,
+      "name": "health",
+      "request": {
+        "id": "9d367235-2762-4719-9d03-aab116be7ebd",
+        "savedRequestId": "e0c7a17f-afa5-4166-abb3-5eb22132a9e6",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": null,
+        "name": "health",
+        "graphqlRootField": "health",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "abd922de-1830-4d56-91fe-788938a11282",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "id": "b28bbff0-b7d1-4364-a859-c21a481bc5c0",
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "enabled": true
+          }
+        ],
+        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
+        "auth": {
+          "type": "none",
+          "bearerToken": "",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
         "rawText": "",
         "formData": [],
         "urlencoded": [],
         "gqlQuery": "query Health {\n  health {\n    message\n  }\n}",
         "gqlVariables": "{}",
-        "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
+        "testScript": "",
         "editorTab": "BODY",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-21T03:55:19.373Z",
-      "updatedAt": "2026-08-21T03:55:19.373Z"
+      "createdAt": "2026-08-21T05:26:37.459Z",
+      "updatedAt": "2026-08-21T05:26:37.459Z"
     },
     {
-      "id": "3c5f15e6-11bb-4c53-94d5-2c12590c9f88",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "name": "orderPaginationList",
-      "request": {
-        "id": "5fe68b66-4428-44aa-82f6-637fe6626c0d",
-        "savedRequestId": "3c5f15e6-11bb-4c53-94d5-2c12590c9f88",
-        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-        "folderId": null,
-        "name": "orderPaginationList",
-        "mode": "GRAPHQL",
-        "method": "POST",
-        "url": "{{Domain}}/graphql",
-        "params": [],
-        "headersList": [
-          {
-            "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
-          },
-          {
-            "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
-            "key": "Authorization",
-            "value": "Bearer {{token}}",
-            "enabled": true,
-            "description": ""
-          },
-          {
-            "id": "333c833b-9ada-48da-afa3-c737d8e6ae78",
-            "key": "X-Requested-Portal",
-            "value": "IT",
-            "enabled": true,
-            "description": ""
-          },
-          {
-            "id": "143f7dc1-67b4-4046-b9db-3453c8b570fd",
-            "key": "",
-            "value": "",
-            "enabled": true,
-            "description": ""
-          }
-        ],
-        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
-        "auth": {
-          "type": "none",
-          "bearerToken": "",
-          "basicUsername": "",
-          "basicPassword": "",
-          "apiKeyName": "",
-          "apiKeyValue": "",
-          "apiKeyAddTo": "header"
-        },
-        "bodyType": "json",
-        "restBody": "{\n  \"name\": \"API Lab User\"\n}",
-        "rawText": "",
-        "formData": [],
-        "urlencoded": [],
-        "gqlQuery": "query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\n  orderPaginationList(params: $params, filters: $filters) {\n    items {\n      id\n      paymentPartnerTend {\n        id\n      }\n    }\n  }\n}",
-        "gqlVariables": "{\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  },\n  \"filters\": {\n    \"keywords\": \"\"\n  }\n}",
-        "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
-        "editorTab": "BODY",
-        "responseTab": "PRETTY"
-      },
-      "createdAt": "2026-08-20T06:48:21.666Z",
-      "updatedAt": "2026-08-21T03:55:52.443Z",
-      "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c"
-    },
-    {
-      "id": "55bc2965-8c31-49e9-b91a-db709b97cc1b",
+      "id": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
       "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
       "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
       "name": "tenantGetList",
       "request": {
-        "id": "a381ee70-61a4-4c26-a153-ddf3bed09afc",
-        "savedRequestId": "55bc2965-8c31-49e9-b91a-db709b97cc1b",
+        "id": "d7edab2f-633d-47b9-8f53-4c97686e32bb",
+        "savedRequestId": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
         "name": "tenantGetList",
+        "graphqlRootField": "tenantGetList",
         "mode": "GRAPHQL",
         "method": "POST",
         "url": "{{Domain}}/graphql",
         "params": [],
         "headersList": [
           {
-            "id": "55006fb4-714c-4879-8a72-6e1e9c400185",
+            "id": "abd922de-1830-4d56-91fe-788938a11282",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": true
           },
           {
-            "id": "69ab4dab-c334-4318-9212-db3945c9816a",
+            "id": "b28bbff0-b7d1-4364-a859-c21a481bc5c0",
             "key": "Authorization",
             "value": "Bearer {{token}}",
             "enabled": true
           },
           {
-            "id": "24a6aa98-3ad9-4cac-8a2b-4dcc8f9c00a6",
+            "id": "3d095786-c99c-461d-a6ba-5f784c0f3e22",
             "key": "X-Requested-Portal",
             "value": "IT",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "db8d43a7-405b-4297-848f-657f7d6a5feb",
+            "id": "752fb8d8-d656-4b74-a4c1-b0d540a19212",
             "key": "",
             "value": "",
             "enabled": true,
@@ -303,16 +290,14 @@
         "editorTab": "HEADERS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-21T04:48:30.185Z",
-      "updatedAt": "2026-08-21T04:48:30.185Z"
+      "createdAt": "2026-08-21T05:26:46.894Z",
+      "updatedAt": "2026-08-21T05:26:58.534Z"
     }
   ],
   "expandedCollectionIds": [
     "925ff10c-6428-4f56-b1e6-bd84786a0fb2"
   ],
   "expandedFolderIds": [
-    "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8",
-    "785cea12-b358-4f53-bf46-46ebd0bf368c",
-    "4b3124b2-b790-470f-aaf5-41ef20e75b1b"
+    "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8"
   ]
 }

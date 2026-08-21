@@ -40,6 +40,7 @@ export type RequestItem = {
   collectionId?: string
   folderId?: string | null
   name: string
+  graphqlRootField?: string
   mode: Mode
   method: HttpMethod
   url: string

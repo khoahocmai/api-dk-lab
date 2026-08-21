@@ -4,7 +4,8 @@ export function createId(): string {
 
 export function formatJsonSafely(value: string): string {
   try {
-    return JSON.stringify(JSON.parse(value), null, 2)
+    const sanitized = value.replace(/,(\s*[}\]])/g, '$1').trim()
+    return JSON.stringify(JSON.parse(sanitized), null, 2)
   } catch {
     return value
   }

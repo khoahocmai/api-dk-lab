@@ -1,4 +1,5 @@
-import { FlaskConical, Trash2, Wand2 } from 'lucide-react'
+import { useState } from 'react'
+import { Check, FlaskConical, RefreshCw, Trash2, Wand2 } from 'lucide-react'
 import type { BodyType, EnvironmentItem, KeyValueRow, RequestItem } from '../../types'
 import {
   buildUrlWithQueryParams,
@@ -16,6 +17,7 @@ interface RequestEditorProps {
   onUpdateTab: (patch: Partial<RequestItem>) => void
   onFormat: () => void
   onClear: () => void
+  onSyncToExplorer?: () => { success: boolean; error?: string }
 }
 
 export function RequestEditor({
@@ -25,9 +27,20 @@ export function RequestEditor({
   onUpdateTab,
   onFormat,
   onClear,
+  onSyncToExplorer,
 }: RequestEditorProps) {
+  const [isSynced, setIsSynced] = useState(false)
   const isGraphQL = activeTab.mode === 'GRAPHQL'
   const isGetOrDelete = ['GET', 'DELETE'].includes(activeTab.method)
+
+  const handleSyncClick = () => {
+    if (!onSyncToExplorer) return
+    const result = onSyncToExplorer()
+    if (result.success) {
+      setIsSynced(true)
+      setTimeout(() => setIsSynced(false), 1200)
+    }
+  }
 
   // 2-way sync: Params change -> update URL
   const handleParamsChange = (newParams: KeyValueRow[]) => {
@@ -150,6 +163,16 @@ export function RequestEditor({
             <button onClick={onFormat} className="button button-sm">
               <Wand2 size={13} />
               Format
+            </button>
+          )}
+          {isGraphQL && (activeTab.editorTab === 'BODY' || activeTab.editorTab === 'VARIABLES') && onSyncToExplorer && (
+            <button
+              onClick={handleSyncClick}
+              className={`button button-sm ${isSynced ? 'text-emerald-400 border-emerald-500/40 bg-emerald-500/10' : ''}`}
+              title="Đồng bộ các trường trong Editor ngược lại cây chọn GraphQL Explorer bên trái"
+            >
+              {isSynced ? <Check size={13} className="text-emerald-400" /> : <RefreshCw size={13} />}
+              <span>{isSynced ? 'Synced!' : 'Sync to Explorer'}</span>
             </button>
           )}
           <button onClick={onClear} className="button button-sm">

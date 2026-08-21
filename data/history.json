@@ -1,5 +1,800 @@
 [
   {
+    "id": "2b2bdfc6-9928-4662-abe0-0cfa1e845f23",
+    "timestamp": "2026-08-21T05:26:59.040Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 31,
+    "request": {
+      "id": "d7edab2f-633d-47b9-8f53-4c97686e32bb",
+      "savedRequestId": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
+      "name": "tenantGetList",
+      "graphqlRootField": "tenantGetList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "abd922de-1830-4d56-91fe-788938a11282",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "id": "b28bbff0-b7d1-4364-a859-c21a481bc5c0",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true
+        },
+        {
+          "id": "3d095786-c99c-461d-a6ba-5f784c0f3e22",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "752fb8d8-d656-4b74-a4c1-b0d540a19212",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query TenantGetList {\n  tenantGetList {\n    id\n    name\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "31 ms",
+      "size": "315 B",
+      "data": {
+        "data": {
+          "tenantGetList": [
+            {
+              "id": "019f6a3a-52fd-75dd-ae50-de21820b3f45",
+              "name": "Dairy Queen"
+            },
+            {
+              "id": "019f6a4b-ffdd-71ab-b6a5-ae719a13d483",
+              "name": "Swensens"
+            },
+            {
+              "id": "0192fda4-ba1b-76ef-bb1a-64c043a8e4a4",
+              "name": "The Pizza Company"
+            },
+            {
+              "id": "019f4b8e-a513-72eb-8dbc-7b8fc300355c",
+              "name": "CHANG - Modern Thai Cuisine"
+            }
+          ]
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "316",
+        "date": "Fri, 21 Aug 2026 05:27:02 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "23a034b8-f152-432a-ba8a-1db6ccd25767",
+    "timestamp": "2026-08-21T05:26:49.384Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 12,
+    "request": {
+      "id": "d7edab2f-633d-47b9-8f53-4c97686e32bb",
+      "savedRequestId": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
+      "name": "tenantGetList",
+      "graphqlRootField": "tenantGetList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "abd922de-1830-4d56-91fe-788938a11282",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "id": "b28bbff0-b7d1-4364-a859-c21a481bc5c0",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query TenantGetList {\n  tenantGetList {\n    id\n    name\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "12 ms",
+      "size": "237 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Unauthorized",
+            "path": [
+              "tenantGetList"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "UNAUTHENTICATED",
+              "originalError": {
+                "message": "Unauthorized",
+                "statusCode": 401
+              }
+            },
+            "code": "UNAUTHENTICATED"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "238",
+        "date": "Fri, 21 Aug 2026 05:26:53 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "53d1b864-9a13-486a-a8bf-278ac23a3a8e",
+    "timestamp": "2026-08-21T05:26:26.181Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 801,
+    "request": {
+      "id": "91b081c7-c7d9-4cf0-9a31-d899c8bfa342",
+      "savedRequestId": "f7131e69-0126-4d33-b35b-68034993c842",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
+      "name": "Order pagination list",
+      "graphqlRootField": "orderPaginationList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "333c833b-9ada-48da-afa3-c737d8e6ae78",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "143f7dc1-67b4-4046-b9db-3453c8b570fd",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\n  orderPaginationList(params: $params, filters: $filters) {\n    total\n    items {\n      id\n      code\n    }\n  }\n}",
+      "gqlVariables": "{\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  },\n  \"filters\": {\n    \"keywords\": \"\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "VARIABLES",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "801 ms",
+      "size": "1.2 KB",
+      "data": {
+        "data": {
+          "orderPaginationList": {
+            "total": 2013496,
+            "items": [
+              {
+                "id": "01a0194f-854d-727d-be23-118938162bff",
+                "code": null
+              },
+              {
+                "id": "01a01918-0ad1-7090-898f-88c8fd5880e8",
+                "code": null
+              },
+              {
+                "id": "01a018cf-8518-727d-8b7d-5811e0ca78e6",
+                "code": null
+              },
+              {
+                "id": "01a0180f-c080-72d6-966d-d0b156b98dc4",
+                "code": null
+              },
+              {
+                "id": "01a017c6-cec6-71ed-8bb1-3592303e6f07",
+                "code": null
+              },
+              {
+                "id": "01a01466-dd26-7749-878f-83e0b6672e64",
+                "code": null
+              },
+              {
+                "id": "01a01465-56c0-772f-9267-80e7bd7e87a2",
+                "code": null
+              },
+              {
+                "id": "01a01458-b3f3-7290-8749-4ea5fa04f5c0",
+                "code": null
+              },
+              {
+                "id": "01a0144d-9165-70f0-a513-c562690843fe",
+                "code": null
+              },
+              {
+                "id": "01a012d0-a6fd-743a-a2f8-e0b83c338745",
+                "code": null
+              },
+              {
+                "id": "01a00f4a-22bd-7158-8122-efebc28f640b",
+                "code": null
+              },
+              {
+                "id": "01a00f20-3708-74dd-90a1-cd2c69e09270",
+                "code": null
+              },
+              {
+                "id": "01a00f06-16cc-7449-b1f6-9946d9fb3768",
+                "code": null
+              },
+              {
+                "id": "01a00efa-05ba-75d8-9a3c-c726335919dc",
+                "code": null
+              },
+              {
+                "id": "01a00ef7-28d2-72bd-a115-07b92cfb202d",
+                "code": null
+              },
+              {
+                "id": "01a00eef-b9c7-70aa-87c7-51d7f29fe39c",
+                "code": null
+              },
+              {
+                "id": "01a00eee-b619-70b3-8dac-8db0afcbc4ab",
+                "code": null
+              },
+              {
+                "id": "01a00ee9-92c1-723c-a9c5-bbcf575e945a",
+                "code": null
+              },
+              {
+                "id": "01a00ee2-b063-7522-87a8-b72023ccfd7f",
+                "code": null
+              },
+              {
+                "id": "01a00eb0-42b3-775d-b621-9b93f64d3be0",
+                "code": null
+              }
+            ]
+          }
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "1221",
+        "date": "Fri, 21 Aug 2026 05:26:29 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "45f930a6-f338-41e2-887d-cc61b804e6a9",
+    "timestamp": "2026-08-21T05:26:17.657Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 1988,
+    "request": {
+      "id": "91b081c7-c7d9-4cf0-9a31-d899c8bfa342",
+      "savedRequestId": "f7131e69-0126-4d33-b35b-68034993c842",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
+      "name": "Order pagination list",
+      "graphqlRootField": "orderPaginationList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "333c833b-9ada-48da-afa3-c737d8e6ae78",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "143f7dc1-67b4-4046-b9db-3453c8b570fd",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\n  orderPaginationList(params: $params, filters: $filters) {\n    total\n  }\n}",
+      "gqlVariables": "{\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  },\n  \"filters\": {\n    \"keywords\": \"\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "VARIABLES",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "1988 ms",
+      "size": "50 B",
+      "data": {
+        "data": {
+          "orderPaginationList": {
+            "total": 2013496
+          }
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "51",
+        "date": "Fri, 21 Aug 2026 05:26:21 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "c1434570-ab3b-4dc8-93f6-54a7ac3fa2c1",
+    "timestamp": "2026-08-21T05:17:16.896Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 12409,
+    "request": {
+      "id": "a2ef121b-4cfa-4fb2-abb2-eb8350c82cbb",
+      "savedRequestId": "3c5f15e6-11bb-4c53-94d5-2c12590c9f88",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
+      "name": "Order pagination list",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "333c833b-9ada-48da-afa3-c737d8e6ae78",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "143f7dc1-67b4-4046-b9db-3453c8b570fd",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "json",
+      "restBody": "{\n  \"name\": \"API Lab User\"\n}",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\n  orderPaginationList(params: $params, filters: $filters) {\n    items {\n      id\n      paymentPartnerTend {\n        id\n      }\n    }\n  }\n}",
+      "gqlVariables": "{\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  },\n  \"filters\": {\n    \"keywords\": \"\"\n  }\n}",
+      "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "12409 ms",
+      "size": "2.3 KB",
+      "data": {
+        "data": {
+          "orderPaginationList": {
+            "items": [
+              {
+                "id": "01a0194f-854d-727d-be23-118938162bff",
+                "paymentPartnerTend": {
+                  "id": "0196c767-de46-71c9-82b9-605040fa8ab0"
+                }
+              },
+              {
+                "id": "01a01918-0ad1-7090-898f-88c8fd5880e8",
+                "paymentPartnerTend": {
+                  "id": "0196c767-de46-71c9-82b9-605040fa8ab0"
+                }
+              },
+              {
+                "id": "01a018cf-8518-727d-8b7d-5811e0ca78e6",
+                "paymentPartnerTend": {
+                  "id": "0196c767-de46-71c9-82b9-605040fa8ab0"
+                }
+              },
+              {
+                "id": "01a0180f-c080-72d6-966d-d0b156b98dc4",
+                "paymentPartnerTend": {
+                  "id": "0196c767-de46-71c9-82b9-605040fa8ab0"
+                }
+              },
+              {
+                "id": "01a017c6-cec6-71ed-8bb1-3592303e6f07",
+                "paymentPartnerTend": {
+                  "id": "0196c767-de46-71c9-82b9-605040fa8ab0"
+                }
+              },
+              {
+                "id": "01a01466-dd26-7749-878f-83e0b6672e64",
+                "paymentPartnerTend": {
+                  "id": "0196c767-de46-71c9-82b9-605040fa8ab0"
+                }
+              },
+              {
+                "id": "01a01465-56c0-772f-9267-80e7bd7e87a2",
+                "paymentPartnerTend": {
+                  "id": "0196c767-de46-71c9-82b9-605040fa8ab0"
+                }
+              },
+              {
+                "id": "01a01458-b3f3-7290-8749-4ea5fa04f5c0",
+                "paymentPartnerTend": {
+                  "id": "0196c767-de46-71c9-82b9-605040fa8ab0"
+                }
+              },
+              {
+                "id": "01a0144d-9165-70f0-a513-c562690843fe",
+                "paymentPartnerTend": {
+                  "id": "0196c767-de46-71c9-82b9-605040fa8ab0"
+                }
+              },
+              {
+                "id": "01a012d0-a6fd-743a-a2f8-e0b83c338745",
+                "paymentPartnerTend": {
+                  "id": "0196c767-de46-71c9-82b9-605040fa8ab0"
+                }
+              },
+              {
+                "id": "01a00f4a-22bd-7158-8122-efebc28f640b",
+                "paymentPartnerTend": {
+                  "id": "0196c767-de46-71c9-82b9-605040fa8ab0"
+                }
+              },
+              {
+                "id": "01a00f20-3708-74dd-90a1-cd2c69e09270",
+                "paymentPartnerTend": {
+                  "id": "0196c767-de46-71c9-82b9-605040fa8ab0"
+                }
+              },
+              {
+                "id": "01a00f06-16cc-7449-b1f6-9946d9fb3768",
+                "paymentPartnerTend": {
+                  "id": "0196c767-de46-71c9-82b9-605040fa8ab0"
+                }
+              },
+              {
+                "id": "01a00efa-05ba-75d8-9a3c-c726335919dc",
+                "paymentPartnerTend": {
+                  "id": "0196c767-de46-71c9-82b9-605040fa8ab0"
+                }
+              },
+              {
+                "id": "01a00ef7-28d2-72bd-a115-07b92cfb202d",
+                "paymentPartnerTend": {
+                  "id": "0196c767-de46-71c9-82b9-605040fa8ab0"
+                }
+              },
+              {
+                "id": "01a00eef-b9c7-70aa-87c7-51d7f29fe39c",
+                "paymentPartnerTend": {
+                  "id": "0196c767-de46-71c9-82b9-605040fa8ab0"
+                }
+              },
+              {
+                "id": "01a00eee-b619-70b3-8dac-8db0afcbc4ab",
+                "paymentPartnerTend": {
+                  "id": "0196c767-de46-71c9-82b9-605040fa8ab0"
+                }
+              },
+              {
+                "id": "01a00ee9-92c1-723c-a9c5-bbcf575e945a",
+                "paymentPartnerTend": {
+                  "id": "0196c767-de46-71c9-82b9-605040fa8ab0"
+                }
+              },
+              {
+                "id": "01a00ee2-b063-7522-87a8-b72023ccfd7f",
+                "paymentPartnerTend": {
+                  "id": "0196c767-de46-71c9-82b9-605040fa8ab0"
+                }
+              },
+              {
+                "id": "01a00eb0-42b3-775d-b621-9b93f64d3be0",
+                "paymentPartnerTend": {
+                  "id": "0196c767-de46-71c9-82b9-605040fa8ab0"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "2305",
+        "date": "Fri, 21 Aug 2026 05:17:19 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "98ad392f-1e33-4e00-8960-276237610270",
+    "timestamp": "2026-08-21T05:16:41.353Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 48,
+    "request": {
+      "id": "d630058d-2965-40d8-b324-dba9e4c43bf1",
+      "savedRequestId": "55bc2965-8c31-49e9-b91a-db709b97cc1b",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
+      "name": "tenantGetList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "55006fb4-714c-4879-8a72-6e1e9c400185",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "69ab4dab-c334-4318-9212-db3945c9816a",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "24a6aa98-3ad9-4cac-8a2b-4dcc8f9c00a6",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "db8d43a7-405b-4297-848f-657f7d6a5feb",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query TenantGetList {\n  tenantGetList {\n    id\n    name\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "VARIABLES",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "48 ms",
+      "size": "315 B",
+      "data": {
+        "data": {
+          "tenantGetList": [
+            {
+              "id": "019f6a3a-52fd-75dd-ae50-de21820b3f45",
+              "name": "Dairy Queen"
+            },
+            {
+              "id": "019f6a4b-ffdd-71ab-b6a5-ae719a13d483",
+              "name": "Swensens"
+            },
+            {
+              "id": "0192fda4-ba1b-76ef-bb1a-64c043a8e4a4",
+              "name": "The Pizza Company"
+            },
+            {
+              "id": "019f4b8e-a513-72eb-8dbc-7b8fc300355c",
+              "name": "CHANG - Modern Thai Cuisine"
+            }
+          ]
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "316",
+        "date": "Fri, 21 Aug 2026 05:16:44 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
     "id": "9b6dede6-440e-4b72-81d5-805134768318",
     "timestamp": "2026-08-21T04:48:18.001Z",
     "method": "GQL",

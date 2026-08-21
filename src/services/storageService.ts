@@ -48,6 +48,7 @@ export function createDefaultRequest(mode: Mode = 'REST'): RequestItem {
   return {
     id: createId(),
     name: mode === 'GRAPHQL' ? 'New GraphQL Request' : 'New Request',
+    graphqlRootField: mode === 'GRAPHQL' ? 'health' : undefined,
     mode,
     method: mode === 'GRAPHQL' ? 'POST' : 'GET',
     url: initialUrl,
@@ -97,6 +98,7 @@ export function stripTransientRequest(request: RequestItem): PersistedRequestIte
     collectionId: request.collectionId,
     folderId: request.folderId,
     name: request.name,
+    graphqlRootField: request.graphqlRootField,
     mode: request.mode,
     method: request.method,
     url: request.url,
@@ -153,6 +155,7 @@ export function reviveRequest(request: Partial<PersistedRequestItem>): RequestIt
   return {
     ...def,
     ...request,
+    graphqlRootField: request.graphqlRootField ?? (mode === 'GRAPHQL' ? def.graphqlRootField : undefined),
     savedRequestId: request.savedRequestId,
     collectionId: request.collectionId,
     folderId: request.folderId,

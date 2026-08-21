@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Group, Panel, Separator } from 'react-resizable-panels'
+import { parse } from 'graphql'
 import type {
   AppSettings,
   CollectionItem,
@@ -48,12 +49,15 @@ import {
 } from './services/storageService'
 import {
   buildGraphOperationFromFields,
+  computeReverseSyncKeys,
   deepMergePreserveVariables,
+  extractOutputPathsFromQuery,
   fetchGraphQLSchema,
   getGraphArgKey,
   getGraphFieldKey,
   getGraphInputFieldKey,
   getGraphOutputFieldKey,
+  parseRelaxedJSON,
 } from './services/graphqlService'
 import { parseUrlToQueryParams } from './utils/urlHelper'
 import { exportPostmanCollectionV2, importPostmanCollectionV2 } from './utils/postmanHelper'
@@ -125,6 +129,7 @@ function App() {
     mutationFields: [],
   })
   const [selectedGraphFieldKeys, setSelectedGraphFieldKeys] = useState<string[]>([])
+  const isUpdatingFromExplorerRef = useRef(false)
 
   const isSendingRef = useRef(false)
   const [isHydrated, setIsHydrated] = useState(false)
@@ -156,6 +161,43 @@ function App() {
     if (!activeTab) return ''
     return resolveTemplates(activeTab.url, activeEnvironment)
   }, [activeTab, activeEnvironment])
+
+  // Reverse Sync: Tab (gqlQuery & gqlVariables) -> GraphQL Explorer (Checkboxes) with 300ms Debounce
+  useEffect(() => {
+    if (!activeTab || activeTab.mode !== 'GRAPHQL') return
+
+    // If change was triggered by user clicking in Explorer, skip reverse sync to prevent loop
+    if (isUpdatingFromExplorerRef.current) {
+      isUpdatingFromExplorerRef.current = false
+      return
+    }
+
+    if (!graphExplorer.queryFields.length && !graphExplorer.mutationFields.length) return
+
+    const timer = setTimeout(() => {
+      setSelectedGraphFieldKeys((prevKeys) => {
+        return computeReverseSyncKeys(
+          prevKeys,
+          activeTab.gqlQuery || '',
+          activeTab.gqlVariables || '',
+          {
+            queryFields: graphExplorer.queryFields,
+            mutationFields: graphExplorer.mutationFields,
+          },
+          activeTab.graphqlRootField,
+        )
+      })
+    }, 300)
+
+    return () => clearTimeout(timer)
+  }, [
+    activeTab?.id,
+    activeTab?.gqlQuery,
+    activeTab?.gqlVariables,
+    activeTab?.graphqlRootField,
+    graphExplorer.queryFields,
+    graphExplorer.mutationFields,
+  ])
 
   // Hydrate workspace from JSON storage files on startup
   useEffect(() => {
@@ -888,6 +930,62 @@ function App() {
     }
   }
 
+  const handleSyncToExplorer = (): { success: boolean; error?: string } => {
+    if (!activeTab || activeTab.mode !== 'GRAPHQL') {
+      showToast('Chỉ hỗ trợ đồng bộ ở chế độ GraphQL', 'warning')
+      return { success: false, error: 'Not in GraphQL mode' }
+    }
+
+    let parsedVariablesObj: unknown = null
+
+    // Check JSON syntax if variables has text using relaxed parse (stripping trailing commas)
+    if (
+      activeTab.gqlVariables &&
+      activeTab.gqlVariables.trim() &&
+      activeTab.gqlVariables.trim() !== '{}'
+    ) {
+      try {
+        parsedVariablesObj = parseRelaxedJSON(activeTab.gqlVariables)
+      } catch {
+        showToast('Cú pháp JSON Variables không hợp lệ, không thể đồng bộ', 'error')
+        return { success: false, error: 'Invalid JSON variables' }
+      }
+    }
+
+    // Check Query syntax if query has text
+    if (activeTab.gqlQuery && activeTab.gqlQuery.trim()) {
+      try {
+        parse(activeTab.gqlQuery)
+      } catch {
+        showToast('Cú pháp Query không hợp lệ, không thể đồng bộ', 'error')
+        return { success: false, error: 'Invalid GraphQL Query' }
+      }
+    }
+
+    // Auto-clean trailing commas in Editor by setting formatted clean JSON back to activeTab
+    if (parsedVariablesObj !== null && typeof parsedVariablesObj === 'object') {
+      const cleanJson = JSON.stringify(parsedVariablesObj, null, 2)
+      if (cleanJson !== activeTab.gqlVariables) {
+        updateActiveTab({ gqlVariables: cleanJson })
+      }
+    }
+
+    const nextKeys = computeReverseSyncKeys(
+      selectedGraphFieldKeys,
+      activeTab.gqlQuery || '',
+      activeTab.gqlVariables || '',
+      {
+        queryFields: graphExplorer.queryFields,
+        mutationFields: graphExplorer.mutationFields,
+      },
+      activeTab.graphqlRootField,
+    )
+
+    setSelectedGraphFieldKeys(nextKeys)
+    showToast('Đã đồng bộ sang Explorer thành công', 'success')
+    return { success: true }
+  }
+
   const handleCopyResponse = async () => {
     if (!activeTab?.response) return
     const content = JSON.stringify(
@@ -1189,6 +1287,34 @@ function App() {
     }
   }
 
+  const isTabMatchingGraphQLApi = (
+    tab: RequestItem | undefined | null,
+    targetApiName: string,
+  ): boolean => {
+    if (!tab || tab.mode !== 'GRAPHQL') return false
+    const target = targetApiName.trim().toLowerCase()
+
+    // 1. Priority 1: Match by dedicated permanent graphqlRootField
+    if (tab.graphqlRootField && tab.graphqlRootField.trim().toLowerCase() === target) {
+      return true
+    }
+
+    // 2. Priority 2: Match by AST root field name
+    if (tab.gqlQuery && tab.gqlQuery.trim()) {
+      const queryInfo = extractOutputPathsFromQuery(tab.gqlQuery)
+      if (queryInfo?.fieldName && queryInfo.fieldName.trim().toLowerCase() === target) {
+        return true
+      }
+    }
+
+    // 3. Fallback: Match by tab.name or unsaved default name
+    const name = tab.name.trim().toLowerCase()
+    if (name === target) return true
+    if (tab.name.startsWith('New ') || tab.name.startsWith('Untitled')) return true
+
+    return false
+  }
+
   const createGraphRequestTab = (
     kind: 'query' | 'mutation',
     fields: GraphField[],
@@ -1202,6 +1328,7 @@ function App() {
       fields.length === 1
         ? fields[0].name
         : `${fields.length} ${kind} fields`
+    const primaryRootField = fields[0]?.name
 
     // Inherit URL, headers, and auth from current active tab if available, else default
     const inheritedUrl =
@@ -1221,6 +1348,7 @@ function App() {
       ...baseRequest,
       id: createId(),
       name: tabName,
+      graphqlRootField: primaryRootField,
       mode: 'GRAPHQL',
       method: 'POST',
       url: inheritedUrl,
@@ -1255,21 +1383,15 @@ function App() {
 
     const generated = buildGraphOperationFromFields(kind, selectedFields, nextKeys)
 
-    // 1. Guard check: Is activeTab a valid unsaved matching scratch tab for this API?
-    const isCurrentTabMatching =
-      Boolean(activeTab) &&
-      activeTab?.savedRequestId === undefined &&
-      activeTab?.mode === 'GRAPHQL' &&
-      (activeTab?.name === field.name ||
-        activeTab?.name.startsWith('New ') ||
-        activeTab?.name.startsWith('Untitled'))
+    // 1. Guard check: Is activeTab currently matching this API (regardless of name or savedRequestId)?
+    const isCurrentTabMatching = isTabMatchingGraphQLApi(activeTab, field.name)
 
     if (isCurrentTabMatching && activeTab) {
       // Parse current variables from activeTab to preserve user-entered values
       let currentVars: Record<string, unknown> = {}
       if (activeTab.gqlVariables?.trim()) {
         try {
-          currentVars = JSON.parse(activeTab.gqlVariables)
+          currentVars = parseRelaxedJSON(activeTab.gqlVariables) as Record<string, unknown>
         } catch {
           currentVars = {}
         }
@@ -1287,6 +1409,7 @@ function App() {
       const patch: Partial<RequestItem> = {
         mode: 'GRAPHQL',
         method: 'POST',
+        graphqlRootField: activeTab.graphqlRootField || field.name,
         gqlQuery: generated.query,
         gqlVariables: varJson,
       }
@@ -1295,26 +1418,22 @@ function App() {
         patch.name = field.name
       }
 
+      isUpdatingFromExplorerRef.current = true
       setTabs((current) =>
         current.map((t) => (t.id === activeTab.id ? { ...t, ...patch } : t)),
       )
       return
     }
 
-    // 2. Active tab is NOT matching (e.g. Health from Collection, REST request, or different API tab)
-    // Check if an unsaved tab for this API is already open on the Tabbar:
-    const existingMatchingTab = tabs.find(
-      (t) =>
-        t.name === field.name &&
-        t.savedRequestId === undefined &&
-        t.mode === 'GRAPHQL',
-    )
+    // 2. Active tab is NOT matching (e.g. user is on a different API tab or REST tab)
+    // Check if a matching tab for this API is already open on the Tabbar:
+    const existingMatchingTab = tabs.find((t) => isTabMatchingGraphQLApi(t, field.name))
 
     if (existingMatchingTab) {
       let currentVars: Record<string, unknown> = {}
       if (existingMatchingTab.gqlVariables?.trim()) {
         try {
-          currentVars = JSON.parse(existingMatchingTab.gqlVariables)
+          currentVars = parseRelaxedJSON(existingMatchingTab.gqlVariables) as Record<string, unknown>
         } catch {
           currentVars = {}
         }
@@ -1329,6 +1448,7 @@ function App() {
           ? JSON.stringify(mergedVars, null, 2)
           : '{}'
 
+      isUpdatingFromExplorerRef.current = true
       setTabs((current) =>
         current.map((t) =>
           t.id === existingMatchingTab.id
@@ -1336,6 +1456,7 @@ function App() {
                 ...t,
                 mode: 'GRAPHQL',
                 method: 'POST',
+                graphqlRootField: existingMatchingTab.graphqlRootField || field.name,
                 gqlQuery: generated.query,
                 gqlVariables: varJson,
               }
@@ -1366,6 +1487,7 @@ function App() {
       ...baseRequest,
       id: createId(),
       name: field.name,
+      graphqlRootField: field.name,
       mode: 'GRAPHQL',
       method: 'POST',
       url: inheritedUrl,
@@ -1381,6 +1503,7 @@ function App() {
       folderId: undefined,
     }
 
+    isUpdatingFromExplorerRef.current = true
     setTabs((current) => [...current, newTab])
     setActiveTabId(newTab.id)
     setMobileView('REQUEST')
@@ -1436,6 +1559,7 @@ function App() {
     setSelectedGraphFieldKeys(nextKeysArr)
 
     // Instantly create and activate exactly 1 new Request Tab for this API
+    isUpdatingFromExplorerRef.current = true
     createGraphRequestTab(currentGraphOperationKind, [field], nextKeysArr)
   }
 
@@ -1664,6 +1788,7 @@ function App() {
             onSave={saveCurrentRequest}
             onFormat={handleFormat}
             onClear={handleClear}
+            onSyncToExplorer={handleSyncToExplorer}
             onCopyResponse={handleCopyResponse}
             onOpenImportCurlModal={() => setImportCurlModalOpen(true)}
             onOpenCodeSnippetModal={() => setCodeSnippetModalOpen(true)}

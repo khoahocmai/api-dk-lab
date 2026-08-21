@@ -36,6 +36,7 @@ interface MainPanelProps {
   onSave: () => void
   onFormat: () => void
   onClear: () => void
+  onSyncToExplorer?: () => { success: boolean; error?: string }
   onCopyResponse: () => Promise<void>
   onOpenImportCurlModal: () => void
   onOpenCodeSnippetModal: () => void
@@ -71,6 +72,7 @@ export function MainPanel({
   onSave,
   onFormat,
   onClear,
+  onSyncToExplorer,
   onCopyResponse,
   onOpenImportCurlModal,
   onOpenCodeSnippetModal,
@@ -132,6 +134,7 @@ export function MainPanel({
                   onUpdateTab={onUpdateActiveTab}
                   onFormat={onFormat}
                   onClear={onClear}
+                  onSyncToExplorer={onSyncToExplorer}
                 />
               </Panel>
 

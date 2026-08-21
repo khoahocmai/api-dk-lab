@@ -10,8 +10,11 @@ import {
   isNonNullType,
   isObjectType,
   isScalarType,
+  parse,
+  type DocumentNode,
   type GraphQLInputType,
   type GraphQLOutputType,
+  type SelectionSetNode,
 } from 'graphql'
 import type { GraphField, GraphInputField, GraphOutputField } from '../types'
 import { capitalize, sanitizeVariableName } from '../utils/formatters'
@@ -457,4 +460,218 @@ export function deepMergePreserveVariables(
   }
 
   return result
+}
+
+function extractOutputPathsFromSelectionSet(
+  selectionSet: SelectionSetNode,
+  currentPath = '',
+): string[] {
+  const paths: string[] = []
+  for (const selection of selectionSet.selections) {
+    if (selection.kind === 'Field') {
+      const fieldName = selection.name.value
+      if (fieldName === '__typename') continue
+      const fullPath = currentPath ? `${currentPath}.${fieldName}` : fieldName
+      paths.push(fullPath)
+      if (selection.selectionSet && selection.selectionSet.selections.length > 0) {
+        paths.push(...extractOutputPathsFromSelectionSet(selection.selectionSet, fullPath))
+      }
+    }
+  }
+  return paths
+}
+
+export function parseRelaxedJSON(jsonString: string): unknown {
+  if (!jsonString || !jsonString.trim()) return {}
+  // Sanitize trailing commas before closing braces/brackets
+  const sanitized = jsonString.replace(/,(\s*[}\]])/g, '$1').trim()
+  return JSON.parse(sanitized)
+}
+
+export function extractVariablePathsFromJSON(jsonString: string): Set<string> | null {
+  if (!jsonString || !jsonString.trim()) {
+    return new Set<string>()
+  }
+
+  let parsed: unknown
+  try {
+    parsed = parseRelaxedJSON(jsonString)
+  } catch {
+    // ⚠️ QUAN TRỌNG: Return null on syntax error so we don't wipe out existing selection while user types
+    return null
+  }
+
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+    return new Set<string>()
+  }
+
+  const paths = new Set<string>()
+
+  const traverse = (obj: Record<string, unknown>, currentPath = '') => {
+    for (const [key, value] of Object.entries(obj)) {
+      const fullPath = currentPath ? `${currentPath}.${key}` : key
+      paths.add(fullPath)
+
+      // Traverse deeper for plain nested objects (skip arrays and primitives)
+      if (value && typeof value === 'object' && !Array.isArray(value)) {
+        traverse(value as Record<string, unknown>, fullPath)
+      }
+    }
+  }
+
+  traverse(parsed as Record<string, unknown>)
+  return paths
+}
+
+export function extractOutputPathsFromQuery(gqlQuery: string): {
+  kind: 'query' | 'mutation'
+  fieldName: string
+  outputPaths: Set<string>
+} | null {
+  if (!gqlQuery || !gqlQuery.trim()) return null
+
+  let doc: DocumentNode
+  try {
+    doc = parse(gqlQuery)
+  } catch {
+    // Return null on syntax error while typing
+    return null
+  }
+
+  for (const def of doc.definitions) {
+    if (def.kind !== 'OperationDefinition') continue
+    const kind: 'query' | 'mutation' = def.operation === 'mutation' ? 'mutation' : 'query'
+
+    if (!def.selectionSet) continue
+
+    for (const selection of def.selectionSet.selections) {
+      if (selection.kind !== 'Field') continue
+      const fieldName = selection.name.value
+      if (fieldName === '__typename') continue
+
+      const outputPaths = new Set<string>()
+      if (selection.selectionSet) {
+        const paths = extractOutputPathsFromSelectionSet(selection.selectionSet)
+        paths.forEach((p) => outputPaths.add(p))
+      }
+
+      return { kind, fieldName, outputPaths }
+    }
+  }
+
+  return null
+}
+
+export function computeReverseSyncKeys(
+  currentKeys: string[],
+  gqlQuery: string,
+  gqlVariables: string,
+  availableFields: {
+    queryFields: GraphField[]
+    mutationFields: GraphField[]
+  },
+  graphqlRootField?: string,
+): string[] {
+  const queryInfo = extractOutputPathsFromQuery(gqlQuery)
+  const varPaths = extractVariablePathsFromJSON(gqlVariables)
+
+  // If both query and variables have syntax errors or empty, keep current keys
+  if (queryInfo === null && varPaths === null) {
+    return currentKeys
+  }
+
+  // Determine current active kind and field
+  const kind: 'query' | 'mutation' = queryInfo?.kind || 'query'
+  const fieldsList =
+    kind === 'mutation' ? availableFields.mutationFields : availableFields.queryFields
+
+  let fieldName = graphqlRootField || queryInfo?.fieldName || ''
+  if (!fieldName && currentKeys.length > 0) {
+    // Fallback: extract fieldName from existing root key (e.g. 'query:orderPaginationList')
+    const rootKey = currentKeys.find(
+      (k) => k.startsWith(`${kind}:`) && !k.includes(':arg:') && !k.includes(':out:'),
+    )
+    if (rootKey) {
+      fieldName = rootKey.split(':')[1] || ''
+    }
+  }
+
+  const fieldSchema = fieldsList.find(
+    (f) => f.name.toLowerCase() === fieldName.toLowerCase(),
+  )
+  const resolvedFieldName = fieldSchema ? fieldSchema.name : fieldName
+
+  if (!resolvedFieldName) {
+    return currentKeys
+  }
+
+  const rootFieldKey = getGraphFieldKey(kind, resolvedFieldName)
+
+  // Start building nextKeys
+  const nextKeys = new Set<string>()
+  nextKeys.add(rootFieldKey)
+
+  // 1. Output keys (Return fields):
+  if (queryInfo !== null) {
+    // Query parsed successfully: use freshly extracted output paths
+    for (const outPath of queryInfo.outputPaths) {
+      nextKeys.add(getGraphOutputFieldKey(kind, resolvedFieldName, outPath))
+    }
+  } else {
+    // Query had syntax error while typing: preserve existing output keys
+    const outPrefix = `${kind}:${resolvedFieldName}:out:`
+    for (const key of currentKeys) {
+      if (key.startsWith(outPrefix)) {
+        nextKeys.add(key)
+      }
+    }
+  }
+
+  // 2. Input keys (Arguments & Child Input Fields):
+  if (varPaths !== null) {
+    // Variables parsed successfully: extract inputs strictly based on existing paths in JSON
+    if (fieldSchema) {
+      fieldSchema.args.forEach((arg) => {
+        const exactArg = arg.name
+        const prefixedArg = `${resolvedFieldName}${capitalize(arg.name)}`
+
+        const argKey = getGraphArgKey(kind, resolvedFieldName, arg.name)
+
+        if (arg.inputFields.length > 0) {
+          let checkedChildCount = 0
+
+          arg.inputFields.forEach((inf) => {
+            const path1 = `${exactArg}.${inf.name}`
+            const path2 = `${prefixedArg}.${inf.name}`
+
+            if (varPaths.has(path1) || varPaths.has(path2)) {
+              checkedChildCount += 1
+              nextKeys.add(
+                getGraphInputFieldKey(kind, resolvedFieldName, arg.name, inf.name),
+              )
+            }
+          })
+
+          if (checkedChildCount > 0 && checkedChildCount === arg.inputFields.length) {
+            nextKeys.add(argKey)
+          }
+        } else {
+          // Scalar / flat argument
+          if (varPaths.has(exactArg) || varPaths.has(prefixedArg)) {
+            nextKeys.add(argKey)
+          }
+        }
+      })
+    }
+  } else {
+    // Variables had syntax error while typing: preserve existing argument / input keys
+    const argPrefix = `${kind}:${resolvedFieldName}:arg:`
+    for (const key of currentKeys) {
+      if (key.startsWith(argPrefix)) {
+        nextKeys.add(key)
+      }
+    }
+  }
+
+  return Array.from(nextKeys)
 }
