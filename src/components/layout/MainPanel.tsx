@@ -124,18 +124,31 @@ export function MainPanel({
               <Panel
                 defaultSize="50%"
                 minSize="20%"
-                className="panel-resizable-item"
+                className="panel-resizable-item h-full min-h-0 overflow-hidden flex flex-col"
                 id="req-editor-panel"
               >
-                <RequestEditor
-                  activeTab={activeTab}
-                  editorFontSize={editorFontSize}
-                  environment={activeEnvironment}
-                  onUpdateTab={onUpdateActiveTab}
-                  onFormat={onFormat}
-                  onClear={onClear}
-                  onSyncToExplorer={onSyncToExplorer}
-                />
+                <div
+                  className="h-full w-full min-h-0 flex-1 flex flex-col overflow-hidden"
+                  style={{
+                    height: '100%',
+                    width: '100%',
+                    minHeight: 0,
+                    flex: '1 1 0%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    overflow: 'hidden',
+                  }}
+                >
+                  <RequestEditor
+                    activeTab={activeTab}
+                    editorFontSize={editorFontSize}
+                    environment={activeEnvironment}
+                    onUpdateTab={onUpdateActiveTab}
+                    onFormat={onFormat}
+                    onClear={onClear}
+                    onSyncToExplorer={onSyncToExplorer}
+                  />
+                </div>
               </Panel>
 
               <Separator

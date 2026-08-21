@@ -23,7 +23,7 @@ export function CodeEditor({
   readOnly = false,
   placeholder,
   height = '100%',
-  minHeight = '180px',
+  minHeight = '0px',
   maxHeight,
   fontSize,
 }: CodeEditorProps) {

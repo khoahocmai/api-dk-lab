@@ -5,87 +5,43 @@
     "editorFontSize": 13
   },
   "activeEnvironmentId": "36eefd5b-4f5f-4a32-9b61-ae9b1ab57e32",
-  "activeTabId": "d7edab2f-633d-47b9-8f53-4c97686e32bb",
+  "activeTabId": "6237c464-e033-48ff-b39e-b28c95894a40",
   "tabs": [
     {
-      "id": "9d367235-2762-4719-9d03-aab116be7ebd",
-      "savedRequestId": "e0c7a17f-afa5-4166-abb3-5eb22132a9e6",
+      "id": "6237c464-e033-48ff-b39e-b28c95894a40",
+      "savedRequestId": "f7131e69-0126-4d33-b35b-68034993c842",
       "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": null,
-      "name": "health",
-      "graphqlRootField": "health",
+      "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
+      "name": "Order pagination list",
+      "graphqlRootField": "orderPaginationList",
       "mode": "GRAPHQL",
       "method": "POST",
       "url": "{{Domain}}/graphql",
       "params": [],
       "headersList": [
         {
-          "id": "abd922de-1830-4d56-91fe-788938a11282",
+          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
           "key": "Content-Type",
           "value": "application/json",
-          "enabled": true
+          "enabled": true,
+          "description": ""
         },
         {
-          "id": "b28bbff0-b7d1-4364-a859-c21a481bc5c0",
+          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
           "key": "Authorization",
           "value": "Bearer {{token}}",
-          "enabled": true
-        }
-      ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
-      "auth": {
-        "type": "none",
-        "bearerToken": "",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query Health {\n  health {\n    message\n  }\n}",
-      "gqlVariables": "{}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    {
-      "id": "d7edab2f-633d-47b9-8f53-4c97686e32bb",
-      "savedRequestId": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
-      "name": "tenantGetList",
-      "graphqlRootField": "tenantGetList",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "abd922de-1830-4d56-91fe-788938a11282",
-          "key": "Content-Type",
-          "value": "application/json",
-          "enabled": true
+          "enabled": true,
+          "description": ""
         },
         {
-          "id": "b28bbff0-b7d1-4364-a859-c21a481bc5c0",
-          "key": "Authorization",
-          "value": "Bearer {{token}}",
-          "enabled": true
-        },
-        {
-          "id": "3d095786-c99c-461d-a6ba-5f784c0f3e22",
+          "id": "333c833b-9ada-48da-afa3-c737d8e6ae78",
           "key": "X-Requested-Portal",
           "value": "IT",
           "enabled": true,
           "description": ""
         },
         {
-          "id": "752fb8d8-d656-4b74-a4c1-b0d540a19212",
+          "id": "143f7dc1-67b4-4046-b9db-3453c8b570fd",
           "key": "",
           "value": "",
           "enabled": true,
@@ -107,10 +63,10 @@
       "rawText": "",
       "formData": [],
       "urlencoded": [],
-      "gqlQuery": "query TenantGetList {\n  tenantGetList {\n    id\n    name\n  }\n}",
-      "gqlVariables": "{}",
+      "gqlQuery": "query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\n  orderPaginationList(params: $params, filters: $filters) {\n    total\n  }\n}",
+      "gqlVariables": "{\n  \"params\": {\n    \"page\": 0,\n    \"pageSize\": 0,\n    \"sortBy\": \"\",\n    \"sortDirection\": \"\"\n  },\n  \"filters\": {\n    \"keywords\": \"\",\n    \"orderStatus\": [],\n    \"financialStatus\": []\n  }\n}",
       "testScript": "",
-      "editorTab": "BODY",
+      "editorTab": "VARIABLES",
       "responseTab": "PRETTY"
     }
   ],

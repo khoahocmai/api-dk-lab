@@ -55,9 +55,14 @@
 
 .main-panel {
   min-width: 0;
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+  flex: 1;
   display: flex;
   flex-direction: column;
   background: var(--bg-panel);
+  overflow: hidden;
 }
 
 .panel-header {
@@ -531,17 +536,23 @@
 .response-panel {
   min-width: 0;
   min-height: 0;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   background: var(--bg-panel);
+  overflow: hidden;
 }
 
 .editor-body {
   min-height: 0;
+  height: 100%;
+  width: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 10px 12px;
+  padding: 0;
+  overflow: hidden;
 }
 
 .response-body {
@@ -1586,27 +1597,47 @@
   background: var(--bg-input);
   display: flex;
   flex-direction: column;
+  height: 100%;
+  width: 100%;
+  min-height: 0;
+  flex: 1;
 }
 
-.codemirror-wrapper .cm-editor {
-  height: 100%;
-  font-family: var(--font-mono);
+.codemirror-wrapper .cm-editor,
+.cm-theme,
+.cm-editor {
+  height: 100% !important;
+  max-height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+  font-family: var(--font-mono, monospace) !important;
   font-size: 12px;
   line-height: 1.5;
-  background: var(--bg-input);
+  background: transparent !important;
 }
 
-.codemirror-wrapper .cm-scroller {
-  overflow: auto;
-  font-family: inherit;
-  background: var(--bg-input);
+.codemirror-wrapper .cm-scroller,
+.cm-scroller {
+  overflow: auto !important;
+  flex: 1 1 0% !important;
+  min-height: 0 !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  font-family: var(--font-mono, monospace) !important;
+  background: transparent !important;
 }
 
-.codemirror-wrapper .cm-gutters {
-  background: var(--bg-sidebar);
-  border-right: 1px solid var(--border);
-  color: var(--text-dim);
-  font-size: 11px;
+.cm-content {
+  min-height: 100% !important;
+}
+
+.codemirror-wrapper .cm-gutters,
+.cm-gutters {
+  background: var(--bg-sidebar) !important;
+  border-right: 1px solid var(--border) !important;
+  color: var(--text-dim) !important;
+  font-size: 11px !important;
 }
 
 /* ==========================================================================
@@ -2278,4 +2309,105 @@
   font-size: 10px;
   font-family: var(--font-mono);
   color: var(--text-secondary);
+}
+
+.button-xs {
+  height: 20px;
+  padding: 0 6px;
+  font-size: 10px;
+  gap: 3px;
+}
+
+/* ==========================================================================
+   GRAPHQL UNIFIED QUERY & VARIABLES PANE (Postman Style)
+   ========================================================================== */
+
+.graphql-unified-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.graphql-query-pane {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.graphql-variables-drawer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--bg-panel);
+  overflow: hidden;
+}
+
+.graphql-vars-header {
+  height: 30px;
+  min-height: 30px;
+  background: #141721;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.12s ease;
+}
+
+.graphql-vars-header:hover {
+  background: #1a1e2b;
+}
+
+.graphql-vars-header.is-collapsed {
+  border-top: 1px solid var(--border);
+  border-bottom: 0;
+}
+
+.graphql-vars-header-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.graphql-vars-header:hover .graphql-vars-header-left {
+  color: var(--text-primary);
+}
+
+.graphql-vars-title {
+  letter-spacing: 0.02em;
+}
+
+.graphql-vars-badge {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  font-family: var(--font-mono);
+}
+
+.graphql-vars-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.graphql-vars-editor-wrap {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
