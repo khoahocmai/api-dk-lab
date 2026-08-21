@@ -35,6 +35,8 @@ declare global {
       invoke<T = unknown>(channel: string, ...args: unknown[]): Promise<T>
       readStorage<T = unknown>(fileName: string): Promise<T | null>
       writeStorage(fileName: string, data: unknown): Promise<boolean>
+      setZoomFactor(factor: number): void
+      getZoomFactor(): number
     }
   }
 }

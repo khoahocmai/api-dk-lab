@@ -1,4 +1,4 @@
-import { contextBridge, ipcRenderer } from 'electron'
+import { contextBridge, ipcRenderer, webFrame } from 'electron'
 
 const allowedInvokeChannels = new Set<string>([
   'http-request',
@@ -37,5 +37,13 @@ contextBridge.exposeInMainWorld('desktopApi', {
 
   writeStorage(fileName: string, data: unknown) {
     return ipcRenderer.invoke('storage:write', fileName, data)
+  },
+
+  setZoomFactor(factor: number) {
+    webFrame.setZoomFactor(factor)
+  },
+
+  getZoomFactor() {
+    return webFrame.getZoomFactor()
   },
 })

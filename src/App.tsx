@@ -62,10 +62,13 @@ import { SettingsModal } from './components/settings/SettingsModal'
 import { CodeSnippetModal } from './components/common/CodeSnippetModal'
 import { SaveRequestModal } from './components/request/SaveRequestModal'
 import { Toast, type ToastData } from './components/common/Toast'
+import { useAppZoom } from './hooks/useAppZoom'
 
 const MAX_HISTORY_ITEMS = 100
 
 function App() {
+  useAppZoom()
+
   const [tabs, setTabs] = useState<RequestItem[]>([createDefaultRequest('GRAPHQL')])
   const [activeTabId, setActiveTabId] = useState('')
   const [collections, setCollections] = useState<CollectionItem[]>([])
