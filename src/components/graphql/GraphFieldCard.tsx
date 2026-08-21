@@ -266,25 +266,21 @@ function GraphOutputFieldNode({
 interface GraphFieldCardProps {
   kind: 'query' | 'mutation'
   field: GraphField
-  isSelected: boolean
   selectedKeys: string[]
-  onToggle: (checked: boolean) => void
+  onOpenInTab: () => void
   onToggleArg: (arg: GraphArg, checked: boolean) => void
   onToggleInputField?: (arg: GraphArg, inputField: GraphInputField, checked: boolean) => void
   onToggleOutputField?: (path: string, checked: boolean) => void
-  onQuickInsert: () => void
 }
 
 export function GraphFieldCard({
   kind,
   field,
-  isSelected,
   selectedKeys,
-  onToggle,
+  onOpenInTab,
   onToggleArg,
   onToggleInputField,
   onToggleOutputField,
-  onQuickInsert,
 }: GraphFieldCardProps) {
   const [isExpanded, setIsExpanded] = useState(false)
 
@@ -305,13 +301,14 @@ export function GraphFieldCard({
   const hasDetails = hasArgs || outputFields.length > 0 || Boolean(field.typeLabel)
 
   return (
-    <div className={`graph-field-card ${isSelected ? 'is-selected' : ''}`}>
-      {/* Header Row - Full Row Clickable Accordion */}
+    <div className="graph-field-card">
+      {/* Header Row - Full Row Clickable Accordion with Quick Open Action */}
       <div
         className="graph-card-header"
         onClick={() => hasDetails && setIsExpanded((prev) => !prev)}
         role="button"
         tabIndex={0}
+        style={{ cursor: hasDetails ? 'pointer' : 'default' }}
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault()
@@ -319,51 +316,27 @@ export function GraphFieldCard({
           }
         }}
       >
-        <div className="graph-card-left">
-          <input
-            type="checkbox"
-            checked={isSelected}
-            onClick={(event) => event.stopPropagation()}
-            onChange={(event) => onToggle(event.target.checked)}
-            aria-label={`Select ${field.name}`}
-            className="graph-card-checkbox"
-          />
-          <span
-            className="graph-field-name font-semibold text-[13px] text-white truncate"
-            title={`API: ${field.name}\nReturn Type: ${field.typeLabel}`}
-          >
-            {field.name}
-          </span>
-        </div>
+        {/* 1. Nút '+' ở đầu dòng (Tạo Tab mới) */}
+        <button
+          type="button"
+          className="graph-open-tab-btn"
+          onClick={(event) => {
+            event.stopPropagation()
+            onOpenInTab()
+          }}
+          title="Open in new tab"
+          aria-label={`Open ${field.name} in new tab`}
+        >
+          <Plus size={14} />
+        </button>
 
-        <div className="graph-card-actions">
-          {hasDetails && (
-            <button
-              type="button"
-              className="icon-button icon-button-sm graph-expand-toggle"
-              onClick={(e) => {
-                e.stopPropagation()
-                setIsExpanded((prev) => !prev)
-              }}
-              title={isExpanded ? 'Collapse' : 'Expand arguments & details'}
-            >
-              {isExpanded ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
-            </button>
-          )}
-
-          <button
-            type="button"
-            className="button button-sm graph-insert-btn"
-            onClick={(e) => {
-              e.stopPropagation()
-              onQuickInsert()
-            }}
-            title="Use this API in a new Request Tab"
-          >
-            <Plus size={11} />
-            <span>Use this API</span>
-          </button>
-        </div>
+        {/* 2. Tên API */}
+        <span
+          className="graph-field-name"
+          title={`API: ${field.name}\nReturn Type: ${field.typeLabel || 'Unknown'}`}
+        >
+          {field.name}
+        </span>
       </div>
 
       {/* Expanded Details: Arguments & Return Fields */}

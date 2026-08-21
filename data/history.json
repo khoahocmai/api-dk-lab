@@ -1,5 +1,200 @@
 [
   {
+    "id": "9b6dede6-440e-4b72-81d5-805134768318",
+    "timestamp": "2026-08-21T04:48:18.001Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 37,
+    "request": {
+      "id": "a381ee70-61a4-4c26-a153-ddf3bed09afc",
+      "name": "tenantGetList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "55006fb4-714c-4879-8a72-6e1e9c400185",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "id": "69ab4dab-c334-4318-9212-db3945c9816a",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true
+        },
+        {
+          "id": "24a6aa98-3ad9-4cac-8a2b-4dcc8f9c00a6",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "db8d43a7-405b-4297-848f-657f7d6a5feb",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query TenantGetList {\n  tenantGetList {\n    id\n    name\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "37 ms",
+      "size": "315 B",
+      "data": {
+        "data": {
+          "tenantGetList": [
+            {
+              "id": "019f6a3a-52fd-75dd-ae50-de21820b3f45",
+              "name": "Dairy Queen"
+            },
+            {
+              "id": "019f6a4b-ffdd-71ab-b6a5-ae719a13d483",
+              "name": "Swensens"
+            },
+            {
+              "id": "0192fda4-ba1b-76ef-bb1a-64c043a8e4a4",
+              "name": "The Pizza Company"
+            },
+            {
+              "id": "019f4b8e-a513-72eb-8dbc-7b8fc300355c",
+              "name": "CHANG - Modern Thai Cuisine"
+            }
+          ]
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "316",
+        "date": "Fri, 21 Aug 2026 04:48:21 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "ef249fe9-d629-4231-929e-55dd04f06c5f",
+    "timestamp": "2026-08-21T04:48:08.366Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 15,
+    "request": {
+      "id": "a381ee70-61a4-4c26-a153-ddf3bed09afc",
+      "name": "tenantGetList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "55006fb4-714c-4879-8a72-6e1e9c400185",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "id": "69ab4dab-c334-4318-9212-db3945c9816a",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query TenantGetList {\n  tenantGetList {\n    id\n    name\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "15 ms",
+      "size": "237 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Unauthorized",
+            "path": [
+              "tenantGetList"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "UNAUTHENTICATED",
+              "originalError": {
+                "message": "Unauthorized",
+                "statusCode": 401
+              }
+            },
+            "code": "UNAUTHENTICATED"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "238",
+        "date": "Fri, 21 Aug 2026 04:48:12 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
     "id": "97adf6df-65c7-485f-b8ee-fcf466ed5186",
     "timestamp": "2026-08-21T04:20:09.018Z",
     "method": "GQL",

@@ -23,6 +23,12 @@
       "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
       "parentId": null,
       "name": "Order"
+    },
+    {
+      "id": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": null,
+      "name": "System"
     }
   ],
   "savedRequests": [
@@ -232,6 +238,73 @@
       "createdAt": "2026-08-20T06:48:21.666Z",
       "updatedAt": "2026-08-21T03:55:52.443Z",
       "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c"
+    },
+    {
+      "id": "55bc2965-8c31-49e9-b91a-db709b97cc1b",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
+      "name": "tenantGetList",
+      "request": {
+        "id": "a381ee70-61a4-4c26-a153-ddf3bed09afc",
+        "savedRequestId": "55bc2965-8c31-49e9-b91a-db709b97cc1b",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
+        "name": "tenantGetList",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "55006fb4-714c-4879-8a72-6e1e9c400185",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "id": "69ab4dab-c334-4318-9212-db3945c9816a",
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "enabled": true
+          },
+          {
+            "id": "24a6aa98-3ad9-4cac-8a2b-4dcc8f9c00a6",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "db8d43a7-405b-4297-848f-657f7d6a5feb",
+            "key": "",
+            "value": "",
+            "enabled": true,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "none",
+          "bearerToken": "",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query TenantGetList {\n  tenantGetList {\n    id\n    name\n  }\n}",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "HEADERS",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-21T04:48:30.185Z",
+      "updatedAt": "2026-08-21T04:48:30.185Z"
     }
   ],
   "expandedCollectionIds": [
@@ -239,6 +312,7 @@
   ],
   "expandedFolderIds": [
     "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8",
-    "785cea12-b358-4f53-bf46-46ebd0bf368c"
+    "785cea12-b358-4f53-bf46-46ebd0bf368c",
+    "4b3124b2-b790-470f-aaf5-41ef20e75b1b"
   ]
 }

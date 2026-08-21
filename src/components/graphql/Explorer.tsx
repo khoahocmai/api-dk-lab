@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react'
 import {
   BookOpen,
-  CheckCheck,
   Database,
   Layers3,
   PanelLeftClose,
@@ -19,7 +18,6 @@ import type {
 } from '../../types'
 import { InfoCard } from '../common/InfoCard'
 import { GraphFieldCard } from './GraphFieldCard'
-import { getGraphFieldKey } from '../../services/graphqlService'
 
 interface ExplorerProps {
   activeTab: RequestItem | undefined
@@ -28,13 +26,10 @@ interface ExplorerProps {
   selectedGraphFieldKeys: string[]
   onLoadSchema: () => Promise<void>
   onCloseMobile: () => void
-  onToggleField: (field: GraphField, checked: boolean) => void
+  onOpenInTab: (field: GraphField) => void
   onToggleArg: (field: GraphField, arg: GraphArg, checked: boolean) => void
   onToggleInputField?: (field: GraphField, arg: GraphArg, inputField: GraphInputField, checked: boolean) => void
   onToggleOutputField?: (field: GraphField, path: string, checked: boolean) => void
-  onQuickInsert: (field: GraphField) => void
-  onApplySelected: () => void
-  onClearSelection: () => void
   onCloseExplorer?: () => void
 }
 
@@ -45,13 +40,10 @@ export function Explorer({
   selectedGraphFieldKeys,
   onLoadSchema,
   onCloseMobile,
-  onToggleField,
+  onOpenInTab,
   onToggleArg,
   onToggleInputField,
   onToggleOutputField,
-  onQuickInsert,
-  onApplySelected,
-  onClearSelection,
   onCloseExplorer,
 }: ExplorerProps) {
   const currentGraphOperationKind = graphExplorer.activeTab === 'MUTATION' ? 'mutation' : 'query'
@@ -84,16 +76,6 @@ export function Explorer({
         ),
     )
   }, [currentExplorerFields, graphExplorer.search])
-
-  const selectedExplorerFields = useMemo(
-    () =>
-      currentExplorerFields.filter((field) =>
-        selectedGraphFieldKeys.includes(
-          getGraphFieldKey(currentGraphOperationKind, field.name),
-        ),
-      ),
-    [currentExplorerFields, currentGraphOperationKind, selectedGraphFieldKeys],
-  )
 
   return (
     <div
@@ -265,17 +247,13 @@ export function Explorer({
             ) : (
               <div className="stack" style={{ gap: 6 }}>
                 {filteredExplorerFields.map((field) => {
-                  const selected = selectedGraphFieldKeys.includes(
-                    getGraphFieldKey(currentGraphOperationKind, field.name),
-                  )
                   return (
                     <GraphFieldCard
                       key={field.name}
                       kind={currentGraphOperationKind}
                       field={field}
-                      isSelected={selected}
                       selectedKeys={selectedGraphFieldKeys}
-                      onToggle={(checked) => onToggleField(field, checked)}
+                      onOpenInTab={() => onOpenInTab(field)}
                       onToggleArg={(arg, checked) => onToggleArg(field, arg, checked)}
                       onToggleInputField={(arg, inputField, checked) =>
                         onToggleInputField?.(field, arg, inputField, checked)
@@ -283,7 +261,6 @@ export function Explorer({
                       onToggleOutputField={(path, checked) =>
                         onToggleOutputField?.(field, path, checked)
                       }
-                      onQuickInsert={() => onQuickInsert(field)}
                     />
                   )
                 })}
@@ -292,42 +269,6 @@ export function Explorer({
           </div>
         )}
       </div>
-
-      {/* Sticky Bottom Action Bar (Smart Slide-up when items selected) */}
-      {selectedExplorerFields.length > 0 && (
-        <div className="graph-explorer-footer">
-          <span style={{ fontSize: 11, color: 'var(--primary-bright)', fontWeight: 600 }}>
-            {selectedExplorerFields.length} field{selectedExplorerFields.length > 1 ? 's' : ''} selected
-          </span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <button
-              type="button"
-              onClick={onClearSelection}
-              className="explorer-clear-btn"
-            >
-              Clear
-            </button>
-            <button
-              type="button"
-              onClick={onApplySelected}
-              className="button button-sm button-primary"
-              style={{
-                height: 26,
-                padding: '0 10px',
-                fontSize: 11,
-                fontWeight: 600,
-                display: 'flex',
-                alignItems: 'center',
-                gap: 4,
-              }}
-              title="Open selected fields in a new Request Tab"
-            >
-              <CheckCheck size={12} />
-              <span>Apply ({selectedExplorerFields.length})</span>
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   )
 }

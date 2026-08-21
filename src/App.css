@@ -977,35 +977,46 @@
 .graph-card-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 6px;
+  gap: 8px;
   padding: 4px 6px;
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: background 0.12s ease;
   user-select: none;
+  min-width: 0;
 }
 
 .graph-card-header:hover {
   background: #1f2433;
 }
 
-.graph-card-left {
-  display: flex;
+.graph-open-tab-btn {
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
-  min-width: 0;
-  flex: 1;
-  overflow: hidden;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.12s ease;
+  flex-shrink: 0;
 }
 
-.graph-card-checkbox {
-  margin: 0;
-  cursor: pointer;
-  accent-color: var(--primary);
-  flex-shrink: 0;
-  width: 14px;
-  height: 14px;
+.graph-card-header:hover .graph-open-tab-btn {
+  opacity: 1;
+  color: #cbd5e1;
+}
+
+.graph-open-tab-btn:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #60a5fa !important;
+  opacity: 1 !important;
 }
 
 .graph-field-name {
@@ -1016,46 +1027,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.graph-colon {
-  color: var(--text-dim);
-  font-size: 11px;
-  font-family: var(--font-mono);
-}
-
-.graph-card-actions {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  flex-shrink: 0;
-}
-
-.graph-expand-toggle {
-  width: 22px;
-  height: 22px;
-  color: var(--text-muted);
-}
-
-.graph-expand-toggle:hover {
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.graph-insert-btn {
-  height: 22px;
-  padding: 0 6px;
-  font-size: 10px;
-  font-weight: 700;
-  background: transparent;
-  border-color: var(--border);
-  color: var(--primary-bright);
-}
-
-.graph-insert-btn:hover {
-  background: var(--primary-subtle);
-  border-color: var(--primary);
-  color: #ffffff;
+  flex: 1;
+  min-width: 0;
 }
 
 /* Return Type Line & Arguments Accordion */

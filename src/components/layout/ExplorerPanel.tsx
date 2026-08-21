@@ -16,13 +16,10 @@ interface ExplorerPanelProps {
   selectedGraphFieldKeys: string[]
   onLoadSchema: () => Promise<void>
   onCloseMobile: () => void
-  onToggleField: (field: GraphField, checked: boolean) => void
+  onOpenInTab: (field: GraphField) => void
   onToggleArg: (field: GraphField, arg: GraphArg, checked: boolean) => void
   onToggleInputField?: (field: GraphField, arg: GraphArg, inputField: GraphInputField, checked: boolean) => void
   onToggleOutputField?: (field: GraphField, path: string, checked: boolean) => void
-  onQuickInsert: (field: GraphField) => void
-  onApplySelected: () => void
-  onClearSelection: () => void
   onCloseExplorer?: () => void
 }
 
@@ -34,13 +31,10 @@ export function ExplorerPanel({
   selectedGraphFieldKeys,
   onLoadSchema,
   onCloseMobile,
-  onToggleField,
+  onOpenInTab,
   onToggleArg,
   onToggleInputField,
   onToggleOutputField,
-  onQuickInsert,
-  onApplySelected,
-  onClearSelection,
   onCloseExplorer,
 }: ExplorerPanelProps) {
   return (
@@ -55,13 +49,10 @@ export function ExplorerPanel({
         selectedGraphFieldKeys={selectedGraphFieldKeys}
         onLoadSchema={onLoadSchema}
         onCloseMobile={onCloseMobile}
-        onToggleField={onToggleField}
+        onOpenInTab={onOpenInTab}
         onToggleArg={onToggleArg}
         onToggleInputField={onToggleInputField}
         onToggleOutputField={onToggleOutputField}
-        onQuickInsert={onQuickInsert}
-        onApplySelected={onApplySelected}
-        onClearSelection={onClearSelection}
         onCloseExplorer={onCloseExplorer}
       />
     </aside>
