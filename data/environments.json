@@ -25,13 +25,13 @@
       {
         "id": "2ba61a28-af51-4818-a65d-330683e8236d",
         "key": "Domain",
-        "value": "https://api.dxpdemos.com/",
+        "value": "https://api.dxpdemos.com",
         "enabled": true
       },
       {
         "id": "c30b2312-1442-4af3-af04-71d99b7f105f",
         "key": "token",
-        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRhbmcua2hvYS5kZGQiLCJzdWIiOiIwMTljMzg5ZC0yNmUyLTcxMWUtYjE3Ni02OTJlNTgwYTE2YjYiLCJ0ZW5hbnRJZCI6IjAxOTJmZGE0LWJhMWItNzZlZi1iYjFhLTY0YzA0M2E4ZTRhNCIsInBvcnRhbHMiOlsiSVQiXSwibmFtZSI6IsSQ4buXIETGsMahbmcgxJDEg25nIEtob2EiLCJlbWFpbCI6Imtob2EuZGRkQHRhcHRhcC5jb20udm4iLCJpYXQiOjE3ODcxOTQ4NDMsImV4cCI6MTc4NzIzODA0MywiaXNzIjoiRFhQIEF1dGggU2VydmljZSJ9.v1nozxrv1QeiCKD7ulz-G1J_zMRYM-JZD7g8C2V9Hqk",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRhbmcua2hvYS5kZGQiLCJzdWIiOiIwMTljMzg5ZC0yNmUyLTcxMWUtYjE3Ni02OTJlNTgwYTE2YjYiLCJ0ZW5hbnRJZCI6IjAxOTJmZGE0LWJhMWItNzZlZi1iYjFhLTY0YzA0M2E4ZTRhNCIsInBvcnRhbHMiOlsiSVQiXSwibmFtZSI6IsSQ4buXIETGsMahbmcgxJDEg25nIEtob2EiLCJlbWFpbCI6Imtob2EuZGRkQHRhcHRhcC5jb20udm4iLCJpYXQiOjE3ODcyOTMwMDksImV4cCI6MTc4NzMzNjIwOSwiaXNzIjoiRFhQIEF1dGggU2VydmljZSJ9.FtWtznlSNOkR14jX-v10wmP5DVUBchUUvChfSOeCcQI",
         "enabled": true,
         "secret": true
       }

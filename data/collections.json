@@ -29,6 +29,24 @@
       "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
       "parentId": null,
       "name": "System"
+    },
+    {
+      "id": "72d3d982-0101-4ffa-9672-a04ee8a5798d",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": null,
+      "name": "Integration"
+    },
+    {
+      "id": "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": "72d3d982-0101-4ffa-9672-a04ee8a5798d",
+      "name": "KiotViet"
+    },
+    {
+      "id": "3eba61de-7e93-497e-ab02-0daac97727ae",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
+      "name": "Branch"
     }
   ],
   "savedRequests": [
@@ -177,7 +195,7 @@
       "folderId": null,
       "name": "health",
       "request": {
-        "id": "9d367235-2762-4719-9d03-aab116be7ebd",
+        "id": "761c550d-95ae-4b7d-ab07-d38a809729b3",
         "savedRequestId": "e0c7a17f-afa5-4166-abb3-5eb22132a9e6",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": null,
@@ -192,13 +210,15 @@
             "id": "abd922de-1830-4d56-91fe-788938a11282",
             "key": "Content-Type",
             "value": "application/json",
-            "enabled": true
+            "enabled": true,
+            "description": ""
           },
           {
             "id": "b28bbff0-b7d1-4364-a859-c21a481bc5c0",
             "key": "Authorization",
             "value": "Bearer {{token}}",
-            "enabled": true
+            "enabled": true,
+            "description": ""
           }
         ],
         "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
@@ -223,7 +243,7 @@
         "responseTab": "PRETTY"
       },
       "createdAt": "2026-08-21T05:26:37.459Z",
-      "updatedAt": "2026-08-21T05:26:37.459Z"
+      "updatedAt": "2026-08-21T06:24:06.889Z"
     },
     {
       "id": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
@@ -292,6 +312,280 @@
       },
       "createdAt": "2026-08-21T05:26:46.894Z",
       "updatedAt": "2026-08-21T05:26:58.534Z"
+    },
+    {
+      "id": "e99d94b1-c03f-4f53-87a0-189b2fad8d62",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "3eba61de-7e93-497e-ab02-0daac97727ae",
+      "name": "KiotViet branch sync",
+      "request": {
+        "id": "d388a392-a6d0-455b-8116-09f469f88a98",
+        "savedRequestId": "e99d94b1-c03f-4f53-87a0-189b2fad8d62",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
+        "name": "KiotViet branch sync",
+        "graphqlRootField": "kiotVietBranchSync",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "abd922de-1830-4d56-91fe-788938a11282",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "b28bbff0-b7d1-4364-a859-c21a481bc5c0",
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "03df64d4-d351-4053-8844-043517f353ea",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "d3d4ef54-3825-4fa6-8ac4-3142aba19188",
+            "key": "",
+            "value": "",
+            "enabled": true,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "none",
+          "bearerToken": "",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "mutation KiotVietBranchSync {\n  kiotVietBranchSync {\n    total\n    created\n  }\n}",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "HEADERS",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-21T10:22:16.905Z",
+      "updatedAt": "2026-08-21T10:22:45.563Z"
+    },
+    {
+      "id": "c1ad8d59-9cce-45dc-b91e-f91ef779b4de",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "3eba61de-7e93-497e-ab02-0daac97727ae",
+      "name": "KiotViet branch get pagination",
+      "request": {
+        "id": "8a100543-4fc6-48a3-85ee-d98d1d57ff5c",
+        "savedRequestId": "c1ad8d59-9cce-45dc-b91e-f91ef779b4de",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "3eba61de-7e93-497e-ab02-0daac97727ae",
+        "name": "KiotViet branch get pagination",
+        "graphqlRootField": "kiotVietBranchGetPagination",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "6274bea9-2d5b-462d-bbe6-a0776d595d87",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "id": "98f17cce-b64a-4fc7-8071-3348748b9f25",
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "enabled": true
+          },
+          {
+            "id": "19d8cd28-a2be-4779-9f9c-6d2a33effa58",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "06ec2bd0-fae4-493e-b475-73081cc41baa",
+            "key": "",
+            "value": "",
+            "enabled": true,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "none",
+          "bearerToken": "",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query KiotVietBranchGetPagination($filters: KiotVietBranchGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietBranchGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      kiotvietBranchId\n    }\n  }\n}",
+        "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-21T10:24:01.220Z",
+      "updatedAt": "2026-08-21T10:24:01.220Z"
+    },
+    {
+      "id": "d25c79ba-a8bd-455d-b536-3b5282933bbe",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
+      "name": "KiotViet check connection",
+      "request": {
+        "id": "203c545e-5cff-413c-a9ba-52dba952ebe9",
+        "savedRequestId": "d25c79ba-a8bd-455d-b536-3b5282933bbe",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
+        "name": "KiotViet check connection",
+        "graphqlRootField": "kiotVietCheckConnection",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "798cb6d1-5f56-4d6e-bc24-d8ef6b788ae2",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "id": "7b8d3666-0dca-486a-9b93-1f66611e1dd6",
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "enabled": true
+          },
+          {
+            "id": "6e05d7a5-465e-4d7b-837a-57e0c458b191",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "476ee6ee-e9bd-4179-9470-87b27384b30d",
+            "key": "",
+            "value": "",
+            "enabled": true,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "none",
+          "bearerToken": "",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query KiotVietCheckConnection($data: KiotVietCheckConnectInputDto!) {\n  kiotVietCheckConnection(data: $data)\n}",
+        "gqlVariables": "{\n  \"data\": {\n    \"clientId\": \"\",\n    \"clientSecret\": \"\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-21T10:24:52.692Z",
+      "updatedAt": "2026-08-21T10:24:52.692Z"
+    },
+    {
+      "id": "a9319f73-0d27-43d1-a7db-bf213ac3f4c3",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "3eba61de-7e93-497e-ab02-0daac97727ae",
+      "name": "KiotViet branch get by Id",
+      "request": {
+        "id": "8bd420a3-f1b1-4d49-b908-b6b53d06eaed",
+        "savedRequestId": "a9319f73-0d27-43d1-a7db-bf213ac3f4c3",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "3eba61de-7e93-497e-ab02-0daac97727ae",
+        "name": "KiotViet branch get by Id",
+        "graphqlRootField": "kiotVietBranchGetById",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "48091c9b-47a5-465f-8c46-a0a9776f3e70",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "id": "b2590b6d-39ed-49dd-8f27-87273201b35d",
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "enabled": true
+          },
+          {
+            "id": "c8a256ec-3bad-4fc8-9fe8-f1a383144e7a",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "13bcf6a3-c21d-4811-8e73-2f1b018aaee5",
+            "key": "",
+            "value": "",
+            "enabled": true,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "none",
+          "bearerToken": "",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query KiotVietBranchGetById($request: RequestParams!) {\n  kiotVietBranchGetById(request: $request) {\n    id\n    kiotvietBranchId\n  }\n}",
+        "gqlVariables": "{\n  \"request\": {\n    \"id\": \"\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-21T10:25:32.534Z",
+      "updatedAt": "2026-08-21T10:25:32.534Z"
     }
   ],
   "expandedCollectionIds": [
@@ -299,6 +593,7 @@
   ],
   "expandedFolderIds": [
     "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8",
-    "785cea12-b358-4f53-bf46-46ebd0bf368c"
+    "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
+    "3eba61de-7e93-497e-ab02-0daac97727ae"
   ]
 }

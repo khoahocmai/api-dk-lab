@@ -636,42 +636,46 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.015);
-  padding: 4px;
+  padding: 2px 3px 4px 3px;
+  overflow: hidden;
 }
 
 .collection-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 28px;
   min-height: 28px;
-  gap: 4px;
+  width: 100%;
+  padding: 0 6px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.12s ease;
 }
 
-.collection-button {
+.collection-header:hover {
+  background: var(--bg-hover);
+}
+
+.collection-info {
   display: flex;
   align-items: center;
   gap: 6px;
   min-width: 0;
   flex: 1;
-  padding: 3px 6px;
-  text-align: left;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 1;
-  color: var(--text-secondary);
-  background: transparent;
-  border: 0;
-  cursor: pointer;
+  overflow: hidden;
+  margin-right: 4px;
 }
 
-.collection-button svg {
+.collection-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
-  display: block;
-}
-
-.collection-button:hover {
-  background: var(--bg-hover);
-  color: var(--text-primary);
+  color: var(--text-dim);
 }
 
 .collection-title-text {
@@ -682,115 +686,243 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   line-height: 1;
-  margin: 0;
-  padding: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Tree Structure & Guides */
+.folder-tree-root {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 2px;
+  padding: 2px 0;
 }
 
 .folder-tree-branch {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   border-left: 1px solid var(--border);
   margin-left: 6px;
+  padding-left: 8px;
   margin-top: 2px;
+}
+
+.folder-node {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
 }
 
 .folder-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 26px;
-  gap: 4px;
+  height: 28px;
+  min-height: 28px;
+  width: 100%;
+  padding: 0 4px 0 6px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.12s ease;
 }
 
-.folder-button {
+.folder-row:hover {
+  background: var(--bg-hover);
+}
+
+.folder-info {
   display: flex;
   align-items: center;
   gap: 6px;
   min-width: 0;
   flex: 1;
-  padding: 3px 6px;
-  font-size: 11px;
-  font-weight: 650;
-  line-height: 1;
-  color: var(--text-secondary);
-  border: 0;
-  background: transparent;
-  cursor: pointer;
+  overflow: hidden;
+  margin-right: 4px;
 }
 
-.folder-button svg {
+.folder-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
-  display: block;
-}
-
-.folder-button:hover {
-  background: var(--bg-hover);
-  color: var(--text-primary);
+  color: var(--text-dim);
 }
 
 .folder-icon {
   color: #f59e0b;
+  flex-shrink: 0;
+  display: block;
 }
 
 .folder-name {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-primary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   line-height: 1;
-  margin: 0;
-  padding: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.folder-children {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Saved Request Rows */
+.saved-row {
   display: flex;
   align-items: center;
-}
-
-.saved-list {
-  display: grid;
-  gap: 2px;
-  margin-top: 2px;
-  padding-left: 6px;
-}
-
-.saved-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 22px;
-  align-items: center;
-  gap: 4px;
-}
-
-.saved-request-button {
-  min-width: 0;
+  justify-content: space-between;
+  height: 28px;
+  min-height: 28px;
   width: 100%;
-  justify-content: flex-start;
-  padding: 4px 6px;
-  text-align: left;
-  border: 0;
-  background: transparent;
-  font-size: 11px;
-  color: var(--text-muted);
-  gap: 6px;
+  padding: 0 4px 0 6px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.12s ease;
+  overflow: hidden;
 }
 
-.saved-request-button:hover {
+.saved-row:hover {
   background: var(--bg-hover);
-  color: var(--text-primary);
+}
+
+.saved-request-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  margin-right: 4px;
+}
+
+.request-icon {
+  color: var(--text-dim);
+  flex-shrink: 0;
+  display: block;
 }
 
 .saved-request-name {
-  min-width: 0;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--text-soft);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  line-height: 1;
+  flex: 1;
+  min-width: 0;
+}
+
+.saved-row:hover .saved-request-name {
+  color: var(--text-primary);
+}
+
+/* Method Badges */
+.method-badge {
+  font-size: 9.5px;
+  font-weight: 750;
+  font-family: var(--font-mono);
+  padding: 1px 4px;
+  border-radius: var(--radius-xs);
+  line-height: 1.1;
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+
+.method-badge-get {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.method-badge-post {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.method-badge-put {
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.12);
+}
+
+.method-badge-patch {
+  color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.12);
+}
+
+.method-badge-delete {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.12);
+}
+
+.method-badge-gql {
+  color: #ec4899;
+  background: rgba(236, 72, 153, 0.12);
 }
 
 /* Sidebar Row Actions on Hover */
 .hover-actions {
-  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+  opacity: 0;
+  pointer-events: none;
   transition: opacity 0.12s ease;
 }
 
 .group-hover-row:hover .hover-actions,
 .hover-actions:hover {
   opacity: 1;
+  pointer-events: auto;
+}
+
+.hover-actions .icon-button-sm {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dim);
+  border-radius: var(--radius-xs);
+  transition: color 0.1s ease, background 0.1s ease;
+}
+
+.hover-actions .icon-button-sm:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.hover-actions .rename-btn:hover {
+  color: #60a5fa !important;
+  background: rgba(59, 130, 246, 0.18) !important;
+}
+
+.hover-actions .add-folder-btn:hover {
+  color: #f59e0b !important;
+  background: rgba(245, 158, 11, 0.18) !important;
+}
+
+.hover-actions .export-btn:hover {
+  color: #10b981 !important;
+  background: rgba(16, 185, 129, 0.18) !important;
+}
+
+.hover-actions .delete-btn:hover {
+  color: #f87171 !important;
+  background: rgba(239, 68, 68, 0.18) !important;
 }
 
 /* ==========================================================================

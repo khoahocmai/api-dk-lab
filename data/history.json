@@ -1,5 +1,1134 @@
 [
   {
+    "id": "f70f11d3-2a3c-4ebc-ad85-6abe8c8710b1",
+    "timestamp": "2026-08-21T10:25:12.851Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "https://api.dxpdemos.com/graphql",
+    "status": 200,
+    "duration": 34,
+    "request": {
+      "id": "8bd420a3-f1b1-4d49-b908-b6b53d06eaed",
+      "name": "kiotVietBranchGetById",
+      "graphqlRootField": "kiotVietBranchGetById",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "48091c9b-47a5-465f-8c46-a0a9776f3e70",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "id": "b2590b6d-39ed-49dd-8f27-87273201b35d",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true
+        },
+        {
+          "id": "c8a256ec-3bad-4fc8-9fe8-f1a383144e7a",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "13bcf6a3-c21d-4811-8e73-2f1b018aaee5",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query KiotVietBranchGetById($request: RequestParams!) {\n  kiotVietBranchGetById(request: $request) {\n    id\n    kiotvietBranchId\n  }\n}",
+      "gqlVariables": "{\n  \"request\": {\n    \"id\": \"\",\n    \"slug\": \"\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "34 ms",
+      "size": "202 B",
+      "data": {
+        "errors": [
+          {
+            "message": "id must be a UUID",
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "path": [
+              "kiotVietBranchGetById"
+            ],
+            "extensions": {
+              "code": "INTERNAL_SERVER_ERROR"
+            },
+            "code": "INTERNAL_SERVER_ERROR"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "server": "nginx/1.24.0 (Ubuntu)",
+        "date": "Fri, 21 Aug 2026 10:25:17 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "203",
+        "connection": "keep-alive",
+        "cache-control": "no-store",
+        "vary": "Origin"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "bb517d51-08ce-49c7-bab8-3c0e7b149cf6",
+    "timestamp": "2026-08-21T10:24:40.834Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "https://api.dxpdemos.com/graphql",
+    "status": 200,
+    "duration": 30,
+    "request": {
+      "id": "203c545e-5cff-413c-a9ba-52dba952ebe9",
+      "name": "kiotVietCheckConnection",
+      "graphqlRootField": "kiotVietCheckConnection",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "798cb6d1-5f56-4d6e-bc24-d8ef6b788ae2",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "id": "7b8d3666-0dca-486a-9b93-1f66611e1dd6",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true
+        },
+        {
+          "id": "6e05d7a5-465e-4d7b-837a-57e0c458b191",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "476ee6ee-e9bd-4179-9470-87b27384b30d",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query KiotVietCheckConnection($data: KiotVietCheckConnectInputDto!) {\n  kiotVietCheckConnection(data: $data)\n}",
+      "gqlVariables": "{\n  \"data\": {\n    \"clientId\": \"\",\n    \"clientSecret\": \"\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "30 ms",
+      "size": "42 B",
+      "data": {
+        "data": {
+          "kiotVietCheckConnection": false
+        }
+      },
+      "headers": {
+        "server": "nginx/1.24.0 (Ubuntu)",
+        "date": "Fri, 21 Aug 2026 10:24:45 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "43",
+        "connection": "keep-alive",
+        "cache-control": "no-store",
+        "vary": "Origin"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "d408235c-1399-4fc3-b28f-44c7084baacd",
+    "timestamp": "2026-08-21T10:24:36.657Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "https://api.dxpdemos.com/graphql",
+    "status": 200,
+    "duration": 31,
+    "request": {
+      "id": "203c545e-5cff-413c-a9ba-52dba952ebe9",
+      "name": "kiotVietCheckConnection",
+      "graphqlRootField": "kiotVietCheckConnection",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "798cb6d1-5f56-4d6e-bc24-d8ef6b788ae2",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "id": "7b8d3666-0dca-486a-9b93-1f66611e1dd6",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true
+        },
+        {
+          "id": "6e05d7a5-465e-4d7b-837a-57e0c458b191",
+          "key": "X-Requested-Portal",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "476ee6ee-e9bd-4179-9470-87b27384b30d",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query KiotVietCheckConnection($data: KiotVietCheckConnectInputDto!) {\n  kiotVietCheckConnection(data: $data)\n}",
+      "gqlVariables": "{\n  \"data\": {\n    \"clientId\": \"\",\n    \"clientSecret\": \"\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "31 ms",
+      "size": "247 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Unauthorized",
+            "path": [
+              "kiotVietCheckConnection"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "UNAUTHENTICATED",
+              "originalError": {
+                "message": "Unauthorized",
+                "statusCode": 401
+              }
+            },
+            "code": "UNAUTHENTICATED"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "server": "nginx/1.24.0 (Ubuntu)",
+        "date": "Fri, 21 Aug 2026 10:24:41 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "248",
+        "connection": "keep-alive",
+        "cache-control": "no-store",
+        "vary": "Origin"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "bd4fe5f2-715d-4f04-8502-bac505a0b7a3",
+    "timestamp": "2026-08-21T10:24:28.182Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "https://api.dxpdemos.com/graphql",
+    "status": 200,
+    "duration": 30,
+    "request": {
+      "id": "203c545e-5cff-413c-a9ba-52dba952ebe9",
+      "name": "kiotVietCheckConnection",
+      "graphqlRootField": "kiotVietCheckConnection",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "798cb6d1-5f56-4d6e-bc24-d8ef6b788ae2",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "id": "7b8d3666-0dca-486a-9b93-1f66611e1dd6",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query KiotVietCheckConnection($data: KiotVietCheckConnectInputDto!) {\n  kiotVietCheckConnection(data: $data)\n}",
+      "gqlVariables": "{\n  \"data\": {\n    \"clientId\": \"\",\n    \"clientSecret\": \"\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "30 ms",
+      "size": "247 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Unauthorized",
+            "path": [
+              "kiotVietCheckConnection"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "UNAUTHENTICATED",
+              "originalError": {
+                "message": "Unauthorized",
+                "statusCode": 401
+              }
+            },
+            "code": "UNAUTHENTICATED"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "server": "nginx/1.24.0 (Ubuntu)",
+        "date": "Fri, 21 Aug 2026 10:24:33 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "248",
+        "connection": "keep-alive",
+        "cache-control": "no-store",
+        "vary": "Origin"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "0de1dba3-4980-4e10-ad4b-25e181145758",
+    "timestamp": "2026-08-21T10:23:44.474Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "https://api.dxpdemos.com/graphql",
+    "status": 200,
+    "duration": 42,
+    "request": {
+      "id": "8a100543-4fc6-48a3-85ee-d98d1d57ff5c",
+      "name": "kiotVietBranchGetPagination",
+      "graphqlRootField": "kiotVietBranchGetPagination",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "6274bea9-2d5b-462d-bbe6-a0776d595d87",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "id": "98f17cce-b64a-4fc7-8071-3348748b9f25",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true
+        },
+        {
+          "id": "19d8cd28-a2be-4779-9f9c-6d2a33effa58",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "06ec2bd0-fae4-493e-b475-73081cc41baa",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query KiotVietBranchGetPagination($filters: KiotVietBranchGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietBranchGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      kiotvietBranchId\n    }\n  }\n}",
+      "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "42 ms",
+      "size": "136 B",
+      "data": {
+        "data": {
+          "kiotVietBranchGetPagination": {
+            "total": 1,
+            "items": [
+              {
+                "id": "019ff977-f5cf-722a-9a91-7c4d56fc11bd",
+                "kiotvietBranchId": "354676"
+              }
+            ]
+          }
+        }
+      },
+      "headers": {
+        "server": "nginx/1.24.0 (Ubuntu)",
+        "date": "Fri, 21 Aug 2026 10:23:49 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "137",
+        "connection": "keep-alive",
+        "cache-control": "no-store",
+        "vary": "Origin"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "d04bdaa1-1470-4304-a629-964e3fc8a06f",
+    "timestamp": "2026-08-21T10:23:38.097Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "https://api.dxpdemos.com/graphql",
+    "status": 200,
+    "duration": 53,
+    "request": {
+      "id": "8a100543-4fc6-48a3-85ee-d98d1d57ff5c",
+      "name": "kiotVietBranchGetPagination",
+      "graphqlRootField": "kiotVietBranchGetPagination",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "6274bea9-2d5b-462d-bbe6-a0776d595d87",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "id": "98f17cce-b64a-4fc7-8071-3348748b9f25",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true
+        },
+        {
+          "id": "19d8cd28-a2be-4779-9f9c-6d2a33effa58",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "06ec2bd0-fae4-493e-b475-73081cc41baa",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query KiotVietBranchGetPagination($filters: KiotVietBranchGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietBranchGetPagination(filters: $filters, params: $params) {\n    total\n  }\n}",
+      "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "53 ms",
+      "size": "52 B",
+      "data": {
+        "data": {
+          "kiotVietBranchGetPagination": {
+            "total": 1
+          }
+        }
+      },
+      "headers": {
+        "server": "nginx/1.24.0 (Ubuntu)",
+        "date": "Fri, 21 Aug 2026 10:23:43 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "53",
+        "connection": "keep-alive",
+        "cache-control": "no-store",
+        "vary": "Origin"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "4e5b3b4a-9ba6-4205-b2c3-530d204107f6",
+    "timestamp": "2026-08-21T10:23:15.592Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "https://api.dxpdemos.com/graphql",
+    "status": 400,
+    "duration": 40,
+    "request": {
+      "id": "8a100543-4fc6-48a3-85ee-d98d1d57ff5c",
+      "name": "kiotVietBranchGetPagination",
+      "graphqlRootField": "kiotVietBranchGetPagination",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "6274bea9-2d5b-462d-bbe6-a0776d595d87",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "id": "98f17cce-b64a-4fc7-8071-3348748b9f25",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true
+        },
+        {
+          "id": "19d8cd28-a2be-4779-9f9c-6d2a33effa58",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "06ec2bd0-fae4-493e-b475-73081cc41baa",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query KiotVietBranchGetPagination($params: PaginationDto!) {\n  kiotVietBranchGetPagination(params: $params) {\n    total\n  }\n}",
+      "gqlVariables": "{\n  \"params\": {\n    \"page\": 0,\n    \"pageSize\": 0\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 400,
+      "statusText": "Bad Request",
+      "time": "40 ms",
+      "size": "294 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Field \"kiotVietBranchGetPagination\" argument \"filters\" of type \"KiotVietBranchGetPaginationFilterDto!\" is required, but it was not provided.",
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "GRAPHQL_VALIDATION_FAILED"
+            },
+            "code": "GRAPHQL_VALIDATION_FAILED"
+          }
+        ]
+      },
+      "headers": {
+        "server": "nginx/1.24.0 (Ubuntu)",
+        "date": "Fri, 21 Aug 2026 10:23:20 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "295",
+        "connection": "keep-alive",
+        "cache-control": "no-store",
+        "vary": "Origin"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "913d6e2a-b670-4823-81fa-e13f46f1caed",
+    "timestamp": "2026-08-21T10:23:11.268Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "https://api.dxpdemos.com/graphql",
+    "status": 200,
+    "duration": 479,
+    "request": {
+      "id": "26b6431b-3fd7-4f5f-84b7-774c7eb4d6ee",
+      "savedRequestId": "e99d94b1-c03f-4f53-87a0-189b2fad8d62",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "3eba61de-7e93-497e-ab02-0daac97727ae",
+      "name": "KiotViet branch sync",
+      "graphqlRootField": "kiotVietBranchSync",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "abd922de-1830-4d56-91fe-788938a11282",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "b28bbff0-b7d1-4364-a859-c21a481bc5c0",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "03df64d4-d351-4053-8844-043517f353ea",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "d3d4ef54-3825-4fa6-8ac4-3142aba19188",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "mutation KiotVietBranchSync {\n  kiotVietBranchSync {\n    total\n    created\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "479 ms",
+      "size": "55 B",
+      "data": {
+        "data": {
+          "kiotVietBranchSync": {
+            "total": 1,
+            "created": 0
+          }
+        }
+      },
+      "headers": {
+        "server": "nginx/1.24.0 (Ubuntu)",
+        "date": "Fri, 21 Aug 2026 10:23:16 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "56",
+        "connection": "keep-alive",
+        "cache-control": "no-store",
+        "vary": "Origin"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "772be6af-0d6e-4caf-b76e-d1f27986b9f0",
+    "timestamp": "2026-08-21T10:22:03.962Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "https://api.dxpdemos.com/graphql",
+    "status": 200,
+    "duration": 344,
+    "request": {
+      "id": "d388a392-a6d0-455b-8116-09f469f88a98",
+      "name": "KiotViet branch sync",
+      "graphqlRootField": "kiotVietBranchSync",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "abd922de-1830-4d56-91fe-788938a11282",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "b28bbff0-b7d1-4364-a859-c21a481bc5c0",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "03df64d4-d351-4053-8844-043517f353ea",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "d3d4ef54-3825-4fa6-8ac4-3142aba19188",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "mutation KiotVietBranchSync {\n  kiotVietBranchSync {\n    total\n    created\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "344 ms",
+      "size": "55 B",
+      "data": {
+        "data": {
+          "kiotVietBranchSync": {
+            "total": 1,
+            "created": 0
+          }
+        }
+      },
+      "headers": {
+        "server": "nginx/1.24.0 (Ubuntu)",
+        "date": "Fri, 21 Aug 2026 10:22:09 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "56",
+        "connection": "keep-alive",
+        "cache-control": "no-store",
+        "vary": "Origin"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "cd994051-b244-4269-a45c-4bd50f61cb08",
+    "timestamp": "2026-08-21T10:21:44.924Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "https://api.dxpdemos.com/graphql",
+    "status": 200,
+    "duration": 30,
+    "request": {
+      "id": "d388a392-a6d0-455b-8116-09f469f88a98",
+      "name": "KiotViet branch sync",
+      "graphqlRootField": "kiotVietBranchSync",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "abd922de-1830-4d56-91fe-788938a11282",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "b28bbff0-b7d1-4364-a859-c21a481bc5c0",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "03df64d4-d351-4053-8844-043517f353ea",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "d3d4ef54-3825-4fa6-8ac4-3142aba19188",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "mutation KiotVietBranchSync {\n  kiotVietBranchSync {\n    total\n    created\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "30 ms",
+      "size": "242 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Unauthorized",
+            "path": [
+              "kiotVietBranchSync"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "UNAUTHENTICATED",
+              "originalError": {
+                "message": "Unauthorized",
+                "statusCode": 401
+              }
+            },
+            "code": "UNAUTHENTICATED"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "server": "nginx/1.24.0 (Ubuntu)",
+        "date": "Fri, 21 Aug 2026 10:21:49 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "243",
+        "connection": "keep-alive",
+        "cache-control": "no-store",
+        "vary": "Origin"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "9642205b-3d10-42bc-8d8e-530c69a64a81",
+    "timestamp": "2026-08-21T06:24:10.605Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "https://api.dxpdemos.com/graphql",
+    "status": 200,
+    "duration": 121,
+    "request": {
+      "id": "761c550d-95ae-4b7d-ab07-d38a809729b3",
+      "savedRequestId": "e0c7a17f-afa5-4166-abb3-5eb22132a9e6",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": null,
+      "name": "health",
+      "graphqlRootField": "health",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "abd922de-1830-4d56-91fe-788938a11282",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "b28bbff0-b7d1-4364-a859-c21a481bc5c0",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query Health {\n  health {\n    message\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "121 ms",
+      "size": "36 B",
+      "data": {
+        "data": {
+          "health": {
+            "message": "Ok"
+          }
+        }
+      },
+      "headers": {
+        "server": "nginx/1.24.0 (Ubuntu)",
+        "date": "Fri, 21 Aug 2026 06:24:15 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "37",
+        "connection": "keep-alive",
+        "cache-control": "no-store",
+        "vary": "Origin"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "803d623d-26a4-422f-b2b9-e10d020f37f5",
+    "timestamp": "2026-08-21T06:23:44.595Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "https://api.dxpdemos.com//graphql",
+    "status": 200,
+    "duration": 530,
+    "request": {
+      "id": "761c550d-95ae-4b7d-ab07-d38a809729b3",
+      "savedRequestId": "e0c7a17f-afa5-4166-abb3-5eb22132a9e6",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": null,
+      "name": "health",
+      "graphqlRootField": "health",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "abd922de-1830-4d56-91fe-788938a11282",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "b28bbff0-b7d1-4364-a859-c21a481bc5c0",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query Health {\n  health {\n    message\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "530 ms",
+      "size": "36 B",
+      "data": {
+        "data": {
+          "health": {
+            "message": "Ok"
+          }
+        }
+      },
+      "headers": {
+        "server": "nginx/1.24.0 (Ubuntu)",
+        "date": "Fri, 21 Aug 2026 06:23:49 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "37",
+        "connection": "keep-alive",
+        "cache-control": "no-store",
+        "vary": "Origin"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
     "id": "2b2bdfc6-9928-4662-abe0-0cfa1e845f23",
     "timestamp": "2026-08-21T05:26:59.040Z",
     "method": "GQL",

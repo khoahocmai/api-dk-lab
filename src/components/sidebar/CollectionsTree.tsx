@@ -3,7 +3,7 @@ import {
   ChevronDown,
   ChevronRight,
   Download,
-  FileCode2,
+  FileCode,
   Folder,
   FolderPlus,
   Pencil,
@@ -14,6 +14,24 @@ import {
 } from 'lucide-react'
 import type { CollectionItem, FolderItem, SavedRequestItem } from '../../types'
 import { isDescendantFolder } from '../../utils/treeHelper'
+
+function getMethodBadgeClass(mode: string, method?: string) {
+  if (mode === 'GRAPHQL') return 'method-badge-gql'
+  switch ((method || 'GET').toUpperCase()) {
+    case 'GET':
+      return 'method-badge-get'
+    case 'POST':
+      return 'method-badge-post'
+    case 'PUT':
+      return 'method-badge-put'
+    case 'PATCH':
+      return 'method-badge-patch'
+    case 'DELETE':
+      return 'method-badge-delete'
+    default:
+      return 'method-badge-get'
+  }
+}
 
 export type DragItem =
   | { type: 'REQUEST'; id: string; collectionId: string; folderId: string | null }
@@ -332,7 +350,7 @@ export function CollectionsTree({
     )
 
     return (
-      <div className="folder-tree-branch" style={{ paddingLeft: level > 1 ? 12 : 6 }}>
+      <div className={level > 1 ? 'folder-tree-branch' : 'folder-tree-root'}>
         {childFolders.map((folder) => {
           const isExpanded = expandedFolderIds.includes(folder.id)
           const isEditing = editingFolderId === folder.id
@@ -351,9 +369,9 @@ export function CollectionsTree({
             dropTarget.position === 'after'
 
           return (
-            <div key={folder.id} className="folder-node" style={{ marginBottom: 4 }}>
+            <div key={folder.id} className="folder-node">
               {isEditing ? (
-                <div style={{ padding: '2px 4px' }}>
+                <div style={{ padding: '2px 4px', width: '100%', height: 28, display: 'flex', alignItems: 'center' }}>
                   <input
                     className="input input-sm"
                     value={editingFolderName}
@@ -364,12 +382,12 @@ export function CollectionsTree({
                     }}
                     onBlur={() => handleSaveRenameFolder(folder.id)}
                     autoFocus
-                    style={{ height: 24, fontSize: 11, fontWeight: 650 }}
+                    style={{ height: 24, fontSize: 11, fontWeight: 650, width: '100%' }}
                   />
                 </div>
               ) : (
                 <div
-                  className={`folder-row row-between group-hover-row tree-item-draggable ${
+                  className={`folder-row group-hover-row tree-item-draggable ${
                     isFolderDragging ? 'is-dragging' : ''
                   } ${isTargetInside ? 'drop-target-inside' : ''} ${
                     isTargetBefore ? 'drop-target-before' : ''
@@ -382,21 +400,20 @@ export function CollectionsTree({
                   }}
                   onDrop={(e) => handleFolderDrop(e, folder)}
                   onDragEnd={handleDragEnd}
+                  onClick={() => onToggleFolder(folder.id)}
                 >
-                  <button
-                    type="button"
-                    className="collection-button folder-button"
-                    onClick={() => onToggleFolder(folder.id)}
-                  >
-                    {isExpanded ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
-                    <Folder size={14} className="folder-icon" />
+                  <div className="folder-info">
+                    <span className="folder-chevron">
+                      {isExpanded ? <ChevronDown size={13} /> : <ChevronRight size={13} />}
+                    </span>
+                    <Folder size={13} className="folder-icon" />
                     <span className="folder-name">{folder.name}</span>
-                  </button>
+                  </div>
 
-                  <div className="row hover-actions" style={{ gap: 2 }}>
+                  <div className="hover-actions" onClick={(e) => e.stopPropagation()}>
                     <button
                       type="button"
-                      className="icon-button icon-button-sm"
+                      className="icon-button icon-button-sm rename-btn"
                       onClick={() => handleStartRenameFolder(folder)}
                       title="Rename Folder"
                     >
@@ -404,7 +421,7 @@ export function CollectionsTree({
                     </button>
                     <button
                       type="button"
-                      className="icon-button icon-button-sm"
+                      className="icon-button icon-button-sm add-folder-btn"
                       onClick={() => onAddFolder(collectionId, folder.id)}
                       title="Add Subfolder"
                     >
@@ -412,7 +429,7 @@ export function CollectionsTree({
                     </button>
                     <button
                       type="button"
-                      className="icon-button icon-button-sm"
+                      className="icon-button icon-button-sm delete-btn"
                       onClick={() => onDeleteFolder(folder.id)}
                       title="Delete Folder"
                     >
@@ -451,7 +468,6 @@ export function CollectionsTree({
               } ${isTargetBefore ? 'drop-target-before' : ''} ${
                 isTargetAfter ? 'drop-target-after' : ''
               }`}
-              style={{ marginBottom: 4 }}
               draggable={!isEditingAny}
               onDragStart={(e) => handleRequestDragStart(e, item)}
               onDragOver={(e) => handleRequestDragOver(e, item)}
@@ -460,9 +476,10 @@ export function CollectionsTree({
               }}
               onDrop={(e) => handleRequestDrop(e, item)}
               onDragEnd={handleDragEnd}
+              onClick={() => onOpenSavedRequest(item)}
             >
               {isEditing ? (
-                <div style={{ padding: '2px 4px', width: '100%' }}>
+                <div style={{ padding: '2px 4px', width: '100%', height: 28, display: 'flex', alignItems: 'center' }}>
                   <input
                     className="input input-sm"
                     value={editingRequestName}
@@ -478,31 +495,26 @@ export function CollectionsTree({
                 </div>
               ) : (
                 <>
-                  <button
-                    className="saved-request-button"
-                    onClick={() => onOpenSavedRequest(item)}
-                  >
-                    <FileCode2 size={14} />
-                    <span
-                      className={`method-tag method-tag-sm ${
-                        item.request.mode === 'GRAPHQL' ? 'method-graphql' : 'method-rest'
-                      }`}
-                    >
+                  <div className="saved-request-info">
+                    <FileCode size={13} className="request-icon" />
+                    <span className={`method-badge ${getMethodBadgeClass(item.request.mode, item.request.method)}`}>
                       {item.request.mode === 'GRAPHQL' ? 'GQL' : item.request.method}
                     </span>
                     <span className="saved-request-name">{item.name}</span>
-                  </button>
-                  <div className="row hover-actions" style={{ gap: 2 }}>
+                  </div>
+
+                  <div className="hover-actions" onClick={(e) => e.stopPropagation()}>
                     <button
                       type="button"
-                      className="icon-button icon-button-sm"
+                      className="icon-button icon-button-sm rename-btn"
                       onClick={() => handleStartRenameRequest(item)}
                       title="Rename Request"
                     >
                       <Pencil size={12} />
                     </button>
                     <button
-                      className="icon-button icon-button-sm"
+                      type="button"
+                      className="icon-button icon-button-sm delete-btn"
                       onClick={() => onRemoveSavedRequest(item.id)}
                       aria-label={`Delete saved request ${item.name}`}
                       title="Delete Saved Request"
@@ -591,7 +603,7 @@ export function CollectionsTree({
               className={`collection-card ${isCollectionDropTarget ? 'drop-target-inside' : ''}`}
             >
               {isEditing ? (
-                <div style={{ padding: '3px 4px' }}>
+                <div style={{ padding: '3px 4px', height: 28, display: 'flex', alignItems: 'center' }}>
                   <input
                     className="input input-sm"
                     value={editingCollectionName}
@@ -602,14 +614,13 @@ export function CollectionsTree({
                     }}
                     onBlur={() => handleSaveRenameCollection(collection.id)}
                     autoFocus
-                    style={{ height: 24, fontSize: 12, fontWeight: 700 }}
+                    style={{ height: 24, fontSize: 12, fontWeight: 700, width: '100%' }}
                   />
                 </div>
               ) : (
                 <div
-                  className="collection-header row-between group-hover-row"
+                  className="collection-header group-hover-row"
                   onClick={() => onToggleCollection(collection.id)}
-                  style={{ cursor: 'pointer' }}
                   onDragOver={(e) => handleCollectionDragOver(e, collection.id)}
                   onDragLeave={() => {
                     if (dropTarget?.id === collection.id) setDropTarget(null)
@@ -617,59 +628,48 @@ export function CollectionsTree({
                   onDrop={(e) => handleCollectionDrop(e, collection.id)}
                 >
                   <div
-                    className="collection-button"
+                    className="collection-info"
                     aria-expanded={isExpanded}
                   >
-                    {isExpanded ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
-                    <Folder size={14} style={{ color: 'var(--primary-bright)' }} />
+                    <span className="collection-chevron">
+                      {isExpanded ? <ChevronDown size={13} /> : <ChevronRight size={13} />}
+                    </span>
+                    <Folder size={14} style={{ color: 'var(--primary-bright)', flexShrink: 0 }} />
                     <span className="collection-title-text">{collection.name}</span>
                   </div>
 
                   <div
-                    className="row hover-actions"
-                    style={{ gap: 2 }}
+                    className="hover-actions"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <button
                       type="button"
-                      className="icon-button icon-button-sm"
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        handleStartRenameCollection(collection)
-                      }}
+                      className="icon-button icon-button-sm rename-btn"
+                      onClick={() => handleStartRenameCollection(collection)}
                       title="Rename Collection"
                     >
                       <Pencil size={12} />
                     </button>
                     <button
                       type="button"
-                      className="icon-button icon-button-sm"
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        onAddFolder(collection.id, null)
-                      }}
+                      className="icon-button icon-button-sm add-folder-btn"
+                      onClick={() => onAddFolder(collection.id, null)}
                       title="Add Folder"
                     >
                       <FolderPlus size={12} />
                     </button>
                     <button
                       type="button"
-                      className="icon-button icon-button-sm"
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        onExportCollection(collection)
-                      }}
+                      className="icon-button icon-button-sm export-btn"
+                      onClick={() => onExportCollection(collection)}
                       title="Export as Postman Collection v2.1"
                     >
                       <Download size={12} />
                     </button>
                     <button
                       type="button"
-                      className="icon-button icon-button-sm"
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        onDeleteCollection(collection.id)
-                      }}
+                      className="icon-button icon-button-sm delete-btn"
+                      onClick={() => onDeleteCollection(collection.id)}
                       title="Delete Collection"
                       disabled={collections.length === 1}
                     >
