@@ -32,6 +32,7 @@ import {
 } from './services/templateService'
 import { sendHttpRequest } from './services/httpService'
 import {
+  createDefaultAuth,
   createDefaultEnvironment,
   createDefaultRequest,
   loadAllWorkspaceData,
@@ -116,7 +117,7 @@ function App() {
   const [selectedGraphFieldKeys, setSelectedGraphFieldKeys] = useState<string[]>([])
 
   const isSendingRef = useRef(false)
-  const didHydrateRef = useRef(false)
+  const [isHydrated, setIsHydrated] = useState(false)
 
   const activeTab = useMemo(
     () => tabs.find((item) => item.id === activeTabId) ?? tabs[0],
@@ -225,12 +226,11 @@ function App() {
         if (settingsData.isExplorerOpen !== undefined) {
           setIsExplorerOpen(settingsData.isExplorerOpen)
         }
+
+        // Mark as fully hydrated only after successfully loading data
+        setIsHydrated(true)
       } catch (error) {
         console.error('Failed to load workspace data:', error)
-      } finally {
-        if (isMounted) {
-          didHydrateRef.current = true
-        }
       }
     }
 
@@ -241,9 +241,9 @@ function App() {
     }
   }, [])
 
-  // Keep active selections valid
+  // Keep active selections valid (only after workspace is hydrated)
   useEffect(() => {
-    if (!didHydrateRef.current) return
+    if (!isHydrated) return
 
     if (!activeTabId && tabs[0]) {
       setActiveTabId(tabs[0].id)
@@ -255,6 +255,7 @@ function App() {
       setExpandedCollectionIds([collections[0].id])
     }
   }, [
+    isHydrated,
     tabs,
     activeTabId,
     environments,
@@ -265,31 +266,46 @@ function App() {
 
   // Realtime Save: Environments (data/environments.json)
   useEffect(() => {
-    if (!didHydrateRef.current) return
-    void saveEnvironments(environments)
-  }, [environments])
+    if (!isHydrated) return
+
+    const timer = window.setTimeout(() => {
+      void saveEnvironments(environments)
+    }, 150)
+
+    return () => window.clearTimeout(timer)
+  }, [environments, isHydrated])
 
   // Realtime Save: Collections & Folders & Saved Requests (data/collections.json)
   useEffect(() => {
-    if (!didHydrateRef.current) return
-    void saveCollections({
-      collections,
-      folders,
-      savedRequests,
-      expandedCollectionIds,
-      expandedFolderIds,
-    })
-  }, [collections, folders, savedRequests, expandedCollectionIds, expandedFolderIds])
+    if (!isHydrated) return
+
+    const timer = window.setTimeout(() => {
+      void saveCollections({
+        collections,
+        folders,
+        savedRequests,
+        expandedCollectionIds,
+        expandedFolderIds,
+      })
+    }, 150)
+
+    return () => window.clearTimeout(timer)
+  }, [collections, folders, savedRequests, expandedCollectionIds, expandedFolderIds, isHydrated])
 
   // Realtime Save: History (data/history.json)
   useEffect(() => {
-    if (!didHydrateRef.current) return
-    void saveHistory(history)
-  }, [history])
+    if (!isHydrated) return
+
+    const timer = window.setTimeout(() => {
+      void saveHistory(history)
+    }, 200)
+
+    return () => window.clearTimeout(timer)
+  }, [history, isHydrated])
 
   // Realtime Save: Settings & UI Workspace State (data/settings.json)
   useEffect(() => {
-    if (!didHydrateRef.current) return
+    if (!isHydrated) return
 
     const timeout = window.setTimeout(() => {
       void saveSettings({
@@ -312,6 +328,7 @@ function App() {
     splitLayout,
     isSidebarCollapsed,
     isExplorerOpen,
+    isHydrated,
   ])
 
   useEffect(() => {
@@ -322,6 +339,12 @@ function App() {
       if (event.key.toLowerCase() === 'b') {
         event.preventDefault()
         setIsSidebarCollapsed((prev) => !prev)
+        return
+      }
+
+      if (event.key.toLowerCase() === 't') {
+        event.preventDefault()
+        addTab('REST')
         return
       }
 
@@ -1072,8 +1095,8 @@ function App() {
   }
 
   const loadGraphSchema = async () => {
-    if (!activeTab) return
-    let finalUrl = resolveTemplates(activeTab.url.trim(), activeEnvironment)
+    const targetUrl = activeTab && activeTab.url.trim() ? activeTab.url.trim() : '{{Domain}}/graphql'
+    let finalUrl = resolveTemplates(targetUrl, activeEnvironment)
     if (!finalUrl) return
     if (!finalUrl.startsWith('http://') && !finalUrl.startsWith('https://')) {
       finalUrl = `http://${finalUrl}`
@@ -1083,11 +1106,15 @@ function App() {
 
     try {
       const rawHeaders = resolveHeadersList(
-        activeTab.headersList,
-        activeTab.headersText,
+        activeTab?.headersList || [],
+        activeTab?.headersText || '{}',
         activeEnvironment,
       )
-      const headers = injectAuthToHeaders(rawHeaders, activeTab.auth, activeEnvironment)
+      const headers = injectAuthToHeaders(
+        rawHeaders,
+        activeTab?.auth || createDefaultAuth(),
+        activeEnvironment,
+      )
       const extracted = await fetchGraphQLSchema(finalUrl, headers)
 
       setGraphExplorer((current) => ({
@@ -1108,33 +1135,61 @@ function App() {
     }
   }
 
-  const applyGraphExplorerFields = (
+  const createGraphRequestTab = (
     kind: 'query' | 'mutation',
     fields: GraphField[],
   ) => {
-    if (!activeTab) return
+    if (fields.length === 0) return
 
     const generated = buildGraphOperationFromFields(kind, fields)
-    updateActiveTab({
+    const baseRequest = createDefaultRequest('GRAPHQL')
+    const tabName =
+      fields.length === 1
+        ? fields[0].name
+        : `${fields.length} ${kind} fields`
+
+    // Inherit URL, headers, and auth from current active tab if available, else default
+    const inheritedUrl =
+      activeTab && activeTab.url.trim() ? activeTab.url.trim() : baseRequest.url
+    const inheritedHeadersList =
+      activeTab && activeTab.headersList && activeTab.headersList.length > 0
+        ? activeTab.headersList
+        : baseRequest.headersList
+    const inheritedHeadersText =
+      activeTab && activeTab.headersText
+        ? activeTab.headersText
+        : baseRequest.headersText
+    const inheritedAuth =
+      activeTab && activeTab.auth ? activeTab.auth : baseRequest.auth
+
+    const newTab: RequestItem = {
+      ...baseRequest,
+      id: createId(),
+      name: tabName,
       mode: 'GRAPHQL',
       method: 'POST',
+      url: inheritedUrl,
+      params: parseUrlToQueryParams(inheritedUrl).params,
+      headersList: inheritedHeadersList,
+      headersText: inheritedHeadersText,
+      auth: inheritedAuth,
       editorTab: 'BODY',
       gqlQuery: generated.query,
       gqlVariables: JSON.stringify(generated.variables, null, 2),
-      name:
-        fields.length === 1
-          ? fields[0].name
-          : fields.length
-            ? `${fields.length} ${kind} fields`
-            : activeTab.name,
-    })
+      savedRequestId: undefined,
+      collectionId: undefined,
+      folderId: undefined,
+    }
+
+    setTabs((current) => [...current, newTab])
+    setActiveTabId(newTab.id)
+    setMobileView('REQUEST')
   }
 
   const insertGraphField = (field: GraphField) => {
     const key = getGraphFieldKey(currentGraphOperationKind, field.name)
     setSelectedGraphFieldKeys([key])
-    applyGraphExplorerFields(currentGraphOperationKind, [field])
-    setMobileView('REQUEST')
+    createGraphRequestTab(currentGraphOperationKind, [field])
   }
 
   const toggleGraphField = (field: GraphField, checked: boolean) => {
@@ -1144,19 +1199,12 @@ function App() {
       : selectedGraphFieldKeys.filter((item) => item !== key)
 
     setSelectedGraphFieldKeys(nextKeys)
-
-    const nextFields = currentExplorerFields.filter((item) =>
-      nextKeys.includes(getGraphFieldKey(currentGraphOperationKind, item.name)),
-    )
-
-    applyGraphExplorerFields(currentGraphOperationKind, nextFields)
   }
 
   const clearGraphSelection = () => {
     setSelectedGraphFieldKeys((current) =>
       current.filter((key) => !key.startsWith(`${currentGraphOperationKind}:`)),
     )
-    applyGraphExplorerFields(currentGraphOperationKind, [])
   }
 
   return (
@@ -1177,26 +1225,29 @@ function App() {
               maxSize="40%"
               className="panel-resizable-item"
               id="left-explorer-panel"
+              style={{ height: '100%', maxHeight: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: 0 }}
             >
-              <ExplorerPanel
-                isMobileActive={mobileView === 'EXPLORER'}
-                activeTab={activeTab}
-                graphExplorer={graphExplorer}
-                setGraphExplorer={setGraphExplorer}
-                selectedGraphFieldKeys={selectedGraphFieldKeys}
-                onLoadSchema={loadGraphSchema}
-                onCloseMobile={() => setMobileView('REQUEST')}
-                onCloseExplorer={() => setIsExplorerOpen(false)}
-                onToggleField={toggleGraphField}
-                onQuickInsert={insertGraphField}
-                onApplySelected={() =>
-                  applyGraphExplorerFields(
-                    currentGraphOperationKind,
-                    selectedExplorerFields,
-                  )
-                }
-                onClearSelection={clearGraphSelection}
-              />
+              <div style={{ height: '100%', maxHeight: '100%', width: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: 0 }}>
+                <ExplorerPanel
+                  isMobileActive={mobileView === 'EXPLORER'}
+                  activeTab={activeTab}
+                  graphExplorer={graphExplorer}
+                  setGraphExplorer={setGraphExplorer}
+                  selectedGraphFieldKeys={selectedGraphFieldKeys}
+                  onLoadSchema={loadGraphSchema}
+                  onCloseMobile={() => setMobileView('REQUEST')}
+                  onCloseExplorer={() => setIsExplorerOpen(false)}
+                  onToggleField={toggleGraphField}
+                  onQuickInsert={insertGraphField}
+                  onApplySelected={() =>
+                    createGraphRequestTab(
+                      currentGraphOperationKind,
+                      selectedExplorerFields,
+                    )
+                  }
+                  onClearSelection={clearGraphSelection}
+                />
+              </div>
             </Panel>
 
             <Separator className="resize-handle vertical-handle" />

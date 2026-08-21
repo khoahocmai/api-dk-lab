@@ -34,7 +34,7 @@ export function ExplorerPanel({
   return (
     <aside
       className={`panel explorer-panel ${isMobileActive ? 'is-mobile-active' : ''}`}
-      style={{ height: '100%' }}
+      style={{ height: '100%', maxHeight: '100%', width: '100%', display: 'flex', flexDirection: 'column', minHeight: 0, overflow: 'hidden' }}
     >
       <Explorer
         activeTab={activeTab}

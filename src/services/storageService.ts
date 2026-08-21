@@ -4,6 +4,7 @@ import type {
   EnvironmentItem,
   FolderItem,
   HistoryItem,
+  KeyValueRow,
   Mode,
   PersistedRequestItem,
   PersistedWorkspace,
@@ -13,7 +14,11 @@ import type {
 } from '../types'
 import { AppSettings, DEFAULT_APP_SETTINGS } from '../types/settings.types'
 import { createId } from '../utils/formatters'
-import { parseHeadersTextToRows, parseUrlToQueryParams } from '../utils/urlHelper'
+import {
+  convertRowsToHeadersJson,
+  parseHeadersTextToRows,
+  parseUrlToQueryParams,
+} from '../utils/urlHelper'
 
 export const STORAGE_FILES = {
   ENVIRONMENTS: 'environments.json',
@@ -80,6 +85,9 @@ export function createDefaultEnvironment(name: string, domain: string): Environm
 }
 
 export function stripTransientRequest(request: RequestItem): PersistedRequestItem {
+  const headersList = Array.isArray(request.headersList) ? request.headersList : []
+  const headersText = request.headersText || convertRowsToHeadersJson(headersList)
+
   return {
     id: request.id,
     savedRequestId: request.savedRequestId,
@@ -89,15 +97,15 @@ export function stripTransientRequest(request: RequestItem): PersistedRequestIte
     mode: request.mode,
     method: request.method,
     url: request.url,
-    params: request.params,
-    headersList: request.headersList,
-    headersText: request.headersText,
+    params: Array.isArray(request.params) ? request.params : [],
+    headersList,
+    headersText,
     auth: request.auth,
     bodyType: request.bodyType,
     restBody: request.restBody,
     rawText: request.rawText,
-    formData: request.formData,
-    urlencoded: request.urlencoded,
+    formData: Array.isArray(request.formData) ? request.formData : [],
+    urlencoded: Array.isArray(request.urlencoded) ? request.urlencoded : [],
     gqlQuery: request.gqlQuery,
     gqlVariables: request.gqlVariables,
     testScript: request.testScript,
@@ -111,7 +119,33 @@ export function reviveRequest(request: Partial<PersistedRequestItem>): RequestIt
   const def = createDefaultRequest(mode)
 
   const url = request.url ?? def.url
-  const headersText = request.headersText ?? def.headersText
+
+  // Robustly extract headersList:
+  // 1. If request.headersList is defined and an array (even if empty or contains custom headers)
+  // 2. Or if request.headers is defined (legacy or Postman format)
+  // 3. Or if request.headersText is non-empty
+  // 4. Fallback to default headersList
+  const rawHeadersList: any[] =
+    Array.isArray(request.headersList)
+      ? request.headersList
+      : Array.isArray((request as any).headers)
+      ? (request as any).headers
+      : request.headersText && request.headersText.trim() && request.headersText !== '{}'
+      ? parseHeadersTextToRows(request.headersText)
+      : def.headersList
+
+  const headersList: KeyValueRow[] = rawHeadersList.map((h: any) => ({
+    id: h.id || createId(),
+    key: h.key ?? '',
+    value: h.value ?? '',
+    enabled: h.enabled ?? true,
+    description: h.description ?? '',
+  }))
+
+  const headersText =
+    request.headersText !== undefined
+      ? request.headersText
+      : convertRowsToHeadersJson(headersList)
 
   return {
     ...def,
@@ -120,16 +154,13 @@ export function reviveRequest(request: Partial<PersistedRequestItem>): RequestIt
     collectionId: request.collectionId,
     folderId: request.folderId,
     url,
-    params: request.params ?? parseUrlToQueryParams(url).params,
-    headersList:
-      request.headersList && request.headersList.length > 0
-        ? request.headersList
-        : parseHeadersTextToRows(headersText),
+    params: Array.isArray(request.params) ? request.params : parseUrlToQueryParams(url).params,
+    headersList,
     headersText,
     auth: request.auth ?? createDefaultAuth(),
     bodyType: request.bodyType ?? 'json',
-    formData: request.formData ?? [],
-    urlencoded: request.urlencoded ?? [],
+    formData: Array.isArray(request.formData) ? request.formData : [],
+    urlencoded: Array.isArray(request.urlencoded) ? request.urlencoded : [],
     rawText: request.rawText ?? '',
     testScript: request.testScript ?? def.testScript,
     testResults: null,
@@ -142,13 +173,7 @@ export function reviveRequest(request: Partial<PersistedRequestItem>): RequestIt
 }
 
 export function stripSecretValues(environments: EnvironmentItem[]): EnvironmentItem[] {
-  return environments.map((env) => ({
-    ...env,
-    variables: env.variables.map((item) => ({
-      ...item,
-      value: item.secret ? '' : item.value,
-    })),
-  }))
+  return environments
 }
 
 // ----------------------------------------------------------------------
@@ -170,7 +195,7 @@ export async function readStorage<T = unknown>(fileName: string): Promise<T | nu
   // 2. Web browser fallback (localStorage)
   try {
     const raw = localStorage.getItem(`api-lab:${fileName}`)
-    if (raw) {
+    if (raw && raw.trim()) {
       return JSON.parse(raw) as T
     }
 
@@ -213,6 +238,10 @@ export async function readStorage<T = unknown>(fileName: string): Promise<T | nu
 }
 
 export async function writeStorage<T = unknown>(fileName: string, data: T): Promise<boolean> {
+  if (data === undefined) {
+    return false
+  }
+
   // 1. Electron Desktop IPC
   if (window.desktopApi?.writeStorage) {
     try {
@@ -225,7 +254,7 @@ export async function writeStorage<T = unknown>(fileName: string, data: T): Prom
 
   // 2. Web browser fallback (localStorage)
   try {
-    localStorage.setItem(`api-lab:${fileName}`, JSON.stringify(data))
+    localStorage.setItem(`api-lab:${fileName}`, JSON.stringify(data, null, 2))
     return true
   } catch (error) {
     console.error(`[Storage] Failed to write ${fileName} to localStorage fallback:`, error)
@@ -239,21 +268,20 @@ export async function writeStorage<T = unknown>(fileName: string, data: T): Prom
 
 export async function loadEnvironments(): Promise<{ environments: EnvironmentItem[]; isNew: boolean }> {
   const data = await readStorage<EnvironmentItem[]>(STORAGE_FILES.ENVIRONMENTS)
-  if (data !== null && Array.isArray(data)) {
+  if (data !== null && Array.isArray(data) && data.length > 0) {
     return { environments: data, isNew: false }
   }
 
-  // File does not exist yet (first launch) -> initialize defaults and create file
+  // File does not exist yet (first launch) -> return defaults in memory without eager write
   const defaultEnvs: EnvironmentItem[] = [
     createDefaultEnvironment('Local', 'http://localhost:3030'),
     createDefaultEnvironment('Dev', 'https://dev.example.com'),
   ]
-  await writeStorage(STORAGE_FILES.ENVIRONMENTS, stripSecretValues(defaultEnvs))
   return { environments: defaultEnvs, isNew: true }
 }
 
 export async function saveEnvironments(environments: EnvironmentItem[]): Promise<boolean> {
-  return await writeStorage(STORAGE_FILES.ENVIRONMENTS, stripSecretValues(environments))
+  return await writeStorage(STORAGE_FILES.ENVIRONMENTS, environments)
 }
 
 export interface PersistedCollectionsData {
@@ -269,33 +297,39 @@ export async function loadCollections(): Promise<PersistedCollectionsData> {
   if (data !== null) {
     if (Array.isArray(data)) {
       return {
-        collections: data,
+        collections: data.length > 0 ? data : [{ id: createId(), name: 'Default Collection' }],
         folders: [],
         savedRequests: [],
         expandedCollectionIds: data[0] ? [data[0].id] : [],
         expandedFolderIds: [],
       }
     }
+    const collections =
+      Array.isArray(data.collections) && data.collections.length > 0
+        ? data.collections
+        : [{ id: createId(), name: 'Default Collection' }]
+
     return {
-      collections: Array.isArray(data.collections) ? data.collections : [],
+      collections,
       folders: Array.isArray(data.folders) ? data.folders : [],
       savedRequests: Array.isArray(data.savedRequests) ? data.savedRequests : [],
-      expandedCollectionIds: Array.isArray(data.expandedCollectionIds) ? data.expandedCollectionIds : [],
+      expandedCollectionIds:
+        Array.isArray(data.expandedCollectionIds) && data.expandedCollectionIds.length > 0
+          ? data.expandedCollectionIds
+          : [collections[0].id],
       expandedFolderIds: Array.isArray(data.expandedFolderIds) ? data.expandedFolderIds : [],
     }
   }
 
-  // File does not exist yet -> initialize default collection and create file
-  const defaultCollections: PersistedCollectionsData = {
-    collections: [{ id: createId(), name: 'Default Collection' }],
+  // First launch or missing file -> return default collection in memory WITHOUT overwriting disk
+  const defaultId = createId()
+  return {
+    collections: [{ id: defaultId, name: 'Default Collection' }],
     folders: [],
     savedRequests: [],
-    expandedCollectionIds: [],
+    expandedCollectionIds: [defaultId],
     expandedFolderIds: [],
   }
-  defaultCollections.expandedCollectionIds = [defaultCollections.collections[0].id]
-  await writeStorage(STORAGE_FILES.COLLECTIONS, defaultCollections)
-  return defaultCollections
 }
 
 export async function saveCollections(data: PersistedCollectionsData): Promise<boolean> {
@@ -307,10 +341,7 @@ export async function loadHistory(): Promise<HistoryItem[]> {
   if (data !== null && Array.isArray(data)) {
     return data
   }
-
-  const defaultHistory: HistoryItem[] = []
-  await writeStorage(STORAGE_FILES.HISTORY, defaultHistory)
-  return defaultHistory
+  return []
 }
 
 export async function saveHistory(history: HistoryItem[]): Promise<boolean> {
@@ -336,17 +367,20 @@ type RawSettingsFile = Partial<PersistedSettingsData> & {
 export async function loadSettings(): Promise<PersistedSettingsData> {
   const data = await readStorage<RawSettingsFile>(STORAGE_FILES.SETTINGS)
   if (data !== null && typeof data === 'object') {
-    const settings: AppSettings = data.settings && typeof data.settings === 'object'
-      ? {
-          requestTimeout: data.settings.requestTimeout ?? DEFAULT_APP_SETTINGS.requestTimeout,
-          rejectUnauthorized: data.settings.rejectUnauthorized ?? DEFAULT_APP_SETTINGS.rejectUnauthorized,
-          editorFontSize: data.settings.editorFontSize ?? DEFAULT_APP_SETTINGS.editorFontSize,
-        }
-      : {
-          requestTimeout: data.requestTimeout ?? DEFAULT_APP_SETTINGS.requestTimeout,
-          rejectUnauthorized: data.rejectUnauthorized ?? DEFAULT_APP_SETTINGS.rejectUnauthorized,
-          editorFontSize: data.editorFontSize ?? DEFAULT_APP_SETTINGS.editorFontSize,
-        }
+    const settings: AppSettings =
+      data.settings && typeof data.settings === 'object'
+        ? {
+            requestTimeout: data.settings.requestTimeout ?? DEFAULT_APP_SETTINGS.requestTimeout,
+            rejectUnauthorized:
+              data.settings.rejectUnauthorized ?? DEFAULT_APP_SETTINGS.rejectUnauthorized,
+            editorFontSize: data.settings.editorFontSize ?? DEFAULT_APP_SETTINGS.editorFontSize,
+          }
+        : {
+            requestTimeout: data.requestTimeout ?? DEFAULT_APP_SETTINGS.requestTimeout,
+            rejectUnauthorized:
+              data.rejectUnauthorized ?? DEFAULT_APP_SETTINGS.rejectUnauthorized,
+            editorFontSize: data.editorFontSize ?? DEFAULT_APP_SETTINGS.editorFontSize,
+          }
 
     return {
       settings,
@@ -360,7 +394,7 @@ export async function loadSettings(): Promise<PersistedSettingsData> {
   }
 
   const defaultTabs = [stripTransientRequest(createDefaultRequest('GRAPHQL'))]
-  const defaultSettingsData: PersistedSettingsData = {
+  return {
     settings: DEFAULT_APP_SETTINGS,
     activeEnvironmentId: '',
     activeTabId: defaultTabs[0].id,
@@ -369,8 +403,6 @@ export async function loadSettings(): Promise<PersistedSettingsData> {
     isSidebarCollapsed: false,
     isExplorerOpen: false,
   }
-  await writeStorage(STORAGE_FILES.SETTINGS, defaultSettingsData)
-  return defaultSettingsData
 }
 
 export async function saveSettings(data: PersistedSettingsData): Promise<boolean> {

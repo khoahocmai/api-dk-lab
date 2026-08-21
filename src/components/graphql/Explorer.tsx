@@ -88,10 +88,34 @@ export function Explorer({
   )
 
   return (
-    <div className="graph-explorer-panel" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      {/* Header */}
-      <div className="panel-header" style={{ padding: '8px 10px' }}>
-        <div className="row-between" style={{ marginBottom: 8 }}>
+    <div
+      className="graph-explorer-panel"
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        maxHeight: '100%',
+        width: '100%',
+        minHeight: 0,
+        overflow: 'hidden',
+        background: '#12141a',
+      }}
+    >
+      {/* Pinned Header & Filter Bar */}
+      <div
+        className="panel-header"
+        style={{
+          flexShrink: 0,
+          flexGrow: 0,
+          padding: '8px 10px',
+          borderBottom: '1px solid var(--border)',
+          background: 'var(--bg-sidebar)',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 6,
+        }}
+      >
+        <div className="row-between">
           <div className="row" style={{ fontWeight: 750, fontSize: 12, color: 'var(--text-primary)' }}>
             <BookOpen size={14} style={{ color: 'var(--primary-bright)' }} />
             <span>GraphQL Explorer</span>
@@ -100,7 +124,7 @@ export function Explorer({
             <button
               className="button button-sm"
               onClick={() => void onLoadSchema()}
-              disabled={!activeTab || activeTab.mode !== 'GRAPHQL' || graphExplorer.loading}
+              disabled={!activeTab || graphExplorer.loading}
               style={{ height: 24, padding: '0 6px' }}
               title="Introspect GraphQL Schema"
             >
@@ -135,7 +159,7 @@ export function Explorer({
             onChange={(event) =>
               setGraphExplorer((current) => ({ ...current, search: event.target.value }))
             }
-            placeholder="Search Query / Mutation..."
+            placeholder="Search schema fields..."
             aria-label="Search GraphQL fields"
             style={{ paddingLeft: 26, paddingRight: graphExplorer.search ? 24 : 8 }}
           />
@@ -153,7 +177,7 @@ export function Explorer({
         </div>
 
         {/* Navigation Tabs (DOCS, QUERY, MUTATION) */}
-        <div className="row wrap" style={{ marginTop: 6, borderBottom: '1px solid var(--border)' }}>
+        <div className="row wrap" style={{ marginTop: 2, borderBottom: '1px solid var(--border)' }}>
           <button
             onClick={() => setGraphExplorer((current) => ({ ...current, activeTab: 'DOCS' }))}
             className={`editor-tab ${graphExplorer.activeTab === 'DOCS' ? 'is-active' : ''}`}
@@ -167,7 +191,7 @@ export function Explorer({
             style={{ height: 28, fontSize: 11, padding: '0 8px' }}
           >
             QUERY {graphExplorer.queryFields.length > 0 && (
-              <span className="tab-counter">{graphExplorer.queryFields.length}</span>
+              <span className="tab-counter">({graphExplorer.queryFields.length})</span>
             )}
           </button>
           <button
@@ -176,14 +200,24 @@ export function Explorer({
             style={{ height: 28, fontSize: 11, padding: '0 8px' }}
           >
             MUTATION {graphExplorer.mutationFields.length > 0 && (
-              <span className="tab-counter">{graphExplorer.mutationFields.length}</span>
+              <span className="tab-counter">({graphExplorer.mutationFields.length})</span>
             )}
           </button>
         </div>
       </div>
 
-      {/* Main Body */}
-      <div className="scroll-area" style={{ padding: '8px 10px' }}>
+      {/* Independent Scrollable Body */}
+      <div
+        className="scroll-area custom-scrollbar"
+        style={{
+          flex: '1 1 0%',
+          minHeight: 0,
+          height: 0,
+          overflowY: 'auto',
+          overflowX: 'hidden',
+          padding: '8px 10px',
+        }}
+      >
         {graphExplorer.error && (
           <div className="banner banner-danger" style={{ marginBottom: 8, padding: '6px 8px' }}>
             {graphExplorer.error}
@@ -195,7 +229,7 @@ export function Explorer({
             <InfoCard
               icon={<Layers3 size={14} />}
               title="Search + Query + Mutation"
-              description="Panel này mô phỏng API list: load schema, search field, tick checkbox để tự sinh GraphQL Query và Variables."
+              description="Panel này mô phỏng API list: load schema, search field, bấm 'Use this API' để tự động tạo một Request Tab mới với Query và Variables đầy đủ."
             />
             <InfoCard
               icon={<Database size={14} />}
@@ -212,33 +246,6 @@ export function Explorer({
 
         {graphExplorer.activeTab !== 'DOCS' && (
           <div className="stack" style={{ gap: 6 }}>
-            {/* Batch Action Bar */}
-            <div className="row-between" style={{ padding: '2px 0', minHeight: 24 }}>
-              <div className="meta-text" style={{ fontSize: 11 }}>
-                Selected: <strong style={{ color: 'var(--text-primary)' }}>{selectedExplorerFields.length}</strong> /{' '}
-                {currentExplorerFields.length}
-              </div>
-              {selectedExplorerFields.length > 0 && (
-                <div className="row wrap" style={{ gap: 4 }}>
-                  <button
-                    className="button button-sm button-primary"
-                    onClick={onApplySelected}
-                    style={{ height: 22, padding: '0 6px', fontSize: 11 }}
-                  >
-                    <CheckCheck size={11} />
-                    <span>Apply ({selectedExplorerFields.length})</span>
-                  </button>
-                  <button
-                    className="button button-sm"
-                    onClick={onClearSelection}
-                    style={{ height: 22, padding: '0 6px', fontSize: 11 }}
-                  >
-                    Clear
-                  </button>
-                </div>
-              )}
-            </div>
-
             {filteredExplorerFields.length === 0 ? (
               <div className="response-empty" style={{ minHeight: 140, fontStyle: 'italic' }}>
                 {graphExplorer.loading
@@ -268,6 +275,42 @@ export function Explorer({
           </div>
         )}
       </div>
+
+      {/* Sticky Bottom Action Bar (Smart Slide-up when items selected) */}
+      {selectedExplorerFields.length > 0 && (
+        <div className="graph-explorer-footer">
+          <span style={{ fontSize: 11, color: 'var(--primary-bright)', fontWeight: 600 }}>
+            {selectedExplorerFields.length} field{selectedExplorerFields.length > 1 ? 's' : ''} selected
+          </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <button
+              type="button"
+              onClick={onClearSelection}
+              className="explorer-clear-btn"
+            >
+              Clear
+            </button>
+            <button
+              type="button"
+              onClick={onApplySelected}
+              className="button button-sm button-primary"
+              style={{
+                height: 26,
+                padding: '0 10px',
+                fontSize: 11,
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 4,
+              }}
+              title="Open selected fields in a new Request Tab"
+            >
+              <CheckCheck size={12} />
+              <span>Apply ({selectedExplorerFields.length})</span>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

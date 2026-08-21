@@ -5,10 +5,57 @@
     "editorFontSize": 13
   },
   "activeEnvironmentId": "36eefd5b-4f5f-4a32-9b61-ae9b1ab57e32",
-  "activeTabId": "e4a006ef-9451-4671-94c3-8ff5e721e46e",
+  "activeTabId": "cd9e7f83-a0da-49b0-b031-f6037a5cf65f",
   "tabs": [
     {
-      "id": "e4a006ef-9451-4671-94c3-8ff5e721e46e",
+      "id": "73726082-d14d-428e-8a46-e23861da766c",
+      "savedRequestId": "3c5f15e6-11bb-4c53-94d5-2c12590c9f88",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": null,
+      "name": "Health",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "json",
+      "restBody": "{\n  \"name\": \"API Lab User\"\n}",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query Health {\n  health {\n    message\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    {
+      "id": "b3c7e1df-66c6-453a-b048-7139c424dadb",
       "savedRequestId": "ffde20c0-eda2-479d-9298-891f9032458b",
       "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
       "folderId": "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8",
@@ -22,16 +69,32 @@
           "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
           "key": "Content-Type",
           "value": "application/json",
-          "enabled": true
+          "enabled": true,
+          "description": ""
         },
         {
           "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
           "key": "Authorization",
           "value": "Bearer {{token}}",
-          "enabled": true
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "81f4c996-751b-40b5-8440-f64a3a1ee83c",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "f19ddf45-3d43-446f-90f1-7806c24f78f7",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
         }
       ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
       "auth": {
         "type": "none",
         "bearerToken": "",
@@ -51,9 +114,67 @@
       "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
       "editorTab": "VARIABLES",
       "responseTab": "PRETTY"
+    },
+    {
+      "id": "cd9e7f83-a0da-49b0-b031-f6037a5cf65f",
+      "name": "orderPaginationList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "81f4c996-751b-40b5-8440-f64a3a1ee83c",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "f19ddf45-3d43-446f-90f1-7806c24f78f7",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "json",
+      "restBody": "{\n  \"name\": \"API Lab User\"\n}",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\n  orderPaginationList(params: $params, filters: $filters) {\n    total\n  }\n}",
+      "gqlVariables": "{\n  \"params\": {\n    \"page\": 0,\n    \"pageSize\": 0,\n    \"sortBy\": \"\",\n    \"sortDirection\": \"\"\n  },\n  \"filters\": {\n    \"keywords\": \"\",\n    \"orderStatus\": [],\n    \"financialStatus\": [],\n    \"fulfillmentStatus\": [],\n    \"fromDate\": \"\",\n    \"toDate\": \"\",\n    \"isDisplay\": false,\n    \"callId\": \"\",\n    \"phoneNumber\": \"\",\n    \"status\": [],\n    \"saleChannel\": [],\n    \"shippingFullname\": \"\",\n    \"shippingNewProvinceId\": [],\n    \"shippingNewWardId\": [],\n    \"creatorFreetext\": \"\",\n    \"shippingType\": [],\n    \"storeId\": [],\n    \"paymentGateway\": [],\n    \"isGrabfoodOrder\": false,\n    \"grabfoodOrderStatus\": [],\n    \"paymentPartnerTendIds\": [],\n    \"orderNumbers\": [],\n    \"cancelledFromDate\": \"\",\n    \"cancelledToDate\": \"\",\n    \"createdByCurrentUser\": false,\n    \"createdBy\": [],\n    \"exportInvoiceStatus\": [],\n    \"syncRk7Success\": [],\n    \"syncSAPSuccess\": [],\n    \"expectedShippingReceiveFromDate\": \"\",\n    \"expectedShippingReceiveToDate\": \"\"\n  }\n}",
+      "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
     }
   ],
   "splitLayout": "horizontal",
-  "isSidebarCollapsed": false,
-  "isExplorerOpen": false
+  "isSidebarCollapsed": true,
+  "isExplorerOpen": true
 }

@@ -1,4 +1,5 @@
-import { BookOpen, Copy, PanelRightClose, PanelRightOpen, Plus, X } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import { BookOpen, Copy, Globe, Layers3, PanelRightClose, PanelRightOpen, Plus, X } from 'lucide-react'
 import type { EnvironmentItem, Mode, RequestItem } from '../../types'
 import { EnvironmentSelector } from '../common/EnvironmentSelector'
 
@@ -39,6 +40,33 @@ export function RequestTabs({
   onCloseTab,
   onAddTab,
 }: RequestTabsProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const menuRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isMenuOpen) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+      document.addEventListener('keydown', handleKeyDown)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isMenuOpen])
+
   return (
     <div className="tabbar">
       {/* Left side: GraphQL Explorer Toggle Button */}
@@ -94,26 +122,53 @@ export function RequestTabs({
           )
         })}
 
-        <button
-          type="button"
-          className="button button-sm"
-          onClick={() => onAddTab('GRAPHQL')}
-          title="New GraphQL Request"
-          style={{ height: 26, padding: '0 8px' }}
-        >
-          <Plus size={12} />
-          <span>GraphQL</span>
-        </button>
-        <button
-          type="button"
-          className="button button-sm"
-          onClick={() => onAddTab('REST')}
-          title="New REST Request"
-          style={{ height: 26, padding: '0 8px' }}
-        >
-          <Plus size={12} />
-          <span>REST</span>
-        </button>
+        {/* Compact Add Tab Button with Dropdown */}
+        <div className="add-tab-container" ref={menuRef}>
+          <button
+            type="button"
+            className={`add-tab-btn ${isMenuOpen ? 'is-open' : ''}`}
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            title="New Request (Ctrl+T)"
+            aria-label="Create new request"
+            aria-haspopup="true"
+            aria-expanded={isMenuOpen}
+          >
+            <Plus size={14} />
+          </button>
+
+          {isMenuOpen && (
+            <div className="add-tab-dropdown">
+              <button
+                type="button"
+                className="add-tab-menu-item"
+                onClick={() => {
+                  onAddTab('REST')
+                  setIsMenuOpen(false)
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+                  <Globe size={13} style={{ color: 'var(--method-get)' }} />
+                  <span>New REST Request</span>
+                </div>
+                <span className="add-tab-shortcut">Ctrl+T</span>
+              </button>
+
+              <button
+                type="button"
+                className="add-tab-menu-item"
+                onClick={() => {
+                  onAddTab('GRAPHQL')
+                  setIsMenuOpen(false)
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+                  <Layers3 size={13} style={{ color: 'var(--method-gql)' }} />
+                  <span>New GraphQL Request</span>
+                </div>
+              </button>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Right side: Environment Selector & Sidebar Toggle Button */}

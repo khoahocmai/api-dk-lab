@@ -51,8 +51,8 @@ export function RequestEditor({
     onUpdateTab({ bodyType: type })
   }
 
-  const activeParamCount = activeTab.params.filter((p) => p.enabled && p.key.trim()).length
-  const activeHeaderCount = activeTab.headersList.filter((h) => h.enabled && h.key.trim()).length
+  const activeParamCount = (activeTab.params || []).filter((p) => p.enabled && p.key.trim()).length
+  const activeHeaderCount = (activeTab.headersList || []).filter((h) => h.enabled && h.key.trim()).length
   const hasAuth = activeTab.auth && activeTab.auth.type !== 'none'
   const hasTestScript = Boolean(activeTab.testScript && activeTab.testScript.trim())
 

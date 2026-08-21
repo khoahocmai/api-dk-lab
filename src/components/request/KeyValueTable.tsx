@@ -22,13 +22,20 @@ export function KeyValueTable({
   title,
   environment,
 }: KeyValueTableProps) {
+  const currentRows = Array.isArray(rows) && rows.length > 0 ? rows : []
+
   const updateRow = (id: string, patch: Partial<KeyValueRow>, index: number) => {
-    const nextRows = rows.map((row) => (row.id === id ? { ...row, ...patch } : row))
+    let baseList = currentRows.length > 0 ? [...currentRows] : [{ id, key: '', value: '', enabled: true, description: '' }]
+    if (!baseList.some((r) => r.id === id)) {
+      baseList = [...baseList, { id, key: '', value: '', enabled: true, description: '', ...patch }]
+    }
+
+    const nextRows = baseList.map((row, i) => (row.id === id || (baseList.length === 1 && i === 0) ? { ...row, ...patch } : row))
 
     // Auto-append an empty row if editing the very last row and it now has a key or value
-    if (index === rows.length - 1 && (patch.key !== undefined || patch.value !== undefined)) {
+    if (index === nextRows.length - 1 && (patch.key !== undefined || patch.value !== undefined)) {
       const updatedRow = nextRows[index]
-      if (updatedRow.key.trim() !== '' || updatedRow.value.trim() !== '') {
+      if (updatedRow && (updatedRow.key.trim() !== '' || updatedRow.value.trim() !== '')) {
         nextRows.push({
           id: createId(),
           key: '',
@@ -43,7 +50,7 @@ export function KeyValueTable({
   }
 
   const removeRow = (id: string) => {
-    const nextRows = rows.filter((row) => row.id !== id)
+    const nextRows = currentRows.filter((row) => row.id !== id)
     if (nextRows.length === 0) {
       nextRows.push({
         id: createId(),
@@ -58,7 +65,7 @@ export function KeyValueTable({
 
   const addRow = () => {
     onChange([
-      ...rows,
+      ...currentRows,
       {
         id: createId(),
         key: '',
@@ -69,7 +76,9 @@ export function KeyValueTable({
     ])
   }
 
-  const activeRows = rows.length > 0 ? rows : [{ id: createId(), key: '', value: '', enabled: true, description: '' }]
+  const displayRows = currentRows.length > 0
+    ? currentRows
+    : [{ id: 'empty-initial-row', key: '', value: '', enabled: true, description: '' }]
 
   return (
     <div className="kv-table-container">
@@ -83,7 +92,7 @@ export function KeyValueTable({
       </div>
 
       <div className="kv-table-body">
-        {activeRows.map((row, index) => (
+        {displayRows.map((row, index) => (
           <div key={row.id} className={`kv-row ${!row.enabled ? 'is-disabled' : ''}`}>
             <div className="kv-col-check">
               <input
@@ -125,7 +134,7 @@ export function KeyValueTable({
                 className="icon-button icon-button-sm kv-delete-btn"
                 onClick={() => removeRow(row.id)}
                 title="Delete item"
-                disabled={activeRows.length === 1 && !row.key && !row.value}
+                disabled={displayRows.length === 1 && !row.key && !row.value}
               >
                 <Trash2 size={13} />
               </button>

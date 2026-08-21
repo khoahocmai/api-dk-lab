@@ -357,7 +357,7 @@ export function Sidebar({
                   <input
                     className={`input input-sm env-value ${item.secret ? 'input-secret' : ''}`}
                     type={item.secret ? 'password' : 'text'}
-                    value={item.value}
+                    value={item.value || ''}
                     onChange={(event) =>
                       onUpdateEnvironmentVariable(activeEnvironment.id, item.id, {
                         value: event.target.value,
@@ -377,8 +377,8 @@ export function Sidebar({
                     }
                     title={
                       item.secret
-                        ? 'Secret variable (stored only in memory)'
-                        : 'Mark as secret'
+                        ? 'Show value (Masked as password)'
+                        : 'Hide value (Mask as password)'
                     }
                   >
                     {item.secret ? <EyeOff size={12} /> : <Eye size={12} />}

@@ -52,10 +52,10 @@ export function GraphFieldCard({
             type="button"
             className="button button-sm graph-insert-btn"
             onClick={onQuickInsert}
-            title="Use only this API in Request Editor"
+            title="Use this API in a new Request Tab"
           >
             <Plus size={11} />
-            <span>Insert</span>
+            <span>Use this API</span>
           </button>
         </div>
       </div>

@@ -1,1 +1,218 @@
-[]
+[
+  {
+    "id": "dd82f6a5-4418-4e8c-b3bf-20d60bb00f65",
+    "timestamp": "2026-08-21T02:39:07.144Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 3553,
+    "request": {
+      "id": "b3c7e1df-66c6-453a-b048-7139c424dadb",
+      "savedRequestId": "ffde20c0-eda2-479d-9298-891f9032458b",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8",
+      "name": "Find delivery store",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "81f4c996-751b-40b5-8440-f64a3a1ee83c",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "f19ddf45-3d43-446f-90f1-7806c24f78f7",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "json",
+      "restBody": "{\n  \"name\": \"API Lab User\"\n}",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query FindDeliveryStore($input: StoreGetDeliveryStoreDto) {\n  findDeliveryStore(input: $input) {\n    id\n    code\n    name\n    status\n    address\n    addressEn\n    alertOverloadPercent\n    backupStoreIds\n    cooldownTime\n    countryId\n    countyId\n    countyName\n    distance\n    eHoaDonAddress\n    eHoaDonCompanyName\n    eHoaDonInvoiceSerial\n  }\n}",
+      "gqlVariables": "{\n  \"input\": {\n    \"address\": \"Crescent Mall, 101 Tôn Dật Tiên, Tân Mỹ, Hồ Chí Minh\",\n    \"latitude\": 10.729084,\n    \"longitude\": 106.718872\n  }\n}",
+      "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
+      "editorTab": "VARIABLES",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "3553 ms",
+      "size": "663 B",
+      "data": {
+        "data": {
+          "findDeliveryStore": {
+            "id": "0196486d-d25a-79b6-8010-4a91c7d213ae",
+            "code": "5069",
+            "name": "The Pizza Company Crescent Mall - Q.7",
+            "status": "ACTIVE",
+            "address": "Crescent Mall, Tầng 5, 101 Tôn Dật Tiên, Tân Phú, Quận 7, Thành phố Hồ Chí Minh",
+            "addressEn": null,
+            "alertOverloadPercent": 90,
+            "backupStoreIds": null,
+            "cooldownTime": 0,
+            "countryId": 241,
+            "countyId": 77,
+            "countyName": "Quận 7",
+            "distance": 40.92907901872565,
+            "eHoaDonAddress": "5FC-17, Tầng 5, TTTM Crescent Mall, Số 101 Tôn Dật Tiên, Phường Tân Mỹ, Thành phố Hồ Chí Minh, Việt Nam",
+            "eHoaDonCompanyName": "714460103 - TPC CrescentMall - HCM",
+            "eHoaDonInvoiceSerial": "C25MMD"
+          }
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "664",
+        "date": "Fri, 21 Aug 2026 02:39:11 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "842062a1-e50c-4066-9989-d4aed9c7bb93",
+    "timestamp": "2026-08-21T02:38:47.652Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 793,
+    "request": {
+      "id": "9c6896fe-3fd2-4a0e-b59f-49e1cf6aa955",
+      "savedRequestId": "ffde20c0-eda2-479d-9298-891f9032458b",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8",
+      "name": "Find delivery store",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "81f4c996-751b-40b5-8440-f64a3a1ee83c",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "json",
+      "restBody": "{\n  \"name\": \"API Lab User\"\n}",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query FindDeliveryStore($input: StoreGetDeliveryStoreDto) {\n  findDeliveryStore(input: $input) {\n    id\n    code\n    name\n    status\n    address\n    addressEn\n    alertOverloadPercent\n    backupStoreIds\n    cooldownTime\n    countryId\n    countyId\n    countyName\n    distance\n    eHoaDonAddress\n    eHoaDonCompanyName\n    eHoaDonInvoiceSerial\n  }\n}",
+      "gqlVariables": "{\n  \"input\": {\n    \"address\": \"Crescent Mall, 101 Tôn Dật Tiên, Tân Mỹ, Hồ Chí Minh\",\n    \"latitude\": 10.729084,\n    \"longitude\": 106.718872\n  }\n}",
+      "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "793 ms",
+      "size": "428 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Địa chỉ nằm ngoài khu vực giao hàng",
+            "path": [
+              "findDeliveryStore"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "BAD_REQUEST",
+              "originalError": {
+                "statusCode": 400,
+                "error": "Bad Request",
+                "message": "Địa chỉ nằm ngoài khu vực giao hàng",
+                "errorCode": "OUT_OF_DELIVERY_AREA"
+              },
+              "errorCode": "OUT_OF_DELIVERY_AREA"
+            },
+            "code": "BAD_REQUEST",
+            "errorCode": "OUT_OF_DELIVERY_AREA"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "429",
+        "date": "Fri, 21 Aug 2026 02:38:50 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  }
+]

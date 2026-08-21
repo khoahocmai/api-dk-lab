@@ -16,8 +16,22 @@
   }
 }
 
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .app-shell {
-  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
+  width: 100%;
+  overflow: hidden;
   color: var(--text-primary);
   background: var(--bg-app);
 }
@@ -355,6 +369,82 @@
 
 .method-rest {
   color: var(--method-get);
+}
+
+/* Compact Add Tab Button & Dropdown */
+.add-tab-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.add-tab-btn {
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.12s ease;
+  padding: 0;
+}
+
+.add-tab-btn:hover,
+.add-tab-btn.is-open {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--border);
+}
+
+.add-tab-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 200px;
+  background: #161822;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 4px 10px -2px rgba(0, 0, 0, 0.4);
+  z-index: 200;
+  padding: 4px;
+  animation: fade-in 0.12s ease;
+}
+
+.add-tab-menu-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: 0;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.12s ease;
+}
+
+.add-tab-menu-item:hover {
+  background: var(--bg-hover);
+}
+
+.add-tab-shortcut {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  padding: 1px 4px;
+  border-radius: 3px;
 }
 
 /* ==========================================================================
@@ -1079,6 +1169,36 @@
   margin-left: 1px;
 }
 
+/* Sticky Bottom Action Bar */
+.graph-explorer-footer {
+  flex-shrink: 0;
+  border-top: 1px solid var(--border);
+  background: var(--bg-sidebar);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.35);
+  animation: slide-up 0.15s ease-out;
+  z-index: 10;
+}
+
+.explorer-clear-btn {
+  background: transparent;
+  border: 0;
+  font-size: 11px;
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-xs);
+  transition: color 0.12s ease;
+}
+
+.explorer-clear-btn:hover {
+  color: #f87171 !important;
+}
+
 .mobile-nav {
   display: none;
   position: sticky;
@@ -1107,18 +1227,25 @@
    RESIZABLE PANELS & HANDLES (NO WHITE LINES / PURE DARK SPLITTERS)
    ========================================================================== */
 
-.app-layout-panels {
-  min-height: 100vh;
+.app-layout-panels,
+.react-resizable-panels-group,
+[data-panel-group] {
+  height: 100% !important;
+  max-height: 100vh !important;
+  overflow: hidden !important;
   width: 100%;
   background: var(--bg-app);
 }
 
-.panel-resizable-item {
+.panel-resizable-item,
+[data-panel] {
+  height: 100% !important;
+  max-height: 100% !important;
   display: flex !important;
-  flex-direction: column;
-  min-width: 0;
-  min-height: 0;
-  overflow: hidden;
+  flex-direction: column !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
   background: var(--bg-panel);
 }
 
@@ -1900,4 +2027,26 @@
 
 .toast-close:hover {
   color: var(--text-primary);
+}
+
+/* ==========================================================================
+   CUSTOM SCROLLBAR
+   ========================================================================== */
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #2b3042 transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #2b3042;
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #3b4259;
 }
