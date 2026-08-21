@@ -5,6 +5,7 @@ import {
   IntrospectionQuery,
   isEnumType,
   isInputObjectType,
+  isInterfaceType,
   isListType,
   isNonNullType,
   isObjectType,
@@ -12,7 +13,7 @@ import {
   type GraphQLInputType,
   type GraphQLOutputType,
 } from 'graphql'
-import type { GraphField, GraphInputField } from '../types'
+import type { GraphField, GraphInputField, GraphOutputField } from '../types'
 import { capitalize, sanitizeVariableName } from '../utils/formatters'
 import { sendHttpRequest } from './httpService'
 
@@ -80,25 +81,72 @@ export function isLeafGraphqlOutput(type: GraphQLOutputType): boolean {
   return isScalarType(namedType) || isEnumType(namedType)
 }
 
+export function outputFieldsForType(
+  type: GraphQLOutputType,
+  depth = 0,
+  seen = new Set<string>(),
+): GraphOutputField[] {
+  if (depth > 6) return []
+  const namedType = getNamedType(type)
+  if (!namedType) return []
+  if ((!isObjectType(namedType) && !isInterfaceType(namedType)) || seen.has(namedType.name)) {
+    return []
+  }
+
+  const nextSeen = new Set(seen)
+  nextSeen.add(namedType.name)
+
+  try {
+    const fieldMap = namedType.getFields()
+    if (!fieldMap) return []
+
+    return Object.values(fieldMap).map((field) => {
+      const isScalar = isLeafGraphqlOutput(field.type)
+      const isList =
+        isListType(field.type) ||
+        (isNonNullType(field.type) && isListType(field.type.ofType))
+
+      let subFields: GraphOutputField[] | undefined
+      if (!isScalar) {
+        subFields = outputFieldsForType(field.type, depth + 1, nextSeen)
+      }
+
+      return {
+        name: field.name,
+        typeLabel: String(field.type),
+        isScalar,
+        isList,
+        fields: subFields && subFields.length > 0 ? subFields : undefined,
+      }
+    })
+  } catch {
+    return []
+  }
+}
+
 export function selectionFieldsForOutputType(type: GraphQLOutputType): string[] {
   const namedType = getNamedType(type)
-  if (!isObjectType(namedType)) return []
+  if (!namedType || (!isObjectType(namedType) && !isInterfaceType(namedType))) return []
 
-  const scalarFields = Object.values(namedType.getFields())
-    .filter((field) => isLeafGraphqlOutput(field.type))
-    .map((field) => field.name)
+  try {
+    const scalarFields = Object.values(namedType.getFields())
+      .filter((field) => isLeafGraphqlOutput(field.type))
+      .map((field) => field.name)
 
-  const preferredOrder = ['id', 'code', 'name', 'title', 'message', 'status', 'success', 'createdAt', 'updatedAt']
-  return scalarFields
-    .sort((a, b) => {
-      const aIndex = preferredOrder.indexOf(a)
-      const bIndex = preferredOrder.indexOf(b)
-      if (aIndex >= 0 && bIndex >= 0) return aIndex - bIndex
-      if (aIndex >= 0) return -1
-      if (bIndex >= 0) return 1
-      return a.localeCompare(b)
-    })
-    .slice(0, 16)
+    const preferredOrder = ['id', 'code', 'name', 'title', 'total', 'message', 'status', 'success', 'createdAt', 'updatedAt']
+    return scalarFields
+      .sort((a, b) => {
+        const aIndex = preferredOrder.indexOf(a)
+        const bIndex = preferredOrder.indexOf(b)
+        if (aIndex >= 0 && bIndex >= 0) return aIndex - bIndex
+        if (aIndex >= 0) return -1
+        if (bIndex >= 0) return 1
+        return a.localeCompare(b)
+      })
+      .slice(0, 2)
+  } catch {
+    return []
+  }
 }
 
 export function extractGraphFields(schemaData: IntrospectionQuery): {
@@ -122,6 +170,7 @@ export function extractGraphFields(schemaData: IntrospectionQuery): {
         inputFields: inputFieldsForType(arg.type),
       })) ?? [],
       selectionFields: selectionFieldsForOutputType(field.type),
+      outputFields: outputFieldsForType(field.type),
       isScalarResult: isLeafGraphqlOutput(field.type),
     }))
   }
@@ -136,9 +185,70 @@ export function getGraphFieldKey(kind: 'query' | 'mutation', fieldName: string):
   return `${kind}:${fieldName}`
 }
 
+export function getGraphArgKey(kind: 'query' | 'mutation', fieldName: string, argName: string): string {
+  return `${kind}:${fieldName}:arg:${argName}`
+}
+
+export function getGraphInputFieldKey(
+  kind: 'query' | 'mutation',
+  fieldName: string,
+  argName: string,
+  inputFieldName: string,
+): string {
+  return `${kind}:${fieldName}:arg:${argName}:input:${inputFieldName}`
+}
+
+export function getGraphOutputFieldKey(
+  kind: 'query' | 'mutation',
+  fieldName: string,
+  path: string,
+): string {
+  return `${kind}:${fieldName}:out:${path}`
+}
+
+export interface SelectionTree {
+  [key: string]: SelectionTree | null
+}
+
+export function pathsToSelectionTree(paths: string[]): SelectionTree {
+  const root: SelectionTree = {}
+  for (const path of paths) {
+    const parts = path.split('.')
+    let current = root
+    for (let i = 0; i < parts.length; i++) {
+      const part = parts[i]
+      if (i === parts.length - 1) {
+        if (!current[part]) {
+          current[part] = null
+        }
+      } else {
+        if (!current[part] || typeof current[part] !== 'object') {
+          current[part] = {}
+        }
+        current = current[part] as SelectionTree
+      }
+    }
+  }
+  return root
+}
+
+export function formatSelectionTree(tree: SelectionTree, indent = '    '): string[] {
+  const lines: string[] = []
+  for (const [key, children] of Object.entries(tree)) {
+    if (!children || Object.keys(children).length === 0) {
+      lines.push(`${indent}${key}`)
+    } else {
+      const subLines = formatSelectionTree(children, `${indent}  `)
+      lines.push(`${indent}${key} {\n${subLines.join('\n')}\n${indent}}`)
+    }
+  }
+  return lines
+}
+
 export function buildGraphOperationFromFields(
   kind: 'query' | 'mutation',
   fields: GraphField[],
+  selectedKeys?: string[] | Set<string>,
 ): {
   query: string
   variables: Record<string, unknown>
@@ -150,12 +260,39 @@ export function buildGraphOperationFromFields(
     }
   }
 
+  const keySet = selectedKeys
+    ? selectedKeys instanceof Set
+      ? selectedKeys
+      : new Set(selectedKeys)
+    : null
+
   const usedVariableNames = new Set<string>()
   const variables: Record<string, unknown> = {}
   const variableDefinitions: string[] = []
 
   const lines = fields.map((field) => {
-    const argParts = field.args.map((arg) => {
+    // An argument is included if:
+    // 1. keySet is null (default mode: include primary args, omit bulky optional filters), OR
+    // 2. The argument itself is in keySet, OR
+    // 3. For object arguments with inputFields, at least one child input field is in keySet
+    const applicableArgs = field.args.filter((arg) => {
+      if (!keySet) {
+        const isRequired = arg.typeLabel.includes('!')
+        const isFilter = arg.name.toLowerCase().includes('filter') || arg.name.toLowerCase().includes('where')
+        if (isFilter && !isRequired) return false
+        return true
+      }
+      const argKey = getGraphArgKey(kind, field.name, arg.name)
+      if (keySet.has(argKey)) return true
+      if (arg.inputFields.length > 0) {
+        return arg.inputFields.some((inf) =>
+          keySet.has(getGraphInputFieldKey(kind, field.name, arg.name, inf.name)),
+        )
+      }
+      return false
+    })
+
+    const argParts = applicableArgs.map((arg) => {
       const baseName = fields.length === 1 ? arg.name : `${field.name}${capitalize(arg.name)}`
       let variableName = sanitizeVariableName(baseName)
       let index = 2
@@ -165,7 +302,63 @@ export function buildGraphOperationFromFields(
       }
 
       usedVariableNames.add(variableName)
-      variables[variableName] = arg.emptyValue
+
+      let varValue = arg.emptyValue
+
+      // If this is an object argument with child input fields:
+      if (arg.inputFields.length > 0) {
+        if (keySet) {
+          const selectedInputFields = arg.inputFields.filter((inf) => {
+            const infKey = getGraphInputFieldKey(kind, field.name, arg.name, inf.name)
+            return keySet.has(infKey)
+          })
+
+          if (selectedInputFields.length > 0) {
+            // Build object containing ONLY the selected child fields
+            const filteredObj: Record<string, unknown> = {}
+            selectedInputFields.forEach((inf) => {
+              filteredObj[inf.name] = inf.emptyValue
+            })
+            varValue = filteredObj
+          } else if (keySet.has(getGraphArgKey(kind, field.name, arg.name))) {
+            // Parent argument explicitly checked: pick at most 2 basic fields
+            const preferredFields = ['page', 'pageSize', 'limit', 'offset', 'skip', 'take']
+            const sortedFields = [...arg.inputFields].sort((a, b) => {
+              const aIndex = preferredFields.indexOf(a.name)
+              const bIndex = preferredFields.indexOf(b.name)
+              if (aIndex >= 0 && bIndex >= 0) return aIndex - bIndex
+              if (aIndex >= 0) return -1
+              if (bIndex >= 0) return 1
+              return 0
+            })
+            const topFields = sortedFields.slice(0, 2)
+            const filteredObj: Record<string, unknown> = {}
+            topFields.forEach((inf) => {
+              filteredObj[inf.name] = inf.emptyValue
+            })
+            varValue = filteredObj
+          }
+        } else {
+          // Default mode (e.g. quick insert): pick at most 2 basic fields
+          const preferredFields = ['page', 'pageSize', 'limit', 'offset', 'skip', 'take']
+          const sortedFields = [...arg.inputFields].sort((a, b) => {
+            const aIndex = preferredFields.indexOf(a.name)
+            const bIndex = preferredFields.indexOf(b.name)
+            if (aIndex >= 0 && bIndex >= 0) return aIndex - bIndex
+            if (aIndex >= 0) return -1
+            if (bIndex >= 0) return 1
+            return 0
+          })
+          const topFields = sortedFields.slice(0, 2)
+          const filteredObj: Record<string, unknown> = {}
+          topFields.forEach((inf) => {
+            filteredObj[inf.name] = inf.emptyValue
+          })
+          varValue = filteredObj
+        }
+      }
+
+      variables[variableName] = varValue
       variableDefinitions.push(`$${variableName}: ${arg.typeLabel}`)
       return `${arg.name}: $${variableName}`
     })
@@ -174,8 +367,26 @@ export function buildGraphOperationFromFields(
 
     if (field.isScalarResult) return `  ${field.name}${argsText}`
 
-    const selection = field.selectionFields.length ? field.selectionFields : ['__typename']
-    return `  ${field.name}${argsText} {\n${selection.map((item) => `    ${item}`).join('\n')}\n  }`
+    // Build selection set from selected output field paths if present
+    let selectionLines: string[] = []
+    if (keySet) {
+      const outPrefix = `${kind}:${field.name}:out:`
+      const selectedOutPaths = Array.from(keySet)
+        .filter((k) => k.startsWith(outPrefix))
+        .map((k) => k.slice(outPrefix.length))
+
+      if (selectedOutPaths.length > 0) {
+        const tree = pathsToSelectionTree(selectedOutPaths)
+        selectionLines = formatSelectionTree(tree, '    ')
+      }
+    }
+
+    if (selectionLines.length === 0) {
+      const defaultSelection = field.selectionFields.length ? field.selectionFields : ['__typename']
+      selectionLines = defaultSelection.map((item) => `    ${item}`)
+    }
+
+    return `  ${field.name}${argsText} {\n${selectionLines.join('\n')}\n  }`
   })
 
   const operationName = fields.length === 1 ? capitalize(fields[0].name) : `Generated${capitalize(kind)}`
@@ -216,4 +427,34 @@ export async function fetchGraphQLSchema(
   }
 
   return extractGraphFields(payload.data)
+}
+
+export function deepMergePreserveVariables(
+  currentVars: unknown,
+  newVars: unknown,
+): unknown {
+  if (typeof newVars !== 'object' || newVars === null || Array.isArray(newVars)) {
+    if (currentVars !== undefined && currentVars !== null) {
+      return currentVars
+    }
+    return newVars
+  }
+
+  const currentObj =
+    typeof currentVars === 'object' && currentVars !== null && !Array.isArray(currentVars)
+      ? (currentVars as Record<string, unknown>)
+      : {}
+
+  const newObj = newVars as Record<string, unknown>
+  const result: Record<string, unknown> = {}
+
+  for (const [key, val] of Object.entries(newObj)) {
+    if (key in currentObj) {
+      result[key] = deepMergePreserveVariables(currentObj[key], val)
+    } else {
+      result[key] = val
+    }
+  }
+
+  return result
 }

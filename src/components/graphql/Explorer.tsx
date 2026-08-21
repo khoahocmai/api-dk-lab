@@ -11,8 +11,10 @@ import {
   X,
 } from 'lucide-react'
 import type {
+  GraphArg,
   GraphExplorerState,
   GraphField,
+  GraphInputField,
   RequestItem,
 } from '../../types'
 import { InfoCard } from '../common/InfoCard'
@@ -27,6 +29,9 @@ interface ExplorerProps {
   onLoadSchema: () => Promise<void>
   onCloseMobile: () => void
   onToggleField: (field: GraphField, checked: boolean) => void
+  onToggleArg: (field: GraphField, arg: GraphArg, checked: boolean) => void
+  onToggleInputField?: (field: GraphField, arg: GraphArg, inputField: GraphInputField, checked: boolean) => void
+  onToggleOutputField?: (field: GraphField, path: string, checked: boolean) => void
   onQuickInsert: (field: GraphField) => void
   onApplySelected: () => void
   onClearSelection: () => void
@@ -41,6 +46,9 @@ export function Explorer({
   onLoadSchema,
   onCloseMobile,
   onToggleField,
+  onToggleArg,
+  onToggleInputField,
+  onToggleOutputField,
   onQuickInsert,
   onApplySelected,
   onClearSelection,
@@ -263,9 +271,18 @@ export function Explorer({
                   return (
                     <GraphFieldCard
                       key={field.name}
+                      kind={currentGraphOperationKind}
                       field={field}
                       isSelected={selected}
+                      selectedKeys={selectedGraphFieldKeys}
                       onToggle={(checked) => onToggleField(field, checked)}
+                      onToggleArg={(arg, checked) => onToggleArg(field, arg, checked)}
+                      onToggleInputField={(arg, inputField, checked) =>
+                        onToggleInputField?.(field, arg, inputField, checked)
+                      }
+                      onToggleOutputField={(path, checked) =>
+                        onToggleOutputField?.(field, path, checked)
+                      }
                       onQuickInsert={() => onQuickInsert(field)}
                     />
                   )

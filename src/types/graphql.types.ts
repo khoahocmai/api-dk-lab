@@ -13,11 +13,20 @@ export type GraphArg = {
   inputFields: GraphInputField[]
 }
 
+export type GraphOutputField = {
+  name: string
+  typeLabel: string
+  isScalar: boolean
+  isList: boolean
+  fields?: GraphOutputField[]
+}
+
 export type GraphField = {
   name: string
   typeLabel: string
   args: GraphArg[]
   selectionFields: string[]
+  outputFields: GraphOutputField[]
   isScalarResult: boolean
 }
 

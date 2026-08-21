@@ -953,16 +953,15 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   background: var(--bg-card);
-  padding: 6px 8px;
+  padding: 4px 6px;
   transition: all 0.12s ease;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .graph-field-card:hover {
   border-color: var(--primary-border);
-  background: var(--bg-hover);
 }
 
 .graph-field-card.is-selected {
@@ -975,6 +974,15 @@
   align-items: center;
   justify-content: space-between;
   gap: 6px;
+  padding: 4px 6px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.12s ease;
+  user-select: none;
+}
+
+.graph-card-header:hover {
+  background: #1f2433;
 }
 
 .graph-card-left {
@@ -983,6 +991,7 @@
   gap: 6px;
   min-width: 0;
   flex: 1;
+  overflow: hidden;
 }
 
 .graph-card-checkbox {
@@ -990,12 +999,14 @@
   cursor: pointer;
   accent-color: var(--primary);
   flex-shrink: 0;
+  width: 14px;
+  height: 14px;
 }
 
 .graph-field-name {
   color: #ffffff;
-  font-weight: 700;
-  font-size: 12px;
+  font-weight: 600;
+  font-size: 13px;
   font-family: var(--font-mono);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1011,7 +1022,7 @@
 .graph-card-actions {
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
   flex-shrink: 0;
 }
 
@@ -1023,6 +1034,7 @@
 
 .graph-expand-toggle:hover {
   color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .graph-insert-btn {
@@ -1041,10 +1053,20 @@
   color: #ffffff;
 }
 
-/* Arguments Accordion & List */
+/* Return Type Line & Arguments Accordion */
+.graph-return-type-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 6px;
+  margin-bottom: 2px;
+  font-size: 10px;
+  color: var(--text-dim);
+}
+
 .graph-args-container {
-  margin-top: 4px;
-  padding-left: 10px;
+  margin-top: 2px;
+  padding-left: 8px;
   margin-left: 6px;
   border-left: 2px solid var(--border-strong);
   display: flex;
@@ -1059,12 +1081,13 @@
   color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  padding: 2px 4px 0 4px;
 }
 
 .graph-args-list {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 
 .graph-arg-block {
@@ -1076,9 +1099,18 @@
 .graph-arg-row {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   font-size: 11px;
   font-family: var(--font-mono);
+  padding: 3px 6px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.12s ease;
+}
+
+.graph-arg-row:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .graph-arg-name {
@@ -1086,12 +1118,141 @@
   font-weight: 600;
 }
 
+.graph-arg-badge {
+  font-size: 8.5px;
+  font-weight: 800;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: rgba(99, 102, 241, 0.18);
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.graph-section-divider {
+  margin: 6px 0 4px 0;
+  border-top: 1px dashed var(--border);
+}
+
+/* Unified Schema Tree Styles (Postman / Apollo Style) */
+.graph-tree-node {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.graph-tree-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  padding: 2px 4px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.12s ease;
+  min-height: 24px;
+}
+
+.graph-tree-row:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.graph-tree-chevron {
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: var(--text-dim);
+  border-radius: var(--radius-xs);
+}
+
+.graph-tree-chevron:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.graph-tree-spacer {
+  width: 16px;
+  min-width: 16px;
+  height: 16px;
+}
+
+.graph-tree-children {
+  margin-left: 8px;
+  padding-left: 8px;
+  border-left: 1.5px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: 1px;
+  margin-bottom: 2px;
+}
+
+.graph-tree-leaf {
+  padding-left: 2px;
+}
+
+.graph-leaf-name {
+  color: #cbd5e1;
+}
+
+.graph-obj-name {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.graph-nested-output-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.graph-nested-output-header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  padding: 2px 4px;
+  border-radius: var(--radius-xs);
+  user-select: none;
+  transition: background 0.12s ease;
+}
+
+.graph-nested-output-header:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.graph-nested-obj-name {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.graph-nested-output-children {
+  margin-left: 12px;
+  padding-left: 8px;
+  border-left: 2px solid rgba(56, 189, 248, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
 /* Nested Input DTOs */
 .graph-nested-container {
-  margin-left: 10px;
+  margin-left: 14px;
   padding-left: 8px;
   border-left: 2px solid var(--border);
   margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .graph-nested-header {
@@ -1099,6 +1260,7 @@
   color: var(--text-dim);
   text-transform: uppercase;
   margin-bottom: 2px;
+  padding-left: 2px;
 }
 
 .graph-nested-list {
@@ -1110,9 +1272,18 @@
 .graph-nested-row {
   display: flex;
   align-items: center;
-  gap: 4px;
-  font-size: 10px;
+  gap: 5px;
+  font-size: 10.5px;
   font-family: var(--font-mono);
+  padding: 2px 4px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.12s ease;
+}
+
+.graph-nested-row:hover {
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .graph-nested-name {

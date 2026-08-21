@@ -25,7 +25,10 @@
       "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
       "name": "Health",
       "request": {
-        "id": "4f51a9c5-33a1-4c69-a65a-8056cba70696",
+        "id": "5fe68b66-4428-44aa-82f6-637fe6626c0d",
+        "savedRequestId": "3c5f15e6-11bb-4c53-94d5-2c12590c9f88",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": null,
         "name": "Health",
         "mode": "GRAPHQL",
         "method": "POST",
@@ -36,13 +39,15 @@
             "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
             "key": "Content-Type",
             "value": "application/json",
-            "enabled": true
+            "enabled": true,
+            "description": ""
           },
           {
             "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
             "key": "Authorization",
             "value": "Bearer {{token}}",
-            "enabled": true
+            "enabled": true,
+            "description": ""
           }
         ],
         "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
@@ -67,7 +72,7 @@
         "responseTab": "PRETTY"
       },
       "createdAt": "2026-08-20T06:48:21.666Z",
-      "updatedAt": "2026-08-20T09:13:30.450Z",
+      "updatedAt": "2026-08-21T03:06:39.076Z",
       "folderId": null
     },
     {

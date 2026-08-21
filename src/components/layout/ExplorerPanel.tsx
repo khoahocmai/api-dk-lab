@@ -1,5 +1,11 @@
 import React from 'react'
-import type { GraphExplorerState, GraphField, RequestItem } from '../../types'
+import type {
+  GraphArg,
+  GraphExplorerState,
+  GraphField,
+  GraphInputField,
+  RequestItem,
+} from '../../types'
 import { Explorer } from '../graphql/Explorer'
 
 interface ExplorerPanelProps {
@@ -11,6 +17,9 @@ interface ExplorerPanelProps {
   onLoadSchema: () => Promise<void>
   onCloseMobile: () => void
   onToggleField: (field: GraphField, checked: boolean) => void
+  onToggleArg: (field: GraphField, arg: GraphArg, checked: boolean) => void
+  onToggleInputField?: (field: GraphField, arg: GraphArg, inputField: GraphInputField, checked: boolean) => void
+  onToggleOutputField?: (field: GraphField, path: string, checked: boolean) => void
   onQuickInsert: (field: GraphField) => void
   onApplySelected: () => void
   onClearSelection: () => void
@@ -26,6 +35,9 @@ export function ExplorerPanel({
   onLoadSchema,
   onCloseMobile,
   onToggleField,
+  onToggleArg,
+  onToggleInputField,
+  onToggleOutputField,
   onQuickInsert,
   onApplySelected,
   onClearSelection,
@@ -44,6 +56,9 @@ export function ExplorerPanel({
         onLoadSchema={onLoadSchema}
         onCloseMobile={onCloseMobile}
         onToggleField={onToggleField}
+        onToggleArg={onToggleArg}
+        onToggleInputField={onToggleInputField}
+        onToggleOutputField={onToggleOutputField}
         onQuickInsert={onQuickInsert}
         onApplySelected={onApplySelected}
         onClearSelection={onClearSelection}

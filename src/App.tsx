@@ -6,8 +6,11 @@ import type {
   EnvironmentItem,
   EnvironmentVariable,
   FolderItem,
+  GraphArg,
   GraphExplorerState,
   GraphField,
+  GraphInputField,
+  GraphOutputField,
   HistoryItem,
   HttpRequestOptions,
   MobileView,
@@ -45,8 +48,12 @@ import {
 } from './services/storageService'
 import {
   buildGraphOperationFromFields,
+  deepMergePreserveVariables,
   fetchGraphQLSchema,
+  getGraphArgKey,
   getGraphFieldKey,
+  getGraphInputFieldKey,
+  getGraphOutputFieldKey,
 } from './services/graphqlService'
 import { parseUrlToQueryParams } from './utils/urlHelper'
 import { exportPostmanCollectionV2, importPostmanCollectionV2 } from './utils/postmanHelper'
@@ -1141,10 +1148,11 @@ function App() {
   const createGraphRequestTab = (
     kind: 'query' | 'mutation',
     fields: GraphField[],
+    keys?: string[],
   ) => {
     if (fields.length === 0) return
 
-    const generated = buildGraphOperationFromFields(kind, fields)
+    const generated = buildGraphOperationFromFields(kind, fields, keys)
     const baseRequest = createDefaultRequest('GRAPHQL')
     const tabName =
       fields.length === 1
@@ -1189,6 +1197,48 @@ function App() {
     setMobileView('REQUEST')
   }
 
+  const syncExplorerToActiveTab = (nextKeys: string[], kind: 'query' | 'mutation') => {
+    const fields = kind === 'mutation' ? graphExplorer.mutationFields : graphExplorer.queryFields
+    const selectedFields = fields.filter((field) =>
+      nextKeys.includes(getGraphFieldKey(kind, field.name)),
+    )
+
+    if (selectedFields.length === 0) return
+
+    const generated = buildGraphOperationFromFields(kind, selectedFields, nextKeys)
+
+    // Parse current variables from activeTab to preserve user-entered values
+    let currentVars: Record<string, unknown> = {}
+    if (activeTab?.gqlVariables?.trim()) {
+      try {
+        currentVars = JSON.parse(activeTab.gqlVariables)
+      } catch {
+        currentVars = {}
+      }
+    }
+
+    const mergedVars = deepMergePreserveVariables(currentVars, generated.variables) as Record<string, unknown>
+    const varJson =
+      Object.keys(mergedVars).length > 0
+        ? JSON.stringify(mergedVars, null, 2)
+        : '{}'
+
+    const patch: Partial<RequestItem> = {
+      mode: 'GRAPHQL',
+      method: 'POST',
+      gqlQuery: generated.query,
+      gqlVariables: varJson,
+    }
+
+    if (activeTab && (activeTab.name.startsWith('New ') || selectedFields.length === 1)) {
+      if (selectedFields.length === 1) {
+        patch.name = selectedFields[0].name
+      }
+    }
+
+    updateActiveTab(patch)
+  }
+
   const insertGraphField = (field: GraphField) => {
     const key = getGraphFieldKey(currentGraphOperationKind, field.name)
     setSelectedGraphFieldKeys([key])
@@ -1196,12 +1246,208 @@ function App() {
   }
 
   const toggleGraphField = (field: GraphField, checked: boolean) => {
-    const key = getGraphFieldKey(currentGraphOperationKind, field.name)
-    const nextKeys = checked
-      ? Array.from(new Set([...selectedGraphFieldKeys, key]))
-      : selectedGraphFieldKeys.filter((item) => item !== key)
+    const fieldKey = getGraphFieldKey(currentGraphOperationKind, field.name)
+    let nextKeys = new Set(selectedGraphFieldKeys)
 
-    setSelectedGraphFieldKeys(nextKeys)
+    if (checked) {
+      nextKeys.add(fieldKey)
+      // For primary args (like 'params'): auto-select at most 2 basic fields (e.g. page, pageSize)
+      field.args.forEach((arg) => {
+        const isFilter =
+          arg.name.toLowerCase().includes('filter') ||
+          arg.name.toLowerCase().includes('where')
+        if (isFilter) return // Do not auto-select bulky filters
+
+        if (arg.inputFields.length > 0) {
+          const preferredFields = ['page', 'pageSize', 'limit', 'offset', 'skip', 'take']
+          const sortedFields = [...arg.inputFields].sort((a, b) => {
+            const aIndex = preferredFields.indexOf(a.name)
+            const bIndex = preferredFields.indexOf(b.name)
+            if (aIndex >= 0 && bIndex >= 0) return aIndex - bIndex
+            if (aIndex >= 0) return -1
+            if (bIndex >= 0) return 1
+            return 0
+          })
+          const top2 = sortedFields.slice(0, 2)
+          top2.forEach((inf) => {
+            nextKeys.add(
+              getGraphInputFieldKey(
+                currentGraphOperationKind,
+                field.name,
+                arg.name,
+                inf.name,
+              ),
+            )
+          })
+        }
+      })
+
+      // For output fields: auto-select top 2 scalar return fields
+      if (field.outputFields && field.outputFields.length > 0) {
+        const topScalars = field.outputFields.filter((f) => f.isScalar).slice(0, 2)
+        topScalars.forEach((f) => {
+          nextKeys.add(
+            getGraphOutputFieldKey(currentGraphOperationKind, field.name, f.name),
+          )
+        })
+      }
+    } else {
+      // Remove this field and all its argument/input/output keys
+      const prefix = `${fieldKey}:`
+      nextKeys = new Set(
+        Array.from(nextKeys).filter(
+          (item) => item !== fieldKey && !item.startsWith(prefix),
+        ),
+      )
+    }
+
+    const nextKeysArr = Array.from(nextKeys)
+    setSelectedGraphFieldKeys(nextKeysArr)
+    syncExplorerToActiveTab(nextKeysArr, currentGraphOperationKind)
+  }
+
+  const toggleGraphArg = (field: GraphField, arg: GraphArg, checked: boolean) => {
+    const fieldKey = getGraphFieldKey(currentGraphOperationKind, field.name)
+    const argKey = getGraphArgKey(currentGraphOperationKind, field.name, arg.name)
+    let nextKeys = new Set(selectedGraphFieldKeys)
+
+    if (checked) {
+      nextKeys.add(fieldKey)
+      nextKeys.add(argKey)
+      // If arg has child input fields, select ALL children
+      if (arg.inputFields.length > 0) {
+        arg.inputFields.forEach((inf) => {
+          const infKey = getGraphInputFieldKey(
+            currentGraphOperationKind,
+            field.name,
+            arg.name,
+            inf.name,
+          )
+          nextKeys.add(infKey)
+        })
+      }
+    } else {
+      // Unselect this argument and ALL its child input fields
+      nextKeys.delete(argKey)
+      if (arg.inputFields.length > 0) {
+        arg.inputFields.forEach((inf) => {
+          const infKey = getGraphInputFieldKey(
+            currentGraphOperationKind,
+            field.name,
+            arg.name,
+            inf.name,
+          )
+          nextKeys.delete(infKey)
+        })
+      }
+    }
+
+    const nextKeysArr = Array.from(nextKeys)
+    setSelectedGraphFieldKeys(nextKeysArr)
+    syncExplorerToActiveTab(nextKeysArr, currentGraphOperationKind)
+  }
+
+  const toggleGraphInputField = (
+    field: GraphField,
+    arg: GraphArg,
+    inputField: GraphInputField,
+    checked: boolean,
+  ) => {
+    const fieldKey = getGraphFieldKey(currentGraphOperationKind, field.name)
+    const argKey = getGraphArgKey(currentGraphOperationKind, field.name, arg.name)
+    const inputKey = getGraphInputFieldKey(
+      currentGraphOperationKind,
+      field.name,
+      arg.name,
+      inputField.name,
+    )
+    let nextKeys = new Set(selectedGraphFieldKeys)
+
+    if (checked) {
+      nextKeys.add(fieldKey)
+      nextKeys.add(inputKey)
+
+      // If all sibling input fields are now selected, mark parent argKey as checked
+      const allSiblingsSelected = arg.inputFields.every((inf) =>
+        inf.name === inputField.name
+          ? true
+          : nextKeys.has(
+              getGraphInputFieldKey(
+                currentGraphOperationKind,
+                field.name,
+                arg.name,
+                inf.name,
+              ),
+            ),
+      )
+      if (allSiblingsSelected) {
+        nextKeys.add(argKey)
+      }
+    } else {
+      nextKeys.delete(inputKey)
+      // Since at least one child is unchecked, parent is not 100% checked
+      nextKeys.delete(argKey)
+    }
+
+    const nextKeysArr = Array.from(nextKeys)
+    setSelectedGraphFieldKeys(nextKeysArr)
+    syncExplorerToActiveTab(nextKeysArr, currentGraphOperationKind)
+  }
+
+  const toggleGraphOutputField = (
+    field: GraphField,
+    path: string,
+    checked: boolean,
+  ) => {
+    const fieldKey = getGraphFieldKey(currentGraphOperationKind, field.name)
+    const outKey = getGraphOutputFieldKey(currentGraphOperationKind, field.name, path)
+    let nextKeys = new Set(selectedGraphFieldKeys)
+
+    if (checked) {
+      nextKeys.add(fieldKey)
+      nextKeys.add(outKey)
+
+      // Find the output field in the tree to check if it's an object with child fields
+      const findFieldByPath = (
+        fields: GraphOutputField[],
+        parts: string[],
+      ): GraphOutputField | undefined => {
+        if (parts.length === 0) return undefined
+        const current = fields.find((f) => f.name === parts[0])
+        if (!current) return undefined
+        if (parts.length === 1) return current
+        return current.fields ? findFieldByPath(current.fields, parts.slice(1)) : undefined
+      }
+
+      const targetOutField = field.outputFields
+        ? findFieldByPath(field.outputFields, path.split('.'))
+        : undefined
+      if (targetOutField && targetOutField.fields && targetOutField.fields.length > 0) {
+        // Auto-select at most 2 basic scalar child fields if none selected
+        const topScalarChildren = targetOutField.fields.filter((f) => f.isScalar).slice(0, 2)
+        topScalarChildren.forEach((child) => {
+          nextKeys.add(
+            getGraphOutputFieldKey(
+              currentGraphOperationKind,
+              field.name,
+              `${path}.${child.name}`,
+            ),
+          )
+        })
+      }
+    } else {
+      // Remove this output field key and all descendant sub-keys
+      const prefix = `${outKey}.`
+      nextKeys = new Set(
+        Array.from(nextKeys).filter(
+          (item) => item !== outKey && !item.startsWith(prefix),
+        ),
+      )
+    }
+
+    const nextKeysArr = Array.from(nextKeys)
+    setSelectedGraphFieldKeys(nextKeysArr)
+    syncExplorerToActiveTab(nextKeysArr, currentGraphOperationKind)
   }
 
   const clearGraphSelection = () => {
@@ -1241,11 +1487,15 @@ function App() {
                   onCloseMobile={() => setMobileView('REQUEST')}
                   onCloseExplorer={() => setIsExplorerOpen(false)}
                   onToggleField={toggleGraphField}
+                  onToggleArg={toggleGraphArg}
+                  onToggleInputField={toggleGraphInputField}
+                  onToggleOutputField={toggleGraphOutputField}
                   onQuickInsert={insertGraphField}
                   onApplySelected={() =>
                     createGraphRequestTab(
                       currentGraphOperationKind,
                       selectedExplorerFields,
+                      selectedGraphFieldKeys,
                     )
                   }
                   onClearSelection={clearGraphSelection}
