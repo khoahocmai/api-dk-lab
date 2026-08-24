@@ -727,19 +727,21 @@ export function generateCurlCommand(
   }
 
   // Set content-type according to body type if not present
+  const hasContentTypeCurl = Boolean(headersRecord['Content-Type'] || headersRecord['content-type'])
+
   if (request.mode === 'GRAPHQL') {
-    if (!headersRecord['Content-Type'] && !headersRecord['content-type']) {
+    if (!hasContentTypeCurl) {
       headersRecord['Content-Type'] = 'application/json'
     }
   } else if (!['GET', 'DELETE'].includes(request.method)) {
-    if (request.bodyType === 'json' && !headersRecord['Content-Type'] && !headersRecord['content-type']) {
+    if (request.bodyType === 'json' && !hasContentTypeCurl) {
       headersRecord['Content-Type'] = 'application/json'
-    } else if (
-      request.bodyType === 'x-www-form-urlencoded' &&
-      !headersRecord['Content-Type'] &&
-      !headersRecord['content-type']
-    ) {
+    } else if (request.bodyType === 'x-www-form-urlencoded' && !hasContentTypeCurl) {
       headersRecord['Content-Type'] = 'application/x-www-form-urlencoded'
+    } else if (request.bodyType === 'form-data' && !hasContentTypeCurl) {
+      headersRecord['Content-Type'] = 'multipart/form-data'
+    } else if (request.bodyType === 'raw' && !hasContentTypeCurl) {
+      headersRecord['Content-Type'] = 'text/plain'
     }
   }
 

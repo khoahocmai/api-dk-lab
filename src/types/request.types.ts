@@ -19,6 +19,8 @@ export interface KeyValueRow {
   value: string
   enabled: boolean
   description?: string
+  type?: 'text' | 'file'
+  fileName?: string
 }
 
 export type ResponseState = {

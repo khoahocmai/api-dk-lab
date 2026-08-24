@@ -68,13 +68,19 @@ function getResolvedHeaders(
       resolveTemplates(request.auth.apiKeyValue, environment)
   }
 
+  const hasContentType = Boolean(headers['Content-Type'] || headers['content-type'])
+
   if (request.mode === 'GRAPHQL') {
-    if (!headers['Content-Type']) headers['Content-Type'] = 'application/json'
+    if (!hasContentType) headers['Content-Type'] = 'application/json'
   } else if (!['GET', 'DELETE'].includes(request.method)) {
-    if (request.bodyType === 'json' && !headers['Content-Type']) {
+    if (request.bodyType === 'json' && !hasContentType) {
       headers['Content-Type'] = 'application/json'
-    } else if (request.bodyType === 'x-www-form-urlencoded') {
+    } else if (request.bodyType === 'x-www-form-urlencoded' && !hasContentType) {
       headers['Content-Type'] = 'application/x-www-form-urlencoded'
+    } else if (request.bodyType === 'form-data' && !hasContentType) {
+      headers['Content-Type'] = 'multipart/form-data'
+    } else if (request.bodyType === 'raw' && !hasContentType) {
+      headers['Content-Type'] = 'text/plain'
     }
   }
 

@@ -1054,7 +1054,8 @@ function App() {
           variables: parsedVariables,
         }
         if (!headers['Content-Type']) headers['Content-Type'] = 'application/json'
-      } else if (!['GET', 'DELETE'].includes(activeTab.method)) {
+        const hasContentType = Boolean(headers['Content-Type'] || headers['content-type'])
+
         if (activeTab.bodyType === 'json') {
           if (activeTab.restBody.trim()) {
             try {
@@ -1065,10 +1066,10 @@ function App() {
               throw new Error('REST body phải là JSON hợp lệ')
             }
           }
-          if (!headers['Content-Type']) headers['Content-Type'] = 'application/json'
+          if (!hasContentType) headers['Content-Type'] = 'application/json'
         } else if (activeTab.bodyType === 'raw') {
           requestOptions.data = resolveTemplates(activeTab.rawText, activeEnvironment)
-          if (!headers['Content-Type']) headers['Content-Type'] = 'text/plain'
+          if (!hasContentType) headers['Content-Type'] = 'text/plain'
         } else if (activeTab.bodyType === 'x-www-form-urlencoded') {
           const urlSearchParams = new URLSearchParams()
           activeTab.urlencoded
@@ -1080,7 +1081,7 @@ function App() {
               )
             })
           requestOptions.data = urlSearchParams.toString()
-          headers['Content-Type'] = 'application/x-www-form-urlencoded'
+          if (!hasContentType) headers['Content-Type'] = 'application/x-www-form-urlencoded'
         } else if (activeTab.bodyType === 'form-data') {
           const formObject: Record<string, string> = {}
           activeTab.formData
@@ -1090,7 +1091,7 @@ function App() {
                 resolveTemplates(r.value, activeEnvironment)
             })
           requestOptions.data = formObject
-          if (!headers['Content-Type']) headers['Content-Type'] = 'multipart/form-data'
+          if (!hasContentType) headers['Content-Type'] = 'multipart/form-data'
         }
       }
 

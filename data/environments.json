@@ -36,5 +36,23 @@
         "secret": true
       }
     ]
+  },
+  {
+    "id": "02ad665d-6fd3-4360-8a44-1b4c431425d5",
+    "name": "Square POS Sandbox",
+    "variables": [
+      {
+        "id": "de9ec10c-eae3-4a12-97b1-1a3d18bb8285",
+        "key": "Domain",
+        "value": "https://connect.squareupsandbox.com/v2",
+        "enabled": true
+      },
+      {
+        "id": "0d259375-cbfc-4e2f-ad46-09198861f97f",
+        "key": "Token",
+        "value": "EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK",
+        "enabled": true
+      }
+    ]
   }
 ]

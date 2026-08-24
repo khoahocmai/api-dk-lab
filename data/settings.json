@@ -4,54 +4,40 @@
     "rejectUnauthorized": true,
     "editorFontSize": 13
   },
-  "activeEnvironmentId": "ab200199-1137-40c1-822a-3ea3d74259e8",
-  "activeTabId": "3a853088-608d-4c96-8291-391c82685701",
+  "activeEnvironmentId": "02ad665d-6fd3-4360-8a44-1b4c431425d5",
+  "activeTabId": "ee417777-ecb8-4190-a697-b00f692340a0",
   "tabs": [
     {
-      "id": "3a853088-608d-4c96-8291-391c82685701",
-      "savedRequestId": "f7131e69-0126-4d33-b35b-68034993c842",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
-      "name": "Order pagination list",
-      "graphqlRootField": "orderPaginationList",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
+      "id": "ee417777-ecb8-4190-a697-b00f692340a0",
+      "name": "cURL (GET)",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/locations",
       "params": [],
       "headersList": [
         {
-          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
+          "id": "69fd8f9d-6f07-4ed2-930f-5f191564042c",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true
+        },
+        {
+          "id": "02ff945d-9f83-432a-a157-d7af3b356711",
+          "key": "Authorization",
+          "value": "Bearer {{Token}}",
+          "enabled": true
+        },
+        {
+          "id": "e833c751-f6cf-4b39-9523-2edf5d0852c0",
           "key": "Content-Type",
           "value": "application/json",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
-          "key": "Authorization",
-          "value": "Bearer {{token}}",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "333c833b-9ada-48da-afa3-c737d8e6ae78",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "143f7dc1-67b4-4046-b9db-3453c8b570fd",
-          "key": "",
-          "value": "",
-          "enabled": true,
-          "description": ""
+          "enabled": true
         }
       ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Authorization\": \"Bearer {{Token}}\",\n  \"Content-Type\": \"application/json\"\n}",
       "auth": {
-        "type": "none",
-        "bearerToken": "",
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
         "basicUsername": "",
         "basicPassword": "",
         "apiKeyName": "",
@@ -63,14 +49,14 @@
       "rawText": "",
       "formData": [],
       "urlencoded": [],
-      "gqlQuery": "query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\n  orderPaginationList(params: $params, filters: $filters) {\n    total\n    items {\n      id\n      code\n    }\n  }\n}",
-      "gqlVariables": "{\n  \"params\": {\n    \"page\": 0,\n    \"pageSize\": 0,\n    \"sortBy\": \"\",\n    \"sortDirection\": \"\"\n  },\n  \"filters\": {\n    \"keywords\": \"\",\n    \"orderStatus\": [],\n    \"financialStatus\": []\n  }\n}",
+      "gqlQuery": "",
+      "gqlVariables": "{}",
       "testScript": "",
-      "editorTab": "VARIABLES",
+      "editorTab": "AUTH",
       "responseTab": "PRETTY"
     }
   ],
   "splitLayout": "horizontal",
-  "isSidebarCollapsed": true,
+  "isSidebarCollapsed": false,
   "isExplorerOpen": false
 }

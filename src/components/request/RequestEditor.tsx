@@ -9,7 +9,7 @@ import {
   Trash2,
   Wand2,
 } from 'lucide-react'
-import type { BodyType, EnvironmentItem, KeyValueRow, RequestItem } from '../../types'
+import type { EnvironmentItem, KeyValueRow, RequestItem } from '../../types'
 import {
   buildUrlWithQueryParams,
   convertRowsToHeadersJson,
@@ -19,6 +19,7 @@ import { CodeEditor } from '../common/CodeEditor'
 import { KeyValueTable } from './KeyValueTable'
 import { AuthEditor } from './AuthEditor'
 import { TestScriptEditor } from './TestScriptEditor'
+import { RequestBodyEditor } from './RequestBodyEditor'
 
 interface RequestEditorProps {
   activeTab: RequestItem
@@ -42,7 +43,6 @@ export function RequestEditor({
   const [isSynced, setIsSynced] = useState(false)
   const [isVariablesOpen, setIsVariablesOpen] = useState<boolean>(true)
   const isGraphQL = activeTab.mode === 'GRAPHQL'
-  const isGetOrDelete = ['GET', 'DELETE'].includes(activeTab.method)
 
   const isQueryTabActive =
     activeTab.editorTab === 'BODY' || (isGraphQL && activeTab.editorTab === 'VARIABLES')
@@ -82,10 +82,6 @@ export function RequestEditor({
       headersList: newHeaders,
       headersText: jsonText,
     })
-  }
-
-  const handleBodyTypeChange = (type: BodyType) => {
-    onUpdateTab({ bodyType: type })
   }
 
   const activeParamCount = (activeTab.params || []).filter((p) => p.enabled && p.key.trim()).length
@@ -180,14 +176,8 @@ export function RequestEditor({
         </div>
 
         {/* REST mode Toolbar buttons */}
-        {!isGraphQL && (
+        {!isGraphQL && activeTab.editorTab !== 'BODY' && (
           <div className="row wrap">
-            {activeTab.editorTab === 'BODY' && activeTab.bodyType === 'json' && (
-              <button onClick={onFormat} className="button button-sm" type="button">
-                <Wand2 size={13} />
-                Format
-              </button>
-            )}
             <button onClick={onClear} className="button button-sm" type="button">
               <Trash2 size={13} />
               Clear
@@ -425,83 +415,14 @@ export function RequestEditor({
 
         {/* REST BODY TAB */}
         {!isGraphQL && activeTab.editorTab === 'BODY' && (
-          <div className="stack" style={{ flex: 1, minHeight: 0, padding: '10px 12px', height: '100%', overflow: 'hidden' }}>
-            <div className="row wrap" style={{ gap: 16, marginBottom: 8, flexShrink: 0 }}>
-              <span className="caps" style={{ alignSelf: 'center' }}>Body Format:</span>
-              <div className="segmented" role="radiogroup">
-                {(['none', 'json', 'form-data', 'x-www-form-urlencoded', 'raw'] as BodyType[]).map(
-                  (type) => (
-                    <button
-                      key={type}
-                      className={`segment-button ${activeTab.bodyType === type ? 'is-active' : ''}`}
-                      onClick={() => handleBodyTypeChange(type)}
-                      disabled={isGetOrDelete && type !== 'none'}
-                    >
-                      {type === 'json'
-                        ? 'raw JSON'
-                        : type === 'raw'
-                        ? 'raw Text'
-                        : type}
-                    </button>
-                  ),
-                )}
-              </div>
-            </div>
-
-            {isGetOrDelete && activeTab.bodyType !== 'none' ? (
-              <div className="response-empty">
-                HTTP {activeTab.method} requests typically do not have a request body.
-              </div>
-            ) : activeTab.bodyType === 'none' ? (
-              <div className="response-empty">This request does not have a body.</div>
-            ) : activeTab.bodyType === 'json' ? (
-              <div style={{ flex: 1, minHeight: 0, height: '100%', overflow: 'hidden' }}>
-                <CodeEditor
-                  value={activeTab.restBody}
-                  onChange={(val) => onUpdateTab({ restBody: val })}
-                  language="json"
-                  placeholder="{\n  \n}"
-                  height="100%"
-                  minHeight="100%"
-                  fontSize={editorFontSize}
-                />
-              </div>
-            ) : activeTab.bodyType === 'raw' ? (
-              <div style={{ flex: 1, minHeight: 0, height: '100%', overflow: 'hidden' }}>
-                <CodeEditor
-                  value={activeTab.rawText}
-                  onChange={(val) => onUpdateTab({ rawText: val })}
-                  language="text"
-                  placeholder="Raw text payload..."
-                  height="100%"
-                  minHeight="100%"
-                  fontSize={editorFontSize}
-                />
-              </div>
-            ) : activeTab.bodyType === 'form-data' ? (
-              <div className="scroll-area">
-                <KeyValueTable
-                  rows={activeTab.formData}
-                  onChange={(rows) => onUpdateTab({ formData: rows })}
-                  keyPlaceholder="Form Key"
-                  valuePlaceholder="Form Value"
-                  title="Multipart / Form-Data"
-                  environment={environment}
-                />
-              </div>
-            ) : (
-              <div className="scroll-area">
-                <KeyValueTable
-                  rows={activeTab.urlencoded}
-                  onChange={(rows) => onUpdateTab({ urlencoded: rows })}
-                  keyPlaceholder="Urlencoded Key"
-                  valuePlaceholder="Urlencoded Value"
-                  title="x-www-form-urlencoded"
-                  environment={environment}
-                />
-              </div>
-            )}
-          </div>
+          <RequestBodyEditor
+            activeTab={activeTab}
+            editorFontSize={editorFontSize}
+            environment={environment}
+            onUpdateTab={onUpdateTab}
+            onFormat={onFormat}
+            onClear={onClear}
+          />
         )}
 
         {/* TESTS TAB */}
