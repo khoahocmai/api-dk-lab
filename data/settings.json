@@ -5,30 +5,32 @@
     "editorFontSize": 13
   },
   "activeEnvironmentId": "02ad665d-6fd3-4360-8a44-1b4c431425d5",
-  "activeTabId": "43a50826-d5f7-47ac-a6a7-18d4c4d52d1b",
+  "activeTabId": "57e4e784-8df9-4d8f-8c2c-e0ebe82a598c",
   "tabs": [
     {
-      "id": "43a50826-d5f7-47ac-a6a7-18d4c4d52d1b",
-      "savedRequestId": "8f6268d7-2676-4c2b-aab3-6b4c8d4f2263",
+      "id": "57e4e784-8df9-4d8f-8c2c-e0ebe82a598c",
+      "savedRequestId": "a71c77f3-756e-4945-b6d5-ce28e6814769",
       "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
-      "folderId": "ef526d59-41fe-42cc-a721-5d8fc509b603",
-      "name": "Get Invoice search",
+      "folderId": "17476f73-a01d-445e-a8ac-f47db5efa0f6",
+      "name": "Create Customer",
       "mode": "REST",
       "method": "POST",
-      "url": "{{Domain}}/invoices/search",
+      "url": "{{Domain}}/customers",
       "params": [],
       "headersList": [
         {
-          "id": "322daae3-6fc3-446f-b3b2-e0794f023491",
+          "id": "1be45cc3-da26-4713-a711-f823f3f6cad9",
           "key": "Square-Version",
           "value": "2026-08-19",
-          "enabled": true
+          "enabled": true,
+          "description": ""
         },
         {
-          "id": "d1ea2bd6-70f4-42ca-9088-28be49af20d8",
+          "id": "28689c0d-2be7-4d3f-bbca-dfea9a4968fa",
           "key": "Content-Type",
           "value": "application/json",
-          "enabled": true
+          "enabled": true,
+          "description": ""
         }
       ],
       "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
@@ -42,14 +44,61 @@
         "apiKeyAddTo": "header"
       },
       "bodyType": "json",
-      "restBody": "{\n  \"query\": {\n    \"filter\": {\n      \"location_ids\": [\n        \"L379743VY1ZBC\"\n      ]\n    },\n    \"sort\": {\n      \"field\": \"INVOICE_SORT_DATE\",\n      \"order\": \"DESC\"\n    }\n  }\n}",
+      "restBody": "{\n  \"idempotency_key\": \"4344440f-971e-41c6-b9cf-f9f8d29ce469\",\n  \"address\": {\n    \"country\": \"VN\",\n    \"first_name\": \"Dang Khoa\",\n    \"last_name\": \"Do Duong\",\n    \"postal_code\": \"70000\"\n  },\n  \"birthday\": \"2003-01-01\",\n  \"nickname\": \"DK\",\n  \"family_name\": \"Do Duong\",\n  \"given_name\": \"Dang Khoa\"\n}",
       "rawText": "",
       "formData": [],
       "urlencoded": [],
       "gqlQuery": "",
       "gqlVariables": "{}",
       "testScript": "",
-      "editorTab": "BODY",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    {
+      "id": "dcc5f856-d050-4745-85c6-3adffba44745",
+      "savedRequestId": "20ba662f-d791-4581-b693-c60b1565ad63",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "17476f73-a01d-445e-a8ac-f47db5efa0f6",
+      "name": "Get Customer",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/customers",
+      "params": [],
+      "headersList": [
+        {
+          "id": "3b45789e-7a76-4c54-a7c9-598bd93d7a52",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "d6d1ad15-19c9-4695-8889-62936e60d6fd",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
       "responseTab": "PRETTY"
     }
   ],

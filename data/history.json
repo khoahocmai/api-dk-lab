@@ -1,5 +1,198 @@
 [
   {
+    "id": "c7d42eb8-72ae-4af1-acce-b556f6eaed8d",
+    "timestamp": "2026-08-24T04:31:31.109Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/merchants",
+    "status": 200,
+    "duration": 385,
+    "request": {
+      "id": "f68b3bab-c838-4dac-b5a5-3f07a2de4fdf",
+      "savedRequestId": "49a4aa41-9fd5-4caa-9c36-0767ffbb24f3",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "a9abb7ec-7230-461e-90e6-91477704638c",
+      "name": "Get Merchant list",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/merchants",
+      "params": [],
+      "headersList": [
+        {
+          "id": "afd0fd1a-2c81-403c-9fb3-979d78636419",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true
+        },
+        {
+          "id": "d0381408-4ba8-4268-978e-925656c2296d",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "AUTH",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "385 ms",
+      "size": "304 B",
+      "data": {
+        "merchant": [
+          {
+            "id": "MLTQ3MXGD4MH2",
+            "business_name": "Default Test Account",
+            "country": "US",
+            "language_code": "en-US",
+            "currency": "USD",
+            "status": "ACTIVE",
+            "main_location_id": "L379743VY1ZBC",
+            "owner_email": "sandbox-merchant+ulhfxsbg7mvjoiwugqkoa7pqxabe8prr@squareup.com",
+            "created_at": "2026-08-24T01:35:15.919Z"
+          }
+        ]
+      },
+      "headers": {
+        "date": "Mon, 24 Aug 2026 04:31:32 GMT",
+        "content-type": "application/json",
+        "content-length": "268",
+        "connection": "keep-alive",
+        "cf-ray": "a2ffa0c0be00abcb-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/merchants/**",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=Iffq3sOklBwTKYxV7A.zF3vVJufWOJXFqGrY_i59EQg-1787545891.9571629-1.0.1.1-q5XJGxm9bImV_3ryiqjBV7z14xG53mWAYQ2Y65E9iXnYmYWy2LyfMFOtzpMCsEnJ4wOUrt1zt1UhTpRCAABecrUsY4fZEXPE5tTqicIdFjcnOcUzDAr4JSsxXYO7wk3n; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 05:01:32 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "f4bc468d-af19-4d5d-8949-bc497adb993e",
+    "timestamp": "2026-08-24T04:30:05.419Z",
+    "method": "POST",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/invoices/search",
+    "status": 200,
+    "duration": 1656,
+    "request": {
+      "id": "43a50826-d5f7-47ac-a6a7-18d4c4d52d1b",
+      "savedRequestId": "8f6268d7-2676-4c2b-aab3-6b4c8d4f2263",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "ef526d59-41fe-42cc-a721-5d8fc509b603",
+      "name": "Get Invoice search",
+      "mode": "REST",
+      "method": "POST",
+      "url": "{{Domain}}/invoices/search",
+      "params": [],
+      "headersList": [
+        {
+          "id": "322daae3-6fc3-446f-b3b2-e0794f023491",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "d1ea2bd6-70f4-42ca-9088-28be49af20d8",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "json",
+      "restBody": "{\n  \"query\": {\n    \"filter\": {\n      \"location_ids\": [\n        \"L379743VY1ZBC\"\n      ]\n    },\n    \"sort\": {\n      \"field\": \"INVOICE_SORT_DATE\",\n      \"order\": \"DESC\"\n    }\n  }\n}",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "1656 ms",
+      "size": "2 B",
+      "data": {},
+      "headers": {
+        "date": "Mon, 24 Aug 2026 04:30:06 GMT",
+        "content-type": "application/json",
+        "content-length": "2",
+        "connection": "keep-alive",
+        "cf-ray": "a2ff9ea2581c08d9-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "cache-control": "max-age=0, private, must-revalidate",
+        "content-disposition": "inline",
+        "etag": "W/\"44136fa355b3678a1146ad16f7e8649e\"",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept",
+        "content-transfer-encoding": "binary",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "square-version": "2026-08-19",
+        "x-content-type-options": "nosniff",
+        "x-download-options": "noopen",
+        "x-envoy-decorator-operation": "/v2/invoices/search",
+        "x-frame-options": "SAMEORIGIN",
+        "x-permitted-cross-domain-policies": "none",
+        "x-request-id": "007d44e7-87fc-4a16-991f-296a3be4f9c8",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-square": "S=clinton-sandbox-865c8b86c6-52b4f",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=_uFMPdx5_UFlnTblPv9ifXQ6.qVxa6_5H8LuQLLYxbQ-1787545805.1722813-1.0.1.1-P1cYzCBFhDLFA55pbw5lrcbJ3zSbGECXsvcYacTauDz5CKA_QruVbQrrBqhWkp2XdqfxHh8qPfnNOf4rmPT5wnNGFsMobcE3I7QGl_ARaQZS8PuY6UgOElCK9_E44PYo; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 05:00:06 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
     "id": "5dbb6f97-cc8b-4d46-a81c-95a932c69ec2",
     "timestamp": "2026-08-24T04:26:03.238Z",
     "method": "POST",

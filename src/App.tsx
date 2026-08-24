@@ -1074,23 +1074,31 @@ function App() {
           query: resolveTemplates(activeTab.gqlQuery, activeEnvironment),
           variables: parsedVariables,
         }
-        if (!headers['Content-Type']) headers['Content-Type'] = 'application/json'
+        if (!headers['Content-Type'] && !headers['content-type']) {
+          headers['Content-Type'] = 'application/json'
+        }
+      } else {
         const hasContentType = Boolean(headers['Content-Type'] || headers['content-type'])
 
         if (activeTab.bodyType === 'json') {
-          if (activeTab.restBody.trim()) {
+          if (activeTab.restBody && activeTab.restBody.trim()) {
+            const resolvedBody = resolveTemplates(activeTab.restBody, activeEnvironment)
             try {
-              requestOptions.data = JSON.parse(
-                resolveTemplates(activeTab.restBody, activeEnvironment),
-              )
+              requestOptions.data = JSON.parse(resolvedBody)
             } catch {
-              throw new Error('REST body phải là JSON hợp lệ')
+              requestOptions.data = resolvedBody
+            }
+            if (!hasContentType) {
+              headers['Content-Type'] = 'application/json'
             }
           }
-          if (!hasContentType) headers['Content-Type'] = 'application/json'
         } else if (activeTab.bodyType === 'raw') {
-          requestOptions.data = resolveTemplates(activeTab.rawText, activeEnvironment)
-          if (!hasContentType) headers['Content-Type'] = 'text/plain'
+          if (activeTab.rawText && activeTab.rawText.trim()) {
+            requestOptions.data = resolveTemplates(activeTab.rawText, activeEnvironment)
+            if (!hasContentType) {
+              headers['Content-Type'] = 'text/plain'
+            }
+          }
         } else if (activeTab.bodyType === 'x-www-form-urlencoded') {
           const urlSearchParams = new URLSearchParams()
           activeTab.urlencoded
@@ -1101,8 +1109,13 @@ function App() {
                 resolveTemplates(r.value, activeEnvironment),
               )
             })
-          requestOptions.data = urlSearchParams.toString()
-          if (!hasContentType) headers['Content-Type'] = 'application/x-www-form-urlencoded'
+          const dataStr = urlSearchParams.toString()
+          if (dataStr) {
+            requestOptions.data = dataStr
+            if (!hasContentType) {
+              headers['Content-Type'] = 'application/x-www-form-urlencoded'
+            }
+          }
         } else if (activeTab.bodyType === 'form-data') {
           const formObject: Record<string, string> = {}
           activeTab.formData
@@ -1112,7 +1125,9 @@ function App() {
                 resolveTemplates(r.value, activeEnvironment)
             })
           requestOptions.data = formObject
-          if (!hasContentType) headers['Content-Type'] = 'multipart/form-data'
+          if (!hasContentType) {
+            headers['Content-Type'] = 'multipart/form-data'
+          }
         }
       }
 

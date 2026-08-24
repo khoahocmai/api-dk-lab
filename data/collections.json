@@ -93,6 +93,12 @@
       "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
       "parentId": null,
       "name": "Invoice"
+    },
+    {
+      "id": "a9abb7ec-7230-461e-90e6-91477704638c",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "parentId": null,
+      "name": "Merchant"
     }
   ],
   "savedRequests": [
@@ -1404,13 +1410,13 @@
       "id": "8f6268d7-2676-4c2b-aab3-6b4c8d4f2263",
       "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
       "folderId": "ef526d59-41fe-42cc-a721-5d8fc509b603",
-      "name": "Get Invoice search",
+      "name": "Get Invoice search (with body)",
       "request": {
         "id": "43a50826-d5f7-47ac-a6a7-18d4c4d52d1b",
         "savedRequestId": "8f6268d7-2676-4c2b-aab3-6b4c8d4f2263",
         "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
         "folderId": "ef526d59-41fe-42cc-a721-5d8fc509b603",
-        "name": "Get Invoice search",
+        "name": "Get Invoice search (with body)",
         "mode": "REST",
         "method": "POST",
         "url": "{{Domain}}/invoices/search",
@@ -1420,13 +1426,15 @@
             "id": "322daae3-6fc3-446f-b3b2-e0794f023491",
             "key": "Square-Version",
             "value": "2026-08-19",
-            "enabled": true
+            "enabled": true,
+            "description": ""
           },
           {
             "id": "d1ea2bd6-70f4-42ca-9088-28be49af20d8",
             "key": "Content-Type",
             "value": "application/json",
-            "enabled": true
+            "enabled": true,
+            "description": ""
           }
         ],
         "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
@@ -1451,7 +1459,60 @@
         "responseTab": "PRETTY"
       },
       "createdAt": "2026-08-24T04:23:54.651Z",
-      "updatedAt": "2026-08-24T04:25:02.316Z"
+      "updatedAt": "2026-08-24T04:30:21.341Z"
+    },
+    {
+      "id": "49a4aa41-9fd5-4caa-9c36-0767ffbb24f3",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "a9abb7ec-7230-461e-90e6-91477704638c",
+      "name": "Get Merchant list",
+      "request": {
+        "id": "f68b3bab-c838-4dac-b5a5-3f07a2de4fdf",
+        "savedRequestId": "49a4aa41-9fd5-4caa-9c36-0767ffbb24f3",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "a9abb7ec-7230-461e-90e6-91477704638c",
+        "name": "Get Merchant list",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/merchants",
+        "params": [],
+        "headersList": [
+          {
+            "id": "afd0fd1a-2c81-403c-9fb3-979d78636419",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true
+          },
+          {
+            "id": "d0381408-4ba8-4268-978e-925656c2296d",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "AUTH",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T04:31:21.660Z",
+      "updatedAt": "2026-08-24T04:31:21.660Z"
     }
   ],
   "expandedCollectionIds": [
@@ -1462,6 +1523,6 @@
     "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
     "3eba61de-7e93-497e-ab02-0daac97727ae",
     "785cea12-b358-4f53-bf46-46ebd0bf368c",
-    "ef526d59-41fe-42cc-a721-5d8fc509b603"
+    "17476f73-a01d-445e-a8ac-f47db5efa0f6"
   ]
 }
