@@ -410,6 +410,23 @@ function App() {
     )
   }
 
+  const handleImportCurl = (parsed: Partial<RequestItem>) => {
+    if (activeTab) {
+      updateActiveTab(parsed)
+      showToast('Đã import cURL thành công', 'success')
+    } else {
+      const mode = parsed.mode || 'REST'
+      const newReq: RequestItem = {
+        ...createDefaultRequest(mode),
+        ...parsed,
+      }
+      setTabs((current) => [...current, newReq])
+      setActiveTabId(newReq.id)
+      setMobileView('REQUEST')
+      showToast('Đã import cURL thành công', 'success')
+    }
+  }
+
   const addTab = (mode: Mode = 'GRAPHQL') => {
     const next = createDefaultRequest(mode)
     setTabs((current) => [...current, next])
@@ -1858,7 +1875,7 @@ function App() {
       <CurlImportModal
         isOpen={importCurlModalOpen}
         onClose={() => setImportCurlModalOpen(false)}
-        onImport={updateActiveTab}
+        onImport={handleImportCurl}
       />
 
       {/* Modal: Import Postman Collection v2.1 */}

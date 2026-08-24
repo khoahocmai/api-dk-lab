@@ -5,33 +5,30 @@
     "editorFontSize": 13
   },
   "activeEnvironmentId": "02ad665d-6fd3-4360-8a44-1b4c431425d5",
-  "activeTabId": "ee417777-ecb8-4190-a697-b00f692340a0",
+  "activeTabId": "e48ccac8-c1bb-4dd5-b71d-e2a4a1c60dd6",
   "tabs": [
     {
-      "id": "ee417777-ecb8-4190-a697-b00f692340a0",
-      "savedRequestId": "6b97d2ab-1d61-48a7-8939-926dfd975ec8",
-      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
-      "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
-      "name": "Get Location",
+      "id": "e48ccac8-c1bb-4dd5-b71d-e2a4a1c60dd6",
+      "name": "Get Catalog info",
       "mode": "REST",
       "method": "GET",
-      "url": "{{Domain}}/locations",
+      "url": "{{Domain}}/catalog/info",
       "params": [],
       "headersList": [
         {
-          "id": "69fd8f9d-6f07-4ed2-930f-5f191564042c",
+          "id": "07824a38-0a1d-4c39-ae4d-dd103cab7752",
           "key": "Square-Version",
           "value": "2026-08-19",
           "enabled": true
         },
         {
-          "id": "02ff945d-9f83-432a-a157-d7af3b356711",
+          "id": "83f049d0-9b4f-4464-af45-a6e9252db758",
           "key": "Authorization",
           "value": "Bearer {{Token}}",
           "enabled": true
         },
         {
-          "id": "e833c751-f6cf-4b39-9523-2edf5d0852c0",
+          "id": "e0f93dff-d0a2-4f8f-a7eb-e7ff6210121a",
           "key": "Content-Type",
           "value": "application/json",
           "enabled": true
@@ -55,7 +52,7 @@
       "gqlQuery": "",
       "gqlVariables": "{}",
       "testScript": "",
-      "editorTab": "AUTH",
+      "editorTab": "HEADERS",
       "responseTab": "PRETTY"
     }
   ],

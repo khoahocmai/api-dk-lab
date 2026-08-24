@@ -51,7 +51,8 @@
         "id": "0d259375-cbfc-4e2f-ad46-09198861f97f",
         "key": "Token",
         "value": "EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK",
-        "enabled": true
+        "enabled": true,
+        "secret": true
       }
     ]
   }

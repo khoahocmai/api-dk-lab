@@ -63,6 +63,12 @@
       "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
       "parentId": null,
       "name": "Customer"
+    },
+    {
+      "id": "04666320-928f-4e1f-b445-7665044efffa",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "parentId": null,
+      "name": "Catalog"
     }
   ],
   "savedRequests": [
@@ -785,6 +791,65 @@
       },
       "createdAt": "2026-08-24T02:49:08.689Z",
       "updatedAt": "2026-08-24T02:49:25.214Z"
+    },
+    {
+      "id": "7cd28cb5-06c3-4da7-9392-59136541c5e2",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "04666320-928f-4e1f-b445-7665044efffa",
+      "name": "Get Catalog",
+      "request": {
+        "id": "9dd5dde5-18a1-41fc-a6bb-4a5126377811",
+        "savedRequestId": "7cd28cb5-06c3-4da7-9392-59136541c5e2",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": null,
+        "name": "Get Catalog",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/catalog/list",
+        "params": [],
+        "headersList": [
+          {
+            "id": "e8f25577-120c-41a7-821a-870bd58874cc",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true
+          },
+          {
+            "id": "de8e2e20-1bab-4322-a55c-add471510ff7",
+            "key": "Authorization",
+            "value": "Bearer {{Token}}",
+            "enabled": true
+          },
+          {
+            "id": "bb69b370-2c99-4e9e-8953-d6aa44f19660",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Authorization\": \"Bearer {{Token}}\",\n  \"Content-Type\": \"application/json\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "AUTH",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T02:54:29.461Z",
+      "updatedAt": "2026-08-24T02:54:37.644Z"
     }
   ],
   "expandedCollectionIds": [
@@ -796,6 +861,7 @@
     "3eba61de-7e93-497e-ab02-0daac97727ae",
     "785cea12-b358-4f53-bf46-46ebd0bf368c",
     "17476f73-a01d-445e-a8ac-f47db5efa0f6",
-    "3bd48a75-0a8c-4312-9be3-c4545f7a3164"
+    "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+    "04666320-928f-4e1f-b445-7665044efffa"
   ]
 }

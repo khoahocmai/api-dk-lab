@@ -1,5 +1,101 @@
 [
   {
+    "id": "ae931868-d189-4f68-8805-e85cab9165f2",
+    "timestamp": "2026-08-24T02:53:37.625Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/catalog/list?types=ITEM,CATEGORY",
+    "status": 200,
+    "duration": 1037,
+    "request": {
+      "id": "9dd5dde5-18a1-41fc-a6bb-4a5126377811",
+      "name": "cURL (GET)",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/catalog/list?types=ITEM,CATEGORY",
+      "params": [
+        {
+          "id": "ba5b0ba5-b5bd-46cd-ae5b-c860e80433b7",
+          "key": "types",
+          "value": "ITEM,CATEGORY",
+          "enabled": true
+        }
+      ],
+      "headersList": [
+        {
+          "id": "bc2b9ac2-85f5-4293-8492-da0a6d46c81c",
+          "key": "Authorization",
+          "value": "Bearer {{Token}}",
+          "enabled": true
+        },
+        {
+          "id": "a74bc1ca-d6ea-485a-88f4-d7552f7c75b9",
+          "key": "Square-Version",
+          "value": "2024-01-18",
+          "enabled": true
+        },
+        {
+          "id": "c34d07bf-4aa6-44ae-84b9-06e0ce0c6fa0",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "headersText": "{\n  \"Authorization\": \"Bearer {{Token}}\",\n  \"Square-Version\": \"2024-01-18\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "PARAMS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "1037 ms",
+      "size": "2 B",
+      "data": {},
+      "headers": {
+        "date": "Mon, 24 Aug 2026 02:53:38 GMT",
+        "content-type": "application/json",
+        "content-length": "26",
+        "connection": "keep-alive",
+        "cf-ray": "a2ff11577b8bdda1-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Origin, Accept-Encoding",
+        "square-version": "2024-01-18",
+        "x-content-type-options": "nosniff",
+        "x-download-options": "noopen",
+        "x-envoy-decorator-operation": "/v2/catalog/**",
+        "x-frame-options": "SAMEORIGIN",
+        "x-permitted-cross-domain-policies": "none",
+        "x-speleo-traceid": "CDN-53a1f4a8-c939-4e0d-b61b-a69fbae40727",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=fcye3QOJubpCpC8RVfBJSaq5iOeWO9eDk5c7vbC9RMc-1787540017.832775-1.0.1.1-U_9DLGayCBKE4Fy3jEUoBJcWrZL0y85ac8F2xXmBK3Ud9fiUC0bPUBawKSqhdyWJ_l5JchOHilObnjt1wKlmeYEprNKKZVxlk2YDngkpV9aiRWHxiS96YoS0werWI1BU; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 03:23:38 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
     "id": "0ab5b15f-a75c-4373-bc43-743274b799b5",
     "timestamp": "2026-08-24T02:49:04.284Z",
     "method": "GET",

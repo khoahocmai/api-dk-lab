@@ -1,5 +1,5 @@
 import { Group, Panel, Separator } from 'react-resizable-panels'
-import { Globe, Layers3, Plus } from 'lucide-react'
+import { Globe, Layers3, Plus, Terminal } from 'lucide-react'
 import type { EnvironmentItem, Mode, RequestItem, SplitLayout } from '../../types'
 import { RequestTabs } from '../request/RequestTabs'
 import { UrlBar } from '../request/UrlBar'
@@ -200,6 +200,14 @@ export function MainPanel({
               >
                 <Globe size={13} style={{ color: 'var(--method-get)' }} />
                 <span>New REST Request</span>
+              </button>
+              <button
+                type="button"
+                className="button"
+                onClick={onOpenImportCurlModal}
+              >
+                <Terminal size={13} style={{ color: 'var(--method-post)' }} />
+                <span>Import cURL</span>
               </button>
             </div>
             <div className="empty-workspace-shortcuts">
