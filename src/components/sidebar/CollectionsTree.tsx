@@ -14,24 +14,7 @@ import {
 } from 'lucide-react'
 import type { CollectionItem, FolderItem, SavedRequestItem } from '../../types'
 import { isDescendantFolder } from '../../utils/treeHelper'
-
-function getMethodBadgeClass(mode: string, method?: string) {
-  if (mode === 'GRAPHQL') return 'method-badge-gql'
-  switch ((method || 'GET').toUpperCase()) {
-    case 'GET':
-      return 'method-badge-get'
-    case 'POST':
-      return 'method-badge-post'
-    case 'PUT':
-      return 'method-badge-put'
-    case 'PATCH':
-      return 'method-badge-patch'
-    case 'DELETE':
-      return 'method-badge-delete'
-    default:
-      return 'method-badge-get'
-  }
-}
+import { getMethodBadgeClass } from '../../utils/formatters'
 
 export type DragItem =
   | { type: 'REQUEST'; id: string; collectionId: string; folderId: string | null }

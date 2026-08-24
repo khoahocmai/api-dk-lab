@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { BookOpen, Copy, Globe, Layers3, PanelRightClose, PanelRightOpen, Plus, X } from 'lucide-react'
 import type { EnvironmentItem, Mode, RequestItem } from '../../types'
 import { EnvironmentSelector } from '../common/EnvironmentSelector'
+import { getMethodBadgeClass } from '../../utils/formatters'
 
 interface RequestTabsProps {
   tabs: RequestItem[]
@@ -103,9 +104,7 @@ export function RequestTabs({
                 }}
               >
                 <span
-                  className={`method-tag ${
-                    item.mode === 'GRAPHQL' ? 'method-graphql' : 'method-rest'
-                  }`}
+                  className={`method-tag ${getMethodBadgeClass(item.mode, item.method)}`}
                 >
                   {item.mode === 'GRAPHQL' ? 'GQL' : item.method || 'GET'}
                 </span>

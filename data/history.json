@@ -1,5 +1,237 @@
 [
   {
+    "id": "83d8757c-c36c-4f8d-aa52-e9d6e43cd58c",
+    "timestamp": "2026-08-24T04:52:07.073Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/customers",
+    "status": 200,
+    "duration": 767,
+    "request": {
+      "id": "607dc5bc-c7d0-4033-9f85-b32dfd6757b2",
+      "savedRequestId": "20ba662f-d791-4581-b693-c60b1565ad63",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "17476f73-a01d-445e-a8ac-f47db5efa0f6",
+      "name": "Get Customer",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/customers",
+      "params": [],
+      "headersList": [
+        {
+          "id": "3b45789e-7a76-4c54-a7c9-598bd93d7a52",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "d6d1ad15-19c9-4695-8889-62936e60d6fd",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "767 ms",
+      "size": "691 B",
+      "data": {
+        "customers": [
+          {
+            "id": "D7KBXFK77FCPXF2BAA48Z6GCAG",
+            "created_at": "2026-08-24T02:27:58.603Z",
+            "updated_at": "2026-08-24T02:27:58Z",
+            "given_name": "Dang Khoa",
+            "family_name": "Do Duong",
+            "nickname": "DK",
+            "address": {
+              "postal_code": "70000",
+              "country": "VN"
+            },
+            "preferences": {
+              "email_unsubscribed": false
+            },
+            "creation_source": "THIRD_PARTY",
+            "birthday": "2003-01-01",
+            "version": 0
+          },
+          {
+            "id": "5MJNZ04NXKW51HJ7SXMEFYV344",
+            "created_at": "2026-08-24T04:47:56.997Z",
+            "updated_at": "2026-08-24T04:47:56Z",
+            "given_name": "Khoa Dang",
+            "family_name": "Duong Do",
+            "nickname": "DK",
+            "address": {
+              "postal_code": "70000",
+              "country": "VN"
+            },
+            "preferences": {
+              "email_unsubscribed": false
+            },
+            "creation_source": "THIRD_PARTY",
+            "birthday": "2003-01-02",
+            "version": 0
+          }
+        ]
+      },
+      "headers": {
+        "date": "Mon, 24 Aug 2026 04:52:08 GMT",
+        "content-type": "application/json",
+        "content-length": "340",
+        "connection": "keep-alive",
+        "cf-ray": "a2ffbeecba5c055c-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/customers/**",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=AmAEvxF9J68dC4epQrbijE7pdAfb8_pc1CCgYLAyFgQ-1787547127.7934768-1.0.1.1-UfUUKbc4hoJRXhsJkHIHbtlW9V3EyIgzQ1duQ68198yW_wfwu3TG3f3YqAxq.vvrXY_543JacvTZ5gO4mA2hp2.QqQXIGeRpI9odJCueWHz7g0Io6AzPmj41Yf2SvMIw; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 05:22:08 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "475eb269-2d3c-4f6a-8b81-6957e52eb1ca",
+    "timestamp": "2026-08-24T04:47:56.077Z",
+    "method": "POST",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/customers",
+    "status": 200,
+    "duration": 793,
+    "request": {
+      "id": "c7697fa4-3f93-4749-8955-37d0b80d4cfe",
+      "savedRequestId": "a71c77f3-756e-4945-b6d5-ce28e6814769",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "17476f73-a01d-445e-a8ac-f47db5efa0f6",
+      "name": "Create Customer",
+      "mode": "REST",
+      "method": "POST",
+      "url": "{{Domain}}/customers",
+      "params": [],
+      "headersList": [
+        {
+          "id": "1be45cc3-da26-4713-a711-f823f3f6cad9",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "28689c0d-2be7-4d3f-bbca-dfea9a4968fa",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "json",
+      "restBody": "{\n  \"idempotency_key\": \"6596bcbb-6417-4755-8a4a-261b2a58be9e\",\n  \"address\": {\n    \"country\": \"VN\",\n    \"first_name\": \"Khoa Dang\",\n    \"last_name\": \"Duong Do\",\n    \"postal_code\": \"70000\"\n  },\n  \"birthday\": \"2003-01-02\",\n  \"nickname\": \"DK\",\n  \"family_name\": \"Duong Do\",\n  \"given_name\": \"Khoa Dang\"\n}",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "793 ms",
+      "size": "350 B",
+      "data": {
+        "customer": {
+          "id": "5MJNZ04NXKW51HJ7SXMEFYV344",
+          "created_at": "2026-08-24T04:47:56.997Z",
+          "updated_at": "2026-08-24T04:47:56Z",
+          "given_name": "Khoa Dang",
+          "family_name": "Duong Do",
+          "nickname": "DK",
+          "address": {
+            "postal_code": "70000",
+            "country": "VN"
+          },
+          "preferences": {
+            "email_unsubscribed": false
+          },
+          "creation_source": "THIRD_PARTY",
+          "birthday": "2003-01-02",
+          "version": 0
+        }
+      },
+      "headers": {
+        "date": "Mon, 24 Aug 2026 04:47:57 GMT",
+        "content-type": "application/json",
+        "content-length": "275",
+        "connection": "keep-alive",
+        "cf-ray": "a2ffb8cc49dbd8ec-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/customers/**",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=17QAfdoVRDF3vh0MI.xOabyOBlCGGRzF5ifJ0Bn5JRA-1787546876.844847-1.0.1.1-ENf_GFUMmY91BdTtIe.lXGcTRuHji2BFRMSB_RS_KrIRJHu6U1jgGjzEsd4TMZsDmKcCLKNuJVl4ZuFzQK850HCUGOHDx3DdfosABfJJMGSWarVL6dopsISWcLBoCzFL; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 05:17:57 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
     "id": "c7d42eb8-72ae-4af1-acce-b556f6eaed8d",
     "timestamp": "2026-08-24T04:31:31.109Z",
     "method": "GET",

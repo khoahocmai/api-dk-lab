@@ -152,19 +152,19 @@ export function KeyValueTable({
             onClick={() => setShowAutoHeaders(!showAutoHeaders)}
             title={
               showAutoHeaders
-                ? 'Hide auto-generated headers'
-                : 'Show auto-generated headers (system calculated)'
+                ? 'Hide headers field(s)'
+                : 'Show headers field(s) (system calculated)'
             }
           >
             {showAutoHeaders ? (
               <>
                 <EyeOff size={12} className="text-gray-400" />
-                <span>Hide auto-generated headers ({autoRows.length})</span>
+                <span>Hide headers field(s) </span>
               </>
             ) : (
               <>
                 <Eye size={12} className="text-blue-400" />
-                <span>{autoRows.length} hidden auto-generated headers</span>
+                <span>{autoRows.length} hidden headers field(s)</span>
               </>
             )}
           </button>
@@ -191,9 +191,8 @@ export function KeyValueTable({
             return (
               <div
                 key={autoRow.id}
-                className={`kv-row is-auto-row is-readonly ${
-                  isOverridden ? 'is-overridden-by-user' : ''
-                } ${allowFile ? 'has-type' : ''}`}
+                className={`kv-row is-auto-row is-readonly ${isOverridden ? 'is-overridden-by-user' : ''
+                  } ${allowFile ? 'has-type' : ''}`}
                 title={
                   isOverridden
                     ? `Header "${autoRow.key}" đã bị ghi đè bởi User Header bên dưới.`
@@ -231,7 +230,7 @@ export function KeyValueTable({
                     size="sm"
                     placeholder={valuePlaceholder}
                     value={autoRow.value}
-                    onChange={() => {}}
+                    onChange={() => { }}
                     readOnly
                     disabled
                     environment={environment}

@@ -69,3 +69,68 @@ export function sanitizeVariableName(value: string): string {
   const normalized = value.replace(/[^A-Za-z0-9_]/g, '_') || 'value'
   return /^[A-Za-z_]/.test(normalized) ? normalized : `v_${normalized}`
 }
+
+export function getMethodBadgeClass(mode?: string, method?: string): string {
+  if (mode === 'GRAPHQL') return 'method-badge-gql'
+  switch ((method || 'GET').toUpperCase()) {
+    case 'GET':
+      return 'method-badge-get'
+    case 'POST':
+      return 'method-badge-post'
+    case 'PUT':
+      return 'method-badge-put'
+    case 'PATCH':
+      return 'method-badge-patch'
+    case 'DELETE':
+      return 'method-badge-delete'
+    case 'HEAD':
+      return 'method-badge-head'
+    case 'OPTIONS':
+      return 'method-badge-options'
+    default:
+      return 'method-badge-get'
+  }
+}
+
+export function getMethodTagClass(mode?: string, method?: string): string {
+  if (mode === 'GRAPHQL') return 'method-graphql'
+  switch ((method || 'GET').toUpperCase()) {
+    case 'GET':
+      return 'method-get'
+    case 'POST':
+      return 'method-post'
+    case 'PUT':
+      return 'method-put'
+    case 'PATCH':
+      return 'method-patch'
+    case 'DELETE':
+      return 'method-delete'
+    case 'HEAD':
+      return 'method-head'
+    case 'OPTIONS':
+      return 'method-options'
+    default:
+      return 'method-get'
+  }
+}
+
+export function getMethodColor(mode?: string, method?: string): string {
+  if (mode === 'GRAPHQL') return 'var(--method-gql)'
+  switch ((method || 'GET').toUpperCase()) {
+    case 'GET':
+      return 'var(--method-get)'
+    case 'POST':
+      return 'var(--method-post)'
+    case 'PUT':
+      return 'var(--method-put)'
+    case 'PATCH':
+      return 'var(--method-patch)'
+    case 'DELETE':
+      return 'var(--method-delete)'
+    case 'HEAD':
+    case 'OPTIONS':
+      return '#14b8a6'
+    default:
+      return 'var(--method-get)'
+  }
+}

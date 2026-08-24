@@ -700,7 +700,7 @@
       "folderId": "17476f73-a01d-445e-a8ac-f47db5efa0f6",
       "name": "Get Customer",
       "request": {
-        "id": "83fd5431-3cea-4db6-8096-debab9870289",
+        "id": "607dc5bc-c7d0-4033-9f85-b32dfd6757b2",
         "savedRequestId": "20ba662f-d791-4581-b693-c60b1565ad63",
         "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
         "folderId": "17476f73-a01d-445e-a8ac-f47db5efa0f6",
@@ -747,7 +747,7 @@
         "responseTab": "PRETTY"
       },
       "createdAt": "2026-08-24T02:33:24.433Z",
-      "updatedAt": "2026-08-24T03:28:44.668Z"
+      "updatedAt": "2026-08-24T04:59:42.145Z"
     },
     {
       "id": "6b97d2ab-1d61-48a7-8939-926dfd975ec8",

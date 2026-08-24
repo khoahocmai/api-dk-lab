@@ -373,11 +373,45 @@
   letter-spacing: 0.02em;
 }
 
-.method-graphql {
+.method-tag.method-get,
+.method-tag.method-badge-get {
+  color: var(--method-get);
+}
+
+.method-tag.method-post,
+.method-tag.method-badge-post {
+  color: var(--method-post);
+}
+
+.method-tag.method-put,
+.method-tag.method-badge-put {
+  color: var(--method-put);
+}
+
+.method-tag.method-patch,
+.method-tag.method-badge-patch {
+  color: var(--method-patch);
+}
+
+.method-tag.method-delete,
+.method-tag.method-badge-delete {
+  color: var(--method-delete);
+}
+
+.method-tag.method-head,
+.method-tag.method-options,
+.method-tag.method-badge-head,
+.method-tag.method-badge-options {
+  color: #14b8a6;
+}
+
+.method-tag.method-graphql,
+.method-tag.method-gql,
+.method-tag.method-badge-gql {
   color: var(--method-gql);
 }
 
-.method-rest {
+.method-tag.method-rest {
   color: var(--method-get);
 }
 

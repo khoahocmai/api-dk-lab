@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Clock, Search, Trash2 } from 'lucide-react'
 import type { HistoryItem } from '../../types'
+import { getMethodBadgeClass } from '../../utils/formatters'
 
 interface HistoryListProps {
   history: HistoryItem[]
@@ -127,9 +128,10 @@ export function HistoryList({
                       >
                         <div className="row" style={{ gap: 4 }}>
                           <span
-                            className={`method-tag method-tag-sm ${
-                              item.mode === 'GRAPHQL' ? 'method-graphql' : 'method-rest'
-                            }`}
+                            className={`method-tag method-tag-sm ${getMethodBadgeClass(
+                              item.mode,
+                              item.method,
+                            )}`}
                           >
                             {item.method}
                           </span>
