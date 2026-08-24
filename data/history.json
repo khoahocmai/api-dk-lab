@@ -1,5 +1,134 @@
 [
   {
+    "id": "d57b7ddd-9137-431d-81c0-128f15127e42",
+    "timestamp": "2026-08-24T03:39:16.194Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/online-checkout/location-settings/L379743VY1ZBC",
+    "status": 200,
+    "duration": 1126,
+    "request": {
+      "id": "e3fb02f8-7fce-4129-b5f9-0248d2b00656",
+      "savedRequestId": "3fcff6ba-c2f5-44d0-8733-e7e93a0aab2e",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+      "name": "Checkout",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/online-checkout/location-settings/:location_id",
+      "params": [],
+      "headersList": [
+        {
+          "id": "05ef367d-f750-449c-9778-228c8eff8562",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "9dbc9ed3-3f20-4a19-bd0c-c0d9367cc0bd",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "PARAMS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "1126 ms",
+      "size": "499 B",
+      "data": {
+        "location_settings": {
+          "location_id": "L379743VY1ZBC",
+          "customer_notes_enabled": false,
+          "branding": {
+            "header_type": "BUSINESS_NAME",
+            "button_color": "#006aff",
+            "button_shape": "ROUNDED"
+          },
+          "tipping": {
+            "percentages": [
+              15,
+              20,
+              25
+            ],
+            "smart_tipping_enabled": true,
+            "default_percent": 15,
+            "smart_tips": [
+              {
+                "amount": 100,
+                "currency": "USD"
+              },
+              {
+                "amount": 200,
+                "currency": "USD"
+              },
+              {
+                "amount": 300,
+                "currency": "USD"
+              }
+            ],
+            "default_smart_tip": {
+              "amount": 100,
+              "currency": "USD"
+            }
+          },
+          "coupons": {
+            "enabled": true
+          },
+          "updated_at": "0001-01-01 00:00:00 +0000 UTC"
+        }
+      },
+      "headers": {
+        "date": "Mon, 24 Aug 2026 03:39:17 GMT",
+        "content-type": "application/json",
+        "content-length": "302",
+        "connection": "keep-alive",
+        "cf-ray": "a2ff54341d0806a5-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Origin, Accept-Encoding",
+        "square-version": "2026-08-19",
+        "x-content-type-options": "nosniff",
+        "x-download-options": "noopen",
+        "x-envoy-decorator-operation": "/v2/online-checkout/**",
+        "x-frame-options": "SAMEORIGIN",
+        "x-permitted-cross-domain-policies": "none",
+        "x-speleo-traceid": "CDN-62ae6469-303a-4c32-87da-207f3ce90ca0",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=_8yfBp5CC4l96y9XWXhbX1oMX8GgICp5QtM.Eg0lbR0-1787542756.497327-1.0.1.1-TMDr8Lrkgcduczu_Hjw0XQvH0nZhmZ8d8klQgaSf4DgbPg9ZbPGn7uNbfI1RCCPrHWYZjiJzP0x1xYA5Wv6DbCz8SLpan6pm6PQ6.ONVNPBgl9YrqpCKnfJeq9OZEFAa; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 04:09:17 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
     "id": "d58ce22d-0690-4b9f-821c-b10b937927d6",
     "timestamp": "2026-08-24T03:23:30.323Z",
     "method": "GET",

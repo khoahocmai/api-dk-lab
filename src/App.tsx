@@ -32,6 +32,7 @@ import {
   injectAuthToHeaders,
   injectAuthToUrl,
   resolveHeadersList,
+  resolvePathVariables,
   resolveTemplates,
   shouldWarnDomainMismatch,
 } from './services/templateService'
@@ -160,7 +161,12 @@ function App() {
 
   const previewUrl = useMemo(() => {
     if (!activeTab) return ''
-    return resolveTemplates(activeTab.url, activeEnvironment)
+    const urlWithPathVars = resolvePathVariables(
+      activeTab.url,
+      activeTab.pathVariables,
+      activeEnvironment,
+    )
+    return resolveTemplates(urlWithPathVars, activeEnvironment)
   }, [activeTab, activeEnvironment])
 
   // Reverse Sync: Tab (gqlQuery & gqlVariables) -> GraphQL Explorer (Checkboxes) with 300ms Debounce
@@ -1026,7 +1032,12 @@ function App() {
     isSendingRef.current = true
 
     try {
-      let finalUrl = resolveTemplates(activeTab.url.trim(), activeEnvironment)
+      const urlWithPathVars = resolvePathVariables(
+        activeTab.url.trim(),
+        activeTab.pathVariables,
+        activeEnvironment,
+      )
+      let finalUrl = resolveTemplates(urlWithPathVars, activeEnvironment)
 
       if (!finalUrl) throw new Error('URL không được để trống')
       if (!finalUrl.startsWith('http://') && !finalUrl.startsWith('https://')) {

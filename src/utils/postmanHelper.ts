@@ -10,7 +10,7 @@ import type {
   SavedRequestItem,
 } from '../types'
 import { createId } from './formatters'
-import { parseUrlToQueryParams } from './urlHelper'
+import { parseUrlToQueryParams, syncPathVariables } from './urlHelper'
 
 export interface PostmanImportResult {
   collection: CollectionItem
@@ -230,6 +230,25 @@ export function importPostmanCollectionV2(jsonString: string): PostmanImportResu
 
       const { params } = parseUrlToQueryParams(urlStr)
 
+      let pathVars: KeyValueRow[] = []
+      if (
+        req.url &&
+        typeof req.url === 'object' &&
+        Array.isArray((req.url as { variable?: unknown[] }).variable)
+      ) {
+        pathVars = (
+          (req.url as { variable: Array<{ key?: string; value?: string; description?: string }> })
+            .variable || []
+        ).map((v) => ({
+          id: createId(),
+          key: v.key || '',
+          value: v.value || '',
+          description: v.description || '',
+          enabled: true,
+        }))
+      }
+      const pathVariables = syncPathVariables(urlStr, pathVars)
+
       const persistedRequest: PersistedRequestItem = {
         id: createId(),
         name,
@@ -237,6 +256,7 @@ export function importPostmanCollectionV2(jsonString: string): PostmanImportResu
         method,
         url: urlStr,
         params,
+        pathVariables,
         headersList,
         headersText: JSON.stringify(
           Object.fromEntries(headersList.filter((h) => h.enabled).map((h) => [h.key, h.value])),

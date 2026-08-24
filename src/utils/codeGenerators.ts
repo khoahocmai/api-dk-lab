@@ -1,6 +1,11 @@
 import type { EnvironmentItem, RequestItem } from '../types'
 import { generateCurlCommand } from './curlHelper'
-import { buildFinalHeaders, resolveTemplates } from '../services/templateService'
+import {
+  buildFinalHeaders,
+  injectAuthToUrl,
+  resolvePathVariables,
+  resolveTemplates,
+} from '../services/templateService'
 
 export type CodeSnippetLang =
   | 'curl'
@@ -86,7 +91,13 @@ export function generateCodeSnippet(
   request: RequestItem,
   environment?: EnvironmentItem | null,
 ): string {
-  const url = resolveTemplates(request.url, environment)
+  const urlWithPathVars = resolvePathVariables(
+    request.url,
+    request.pathVariables,
+    environment,
+  )
+  const rawUrl = resolveTemplates(urlWithPathVars, environment)
+  const url = injectAuthToUrl(rawUrl, request.auth, environment)
   const method = request.mode === 'GRAPHQL' ? 'POST' : request.method
   const headers = getResolvedHeaders(request, environment)
   const bodyStr = getRequestBodyString(request, environment)

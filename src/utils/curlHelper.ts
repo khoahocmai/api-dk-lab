@@ -8,9 +8,10 @@ import type {
   RequestItem,
 } from '../types'
 import { createId } from './formatters'
-import { parseUrlToQueryParams } from './urlHelper'
+import { parseUrlToQueryParams, syncPathVariables } from './urlHelper'
 import {
   buildFinalHeaders,
+  resolvePathVariables,
   resolveTemplates,
 } from '../services/templateService'
 
@@ -650,6 +651,7 @@ export function parseCurlCommand(rawCurl: string): Partial<RequestItem> | null {
   }
 
   const { params } = parseUrlToQueryParams(url)
+  const pathVariables = syncPathVariables(url, [])
 
   const headersText =
     headersList.length > 0
@@ -669,6 +671,7 @@ export function parseCurlCommand(rawCurl: string): Partial<RequestItem> | null {
     method,
     url,
     params,
+    pathVariables,
     headersList,
     headersText,
     auth,
@@ -690,7 +693,12 @@ export function generateCurlCommand(
   request: RequestItem,
   environment?: EnvironmentItem | null,
 ): string {
-  let finalUrl = resolveTemplates(request.url, environment)
+  const urlWithPathVars = resolvePathVariables(
+    request.url,
+    request.pathVariables,
+    environment,
+  )
+  let finalUrl = resolveTemplates(urlWithPathVars, environment)
   if (
     request.auth?.type === 'apiKey' &&
     request.auth.apiKeyAddTo === 'query' &&

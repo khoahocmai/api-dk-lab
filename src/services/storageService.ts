@@ -18,6 +18,7 @@ import {
   convertRowsToHeadersJson,
   parseHeadersTextToRows,
   parseUrlToQueryParams,
+  syncPathVariables,
 } from '../utils/urlHelper'
 
 export const STORAGE_FILES = {
@@ -53,6 +54,7 @@ export function createDefaultRequest(mode: Mode = 'REST'): RequestItem {
     method: mode === 'GRAPHQL' ? 'POST' : 'GET',
     url: initialUrl,
     params: parseUrlToQueryParams(initialUrl).params,
+    pathVariables: syncPathVariables(initialUrl, []),
     headersList: parseHeadersTextToRows(defaultHeaders),
     headersText: defaultHeaders,
     auth: createDefaultAuth(),
@@ -161,6 +163,10 @@ export function reviveRequest(request: Partial<PersistedRequestItem>): RequestIt
     folderId: request.folderId,
     url,
     params: Array.isArray(request.params) ? request.params : parseUrlToQueryParams(url).params,
+    pathVariables: syncPathVariables(
+      url,
+      Array.isArray(request.pathVariables) ? request.pathVariables : [],
+    ),
     headersList,
     headersText,
     auth: request.auth ?? createDefaultAuth(),

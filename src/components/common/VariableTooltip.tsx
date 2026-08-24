@@ -12,15 +12,22 @@ export function VariableTooltip({ detail, anchorRect }: VariableTooltipProps) {
   const top = anchorRect.bottom + 6
   const left = Math.max(12, Math.min(window.innerWidth - 320, anchorRect.left))
 
-  const isValid = detail.exists && detail.enabled
+  const isPathVariable = detail.type === 'path'
+  const hasValue = Boolean(detail.value && detail.value.trim())
+  const isValid = isPathVariable ? hasValue : detail.exists && detail.enabled
 
-  const displayValue = !detail.exists
-    ? '(Not found in active environment)'
-    : !detail.enabled
-      ? '(Disabled in active environment)'
-      : detail.secret
-        ? '••••••••'
-        : (detail.value || '(empty)')
+  let displayValue = ''
+  if (isPathVariable) {
+    displayValue = hasValue ? detail.value : '(Empty)'
+  } else {
+    displayValue = !detail.exists
+      ? '(Not found in active environment)'
+      : !detail.enabled
+        ? '(Disabled in active environment)'
+        : detail.secret
+          ? '••••••••'
+          : detail.value || '(empty)'
+  }
 
   return (
     <div
@@ -31,21 +38,29 @@ export function VariableTooltip({ detail, anchorRect }: VariableTooltipProps) {
       }}
     >
       <div className="popover-row">
-        <span className="popover-label">Variable:</span>
-        <span className={`popover-var-name ${isValid ? 'is-valid' : 'is-unresolved'}`}>
-          &#123;&#123;{detail.name}&#125;&#125;
-        </span>
+        <span className="popover-label">{isPathVariable ? 'Path Var:' : 'Variable:'}</span>
+        {isPathVariable ? (
+          <span className="popover-path-token">
+            :{detail.name}
+          </span>
+        ) : (
+          <span className={`popover-var-name ${isValid ? 'is-valid' : 'is-unresolved'}`}>
+            &#123;&#123;{detail.name}&#125;&#125;
+          </span>
+        )}
       </div>
 
       <div className="popover-row">
-        <span className="popover-label">Scope:</span>
+        <span className="popover-label">{isPathVariable ? 'Type:' : 'Scope:'}</span>
         <span className="popover-val-text">{detail.scopeName}</span>
       </div>
 
       <div className="popover-row">
         <span className="popover-label">Value:</span>
         <span
-          className={`popover-val-text ${isValid ? '' : 'is-unresolved'}`}
+          className={`popover-val-text ${
+            (!isPathVariable && !isValid) || (isPathVariable && !hasValue) ? 'is-unresolved' : ''
+          }`}
           style={{ fontFamily: 'var(--font-mono)' }}
         >
           {displayValue}
@@ -54,4 +69,3 @@ export function VariableTooltip({ detail, anchorRect }: VariableTooltipProps) {
     </div>
   )
 }
-

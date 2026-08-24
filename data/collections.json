@@ -621,7 +621,7 @@
       "folderId": "17476f73-a01d-445e-a8ac-f47db5efa0f6",
       "name": "Create Customer",
       "request": {
-        "id": "877d0cb8-d06d-4a03-bdb2-f3aa7d0b7d61",
+        "id": "3b923f24-204a-4641-a929-9f93d901ada2",
         "savedRequestId": "a71c77f3-756e-4945-b6d5-ce28e6814769",
         "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
         "folderId": "17476f73-a01d-445e-a8ac-f47db5efa0f6",
@@ -639,13 +639,6 @@
             "description": ""
           },
           {
-            "id": "00570730-839d-4fa0-8714-6528b087a107",
-            "key": "Authorization",
-            "value": "Bearer {{Token}}",
-            "enabled": true,
-            "description": ""
-          },
-          {
             "id": "28689c0d-2be7-4d3f-bbca-dfea9a4968fa",
             "key": "Content-Type",
             "value": "application/json",
@@ -653,7 +646,7 @@
             "description": ""
           }
         ],
-        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Authorization\": \"Bearer {{Token}}\",\n  \"Content-Type\": \"application/json\"\n}",
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
         "auth": {
           "type": "bearer",
           "bearerToken": "{{Token}}",
@@ -675,7 +668,7 @@
         "responseTab": "PRETTY"
       },
       "createdAt": "2026-08-24T02:32:17.246Z",
-      "updatedAt": "2026-08-24T02:44:43.967Z"
+      "updatedAt": "2026-08-24T03:28:42.271Z"
     },
     {
       "id": "20ba662f-d791-4581-b693-c60b1565ad63",
@@ -683,7 +676,7 @@
       "folderId": "17476f73-a01d-445e-a8ac-f47db5efa0f6",
       "name": "Get Customer",
       "request": {
-        "id": "c008ea64-5237-4de3-9b32-02482a99c31c",
+        "id": "83fd5431-3cea-4db6-8096-debab9870289",
         "savedRequestId": "20ba662f-d791-4581-b693-c60b1565ad63",
         "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
         "folderId": "17476f73-a01d-445e-a8ac-f47db5efa0f6",
@@ -701,313 +694,11 @@
             "description": ""
           },
           {
-            "id": "fba1965a-c779-4964-a38c-3a1e929d4371",
-            "key": "Authorization",
-            "value": "Bearer {{Token}}",
-            "enabled": true,
-            "description": ""
-          },
-          {
             "id": "d6d1ad15-19c9-4695-8889-62936e60d6fd",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": true,
             "description": ""
-          }
-        ],
-        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Authorization\": \"Bearer {{Token}}\",\n  \"Content-Type\": \"application/json\"\n}",
-        "auth": {
-          "type": "bearer",
-          "bearerToken": "{{Token}}",
-          "basicUsername": "",
-          "basicPassword": "",
-          "apiKeyName": "",
-          "apiKeyValue": "",
-          "apiKeyAddTo": "header"
-        },
-        "bodyType": "none",
-        "restBody": "",
-        "rawText": "",
-        "formData": [],
-        "urlencoded": [],
-        "gqlQuery": "",
-        "gqlVariables": "{}",
-        "testScript": "",
-        "editorTab": "BODY",
-        "responseTab": "PRETTY"
-      },
-      "createdAt": "2026-08-24T02:33:24.433Z",
-      "updatedAt": "2026-08-24T02:44:48.594Z"
-    },
-    {
-      "id": "6b97d2ab-1d61-48a7-8939-926dfd975ec8",
-      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
-      "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
-      "name": "Get Location",
-      "request": {
-        "id": "ee417777-ecb8-4190-a697-b00f692340a0",
-        "savedRequestId": "6b97d2ab-1d61-48a7-8939-926dfd975ec8",
-        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
-        "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
-        "name": "Get Location",
-        "mode": "REST",
-        "method": "GET",
-        "url": "{{Domain}}/locations",
-        "params": [],
-        "headersList": [
-          {
-            "id": "69fd8f9d-6f07-4ed2-930f-5f191564042c",
-            "key": "Square-Version",
-            "value": "2026-08-19",
-            "enabled": true
-          },
-          {
-            "id": "02ff945d-9f83-432a-a157-d7af3b356711",
-            "key": "Authorization",
-            "value": "Bearer {{Token}}",
-            "enabled": true
-          },
-          {
-            "id": "e833c751-f6cf-4b39-9523-2edf5d0852c0",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true
-          }
-        ],
-        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Authorization\": \"Bearer {{Token}}\",\n  \"Content-Type\": \"application/json\"\n}",
-        "auth": {
-          "type": "bearer",
-          "bearerToken": "{{Token}}",
-          "basicUsername": "",
-          "basicPassword": "",
-          "apiKeyName": "",
-          "apiKeyValue": "",
-          "apiKeyAddTo": "header"
-        },
-        "bodyType": "none",
-        "restBody": "",
-        "rawText": "",
-        "formData": [],
-        "urlencoded": [],
-        "gqlQuery": "",
-        "gqlVariables": "{}",
-        "testScript": "",
-        "editorTab": "AUTH",
-        "responseTab": "PRETTY"
-      },
-      "createdAt": "2026-08-24T02:49:08.689Z",
-      "updatedAt": "2026-08-24T02:49:25.214Z"
-    },
-    {
-      "id": "7cd28cb5-06c3-4da7-9392-59136541c5e2",
-      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
-      "folderId": "04666320-928f-4e1f-b445-7665044efffa",
-      "name": "Get Catalog list",
-      "request": {
-        "id": "621a52fb-b7e0-45b0-b372-e530abc71b69",
-        "savedRequestId": "7cd28cb5-06c3-4da7-9392-59136541c5e2",
-        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
-        "folderId": "04666320-928f-4e1f-b445-7665044efffa",
-        "name": "Get Catalog list",
-        "mode": "REST",
-        "method": "GET",
-        "url": "{{Domain}}/catalog/list",
-        "params": [],
-        "headersList": [
-          {
-            "id": "e8f25577-120c-41a7-821a-870bd58874cc",
-            "key": "Square-Version",
-            "value": "2026-08-19",
-            "enabled": true,
-            "description": ""
-          },
-          {
-            "id": "de8e2e20-1bab-4322-a55c-add471510ff7",
-            "key": "Authorization",
-            "value": "Bearer {{Token}}",
-            "enabled": true,
-            "description": ""
-          },
-          {
-            "id": "bb69b370-2c99-4e9e-8953-d6aa44f19660",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
-          }
-        ],
-        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Authorization\": \"Bearer {{Token}}\",\n  \"Content-Type\": \"application/json\"\n}",
-        "auth": {
-          "type": "bearer",
-          "bearerToken": "{{Token}}",
-          "basicUsername": "",
-          "basicPassword": "",
-          "apiKeyName": "",
-          "apiKeyValue": "",
-          "apiKeyAddTo": "header"
-        },
-        "bodyType": "none",
-        "restBody": "",
-        "rawText": "",
-        "formData": [],
-        "urlencoded": [],
-        "gqlQuery": "",
-        "gqlVariables": "{}",
-        "testScript": "",
-        "editorTab": "AUTH",
-        "responseTab": "PRETTY"
-      },
-      "createdAt": "2026-08-24T02:54:29.461Z",
-      "updatedAt": "2026-08-24T03:02:31.664Z"
-    },
-    {
-      "id": "58588508-777b-4f8f-b4b7-373a6c38062a",
-      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
-      "folderId": "04666320-928f-4e1f-b445-7665044efffa",
-      "name": "Get Catalog info",
-      "request": {
-        "id": "e48ccac8-c1bb-4dd5-b71d-e2a4a1c60dd6",
-        "savedRequestId": "58588508-777b-4f8f-b4b7-373a6c38062a",
-        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
-        "folderId": "04666320-928f-4e1f-b445-7665044efffa",
-        "name": "Get Catalog info",
-        "mode": "REST",
-        "method": "GET",
-        "url": "{{Domain}}/catalog/info",
-        "params": [],
-        "headersList": [
-          {
-            "id": "07824a38-0a1d-4c39-ae4d-dd103cab7752",
-            "key": "Square-Version",
-            "value": "2026-08-19",
-            "enabled": true
-          },
-          {
-            "id": "83f049d0-9b4f-4464-af45-a6e9252db758",
-            "key": "Authorization",
-            "value": "Bearer {{Token}}",
-            "enabled": true
-          },
-          {
-            "id": "e0f93dff-d0a2-4f8f-a7eb-e7ff6210121a",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true
-          }
-        ],
-        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Authorization\": \"Bearer {{Token}}\",\n  \"Content-Type\": \"application/json\"\n}",
-        "auth": {
-          "type": "bearer",
-          "bearerToken": "{{Token}}",
-          "basicUsername": "",
-          "basicPassword": "",
-          "apiKeyName": "",
-          "apiKeyValue": "",
-          "apiKeyAddTo": "header"
-        },
-        "bodyType": "none",
-        "restBody": "",
-        "rawText": "",
-        "formData": [],
-        "urlencoded": [],
-        "gqlQuery": "",
-        "gqlVariables": "{}",
-        "testScript": "",
-        "editorTab": "BODY",
-        "responseTab": "PRETTY"
-      },
-      "createdAt": "2026-08-24T03:02:19.415Z",
-      "updatedAt": "2026-08-24T03:02:19.415Z"
-    },
-    {
-      "id": "f7927b3e-be69-4e3e-9878-f8088733a05c",
-      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
-      "folderId": "3a0cfaa6-0fe4-4e0d-aba1-927b75523f95",
-      "name": "Get Channel",
-      "request": {
-        "id": "c9c60a80-fbe8-4033-be8e-8851818f827a",
-        "savedRequestId": "f7927b3e-be69-4e3e-9878-f8088733a05c",
-        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
-        "folderId": "3a0cfaa6-0fe4-4e0d-aba1-927b75523f95",
-        "name": "Get Channel",
-        "mode": "REST",
-        "method": "GET",
-        "url": "{{Domain}}/channels",
-        "params": [],
-        "headersList": [
-          {
-            "id": "3288d128-2819-4e6a-b032-4b5dc51d1cc7",
-            "key": "Square-Version",
-            "value": "2026-08-19",
-            "enabled": true,
-            "description": ""
-          },
-          {
-            "id": "1d24ff34-dc75-40da-9067-e8e5a6fe8432",
-            "key": "Authorization",
-            "value": "Bearer {{Token}}",
-            "enabled": true,
-            "description": ""
-          },
-          {
-            "id": "6172b90d-6d93-4c0c-aafd-ba487b044a63",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
-          }
-        ],
-        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Authorization\": \"Bearer {{Token}}\",\n  \"Content-Type\": \"application/json\"\n}",
-        "auth": {
-          "type": "bearer",
-          "bearerToken": "{{Token}}",
-          "basicUsername": "",
-          "basicPassword": "",
-          "apiKeyName": "",
-          "apiKeyValue": "",
-          "apiKeyAddTo": "header"
-        },
-        "bodyType": "none",
-        "restBody": "",
-        "rawText": "",
-        "formData": [],
-        "urlencoded": [],
-        "gqlQuery": "",
-        "gqlVariables": "{}",
-        "testScript": "",
-        "editorTab": "HEADERS",
-        "responseTab": "PRETTY"
-      },
-      "createdAt": "2026-08-24T03:12:40.171Z",
-      "updatedAt": "2026-08-24T03:12:40.171Z"
-    },
-    {
-      "id": "3fcff6ba-c2f5-44d0-8733-e7e93a0aab2e",
-      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
-      "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
-      "name": "Checkout",
-      "request": {
-        "id": "5e157a87-b4b1-4cd9-94b5-b6979fa1d06b",
-        "savedRequestId": "3fcff6ba-c2f5-44d0-8733-e7e93a0aab2e",
-        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
-        "folderId": null,
-        "name": "Checkout",
-        "mode": "REST",
-        "method": "GET",
-        "url": "{{Domain}}/online-checkout/location-settings/L379743VY1ZBC",
-        "params": [],
-        "headersList": [
-          {
-            "id": "05ef367d-f750-449c-9778-228c8eff8562",
-            "key": "Square-Version",
-            "value": "2026-08-19",
-            "enabled": true
-          },
-          {
-            "id": "9dbc9ed3-3f20-4a19-bd0c-c0d9367cc0bd",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true
           }
         ],
         "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
@@ -1031,8 +722,283 @@
         "editorTab": "HEADERS",
         "responseTab": "PRETTY"
       },
+      "createdAt": "2026-08-24T02:33:24.433Z",
+      "updatedAt": "2026-08-24T03:28:44.668Z"
+    },
+    {
+      "id": "6b97d2ab-1d61-48a7-8939-926dfd975ec8",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+      "name": "Get Location",
+      "request": {
+        "id": "580f5a2e-464c-4d01-aa98-4e630f8a0959",
+        "savedRequestId": "6b97d2ab-1d61-48a7-8939-926dfd975ec8",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+        "name": "Get Location",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/locations",
+        "params": [],
+        "headersList": [
+          {
+            "id": "69fd8f9d-6f07-4ed2-930f-5f191564042c",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "e833c751-f6cf-4b39-9523-2edf5d0852c0",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "HEADERS",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T02:49:08.689Z",
+      "updatedAt": "2026-08-24T03:28:37.123Z"
+    },
+    {
+      "id": "7cd28cb5-06c3-4da7-9392-59136541c5e2",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "04666320-928f-4e1f-b445-7665044efffa",
+      "name": "Get Catalog list",
+      "request": {
+        "id": "3e99c9ef-d367-4f5f-83d7-7f4133ee31d2",
+        "savedRequestId": "7cd28cb5-06c3-4da7-9392-59136541c5e2",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "04666320-928f-4e1f-b445-7665044efffa",
+        "name": "Get Catalog list",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/catalog/list",
+        "params": [],
+        "headersList": [
+          {
+            "id": "e8f25577-120c-41a7-821a-870bd58874cc",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "bb69b370-2c99-4e9e-8953-d6aa44f19660",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "HEADERS",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T02:54:29.461Z",
+      "updatedAt": "2026-08-24T03:28:48.230Z"
+    },
+    {
+      "id": "58588508-777b-4f8f-b4b7-373a6c38062a",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "04666320-928f-4e1f-b445-7665044efffa",
+      "name": "Get Catalog info",
+      "request": {
+        "id": "c464d95e-6dec-47db-bcc8-729c05aebc97",
+        "savedRequestId": "58588508-777b-4f8f-b4b7-373a6c38062a",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "04666320-928f-4e1f-b445-7665044efffa",
+        "name": "Get Catalog info",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/catalog/info",
+        "params": [],
+        "headersList": [
+          {
+            "id": "07824a38-0a1d-4c39-ae4d-dd103cab7752",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "e0f93dff-d0a2-4f8f-a7eb-e7ff6210121a",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "HEADERS",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T03:02:19.415Z",
+      "updatedAt": "2026-08-24T03:28:51.703Z"
+    },
+    {
+      "id": "f7927b3e-be69-4e3e-9878-f8088733a05c",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "3a0cfaa6-0fe4-4e0d-aba1-927b75523f95",
+      "name": "Get Channel",
+      "request": {
+        "id": "64c2f622-22a2-4cf8-a993-f071ee6ec15d",
+        "savedRequestId": "f7927b3e-be69-4e3e-9878-f8088733a05c",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "3a0cfaa6-0fe4-4e0d-aba1-927b75523f95",
+        "name": "Get Channel",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/channels",
+        "params": [],
+        "headersList": [
+          {
+            "id": "3288d128-2819-4e6a-b032-4b5dc51d1cc7",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "6172b90d-6d93-4c0c-aafd-ba487b044a63",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "HEADERS",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T03:12:40.171Z",
+      "updatedAt": "2026-08-24T03:28:58.509Z"
+    },
+    {
+      "id": "3fcff6ba-c2f5-44d0-8733-e7e93a0aab2e",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+      "name": "Checkout",
+      "request": {
+        "id": "e3fb02f8-7fce-4129-b5f9-0248d2b00656",
+        "savedRequestId": "3fcff6ba-c2f5-44d0-8733-e7e93a0aab2e",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+        "name": "Checkout",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/online-checkout/location-settings/:location_id",
+        "params": [],
+        "headersList": [
+          {
+            "id": "05ef367d-f750-449c-9778-228c8eff8562",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "9dbc9ed3-3f20-4a19-bd0c-c0d9367cc0bd",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "PARAMS",
+        "responseTab": "PRETTY"
+      },
       "createdAt": "2026-08-24T03:25:58.200Z",
-      "updatedAt": "2026-08-24T03:26:14.498Z"
+      "updatedAt": "2026-08-24T03:39:20.198Z"
     }
   ],
   "expandedCollectionIds": [
@@ -1044,6 +1010,8 @@
     "3eba61de-7e93-497e-ab02-0daac97727ae",
     "785cea12-b358-4f53-bf46-46ebd0bf368c",
     "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
-    "3a0cfaa6-0fe4-4e0d-aba1-927b75523f95"
+    "3a0cfaa6-0fe4-4e0d-aba1-927b75523f95",
+    "17476f73-a01d-445e-a8ac-f47db5efa0f6",
+    "04666320-928f-4e1f-b445-7665044efffa"
   ]
 }

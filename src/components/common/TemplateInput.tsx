@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import type { EnvironmentItem } from '../../types'
+import type { EnvironmentItem, KeyValueRow } from '../../types'
 import {
+  getPathVariableDetail,
   getVariableDetail,
   parseTemplateTokens,
   type VariableDetail,
@@ -12,6 +13,8 @@ export interface TemplateInputProps
   value: string
   onChange: (value: string) => void
   environment?: EnvironmentItem | null
+  pathVariables?: KeyValueRow[] | null
+  supportPathVariables?: boolean
   size?: 'sm' | 'default'
   startIcon?: React.ReactNode
   endAction?: React.ReactNode
@@ -24,6 +27,8 @@ export function TemplateInput({
   value,
   onChange,
   environment,
+  pathVariables,
+  supportPathVariables = false,
   size = 'default',
   startIcon,
   endAction,
@@ -49,8 +54,11 @@ export function TemplateInput({
     rect: DOMRect
   } | null>(null)
 
-  // Parse text into tokens
-  const tokens = useMemo(() => parseTemplateTokens(value), [value])
+  // Parse text into tokens (with optional path variable :param support)
+  const tokens = useMemo(
+    () => parseTemplateTokens(value, supportPathVariables),
+    [value, supportPathVariables],
+  )
 
   // Sync scroll between input and highlight underlay
   const syncScroll = () => {
@@ -74,7 +82,9 @@ export function TemplateInput({
     }
 
     const inputRect = input.getBoundingClientRect()
-    const varSpans = underlay.querySelectorAll<HTMLSpanElement>('.template-var-token')
+    const varSpans = underlay.querySelectorAll<HTMLSpanElement>(
+      '.template-var-token, .template-path-token',
+    )
     let foundDetail: VariableDetail | null = null
     let foundRect: DOMRect | null = null
 
@@ -90,8 +100,14 @@ export function TemplateInput({
         e.clientY >= inputRect.top &&
         e.clientY <= inputRect.bottom
       ) {
+        const tokenType = span.getAttribute('data-token-type')
         const varName = span.getAttribute('data-var-name')
-        if (varName) {
+
+        if (tokenType === 'path_variable' && varName) {
+          foundDetail = getPathVariableDetail(varName, pathVariables)
+          foundRect = rect
+          break
+        } else if (varName) {
           foundDetail = getVariableDetail(varName, environment)
           foundRect = rect
           break
@@ -139,12 +155,29 @@ export function TemplateInput({
               )
             }
 
+            if (token.type === 'path_variable') {
+              const detail = getPathVariableDetail(token.varName, pathVariables)
+              const hasValue = Boolean(detail.value && detail.value.trim())
+
+              return (
+                <span
+                  key={index}
+                  data-token-type="path_variable"
+                  data-var-name={token.varName}
+                  className={`template-path-token ${hasValue ? 'has-value' : 'no-value'}`}
+                >
+                  {token.raw}
+                </span>
+              )
+            }
+
             const detail = getVariableDetail(token.varName, environment)
             const isValid = detail.exists && detail.enabled
 
             return (
               <span
                 key={index}
+                data-token-type="variable"
                 data-var-name={token.varName}
                 className={`template-var-token ${isValid ? 'is-valid' : 'is-unresolved'}`}
               >

@@ -1,5 +1,5 @@
 import React from 'react'
-import type { EnvironmentItem } from '../../types'
+import type { EnvironmentItem, KeyValueRow } from '../../types'
 import { TemplateInput } from './TemplateInput'
 
 export interface TemplateUrlInputProps {
@@ -9,6 +9,7 @@ export interface TemplateUrlInputProps {
   onPaste?: React.ClipboardEventHandler<HTMLInputElement>
   placeholder?: string
   environment?: EnvironmentItem | null
+  pathVariables?: KeyValueRow[] | null
   ariaLabel?: string
   autoFocus?: boolean
 }
@@ -20,6 +21,7 @@ export function TemplateUrlInput({
   onPaste,
   placeholder,
   environment,
+  pathVariables,
   ariaLabel = 'Request URL',
   autoFocus,
 }: TemplateUrlInputProps) {
@@ -31,6 +33,8 @@ export function TemplateUrlInput({
       onPaste={onPaste}
       placeholder={placeholder}
       environment={environment}
+      pathVariables={pathVariables}
+      supportPathVariables={true}
       aria-label={ariaLabel}
       autoFocus={autoFocus}
       size="default"
@@ -39,4 +43,3 @@ export function TemplateUrlInput({
     />
   )
 }
-

@@ -15,6 +15,8 @@ export interface KeyValueTableProps {
   environment?: EnvironmentItem | null
   allowFile?: boolean
   hideHeader?: boolean
+  isPathVariableTable?: boolean
+  hideAddRow?: boolean
 }
 
 export function KeyValueTable({
@@ -28,6 +30,8 @@ export function KeyValueTable({
   environment,
   allowFile = false,
   hideHeader = false,
+  isPathVariableTable = false,
+  hideAddRow = false,
 }: KeyValueTableProps) {
   const currentRows = Array.isArray(rows) && rows.length > 0 ? rows : []
   const fileInputRefs = useRef<Record<string, HTMLInputElement | null>>({})
@@ -56,8 +60,9 @@ export function KeyValueTable({
       row.id === id || (baseList.length === 1 && i === 0) ? { ...row, ...patch } : row,
     )
 
-    // Auto-append an empty row if editing the very last row and it now has a key, value, or file
+    // Auto-append an empty row if editing the very last row (only for normal query/header tables, not path variables)
     if (
+      !isPathVariableTable &&
       index === nextRows.length - 1 &&
       (patch.key !== undefined ||
         patch.value !== undefined ||
@@ -131,7 +136,9 @@ export function KeyValueTable({
   const displayRows =
     currentRows.length > 0
       ? currentRows
-      : [{ id: 'empty-initial-row', key: '', value: '', enabled: true, description: '', type: 'text' as const }]
+      : isPathVariableTable
+        ? []
+        : [{ id: 'empty-initial-row', key: '', value: '', enabled: true, description: '', type: 'text' as const }]
 
   return (
     <div className="kv-table-container">
@@ -167,7 +174,7 @@ export function KeyValueTable({
       {!hideHeader && (
         <div className={`kv-table-header ${allowFile ? 'has-type' : ''}`}>
           <div className="kv-col-check"></div>
-          <div className="kv-col-key">Key</div>
+          <div className="kv-col-key">{isPathVariableTable ? 'Key (Read-only)' : 'Key'}</div>
           {allowFile && <div className="kv-col-type">Type</div>}
           <div className="kv-col-val">Value</div>
           <div className="kv-col-desc">Description</div>
@@ -263,7 +270,7 @@ export function KeyValueTable({
             )
           })}
 
-        {/* 2. USER-CONFIGURED EDITABLE ROWS (HIGHEST PRIORITY) */}
+        {/* 2. USER-CONFIGURED ROWS / PATH VARIABLE ROWS */}
         {displayRows.map((row, index) => {
           const isFileType = allowFile && row.type === 'file'
 
@@ -276,6 +283,7 @@ export function KeyValueTable({
                 <input
                   type="checkbox"
                   checked={row.enabled}
+                  disabled={isPathVariableTable}
                   onChange={(e) => updateRow(row.id, { enabled: e.target.checked }, index)}
                   aria-label="Toggle row"
                 />
@@ -283,9 +291,16 @@ export function KeyValueTable({
 
               <div className="kv-col-key">
                 <input
-                  className="input input-sm kv-input"
+                  className={`input input-sm kv-input ${isPathVariableTable ? 'is-readonly' : ''}`}
                   placeholder={keyPlaceholder}
                   value={row.key}
+                  readOnly={isPathVariableTable}
+                  disabled={isPathVariableTable}
+                  title={
+                    isPathVariableTable
+                      ? `Tên biến đường dẫn trích xuất tự động từ URL (:${row.key})`
+                      : undefined
+                  }
                   onChange={(e) => updateRow(row.id, { key: e.target.value }, index)}
                 />
               </div>
@@ -378,27 +393,38 @@ export function KeyValueTable({
               </div>
 
               <div className="kv-col-act">
-                <button
-                  type="button"
-                  className="icon-button icon-button-sm kv-delete-btn"
-                  onClick={() => removeRow(row.id)}
-                  title="Delete item"
-                  disabled={displayRows.length === 1 && !row.key && !row.value && !row.fileName}
-                >
-                  <Trash2 size={13} />
-                </button>
+                {isPathVariableTable ? (
+                  <span
+                    className="kv-auto-lock"
+                    title={`Được định nghĩa từ URL (:${row.key})`}
+                  >
+                    <Lock size={12} style={{ color: 'var(--text-dim)' }} />
+                  </span>
+                ) : (
+                  <button
+                    type="button"
+                    className="icon-button icon-button-sm kv-delete-btn"
+                    onClick={() => removeRow(row.id)}
+                    title="Delete item"
+                    disabled={displayRows.length === 1 && !row.key && !row.value && !row.fileName}
+                  >
+                    <Trash2 size={13} />
+                  </button>
+                )}
               </div>
             </div>
           )
         })}
       </div>
 
-      <div className="kv-table-footer">
-        <button type="button" className="button button-sm" onClick={addRow}>
-          <Plus size={13} />
-          Add Row
-        </button>
-      </div>
+      {!hideAddRow && !isPathVariableTable && (
+        <div className="kv-table-footer">
+          <button type="button" className="button button-sm" onClick={addRow}>
+            <Plus size={13} />
+            Add Row
+          </button>
+        </div>
+      )}
     </div>
   )
 }

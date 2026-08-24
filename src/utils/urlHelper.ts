@@ -1,6 +1,12 @@
 import type { KeyValueRow } from '../types'
 import { createId } from './formatters'
 
+export {
+  extractPathKeys,
+  syncPathVariables,
+  resolvePathVariables,
+} from '../services/templateService'
+
 /**
  * Extracts base URL and query parameters from a full URL string.
  * Preserves existing param IDs & descriptions if keys match.

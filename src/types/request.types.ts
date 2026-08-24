@@ -47,6 +47,7 @@ export type RequestItem = {
   method: HttpMethod
   url: string
   params: KeyValueRow[]
+  pathVariables?: KeyValueRow[]
   headersList: KeyValueRow[]
   headersText: string
   auth: AuthConfig

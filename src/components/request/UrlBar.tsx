@@ -14,7 +14,7 @@ import {
 } from 'lucide-react'
 import type { EnvironmentItem, HttpMethod, Mode, RequestItem, SplitLayout } from '../../types'
 import { generateCurlCommand, parseCurlCommand } from '../../utils/curlHelper'
-import { parseUrlToQueryParams } from '../../utils/urlHelper'
+import { parseUrlToQueryParams, syncPathVariables } from '../../utils/urlHelper'
 import { TemplateUrlInput } from '../common/TemplateUrlInput'
 
 interface UrlBarProps {
@@ -70,9 +70,11 @@ export function UrlBar({
     }
 
     const { params } = parseUrlToQueryParams(newUrl, activeTab.params)
+    const pathVariables = syncPathVariables(newUrl, activeTab.pathVariables)
     onUpdateTab({
       url: newUrl,
       params,
+      pathVariables,
     })
   }
 
@@ -228,6 +230,7 @@ export function UrlBar({
               : '{{Domain}}/api/v1/resource (or paste cURL)'
           }
           environment={activeEnvironment}
+          pathVariables={activeTab.pathVariables}
           ariaLabel="Request URL"
         />
 

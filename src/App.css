@@ -1937,6 +1937,11 @@
   cursor: not-allowed !important;
 }
 
+.path-variables-section {
+  position: relative;
+  margin-top: 4px;
+}
+
 /* ==========================================================================
    CODEMIRROR WRAPPER (Theme-matched)
    ========================================================================== */
@@ -2380,6 +2385,31 @@
   border-bottom: 1.5px dotted #ef4444;
 }
 
+/* Path Variable Syntax Highlighting (:param_name) */
+.template-path-token {
+  display: inline;
+  padding: 1px 0;
+  margin: 0;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  border-radius: 3px;
+  user-select: none;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.template-path-token.has-value {
+  color: #818cf8;
+  background: rgba(99, 102, 241, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.38);
+}
+
+.template-path-token.no-value {
+  color: #a5b4fc;
+  background: rgba(99, 102, 241, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.22);
+}
+
 .template-input-control,
 .template-url-input {
   width: 100%;
@@ -2483,6 +2513,18 @@
 
 .popover-var-name.is-unresolved {
   color: #ef4444;
+}
+
+.popover-path-token {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 11px;
+  color: #818cf8;
+  background: rgba(99, 102, 241, 0.18);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  border-radius: var(--radius-xs);
+  padding: 1px 5px;
+  display: inline-block;
 }
 
 .popover-val-text {
