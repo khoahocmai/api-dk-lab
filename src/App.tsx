@@ -418,20 +418,19 @@ function App() {
   }
 
   const handleImportCurl = (parsed: Partial<RequestItem>) => {
-    if (activeTab) {
-      updateActiveTab(parsed)
-      showToast('Đã import cURL thành công', 'success')
-    } else {
-      const mode = parsed.mode || 'REST'
-      const newReq: RequestItem = {
-        ...createDefaultRequest(mode),
-        ...parsed,
-      }
-      setTabs((current) => [...current, newReq])
-      setActiveTabId(newReq.id)
-      setMobileView('REQUEST')
-      showToast('Đã import cURL thành công', 'success')
+    const mode = parsed.mode || 'REST'
+    const newReq: RequestItem = {
+      ...createDefaultRequest(mode),
+      ...parsed,
+      id: createId(),
+      savedRequestId: undefined,
+      collectionId: undefined,
+      folderId: undefined,
     }
+    setTabs((current) => [...current, newReq])
+    setActiveTabId(newReq.id)
+    setMobileView('REQUEST')
+    showToast(`Đã import cURL thành công (${newReq.name})`, 'success')
   }
 
   const addTab = (mode: Mode = 'GRAPHQL') => {
@@ -1813,6 +1812,7 @@ function App() {
             onClear={handleClear}
             onSyncToExplorer={handleSyncToExplorer}
             onCopyResponse={handleCopyResponse}
+            onImportCurl={handleImportCurl}
             onOpenImportCurlModal={() => setImportCurlModalOpen(true)}
             onOpenCodeSnippetModal={() => setCodeSnippetModalOpen(true)}
           />

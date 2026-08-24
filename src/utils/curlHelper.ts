@@ -622,7 +622,26 @@ export function parseCurlCommand(rawCurl: string): Partial<RequestItem> | null {
   } else {
     // REST API
     mode = 'REST'
-    requestName = `cURL (${method})`
+    let endpointName = ''
+    try {
+      if (url) {
+        const cleanUrl = url.replace(/{{[^{}]+}}/g, 'http://temp.local')
+        const normalized = cleanUrl.startsWith('http') ? cleanUrl : `http://${cleanUrl}`
+        const pathname = new URL(normalized).pathname.replace(/\/+$/, '')
+        const segments = pathname.split('/').filter(Boolean)
+        if (segments.length > 0) {
+          endpointName = segments[segments.length - 1]
+        }
+      }
+    } catch {
+      // fallback
+    }
+
+    if (endpointName) {
+      requestName = endpointName
+    } else {
+      requestName = `${method} Request`
+    }
 
     if (rawBody) {
       if (jsonBody !== null) {

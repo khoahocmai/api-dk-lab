@@ -81,6 +81,18 @@
       "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
       "parentId": null,
       "name": "Device"
+    },
+    {
+      "id": "847d7bda-0444-420b-b2a4-d752830e04ec",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "parentId": null,
+      "name": "Inventory"
+    },
+    {
+      "id": "ef526d59-41fe-42cc-a721-5d8fc509b603",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "parentId": null,
+      "name": "Invoice"
     }
   ],
   "savedRequests": [
@@ -1062,16 +1074,69 @@
       "updatedAt": "2026-08-24T04:10:09.362Z"
     },
     {
+      "id": "d850b2fc-29d8-4bb3-a3e5-f235920b7b80",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "1cf15ea2-d45c-45aa-b52e-75f08f343aa4",
+      "name": "Get Device by device id",
+      "request": {
+        "id": "f175ab79-4ce0-49d5-b248-8d36b89f573b",
+        "savedRequestId": "d850b2fc-29d8-4bb3-a3e5-f235920b7b80",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "1cf15ea2-d45c-45aa-b52e-75f08f343aa4",
+        "name": "Get Device by device id",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/devices/:device_id",
+        "params": [],
+        "headersList": [
+          {
+            "id": "68762562-45f4-4fa6-8075-c803611af2a8",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true
+          },
+          {
+            "id": "85b2c7f7-5096-473b-bc0c-9e467decf26f",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "AUTH",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T04:15:34.201Z",
+      "updatedAt": "2026-08-24T04:17:45.393Z"
+    },
+    {
       "id": "98c19695-e34c-40a8-a7f6-96feabc5e4e7",
       "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
       "folderId": "1cf15ea2-d45c-45aa-b52e-75f08f343aa4",
-      "name": "Get Device list code",
+      "name": "Get Device code list",
       "request": {
-        "id": "a0e7efc6-066a-42f7-9f16-091926a6a031",
+        "id": "e3b2c3c5-fb1d-43d6-82d2-cc6d5dc92b4a",
         "savedRequestId": "98c19695-e34c-40a8-a7f6-96feabc5e4e7",
         "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
         "folderId": "1cf15ea2-d45c-45aa-b52e-75f08f343aa4",
-        "name": "Get Device list code",
+        "name": "Get Device code list",
         "mode": "REST",
         "method": "GET",
         "url": "{{Domain}}/devices/codes",
@@ -1081,10 +1146,65 @@
             "id": "693bba0b-0ba9-4254-a280-b4a78464a6de",
             "key": "Square-Version",
             "value": "2026-08-19",
-            "enabled": true
+            "enabled": true,
+            "description": ""
           },
           {
             "id": "f2e3dd1a-8f69-4c3e-a80c-4a6c26d394b8",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "PARAMS",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T04:09:25.377Z",
+      "updatedAt": "2026-08-24T04:17:54.120Z"
+    },
+    {
+      "id": "f6ea65ed-79ba-4338-94f0-63f6761fff5e",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "1cf15ea2-d45c-45aa-b52e-75f08f343aa4",
+      "name": "Get Device code by device code id",
+      "request": {
+        "id": "ae9f95d1-7ae2-497a-b6e6-84a09cdc4da2",
+        "savedRequestId": "f6ea65ed-79ba-4338-94f0-63f6761fff5e",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "1cf15ea2-d45c-45aa-b52e-75f08f343aa4",
+        "name": "Get Device code by device code id",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/devices/codes/:id",
+        "params": [],
+        "headersList": [
+          {
+            "id": "18bf739a-ae70-4cae-9da3-45a47e6ecc49",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true
+          },
+          {
+            "id": "0c0be03d-96ee-462b-a278-d9e1329b4376",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": true
@@ -1111,8 +1231,227 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-24T04:09:25.377Z",
-      "updatedAt": "2026-08-24T04:10:15.122Z"
+      "createdAt": "2026-08-24T04:16:24.047Z",
+      "updatedAt": "2026-08-24T04:18:15.211Z"
+    },
+    {
+      "id": "654fbfc2-ae25-41c3-aa63-439f4f9b9ea4",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "847d7bda-0444-420b-b2a4-d752830e04ec",
+      "name": "Get Inventory list adjustment reasons",
+      "request": {
+        "id": "64e5fe86-21ba-492c-8c43-ebe5e0a6569a",
+        "savedRequestId": "654fbfc2-ae25-41c3-aa63-439f4f9b9ea4",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "847d7bda-0444-420b-b2a4-d752830e04ec",
+        "name": "Get Inventory list adjustment reasons",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/inventory/adjustment-reasons",
+        "params": [],
+        "headersList": [
+          {
+            "id": "3022ec4d-c3b6-45aa-88da-ebc462b4f46c",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true
+          },
+          {
+            "id": "0bc33e69-cd96-4c86-abcd-71497d39d9ac",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "AUTH",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T04:19:57.630Z",
+      "updatedAt": "2026-08-24T04:19:57.630Z"
+    },
+    {
+      "id": "f13bfe02-68f5-42cd-9e00-0185f73969a8",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "ef526d59-41fe-42cc-a721-5d8fc509b603",
+      "name": "Get Invoice list",
+      "request": {
+        "id": "30ab5b43-97f0-4141-921c-85def8c8d16f",
+        "savedRequestId": "f13bfe02-68f5-42cd-9e00-0185f73969a8",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "ef526d59-41fe-42cc-a721-5d8fc509b603",
+        "name": "Get Invoice list",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/invoices?location_id=L379743VY1ZBC",
+        "params": [
+          {
+            "id": "ca55ee2d-bff0-478e-a575-96108fe9edd2",
+            "key": "location_id",
+            "value": "L379743VY1ZBC",
+            "enabled": true
+          }
+        ],
+        "headersList": [
+          {
+            "id": "f5218ca6-8ea0-49f3-af40-4c3a8ab315d2",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true
+          },
+          {
+            "id": "cc35d955-6a80-4c95-8eac-4b8d8d77baa8",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "AUTH",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T04:21:09.584Z",
+      "updatedAt": "2026-08-24T04:21:09.584Z"
+    },
+    {
+      "id": "9ff1e715-984b-45ef-813f-0a01c0901804",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "ef526d59-41fe-42cc-a721-5d8fc509b603",
+      "name": "Get Invoice by id",
+      "request": {
+        "id": "7a659479-a247-4dc2-82ca-c949144b75d2",
+        "savedRequestId": "9ff1e715-984b-45ef-813f-0a01c0901804",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "ef526d59-41fe-42cc-a721-5d8fc509b603",
+        "name": "Get Invoice by id",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/invoices/:invoice_id",
+        "params": [],
+        "headersList": [
+          {
+            "id": "4674c802-b4f5-45f0-bddc-de531c0b90c4",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true
+          },
+          {
+            "id": "eb7b0a00-3b51-49ee-9eff-5397c7802f1b",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "PARAMS",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T04:22:59.645Z",
+      "updatedAt": "2026-08-24T04:22:59.645Z"
+    },
+    {
+      "id": "8f6268d7-2676-4c2b-aab3-6b4c8d4f2263",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "ef526d59-41fe-42cc-a721-5d8fc509b603",
+      "name": "Get Invoice search",
+      "request": {
+        "id": "43a50826-d5f7-47ac-a6a7-18d4c4d52d1b",
+        "savedRequestId": "8f6268d7-2676-4c2b-aab3-6b4c8d4f2263",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "ef526d59-41fe-42cc-a721-5d8fc509b603",
+        "name": "Get Invoice search",
+        "mode": "REST",
+        "method": "POST",
+        "url": "{{Domain}}/invoices/search",
+        "params": [],
+        "headersList": [
+          {
+            "id": "322daae3-6fc3-446f-b3b2-e0794f023491",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true
+          },
+          {
+            "id": "d1ea2bd6-70f4-42ca-9088-28be49af20d8",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "json",
+        "restBody": "{\n  \"query\": {\n    \"filter\": {\n      \"location_ids\": [\n        \"L379743VY1ZBC\"\n      ]\n    },\n    \"sort\": {\n      \"field\": \"INVOICE_SORT_DATE\",\n      \"order\": \"DESC\"\n    }\n  }\n}",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T04:23:54.651Z",
+      "updatedAt": "2026-08-24T04:25:02.316Z"
     }
   ],
   "expandedCollectionIds": [
@@ -1123,6 +1462,6 @@
     "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
     "3eba61de-7e93-497e-ab02-0daac97727ae",
     "785cea12-b358-4f53-bf46-46ebd0bf368c",
-    "1cf15ea2-d45c-45aa-b52e-75f08f343aa4"
+    "ef526d59-41fe-42cc-a721-5d8fc509b603"
   ]
 }

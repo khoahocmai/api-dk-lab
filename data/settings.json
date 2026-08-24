@@ -5,27 +5,27 @@
     "editorFontSize": 13
   },
   "activeEnvironmentId": "02ad665d-6fd3-4360-8a44-1b4c431425d5",
-  "activeTabId": "07a48c10-faf6-4365-8a0c-946460cff250",
+  "activeTabId": "43a50826-d5f7-47ac-a6a7-18d4c4d52d1b",
   "tabs": [
     {
-      "id": "07a48c10-faf6-4365-8a0c-946460cff250",
-      "savedRequestId": "98c19695-e34c-40a8-a7f6-96feabc5e4e7",
+      "id": "43a50826-d5f7-47ac-a6a7-18d4c4d52d1b",
+      "savedRequestId": "8f6268d7-2676-4c2b-aab3-6b4c8d4f2263",
       "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
-      "folderId": "1cf15ea2-d45c-45aa-b52e-75f08f343aa4",
-      "name": "cURL (GET)",
+      "folderId": "ef526d59-41fe-42cc-a721-5d8fc509b603",
+      "name": "Get Invoice search",
       "mode": "REST",
-      "method": "GET",
-      "url": "https://connect.squareupsandbox.com/v2/devices/device%3A995CS397A6475287",
+      "method": "POST",
+      "url": "{{Domain}}/invoices/search",
       "params": [],
       "headersList": [
         {
-          "id": "f7519088-0d1f-42d0-9c53-fbe179de8a00",
+          "id": "322daae3-6fc3-446f-b3b2-e0794f023491",
           "key": "Square-Version",
           "value": "2026-08-19",
           "enabled": true
         },
         {
-          "id": "c562f96c-2da8-48e3-99d0-2f1748594b96",
+          "id": "d1ea2bd6-70f4-42ca-9088-28be49af20d8",
           "key": "Content-Type",
           "value": "application/json",
           "enabled": true
@@ -34,22 +34,22 @@
       "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
       "auth": {
         "type": "bearer",
-        "bearerToken": "EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK",
+        "bearerToken": "{{Token}}",
         "basicUsername": "",
         "basicPassword": "",
         "apiKeyName": "",
         "apiKeyValue": "",
         "apiKeyAddTo": "header"
       },
-      "bodyType": "none",
-      "restBody": "",
+      "bodyType": "json",
+      "restBody": "{\n  \"query\": {\n    \"filter\": {\n      \"location_ids\": [\n        \"L379743VY1ZBC\"\n      ]\n    },\n    \"sort\": {\n      \"field\": \"INVOICE_SORT_DATE\",\n      \"order\": \"DESC\"\n    }\n  }\n}",
       "rawText": "",
       "formData": [],
       "urlencoded": [],
       "gqlQuery": "",
       "gqlVariables": "{}",
       "testScript": "",
-      "editorTab": "PARAMS",
+      "editorTab": "BODY",
       "responseTab": "PRETTY"
     }
   ],

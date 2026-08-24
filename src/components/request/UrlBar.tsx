@@ -25,6 +25,7 @@ interface UrlBarProps {
   splitLayout: SplitLayout
   onToggleSplitLayout: () => void
   onUpdateTab: (patch: Partial<RequestItem>) => void
+  onImportCurl?: (parsed: Partial<RequestItem>) => void
   onSend: () => Promise<void>
   onCancel: () => void
   onSave: () => void
@@ -47,6 +48,7 @@ export function UrlBar({
   splitLayout,
   onToggleSplitLayout,
   onUpdateTab,
+  onImportCurl,
   onSend,
   onCancel,
   onSave,
@@ -60,11 +62,16 @@ export function UrlBar({
     if (
       trimmed.toLowerCase().startsWith('curl') ||
       trimmed.startsWith('$ curl') ||
-      trimmed.startsWith('> curl')
+      trimmed.startsWith('> curl') ||
+      trimmed.startsWith('PS > curl')
     ) {
       const parsed = parseCurlCommand(trimmed)
       if (parsed) {
-        onUpdateTab(parsed)
+        if (onImportCurl) {
+          onImportCurl(parsed)
+        } else {
+          onUpdateTab(parsed)
+        }
         return
       }
     }
@@ -90,7 +97,11 @@ export function UrlBar({
       const parsed = parseCurlCommand(trimmed)
       if (parsed) {
         e.preventDefault()
-        onUpdateTab(parsed)
+        if (onImportCurl) {
+          onImportCurl(parsed)
+        } else {
+          onUpdateTab(parsed)
+        }
       }
     }
   }

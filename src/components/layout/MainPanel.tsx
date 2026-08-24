@@ -38,6 +38,7 @@ interface MainPanelProps {
   onClear: () => void
   onSyncToExplorer?: () => { success: boolean; error?: string }
   onCopyResponse: () => Promise<void>
+  onImportCurl?: (parsed: Partial<RequestItem>) => void
   onOpenImportCurlModal: () => void
   onOpenCodeSnippetModal: () => void
 }
@@ -67,6 +68,7 @@ export function MainPanel({
   onCloseTab,
   onAddTab,
   onUpdateActiveTab,
+  onImportCurl,
   onSend,
   onCancel,
   onSave,
@@ -108,6 +110,7 @@ export function MainPanel({
             splitLayout={splitLayout}
             onToggleSplitLayout={onToggleSplitLayout}
             onUpdateTab={onUpdateActiveTab}
+            onImportCurl={onImportCurl}
             onSend={onSend}
             onCancel={onCancel}
             onSave={onSave}
