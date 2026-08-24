@@ -14,6 +14,7 @@ export interface TemplateInputProps
   environment?: EnvironmentItem | null
   size?: 'sm' | 'default'
   startIcon?: React.ReactNode
+  endAction?: React.ReactNode
   containerClassName?: string
   containerStyle?: React.CSSProperties
   inputClassName?: string
@@ -25,6 +26,7 @@ export function TemplateInput({
   environment,
   size = 'default',
   startIcon,
+  endAction,
   containerClassName = '',
   containerStyle,
   inputClassName = '',
@@ -108,23 +110,24 @@ export function TemplateInput({
     setActiveTooltip(null)
   }
 
-  const hasIcon = Boolean(startIcon)
+  const hasStartIcon = Boolean(startIcon)
+  const hasEndAction = Boolean(endAction)
   const isPassword = type === 'password'
 
   return (
     <div
-      className={`template-input-wrapper is-${size} ${containerClassName}`}
+      className={`template-input-wrapper is-${size} ${hasStartIcon ? 'has-start-icon has-icon' : ''} ${hasEndAction ? 'has-end-action' : ''} ${containerClassName}`}
       style={containerStyle}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Optional leading icon */}
-      {hasIcon && <div className="template-input-icon">{startIcon}</div>}
+      {/* Optional leading icon (non-blocking pointer-events) */}
+      {hasStartIcon && <div className="template-input-icon">{startIcon}</div>}
 
       {/* Background Syntax Highlight Underlay (hidden for password type) */}
       {!isPassword && (
         <div
           ref={highlightRef}
-          className={`template-input-underlay ${hasIcon ? 'has-icon' : ''}`}
+          className={`template-input-underlay ${hasStartIcon ? 'has-start-icon has-icon' : ''} ${hasEndAction ? 'has-end-action' : ''}`}
           aria-hidden="true"
         >
           {tokens.map((token, index) => {
@@ -156,7 +159,7 @@ export function TemplateInput({
       <input
         ref={inputRef}
         type={type}
-        className={`template-input-control ${hasIcon ? 'has-icon' : ''} ${isPassword ? 'is-pwd' : ''} ${inputClassName}`}
+        className={`template-input-control ${hasStartIcon ? 'has-start-icon has-icon' : ''} ${hasEndAction ? 'has-end-action' : ''} ${isPassword ? 'is-pwd' : ''} ${inputClassName}`}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         onScroll={syncScroll}
@@ -189,6 +192,9 @@ export function TemplateInput({
         style={style}
         {...restProps}
       />
+
+      {/* Optional trailing action (e.g. show/hide password toggle) */}
+      {hasEndAction && <div className="template-input-end-action">{endAction}</div>}
 
       {/* Postman-Style Popover Tooltip */}
       {activeTooltip && (

@@ -1,5 +1,122 @@
 [
   {
+    "id": "0ab5b15f-a75c-4373-bc43-743274b799b5",
+    "timestamp": "2026-08-24T02:49:04.284Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/locations",
+    "status": 200,
+    "duration": 762,
+    "request": {
+      "id": "ee417777-ecb8-4190-a697-b00f692340a0",
+      "name": "cURL (GET)",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/locations",
+      "params": [],
+      "headersList": [
+        {
+          "id": "69fd8f9d-6f07-4ed2-930f-5f191564042c",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true
+        },
+        {
+          "id": "02ff945d-9f83-432a-a157-d7af3b356711",
+          "key": "Authorization",
+          "value": "Bearer {{Token}}",
+          "enabled": true
+        },
+        {
+          "id": "e833c751-f6cf-4b39-9523-2edf5d0852c0",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Authorization\": \"Bearer {{Token}}\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "AUTH",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "762 ms",
+      "size": "539 B",
+      "data": {
+        "locations": [
+          {
+            "id": "L379743VY1ZBC",
+            "name": "Default Test Account",
+            "address": {
+              "address_line_1": "1600 Pennsylvania Ave NW",
+              "locality": "Washington",
+              "administrative_district_level_1": "DC",
+              "postal_code": "20500",
+              "country": "US"
+            },
+            "timezone": "UTC",
+            "capabilities": [
+              "CREDIT_CARD_PROCESSING",
+              "AUTOMATIC_TRANSFERS"
+            ],
+            "status": "ACTIVE",
+            "created_at": "2026-08-24T01:35:15.922Z",
+            "merchant_id": "MLTQ3MXGD4MH2",
+            "country": "US",
+            "language_code": "en-US",
+            "currency": "USD",
+            "business_name": "Default Test Account",
+            "type": "PHYSICAL",
+            "business_hours": {},
+            "mcc": "7299"
+          }
+        ]
+      },
+      "headers": {
+        "date": "Mon, 24 Aug 2026 02:49:05 GMT",
+        "content-type": "application/json",
+        "content-length": "388",
+        "connection": "keep-alive",
+        "cf-ray": "a2ff0aae6efd04be-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/locations",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=eLb8fu9k0KcV.C7ygZB2nK.KezgIcIms2VZzHoMIfcw-1787539745.0273912-1.0.1.1-3pgvNQoFBddMkYZJU5IJowBIPFsNsQejP.UXpplbGMpAQdAFk3iU3jKIX3Aaf2TSiwaKL3uGhuG6PmeERssr3lkcgafBhzbAmp_ACY468PCEkx2IYKJTWG80G0_mo9IF; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 03:19:05 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
     "id": "83bb08de-ee27-4726-8064-a96e3e334c77",
     "timestamp": "2026-08-24T02:33:49.440Z",
     "method": "GET",

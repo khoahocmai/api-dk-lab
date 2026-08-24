@@ -53,16 +53,16 @@
       "name": "Branch"
     },
     {
-      "id": "17476f73-a01d-445e-a8ac-f47db5efa0f6",
-      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
-      "parentId": null,
-      "name": "Customer"
-    },
-    {
       "id": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
       "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
       "parentId": null,
       "name": "Location"
+    },
+    {
+      "id": "17476f73-a01d-445e-a8ac-f47db5efa0f6",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "parentId": null,
+      "name": "Customer"
     }
   ],
   "savedRequests": [
@@ -726,6 +726,65 @@
       },
       "createdAt": "2026-08-24T02:33:24.433Z",
       "updatedAt": "2026-08-24T02:44:48.594Z"
+    },
+    {
+      "id": "6b97d2ab-1d61-48a7-8939-926dfd975ec8",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+      "name": "Get Location",
+      "request": {
+        "id": "ee417777-ecb8-4190-a697-b00f692340a0",
+        "savedRequestId": "6b97d2ab-1d61-48a7-8939-926dfd975ec8",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+        "name": "Get Location",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/locations",
+        "params": [],
+        "headersList": [
+          {
+            "id": "69fd8f9d-6f07-4ed2-930f-5f191564042c",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true
+          },
+          {
+            "id": "02ff945d-9f83-432a-a157-d7af3b356711",
+            "key": "Authorization",
+            "value": "Bearer {{Token}}",
+            "enabled": true
+          },
+          {
+            "id": "e833c751-f6cf-4b39-9523-2edf5d0852c0",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Authorization\": \"Bearer {{Token}}\",\n  \"Content-Type\": \"application/json\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "AUTH",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T02:49:08.689Z",
+      "updatedAt": "2026-08-24T02:49:25.214Z"
     }
   ],
   "expandedCollectionIds": [

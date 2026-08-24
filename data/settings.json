@@ -9,7 +9,10 @@
   "tabs": [
     {
       "id": "ee417777-ecb8-4190-a697-b00f692340a0",
-      "name": "cURL (GET)",
+      "savedRequestId": "6b97d2ab-1d61-48a7-8939-926dfd975ec8",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+      "name": "Get Location",
       "mode": "REST",
       "method": "GET",
       "url": "{{Domain}}/locations",
