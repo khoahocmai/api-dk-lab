@@ -1,11 +1,12 @@
-import React, { useRef } from 'react'
-import { FileText, Plus, Trash2, Upload, X } from 'lucide-react'
+import React, { useRef, useState } from 'react'
+import { Eye, EyeOff, FileText, Lock, Plus, Trash2, Upload, X } from 'lucide-react'
 import type { EnvironmentItem, KeyValueRow } from '../../types'
 import { createId } from '../../utils/formatters'
 import { TemplateInput } from '../common/TemplateInput'
 
 export interface KeyValueTableProps {
   rows: KeyValueRow[]
+  autoRows?: KeyValueRow[]
   onChange: (rows: KeyValueRow[]) => void
   keyPlaceholder?: string
   valuePlaceholder?: string
@@ -18,6 +19,7 @@ export interface KeyValueTableProps {
 
 export function KeyValueTable({
   rows,
+  autoRows = [],
   onChange,
   keyPlaceholder = 'Key',
   valuePlaceholder = 'Value',
@@ -29,6 +31,14 @@ export function KeyValueTable({
 }: KeyValueTableProps) {
   const currentRows = Array.isArray(rows) && rows.length > 0 ? rows : []
   const fileInputRefs = useRef<Record<string, HTMLInputElement | null>>({})
+  const [showAutoHeaders, setShowAutoHeaders] = useState(false)
+
+  // Track which keys the user has explicitly provided to mark overridden auto rows
+  const userOverriddenKeys = new Set(
+    currentRows
+      .filter((r) => r.enabled && r.key.trim() !== '')
+      .map((r) => r.key.trim().toLowerCase()),
+  )
 
   const updateRow = (id: string, patch: Partial<KeyValueRow>, index: number) => {
     let baseList =
@@ -125,7 +135,35 @@ export function KeyValueTable({
 
   return (
     <div className="kv-table-container">
-      {title && <div className="caps" style={{ marginBottom: 8 }}>{title}</div>}
+      {/* Table Title & Auto Headers Toggle Toolbar */}
+      <div className="kv-table-top-bar">
+        {title && <div className="caps">{title}</div>}
+        {autoRows && autoRows.length > 0 && (
+          <button
+            type="button"
+            className={`kv-auto-toggle-btn ${showAutoHeaders ? 'is-active' : ''}`}
+            onClick={() => setShowAutoHeaders(!showAutoHeaders)}
+            title={
+              showAutoHeaders
+                ? 'Hide auto-generated headers'
+                : 'Show auto-generated headers (system calculated)'
+            }
+          >
+            {showAutoHeaders ? (
+              <>
+                <EyeOff size={12} className="text-gray-400" />
+                <span>Hide auto-generated headers ({autoRows.length})</span>
+              </>
+            ) : (
+              <>
+                <Eye size={12} className="text-blue-400" />
+                <span>{autoRows.length} hidden auto-generated headers</span>
+              </>
+            )}
+          </button>
+        )}
+      </div>
+
       {!hideHeader && (
         <div className={`kv-table-header ${allowFile ? 'has-type' : ''}`}>
           <div className="kv-col-check"></div>
@@ -138,6 +176,94 @@ export function KeyValueTable({
       )}
 
       <div className="kv-table-body">
+        {/* 1. AUTO-GENERATED SYSTEM ROWS (Toggleable, Strikethrough if Overridden) */}
+        {showAutoHeaders &&
+          autoRows.map((autoRow) => {
+            const isOverridden = userOverriddenKeys.has(autoRow.key.trim().toLowerCase())
+
+            return (
+              <div
+                key={autoRow.id}
+                className={`kv-row is-auto-row is-readonly ${
+                  isOverridden ? 'is-overridden-by-user' : ''
+                } ${allowFile ? 'has-type' : ''}`}
+                title={
+                  isOverridden
+                    ? `Header "${autoRow.key}" đã bị ghi đè bởi User Header bên dưới.`
+                    : 'Header tự động của hệ thống (Read-only).'
+                }
+              >
+                <div className="kv-col-check">
+                  <input
+                    type="checkbox"
+                    checked={!isOverridden && autoRow.enabled}
+                    disabled
+                    aria-label="Auto-generated header active"
+                  />
+                </div>
+
+                <div className="kv-col-key">
+                  <input
+                    className="input input-sm kv-input is-readonly"
+                    value={autoRow.key}
+                    readOnly
+                    disabled
+                  />
+                </div>
+
+                {allowFile && (
+                  <div className="kv-col-type">
+                    <select className="select select-sm kv-type-select is-readonly" disabled>
+                      <option value="text">Text</option>
+                    </select>
+                  </div>
+                )}
+
+                <div className="kv-col-val">
+                  <TemplateInput
+                    size="sm"
+                    placeholder={valuePlaceholder}
+                    value={autoRow.value}
+                    onChange={() => {}}
+                    readOnly
+                    disabled
+                    environment={environment}
+                    containerClassName="is-readonly"
+                    aria-label="Auto-generated value"
+                  />
+                </div>
+
+                <div className="kv-col-desc">
+                  <input
+                    className="input input-sm kv-input kv-desc-input is-readonly"
+                    placeholder={descriptionPlaceholder}
+                    value={
+                      isOverridden
+                        ? `${autoRow.description || 'Auto-generated'} (Overridden)`
+                        : autoRow.description || 'Auto-generated header'
+                    }
+                    readOnly
+                    disabled
+                  />
+                </div>
+
+                <div className="kv-col-act">
+                  <span
+                    className="kv-auto-lock"
+                    title={
+                      isOverridden
+                        ? 'Đã bị ghi đè bởi User Header'
+                        : 'Header tự động của hệ thống'
+                    }
+                  >
+                    <Lock size={12} style={{ color: 'var(--text-dim)' }} />
+                  </span>
+                </div>
+              </div>
+            )
+          })}
+
+        {/* 2. USER-CONFIGURED EDITABLE ROWS (HIGHEST PRIORITY) */}
         {displayRows.map((row, index) => {
           const isFileType = allowFile && row.type === 'file'
 

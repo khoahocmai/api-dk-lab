@@ -1,6 +1,6 @@
 import type { EnvironmentItem, RequestItem } from '../types'
 import { generateCurlCommand } from './curlHelper'
-import { resolveTemplates } from '../services/templateService'
+import { buildFinalHeaders, resolveTemplates } from '../services/templateService'
 
 export type CodeSnippetLang =
   | 'curl'
@@ -33,58 +33,7 @@ function getResolvedHeaders(
   request: RequestItem,
   environment?: EnvironmentItem | null,
 ): Record<string, string> {
-  const headers: Record<string, string> = {}
-
-  request.headersList
-    .filter((h) => h.enabled && h.key.trim() !== '')
-    .forEach((h) => {
-      headers[resolveTemplates(h.key.trim(), environment)] = resolveTemplates(
-        h.value,
-        environment,
-      )
-    })
-
-  if (request.auth.type === 'bearer' && request.auth.bearerToken.trim()) {
-    headers['Authorization'] = `Bearer ${resolveTemplates(
-      request.auth.bearerToken.trim(),
-      environment,
-    )}`
-  } else if (request.auth.type === 'basic') {
-    const u = resolveTemplates(request.auth.basicUsername, environment)
-    const p = resolveTemplates(request.auth.basicPassword, environment)
-    if (u || p) {
-      try {
-        headers['Authorization'] = `Basic ${btoa(`${u}:${p}`)}`
-      } catch {
-        // ignore
-      }
-    }
-  } else if (
-    request.auth.type === 'apiKey' &&
-    request.auth.apiKeyAddTo === 'header' &&
-    request.auth.apiKeyName.trim()
-  ) {
-    headers[resolveTemplates(request.auth.apiKeyName.trim(), environment)] =
-      resolveTemplates(request.auth.apiKeyValue, environment)
-  }
-
-  const hasContentType = Boolean(headers['Content-Type'] || headers['content-type'])
-
-  if (request.mode === 'GRAPHQL') {
-    if (!hasContentType) headers['Content-Type'] = 'application/json'
-  } else if (!['GET', 'DELETE'].includes(request.method)) {
-    if (request.bodyType === 'json' && !hasContentType) {
-      headers['Content-Type'] = 'application/json'
-    } else if (request.bodyType === 'x-www-form-urlencoded' && !hasContentType) {
-      headers['Content-Type'] = 'application/x-www-form-urlencoded'
-    } else if (request.bodyType === 'form-data' && !hasContentType) {
-      headers['Content-Type'] = 'multipart/form-data'
-    } else if (request.bodyType === 'raw' && !hasContentType) {
-      headers['Content-Type'] = 'text/plain'
-    }
-  }
-
-  return headers
+  return buildFinalHeaders(request, environment)
 }
 
 function getRequestBodyString(

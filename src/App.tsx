@@ -28,6 +28,7 @@ import {
   parseJsonObject,
 } from './utils/formatters'
 import {
+  buildFinalHeaders,
   injectAuthToHeaders,
   injectAuthToUrl,
   resolveHeadersList,
@@ -1035,15 +1036,8 @@ function App() {
       // Inject API Key query param if configured
       finalUrl = injectAuthToUrl(finalUrl, activeTab.auth, activeEnvironment)
 
-      // Resolve headers list
-      const rawHeaders = resolveHeadersList(
-        activeTab.headersList,
-        activeTab.headersText,
-        activeEnvironment,
-      )
-
-      // Inject Auth header
-      const headers = injectAuthToHeaders(rawHeaders, activeTab.auth, activeEnvironment)
+      // Build unified headers (Auto-generated + User headers with highest priority, deduplicated)
+      const headers = buildFinalHeaders(activeTab, activeEnvironment)
 
       const requestOptions: HttpRequestOptions = {
         method: activeTab.mode === 'GRAPHQL' ? 'POST' : activeTab.method,

@@ -5,36 +5,50 @@
     "editorFontSize": 13
   },
   "activeEnvironmentId": "02ad665d-6fd3-4360-8a44-1b4c431425d5",
-  "activeTabId": "e48ccac8-c1bb-4dd5-b71d-e2a4a1c60dd6",
+  "activeTabId": "5e157a87-b4b1-4cd9-94b5-b6979fa1d06b",
   "tabs": [
     {
-      "id": "e48ccac8-c1bb-4dd5-b71d-e2a4a1c60dd6",
-      "name": "Get Catalog info",
+      "id": "5e157a87-b4b1-4cd9-94b5-b6979fa1d06b",
+      "savedRequestId": "3fcff6ba-c2f5-44d0-8733-e7e93a0aab2e",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+      "name": "Checkout",
       "mode": "REST",
       "method": "GET",
-      "url": "{{Domain}}/catalog/info",
-      "params": [],
+      "url": "{{Domain}}/online-checkout/location-settings/?%3Alocation_id=L379743VY1ZBC",
+      "params": [
+        {
+          "id": "empty-initial-row",
+          "key": ":location_id",
+          "value": "L379743VY1ZBC",
+          "enabled": true,
+          "description": "",
+          "type": "text"
+        },
+        {
+          "id": "a40fb1ad-c9ab-4a71-bf69-70ff54766a79",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": "",
+          "type": "text"
+        }
+      ],
       "headersList": [
         {
-          "id": "07824a38-0a1d-4c39-ae4d-dd103cab7752",
+          "id": "05ef367d-f750-449c-9778-228c8eff8562",
           "key": "Square-Version",
           "value": "2026-08-19",
           "enabled": true
         },
         {
-          "id": "83f049d0-9b4f-4464-af45-a6e9252db758",
-          "key": "Authorization",
-          "value": "Bearer {{Token}}",
-          "enabled": true
-        },
-        {
-          "id": "e0f93dff-d0a2-4f8f-a7eb-e7ff6210121a",
+          "id": "9dbc9ed3-3f20-4a19-bd0c-c0d9367cc0bd",
           "key": "Content-Type",
           "value": "application/json",
           "enabled": true
         }
       ],
-      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Authorization\": \"Bearer {{Token}}\",\n  \"Content-Type\": \"application/json\"\n}",
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
       "auth": {
         "type": "bearer",
         "bearerToken": "{{Token}}",
@@ -52,7 +66,7 @@
       "gqlQuery": "",
       "gqlVariables": "{}",
       "testScript": "",
-      "editorTab": "HEADERS",
+      "editorTab": "PARAMS",
       "responseTab": "PRETTY"
     }
   ],

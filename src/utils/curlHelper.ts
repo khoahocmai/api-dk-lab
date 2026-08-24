@@ -9,7 +9,10 @@ import type {
 } from '../types'
 import { createId } from './formatters'
 import { parseUrlToQueryParams } from './urlHelper'
-import { resolveTemplates } from '../services/templateService'
+import {
+  buildFinalHeaders,
+  resolveTemplates,
+} from '../services/templateService'
 
 /**
  * Unescapes standard ANSI-C quoting escape sequences:
@@ -687,63 +690,24 @@ export function generateCurlCommand(
   request: RequestItem,
   environment?: EnvironmentItem | null,
 ): string {
-  const finalUrl = resolveTemplates(request.url, environment)
-  const lines: string[] = [`curl --location --request ${request.method} '${finalUrl}'`]
-
-  // Collect headers
-  const headersRecord: Record<string, string> = {}
-
-  request.headersList
-    .filter((h) => h.enabled && h.key.trim() !== '')
-    .forEach((h) => {
-      const k = resolveTemplates(h.key.trim(), environment)
-      const v = resolveTemplates(h.value, environment)
-      headersRecord[k] = v
-    })
-
-  // Inject Auth header
-  if (request.auth.type === 'bearer' && request.auth.bearerToken.trim()) {
-    const token = resolveTemplates(request.auth.bearerToken.trim(), environment)
-    headersRecord['Authorization'] = `Bearer ${token}`
-  } else if (request.auth.type === 'basic') {
-    const username = resolveTemplates(request.auth.basicUsername, environment)
-    const password = resolveTemplates(request.auth.basicPassword, environment)
-    if (username || password) {
-      try {
-        const encoded = btoa(`${username}:${password}`)
-        headersRecord['Authorization'] = `Basic ${encoded}`
-      } catch {
-        // ignore
-      }
-    }
-  } else if (
-    request.auth.type === 'apiKey' &&
-    request.auth.apiKeyAddTo === 'header' &&
-    request.auth.apiKeyName.trim()
+  let finalUrl = resolveTemplates(request.url, environment)
+  if (
+    request.auth?.type === 'apiKey' &&
+    request.auth.apiKeyAddTo === 'query' &&
+    request.auth.apiKeyName?.trim()
   ) {
-    const name = resolveTemplates(request.auth.apiKeyName.trim(), environment)
-    const val = resolveTemplates(request.auth.apiKeyValue, environment)
-    headersRecord[name] = val
+    const key = resolveTemplates(request.auth.apiKeyName.trim(), environment)
+    const val = resolveTemplates(request.auth.apiKeyValue || '', environment)
+    const separator = finalUrl.includes('?') ? '&' : '?'
+    finalUrl = `${finalUrl}${separator}${encodeURIComponent(key)}=${encodeURIComponent(val)}`
   }
 
-  // Set content-type according to body type if not present
-  const hasContentTypeCurl = Boolean(headersRecord['Content-Type'] || headersRecord['content-type'])
+  const lines: string[] = [
+    `curl --location --request ${request.mode === 'GRAPHQL' ? 'POST' : request.method} '${finalUrl}'`,
+  ]
 
-  if (request.mode === 'GRAPHQL') {
-    if (!hasContentTypeCurl) {
-      headersRecord['Content-Type'] = 'application/json'
-    }
-  } else if (!['GET', 'DELETE'].includes(request.method)) {
-    if (request.bodyType === 'json' && !hasContentTypeCurl) {
-      headersRecord['Content-Type'] = 'application/json'
-    } else if (request.bodyType === 'x-www-form-urlencoded' && !hasContentTypeCurl) {
-      headersRecord['Content-Type'] = 'application/x-www-form-urlencoded'
-    } else if (request.bodyType === 'form-data' && !hasContentTypeCurl) {
-      headersRecord['Content-Type'] = 'multipart/form-data'
-    } else if (request.bodyType === 'raw' && !hasContentTypeCurl) {
-      headersRecord['Content-Type'] = 'text/plain'
-    }
-  }
+  // Build unified headers (Auto-generated + User headers with highest priority, deduplicated)
+  const headersRecord = buildFinalHeaders(request, environment)
 
   // Add headers to curl lines
   Object.entries(headersRecord).forEach(([k, v]) => {

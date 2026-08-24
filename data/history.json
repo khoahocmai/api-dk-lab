@@ -1,5 +1,825 @@
 [
   {
+    "id": "d58ce22d-0690-4b9f-821c-b10b937927d6",
+    "timestamp": "2026-08-24T03:23:30.323Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/locations",
+    "status": 200,
+    "duration": 419,
+    "request": {
+      "id": "28f21793-c968-4333-8861-92538aecfd85",
+      "savedRequestId": "6b97d2ab-1d61-48a7-8939-926dfd975ec8",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+      "name": "Get Location",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/locations",
+      "params": [],
+      "headersList": [
+        {
+          "id": "69fd8f9d-6f07-4ed2-930f-5f191564042c",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "02ff945d-9f83-432a-a157-d7af3b356711",
+          "key": "Authorization",
+          "value": "Bearer {{Token}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "e833c751-f6cf-4b39-9523-2edf5d0852c0",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Authorization\": \"Bearer {{Token}}\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "AUTH",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "419 ms",
+      "size": "539 B",
+      "data": {
+        "locations": [
+          {
+            "id": "L379743VY1ZBC",
+            "name": "Default Test Account",
+            "address": {
+              "address_line_1": "1600 Pennsylvania Ave NW",
+              "locality": "Washington",
+              "administrative_district_level_1": "DC",
+              "postal_code": "20500",
+              "country": "US"
+            },
+            "timezone": "UTC",
+            "capabilities": [
+              "CREDIT_CARD_PROCESSING",
+              "AUTOMATIC_TRANSFERS"
+            ],
+            "status": "ACTIVE",
+            "created_at": "2026-08-24T01:35:15.922Z",
+            "merchant_id": "MLTQ3MXGD4MH2",
+            "country": "US",
+            "language_code": "en-US",
+            "currency": "USD",
+            "business_name": "Default Test Account",
+            "type": "PHYSICAL",
+            "business_hours": {},
+            "mcc": "7299"
+          }
+        ]
+      },
+      "headers": {
+        "date": "Mon, 24 Aug 2026 03:23:31 GMT",
+        "content-type": "application/json",
+        "content-length": "388",
+        "connection": "keep-alive",
+        "cf-ray": "a2ff3d1f5a6674f0-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/locations",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=hCbSRvqolKNUYAdY8P4vWhGgFr_zxFjmcn2A10aAIMc-1787541811.091426-1.0.1.1-zYZXYszsfpAB3IJWl1PsKHhcvsR9cxzFoRAk0kUo9Uq4jRl.VGa52XuI7_bnc.1uOhrTsuLC._vtWCyDf95ekNklLe7Ncnvh.89WEZyHRTTHhA2OU4CzHFJKWyuMpwh3; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 03:53:31 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "cec4af97-ac9c-4416-83fe-827fdada447e",
+    "timestamp": "2026-08-24T03:22:22.280Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/customers",
+    "status": 200,
+    "duration": 566,
+    "request": {
+      "id": "ba6d47bf-7d05-45b5-960b-598332e3c17f",
+      "savedRequestId": "20ba662f-d791-4581-b693-c60b1565ad63",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "17476f73-a01d-445e-a8ac-f47db5efa0f6",
+      "name": "Get Customer",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/customers",
+      "params": [],
+      "headersList": [
+        {
+          "id": "3b45789e-7a76-4c54-a7c9-598bd93d7a52",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "fba1965a-c779-4964-a38c-3a1e929d4371",
+          "key": "Authorization",
+          "value": "Bearer {{Token}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "d6d1ad15-19c9-4695-8889-62936e60d6fd",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Authorization\": \"Bearer {{Token}}\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "566 ms",
+      "size": "353 B",
+      "data": {
+        "customers": [
+          {
+            "id": "D7KBXFK77FCPXF2BAA48Z6GCAG",
+            "created_at": "2026-08-24T02:27:58.603Z",
+            "updated_at": "2026-08-24T02:27:58Z",
+            "given_name": "Dang Khoa",
+            "family_name": "Do Duong",
+            "nickname": "DK",
+            "address": {
+              "postal_code": "70000",
+              "country": "VN"
+            },
+            "preferences": {
+              "email_unsubscribed": false
+            },
+            "creation_source": "THIRD_PARTY",
+            "birthday": "2003-01-01",
+            "version": 0
+          }
+        ]
+      },
+      "headers": {
+        "date": "Mon, 24 Aug 2026 03:22:23 GMT",
+        "content-type": "application/json",
+        "content-length": "276",
+        "connection": "keep-alive",
+        "cf-ray": "a2ff3b75ad97ddc8-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/customers/**",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=gV0ZzSFCK5fvIQist_TI635YIKCuEh0jKymhFGCvhyw-1787541742.988153-1.0.1.1-R7HxYY50gbvIF4xjkmL_LwhmiOFMPPZCvXXIUvfXd2NMI3B78Ruwmt2_wGgbp2_1KaE1eP2oUaOkmq1gZQjHwfebI8luxaqKnib7w74jb2hVQ3p47I9Uy7C.aEBKSlao; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 03:52:23 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "aa0f98ef-96eb-4a45-97de-76feb3dc111f",
+    "timestamp": "2026-08-24T03:17:07.700Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/channels",
+    "status": 503,
+    "duration": 438,
+    "request": {
+      "id": "c9c60a80-fbe8-4033-be8e-8851818f827a",
+      "savedRequestId": "f7927b3e-be69-4e3e-9878-f8088733a05c",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "3a0cfaa6-0fe4-4e0d-aba1-927b75523f95",
+      "name": "Get Channel",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/channels",
+      "params": [],
+      "headersList": [
+        {
+          "id": "3288d128-2819-4e6a-b032-4b5dc51d1cc7",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "1d24ff34-dc75-40da-9067-e8e5a6fe8432",
+          "key": "Authorization",
+          "value": "Bearer {{Token}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "6172b90d-6d93-4c0c-aafd-ba487b044a63",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Authorization\": \"Bearer {{Token}}\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "AUTH",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 503,
+      "statusText": "Service Unavailable",
+      "time": "438 ms",
+      "size": "0 B",
+      "data": "",
+      "headers": {
+        "date": "Mon, 24 Aug 2026 03:17:08 GMT",
+        "content-length": "0",
+        "connection": "keep-alive",
+        "cf-ray": "a2ff33c8484db8ce-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "x-envoy-decorator-operation": "/v2/channels/**",
+        "set-cookie": [
+          "__cf_bm=vlz4tTwz.cM9Ggde9r4wgeqArngwBTd7JJwVuZ6fFuU-1787541428.5222716-1.0.1.1-VoMtbU2xo8XNuSGifqh7Itwh27M6CKiaDgK70u3.CNhtKzO0X.C.LDTe1oHbekXl_LQ_4QYP2zrYzRcVjquE5NDnrXRvRXRJft7a.hKf.0HOWSvRSPu1vxZ9zF9jj6N.; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 03:47:08 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "39a6248c-f46d-449a-85b6-b7ccc092d9d5",
+    "timestamp": "2026-08-24T03:11:58.991Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/channels",
+    "status": 503,
+    "duration": 664,
+    "request": {
+      "id": "c9c60a80-fbe8-4033-be8e-8851818f827a",
+      "name": "cURL (GET)",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/channels",
+      "params": [],
+      "headersList": [
+        {
+          "id": "3288d128-2819-4e6a-b032-4b5dc51d1cc7",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true
+        },
+        {
+          "id": "1d24ff34-dc75-40da-9067-e8e5a6fe8432",
+          "key": "Authorization",
+          "value": "Bearer EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK",
+          "enabled": true
+        },
+        {
+          "id": "6172b90d-6d93-4c0c-aafd-ba487b044a63",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Authorization\": \"Bearer EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 503,
+      "statusText": "Service Unavailable",
+      "time": "664 ms",
+      "size": "0 B",
+      "data": "",
+      "headers": {
+        "date": "Mon, 24 Aug 2026 03:11:59 GMT",
+        "content-length": "0",
+        "connection": "keep-alive",
+        "cf-ray": "a2ff2c3eda5008bf-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "x-envoy-decorator-operation": "/v2/channels/**",
+        "set-cookie": [
+          "__cf_bm=gdCayPYJSkc_HHOIHFqCnN9ZF4WmWJS79XMpXLSmo2I-1787541119.8117118-1.0.1.1-Ju6v4Zi8zvkXPI2o.T52_A1CfBpXsbWmh12BMZ.NFiN6zvDB6ZzyvxwmlAcQkgy.wL9Jkv1IJo8Px3c7XSh.wXSb7jW96gHLSexb9lb5hbMhwmHtAQTNzB2ja50ibsMI; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 03:41:59 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "a65bef5c-86ad-4f84-ac36-4b4322d55772",
+    "timestamp": "2026-08-24T03:01:59.218Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/catalog/info",
+    "status": 200,
+    "duration": 809,
+    "request": {
+      "id": "e48ccac8-c1bb-4dd5-b71d-e2a4a1c60dd6",
+      "name": "Get Catalog info",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/catalog/info",
+      "params": [],
+      "headersList": [
+        {
+          "id": "07824a38-0a1d-4c39-ae4d-dd103cab7752",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true
+        },
+        {
+          "id": "83f049d0-9b4f-4464-af45-a6e9252db758",
+          "key": "Authorization",
+          "value": "Bearer {{Token}}",
+          "enabled": true
+        },
+        {
+          "id": "e0f93dff-d0a2-4f8f-a7eb-e7ff6210121a",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Authorization\": \"Bearer {{Token}}\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "809 ms",
+      "size": "4.4 KB",
+      "data": {
+        "limits": {
+          "batch_upsert_max_objects_per_batch": 1000,
+          "batch_upsert_max_total_objects": 10000,
+          "batch_retrieve_max_object_ids": 1000,
+          "search_max_page_limit": 1000,
+          "batch_delete_max_object_ids": 200,
+          "update_item_taxes_max_item_ids": 1000,
+          "update_item_taxes_max_taxes_to_enable": 1000,
+          "update_item_taxes_max_taxes_to_disable": 1000,
+          "update_item_modifier_lists_max_item_ids": 1000,
+          "update_item_modifier_lists_max_modifier_lists_to_enable": 1000,
+          "update_item_modifier_lists_max_modifier_lists_to_disable": 1000
+        },
+        "standard_unit_description_group": {
+          "standard_unit_descriptions": [
+            {
+              "unit": {
+                "area_unit": "METRIC_SQUARE_KILOMETER",
+                "type": "TYPE_AREA"
+              },
+              "name": "Square Kilometer",
+              "abbreviation": "sq km"
+            },
+            {
+              "unit": {
+                "area_unit": "IMPERIAL_SQUARE_FOOT",
+                "type": "TYPE_AREA"
+              },
+              "name": "Square Foot",
+              "abbreviation": "sq ft"
+            },
+            {
+              "unit": {
+                "area_unit": "IMPERIAL_SQUARE_YARD",
+                "type": "TYPE_AREA"
+              },
+              "name": "Square Yard",
+              "abbreviation": "sq yd"
+            },
+            {
+              "unit": {
+                "area_unit": "IMPERIAL_SQUARE_MILE",
+                "type": "TYPE_AREA"
+              },
+              "name": "Square Mile",
+              "abbreviation": "sq mi"
+            },
+            {
+              "unit": {
+                "area_unit": "METRIC_SQUARE_CENTIMETER",
+                "type": "TYPE_AREA"
+              },
+              "name": "Square Centimeter",
+              "abbreviation": "sq cm"
+            },
+            {
+              "unit": {
+                "area_unit": "IMPERIAL_ACRE",
+                "type": "TYPE_AREA"
+              },
+              "name": "Acre",
+              "abbreviation": "ac"
+            },
+            {
+              "unit": {
+                "area_unit": "IMPERIAL_SQUARE_INCH",
+                "type": "TYPE_AREA"
+              },
+              "name": "Square Inch",
+              "abbreviation": "sq in"
+            },
+            {
+              "unit": {
+                "area_unit": "METRIC_SQUARE_METER",
+                "type": "TYPE_AREA"
+              },
+              "name": "Square Meter",
+              "abbreviation": "sq m"
+            },
+            {
+              "unit": {
+                "length_unit": "IMPERIAL_FOOT",
+                "type": "TYPE_LENGTH"
+              },
+              "name": "Foot",
+              "abbreviation": "ft"
+            },
+            {
+              "unit": {
+                "length_unit": "IMPERIAL_MILE",
+                "type": "TYPE_LENGTH"
+              },
+              "name": "Mile",
+              "abbreviation": "mi"
+            },
+            {
+              "unit": {
+                "length_unit": "METRIC_CENTIMETER",
+                "type": "TYPE_LENGTH"
+              },
+              "name": "Centimeter",
+              "abbreviation": "cm"
+            },
+            {
+              "unit": {
+                "length_unit": "METRIC_METER",
+                "type": "TYPE_LENGTH"
+              },
+              "name": "Meter",
+              "abbreviation": "m"
+            },
+            {
+              "unit": {
+                "length_unit": "METRIC_KILOMETER",
+                "type": "TYPE_LENGTH"
+              },
+              "name": "Kilometer",
+              "abbreviation": "km"
+            },
+            {
+              "unit": {
+                "length_unit": "IMPERIAL_INCH",
+                "type": "TYPE_LENGTH"
+              },
+              "name": "Inch",
+              "abbreviation": "in"
+            },
+            {
+              "unit": {
+                "length_unit": "IMPERIAL_YARD",
+                "type": "TYPE_LENGTH"
+              },
+              "name": "Yard",
+              "abbreviation": "yd"
+            },
+            {
+              "unit": {
+                "length_unit": "METRIC_MILLIMETER",
+                "type": "TYPE_LENGTH"
+              },
+              "name": "Millimeter",
+              "abbreviation": "mm"
+            },
+            {
+              "unit": {
+                "volume_unit": "GENERIC_SHOT",
+                "type": "TYPE_VOLUME"
+              },
+              "name": "Shot",
+              "abbreviation": "sh"
+            },
+            {
+              "unit": {
+                "volume_unit": "GENERIC_CUP",
+                "type": "TYPE_VOLUME"
+              },
+              "name": "Cup",
+              "abbreviation": "c"
+            },
+            {
+              "unit": {
+                "volume_unit": "GENERIC_QUART",
+                "type": "TYPE_VOLUME"
+              },
+              "name": "Quart",
+              "abbreviation": "qt"
+            },
+            {
+              "unit": {
+                "volume_unit": "GENERIC_GALLON",
+                "type": "TYPE_VOLUME"
+              },
+              "name": "Gallon",
+              "abbreviation": "gal"
+            },
+            {
+              "unit": {
+                "volume_unit": "IMPERIAL_CUBIC_FOOT",
+                "type": "TYPE_VOLUME"
+              },
+              "name": "Cubic Foot",
+              "abbreviation": "cu ft"
+            },
+            {
+              "unit": {
+                "volume_unit": "METRIC_MILLILITER",
+                "type": "TYPE_VOLUME"
+              },
+              "name": "Milliliter",
+              "abbreviation": "mL"
+            },
+            {
+              "unit": {
+                "volume_unit": "GENERIC_FLUID_OUNCE",
+                "type": "TYPE_VOLUME"
+              },
+              "name": "Fluid Ounce",
+              "abbreviation": "fl oz"
+            },
+            {
+              "unit": {
+                "volume_unit": "GENERIC_PINT",
+                "type": "TYPE_VOLUME"
+              },
+              "name": "Pint",
+              "abbreviation": "pt"
+            },
+            {
+              "unit": {
+                "volume_unit": "IMPERIAL_CUBIC_INCH",
+                "type": "TYPE_VOLUME"
+              },
+              "name": "Cubic Inch",
+              "abbreviation": "cu in"
+            },
+            {
+              "unit": {
+                "volume_unit": "IMPERIAL_CUBIC_YARD",
+                "type": "TYPE_VOLUME"
+              },
+              "name": "Cubic Yard",
+              "abbreviation": "cu yd"
+            },
+            {
+              "unit": {
+                "volume_unit": "METRIC_LITER",
+                "type": "TYPE_VOLUME"
+              },
+              "name": "Liter",
+              "abbreviation": "L"
+            },
+            {
+              "unit": {
+                "weight_unit": "METRIC_KILOGRAM",
+                "type": "TYPE_WEIGHT"
+              },
+              "name": "Kilogram",
+              "abbreviation": "kg"
+            },
+            {
+              "unit": {
+                "weight_unit": "IMPERIAL_WEIGHT_OUNCE",
+                "type": "TYPE_WEIGHT"
+              },
+              "name": "Ounce",
+              "abbreviation": "oz"
+            },
+            {
+              "unit": {
+                "weight_unit": "IMPERIAL_POUND",
+                "type": "TYPE_WEIGHT"
+              },
+              "name": "Pound",
+              "abbreviation": "lb"
+            },
+            {
+              "unit": {
+                "weight_unit": "IMPERIAL_STONE",
+                "type": "TYPE_WEIGHT"
+              },
+              "name": "Stone",
+              "abbreviation": "st"
+            },
+            {
+              "unit": {
+                "weight_unit": "METRIC_MILLIGRAM",
+                "type": "TYPE_WEIGHT"
+              },
+              "name": "Milligram",
+              "abbreviation": "mg"
+            },
+            {
+              "unit": {
+                "weight_unit": "METRIC_GRAM",
+                "type": "TYPE_WEIGHT"
+              },
+              "name": "Gram",
+              "abbreviation": "g"
+            },
+            {
+              "unit": {
+                "generic_unit": "UNIT",
+                "type": "TYPE_GENERIC"
+              },
+              "name": "Unit",
+              "abbreviation": "unit"
+            },
+            {
+              "unit": {
+                "time_unit": "GENERIC_HOUR",
+                "type": "TYPE_TIME"
+              },
+              "name": "Hour",
+              "abbreviation": "hr"
+            },
+            {
+              "unit": {
+                "time_unit": "GENERIC_DAY",
+                "type": "TYPE_TIME"
+              },
+              "name": "Day",
+              "abbreviation": "day"
+            },
+            {
+              "unit": {
+                "time_unit": "GENERIC_MILLISECOND",
+                "type": "TYPE_TIME"
+              },
+              "name": "Millisecond",
+              "abbreviation": "ms"
+            },
+            {
+              "unit": {
+                "time_unit": "GENERIC_SECOND",
+                "type": "TYPE_TIME"
+              },
+              "name": "Second",
+              "abbreviation": "sec"
+            },
+            {
+              "unit": {
+                "time_unit": "GENERIC_MINUTE",
+                "type": "TYPE_TIME"
+              },
+              "name": "Minute",
+              "abbreviation": "min"
+            }
+          ],
+          "language_code": "en-US"
+        }
+      },
+      "headers": {
+        "date": "Mon, 24 Aug 2026 03:02:00 GMT",
+        "content-type": "application/json",
+        "content-length": "919",
+        "connection": "keep-alive",
+        "cf-ray": "a2ff1d974c5edd8c-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Origin, Accept-Encoding",
+        "square-version": "2026-08-19",
+        "x-content-type-options": "nosniff",
+        "x-download-options": "noopen",
+        "x-envoy-decorator-operation": "/v2/catalog/**",
+        "x-frame-options": "SAMEORIGIN",
+        "x-permitted-cross-domain-policies": "none",
+        "x-speleo-traceid": "CDN-c225b819-f027-4035-8d0c-a9ad69860ffb",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=sLJCVdgmZJYBvqv.Ceb66NosMzgm4jsIHPATjdylgDo-1787540519.5705218-1.0.1.1-NHzzFV.tIoH3QgKkxpRViDUsptAMLfvFK5EJLF9LmxPWYa0dNH5zBmS7hIlmd.DaP7v78XlxtdZcdZ0ob4g3OiGas6g0yrjMXM_EcTY_Om2Ox02foUmrA5fDYayMEsvw; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 03:32:00 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
     "id": "ae931868-d189-4f68-8805-e85cab9165f2",
     "timestamp": "2026-08-24T02:53:37.625Z",
     "method": "GET",
