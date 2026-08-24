@@ -43,7 +43,7 @@ export function createDefaultAuth(): AuthConfig {
 }
 
 export function createDefaultRequest(mode: Mode = 'REST'): RequestItem {
-  const defaultHeaders = `{\n  "Content-Type": "application/json",\n  "Authorization": "Bearer {{token}}"\n}`
+  const defaultHeaders = `{\n  "Content-Type": "application/json"\n}`
   const initialUrl = mode === 'GRAPHQL' ? '{{Domain}}/graphql' : ''
 
   return {

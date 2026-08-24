@@ -1,5 +1,2467 @@
 [
   {
+    "id": "8ff07cd4-214e-4e92-8453-1a7dbbd39296",
+    "timestamp": "2026-08-24T04:09:46.226Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/devices",
+    "status": 200,
+    "duration": 261,
+    "request": {
+      "id": "d629b255-00eb-4dbb-8973-f6be04d4ad1a",
+      "savedRequestId": "5aa7b5b9-9c19-47be-9452-5510f9523b0c",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "1cf15ea2-d45c-45aa-b52e-75f08f343aa4",
+      "name": "Get Device",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/devices",
+      "params": [],
+      "headersList": [
+        {
+          "id": "8a0e2df5-42c7-461f-84b2-e7c482d66159",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "1bce33d9-956e-4bf6-9266-7e3cc4428d0d",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "PARAMS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "261 ms",
+      "size": "15.7 KB",
+      "data": {
+        "devices": [
+          {
+            "id": "device:995CS397A6475287",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 995",
+              "manufacturers_id": "995CS397A6475287",
+              "updated_at": "2026-08-24T00:02:47.183823523Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "LMN2K7S3RTOU3"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 5,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 3
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:995CS234B5493559",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 995",
+              "manufacturers_id": "995CS234B5493559",
+              "updated_at": "2026-08-24T03:22:47.183823192Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "LMN2K7S3RTOU3"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 24,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 2
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:986CS594A3697498",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 986",
+              "manufacturers_id": "986CS594A3697498",
+              "updated_at": "2026-08-23T22:43:47.183822753Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "LMN2K7S3RTOU3"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 37,
+                  "external_power": "AVAILABLE_INSUFFICIENT"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 2
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:974CS832A2842977",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 974",
+              "manufacturers_id": "974CS832A2842977",
+              "updated_at": "2026-08-24T03:44:47.183822306Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "L8DU7N6EWYB31"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 45,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": false
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": true,
+                  "ip_address_v4": "192.168.1.7"
+                }
+              }
+            ],
+            "status": {
+              "category": "AVAILABLE"
+            }
+          },
+          {
+            "id": "device:969CS494B2534325",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 969",
+              "manufacturers_id": "969CS494B2534325",
+              "updated_at": "2026-08-24T02:04:47.183821861Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "LMN2K7S3RTOU3"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 33,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": false
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": true,
+                  "ip_address_v4": "192.168.1.7"
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:859CS988B3299294",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 859",
+              "manufacturers_id": "859CS988B3299294",
+              "updated_at": "2026-08-24T03:02:47.183821403Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "L8DU7N6EWYB31"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 76,
+                  "external_power": "AVAILABLE_INSUFFICIENT"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": false
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": true,
+                  "ip_address_v4": "192.168.1.7"
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:858CS268A3598688",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 858",
+              "manufacturers_id": "858CS268A3598688",
+              "updated_at": "2026-08-24T03:12:47.183820959Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "LMN2K7S3RTOU3"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 51,
+                  "external_power": "AVAILABLE_INSUFFICIENT"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 3
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:848CS877B3972752",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 848",
+              "manufacturers_id": "848CS877B3972752",
+              "updated_at": "2026-08-24T00:22:47.183820514Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "LMN2K7S3RTOU3"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 40,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 1
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:842CS663A9366355",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 842",
+              "manufacturers_id": "842CS663A9366355",
+              "updated_at": "2026-08-24T01:52:47.183820019Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "L8DU7N6EWYB31"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 82,
+                  "external_power": "AVAILABLE_INSUFFICIENT"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 1
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:746CS784B4587964",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 746",
+              "manufacturers_id": "746CS784B4587964",
+              "updated_at": "2026-08-24T04:05:47.183819468Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "LMN2K7S3RTOU3"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 11,
+                  "external_power": "UNAVAILABLE"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 2
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "AVAILABLE"
+            }
+          },
+          {
+            "id": "device:728CS789B8536452",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 728",
+              "manufacturers_id": "728CS789B8536452",
+              "updated_at": "2026-08-24T02:39:47.183818967Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "L8DU7N6EWYB31"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 65,
+                  "external_power": "UNAVAILABLE"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": false
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": true,
+                  "ip_address_v4": "192.168.1.7"
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:673CS267A4228964",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 673",
+              "manufacturers_id": "673CS267A4228964",
+              "updated_at": "2026-08-23T23:55:47.183818501Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "LMN2K7S3RTOU3"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 20,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": false
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": true,
+                  "ip_address_v4": "192.168.1.7"
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:652CS588B5586497",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 652",
+              "manufacturers_id": "652CS588B5586497",
+              "updated_at": "2026-08-24T03:52:47.183818061Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "L8DU7N6EWYB31"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 97,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": false
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": true,
+                  "ip_address_v4": "192.168.1.7"
+                }
+              }
+            ],
+            "status": {
+              "category": "AVAILABLE"
+            }
+          },
+          {
+            "id": "device:643CS677B4663257",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 643",
+              "manufacturers_id": "643CS677B4663257",
+              "updated_at": "2026-08-24T03:16:47.183817611Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "LMN2K7S3RTOU3"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 33,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": false
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": true,
+                  "ip_address_v4": "192.168.1.7"
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:587CS628B7477975",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 587",
+              "manufacturers_id": "587CS628B7477975",
+              "updated_at": "2026-08-23T23:16:47.183817150Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "L8DU7N6EWYB31"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 92,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 1
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:585CS383A6663495",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 585",
+              "manufacturers_id": "585CS383A6663495",
+              "updated_at": "2026-08-24T03:28:47.183816673Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "L8DU7N6EWYB31"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 82,
+                  "external_power": "UNAVAILABLE"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 1
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:576CS582A8774558",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 576",
+              "manufacturers_id": "576CS582A8774558",
+              "updated_at": "2026-08-23T23:07:47.183816173Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "L8DU7N6EWYB31"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 100,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 1
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:559CS835B5954823",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 559",
+              "manufacturers_id": "559CS835B5954823",
+              "updated_at": "2026-08-24T00:30:47.183815675Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "LMN2K7S3RTOU3"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 2,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 1
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:528CS957A6994676",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 528",
+              "manufacturers_id": "528CS957A6994676",
+              "updated_at": "2026-08-24T00:26:47.183815163Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "L8DU7N6EWYB31"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 61,
+                  "external_power": "AVAILABLE_INSUFFICIENT"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 3
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:497CS532A4865844",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 497",
+              "manufacturers_id": "497CS532A4865844",
+              "updated_at": "2026-08-23T23:37:47.183813447Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "L8DU7N6EWYB31"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 55,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": false
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": true,
+                  "ip_address_v4": "192.168.1.7"
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          }
+        ],
+        "cursor": "MPP9HEVmajY4kZ2z8Pb9h9qc311Q0hcIWAVLCrYlUKHo9EPLRByM"
+      },
+      "headers": {
+        "date": "Mon, 24 Aug 2026 04:09:47 GMT",
+        "content-type": "application/json",
+        "transfer-encoding": "chunked",
+        "connection": "keep-alive",
+        "cf-ray": "a2ff80e50f198552-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/devices/**",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=PEhJB2WvZfOLctLsihIXw3SE1lMjhyFZDcjHjZkwCiE-1787544587.0497224-1.0.1.1-ANR1vxhSQhQTKuAr9VzF6qo6S7sd2Gryi2qr9JSiw8bF1Yhi010VyGQERPi3piD3.YMC5dhWbWt3ZoaPqM0UEwO6iPZgcWSQhHWeUcursARiTlS3T6vXIAFEP8Z9uE1L; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 04:39:47 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "1169e487-43eb-4922-8284-695d869954ce",
+    "timestamp": "2026-08-24T04:09:28.630Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/devices/codes",
+    "status": 200,
+    "duration": 1793,
+    "request": {
+      "id": "a0e7efc6-066a-42f7-9f16-091926a6a031",
+      "savedRequestId": "98c19695-e34c-40a8-a7f6-96feabc5e4e7",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "1cf15ea2-d45c-45aa-b52e-75f08f343aa4",
+      "name": "Get Device code",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/devices/codes",
+      "params": [],
+      "headersList": [
+        {
+          "id": "693bba0b-0ba9-4254-a280-b4a78464a6de",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true
+        },
+        {
+          "id": "f2e3dd1a-8f69-4c3e-a80c-4a6c26d394b8",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "PARAMS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "1793 ms",
+      "size": "2 B",
+      "data": {},
+      "headers": {
+        "date": "Mon, 24 Aug 2026 04:09:29 GMT",
+        "content-type": "application/json",
+        "content-length": "3",
+        "connection": "keep-alive",
+        "cf-ray": "a2ff806fbf078552-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/devices/codes/**",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-east-1",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=PRjPkE6x5c7DcGdW_oVLJ0BAOk3kHYhFHaBM0AWdbVY-1787544568.2735944-1.0.1.1-uzKwT3d3Uc3.EuQA5ZT3ZlSpFF2YIH5YNTw4dVFSkGZzEAPKBFuGPBerD2ZBJMdpG2d8C17DNWGQudz2TKe.SGnEA0DV.E4Yteq9xxBxq7SU4ut4_tmrHChHqHc1Wx2a; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 04:39:29 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "82505366-094f-4866-b7d4-fedd837cb621",
+    "timestamp": "2026-08-24T04:06:27.726Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/devices",
+    "status": 200,
+    "duration": 845,
+    "request": {
+      "id": "b2f07198-935d-4124-8e22-32bc1b277e3d",
+      "name": "cURL (GET)",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/devices",
+      "params": [],
+      "headersList": [
+        {
+          "id": "8a0e2df5-42c7-461f-84b2-e7c482d66159",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true
+        },
+        {
+          "id": "1bce33d9-956e-4bf6-9266-7e3cc4428d0d",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "PARAMS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "845 ms",
+      "size": "15.7 KB",
+      "data": {
+        "devices": [
+          {
+            "id": "device:995CS397A6475287",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 995",
+              "manufacturers_id": "995CS397A6475287",
+              "updated_at": "2026-08-24T03:27:28.658569169Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "LMN2K7S3RTOU3"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 5,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 3
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:995CS234B5493559",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 995",
+              "manufacturers_id": "995CS234B5493559",
+              "updated_at": "2026-08-24T00:18:28.658568841Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "LMN2K7S3RTOU3"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 24,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 2
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:986CS594A3697498",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 986",
+              "manufacturers_id": "986CS594A3697498",
+              "updated_at": "2026-08-23T23:55:28.658568447Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "LMN2K7S3RTOU3"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 37,
+                  "external_power": "AVAILABLE_INSUFFICIENT"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 2
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:974CS832A2842977",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 974",
+              "manufacturers_id": "974CS832A2842977",
+              "updated_at": "2026-08-24T01:56:28.658568022Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "L8DU7N6EWYB31"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 45,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": false
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": true,
+                  "ip_address_v4": "192.168.1.7"
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:969CS494B2534325",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 969",
+              "manufacturers_id": "969CS494B2534325",
+              "updated_at": "2026-08-23T23:35:28.658567567Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "LMN2K7S3RTOU3"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 33,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": false
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": true,
+                  "ip_address_v4": "192.168.1.7"
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:859CS988B3299294",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 859",
+              "manufacturers_id": "859CS988B3299294",
+              "updated_at": "2026-08-23T22:56:28.658567114Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "L8DU7N6EWYB31"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 76,
+                  "external_power": "AVAILABLE_INSUFFICIENT"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": false
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": true,
+                  "ip_address_v4": "192.168.1.7"
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:858CS268A3598688",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 858",
+              "manufacturers_id": "858CS268A3598688",
+              "updated_at": "2026-08-24T02:03:28.658566683Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "LMN2K7S3RTOU3"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 51,
+                  "external_power": "AVAILABLE_INSUFFICIENT"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 3
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:848CS877B3972752",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 848",
+              "manufacturers_id": "848CS877B3972752",
+              "updated_at": "2026-08-23T22:10:28.658566226Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "LMN2K7S3RTOU3"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 40,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 1
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:842CS663A9366355",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 842",
+              "manufacturers_id": "842CS663A9366355",
+              "updated_at": "2026-08-24T00:37:28.658565800Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "L8DU7N6EWYB31"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 82,
+                  "external_power": "AVAILABLE_INSUFFICIENT"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 1
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:746CS784B4587964",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 746",
+              "manufacturers_id": "746CS784B4587964",
+              "updated_at": "2026-08-24T01:30:28.658565343Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "LMN2K7S3RTOU3"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 11,
+                  "external_power": "UNAVAILABLE"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 2
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:728CS789B8536452",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 728",
+              "manufacturers_id": "728CS789B8536452",
+              "updated_at": "2026-08-24T03:36:28.658564868Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "L8DU7N6EWYB31"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 65,
+                  "external_power": "UNAVAILABLE"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": false
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": true,
+                  "ip_address_v4": "192.168.1.7"
+                }
+              }
+            ],
+            "status": {
+              "category": "AVAILABLE"
+            }
+          },
+          {
+            "id": "device:673CS267A4228964",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 673",
+              "manufacturers_id": "673CS267A4228964",
+              "updated_at": "2026-08-24T01:22:28.658564423Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "LMN2K7S3RTOU3"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 20,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": false
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": true,
+                  "ip_address_v4": "192.168.1.7"
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:652CS588B5586497",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 652",
+              "manufacturers_id": "652CS588B5586497",
+              "updated_at": "2026-08-24T01:28:28.658563969Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "L8DU7N6EWYB31"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 97,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": false
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": true,
+                  "ip_address_v4": "192.168.1.7"
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:643CS677B4663257",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 643",
+              "manufacturers_id": "643CS677B4663257",
+              "updated_at": "2026-08-24T04:01:28.658563501Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "LMN2K7S3RTOU3"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 33,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": false
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": true,
+                  "ip_address_v4": "192.168.1.7"
+                }
+              }
+            ],
+            "status": {
+              "category": "AVAILABLE"
+            }
+          },
+          {
+            "id": "device:587CS628B7477975",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 587",
+              "manufacturers_id": "587CS628B7477975",
+              "updated_at": "2026-08-24T00:03:28.658562950Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "L8DU7N6EWYB31"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 92,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 1
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:585CS383A6663495",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 585",
+              "manufacturers_id": "585CS383A6663495",
+              "updated_at": "2026-08-23T22:56:28.658561460Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "L8DU7N6EWYB31"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 82,
+                  "external_power": "UNAVAILABLE"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 1
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:576CS582A8774558",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 576",
+              "manufacturers_id": "576CS582A8774558",
+              "updated_at": "2026-08-23T22:28:28.658560960Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "L8DU7N6EWYB31"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 100,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 1
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:559CS835B5954823",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 559",
+              "manufacturers_id": "559CS835B5954823",
+              "updated_at": "2026-08-24T00:06:28.658560344Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "LMN2K7S3RTOU3"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 2,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 1
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:528CS957A6994676",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 528",
+              "manufacturers_id": "528CS957A6994676",
+              "updated_at": "2026-08-24T00:59:28.658559839Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "L8DU7N6EWYB31"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 61,
+                  "external_power": "AVAILABLE_INSUFFICIENT"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": true,
+                  "ssid": "Staff Network",
+                  "ip_address_v4": "10.0.0.7",
+                  "secure_connection": "WPA/WPA2 PSK",
+                  "signal_strength": {
+                    "value": 3
+                  }
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": false
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          },
+          {
+            "id": "device:497CS532A4865844",
+            "attributes": {
+              "type": "TERMINAL",
+              "manufacturer": "Square",
+              "model": "T2",
+              "name": "Square Terminal 497",
+              "manufacturers_id": "497CS532A4865844",
+              "updated_at": "2026-08-23T22:48:28.658559403Z",
+              "version": "5.41.0085",
+              "merchant_token": "MLTQ3MXGD4MH2"
+            },
+            "components": [
+              {
+                "type": "APPLICATION",
+                "application_details": {
+                  "application_type": "TERMINAL_API",
+                  "version": "6.25",
+                  "session_location": "L8DU7N6EWYB31"
+                }
+              },
+              {
+                "type": "CARD_READER",
+                "card_reader_details": {
+                  "version": "3.53.70"
+                }
+              },
+              {
+                "type": "BATTERY",
+                "battery_details": {
+                  "visible_percent": 55,
+                  "external_power": "AVAILABLE_CHARGING"
+                }
+              },
+              {
+                "type": "WIFI",
+                "wifi_details": {
+                  "active": false
+                }
+              },
+              {
+                "type": "ETHERNET",
+                "ethernet_details": {
+                  "active": true,
+                  "ip_address_v4": "192.168.1.7"
+                }
+              }
+            ],
+            "status": {
+              "category": "OFFLINE"
+            }
+          }
+        ],
+        "cursor": "MPP9HEVmajY4kZ2z8Pb9h9qc311Q0hcIWAVLCrYlUKHo9EPLRByM"
+      },
+      "headers": {
+        "date": "Mon, 24 Aug 2026 04:06:28 GMT",
+        "content-type": "application/json",
+        "transfer-encoding": "chunked",
+        "connection": "keep-alive",
+        "cf-ray": "a2ff7c0bf8d74e53-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/devices/**",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=Z8GthrsJ0GgraBCoknOH9dD7Ebn0fahaXi3Gsvlgl3c-1787544388.4779806-1.0.1.1-C0MaDFX2GIhzr.A2U3ursD0IyVBOks.INF1K8qtQoQeh6Yijc3pgseiJvL10i9d9BLuS.sz4CQbLMHdnlyURJrrXzINkMUI3ulz0LnotL3vGtLHau4vYUC5TM53.yu8l; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 04:36:28 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
     "id": "d57b7ddd-9137-431d-81c0-128f15127e42",
     "timestamp": "2026-08-24T03:39:16.194Z",
     "method": "GET",

@@ -308,7 +308,12 @@ function parseAndAddHeader(
       } catch {
         // Keep as is if decode fails
       }
+    } else {
+      auth.type = 'bearer'
+      auth.bearerToken = value
     }
+    // Filter out Authorization from User Headers list (SSOT in tab Auth)
+    return
   }
 
   headersList.push({
@@ -663,7 +668,7 @@ export function parseCurlCommand(rawCurl: string): Partial<RequestItem> | null {
           null,
           2,
         )
-      : '{\n  "Content-Type": "application/json"\n}'
+      : '{}'
 
   return {
     name: requestName,

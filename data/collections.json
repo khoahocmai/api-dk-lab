@@ -75,6 +75,12 @@
       "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
       "parentId": null,
       "name": "Channel"
+    },
+    {
+      "id": "1cf15ea2-d45c-45aa-b52e-75f08f343aa4",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "parentId": null,
+      "name": "Device"
     }
   ],
   "savedRequests": [
@@ -999,6 +1005,114 @@
       },
       "createdAt": "2026-08-24T03:25:58.200Z",
       "updatedAt": "2026-08-24T03:39:20.198Z"
+    },
+    {
+      "id": "5aa7b5b9-9c19-47be-9452-5510f9523b0c",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "1cf15ea2-d45c-45aa-b52e-75f08f343aa4",
+      "name": "Get Device list",
+      "request": {
+        "id": "d629b255-00eb-4dbb-8973-f6be04d4ad1a",
+        "savedRequestId": "5aa7b5b9-9c19-47be-9452-5510f9523b0c",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "1cf15ea2-d45c-45aa-b52e-75f08f343aa4",
+        "name": "Get Device list",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/devices",
+        "params": [],
+        "headersList": [
+          {
+            "id": "8a0e2df5-42c7-461f-84b2-e7c482d66159",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "1bce33d9-956e-4bf6-9266-7e3cc4428d0d",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "PARAMS",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T04:06:35.779Z",
+      "updatedAt": "2026-08-24T04:10:09.362Z"
+    },
+    {
+      "id": "98c19695-e34c-40a8-a7f6-96feabc5e4e7",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "1cf15ea2-d45c-45aa-b52e-75f08f343aa4",
+      "name": "Get Device list code",
+      "request": {
+        "id": "a0e7efc6-066a-42f7-9f16-091926a6a031",
+        "savedRequestId": "98c19695-e34c-40a8-a7f6-96feabc5e4e7",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "1cf15ea2-d45c-45aa-b52e-75f08f343aa4",
+        "name": "Get Device list code",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/devices/codes",
+        "params": [],
+        "headersList": [
+          {
+            "id": "693bba0b-0ba9-4254-a280-b4a78464a6de",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true
+          },
+          {
+            "id": "f2e3dd1a-8f69-4c3e-a80c-4a6c26d394b8",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "PARAMS",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T04:09:25.377Z",
+      "updatedAt": "2026-08-24T04:10:15.122Z"
     }
   ],
   "expandedCollectionIds": [
@@ -1009,9 +1123,6 @@
     "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
     "3eba61de-7e93-497e-ab02-0daac97727ae",
     "785cea12-b358-4f53-bf46-46ebd0bf368c",
-    "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
-    "3a0cfaa6-0fe4-4e0d-aba1-927b75523f95",
-    "17476f73-a01d-445e-a8ac-f47db5efa0f6",
-    "04666320-928f-4e1f-b445-7665044efffa"
+    "1cf15ea2-d45c-45aa-b52e-75f08f343aa4"
   ]
 }

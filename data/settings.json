@@ -5,47 +5,36 @@
     "editorFontSize": 13
   },
   "activeEnvironmentId": "02ad665d-6fd3-4360-8a44-1b4c431425d5",
-  "activeTabId": "e3fb02f8-7fce-4129-b5f9-0248d2b00656",
+  "activeTabId": "07a48c10-faf6-4365-8a0c-946460cff250",
   "tabs": [
     {
-      "id": "e3fb02f8-7fce-4129-b5f9-0248d2b00656",
-      "savedRequestId": "3fcff6ba-c2f5-44d0-8733-e7e93a0aab2e",
+      "id": "07a48c10-faf6-4365-8a0c-946460cff250",
+      "savedRequestId": "98c19695-e34c-40a8-a7f6-96feabc5e4e7",
       "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
-      "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
-      "name": "Checkout",
+      "folderId": "1cf15ea2-d45c-45aa-b52e-75f08f343aa4",
+      "name": "cURL (GET)",
       "mode": "REST",
       "method": "GET",
-      "url": "{{Domain}}/online-checkout/location-settings/:location_id",
-      "params": [
-        {
-          "id": "empty-initial-row",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": "",
-          "type": "text"
-        }
-      ],
+      "url": "https://connect.squareupsandbox.com/v2/devices/device%3A995CS397A6475287",
+      "params": [],
       "headersList": [
         {
-          "id": "05ef367d-f750-449c-9778-228c8eff8562",
+          "id": "f7519088-0d1f-42d0-9c53-fbe179de8a00",
           "key": "Square-Version",
           "value": "2026-08-19",
-          "enabled": true,
-          "description": ""
+          "enabled": true
         },
         {
-          "id": "9dbc9ed3-3f20-4a19-bd0c-c0d9367cc0bd",
+          "id": "c562f96c-2da8-48e3-99d0-2f1748594b96",
           "key": "Content-Type",
           "value": "application/json",
-          "enabled": true,
-          "description": ""
+          "enabled": true
         }
       ],
       "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
       "auth": {
         "type": "bearer",
-        "bearerToken": "{{Token}}",
+        "bearerToken": "EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK",
         "basicUsername": "",
         "basicPassword": "",
         "apiKeyName": "",
@@ -60,7 +49,7 @@
       "gqlQuery": "",
       "gqlVariables": "{}",
       "testScript": "",
-      "editorTab": "AUTH",
+      "editorTab": "PARAMS",
       "responseTab": "PRETTY"
     }
   ],

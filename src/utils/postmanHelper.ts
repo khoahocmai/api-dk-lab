@@ -77,25 +77,6 @@ export function importPostmanCollectionV2(jsonString: string): PostmanImportResu
         urlStr = urlObj.raw || ''
       }
 
-      // Parse Headers
-      const headersList: KeyValueRow[] = []
-      if (Array.isArray(req.header)) {
-        req.header.forEach((h: unknown) => {
-          if (h && typeof h === 'object') {
-            const hObj = h as { key?: string; value?: string; disabled?: boolean; description?: string }
-            if (hObj.key) {
-              headersList.push({
-                id: createId(),
-                key: hObj.key,
-                value: hObj.value || '',
-                enabled: !hObj.disabled,
-                description: hObj.description || '',
-              })
-            }
-          }
-        })
-      }
-
       // Parse Auth
       const auth: AuthConfig = {
         type: 'none',
@@ -144,6 +125,51 @@ export function importPostmanCollectionV2(jsonString: string): PostmanImportResu
           auth.apiKeyValue = valEntry?.value || ''
           auth.apiKeyAddTo = inEntry?.value === 'query' ? 'query' : 'header'
         }
+      }
+
+      // Parse Headers & Filter out Authorization (Single Source of Truth in tab Auth)
+      const headersList: KeyValueRow[] = []
+      if (Array.isArray(req.header)) {
+        req.header.forEach((h: unknown) => {
+          if (h && typeof h === 'object') {
+            const hObj = h as { key?: string; value?: string; disabled?: boolean; description?: string }
+            if (hObj.key) {
+              const lowerKey = hObj.key.trim().toLowerCase()
+              if (lowerKey === 'authorization') {
+                if (auth.type === 'none' && hObj.value) {
+                  const val = hObj.value.trim()
+                  if (val.toLowerCase().startsWith('bearer ')) {
+                    auth.type = 'bearer'
+                    auth.bearerToken = val.slice(7).trim()
+                  } else if (val.toLowerCase().startsWith('basic ')) {
+                    auth.type = 'basic'
+                    try {
+                      const decoded = atob(val.slice(6).trim())
+                      const [u, ...p] = decoded.split(':')
+                      auth.basicUsername = u || ''
+                      auth.basicPassword = p.join(':') || ''
+                    } catch {
+                      // ignore
+                    }
+                  } else {
+                    auth.type = 'bearer'
+                    auth.bearerToken = val
+                  }
+                }
+                // Filter out Authorization from User Headers
+                return
+              }
+
+              headersList.push({
+                id: createId(),
+                key: hObj.key,
+                value: hObj.value || '',
+                enabled: !hObj.disabled,
+                description: hObj.description || '',
+              })
+            }
+          }
+        })
       }
 
       // Parse Body
