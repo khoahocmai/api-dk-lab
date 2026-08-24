@@ -1,5 +1,3569 @@
 [
   {
+    "id": "3f8d478a-f174-4fd7-9494-b2d357b37110",
+    "timestamp": "2026-08-24T07:52:16.932Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 21,
+    "request": {
+      "id": "00144434-e013-41cd-9290-95b3573ccf78",
+      "savedRequestId": "92cd8788-0544-408b-844f-91f37da1c5a1",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "1d2a18d1-e2e3-4d00-b865-1e0746001508",
+      "name": "Square location get pagination",
+      "graphqlRootField": "squareLocationGetPagination",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query SquareLocationGetPagination($filters: SquareLocationGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareLocationGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      squareLocationId\n      name\n      status\n      currency\n    }\n  }\n}",
+      "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "21 ms",
+      "size": "362 B",
+      "data": {
+        "data": {
+          "squareLocationGetPagination": {
+            "total": 2,
+            "items": [
+              {
+                "id": "01a032be-9ef4-74be-b442-be6383d42af5",
+                "squareLocationId": "LGE0P6VNQCYX7",
+                "name": "Chi nhánh Phan Đình Giót",
+                "status": "ACTIVE",
+                "currency": "USD"
+              },
+              {
+                "id": "01a032be-9f01-716e-b9a7-ba11000153f5",
+                "squareLocationId": "L379743VY1ZBC",
+                "name": "Default Test Account",
+                "status": "ACTIVE",
+                "currency": "USD"
+              }
+            ]
+          }
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "363",
+        "date": "Mon, 24 Aug 2026 07:52:16 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "7778fcd3-c3e3-45c5-8024-763d726e176d",
+    "timestamp": "2026-08-24T07:51:46.801Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 53,
+    "request": {
+      "id": "6abe94d4-6e6e-4727-985d-90014f81708b",
+      "name": "squareLocationGetPagination",
+      "graphqlRootField": "squareLocationGetPagination",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query SquareLocationGetPagination($filters: SquareLocationGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareLocationGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      squareLocationId\n      name\n      status\n      currency\n    }\n  }\n}",
+      "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "53 ms",
+      "size": "362 B",
+      "data": {
+        "data": {
+          "squareLocationGetPagination": {
+            "total": 2,
+            "items": [
+              {
+                "id": "01a032be-9ef4-74be-b442-be6383d42af5",
+                "squareLocationId": "LGE0P6VNQCYX7",
+                "name": "Chi nhánh Phan Đình Giót",
+                "status": "ACTIVE",
+                "currency": "USD"
+              },
+              {
+                "id": "01a032be-9f01-716e-b9a7-ba11000153f5",
+                "squareLocationId": "L379743VY1ZBC",
+                "name": "Default Test Account",
+                "status": "ACTIVE",
+                "currency": "USD"
+              }
+            ]
+          }
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "363",
+        "date": "Mon, 24 Aug 2026 07:51:45 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "e9c77a8b-4776-44f2-9bf5-9261ad9393f1",
+    "timestamp": "2026-08-24T07:51:19.216Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 38,
+    "request": {
+      "id": "6abe94d4-6e6e-4727-985d-90014f81708b",
+      "name": "squareLocationGetPagination",
+      "graphqlRootField": "squareLocationGetPagination",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query SquareLocationGetPagination($filters: SquareLocationGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareLocationGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      squareLocationId\n      name\n      status\n      currency\n    }\n  }\n}",
+      "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "38 ms",
+      "size": "362 B",
+      "data": {
+        "data": {
+          "squareLocationGetPagination": {
+            "total": 2,
+            "items": [
+              {
+                "id": "01a032be-9f01-716e-b9a7-ba11000153f5",
+                "squareLocationId": "L379743VY1ZBC",
+                "name": "Default Test Account",
+                "status": "ACTIVE",
+                "currency": "USD"
+              },
+              {
+                "id": "01a032be-9ef4-74be-b442-be6383d42af5",
+                "squareLocationId": "LGE0P6VNQCYX7",
+                "name": "Chi nhánh Phan Đình Giót",
+                "status": "ACTIVE",
+                "currency": "USD"
+              }
+            ]
+          }
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "363",
+        "date": "Mon, 24 Aug 2026 07:51:20 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "bdddb528-9f8c-4e8e-bad3-93feeb7db2eb",
+    "timestamp": "2026-08-24T07:50:11.171Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 62,
+    "request": {
+      "id": "6abe94d4-6e6e-4727-985d-90014f81708b",
+      "name": "squareLocationGetPagination",
+      "graphqlRootField": "squareLocationGetPagination",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query SquareLocationGetPagination($filters: SquareLocationGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareLocationGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      squareLocationId\n      name\n      status\n      currency\n    }\n  }\n}",
+      "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "62 ms",
+      "size": "362 B",
+      "data": {
+        "data": {
+          "squareLocationGetPagination": {
+            "total": 2,
+            "items": [
+              {
+                "id": "01a032be-9f01-716e-b9a7-ba11000153f5",
+                "squareLocationId": "L379743VY1ZBC",
+                "name": "Default Test Account",
+                "status": "ACTIVE",
+                "currency": "USD"
+              },
+              {
+                "id": "01a032be-9ef4-74be-b442-be6383d42af5",
+                "squareLocationId": "LGE0P6VNQCYX7",
+                "name": "Chi nhánh Phan Đình Giót",
+                "status": "ACTIVE",
+                "currency": "USD"
+              }
+            ]
+          }
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "363",
+        "date": "Mon, 24 Aug 2026 07:50:12 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "092f1cff-4d45-4076-9ccb-e1616ce6745d",
+    "timestamp": "2026-08-24T07:49:44.125Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 400,
+    "duration": 19,
+    "request": {
+      "id": "6abe94d4-6e6e-4727-985d-90014f81708b",
+      "name": "squareLocationGetPagination",
+      "graphqlRootField": "squareLocationGetPagination",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query SquareLocationGetPagination($params: PaginationDto!) {\n  squareLocationGetPagination(params: $params) {\n    total\n  }\n}",
+      "gqlVariables": "{\n  \"params\": {\n    \"page\": 0,\n    \"pageSize\": 0\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 400,
+      "statusText": "Bad Request",
+      "time": "19 ms",
+      "size": "294 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Field \"squareLocationGetPagination\" argument \"filters\" of type \"SquareLocationGetPaginationFilterDto!\" is required, but it was not provided.",
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "GRAPHQL_VALIDATION_FAILED"
+            },
+            "code": "GRAPHQL_VALIDATION_FAILED"
+          }
+        ]
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "295",
+        "date": "Mon, 24 Aug 2026 07:49:45 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "0240ed09-3137-4ff8-9c52-6764fee9faca",
+    "timestamp": "2026-08-24T07:49:28.502Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 13,
+    "request": {
+      "id": "d17509b4-3cf1-4f67-aa0d-de523823b2a2",
+      "savedRequestId": "ebc046bd-91c4-4d40-913a-52a5ffb4019f",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "1d2a18d1-e2e3-4d00-b865-1e0746001508",
+      "name": "Square location get list",
+      "graphqlRootField": "squareLocationGetList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query SquareLocationGetList {\n  squareLocationGetList {\n    id\n    squareLocationId\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "13 ms",
+      "size": "37 B",
+      "data": {
+        "data": {
+          "squareLocationGetList": []
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "38",
+        "date": "Mon, 24 Aug 2026 07:49:28 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "b3f92515-d279-4da5-8de9-8b925828d965",
+    "timestamp": "2026-08-24T07:49:28.121Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 25,
+    "request": {
+      "id": "d17509b4-3cf1-4f67-aa0d-de523823b2a2",
+      "savedRequestId": "ebc046bd-91c4-4d40-913a-52a5ffb4019f",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "1d2a18d1-e2e3-4d00-b865-1e0746001508",
+      "name": "Square location get list",
+      "graphqlRootField": "squareLocationGetList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query SquareLocationGetList {\n  squareLocationGetList {\n    id\n    squareLocationId\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "25 ms",
+      "size": "37 B",
+      "data": {
+        "data": {
+          "squareLocationGetList": []
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "38",
+        "date": "Mon, 24 Aug 2026 07:49:27 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "0c58ade8-3271-43e8-8876-613585ecba2b",
+    "timestamp": "2026-08-24T07:49:24.328Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 19,
+    "request": {
+      "id": "d17509b4-3cf1-4f67-aa0d-de523823b2a2",
+      "savedRequestId": "ebc046bd-91c4-4d40-913a-52a5ffb4019f",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "1d2a18d1-e2e3-4d00-b865-1e0746001508",
+      "name": "Square location get list",
+      "graphqlRootField": "squareLocationGetList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query SquareLocationGetList {\n  squareLocationGetList {\n    id\n    squareLocationId\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "19 ms",
+      "size": "37 B",
+      "data": {
+        "data": {
+          "squareLocationGetList": []
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "38",
+        "date": "Mon, 24 Aug 2026 07:49:24 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "40342d74-45a4-42c9-9303-a1d8a1c4aa6b",
+    "timestamp": "2026-08-24T07:49:07.103Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 1132,
+    "request": {
+      "id": "ce618015-38e4-4c7a-adbb-3a12b4150b11",
+      "name": "squareLocationSync",
+      "graphqlRootField": "squareLocationSync",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "mutation SquareLocationSync {\n  squareLocationSync {\n    total\n    created\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "1132 ms",
+      "size": "55 B",
+      "data": {
+        "data": {
+          "squareLocationSync": {
+            "total": 2,
+            "created": 2
+          }
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "56",
+        "date": "Mon, 24 Aug 2026 07:49:08 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "ec7d21be-65b5-4359-a5d5-b9e7f3deb8ef",
+    "timestamp": "2026-08-24T07:48:38.933Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 89,
+    "request": {
+      "id": "d17509b4-3cf1-4f67-aa0d-de523823b2a2",
+      "name": "Square location get list",
+      "graphqlRootField": "squareLocationGetList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query SquareLocationGetList {\n  squareLocationGetList {\n    id\n    squareLocationId\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "89 ms",
+      "size": "37 B",
+      "data": {
+        "data": {
+          "squareLocationGetList": []
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "38",
+        "date": "Mon, 24 Aug 2026 07:48:40 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "9cd8211f-6448-4d0b-b4ac-020a283062c4",
+    "timestamp": "2026-08-24T07:47:40.640Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 1120,
+    "request": {
+      "id": "c0359e3c-24bd-461c-8a59-3812cc396272",
+      "savedRequestId": "43bfe73d-a101-4c81-97d0-494cc2d36dc5",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "855480d9-0a2a-418a-9651-31ff471fa7b9",
+      "name": "Square check connection",
+      "graphqlRootField": "squareCheckConnection",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query SquareCheckConnection($data: SquareCheckConnectInputDto!) {\n  squareCheckConnection(data: $data)\n}",
+      "gqlVariables": "{\n  \"data\": {\n    \"accessToken\": \"EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK\",\n    \"environment\": \"SANDBOX\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "AUTH",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "1120 ms",
+      "size": "39 B",
+      "data": {
+        "data": {
+          "squareCheckConnection": true
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "40",
+        "date": "Mon, 24 Aug 2026 07:47:41 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "1900785e-74d9-403d-b103-2e6ec77ddc08",
+    "timestamp": "2026-08-24T07:47:34.316Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/locations",
+    "status": 200,
+    "duration": 751,
+    "request": {
+      "id": "3e4255af-b287-4ccf-aba8-3de1e7680913",
+      "savedRequestId": "6b97d2ab-1d61-48a7-8939-926dfd975ec8",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+      "name": "Get Location",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/locations",
+      "params": [],
+      "headersList": [
+        {
+          "id": "69fd8f9d-6f07-4ed2-930f-5f191564042c",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "e833c751-f6cf-4b39-9523-2edf5d0852c0",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "751 ms",
+      "size": "1.2 KB",
+      "data": {
+        "locations": [
+          {
+            "id": "LGE0P6VNQCYX7",
+            "name": "Chi nhánh Phan Đình Giót",
+            "address": {
+              "address_line_1": "24-26 Đ. Phan Đình Giót, Tân Sơn Hòa",
+              "locality": "Ho Chi Minh City",
+              "administrative_district_level_1": "CA",
+              "postal_code": "94103",
+              "country": "US"
+            },
+            "timezone": "Asia/Ho_Chi_Minh",
+            "capabilities": [
+              "CREDIT_CARD_PROCESSING",
+              "AUTOMATIC_TRANSFERS"
+            ],
+            "status": "ACTIVE",
+            "created_at": "2026-08-24T06:37:21.737Z",
+            "merchant_id": "MLTQ3MXGD4MH2",
+            "country": "US",
+            "language_code": "en-US",
+            "currency": "USD",
+            "phone_number": "+1 415-555-2671",
+            "business_name": "DXP Pizza",
+            "type": "PHYSICAL",
+            "business_hours": {},
+            "description": "Chi nhánh Tân Bình - 24-26 Phan Đình Giót",
+            "mcc": "7299"
+          },
+          {
+            "id": "L379743VY1ZBC",
+            "name": "Default Test Account",
+            "address": {
+              "address_line_1": "1600 Pennsylvania Ave NW",
+              "locality": "Washington",
+              "administrative_district_level_1": "DC",
+              "postal_code": "20500",
+              "country": "US"
+            },
+            "timezone": "UTC",
+            "capabilities": [
+              "CREDIT_CARD_PROCESSING",
+              "AUTOMATIC_TRANSFERS"
+            ],
+            "status": "ACTIVE",
+            "created_at": "2026-08-24T01:35:15.922Z",
+            "merchant_id": "MLTQ3MXGD4MH2",
+            "country": "US",
+            "language_code": "en-US",
+            "currency": "USD",
+            "business_name": "Default Test Account",
+            "type": "PHYSICAL",
+            "business_hours": {},
+            "mcc": "7299"
+          }
+        ]
+      },
+      "headers": {
+        "date": "Mon, 24 Aug 2026 07:47:35 GMT",
+        "content-type": "application/json",
+        "content-length": "581",
+        "connection": "keep-alive",
+        "cf-ray": "a300bff32a8c09d8-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/locations",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=YCHfzKti6.AVus0a4c1mrf3mZmdVx2ya5uczRzG3gkw-1787557655.547661-1.0.1.1-f1I_n5feIe3YkT95nYL7ZeL2ahbg16DXWc80iFtl3UkMIoj_sTX16EdRSaFDPEQFQF5RdHknkZv1mioNTXsXgLTJMSlNhV6cjdOkl8oUd7MKkRaylqCtRcEAK2swwU93; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 08:17:35 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "01ad2ce9-4f70-4890-a534-1252321b10af",
+    "timestamp": "2026-08-24T07:47:30.342Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "http://localhost:3030/locations",
+    "status": 404,
+    "duration": 15,
+    "request": {
+      "id": "3e4255af-b287-4ccf-aba8-3de1e7680913",
+      "savedRequestId": "6b97d2ab-1d61-48a7-8939-926dfd975ec8",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+      "name": "Get Location",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/locations",
+      "params": [],
+      "headersList": [
+        {
+          "id": "69fd8f9d-6f07-4ed2-930f-5f191564042c",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "e833c751-f6cf-4b39-9523-2edf5d0852c0",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 404,
+      "statusText": "Not Found",
+      "time": "15 ms",
+      "size": "52 B",
+      "data": {
+        "error": {
+          "code": "ERR-0404",
+          "message": "Not found."
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "52",
+        "date": "Mon, 24 Aug 2026 07:47:31 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "d8492b4b-b7b8-4980-a9ed-3fa364ef1f37",
+    "timestamp": "2026-08-24T07:47:22.326Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 166,
+    "request": {
+      "id": "aff9c337-4eda-41b7-8148-07a1026aa4c6",
+      "savedRequestId": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
+      "name": "Tenant get list",
+      "graphqlRootField": "tenantGetList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "3d095786-c99c-461d-a6ba-5f784c0f3e22",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "752fb8d8-d656-4b74-a4c1-b0d540a19212",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query TenantGetList {\n  tenantGetList {\n    id\n    name\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "AUTH",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "166 ms",
+      "size": "315 B",
+      "data": {
+        "data": {
+          "tenantGetList": [
+            {
+              "id": "019f6a3a-52fd-75dd-ae50-de21820b3f45",
+              "name": "Dairy Queen"
+            },
+            {
+              "id": "019f6a4b-ffdd-71ab-b6a5-ae719a13d483",
+              "name": "Swensens"
+            },
+            {
+              "id": "0192fda4-ba1b-76ef-bb1a-64c043a8e4a4",
+              "name": "The Pizza Company"
+            },
+            {
+              "id": "019f4b8e-a513-72eb-8dbc-7b8fc300355c",
+              "name": "CHANG - Modern Thai Cuisine"
+            }
+          ]
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "316",
+        "date": "Mon, 24 Aug 2026 07:47:21 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "a9b770f3-b8b4-4bdb-9040-c8dc309fb746",
+    "timestamp": "2026-08-24T07:44:31.784Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 71,
+    "request": {
+      "id": "aff9c337-4eda-41b7-8148-07a1026aa4c6",
+      "savedRequestId": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
+      "name": "Tenant get list",
+      "graphqlRootField": "tenantGetList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "3d095786-c99c-461d-a6ba-5f784c0f3e22",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "752fb8d8-d656-4b74-a4c1-b0d540a19212",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query TenantGetList {\n  tenantGetList {\n    id\n    name\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "AUTH",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "71 ms",
+      "size": "237 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Unauthorized",
+            "path": [
+              "tenantGetList"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "UNAUTHENTICATED",
+              "originalError": {
+                "message": "Unauthorized",
+                "statusCode": 401
+              }
+            },
+            "code": "UNAUTHENTICATED"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "238",
+        "date": "Mon, 24 Aug 2026 07:44:31 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "65ad60d4-21aa-4572-8edc-33fa7862c55f",
+    "timestamp": "2026-08-24T07:42:30.683Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 0,
+    "duration": 21,
+    "request": {
+      "id": "aff9c337-4eda-41b7-8148-07a1026aa4c6",
+      "savedRequestId": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
+      "name": "tenantGetList",
+      "graphqlRootField": "tenantGetList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "3d095786-c99c-461d-a6ba-5f784c0f3e22",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "752fb8d8-d656-4b74-a4c1-b0d540a19212",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query TenantGetList {\n  tenantGetList {\n    id\n    name\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 0,
+      "statusText": "Could not connect to server",
+      "time": "21 ms",
+      "size": "0 B",
+      "data": null,
+      "error": "",
+      "headers": {},
+      "isNetworkError": true
+    }
+  },
+  {
+    "id": "74b63efc-d74b-4f30-b5ed-ebca66ae1174",
+    "timestamp": "2026-08-24T07:39:15.463Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 36,
+    "request": {
+      "id": "aff9c337-4eda-41b7-8148-07a1026aa4c6",
+      "savedRequestId": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
+      "name": "tenantGetList",
+      "graphqlRootField": "tenantGetList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "3d095786-c99c-461d-a6ba-5f784c0f3e22",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "752fb8d8-d656-4b74-a4c1-b0d540a19212",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query TenantGetList {\n  tenantGetList {\n    id\n    name\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "AUTH",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "36 ms",
+      "size": "237 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Unauthorized",
+            "path": [
+              "tenantGetList"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "UNAUTHENTICATED",
+              "originalError": {
+                "message": "Unauthorized",
+                "statusCode": 401
+              }
+            },
+            "code": "UNAUTHENTICATED"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "238",
+        "date": "Mon, 24 Aug 2026 07:39:15 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "1e2c0531-e23f-40b6-9d3e-455b2ad33bc0",
+    "timestamp": "2026-08-24T07:38:46.720Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 843,
+    "request": {
+      "id": "aff9c337-4eda-41b7-8148-07a1026aa4c6",
+      "savedRequestId": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
+      "name": "tenantGetList",
+      "graphqlRootField": "tenantGetList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "3d095786-c99c-461d-a6ba-5f784c0f3e22",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "752fb8d8-d656-4b74-a4c1-b0d540a19212",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query TenantGetList {\n  tenantGetList {\n    id\n    name\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "AUTH",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "843 ms",
+      "size": "237 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Unauthorized",
+            "path": [
+              "tenantGetList"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "UNAUTHENTICATED",
+              "originalError": {
+                "message": "Unauthorized",
+                "statusCode": 401
+              }
+            },
+            "code": "UNAUTHENTICATED"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "238",
+        "date": "Mon, 24 Aug 2026 07:38:47 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "3f78036f-da37-4ce8-810b-6d7bbe2b0c4a",
+    "timestamp": "2026-08-24T07:38:39.169Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 0,
+    "duration": 49,
+    "request": {
+      "id": "aff9c337-4eda-41b7-8148-07a1026aa4c6",
+      "savedRequestId": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
+      "name": "tenantGetList",
+      "graphqlRootField": "tenantGetList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "3d095786-c99c-461d-a6ba-5f784c0f3e22",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "752fb8d8-d656-4b74-a4c1-b0d540a19212",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query TenantGetList {\n  tenantGetList {\n    id\n    name\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "AUTH",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 0,
+      "statusText": "Could not connect to server",
+      "time": "49 ms",
+      "size": "0 B",
+      "data": null,
+      "error": "",
+      "headers": {},
+      "isNetworkError": true
+    }
+  },
+  {
+    "id": "ca50c352-bdd1-4b6c-935c-f19bc9d12f6f",
+    "timestamp": "2026-08-24T07:27:19.238Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 89,
+    "request": {
+      "id": "aff9c337-4eda-41b7-8148-07a1026aa4c6",
+      "savedRequestId": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
+      "name": "tenantGetList",
+      "graphqlRootField": "tenantGetList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "3d095786-c99c-461d-a6ba-5f784c0f3e22",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "752fb8d8-d656-4b74-a4c1-b0d540a19212",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query TenantGetList {\n  tenantGetList {\n    id\n    name\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "89 ms",
+      "size": "237 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Unauthorized",
+            "path": [
+              "tenantGetList"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "UNAUTHENTICATED",
+              "originalError": {
+                "message": "Unauthorized",
+                "statusCode": 401
+              }
+            },
+            "code": "UNAUTHENTICATED"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "238",
+        "date": "Mon, 24 Aug 2026 07:27:19 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "43a2dde4-5c8b-4c0e-be22-c7f8426629ea",
+    "timestamp": "2026-08-24T07:09:24.354Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 6,
+    "request": {
+      "id": "c0359e3c-24bd-461c-8a59-3812cc396272",
+      "savedRequestId": "43bfe73d-a101-4c81-97d0-494cc2d36dc5",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "855480d9-0a2a-418a-9651-31ff471fa7b9",
+      "name": "Square check connection",
+      "graphqlRootField": "squareCheckConnection",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": "",
+          "type": "text"
+        },
+        {
+          "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": "",
+          "type": "text"
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query SquareCheckConnection($data: SquareCheckConnectInputDto!) {\n  squareCheckConnection(data: $data)\n}",
+      "gqlVariables": "{\n  \"data\": {\n    \"accessToken\": \"EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK\",\n    \"environment\": \"SANDBOX\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "6 ms",
+      "size": "245 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Unauthorized",
+            "path": [
+              "squareCheckConnection"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "UNAUTHENTICATED",
+              "originalError": {
+                "message": "Unauthorized",
+                "statusCode": 401
+              }
+            },
+            "code": "UNAUTHENTICATED"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "246",
+        "date": "Mon, 24 Aug 2026 07:09:24 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "c2f08356-b69d-4fc1-81f8-70ad76824415",
+    "timestamp": "2026-08-24T07:09:24.140Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 35,
+    "request": {
+      "id": "c0359e3c-24bd-461c-8a59-3812cc396272",
+      "savedRequestId": "43bfe73d-a101-4c81-97d0-494cc2d36dc5",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "855480d9-0a2a-418a-9651-31ff471fa7b9",
+      "name": "Square check connection",
+      "graphqlRootField": "squareCheckConnection",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": "",
+          "type": "text"
+        },
+        {
+          "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": "",
+          "type": "text"
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query SquareCheckConnection($data: SquareCheckConnectInputDto!) {\n  squareCheckConnection(data: $data)\n}",
+      "gqlVariables": "{\n  \"data\": {\n    \"accessToken\": \"EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK\",\n    \"environment\": \"SANDBOX\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "35 ms",
+      "size": "245 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Unauthorized",
+            "path": [
+              "squareCheckConnection"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "UNAUTHENTICATED",
+              "originalError": {
+                "message": "Unauthorized",
+                "statusCode": 401
+              }
+            },
+            "code": "UNAUTHENTICATED"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "246",
+        "date": "Mon, 24 Aug 2026 07:09:24 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "c0dce0fe-f252-4207-a5ab-3dc95f72516b",
+    "timestamp": "2026-08-24T07:09:22.764Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 40,
+    "request": {
+      "id": "c0359e3c-24bd-461c-8a59-3812cc396272",
+      "savedRequestId": "43bfe73d-a101-4c81-97d0-494cc2d36dc5",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "855480d9-0a2a-418a-9651-31ff471fa7b9",
+      "name": "Square check connection",
+      "graphqlRootField": "squareCheckConnection",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": "",
+          "type": "text"
+        },
+        {
+          "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": "",
+          "type": "text"
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query SquareCheckConnection($data: SquareCheckConnectInputDto!) {\n  squareCheckConnection(data: $data)\n}",
+      "gqlVariables": "{\n  \"data\": {\n    \"accessToken\": \"EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK\",\n    \"environment\": \"SANDBOX\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "40 ms",
+      "size": "245 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Unauthorized",
+            "path": [
+              "squareCheckConnection"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "UNAUTHENTICATED",
+              "originalError": {
+                "message": "Unauthorized",
+                "statusCode": 401
+              }
+            },
+            "code": "UNAUTHENTICATED"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "246",
+        "date": "Mon, 24 Aug 2026 07:09:23 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "971b9e1c-01c3-4571-b07f-77b2c68b57fc",
+    "timestamp": "2026-08-24T07:09:00.574Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 179,
+    "request": {
+      "id": "c0359e3c-24bd-461c-8a59-3812cc396272",
+      "savedRequestId": "43bfe73d-a101-4c81-97d0-494cc2d36dc5",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "855480d9-0a2a-418a-9651-31ff471fa7b9",
+      "name": "Square check connection",
+      "graphqlRootField": "squareCheckConnection",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": "",
+          "type": "text"
+        },
+        {
+          "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": "",
+          "type": "text"
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query SquareCheckConnection($data: SquareCheckConnectInputDto!) {\n  squareCheckConnection(data: $data)\n}",
+      "gqlVariables": "{\n  \"data\": {\n    \"accessToken\": \"EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK\",\n    \"environment\": \"SANDBOX\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "179 ms",
+      "size": "245 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Unauthorized",
+            "path": [
+              "squareCheckConnection"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "UNAUTHENTICATED",
+              "originalError": {
+                "message": "Unauthorized",
+                "statusCode": 401
+              }
+            },
+            "code": "UNAUTHENTICATED"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "246",
+        "date": "Mon, 24 Aug 2026 07:09:00 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "e26628d1-ceb8-4aca-b175-5efff00170a4",
+    "timestamp": "2026-08-24T07:04:31.959Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 7,
+    "request": {
+      "id": "c0359e3c-24bd-461c-8a59-3812cc396272",
+      "name": "squareCheckConnection",
+      "graphqlRootField": "squareCheckConnection",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": "",
+          "type": "text"
+        },
+        {
+          "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": "",
+          "type": "text"
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query SquareCheckConnection($data: SquareCheckConnectInputDto!) {\n  squareCheckConnection(data: $data)\n}",
+      "gqlVariables": "{\n  \"data\": {\n    \"accessToken\": \"EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK\",\n    \"environment\": \"SANDBOX\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "7 ms",
+      "size": "245 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Unauthorized",
+            "path": [
+              "squareCheckConnection"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "UNAUTHENTICATED",
+              "originalError": {
+                "message": "Unauthorized",
+                "statusCode": 401
+              }
+            },
+            "code": "UNAUTHENTICATED"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "246",
+        "date": "Mon, 24 Aug 2026 07:04:32 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "828cbe70-595f-4834-9b92-ef0fb28f521b",
+    "timestamp": "2026-08-24T07:04:04.998Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 5,
+    "request": {
+      "id": "c0359e3c-24bd-461c-8a59-3812cc396272",
+      "name": "squareCheckConnection",
+      "graphqlRootField": "squareCheckConnection",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": "",
+          "type": "text"
+        },
+        {
+          "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": "",
+          "type": "text"
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query SquareCheckConnection($data: SquareCheckConnectInputDto!) {\n  squareCheckConnection(data: $data)\n}",
+      "gqlVariables": "{\n  \"data\": {\n    \"accessToken\": \"EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK\",\n    \"environment\": \"SANDBOX\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "5 ms",
+      "size": "245 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Unauthorized",
+            "path": [
+              "squareCheckConnection"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "UNAUTHENTICATED",
+              "originalError": {
+                "message": "Unauthorized",
+                "statusCode": 401
+              }
+            },
+            "code": "UNAUTHENTICATED"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "246",
+        "date": "Mon, 24 Aug 2026 07:04:04 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "3145ef38-fa5e-4dbe-a17b-da54fcb9868c",
+    "timestamp": "2026-08-24T07:03:53.076Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 12,
+    "request": {
+      "id": "c0359e3c-24bd-461c-8a59-3812cc396272",
+      "name": "squareCheckConnection",
+      "graphqlRootField": "squareCheckConnection",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": "",
+          "type": "text"
+        },
+        {
+          "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+          "key": "",
+          "value": "",
+          "enabled": true,
+          "description": "",
+          "type": "text"
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query SquareCheckConnection($data: SquareCheckConnectInputDto!) {\n  squareCheckConnection(data: $data)\n}",
+      "gqlVariables": "{\n  \"data\": {\n    \"accessToken\": \"EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK\",\n    \"environment\": \"SANDBOX\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "12 ms",
+      "size": "245 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Unauthorized",
+            "path": [
+              "squareCheckConnection"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "UNAUTHENTICATED",
+              "originalError": {
+                "message": "Unauthorized",
+                "statusCode": 401
+              }
+            },
+            "code": "UNAUTHENTICATED"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "246",
+        "date": "Mon, 24 Aug 2026 07:03:53 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "0a626f2b-376e-4986-9554-4410ffd1fa48",
+    "timestamp": "2026-08-24T07:02:15.476Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 29,
+    "request": {
+      "id": "c0359e3c-24bd-461c-8a59-3812cc396272",
+      "name": "squareCheckConnection",
+      "graphqlRootField": "squareCheckConnection",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "02a84daa-e988-4471-bf06-55faaf5ba774",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query SquareCheckConnection($data: SquareCheckConnectInputDto!) {\n  squareCheckConnection(data: $data)\n}",
+      "gqlVariables": "{\n  \"data\": {\n    \"accessToken\": \"EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK\",\n    \"environment\": \"SANDBOX\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "29 ms",
+      "size": "245 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Unauthorized",
+            "path": [
+              "squareCheckConnection"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "UNAUTHENTICATED",
+              "originalError": {
+                "message": "Unauthorized",
+                "statusCode": 401
+              }
+            },
+            "code": "UNAUTHENTICATED"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "246",
+        "date": "Mon, 24 Aug 2026 07:02:16 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "4bba821e-aaca-4fac-ab31-dd9c64b48562",
+    "timestamp": "2026-08-24T06:59:16.546Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 16,
+    "request": {
+      "id": "c0359e3c-24bd-461c-8a59-3812cc396272",
+      "name": "squareCheckConnection",
+      "graphqlRootField": "squareCheckConnection",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "02a84daa-e988-4471-bf06-55faaf5ba774",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query SquareCheckConnection($data: SquareCheckConnectInputDto!) {\n  squareCheckConnection(data: $data)\n}",
+      "gqlVariables": "{\n  \"data\": {\n    \"accessToken\": \"EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK\",\n    \"environment\": \"SANDBOX\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "16 ms",
+      "size": "245 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Unauthorized",
+            "path": [
+              "squareCheckConnection"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "UNAUTHENTICATED",
+              "originalError": {
+                "message": "Unauthorized",
+                "statusCode": 401
+              }
+            },
+            "code": "UNAUTHENTICATED"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "246",
+        "date": "Mon, 24 Aug 2026 06:59:16 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "2c901aec-2a15-46bf-8979-93d1c63ebba0",
+    "timestamp": "2026-08-24T06:37:38.401Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/locations",
+    "status": 200,
+    "duration": 291,
+    "request": {
+      "id": "15600601-97c5-45c1-a81e-a98de5154938",
+      "savedRequestId": "6b97d2ab-1d61-48a7-8939-926dfd975ec8",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+      "name": "Get Location",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/locations",
+      "params": [],
+      "headersList": [
+        {
+          "id": "69fd8f9d-6f07-4ed2-930f-5f191564042c",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "e833c751-f6cf-4b39-9523-2edf5d0852c0",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "291 ms",
+      "size": "1.2 KB",
+      "data": {
+        "locations": [
+          {
+            "id": "LGE0P6VNQCYX7",
+            "name": "Chi nhánh Phan Đình Giót",
+            "address": {
+              "address_line_1": "24-26 Đ. Phan Đình Giót, Tân Sơn Hòa",
+              "locality": "Ho Chi Minh City",
+              "administrative_district_level_1": "CA",
+              "postal_code": "94103",
+              "country": "US"
+            },
+            "timezone": "Asia/Ho_Chi_Minh",
+            "capabilities": [
+              "CREDIT_CARD_PROCESSING",
+              "AUTOMATIC_TRANSFERS"
+            ],
+            "status": "ACTIVE",
+            "created_at": "2026-08-24T06:37:21.737Z",
+            "merchant_id": "MLTQ3MXGD4MH2",
+            "country": "US",
+            "language_code": "en-US",
+            "currency": "USD",
+            "phone_number": "+1 415-555-2671",
+            "business_name": "DXP Pizza",
+            "type": "PHYSICAL",
+            "business_hours": {},
+            "description": "Chi nhánh Tân Bình - 24-26 Phan Đình Giót",
+            "mcc": "7299"
+          },
+          {
+            "id": "L379743VY1ZBC",
+            "name": "Default Test Account",
+            "address": {
+              "address_line_1": "1600 Pennsylvania Ave NW",
+              "locality": "Washington",
+              "administrative_district_level_1": "DC",
+              "postal_code": "20500",
+              "country": "US"
+            },
+            "timezone": "UTC",
+            "capabilities": [
+              "CREDIT_CARD_PROCESSING",
+              "AUTOMATIC_TRANSFERS"
+            ],
+            "status": "ACTIVE",
+            "created_at": "2026-08-24T01:35:15.922Z",
+            "merchant_id": "MLTQ3MXGD4MH2",
+            "country": "US",
+            "language_code": "en-US",
+            "currency": "USD",
+            "business_name": "Default Test Account",
+            "type": "PHYSICAL",
+            "business_hours": {},
+            "mcc": "7299"
+          }
+        ]
+      },
+      "headers": {
+        "date": "Mon, 24 Aug 2026 06:37:39 GMT",
+        "content-type": "application/json",
+        "content-length": "581",
+        "connection": "keep-alive",
+        "cf-ray": "a30059822b5b84ff-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/locations",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=Mk6EVgQsu1cKwnSIxDy5Rw5O2saktVcZVwTCl_qIwgo-1787553459.5520158-1.0.1.1-Qt57ICoizaJaNgCUemwrgBzBw91TXYSRIp4L1Xtqf3fIVFTFK3jYYxNwQevXahMxORvuFlt5Jx6jega_WOxxo69rNOwe1nWhS4HsXrIPJXlu5qzV34Qbw1Uu8jZP4VzY; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 07:07:39 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "bbc6b1e8-642e-4fcd-a79f-ce0b0aa8df08",
+    "timestamp": "2026-08-24T06:37:20.718Z",
+    "method": "POST",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/locations",
+    "status": 200,
+    "duration": 622,
+    "request": {
+      "id": "1fae6ddd-5d51-4e90-bf2a-bd730d3f4fac",
+      "name": "Create Location",
+      "mode": "REST",
+      "method": "POST",
+      "url": "{{Domain}}/locations",
+      "params": [],
+      "headersList": [
+        {
+          "id": "7e9bfa00-a91f-4717-a9f0-8d7ab038d60d",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "json",
+      "restBody": "{\n  \"location\": {\n    \"name\": \"Chi nhánh Phan Đình Giót\",\n    \"business_name\": \"DXP Pizza\",\n    \"phone_number\": \"+14155552671\",\n    \"timezone\": \"Asia/Ho_Chi_Minh\",\n    \"status\": \"ACTIVE\",\n    \"address\": {\n      \"address_line_1\": \"24-26 Đ. Phan Đình Giót, Tân Sơn Hòa\",\n      \"locality\": \"Ho Chi Minh City\",\n      \"administrative_district_level_1\": \"CA\",\n      \"postal_code\": \"94103\",\n      \"country\": \"US\"\n    },\n    \"description\": \"Chi nhánh Tân Bình - 24-26 Phan Đình Giót\"\n  }\n}",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "622 ms",
+      "size": "645 B",
+      "data": {
+        "location": {
+          "id": "LGE0P6VNQCYX7",
+          "name": "Chi nhánh Phan Đình Giót",
+          "address": {
+            "address_line_1": "24-26 Đ. Phan Đình Giót, Tân Sơn Hòa",
+            "locality": "Ho Chi Minh City",
+            "administrative_district_level_1": "CA",
+            "postal_code": "94103",
+            "country": "US"
+          },
+          "timezone": "Asia/Ho_Chi_Minh",
+          "capabilities": [
+            "CREDIT_CARD_PROCESSING",
+            "AUTOMATIC_TRANSFERS"
+          ],
+          "status": "ACTIVE",
+          "created_at": "2026-08-24T06:37:21.737Z",
+          "merchant_id": "MLTQ3MXGD4MH2",
+          "country": "US",
+          "language_code": "en-US",
+          "currency": "USD",
+          "phone_number": "+14155552671",
+          "business_name": "DXP Pizza",
+          "type": "PHYSICAL",
+          "description": "Chi nhánh Tân Bình - 24-26 Phan Đình Giót",
+          "mcc": "7299"
+        }
+      },
+      "headers": {
+        "date": "Mon, 24 Aug 2026 06:37:22 GMT",
+        "content-type": "application/json",
+        "content-length": "466",
+        "connection": "keep-alive",
+        "cf-ray": "a30059119ae884ff-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/locations",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=ntdkgEXoIbOvsXW6nFbYJZBjBIr932wqoynSSome2LE-1787553441.5382414-1.0.1.1-FZNpK7R39IMqlMiiga73r47EuqVKakNzO_1tlXXCdUNxO6UBrBMlWRQsuuhYDiV05hO6k6tzm4K6VbcbqXu9G8.f1Hdp_ec3nlHryx0_sx9aSnNSWWxFU.zCjcLKeQUy; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 07:07:22 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "b5a4908e-4184-4a80-bdce-064816cd138c",
+    "timestamp": "2026-08-24T06:36:23.915Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/merchants/me",
+    "status": 200,
+    "duration": 249,
+    "request": {
+      "id": "99be576c-4a82-4280-a060-b91ab9660afb",
+      "name": "Get Merchant me",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/merchants/me",
+      "params": [],
+      "headersList": [
+        {
+          "id": "afd0fd1a-2c81-403c-9fb3-979d78636419",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "d0381408-4ba8-4268-978e-925656c2296d",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "AUTH",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "249 ms",
+      "size": "302 B",
+      "data": {
+        "merchant": {
+          "id": "MLTQ3MXGD4MH2",
+          "business_name": "Default Test Account",
+          "country": "US",
+          "language_code": "en-US",
+          "currency": "USD",
+          "status": "ACTIVE",
+          "main_location_id": "L379743VY1ZBC",
+          "owner_email": "sandbox-merchant+ulhfxsbg7mvjoiwugqkoa7pqxabe8prr@squareup.com",
+          "created_at": "2026-08-24T01:35:15.919Z"
+        }
+      },
+      "headers": {
+        "date": "Mon, 24 Aug 2026 06:36:25 GMT",
+        "content-type": "application/json",
+        "content-length": "265",
+        "connection": "keep-alive",
+        "cf-ray": "a30057b0ea5084ff-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/merchants/**",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=ZBg3RBbi9paN5Zl9BSFONAZLc9losN.TUYSFfwJMB.Q-1787553385.105368-1.0.1.1-3HzVPbhJCzGRr8NME9pkd4fdBAYSAh5tD3vsZumtKSOQkEsP3cnHqaGbWxIwSxTcfjIHoArkFnN5sgiAI_UGohd6iPIqPJgkqGA27kLGthY0h4EOYoiWt06OLqwLa4Zy; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 07:06:25 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "166a1c0a-7389-4a4d-b780-f3106fa6f540",
+    "timestamp": "2026-08-24T06:36:11.684Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/merchants",
+    "status": 200,
+    "duration": 251,
+    "request": {
+      "id": "78846a11-4ac3-4ac8-a48f-6dc6e650d710",
+      "savedRequestId": "49a4aa41-9fd5-4caa-9c36-0767ffbb24f3",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "a9abb7ec-7230-461e-90e6-91477704638c",
+      "name": "Get Merchant list",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/merchants",
+      "params": [],
+      "headersList": [
+        {
+          "id": "afd0fd1a-2c81-403c-9fb3-979d78636419",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "d0381408-4ba8-4268-978e-925656c2296d",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "AUTH",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "251 ms",
+      "size": "304 B",
+      "data": {
+        "merchant": [
+          {
+            "id": "MLTQ3MXGD4MH2",
+            "business_name": "Default Test Account",
+            "country": "US",
+            "language_code": "en-US",
+            "currency": "USD",
+            "status": "ACTIVE",
+            "main_location_id": "L379743VY1ZBC",
+            "owner_email": "sandbox-merchant+ulhfxsbg7mvjoiwugqkoa7pqxabe8prr@squareup.com",
+            "created_at": "2026-08-24T01:35:15.919Z"
+          }
+        ]
+      },
+      "headers": {
+        "date": "Mon, 24 Aug 2026 06:36:13 GMT",
+        "content-type": "application/json",
+        "content-length": "268",
+        "connection": "keep-alive",
+        "cf-ray": "a30057647eee84ff-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/merchants/**",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=XqEukkm9EuybypnwNvsWNRVwadjXY2ZOxLbD8vxXHH0-1787553372.8736372-1.0.1.1-3_yE56OTMNVxVij7dJNQlBSMwjk96_wM6QwaQ3krtohOh4Iq4ADH.MguCAwa.LIIMY3aLqRP34AM3dCJJY1jyEuWtZtVFfGf3fHEbo9WEmd8jHlhsikpnd2ulKSRaNQb; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 07:06:13 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "bcbe0c49-7f0f-4041-bffd-31aa01c903b3",
+    "timestamp": "2026-08-24T06:36:08.109Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/merchants/me",
+    "status": 200,
+    "duration": 250,
+    "request": {
+      "id": "78846a11-4ac3-4ac8-a48f-6dc6e650d710",
+      "savedRequestId": "49a4aa41-9fd5-4caa-9c36-0767ffbb24f3",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "a9abb7ec-7230-461e-90e6-91477704638c",
+      "name": "Get Merchant list",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/merchants/me",
+      "params": [],
+      "headersList": [
+        {
+          "id": "afd0fd1a-2c81-403c-9fb3-979d78636419",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "d0381408-4ba8-4268-978e-925656c2296d",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "AUTH",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "250 ms",
+      "size": "302 B",
+      "data": {
+        "merchant": {
+          "id": "MLTQ3MXGD4MH2",
+          "business_name": "Default Test Account",
+          "country": "US",
+          "language_code": "en-US",
+          "currency": "USD",
+          "status": "ACTIVE",
+          "main_location_id": "L379743VY1ZBC",
+          "owner_email": "sandbox-merchant+ulhfxsbg7mvjoiwugqkoa7pqxabe8prr@squareup.com",
+          "created_at": "2026-08-24T01:35:15.919Z"
+        }
+      },
+      "headers": {
+        "date": "Mon, 24 Aug 2026 06:36:09 GMT",
+        "content-type": "application/json",
+        "content-length": "265",
+        "connection": "keep-alive",
+        "cf-ray": "a300574e1cdb84ff-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/merchants/**",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=QlQBvPd2EYUF0sRqGGdXiRnLwJYXHhCwneuZ81k_..E-1787553369.29423-1.0.1.1-30rcQnbNdO0j3hNn73vW61_8REWDesBTCCgiA83JH7mCn15xzkB_lwTykk8I7Pj4WBZ3T7NTNxeh_HmLSRGGiTpbKEn16vDI7qhVx.1GFnPxAqIXsh9JsL7fySX.FelP; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 07:06:09 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "9fa57fcb-1657-49c6-a257-beb006f25fe7",
+    "timestamp": "2026-08-24T06:36:04.685Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/merchants",
+    "status": 200,
+    "duration": 279,
+    "request": {
+      "id": "78846a11-4ac3-4ac8-a48f-6dc6e650d710",
+      "savedRequestId": "49a4aa41-9fd5-4caa-9c36-0767ffbb24f3",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "a9abb7ec-7230-461e-90e6-91477704638c",
+      "name": "Get Merchant list",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/merchants",
+      "params": [],
+      "headersList": [
+        {
+          "id": "afd0fd1a-2c81-403c-9fb3-979d78636419",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "d0381408-4ba8-4268-978e-925656c2296d",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "AUTH",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "279 ms",
+      "size": "304 B",
+      "data": {
+        "merchant": [
+          {
+            "id": "MLTQ3MXGD4MH2",
+            "business_name": "Default Test Account",
+            "country": "US",
+            "language_code": "en-US",
+            "currency": "USD",
+            "status": "ACTIVE",
+            "main_location_id": "L379743VY1ZBC",
+            "owner_email": "sandbox-merchant+ulhfxsbg7mvjoiwugqkoa7pqxabe8prr@squareup.com",
+            "created_at": "2026-08-24T01:35:15.919Z"
+          }
+        ]
+      },
+      "headers": {
+        "date": "Mon, 24 Aug 2026 06:36:06 GMT",
+        "content-type": "application/json",
+        "content-length": "268",
+        "connection": "keep-alive",
+        "cf-ray": "a30057388a2f84ff-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/merchants/**",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=zPrFupJ12kojD0DE2XhQk.B6NnKMBbw1I2Px_qtr_XM-1787553365.8461964-1.0.1.1-Jw7kDnSUEwJ..rU6YJshGh8Pm2Y0dVcTGEM_d0aPZPOwZTQjt1GjTs2tdweg2jwF_brkcRvWJ8xlTgns9RMcAgeBIHHtWOgge_wZXfvTsbmOT6dNVP7XHbjML.4Wb7BF; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 07:06:06 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "bb6af6cc-d6e9-4f81-9993-b0ce3be0b3dd",
+    "timestamp": "2026-08-24T06:35:38.599Z",
+    "method": "POST",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/locations",
+    "status": 400,
+    "duration": 383,
+    "request": {
+      "id": "1fae6ddd-5d51-4e90-bf2a-bd730d3f4fac",
+      "name": "Create Location",
+      "mode": "REST",
+      "method": "POST",
+      "url": "{{Domain}}/locations",
+      "params": [],
+      "headersList": [
+        {
+          "id": "7e9bfa00-a91f-4717-a9f0-8d7ab038d60d",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "json",
+      "restBody": "{\n  \"location\": {\n    \"name\": \"Chi nhánh Phan Đình Giót\",\n    \"business_name\": \"DXP Pizza\",\n    \"phone_number\": \"+14155552671\",\n    \"timezone\": \"Asia/Ho_Chi_Minh\",\n    \"currency\": \"USD\",\n    \"status\": \"ACTIVE\",\n    \"address\": {\n      \"address_line_1\": \"24-26 Đ. Phan Đình Giót, Tân Sơn Hòa\",\n      \"locality\": \"Ho Chi Minh City\",\n      \"administrative_district_level_1\": \"CA\",\n      \"postal_code\": \"94103\",\n      \"country\": \"US\"\n    },\n    \"description\": \"Chi nhánh Tân Bình - 24-26 Phan Đình Giót\"\n  }\n}",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 400,
+      "statusText": "Bad Request",
+      "time": "383 ms",
+      "size": "119 B",
+      "data": {
+        "errors": [
+          {
+            "code": "BAD_REQUEST",
+            "detail": "These fields are read-only: currency.",
+            "category": "INVALID_REQUEST_ERROR"
+          }
+        ]
+      },
+      "headers": {
+        "date": "Mon, 24 Aug 2026 06:35:39 GMT",
+        "content-type": "application/json",
+        "content-length": "124",
+        "connection": "keep-alive",
+        "cf-ray": "a30056959b4684ff-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/locations",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=Jmh.eML2nnHt93Ei4NuuH_nkb4fm1PKGyH_tnPJlxtY-1787553339.773184-1.0.1.1-o80MvwOukVaN4TQb8Oj59YtJ6o7QrlGPSnhI6Jd_.q1Rwb8CG6vWci9vGTh9bfVNCL_S65tE5QNJLJbKgMQ05k57Z_uXkWNYbnrisPEYTiVAlyccFE9lN.IluYMqfsi1; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 07:05:39 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "2fc9de95-84f5-4cf6-aeab-2ad143ca48c8",
+    "timestamp": "2026-08-24T06:34:07.851Z",
+    "method": "POST",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/locations",
+    "status": 400,
+    "duration": 558,
+    "request": {
+      "id": "1fae6ddd-5d51-4e90-bf2a-bd730d3f4fac",
+      "name": "Create Location",
+      "mode": "REST",
+      "method": "POST",
+      "url": "{{Domain}}/locations",
+      "params": [],
+      "headersList": [
+        {
+          "id": "7e9bfa00-a91f-4717-a9f0-8d7ab038d60d",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "json",
+      "restBody": "{\n  \"location\": {\n    \"name\": \"Chi nhánh Quận Tân Bình\",\n    \"business_name\": \"DXP Pizza\",\n    \"phone_number\": \"+84901234567\",\n    \"timezone\": \"Asia/Ho_Chi_Minh\",\n    \"language_code\": \"vi-VN\",\n    \"currency\": \"VND\",\n    \"status\": \"ACTIVE\",\n    \"address\": {\n      \"address_line_1\": \"72 Lê Thánh Tôn, Phường Bến Nghé\",\n      \"locality\": \"Quận 1\",\n      \"administrative_district_level_1\": \"Hồ Chí Minh\",\n      \"postal_code\": \"700000\",\n      \"country\": \"VN\"\n    },\n    \"description\": \"Chi nhánh trung tâm TP.HCM\"\n  }\n}",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 400,
+      "statusText": "Bad Request",
+      "time": "558 ms",
+      "size": "169 B",
+      "data": {
+        "errors": [
+          {
+            "code": "BAD_REQUEST",
+            "detail": "Must specify an address in the same country as your Location",
+            "field": "location.address",
+            "category": "INVALID_REQUEST_ERROR"
+          }
+        ]
+      },
+      "headers": {
+        "date": "Mon, 24 Aug 2026 06:34:09 GMT",
+        "content-type": "application/json",
+        "content-length": "175",
+        "connection": "keep-alive",
+        "cf-ray": "a300545e7d2a09e7-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/locations",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=ScpRyRD5fGTAgsCTHld5qIqTgTL13cbgcoBT8Sr2xtk-1787553249.0326946-1.0.1.1-FmLOWYhYBtlWXQyvPHdaO9X0oufsVqZgymAo4HUHKjkCvL3xH_E6DCiVH4afuJlpAyS41ZFsBtV5Mw4bj3doHjmmI5Cbl7YeNfxPs1mxrJoYCl3HaInklctLkMDw_ttG; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 07:04:09 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "f6d9120e-4404-4443-8bb9-e2af08f6057c",
+    "timestamp": "2026-08-24T06:27:27.834Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/locations",
+    "status": 200,
+    "duration": 699,
+    "request": {
+      "id": "15600601-97c5-45c1-a81e-a98de5154938",
+      "savedRequestId": "6b97d2ab-1d61-48a7-8939-926dfd975ec8",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+      "name": "Get Location",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/locations",
+      "params": [],
+      "headersList": [
+        {
+          "id": "69fd8f9d-6f07-4ed2-930f-5f191564042c",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "e833c751-f6cf-4b39-9523-2edf5d0852c0",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "699 ms",
+      "size": "539 B",
+      "data": {
+        "locations": [
+          {
+            "id": "L379743VY1ZBC",
+            "name": "Default Test Account",
+            "address": {
+              "address_line_1": "1600 Pennsylvania Ave NW",
+              "locality": "Washington",
+              "administrative_district_level_1": "DC",
+              "postal_code": "20500",
+              "country": "US"
+            },
+            "timezone": "UTC",
+            "capabilities": [
+              "CREDIT_CARD_PROCESSING",
+              "AUTOMATIC_TRANSFERS"
+            ],
+            "status": "ACTIVE",
+            "created_at": "2026-08-24T01:35:15.922Z",
+            "merchant_id": "MLTQ3MXGD4MH2",
+            "country": "US",
+            "language_code": "en-US",
+            "currency": "USD",
+            "business_name": "Default Test Account",
+            "type": "PHYSICAL",
+            "business_hours": {},
+            "mcc": "7299"
+          }
+        ]
+      },
+      "headers": {
+        "date": "Mon, 24 Aug 2026 06:27:29 GMT",
+        "content-type": "application/json",
+        "content-length": "388",
+        "connection": "keep-alive",
+        "cf-ray": "a3004a99ffe62673-HKG",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/locations",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=ARSknCrdGiy_H2dBFVTHo9w_UfKAewIm7jDiDwxOT4A-1787552848.9569178-1.0.1.1-2evH4RUdz6Iw0GBRYVVDdwzNiKhYVPfWIH_B5X96gA24LMCJS6rOiUP_4Rj.o68GvaLvmhcNC2xD21yQel_sBAxpOEg_GzasTV41XeowktF8BBx9Ui_4nqVcFnMVXwVP; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Mon, 24 Aug 2026 06:57:29 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
     "id": "83d8757c-c36c-4f8d-aa52-e9d6e43cd58c",
     "timestamp": "2026-08-24T04:52:07.073Z",
     "method": "GET",
@@ -11999,696 +15563,6 @@
         "content-type": "application/json; charset=utf-8",
         "content-length": "51",
         "date": "Fri, 21 Aug 2026 03:38:50 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "d647f328-50a6-49f9-b3e2-f6e1fe63ea03",
-    "timestamp": "2026-08-21T03:38:41.365Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 1436,
-    "request": {
-      "id": "5fe68b66-4428-44aa-82f6-637fe6626c0d",
-      "savedRequestId": "3c5f15e6-11bb-4c53-94d5-2c12590c9f88",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": null,
-      "name": "orderPaginationList",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
-          "key": "Content-Type",
-          "value": "application/json",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
-          "key": "Authorization",
-          "value": "Bearer {{token}}",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "333c833b-9ada-48da-afa3-c737d8e6ae78",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "143f7dc1-67b4-4046-b9db-3453c8b570fd",
-          "key": "",
-          "value": "",
-          "enabled": true,
-          "description": ""
-        }
-      ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "none",
-        "bearerToken": "",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "json",
-      "restBody": "{\n  \"name\": \"API Lab User\"\n}",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\n  orderPaginationList(params: $params, filters: $filters) {\n    total\n  }\n}",
-      "gqlVariables": "{\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  },\n  \"filters\": {\n  }\n}",
-      "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
-      "editorTab": "VARIABLES",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "1436 ms",
-      "size": "50 B",
-      "data": {
-        "data": {
-          "orderPaginationList": {
-            "total": 2013496
-          }
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "51",
-        "date": "Fri, 21 Aug 2026 03:38:44 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "ca67b2b8-cea0-40f2-b49a-cbe20c4986d8",
-    "timestamp": "2026-08-21T03:37:16.135Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 1287,
-    "request": {
-      "id": "5fe68b66-4428-44aa-82f6-637fe6626c0d",
-      "savedRequestId": "3c5f15e6-11bb-4c53-94d5-2c12590c9f88",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": null,
-      "name": "orderPaginationList",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
-          "key": "Content-Type",
-          "value": "application/json",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
-          "key": "Authorization",
-          "value": "Bearer {{token}}",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "333c833b-9ada-48da-afa3-c737d8e6ae78",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "143f7dc1-67b4-4046-b9db-3453c8b570fd",
-          "key": "",
-          "value": "",
-          "enabled": true,
-          "description": ""
-        }
-      ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "none",
-        "bearerToken": "",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "json",
-      "restBody": "{\n  \"name\": \"API Lab User\"\n}",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\n  orderPaginationList(params: $params, filters: $filters) {\n    total\n  }\n}",
-      "gqlVariables": "{\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  },\n  \"filters\": {\n    \"keywords\": \"\"\n  }\n}",
-      "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
-      "editorTab": "VARIABLES",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "1287 ms",
-      "size": "50 B",
-      "data": {
-        "data": {
-          "orderPaginationList": {
-            "total": 2013496
-          }
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "51",
-        "date": "Fri, 21 Aug 2026 03:37:15 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "0d531d35-2980-4daa-b4ce-f6d4120f706a",
-    "timestamp": "2026-08-21T03:37:07.856Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 64,
-    "request": {
-      "id": "5fe68b66-4428-44aa-82f6-637fe6626c0d",
-      "savedRequestId": "3c5f15e6-11bb-4c53-94d5-2c12590c9f88",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": null,
-      "name": "orderPaginationList",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
-          "key": "Content-Type",
-          "value": "application/json",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
-          "key": "Authorization",
-          "value": "Bearer {{token}}",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "333c833b-9ada-48da-afa3-c737d8e6ae78",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "143f7dc1-67b4-4046-b9db-3453c8b570fd",
-          "key": "",
-          "value": "",
-          "enabled": true,
-          "description": ""
-        }
-      ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "none",
-        "bearerToken": "",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "json",
-      "restBody": "{\n  \"name\": \"API Lab User\"\n}",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\n  orderPaginationList(params: $params, filters: $filters) {\n    total\n  }\n}",
-      "gqlVariables": "{\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  },\n  \"filters\": {\n    \"orderStatus\": [\"OPEND\"]\n  }\n}",
-      "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
-      "editorTab": "VARIABLES",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "64 ms",
-      "size": "44 B",
-      "data": {
-        "data": {
-          "orderPaginationList": {
-            "total": 0
-          }
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "45",
-        "date": "Fri, 21 Aug 2026 03:37:10 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "c0957331-ac06-440f-a8dc-7e2933db4155",
-    "timestamp": "2026-08-21T03:30:39.778Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 400,
-    "duration": 46,
-    "request": {
-      "id": "5fe68b66-4428-44aa-82f6-637fe6626c0d",
-      "savedRequestId": "3c5f15e6-11bb-4c53-94d5-2c12590c9f88",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": null,
-      "name": "orderPaginationList",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
-          "key": "Content-Type",
-          "value": "application/json",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
-          "key": "Authorization",
-          "value": "Bearer {{token}}",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "333c833b-9ada-48da-afa3-c737d8e6ae78",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "143f7dc1-67b4-4046-b9db-3453c8b570fd",
-          "key": "",
-          "value": "",
-          "enabled": true,
-          "description": ""
-        }
-      ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "none",
-        "bearerToken": "",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "json",
-      "restBody": "{\n  \"name\": \"API Lab User\"\n}",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query OrderPaginationList {\n  orderPaginationList {\n    total\n  }\n}",
-      "gqlVariables": "{}",
-      "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 400,
-      "statusText": "Bad Request",
-      "time": "46 ms",
-      "size": "524 B",
-      "data": {
-        "errors": [
-          {
-            "message": "Field \"orderPaginationList\" argument \"params\" of type \"PaginationDto!\" is required, but it was not provided.",
-            "locations": [
-              {
-                "line": 2,
-                "column": 3
-              }
-            ],
-            "extensions": {
-              "code": "GRAPHQL_VALIDATION_FAILED"
-            },
-            "code": "GRAPHQL_VALIDATION_FAILED"
-          },
-          {
-            "message": "Field \"orderPaginationList\" argument \"filters\" of type \"OrderGetListFilterReqDto!\" is required, but it was not provided.",
-            "locations": [
-              {
-                "line": 2,
-                "column": 3
-              }
-            ],
-            "extensions": {
-              "code": "GRAPHQL_VALIDATION_FAILED"
-            },
-            "code": "GRAPHQL_VALIDATION_FAILED"
-          }
-        ]
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "525",
-        "date": "Fri, 21 Aug 2026 03:30:42 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "510a39d0-e399-4997-9478-7872744b6ec7",
-    "timestamp": "2026-08-21T03:13:28.282Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 28,
-    "request": {
-      "id": "5fe68b66-4428-44aa-82f6-637fe6626c0d",
-      "savedRequestId": "3c5f15e6-11bb-4c53-94d5-2c12590c9f88",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": null,
-      "name": "Health",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
-          "key": "Content-Type",
-          "value": "application/json",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
-          "key": "Authorization",
-          "value": "Bearer {{token}}",
-          "enabled": true,
-          "description": ""
-        }
-      ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
-      "auth": {
-        "type": "none",
-        "bearerToken": "",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "json",
-      "restBody": "{\n  \"name\": \"API Lab User\"\n}",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query Health {\n  health {\n    message\n  }\n}",
-      "gqlVariables": "{}",
-      "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "28 ms",
-      "size": "36 B",
-      "data": {
-        "data": {
-          "health": {
-            "message": "Ok"
-          }
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "37",
-        "date": "Fri, 21 Aug 2026 03:13:32 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "dd82f6a5-4418-4e8c-b3bf-20d60bb00f65",
-    "timestamp": "2026-08-21T02:39:07.144Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 3553,
-    "request": {
-      "id": "b3c7e1df-66c6-453a-b048-7139c424dadb",
-      "savedRequestId": "ffde20c0-eda2-479d-9298-891f9032458b",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8",
-      "name": "Find delivery store",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
-          "key": "Content-Type",
-          "value": "application/json",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
-          "key": "Authorization",
-          "value": "Bearer {{token}}",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "81f4c996-751b-40b5-8440-f64a3a1ee83c",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "f19ddf45-3d43-446f-90f1-7806c24f78f7",
-          "key": "",
-          "value": "",
-          "enabled": true,
-          "description": ""
-        }
-      ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "none",
-        "bearerToken": "",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "json",
-      "restBody": "{\n  \"name\": \"API Lab User\"\n}",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query FindDeliveryStore($input: StoreGetDeliveryStoreDto) {\n  findDeliveryStore(input: $input) {\n    id\n    code\n    name\n    status\n    address\n    addressEn\n    alertOverloadPercent\n    backupStoreIds\n    cooldownTime\n    countryId\n    countyId\n    countyName\n    distance\n    eHoaDonAddress\n    eHoaDonCompanyName\n    eHoaDonInvoiceSerial\n  }\n}",
-      "gqlVariables": "{\n  \"input\": {\n    \"address\": \"Crescent Mall, 101 Tôn Dật Tiên, Tân Mỹ, Hồ Chí Minh\",\n    \"latitude\": 10.729084,\n    \"longitude\": 106.718872\n  }\n}",
-      "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
-      "editorTab": "VARIABLES",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "3553 ms",
-      "size": "663 B",
-      "data": {
-        "data": {
-          "findDeliveryStore": {
-            "id": "0196486d-d25a-79b6-8010-4a91c7d213ae",
-            "code": "5069",
-            "name": "The Pizza Company Crescent Mall - Q.7",
-            "status": "ACTIVE",
-            "address": "Crescent Mall, Tầng 5, 101 Tôn Dật Tiên, Tân Phú, Quận 7, Thành phố Hồ Chí Minh",
-            "addressEn": null,
-            "alertOverloadPercent": 90,
-            "backupStoreIds": null,
-            "cooldownTime": 0,
-            "countryId": 241,
-            "countyId": 77,
-            "countyName": "Quận 7",
-            "distance": 40.92907901872565,
-            "eHoaDonAddress": "5FC-17, Tầng 5, TTTM Crescent Mall, Số 101 Tôn Dật Tiên, Phường Tân Mỹ, Thành phố Hồ Chí Minh, Việt Nam",
-            "eHoaDonCompanyName": "714460103 - TPC CrescentMall - HCM",
-            "eHoaDonInvoiceSerial": "C25MMD"
-          }
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "664",
-        "date": "Fri, 21 Aug 2026 02:39:11 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "842062a1-e50c-4066-9989-d4aed9c7bb93",
-    "timestamp": "2026-08-21T02:38:47.652Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 793,
-    "request": {
-      "id": "9c6896fe-3fd2-4a0e-b59f-49e1cf6aa955",
-      "savedRequestId": "ffde20c0-eda2-479d-9298-891f9032458b",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8",
-      "name": "Find delivery store",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
-          "key": "Content-Type",
-          "value": "application/json",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
-          "key": "Authorization",
-          "value": "Bearer {{token}}",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "81f4c996-751b-40b5-8440-f64a3a1ee83c",
-          "key": "",
-          "value": "",
-          "enabled": true,
-          "description": ""
-        }
-      ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
-      "auth": {
-        "type": "none",
-        "bearerToken": "",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "json",
-      "restBody": "{\n  \"name\": \"API Lab User\"\n}",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query FindDeliveryStore($input: StoreGetDeliveryStoreDto) {\n  findDeliveryStore(input: $input) {\n    id\n    code\n    name\n    status\n    address\n    addressEn\n    alertOverloadPercent\n    backupStoreIds\n    cooldownTime\n    countryId\n    countyId\n    countyName\n    distance\n    eHoaDonAddress\n    eHoaDonCompanyName\n    eHoaDonInvoiceSerial\n  }\n}",
-      "gqlVariables": "{\n  \"input\": {\n    \"address\": \"Crescent Mall, 101 Tôn Dật Tiên, Tân Mỹ, Hồ Chí Minh\",\n    \"latitude\": 10.729084,\n    \"longitude\": 106.718872\n  }\n}",
-      "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
-      "editorTab": "HEADERS",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "793 ms",
-      "size": "428 B",
-      "data": {
-        "errors": [
-          {
-            "message": "Địa chỉ nằm ngoài khu vực giao hàng",
-            "path": [
-              "findDeliveryStore"
-            ],
-            "locations": [
-              {
-                "line": 2,
-                "column": 3
-              }
-            ],
-            "extensions": {
-              "code": "BAD_REQUEST",
-              "originalError": {
-                "statusCode": 400,
-                "error": "Bad Request",
-                "message": "Địa chỉ nằm ngoài khu vực giao hàng",
-                "errorCode": "OUT_OF_DELIVERY_AREA"
-              },
-              "errorCode": "OUT_OF_DELIVERY_AREA"
-            },
-            "code": "BAD_REQUEST",
-            "errorCode": "OUT_OF_DELIVERY_AREA"
-          }
-        ],
-        "data": null
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "429",
-        "date": "Fri, 21 Aug 2026 02:38:50 GMT",
         "connection": "keep-alive",
         "keep-alive": "timeout=72"
       },

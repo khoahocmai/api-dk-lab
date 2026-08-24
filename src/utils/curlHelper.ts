@@ -295,9 +295,9 @@ function parseAndAddHeader(
 
   // Check Bearer / Basic Authentication
   if (lowerKey === 'authorization') {
-    if (value.toLowerCase().startsWith('bearer ')) {
+    if (/^bearer\s+/i.test(value)) {
       auth.type = 'bearer'
-      auth.bearerToken = value.slice(7).trim()
+      auth.bearerToken = value.replace(/^bearer\s+/i, '').trim()
     } else if (value.toLowerCase().startsWith('basic ')) {
       auth.type = 'basic'
       try {

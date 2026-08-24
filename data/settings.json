@@ -4,10 +4,48 @@
     "rejectUnauthorized": true,
     "editorFontSize": 13
   },
-  "activeEnvironmentId": "02ad665d-6fd3-4360-8a44-1b4c431425d5",
-  "activeTabId": "",
-  "tabs": [],
+  "activeEnvironmentId": "36eefd5b-4f5f-4a32-9b61-ae9b1ab57e32",
+  "activeTabId": "79adfc87-6b85-4afa-a4e3-64e2ae581df4",
+  "tabs": [
+    {
+      "id": "79adfc87-6b85-4afa-a4e3-64e2ae581df4",
+      "name": "squareCatalogSync",
+      "graphqlRootField": "squareCatalogSync",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "ca219e3d-a069-4345-9c70-6a41eaf673c4",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "mutation SquareCatalogSync {\n  squareCatalogSync {\n    total\n    created\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    }
+  ],
   "splitLayout": "horizontal",
   "isSidebarCollapsed": false,
-  "isExplorerOpen": false
+  "isExplorerOpen": true
 }

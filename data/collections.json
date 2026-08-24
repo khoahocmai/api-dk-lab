@@ -99,6 +99,18 @@
       "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
       "parentId": null,
       "name": "Merchant"
+    },
+    {
+      "id": "855480d9-0a2a-418a-9651-31ff471fa7b9",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": "72d3d982-0101-4ffa-9672-a04ee8a5798d",
+      "name": "Square"
+    },
+    {
+      "id": "1d2a18d1-e2e3-4d00-b865-1e0746001508",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": "855480d9-0a2a-418a-9651-31ff471fa7b9",
+      "name": "Location"
     }
   ],
   "savedRequests": [
@@ -301,31 +313,19 @@
       "id": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
       "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
       "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
-      "name": "tenantGetList",
+      "name": "Tenant get list",
       "request": {
-        "id": "d7edab2f-633d-47b9-8f53-4c97686e32bb",
+        "id": "aff9c337-4eda-41b7-8148-07a1026aa4c6",
         "savedRequestId": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
-        "name": "tenantGetList",
+        "name": "Tenant get list",
         "graphqlRootField": "tenantGetList",
         "mode": "GRAPHQL",
         "method": "POST",
         "url": "{{Domain}}/graphql",
         "params": [],
         "headersList": [
-          {
-            "id": "abd922de-1830-4d56-91fe-788938a11282",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true
-          },
-          {
-            "id": "b28bbff0-b7d1-4364-a859-c21a481bc5c0",
-            "key": "Authorization",
-            "value": "Bearer {{token}}",
-            "enabled": true
-          },
           {
             "id": "3d095786-c99c-461d-a6ba-5f784c0f3e22",
             "key": "X-Requested-Portal",
@@ -341,10 +341,10 @@
             "description": ""
           }
         ],
-        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
         "auth": {
-          "type": "none",
-          "bearerToken": "",
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
           "basicUsername": "",
           "basicPassword": "",
           "apiKeyName": "",
@@ -359,11 +359,11 @@
         "gqlQuery": "query TenantGetList {\n  tenantGetList {\n    id\n    name\n  }\n}",
         "gqlVariables": "{}",
         "testScript": "",
-        "editorTab": "HEADERS",
+        "editorTab": "AUTH",
         "responseTab": "PRETTY"
       },
       "createdAt": "2026-08-21T05:26:46.894Z",
-      "updatedAt": "2026-08-21T05:26:58.534Z"
+      "updatedAt": "2026-08-24T07:47:25.952Z"
     },
     {
       "id": "e99d94b1-c03f-4f53-87a0-189b2fad8d62",
@@ -371,10 +371,10 @@
       "folderId": "3eba61de-7e93-497e-ab02-0daac97727ae",
       "name": "KiotViet branch sync",
       "request": {
-        "id": "d388a392-a6d0-455b-8116-09f469f88a98",
+        "id": "cf385b9a-cfa4-488d-a5d6-b1367b478154",
         "savedRequestId": "e99d94b1-c03f-4f53-87a0-189b2fad8d62",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-        "folderId": "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
+        "folderId": "3eba61de-7e93-497e-ab02-0daac97727ae",
         "name": "KiotViet branch sync",
         "graphqlRootField": "kiotVietBranchSync",
         "mode": "GRAPHQL",
@@ -386,13 +386,6 @@
             "id": "abd922de-1830-4d56-91fe-788938a11282",
             "key": "Content-Type",
             "value": "application/json",
-            "enabled": true,
-            "description": ""
-          },
-          {
-            "id": "b28bbff0-b7d1-4364-a859-c21a481bc5c0",
-            "key": "Authorization",
-            "value": "Bearer {{token}}",
             "enabled": true,
             "description": ""
           },
@@ -411,10 +404,10 @@
             "description": ""
           }
         ],
-        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"X-Requested-Portal\": \"IT\"\n}",
         "auth": {
-          "type": "none",
-          "bearerToken": "",
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
           "basicUsername": "",
           "basicPassword": "",
           "apiKeyName": "",
@@ -433,7 +426,7 @@
         "responseTab": "PRETTY"
       },
       "createdAt": "2026-08-21T10:22:16.905Z",
-      "updatedAt": "2026-08-21T10:22:45.563Z"
+      "updatedAt": "2026-08-24T07:03:31.897Z"
     },
     {
       "id": "c1ad8d59-9cce-45dc-b91e-f91ef779b4de",
@@ -1513,6 +1506,287 @@
       },
       "createdAt": "2026-08-24T04:31:21.660Z",
       "updatedAt": "2026-08-24T04:31:21.660Z"
+    },
+    {
+      "id": "1bff0d32-3920-49f9-b6cc-a3a16d45a00b",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "a9abb7ec-7230-461e-90e6-91477704638c",
+      "name": "Get Merchant me",
+      "request": {
+        "id": "99be576c-4a82-4280-a060-b91ab9660afb",
+        "savedRequestId": "1bff0d32-3920-49f9-b6cc-a3a16d45a00b",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "a9abb7ec-7230-461e-90e6-91477704638c",
+        "name": "Get Merchant me",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/merchants/me",
+        "params": [],
+        "headersList": [
+          {
+            "id": "afd0fd1a-2c81-403c-9fb3-979d78636419",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "d0381408-4ba8-4268-978e-925656c2296d",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "AUTH",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T06:36:28.369Z",
+      "updatedAt": "2026-08-24T06:36:28.369Z"
+    },
+    {
+      "id": "43bfe73d-a101-4c81-97d0-494cc2d36dc5",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "855480d9-0a2a-418a-9651-31ff471fa7b9",
+      "name": "Square check connection",
+      "request": {
+        "id": "c0359e3c-24bd-461c-8a59-3812cc396272",
+        "savedRequestId": "43bfe73d-a101-4c81-97d0-494cc2d36dc5",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "855480d9-0a2a-418a-9651-31ff471fa7b9",
+        "name": "Square check connection",
+        "graphqlRootField": "squareCheckConnection",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+            "key": "",
+            "value": "",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query SquareCheckConnection($data: SquareCheckConnectInputDto!) {\n  squareCheckConnection(data: $data)\n}",
+        "gqlVariables": "{\n  \"data\": {\n    \"accessToken\": \"EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK\",\n    \"environment\": \"SANDBOX\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T07:05:58.789Z",
+      "updatedAt": "2026-08-24T07:05:58.789Z"
+    },
+    {
+      "id": "aeddc318-45db-4864-82e6-fef154f05664",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "1d2a18d1-e2e3-4d00-b865-1e0746001508",
+      "name": "Square location sync",
+      "request": {
+        "id": "ce618015-38e4-4c7a-adbb-3a12b4150b11",
+        "savedRequestId": "aeddc318-45db-4864-82e6-fef154f05664",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "1d2a18d1-e2e3-4d00-b865-1e0746001508",
+        "name": "Square location sync",
+        "graphqlRootField": "squareLocationSync",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+            "key": "",
+            "value": "",
+            "enabled": true,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "mutation SquareLocationSync {\n  squareLocationSync {\n    total\n    created\n  }\n}",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T07:49:16.882Z",
+      "updatedAt": "2026-08-24T07:49:20.040Z"
+    },
+    {
+      "id": "ebc046bd-91c4-4d40-913a-52a5ffb4019f",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "1d2a18d1-e2e3-4d00-b865-1e0746001508",
+      "name": "Square location get list",
+      "request": {
+        "id": "d17509b4-3cf1-4f67-aa0d-de523823b2a2",
+        "savedRequestId": "ebc046bd-91c4-4d40-913a-52a5ffb4019f",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "1d2a18d1-e2e3-4d00-b865-1e0746001508",
+        "name": "Square location get list",
+        "graphqlRootField": "squareLocationGetList",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+            "key": "",
+            "value": "",
+            "enabled": true,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query SquareLocationGetList {\n  squareLocationGetList {\n    id\n    squareLocationId\n  }\n}",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "HEADERS",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T07:48:45.374Z",
+      "updatedAt": "2026-08-24T07:48:45.374Z"
+    },
+    {
+      "id": "92cd8788-0544-408b-844f-91f37da1c5a1",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "1d2a18d1-e2e3-4d00-b865-1e0746001508",
+      "name": "Square location get pagination",
+      "request": {
+        "id": "6abe94d4-6e6e-4727-985d-90014f81708b",
+        "savedRequestId": "92cd8788-0544-408b-844f-91f37da1c5a1",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "1d2a18d1-e2e3-4d00-b865-1e0746001508",
+        "name": "Square location get pagination",
+        "graphqlRootField": "squareLocationGetPagination",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
+            "key": "",
+            "value": "",
+            "enabled": true,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query SquareLocationGetPagination($filters: SquareLocationGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareLocationGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      squareLocationId\n      name\n      status\n      currency\n    }\n  }\n}",
+        "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T07:52:12.974Z",
+      "updatedAt": "2026-08-24T07:52:12.974Z"
     }
   ],
   "expandedCollectionIds": [
@@ -1520,9 +1794,10 @@
   ],
   "expandedFolderIds": [
     "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8",
-    "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
-    "3eba61de-7e93-497e-ab02-0daac97727ae",
-    "785cea12-b358-4f53-bf46-46ebd0bf368c",
-    "17476f73-a01d-445e-a8ac-f47db5efa0f6"
+    "a9abb7ec-7230-461e-90e6-91477704638c",
+    "72d3d982-0101-4ffa-9672-a04ee8a5798d",
+    "855480d9-0a2a-418a-9651-31ff471fa7b9",
+    "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
+    "1d2a18d1-e2e3-4d00-b865-1e0746001508"
   ]
 }

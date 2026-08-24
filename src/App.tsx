@@ -29,6 +29,7 @@ import {
 } from './utils/formatters'
 import {
   buildFinalHeaders,
+  formatBearerHeader,
   injectAuthToHeaders,
   injectAuthToUrl,
   resolveHeadersList,
@@ -1295,9 +1296,7 @@ function App() {
         )?.value?.trim()
 
         if (tokenVar) {
-          headers['Authorization'] = tokenVar.startsWith('Bearer ')
-            ? tokenVar
-            : `Bearer ${tokenVar}`
+          headers['Authorization'] = formatBearerHeader(tokenVar)
         }
       }
 

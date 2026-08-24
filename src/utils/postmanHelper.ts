@@ -138,9 +138,9 @@ export function importPostmanCollectionV2(jsonString: string): PostmanImportResu
               if (lowerKey === 'authorization') {
                 if (auth.type === 'none' && hObj.value) {
                   const val = hObj.value.trim()
-                  if (val.toLowerCase().startsWith('bearer ')) {
+                  if (/^bearer\s+/i.test(val)) {
                     auth.type = 'bearer'
-                    auth.bearerToken = val.slice(7).trim()
+                    auth.bearerToken = val.replace(/^bearer\s+/i, '').trim()
                   } else if (val.toLowerCase().startsWith('basic ')) {
                     auth.type = 'basic'
                     try {
