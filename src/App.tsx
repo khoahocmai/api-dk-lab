@@ -29,17 +29,13 @@ import {
 } from './utils/formatters'
 import {
   buildFinalHeaders,
-  formatBearerHeader,
-  injectAuthToHeaders,
   injectAuthToUrl,
-  resolveHeadersList,
   resolvePathVariables,
   resolveTemplates,
   shouldWarnDomainMismatch,
 } from './services/templateService'
 import { sendHttpRequest } from './services/httpService'
 import {
-  createDefaultAuth,
   createDefaultEnvironment,
   createDefaultRequest,
   loadAllWorkspaceData,
@@ -60,6 +56,7 @@ import {
   getGraphFieldKey,
   getGraphInputFieldKey,
   getGraphOutputFieldKey,
+  getIntrospectionEndpointAndHeaders,
   parseRelaxedJSON,
 } from './services/graphqlService'
 import { parseUrlToQueryParams } from './utils/urlHelper'
@@ -1231,28 +1228,11 @@ function App() {
   }
 
   const loadGraphSchema = async () => {
-    // 1. Determine rawUrl according to priority:
-    // Priority 1: URL from activeTab (if present and non-empty)
-    let rawUrl = activeTab?.url?.trim()
+    // 1. Luôn lấy Endpoint & Headers tải Schema từ Environment (Single Source of Truth, độc lập hoàn toàn khỏi activeTab)
+    const { resolvedUrl, headers } = getIntrospectionEndpointAndHeaders(activeEnvironment)
 
-    // Priority 2: When no active tab or activeTab.url is empty, get from activeEnvironment 'Domain' variable
-    if (!rawUrl) {
-      const domainVar = activeEnvironment?.variables.find(
-        (v) => v.enabled && v.key.trim().toLowerCase() === 'domain',
-      )?.value?.trim()
-
-      if (domainVar) {
-        rawUrl = `${domainVar.replace(/\/+$/, '')}/graphql`
-      } else {
-        rawUrl = '{{Domain}}/graphql'
-      }
-    }
-
-    // Resolve templates like {{Domain}} with activeEnvironment
-    let finalUrl = resolveTemplates(rawUrl, activeEnvironment).trim()
-
-    // Check if unresolved template remains or URL is empty
-    if (!finalUrl || finalUrl.includes('{{Domain}}') || finalUrl === '/graphql') {
+    // Kiểm tra nếu chưa có URL hoặc còn dính template unresolved
+    if (!resolvedUrl || resolvedUrl.includes('{{Domain}}') || resolvedUrl === '/graphql') {
       const msg = 'Vui lòng cấu hình biến {{Domain}} trong Environment để tải Schema.'
       showToast(msg)
       setGraphExplorer((current) => ({
@@ -1263,44 +1243,10 @@ function App() {
       return
     }
 
-    if (!finalUrl.startsWith('http://') && !finalUrl.startsWith('https://')) {
-      finalUrl = `http://${finalUrl}`
-    }
-
     setGraphExplorer((current) => ({ ...current, loading: true, error: '' }))
 
     try {
-      let headers: Record<string, string> = {
-        'Content-Type': 'application/json',
-      }
-
-      if (activeTab) {
-        const rawHeaders = resolveHeadersList(
-          activeTab.headersList || [],
-          activeTab.headersText || '{}',
-          activeEnvironment,
-        )
-        headers = injectAuthToHeaders(
-          { ...headers, ...rawHeaders },
-          activeTab.auth || createDefaultAuth(),
-          activeEnvironment,
-        )
-      } else {
-        // Fallback: check if activeEnvironment has 'token' or 'Authorization' variable
-        const tokenVar = activeEnvironment?.variables.find(
-          (v) =>
-            v.enabled &&
-            (v.key.trim().toLowerCase() === 'token' ||
-              v.key.trim().toLowerCase() === 'authorization' ||
-              v.key.trim().toLowerCase() === 'bearer'),
-        )?.value?.trim()
-
-        if (tokenVar) {
-          headers['Authorization'] = formatBearerHeader(tokenVar)
-        }
-      }
-
-      const extracted = await fetchGraphQLSchema(finalUrl, headers)
+      const extracted = await fetchGraphQLSchema(resolvedUrl, headers)
 
       setGraphExplorer((current) => ({
         ...current,

@@ -111,6 +111,12 @@
       "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
       "parentId": "855480d9-0a2a-418a-9651-31ff471fa7b9",
       "name": "Location"
+    },
+    {
+      "id": "690fb090-7384-465d-90e8-3fec17d7df42",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "parentId": null,
+      "name": "Checkout"
     }
   ],
   "savedRequests": [
@@ -963,61 +969,6 @@
       "updatedAt": "2026-08-24T03:28:58.509Z"
     },
     {
-      "id": "3fcff6ba-c2f5-44d0-8733-e7e93a0aab2e",
-      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
-      "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
-      "name": "Checkout",
-      "request": {
-        "id": "e3fb02f8-7fce-4129-b5f9-0248d2b00656",
-        "savedRequestId": "3fcff6ba-c2f5-44d0-8733-e7e93a0aab2e",
-        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
-        "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
-        "name": "Checkout",
-        "mode": "REST",
-        "method": "GET",
-        "url": "{{Domain}}/online-checkout/location-settings/:location_id",
-        "params": [],
-        "headersList": [
-          {
-            "id": "05ef367d-f750-449c-9778-228c8eff8562",
-            "key": "Square-Version",
-            "value": "2026-08-19",
-            "enabled": true,
-            "description": ""
-          },
-          {
-            "id": "9dbc9ed3-3f20-4a19-bd0c-c0d9367cc0bd",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
-          }
-        ],
-        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
-        "auth": {
-          "type": "bearer",
-          "bearerToken": "{{Token}}",
-          "basicUsername": "",
-          "basicPassword": "",
-          "apiKeyName": "",
-          "apiKeyValue": "",
-          "apiKeyAddTo": "header"
-        },
-        "bodyType": "none",
-        "restBody": "",
-        "rawText": "",
-        "formData": [],
-        "urlencoded": [],
-        "gqlQuery": "",
-        "gqlVariables": "{}",
-        "testScript": "",
-        "editorTab": "PARAMS",
-        "responseTab": "PRETTY"
-      },
-      "createdAt": "2026-08-24T03:25:58.200Z",
-      "updatedAt": "2026-08-24T03:39:20.198Z"
-    },
-    {
       "id": "5aa7b5b9-9c19-47be-9452-5510f9523b0c",
       "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
       "folderId": "1cf15ea2-d45c-45aa-b52e-75f08f343aa4",
@@ -1787,6 +1738,108 @@
       },
       "createdAt": "2026-08-24T07:52:12.974Z",
       "updatedAt": "2026-08-24T07:52:12.974Z"
+    },
+    {
+      "id": "3fcff6ba-c2f5-44d0-8733-e7e93a0aab2e",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "690fb090-7384-465d-90e8-3fec17d7df42",
+      "name": "Retrieve location settings",
+      "request": {
+        "id": "c97b9594-73c5-4910-bf71-6e783c312de9",
+        "savedRequestId": "3fcff6ba-c2f5-44d0-8733-e7e93a0aab2e",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "690fb090-7384-465d-90e8-3fec17d7df42",
+        "name": "Retrieve location settings",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/online-checkout/location-settings/:location_id",
+        "params": [],
+        "headersList": [
+          {
+            "id": "05ef367d-f750-449c-9778-228c8eff8562",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "9dbc9ed3-3f20-4a19-bd0c-c0d9367cc0bd",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "PARAMS",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-24T03:25:58.200Z",
+      "updatedAt": "2026-08-25T08:02:25.533Z"
+    },
+    {
+      "id": "25a48ab8-94bf-4cb9-88da-fb7b0f0e6156",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+      "name": "Create Location",
+      "request": {
+        "id": "1ad87262-7a74-4077-8b1e-4279ddbccd4a",
+        "savedRequestId": "25a48ab8-94bf-4cb9-88da-fb7b0f0e6156",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+        "name": "Create Location",
+        "mode": "REST",
+        "method": "POST",
+        "url": "{{Domain}}/locations",
+        "params": [],
+        "headersList": [
+          {
+            "id": "ed313cb2-9aac-41f0-a3c5-5c618ef0ce1c",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "json",
+        "restBody": "{\n  \"location\": {\n    \"name\": \"The Pizza Company Cầu Giấy - Q. Cầu Giấy\",\n    \"business_name\": \"The Pizza Company\",\n    \"phone_number\": \"+14155552671\",\n    \"timezone\": \"Asia/Ho_Chi_Minh\",\n    \"status\": \"ACTIVE\",\n    \"address\": {\n      \"address_line_1\": \"333 Cầu Giấy, P. Dịch Vọng, Q. Cầu Giấy\",\n      \"locality\": \"Ha Noi\",\n      \"administrative_district_level_1\": \"CA\",\n      \"postal_code\": \"94103\",\n      \"country\": \"US\"\n    },\n    \"coordinates\": {\n      \"latitude\": 21.035291,\n      \"longitude\": 105.7923853\n    },\n    \"description\": \"Chi nhánh Cầu Giấy - 333 Cầu Giấy, P. Dịch Vọng, TP Hà Nội\"\n  }\n}",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "HEADERS",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-25T08:03:26.435Z",
+      "updatedAt": "2026-08-25T08:03:26.435Z"
     }
   ],
   "expandedCollectionIds": [
@@ -1794,10 +1847,10 @@
   ],
   "expandedFolderIds": [
     "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8",
-    "a9abb7ec-7230-461e-90e6-91477704638c",
     "72d3d982-0101-4ffa-9672-a04ee8a5798d",
     "855480d9-0a2a-418a-9651-31ff471fa7b9",
     "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
-    "1d2a18d1-e2e3-4d00-b865-1e0746001508"
+    "1d2a18d1-e2e3-4d00-b865-1e0746001508",
+    "3bd48a75-0a8c-4312-9be3-c4545f7a3164"
   ]
 }

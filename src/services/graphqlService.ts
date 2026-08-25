@@ -16,9 +16,52 @@ import {
   type GraphQLOutputType,
   type SelectionSetNode,
 } from 'graphql'
-import type { GraphField, GraphInputField, GraphOutputField } from '../types'
+import type { EnvironmentItem, GraphField, GraphInputField, GraphOutputField } from '../types'
 import { capitalize, sanitizeVariableName } from '../utils/formatters'
 import { sendHttpRequest } from './httpService'
+import { resolveTemplates } from './templateService'
+
+export function getIntrospectionEndpointAndHeaders(activeEnvironment?: EnvironmentItem | null): {
+  resolvedUrl: string
+  headers: Record<string, string>
+} {
+  // 1. Luôn lấy Domain từ Environment đang kích hoạt
+  const domainVar = activeEnvironment?.variables.find(
+    (v) => v.enabled && v.key.trim().toLowerCase() === 'domain',
+  )?.value?.trim()
+
+  const rawUrl = domainVar
+    ? `${domainVar.replace(/\/+$/, '')}/graphql`
+    : '{{Domain}}/graphql'
+
+  // 2. Resolve template sang URL thực tế
+  let resolvedUrl = resolveTemplates(rawUrl, activeEnvironment).trim()
+  if (resolvedUrl && !resolvedUrl.startsWith('http://') && !resolvedUrl.startsWith('https://')) {
+    resolvedUrl = `http://${resolvedUrl}`
+  }
+
+  // 3. Lấy Token Authorization từ Environment (nếu có)
+  const tokenVar = activeEnvironment?.variables.find(
+    (v) =>
+      v.enabled &&
+      (v.key.trim().toLowerCase() === 'token' || v.key.trim().toLowerCase() === 'authorization'),
+  )?.value?.trim()
+
+  const resolvedToken = tokenVar ? resolveTemplates(tokenVar, activeEnvironment).trim() : ''
+
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+    ...(resolvedToken
+      ? {
+          Authorization: resolvedToken.toLowerCase().startsWith('bearer ')
+            ? resolvedToken
+            : `Bearer ${resolvedToken}`,
+        }
+      : {}),
+  }
+
+  return { resolvedUrl, headers }
+}
 
 export function emptyValueForInputType(type: GraphQLInputType, seen = new Set<string>()): unknown {
   if (isNonNullType(type)) return emptyValueForInputType(type.ofType, seen)
