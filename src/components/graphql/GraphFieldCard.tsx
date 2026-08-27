@@ -79,10 +79,12 @@ function GraphArgNode({
   const [isExpanded, setIsExpanded] = useState(() => hasSelectedChild)
 
   useEffect(() => {
-    if (hasSelectedChild) {
+    if (selectedKeys.length === 0) {
+      setIsExpanded(false)
+    } else if (hasSelectedChild) {
       setIsExpanded(true)
     }
-  }, [hasSelectedChild, highlightTrigger])
+  }, [hasSelectedChild, highlightTrigger, selectedKeys.length])
 
   return (
     <div className="graph-tree-node">
@@ -197,10 +199,12 @@ function GraphOutputFieldNode({
   const [isExpanded, setIsExpanded] = useState(() => isAnyChildSelected)
 
   useEffect(() => {
-    if (isAnyChildSelected) {
+    if (selectedKeys.length === 0) {
+      setIsExpanded(false)
+    } else if (isAnyChildSelected) {
       setIsExpanded(true)
     }
-  }, [isAnyChildSelected, highlightTrigger])
+  }, [isAnyChildSelected, highlightTrigger, selectedKeys.length])
 
   if (!hasChildren) {
     // Leaf / Scalar Output Field
@@ -311,10 +315,13 @@ export function GraphFieldCard({
   const cardRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (isHighlighted) {
+    if (selectedKeys.length === 0 && !isHighlighted) {
+      setIsExpanded(false)
+      setHighlightActive(false)
+    } else if (isHighlighted) {
       setIsExpanded(true)
     }
-  }, [isHighlighted])
+  }, [selectedKeys.length, isHighlighted])
 
   useEffect(() => {
     if (highlightTrigger && isHighlighted) {

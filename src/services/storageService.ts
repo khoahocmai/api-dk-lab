@@ -123,6 +123,7 @@ export function stripTransientRequest(request: RequestItem): PersistedRequestIte
     testScript: request.testScript,
     editorTab: request.editorTab,
     responseTab: request.responseTab,
+    savedSnapshot: request.savedSnapshot,
   }
 }
 
@@ -408,19 +409,18 @@ export async function loadSettings(): Promise<PersistedSettingsData> {
       settings,
       activeEnvironmentId: data.activeEnvironmentId,
       activeTabId: data.activeTabId,
-      tabs: Array.isArray(data.tabs) ? data.tabs : undefined,
+      tabs: Array.isArray(data.tabs) ? data.tabs : [],
       splitLayout: data.splitLayout,
       isSidebarCollapsed: data.isSidebarCollapsed,
       isExplorerOpen: data.isExplorerOpen,
     }
   }
 
-  const defaultTabs = [stripTransientRequest(createDefaultRequest('GRAPHQL'))]
   return {
     settings: DEFAULT_APP_SETTINGS,
     activeEnvironmentId: '',
-    activeTabId: defaultTabs[0].id,
-    tabs: defaultTabs,
+    activeTabId: '',
+    tabs: [],
     splitLayout: 'horizontal',
     isSidebarCollapsed: false,
     isExplorerOpen: false,

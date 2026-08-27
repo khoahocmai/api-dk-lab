@@ -84,7 +84,7 @@ const MAX_HISTORY_ITEMS = 100
 function App() {
   useAppZoom()
 
-  const [tabs, setTabs] = useState<RequestItem[]>([createDefaultRequest('GRAPHQL')])
+  const [tabs, setTabs] = useState<RequestItem[]>([])
   const [activeTabId, setActiveTabId] = useState('')
   const [collections, setCollections] = useState<CollectionItem[]>([])
   const [folders, setFolders] = useState<FolderItem[]>([])
@@ -141,7 +141,7 @@ function App() {
   const [isHydrated, setIsHydrated] = useState(false)
 
   const activeTab = useMemo(
-    () => tabs.find((item) => item.id === activeTabId) ?? tabs[0],
+    () => (activeTabId ? tabs.find((item) => item.id === activeTabId) : undefined) ?? (tabs.length > 0 ? tabs[0] : undefined),
     [tabs, activeTabId],
   )
 
@@ -175,7 +175,14 @@ function App() {
 
   // Reverse Sync: Tab (gqlQuery & gqlVariables) -> GraphQL Explorer (Checkboxes) with 300ms Debounce
   useEffect(() => {
-    if (!activeTab || activeTab.mode !== 'GRAPHQL') return
+    if (!activeTab || activeTab.mode !== 'GRAPHQL') {
+      setSelectedGraphFieldKeys([])
+      setHighlightedField(null)
+      if (!activeTab) {
+        setGraphExplorer((prev) => (prev.search ? { ...prev, search: '' } : prev))
+      }
+      return
+    }
 
     // If change was triggered by user clicking in Explorer, skip reverse sync to prevent loop
     if (isUpdatingFromExplorerRef.current) {
@@ -203,6 +210,7 @@ function App() {
     return () => clearTimeout(timer)
   }, [
     activeTab?.id,
+    activeTab?.mode,
     activeTab?.gqlQuery,
     activeTab?.gqlVariables,
     activeTab?.graphqlRootField,
@@ -251,6 +259,9 @@ function App() {
               ? settingsData.activeTabId
               : revivedTabs[0].id
           setActiveTabId(targetTabId)
+        } else {
+          setTabs([])
+          setActiveTabId('')
         }
 
         if (settingsData.activeEnvironmentId === 'NO_ENV') {
@@ -290,9 +301,14 @@ function App() {
   useEffect(() => {
     if (!isHydrated) return
 
-    if (!activeTabId && tabs[0]) {
+    if (tabs.length === 0) {
+      if (activeTabId !== '') {
+        setActiveTabId('')
+      }
+    } else if (!activeTabId || !tabs.some((t) => t.id === activeTabId)) {
       setActiveTabId(tabs[0].id)
     }
+
     if (!activeEnvironmentId && activeEnvironmentId !== 'NO_ENV' && environments[0]) {
       setActiveEnvironmentId(environments[0].id)
     }
@@ -452,11 +468,20 @@ function App() {
     setTabs(nextTabs)
     if (nextTabs.length === 0) {
       setActiveTabId('')
+      setSelectedGraphFieldKeys([])
+      setHighlightedField(null)
+      setGraphExplorer((prev) => ({ ...prev, search: '' }))
       return
     }
 
     if (activeTabId === tabId) {
-      setActiveTabId(nextTabs[Math.max(0, currentIndex - 1)]?.id || nextTabs[0].id)
+      const nextTab = nextTabs[Math.max(0, currentIndex - 1)] || nextTabs[0]
+      setActiveTabId(nextTab.id)
+      if (nextTab.mode !== 'GRAPHQL') {
+        setSelectedGraphFieldKeys([])
+        setHighlightedField(null)
+        setGraphExplorer((prev) => ({ ...prev, search: '' }))
+      }
     }
   }
 
@@ -514,15 +539,16 @@ function App() {
     setPendingCloseTab(null)
   }
 
-  const duplicateTab = (source: RequestItem = activeTab) => {
-    if (!source) return
+  const duplicateTab = (source?: RequestItem) => {
+    const target = source || activeTab
+    if (!target) return
     const duplicate: RequestItem = {
-      ...source,
+      ...target,
       id: createId(),
       savedRequestId: undefined,
       collectionId: undefined,
       folderId: undefined,
-      name: `${source.name} Copy`,
+      name: `${target.name} Copy`,
       response: null,
       loading: false,
       clientError: '',
@@ -1457,13 +1483,17 @@ function App() {
   ) => {
     if (fields.length === 0) return
 
-    const generated = buildGraphOperationFromFields(kind, fields, keys)
+    const primaryField = fields[0]
+    const fieldKey = getGraphFieldKey(kind, primaryField.name)
+    const fieldPrefix = `${kind}:${primaryField.name}:`
+    const scopedKeys = keys
+      ? keys.filter((k) => k === fieldKey || k.startsWith(fieldPrefix))
+      : undefined
+
+    const generated = buildGraphOperationFromFields(kind, [primaryField], scopedKeys)
     const baseRequest = createDefaultRequest('GRAPHQL')
-    const tabName =
-      fields.length === 1
-        ? fields[0].name
-        : `${fields.length} ${kind} fields`
-    const primaryRootField = fields[0]?.name
+    const tabName = primaryField.name
+    const primaryRootField = primaryField.name
 
     // Inherit URL, headers, and auth from current active tab if available, else default
     const inheritedUrl =
@@ -1498,6 +1528,7 @@ function App() {
       collectionId: undefined,
       folderId: undefined,
     }
+    newTab.savedSnapshot = createRequestSnapshot(newTab)
 
     setTabs((current) => [...current, newTab])
     setActiveTabId(newTab.id)
@@ -1509,14 +1540,12 @@ function App() {
     nextKeys: string[],
     kind: 'query' | 'mutation',
   ) => {
-    const fields = kind === 'mutation' ? graphExplorer.mutationFields : graphExplorer.queryFields
-    const selectedFields = fields.filter((f) =>
-      nextKeys.includes(getGraphFieldKey(kind, f.name)),
-    )
+    const fieldKey = getGraphFieldKey(kind, field.name)
+    const fieldPrefix = `${kind}:${field.name}:`
+    const scopedKeys = nextKeys.filter((k) => k === fieldKey || k.startsWith(fieldPrefix))
 
-    if (selectedFields.length === 0) return
-
-    const generated = buildGraphOperationFromFields(kind, selectedFields, nextKeys)
+    // Always generate operation strictly for ONLY this single field
+    const generated = buildGraphOperationFromFields(kind, [field], scopedKeys)
 
     // 1. Guard check: Is activeTab currently matching this API (regardless of name or savedRequestId)?
     const isCurrentTabMatching = isTabMatchingGraphQLApi(activeTab, field.name)
@@ -1637,6 +1666,7 @@ function App() {
       collectionId: undefined,
       folderId: undefined,
     }
+    newTab.savedSnapshot = createRequestSnapshot(newTab)
 
     isUpdatingFromExplorerRef.current = true
     setTabs((current) => [...current, newTab])
@@ -1701,7 +1731,11 @@ function App() {
   const toggleGraphArg = (field: GraphField, arg: GraphArg, checked: boolean) => {
     const fieldKey = getGraphFieldKey(currentGraphOperationKind, field.name)
     const argKey = getGraphArgKey(currentGraphOperationKind, field.name, arg.name)
-    let nextKeys = new Set(selectedGraphFieldKeys)
+    const fieldPrefix = `${currentGraphOperationKind}:${field.name}:`
+    const baseKeys = selectedGraphFieldKeys.filter(
+      (k) => k === fieldKey || k.startsWith(fieldPrefix),
+    )
+    let nextKeys = new Set(baseKeys)
 
     if (checked) {
       nextKeys.add(fieldKey)
@@ -1753,7 +1787,11 @@ function App() {
       arg.name,
       inputField.name,
     )
-    let nextKeys = new Set(selectedGraphFieldKeys)
+    const fieldPrefix = `${currentGraphOperationKind}:${field.name}:`
+    const baseKeys = selectedGraphFieldKeys.filter(
+      (k) => k === fieldKey || k.startsWith(fieldPrefix),
+    )
+    let nextKeys = new Set(baseKeys)
 
     if (checked) {
       nextKeys.add(fieldKey)
@@ -1793,7 +1831,11 @@ function App() {
   ) => {
     const fieldKey = getGraphFieldKey(currentGraphOperationKind, field.name)
     const outKey = getGraphOutputFieldKey(currentGraphOperationKind, field.name, path)
-    let nextKeys = new Set(selectedGraphFieldKeys)
+    const fieldPrefix = `${currentGraphOperationKind}:${field.name}:`
+    const baseKeys = selectedGraphFieldKeys.filter(
+      (k) => k === fieldKey || k.startsWith(fieldPrefix),
+    )
+    let nextKeys = new Set(baseKeys)
 
     if (checked) {
       nextKeys.add(fieldKey)

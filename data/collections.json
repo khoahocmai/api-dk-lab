@@ -207,6 +207,18 @@
       "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
       "parentId": "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
       "name": "Order"
+    },
+    {
+      "id": "3d6946a8-8c7c-47e7-9a5d-c14772c1a9b3",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
+      "name": "Category"
+    },
+    {
+      "id": "ab934993-9c72-4386-bd8e-3e72044f3301",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
+      "name": "Customer"
     }
   ],
   "savedRequests": [
@@ -578,14 +590,15 @@
         "rawText": "",
         "formData": [],
         "urlencoded": [],
-        "gqlQuery": "query KiotVietBranchGetPagination($filters: KiotVietBranchGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietBranchGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      kiotvietBranchId\n      branchName\n      retailerId\n      email\n      kiotvietModifiedAt\n      kiotvietCreatedAt\n      lastSyncedAt\n      locationName\n      address\n    }\n  }\n}",
+        "gqlQuery": "query KiotVietBranchGetPagination($filters: KiotVietBranchGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietBranchGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      kiotvietBranchId\n      branchName\n      retailerId\n      email\n      kiotvietModifiedAt\n      kiotvietCreatedAt\n      lastSyncedAt\n      locationName\n      address\n      wardName\n    }\n  }\n}",
         "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
         "testScript": "",
         "editorTab": "BODY",
-        "responseTab": "PRETTY"
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"KiotViet branch get pagination\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietBranchGetPagination\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"Authorization\",\"value\":\"Bearer {{token}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietBranchGetPagination($filters: KiotVietBranchGetPaginationFilterDto!, $params: PaginationDto!) {\\n  kiotVietBranchGetPagination(filters: $filters, params: $params) {\\n    total\\n    items {\\n      id\\n      kiotvietBranchId\\n      branchName\\n      retailerId\\n      email\\n      kiotvietModifiedAt\\n      kiotvietCreatedAt\\n      lastSyncedAt\\n      locationName\\n      address\\n    }\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"filters\\\": {\\n    \\\"keywords\\\": \\\"\\\"\\n  },\\n  \\\"params\\\": {\\n    \\\"page\\\": 1,\\n    \\\"pageSize\\\": 20,\\n    \\\"sortBy\\\": \\\"createdAt\\\",\\n    \\\"sortDirection\\\": \\\"DESC\\\"\\n  }\\n}\",\"testScript\":\"\"}"
       },
       "createdAt": "2026-08-21T10:24:01.220Z",
-      "updatedAt": "2026-08-27T03:19:17.158Z"
+      "updatedAt": "2026-08-27T03:20:29.463Z"
     },
     {
       "id": "d25c79ba-a8bd-455d-b536-3b5282933bbe",
@@ -3501,6 +3514,350 @@
       },
       "createdAt": "2026-08-27T03:08:42.190Z",
       "updatedAt": "2026-08-27T03:09:35.037Z"
+    },
+    {
+      "id": "82b08c0a-0b5e-4a3d-b140-27b18dfdd966",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "3d6946a8-8c7c-47e7-9a5d-c14772c1a9b3",
+      "name": "KiotViet category get pagination",
+      "request": {
+        "id": "849c8d4e-5081-4c74-9d5a-3890736d9682",
+        "savedRequestId": "82b08c0a-0b5e-4a3d-b140-27b18dfdd966",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "3d6946a8-8c7c-47e7-9a5d-c14772c1a9b3",
+        "name": "KiotViet category get pagination",
+        "graphqlRootField": "kiotVietCategoryGetPagination",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "d323952e-1d16-477d-afdb-b4b654c43efb",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "ghost-tail-row",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query KiotVietCategoryGetPagination($filters: KiotVietCategoryGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietCategoryGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      kiotvietCategoryId\n      parentId\n      retailerId\n      categoryName\n      hasChild\n      kiotvietModifiedAt\n      kiotvietCreatedAt\n      lastSyncedAt\n    }\n  }\n}",
+        "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "HEADERS",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"kiotVietCategoryGetPagination\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietCategoryGetPagination\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietCategoryGetPagination($params: PaginationDto!) {\\n  kiotVietCategoryGetPagination(params: $params) {\\n    total\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"params\\\": {\\n    \\\"page\\\": 0,\\n    \\\"pageSize\\\": 0\\n  }\\n}\",\"testScript\":\"\"}"
+      },
+      "createdAt": "2026-08-27T03:24:24.389Z",
+      "updatedAt": "2026-08-27T03:24:24.389Z"
+    },
+    {
+      "id": "5bf8b0c5-2c50-4684-bc3e-6731745d9d98",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "3d6946a8-8c7c-47e7-9a5d-c14772c1a9b3",
+      "name": "KiotViet category get by id",
+      "request": {
+        "id": "8f98ca8f-1bb7-4523-a370-5b58b125dfa5",
+        "savedRequestId": "5bf8b0c5-2c50-4684-bc3e-6731745d9d98",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "3d6946a8-8c7c-47e7-9a5d-c14772c1a9b3",
+        "name": "KiotViet category get by id",
+        "graphqlRootField": "kiotVietCategoryGetById",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "d323952e-1d16-477d-afdb-b4b654c43efb",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "ghost-tail-row",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query KiotVietCategoryGetById($request: RequestParams!) {\n  kiotVietCategoryGetById(request: $request) {\n    id\n    kiotvietCategoryId\n    parentId\n    categoryName\n    retailerId\n    hasChild\n    kiotvietModifiedAt\n    kiotvietCreatedAt\n    lastSyncedAt\n  }\n}",
+        "gqlVariables": "{\n  \"request\": {\n    \"id\": \"019ff499-8dd3-73ce-92f7-252997c13037\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"KiotViet category get by id\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietCategoryGetById\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietCategoryGetById($request: RequestParams!) {\\n  kiotVietCategoryGetById(request: $request) {\\n    id\\n    kiotvietCategoryId\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"019ff499-8dd3-73ce-92f7-252997c13037\\\"\\n  }\\n}\",\"testScript\":\"\"}"
+      },
+      "createdAt": "2026-08-27T03:25:08.868Z",
+      "updatedAt": "2026-08-27T03:25:17.871Z"
+    },
+    {
+      "id": "78718ea0-6ad8-45d2-a109-8f387011ed8b",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "3d6946a8-8c7c-47e7-9a5d-c14772c1a9b3",
+      "name": "KiotViet category get by 3rd lookup",
+      "request": {
+        "id": "1197ba5f-25bd-4f8d-a7fc-bb1fbb099cd0",
+        "savedRequestId": "78718ea0-6ad8-45d2-a109-8f387011ed8b",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "3d6946a8-8c7c-47e7-9a5d-c14772c1a9b3",
+        "name": "KiotViet category get by 3rd lookup",
+        "graphqlRootField": "kiotVietCategoryGetBy3rdLookup",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "d323952e-1d16-477d-afdb-b4b654c43efb",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "ghost-tail-row",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query KiotVietCategoryGetBy3rdLookup($request: KiotVietCategoryGetBy3rdLookupDto!) {\n  kiotVietCategoryGetBy3rdLookup(request: $request) {\n    categoryId\n    categoryName\n    retailerId\n    parentId\n    hasChild\n    createdDate\n    modifiedDate\n  }\n}",
+        "gqlVariables": "{\n  \"request\": {\n    \"categoryId\": \"\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"KiotViet category get by 3rd lookup\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietCategoryGetBy3rdLookup\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietCategoryGetBy3rdLookup($request: KiotVietCategoryGetBy3rdLookupDto!) {\\n  kiotVietCategoryGetBy3rdLookup(request: $request) {\\n    categoryId\\n    categoryName\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"categoryId\\\": \\\"\\\"\\n  }\\n}\",\"testScript\":\"\"}"
+      },
+      "createdAt": "2026-08-27T03:30:05.280Z",
+      "updatedAt": "2026-08-27T03:30:13.117Z"
+    },
+    {
+      "id": "c9911fda-2327-4e63-833e-6ccf3b9ce473",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "58f397c3-0b7c-47ec-a41e-7a4f0a9e859b",
+      "name": "KiotViet product get by 3rd lookup",
+      "request": {
+        "id": "2fa9ca3d-b887-4bbc-b5fa-f4e34ae92375",
+        "savedRequestId": "c9911fda-2327-4e63-833e-6ccf3b9ce473",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "58f397c3-0b7c-47ec-a41e-7a4f0a9e859b",
+        "name": "KiotViet product get by 3rd lookup",
+        "graphqlRootField": "kiotVietProductGetBy3rdLookup",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "d323952e-1d16-477d-afdb-b4b654c43efb",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "ghost-tail-row",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query KiotVietProductGetBy3rdLookup($input: KiotVietLookupInputDto!) {\n  kiotVietProductGetBy3rdLookup(input: $input) {\n    id\n    code\n    retailerId\n    allowsSale\n    name\n    categoryId\n    categoryName\n    productType\n    isTopping\n    isProcessedGoods\n    isTimeType\n    isRewardPoint\n    fullName\n    description\n    orderTemplate\n    hasVariants\n    unit\n    masterUnitId\n    masterProductId\n    conversionValue\n    basePrice\n    weight\n    modifiedDate\n    createdDate\n    inventories {\n      productId\n      branchId\n      branchName\n      cost\n      onHand\n      reserved\n    }\n    priceBooks {\n      priceBookId\n      priceBookName\n      productId\n      isActive\n      price\n      startDate\n      endDate\n    }\n  }\n}",
+        "gqlVariables": "{\n  \"input\": {\n    \"type\": \"\",\n    \"value\": \"\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"kiotVietProductGetBy3rdLookup\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietProductGetBy3rdLookup\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietProductGetBy3rdLookup($input: KiotVietLookupInputDto!) {\\n  kiotVietProductGetBy3rdLookup(input: $input) {\\n    id\\n    code\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"input\\\": {\\n    \\\"type\\\": \\\"\\\",\\n    \\\"value\\\": \\\"\\\"\\n  }\\n}\",\"testScript\":\"\"}"
+      },
+      "createdAt": "2026-08-27T03:30:53.665Z",
+      "updatedAt": "2026-08-27T03:30:53.665Z"
+    },
+    {
+      "id": "cccb00c9-1a5c-4460-a9dc-ffc39e375e7a",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "ab934993-9c72-4386-bd8e-3e72044f3301",
+      "name": "KiotViet customer get pagination",
+      "request": {
+        "id": "9ea82a83-a220-4a25-84ac-9e0ea999f466",
+        "savedRequestId": "cccb00c9-1a5c-4460-a9dc-ffc39e375e7a",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "ab934993-9c72-4386-bd8e-3e72044f3301",
+        "name": "KiotViet customer get pagination",
+        "graphqlRootField": "kiotVietCustomerGetPagination",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "d323952e-1d16-477d-afdb-b4b654c43efb",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "ghost-tail-row",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query KiotVietCustomerGetPagination($filters: KiotVietCustomerGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietCustomerGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      kiotvietCustomerId\n      code\n      name\n      gender\n      birthDate\n      contactNumber\n      address\n      locationName\n      email\n      organization\n      comment\n      taxCode\n      debt\n      totalInvoiced\n      totalPoint\n      totalRevenue\n      retailerId\n      kiotvietModifiedAt\n      kiotvietCreatedAt\n      lastSyncedAt\n    }\n  }\n}",
+        "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"kiotVietCustomerGetPagination\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietCustomerGetPagination\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietCustomerGetPagination($params: PaginationDto!) {\\n  kiotVietCustomerGetPagination(params: $params) {\\n    total\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"params\\\": {\\n    \\\"page\\\": 0,\\n    \\\"pageSize\\\": 0\\n  }\\n}\",\"testScript\":\"\"}"
+      },
+      "createdAt": "2026-08-27T03:31:43.152Z",
+      "updatedAt": "2026-08-27T03:31:43.152Z"
+    },
+    {
+      "id": "65856d76-4240-4918-a852-847e1783b291",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "ab934993-9c72-4386-bd8e-3e72044f3301",
+      "name": "KiotViet customer get by id",
+      "request": {
+        "id": "9997e5c2-d4f0-4a13-89a9-9b608cbf3e56",
+        "savedRequestId": "65856d76-4240-4918-a852-847e1783b291",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "ab934993-9c72-4386-bd8e-3e72044f3301",
+        "name": "KiotViet customer get by id",
+        "graphqlRootField": "kiotVietCustomerGetById",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "d323952e-1d16-477d-afdb-b4b654c43efb",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "ghost-tail-row",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query KiotVietCustomerGetById($request: RequestParams!) {\n  kiotVietCustomerGetById(request: $request) {\n    id\n    kiotvietCustomerId\n    code\n    name\n    gender\n    birthDate\n    contactNumber\n    address\n    locationName\n    email\n    organization\n    comment\n    taxCode\n    debt\n    totalInvoiced\n    totalPoint\n    totalRevenue\n    retailerId\n    kiotvietModifiedAt\n    kiotvietCreatedAt\n    lastSyncedAt\n  }\n}",
+        "gqlVariables": "{\n  \"request\": {\n    \"id\": \"\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"KiotViet customer get by id\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietCustomerGetById\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietCustomerGetById($request: RequestParams!) {\\n  kiotVietCustomerGetById(request: $request) {\\n    id\\n    kiotvietCustomerId\\n    code\\n    name\\n    gender\\n    birthDate\\n    contactNumber\\n    address\\n    locationName\\n    email\\n    organization\\n    comment\\n    taxCode\\n    debt\\n    totalInvoiced\\n    totalPoint\\n    totalRevenue\\n    retailerId\\n    kiotvietModifiedAt\\n    kiotvietCreatedAt\\n    lastSyncedAt\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"\\\"\\n  }\\n}\",\"testScript\":\"\"}"
+      },
+      "createdAt": "2026-08-27T03:32:10.354Z",
+      "updatedAt": "2026-08-27T03:32:14.434Z"
     }
   ],
   "expandedCollectionIds": [
@@ -3512,6 +3869,8 @@
     "58f397c3-0b7c-47ec-a41e-7a4f0a9e859b",
     "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
     "3eba61de-7e93-497e-ab02-0daac97727ae",
-    "785cea12-b358-4f53-bf46-46ebd0bf368c"
+    "3d6946a8-8c7c-47e7-9a5d-c14772c1a9b3",
+    "1ab43b4b-9819-4feb-9633-716b7bdf4ccc",
+    "ab934993-9c72-4386-bd8e-3e72044f3301"
   ]
 }

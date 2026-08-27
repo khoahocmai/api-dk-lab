@@ -1,5 +1,860 @@
 [
   {
+    "id": "299cda41-20a1-4186-a213-6ee0403e4394",
+    "timestamp": "2026-08-27T03:31:30.561Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 67,
+    "request": {
+      "id": "9ea82a83-a220-4a25-84ac-9e0ea999f466",
+      "name": "kiotVietCustomerGetPagination",
+      "graphqlRootField": "kiotVietCustomerGetPagination",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "d323952e-1d16-477d-afdb-b4b654c43efb",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "ghost-tail-row",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query KiotVietCustomerGetPagination($filters: KiotVietCustomerGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietCustomerGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      kiotvietCustomerId\n      code\n      name\n      gender\n      birthDate\n      contactNumber\n      address\n      locationName\n      email\n      organization\n      comment\n      taxCode\n      debt\n      totalInvoiced\n      totalPoint\n      totalRevenue\n      retailerId\n      kiotvietModifiedAt\n      kiotvietCreatedAt\n      lastSyncedAt\n    }\n  }\n}",
+      "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"kiotVietCustomerGetPagination\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietCustomerGetPagination\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietCustomerGetPagination($params: PaginationDto!) {\\n  kiotVietCustomerGetPagination(params: $params) {\\n    total\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"params\\\": {\\n    \\\"page\\\": 0,\\n    \\\"pageSize\\\": 0\\n  }\\n}\",\"testScript\":\"\"}"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "67 ms",
+      "size": "10.7 KB",
+      "data": {
+        "data": {
+          "kiotVietCustomerGetPagination": {
+            "total": 173,
+            "items": [
+              {
+                "id": "01a03283-d891-727c-9feb-3174840e887c",
+                "kiotvietCustomerId": "1973072",
+                "code": "DXP-019C8B7A51",
+                "name": "yến",
+                "gender": null,
+                "birthDate": null,
+                "contactNumber": "0375398949",
+                "address": "678/62/35 nguyễn ảnh thủ (cụm khu công nghiệp quang trung), 1",
+                "locationName": null,
+                "email": "legacy_6213720@invalid.local",
+                "organization": null,
+                "comment": null,
+                "taxCode": null,
+                "debt": null,
+                "totalInvoiced": null,
+                "totalPoint": null,
+                "totalRevenue": null,
+                "retailerId": "501181252",
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-24T06:44:56.623Z",
+                "lastSyncedAt": "2026-08-24T06:44:56.593Z"
+              },
+              {
+                "id": "01a03283-d5ca-741a-b0fd-da335c71471f",
+                "kiotvietCustomerId": "1973071",
+                "code": "DXP-019C8BA2AA",
+                "name": "Phạm Thị Minh Tâm",
+                "gender": null,
+                "birthDate": null,
+                "contactNumber": "0367675107",
+                "address": "Tòa nhà Việt Á, Duy Tân, 9",
+                "locationName": null,
+                "email": "pminhtam567@gmail.com",
+                "organization": null,
+                "comment": null,
+                "taxCode": null,
+                "debt": null,
+                "totalInvoiced": null,
+                "totalPoint": null,
+                "totalRevenue": null,
+                "retailerId": "501181252",
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-24T06:44:55.770Z",
+                "lastSyncedAt": "2026-08-24T06:44:55.882Z"
+              },
+              {
+                "id": "01a03283-47a6-703b-b471-e161b7226260",
+                "kiotvietCustomerId": "1973069",
+                "code": "DXP-019C8BA19F",
+                "name": "Hà Trung Kiên",
+                "gender": null,
+                "birthDate": null,
+                "contactNumber": "0989921014",
+                "address": "Xô Viết Nghệ Tĩnh, 520/3",
+                "locationName": null,
+                "email": "htkien99@gmail.com",
+                "organization": null,
+                "comment": null,
+                "taxCode": null,
+                "debt": null,
+                "totalInvoiced": null,
+                "totalPoint": null,
+                "totalRevenue": null,
+                "retailerId": "501181252",
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-24T06:44:21.210Z",
+                "lastSyncedAt": "2026-08-24T06:44:19.494Z"
+              },
+              {
+                "id": "01a0327b-6e45-704f-8c4e-463995332179",
+                "kiotvietCustomerId": "1973054",
+                "code": "DXP-019C8A1289",
+                "name": "Shin Béo",
+                "gender": null,
+                "birthDate": null,
+                "contactNumber": "0934696510",
+                "address": "105-107 Nguyễn Thái Học, Phường Cầu Ông Lãnh, Quận 1, Hồ Chí Minh",
+                "locationName": null,
+                "email": "shinshintarox5@gmail.com",
+                "organization": null,
+                "comment": null,
+                "taxCode": null,
+                "debt": null,
+                "totalInvoiced": null,
+                "totalPoint": null,
+                "totalRevenue": null,
+                "retailerId": "501181252",
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-24T06:35:46.700Z",
+                "lastSyncedAt": "2026-08-24T06:35:45.093Z"
+              },
+              {
+                "id": "01a03278-3c24-7547-b46f-085e2d9a21b7",
+                "kiotvietCustomerId": "1973038",
+                "code": "DXP-019C8B613B",
+                "name": "Nguyễn Quỳnh",
+                "gender": null,
+                "birthDate": null,
+                "contactNumber": "0972726565",
+                "address": "Đường số 1, Block H chung cư EhomeS",
+                "locationName": null,
+                "email": "legacy_2348538@invalid.local",
+                "organization": null,
+                "comment": null,
+                "taxCode": null,
+                "debt": null,
+                "totalInvoiced": null,
+                "totalPoint": null,
+                "totalRevenue": null,
+                "retailerId": "501181252",
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-24T06:32:16.117Z",
+                "lastSyncedAt": "2026-08-24T06:32:15.652Z"
+              },
+              {
+                "id": "01a03277-e2c4-733b-b622-476f8dcc0881",
+                "kiotvietCustomerId": "1973037",
+                "code": "DXP-019C8BA3AC",
+                "name": "Nguyễn Thị Phương Thảo",
+                "gender": null,
+                "birthDate": null,
+                "contactNumber": "0984874191",
+                "address": "Nguyễn Hữu Cảnh, 92",
+                "locationName": null,
+                "email": "phuongthao020164@gmail.com",
+                "organization": null,
+                "comment": null,
+                "taxCode": null,
+                "debt": null,
+                "totalInvoiced": null,
+                "totalPoint": null,
+                "totalRevenue": null,
+                "retailerId": "501181252",
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-24T06:31:53.780Z",
+                "lastSyncedAt": "2026-08-24T06:31:52.772Z"
+              },
+              {
+                "id": "01a03277-b56b-7768-9eea-ff3c71662708",
+                "kiotvietCustomerId": "1973036",
+                "code": "DXP-019C8B5EBE",
+                "name": "A Hoàng IT",
+                "gender": null,
+                "birthDate": null,
+                "contactNumber": "0906027345",
+                "address": "Trần Nhân Tôn, 77",
+                "locationName": null,
+                "email": "",
+                "organization": null,
+                "comment": null,
+                "taxCode": null,
+                "debt": null,
+                "totalInvoiced": null,
+                "totalPoint": null,
+                "totalRevenue": null,
+                "retailerId": "501181252",
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-24T06:31:41.470Z",
+                "lastSyncedAt": "2026-08-24T06:31:41.163Z"
+              },
+              {
+                "id": "01a03277-77c8-741d-81ea-9f0d491efeca",
+                "kiotvietCustomerId": "1973034",
+                "code": "DXP-019C8BA571",
+                "name": "Phan Quỳnh Chi",
+                "gender": null,
+                "birthDate": null,
+                "contactNumber": "0837378919",
+                "address": "Tòa A Chung cư 789 Mỹ Đình, 1",
+                "locationName": null,
+                "email": "phanchi2611@gmail.com",
+                "organization": null,
+                "comment": null,
+                "taxCode": null,
+                "debt": null,
+                "totalInvoiced": null,
+                "totalPoint": null,
+                "totalRevenue": null,
+                "retailerId": "501181252",
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-24T06:31:26.800Z",
+                "lastSyncedAt": "2026-08-24T06:31:25.384Z"
+              },
+              {
+                "id": "01a03276-f0ad-722c-8556-e509aa7968b0",
+                "kiotvietCustomerId": "1973033",
+                "code": "DXP-019C8B9BF5",
+                "name": "Ngô Bảo Tín",
+                "gender": null,
+                "birthDate": null,
+                "contactNumber": "0358683688",
+                "address": "Hẻm 656/74 Quang Trung, 28",
+                "locationName": null,
+                "email": "ngobaotin296@gmail.com",
+                "organization": null,
+                "comment": null,
+                "taxCode": null,
+                "debt": null,
+                "totalInvoiced": null,
+                "totalPoint": null,
+                "totalRevenue": null,
+                "retailerId": "501181252",
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-24T06:30:51.967Z",
+                "lastSyncedAt": "2026-08-24T06:30:50.797Z"
+              },
+              {
+                "id": "01a03271-2270-718c-8af0-18a0f6ea8633",
+                "kiotvietCustomerId": "1973014",
+                "code": "DXP-019C8B8854",
+                "name": "Ái",
+                "gender": null,
+                "birthDate": null,
+                "contactNumber": "0388100687",
+                "address": "Cô Bắc, 252a1",
+                "locationName": null,
+                "email": "aintt263@gmail.com",
+                "organization": null,
+                "comment": null,
+                "taxCode": null,
+                "debt": null,
+                "totalInvoiced": null,
+                "totalPoint": null,
+                "totalRevenue": null,
+                "retailerId": "501181252",
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-24T06:24:32.163Z",
+                "lastSyncedAt": "2026-08-24T06:24:30.320Z"
+              },
+              {
+                "id": "01a03270-1b29-74a9-8312-f28066952d8a",
+                "kiotvietCustomerId": "1973009",
+                "code": "DXP-019C8B9F8A",
+                "name": "Vũ Hoàng",
+                "gender": null,
+                "birthDate": null,
+                "contactNumber": "0768101099",
+                "address": "Hẻm 652, Cộng Hòa, 36",
+                "locationName": null,
+                "email": "feed.vkh@gmail.com",
+                "organization": null,
+                "comment": null,
+                "taxCode": null,
+                "debt": null,
+                "totalInvoiced": null,
+                "totalPoint": null,
+                "totalRevenue": null,
+                "retailerId": "501181252",
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-24T06:23:24.537Z",
+                "lastSyncedAt": "2026-08-24T06:23:22.921Z"
+              },
+              {
+                "id": "01a0326f-e170-7781-a8a2-f30cfd5a639c",
+                "kiotvietCustomerId": "1973008",
+                "code": "DXP-019C8BA548",
+                "name": "Trúc Đào",
+                "gender": null,
+                "birthDate": null,
+                "contactNumber": "0706640408",
+                "address": "19c, 1",
+                "locationName": null,
+                "email": "legacy_27490251@invalid.local",
+                "organization": null,
+                "comment": null,
+                "taxCode": null,
+                "debt": null,
+                "totalInvoiced": null,
+                "totalPoint": null,
+                "totalRevenue": null,
+                "retailerId": "501181252",
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-24T06:23:08.590Z",
+                "lastSyncedAt": "2026-08-24T06:23:08.144Z"
+              },
+              {
+                "id": "01a0326f-d27d-744c-85d2-5b2606dc3ce5",
+                "kiotvietCustomerId": "1973007",
+                "code": "DXP-019C8BA47B",
+                "name": "Minh Trang",
+                "gender": null,
+                "birthDate": null,
+                "contactNumber": "0944978689",
+                "address": "Ngõ 86, Phố Duy Tân, 1",
+                "locationName": null,
+                "email": "legacy_25233407@invalid.local",
+                "organization": null,
+                "comment": null,
+                "taxCode": null,
+                "debt": null,
+                "totalInvoiced": null,
+                "totalPoint": null,
+                "totalRevenue": null,
+                "retailerId": "501181252",
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-24T06:23:04.203Z",
+                "lastSyncedAt": "2026-08-24T06:23:04.317Z"
+              },
+              {
+                "id": "01a0326f-93f1-75de-ad16-85fce2d5b9b3",
+                "kiotvietCustomerId": "1973006",
+                "code": "DXP-019C8B9E6F",
+                "name": "A Thiện",
+                "gender": null,
+                "birthDate": null,
+                "contactNumber": "0914717618",
+                "address": "Phạm Thái Bường, 293",
+                "locationName": null,
+                "email": "0914717618@yourstore.com",
+                "organization": null,
+                "comment": null,
+                "taxCode": null,
+                "debt": null,
+                "totalInvoiced": null,
+                "totalPoint": null,
+                "totalRevenue": null,
+                "retailerId": "501181252",
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-24T06:22:49.813Z",
+                "lastSyncedAt": "2026-08-24T06:22:48.305Z"
+              },
+              {
+                "id": "01a0326f-14f3-716c-ac45-4d4ed6701ba2",
+                "kiotvietCustomerId": "1966775",
+                "code": "DXP-019C8B5EF1",
+                "name": "Trương Thị Trà My",
+                "gender": null,
+                "birthDate": null,
+                "contactNumber": "0944888897",
+                "address": "HOÀNG HOA THÁM, 237",
+                "locationName": null,
+                "email": "truongtramy1988@gmail.com",
+                "organization": null,
+                "comment": null,
+                "taxCode": null,
+                "debt": null,
+                "totalInvoiced": null,
+                "totalPoint": null,
+                "totalRevenue": null,
+                "retailerId": "501181252",
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-21T09:36:18.300Z",
+                "lastSyncedAt": "2026-08-24T06:22:15.795Z"
+              },
+              {
+                "id": "01a0326d-69f8-771e-9396-69bb839becfd",
+                "kiotvietCustomerId": "1973000",
+                "code": "DXP-019C8BA4C7",
+                "name": "Liên Gia Vĩ Kiện",
+                "gender": null,
+                "birthDate": null,
+                "contactNumber": "0903019442",
+                "address": "141 Lô A chung cư Ấn Quang đường Bà Hạt, 141",
+                "locationName": null,
+                "email": "bleachbo8@gmail.com",
+                "organization": null,
+                "comment": null,
+                "taxCode": null,
+                "debt": null,
+                "totalInvoiced": null,
+                "totalPoint": null,
+                "totalRevenue": null,
+                "retailerId": "501181252",
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-24T06:20:26.800Z",
+                "lastSyncedAt": "2026-08-24T06:20:26.488Z"
+              },
+              {
+                "id": "01a0326c-3308-70f6-8ef9-835fc4269a79",
+                "kiotvietCustomerId": "1972996",
+                "code": "DXP-019C8BA718",
+                "name": "Phan Gia Huy",
+                "gender": null,
+                "birthDate": null,
+                "contactNumber": "0896425304",
+                "address": "Đường Số 3, Cư Xá Lữ Gia, 46",
+                "locationName": null,
+                "email": "huyp12349111@gmail.com",
+                "organization": null,
+                "comment": null,
+                "taxCode": null,
+                "debt": null,
+                "totalInvoiced": null,
+                "totalPoint": null,
+                "totalRevenue": null,
+                "retailerId": "501181252",
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-24T06:19:08.340Z",
+                "lastSyncedAt": "2026-08-24T06:19:06.888Z"
+              },
+              {
+                "id": "01a0326c-1f1e-7209-a182-c3f183f19a76",
+                "kiotvietCustomerId": "1972995",
+                "code": "DXP-019C8B8229",
+                "name": "Lâm Thị Thanh Trúc",
+                "gender": null,
+                "birthDate": null,
+                "contactNumber": "0918734188",
+                "address": "Ấp Bắc, 42",
+                "locationName": null,
+                "email": "sylvietruc@hotmail.com",
+                "organization": null,
+                "comment": null,
+                "taxCode": null,
+                "debt": null,
+                "totalInvoiced": null,
+                "totalPoint": null,
+                "totalRevenue": null,
+                "retailerId": "501181252",
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-24T06:19:02.977Z",
+                "lastSyncedAt": "2026-08-24T06:19:01.790Z"
+              },
+              {
+                "id": "01a0326b-f87e-751c-aee9-7cb399874c2b",
+                "kiotvietCustomerId": "1972994",
+                "code": "DXP-019C8B9E9C",
+                "name": "Nguyễn Ngọc Tuấn",
+                "gender": null,
+                "birthDate": null,
+                "contactNumber": "0981135198",
+                "address": "Hẻm 120, Trần Bình, 5",
+                "locationName": null,
+                "email": "nguyenngoctuan031199@gmail.com",
+                "organization": null,
+                "comment": null,
+                "taxCode": null,
+                "debt": null,
+                "totalInvoiced": null,
+                "totalPoint": null,
+                "totalRevenue": null,
+                "retailerId": "501181252",
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-24T06:18:52.180Z",
+                "lastSyncedAt": "2026-08-24T06:18:51.902Z"
+              },
+              {
+                "id": "01a0326b-f865-77c2-9ea7-1552e7273e65",
+                "kiotvietCustomerId": "1972993",
+                "code": "DXP-019C8B9181",
+                "name": "Hoàng Anh",
+                "gender": null,
+                "birthDate": null,
+                "contactNumber": "0901699558",
+                "address": "Đường Số 11, Khu dân cư Him Lam 6A, 79",
+                "locationName": null,
+                "email": "legacy_9277588@invalid.local",
+                "organization": null,
+                "comment": null,
+                "taxCode": null,
+                "debt": null,
+                "totalInvoiced": null,
+                "totalPoint": null,
+                "totalRevenue": null,
+                "retailerId": "501181252",
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-24T06:18:51.890Z",
+                "lastSyncedAt": "2026-08-24T06:18:51.877Z"
+              }
+            ]
+          }
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "10996",
+        "date": "Thu, 27 Aug 2026 03:31:31 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "f40c3304-f346-414a-a984-1d6e65ad50d9",
+    "timestamp": "2026-08-27T03:25:17.142Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 46,
+    "request": {
+      "id": "8f98ca8f-1bb7-4523-a370-5b58b125dfa5",
+      "savedRequestId": "5bf8b0c5-2c50-4684-bc3e-6731745d9d98",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "3d6946a8-8c7c-47e7-9a5d-c14772c1a9b3",
+      "name": "KiotViet category get by id",
+      "graphqlRootField": "kiotVietCategoryGetById",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "d323952e-1d16-477d-afdb-b4b654c43efb",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "ghost-tail-row",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": "",
+          "type": "text"
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query KiotVietCategoryGetById($request: RequestParams!) {\n  kiotVietCategoryGetById(request: $request) {\n    id\n    kiotvietCategoryId\n    parentId\n    categoryName\n    retailerId\n    hasChild\n    kiotvietModifiedAt\n    kiotvietCreatedAt\n    lastSyncedAt\n  }\n}",
+      "gqlVariables": "{\n  \"request\": {\n    \"id\": \"019ff499-8dd3-73ce-92f7-252997c13037\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"KiotViet category get by id\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietCategoryGetById\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietCategoryGetById($request: RequestParams!) {\\n  kiotVietCategoryGetById(request: $request) {\\n    id\\n    kiotvietCategoryId\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"019ff499-8dd3-73ce-92f7-252997c13037\\\"\\n  }\\n}\",\"testScript\":\"\"}"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "46 ms",
+      "size": "319 B",
+      "data": {
+        "data": {
+          "kiotVietCategoryGetById": {
+            "id": "019ff499-8dd3-73ce-92f7-252997c13037",
+            "kiotvietCategoryId": "604546",
+            "parentId": null,
+            "categoryName": "BIA & THUỐC LÁ",
+            "retailerId": "501181252",
+            "hasChild": null,
+            "kiotvietModifiedAt": null,
+            "kiotvietCreatedAt": "2026-08-03T01:51:54.250Z",
+            "lastSyncedAt": "2026-08-17T06:44:35.167Z"
+          }
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "320",
+        "date": "Thu, 27 Aug 2026 03:25:19 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "89a9363f-4392-4174-a9fc-3acfcadaa1ff",
+    "timestamp": "2026-08-27T03:24:11.209Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 779,
+    "request": {
+      "id": "849c8d4e-5081-4c74-9d5a-3890736d9682",
+      "name": "kiotVietCategoryGetPagination",
+      "graphqlRootField": "kiotVietCategoryGetPagination",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "d323952e-1d16-477d-afdb-b4b654c43efb",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "ghost-tail-row",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": "",
+          "type": "text"
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query KiotVietCategoryGetPagination($filters: KiotVietCategoryGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietCategoryGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      kiotvietCategoryId\n      parentId\n      retailerId\n      categoryName\n      hasChild\n      kiotvietModifiedAt\n      kiotvietCreatedAt\n      lastSyncedAt\n    }\n  }\n}",
+      "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"kiotVietCategoryGetPagination\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietCategoryGetPagination\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietCategoryGetPagination($params: PaginationDto!) {\\n  kiotVietCategoryGetPagination(params: $params) {\\n    total\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"params\\\": {\\n    \\\"page\\\": 0,\\n    \\\"pageSize\\\": 0\\n  }\\n}\",\"testScript\":\"\"}"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "779 ms",
+      "size": "1.4 KB",
+      "data": {
+        "data": {
+          "kiotVietCategoryGetPagination": {
+            "total": 5,
+            "items": [
+              {
+                "id": "019ff499-8dd3-73ce-92f7-252997c13037",
+                "kiotvietCategoryId": "604546",
+                "parentId": null,
+                "retailerId": "501181252",
+                "categoryName": "BIA & THUỐC LÁ",
+                "hasChild": null,
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-03T01:51:54.250Z",
+                "lastSyncedAt": "2026-08-17T06:44:35.167Z"
+              },
+              {
+                "id": "019ff499-8dc9-747b-8ace-8b874cf36ebf",
+                "kiotvietCategoryId": "604543",
+                "parentId": null,
+                "retailerId": "501181252",
+                "categoryName": "MÓN KHAI VỊ",
+                "hasChild": null,
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-03T01:51:54.247Z",
+                "lastSyncedAt": "2026-08-17T06:44:35.160Z"
+              },
+              {
+                "id": "019ff499-8dbf-7335-8465-377ec5b0b552",
+                "kiotvietCategoryId": "604544",
+                "parentId": null,
+                "retailerId": "501181252",
+                "categoryName": "SÚP",
+                "hasChild": null,
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-03T01:51:54.247Z",
+                "lastSyncedAt": "2026-08-17T06:44:35.155Z"
+              },
+              {
+                "id": "019ff499-8db6-7472-a002-56086ddf1942",
+                "kiotvietCategoryId": "604545",
+                "parentId": null,
+                "retailerId": "501181252",
+                "categoryName": "TEA",
+                "hasChild": null,
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-03T01:51:54.247Z",
+                "lastSyncedAt": "2026-08-17T06:44:35.148Z"
+              },
+              {
+                "id": "019ff499-8daa-713a-bcd4-1cc1b1ed9d7f",
+                "kiotvietCategoryId": "604542",
+                "parentId": null,
+                "retailerId": "501181252",
+                "categoryName": "CLASSIC COCKTAILS",
+                "hasChild": null,
+                "kiotvietModifiedAt": null,
+                "kiotvietCreatedAt": "2026-08-03T01:51:54.243Z",
+                "lastSyncedAt": "2026-08-17T06:44:35.141Z"
+              }
+            ]
+          }
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "1450",
+        "date": "Thu, 27 Aug 2026 03:24:13 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "969d7558-1138-47f6-9ad8-520fe82cc88e",
+    "timestamp": "2026-08-27T03:23:58.538Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 55,
+    "request": {
+      "id": "849c8d4e-5081-4c74-9d5a-3890736d9682",
+      "name": "kiotVietCategoryGetPagination",
+      "graphqlRootField": "kiotVietCategoryGetPagination",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "d323952e-1d16-477d-afdb-b4b654c43efb",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query KiotVietCategoryGetPagination($filters: KiotVietCategoryGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietCategoryGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      kiotvietCategoryId\n      parentId\n      retailerId\n      categoryName\n      hasChild\n      kiotvietModifiedAt\n      kiotvietCreatedAt\n      lastSyncedAt\n    }\n  }\n}",
+      "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"kiotVietCategoryGetPagination\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietCategoryGetPagination\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietCategoryGetPagination($params: PaginationDto!) {\\n  kiotVietCategoryGetPagination(params: $params) {\\n    total\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"params\\\": {\\n    \\\"page\\\": 0,\\n    \\\"pageSize\\\": 0\\n  }\\n}\",\"testScript\":\"\"}"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "55 ms",
+      "size": "253 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Unauthorized",
+            "path": [
+              "kiotVietCategoryGetPagination"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "UNAUTHENTICATED",
+              "originalError": {
+                "message": "Unauthorized",
+                "statusCode": 401
+              }
+            },
+            "code": "UNAUTHENTICATED"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "254",
+        "date": "Thu, 27 Aug 2026 03:24:01 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
     "id": "66e58772-ea5b-4cc4-b2bb-e33b305f91b0",
     "timestamp": "2026-08-27T03:09:28.337Z",
     "method": "GQL",
@@ -13629,374 +14484,6 @@
         "content-type": "application/json; charset=utf-8",
         "content-length": "246",
         "date": "Mon, 24 Aug 2026 07:04:32 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "828cbe70-595f-4834-9b92-ef0fb28f521b",
-    "timestamp": "2026-08-24T07:04:04.998Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 5,
-    "request": {
-      "id": "c0359e3c-24bd-461c-8a59-3812cc396272",
-      "name": "squareCheckConnection",
-      "graphqlRootField": "squareCheckConnection",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": "",
-          "type": "text"
-        },
-        {
-          "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
-          "key": "",
-          "value": "",
-          "enabled": true,
-          "description": "",
-          "type": "text"
-        }
-      ],
-      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query SquareCheckConnection($data: SquareCheckConnectInputDto!) {\n  squareCheckConnection(data: $data)\n}",
-      "gqlVariables": "{\n  \"data\": {\n    \"accessToken\": \"EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK\",\n    \"environment\": \"SANDBOX\"\n  }\n}",
-      "testScript": "",
-      "editorTab": "HEADERS",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "5 ms",
-      "size": "245 B",
-      "data": {
-        "errors": [
-          {
-            "message": "Unauthorized",
-            "path": [
-              "squareCheckConnection"
-            ],
-            "locations": [
-              {
-                "line": 2,
-                "column": 3
-              }
-            ],
-            "extensions": {
-              "code": "UNAUTHENTICATED",
-              "originalError": {
-                "message": "Unauthorized",
-                "statusCode": 401
-              }
-            },
-            "code": "UNAUTHENTICATED"
-          }
-        ],
-        "data": null
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "246",
-        "date": "Mon, 24 Aug 2026 07:04:04 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "3145ef38-fa5e-4dbe-a17b-da54fcb9868c",
-    "timestamp": "2026-08-24T07:03:53.076Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 12,
-    "request": {
-      "id": "c0359e3c-24bd-461c-8a59-3812cc396272",
-      "name": "squareCheckConnection",
-      "graphqlRootField": "squareCheckConnection",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "ddf6f706-1e32-4845-b42e-765ba773d41a",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": "",
-          "type": "text"
-        },
-        {
-          "id": "dcb8e550-5742-4025-bafe-0f99c11ebb52",
-          "key": "",
-          "value": "",
-          "enabled": true,
-          "description": "",
-          "type": "text"
-        }
-      ],
-      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query SquareCheckConnection($data: SquareCheckConnectInputDto!) {\n  squareCheckConnection(data: $data)\n}",
-      "gqlVariables": "{\n  \"data\": {\n    \"accessToken\": \"EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK\",\n    \"environment\": \"SANDBOX\"\n  }\n}",
-      "testScript": "",
-      "editorTab": "HEADERS",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "12 ms",
-      "size": "245 B",
-      "data": {
-        "errors": [
-          {
-            "message": "Unauthorized",
-            "path": [
-              "squareCheckConnection"
-            ],
-            "locations": [
-              {
-                "line": 2,
-                "column": 3
-              }
-            ],
-            "extensions": {
-              "code": "UNAUTHENTICATED",
-              "originalError": {
-                "message": "Unauthorized",
-                "statusCode": 401
-              }
-            },
-            "code": "UNAUTHENTICATED"
-          }
-        ],
-        "data": null
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "246",
-        "date": "Mon, 24 Aug 2026 07:03:53 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "0a626f2b-376e-4986-9554-4410ffd1fa48",
-    "timestamp": "2026-08-24T07:02:15.476Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 29,
-    "request": {
-      "id": "c0359e3c-24bd-461c-8a59-3812cc396272",
-      "name": "squareCheckConnection",
-      "graphqlRootField": "squareCheckConnection",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "02a84daa-e988-4471-bf06-55faaf5ba774",
-          "key": "Content-Type",
-          "value": "application/json",
-          "enabled": true
-        }
-      ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\"\n}",
-      "auth": {
-        "type": "none",
-        "bearerToken": "",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query SquareCheckConnection($data: SquareCheckConnectInputDto!) {\n  squareCheckConnection(data: $data)\n}",
-      "gqlVariables": "{\n  \"data\": {\n    \"accessToken\": \"EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK\",\n    \"environment\": \"SANDBOX\"\n  }\n}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "29 ms",
-      "size": "245 B",
-      "data": {
-        "errors": [
-          {
-            "message": "Unauthorized",
-            "path": [
-              "squareCheckConnection"
-            ],
-            "locations": [
-              {
-                "line": 2,
-                "column": 3
-              }
-            ],
-            "extensions": {
-              "code": "UNAUTHENTICATED",
-              "originalError": {
-                "message": "Unauthorized",
-                "statusCode": 401
-              }
-            },
-            "code": "UNAUTHENTICATED"
-          }
-        ],
-        "data": null
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "246",
-        "date": "Mon, 24 Aug 2026 07:02:16 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "4bba821e-aaca-4fac-ab31-dd9c64b48562",
-    "timestamp": "2026-08-24T06:59:16.546Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 16,
-    "request": {
-      "id": "c0359e3c-24bd-461c-8a59-3812cc396272",
-      "name": "squareCheckConnection",
-      "graphqlRootField": "squareCheckConnection",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "02a84daa-e988-4471-bf06-55faaf5ba774",
-          "key": "Content-Type",
-          "value": "application/json",
-          "enabled": true
-        }
-      ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\"\n}",
-      "auth": {
-        "type": "none",
-        "bearerToken": "",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query SquareCheckConnection($data: SquareCheckConnectInputDto!) {\n  squareCheckConnection(data: $data)\n}",
-      "gqlVariables": "{\n  \"data\": {\n    \"accessToken\": \"EAAAl63aXuVcggxyH1P1zsF6F-UaY-AN_LNt8Jv3P1tU9-WYtFTQJZEJsS8GE1qK\",\n    \"environment\": \"SANDBOX\"\n  }\n}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "16 ms",
-      "size": "245 B",
-      "data": {
-        "errors": [
-          {
-            "message": "Unauthorized",
-            "path": [
-              "squareCheckConnection"
-            ],
-            "locations": [
-              {
-                "line": 2,
-                "column": 3
-              }
-            ],
-            "extensions": {
-              "code": "UNAUTHENTICATED",
-              "originalError": {
-                "message": "Unauthorized",
-                "statusCode": 401
-              }
-            },
-            "code": "UNAUTHENTICATED"
-          }
-        ],
-        "data": null
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "246",
-        "date": "Mon, 24 Aug 2026 06:59:16 GMT",
         "connection": "keep-alive",
         "keep-alive": "timeout=72"
       },

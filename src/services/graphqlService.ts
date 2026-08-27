@@ -435,7 +435,8 @@ export function buildGraphOperationFromFields(
     return `  ${field.name}${argsText} {\n${selectionLines.join('\n')}\n  }`
   })
 
-  const operationName = fields.length === 1 ? capitalize(fields[0].name) : `Generated${capitalize(kind)}`
+  const primaryField = fields[0]
+  const operationName = primaryField ? capitalize(primaryField.name) : `Generated${capitalize(kind)}`
   const definitions = variableDefinitions.length ? `(${variableDefinitions.join(', ')})` : ''
 
   return {
