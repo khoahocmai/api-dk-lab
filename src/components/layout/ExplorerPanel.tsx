@@ -14,6 +14,7 @@ interface ExplorerPanelProps {
   graphExplorer: GraphExplorerState
   setGraphExplorer: React.Dispatch<React.SetStateAction<GraphExplorerState>>
   selectedGraphFieldKeys: string[]
+  highlightedField?: { name: string; trigger: number } | null
   onLoadSchema: () => Promise<void>
   onCloseMobile: () => void
   onOpenInTab: (field: GraphField) => void
@@ -21,6 +22,7 @@ interface ExplorerPanelProps {
   onToggleInputField?: (field: GraphField, arg: GraphArg, inputField: GraphInputField, checked: boolean) => void
   onToggleOutputField?: (field: GraphField, path: string, checked: boolean) => void
   onCloseExplorer?: () => void
+  onClearSearch?: () => void
 }
 
 export function ExplorerPanel({
@@ -29,6 +31,7 @@ export function ExplorerPanel({
   graphExplorer,
   setGraphExplorer,
   selectedGraphFieldKeys,
+  highlightedField,
   onLoadSchema,
   onCloseMobile,
   onOpenInTab,
@@ -36,6 +39,7 @@ export function ExplorerPanel({
   onToggleInputField,
   onToggleOutputField,
   onCloseExplorer,
+  onClearSearch,
 }: ExplorerPanelProps) {
   return (
     <aside
@@ -47,6 +51,7 @@ export function ExplorerPanel({
         graphExplorer={graphExplorer}
         setGraphExplorer={setGraphExplorer}
         selectedGraphFieldKeys={selectedGraphFieldKeys}
+        highlightedField={highlightedField}
         onLoadSchema={onLoadSchema}
         onCloseMobile={onCloseMobile}
         onOpenInTab={onOpenInTab}
@@ -54,6 +59,7 @@ export function ExplorerPanel({
         onToggleInputField={onToggleInputField}
         onToggleOutputField={onToggleOutputField}
         onCloseExplorer={onCloseExplorer}
+        onClearSearch={onClearSearch}
       />
     </aside>
   )

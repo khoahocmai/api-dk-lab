@@ -145,7 +145,7 @@ export function reviveRequest(request: Partial<PersistedRequestItem>): RequestIt
     id: h.id || createId(),
     key: h.key ?? '',
     value: h.value ?? '',
-    enabled: h.enabled ?? true,
+    enabled: (!h.key?.trim() && !h.value?.trim()) ? false : (h.enabled ?? true),
     description: h.description ?? '',
   }))
 

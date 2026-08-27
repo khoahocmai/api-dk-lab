@@ -117,6 +117,96 @@
       "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
       "parentId": null,
       "name": "Checkout"
+    },
+    {
+      "id": "3f45ac07-3a2d-4224-b42c-5213bf304968",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "parentId": null,
+      "name": "Order"
+    },
+    {
+      "id": "2c185edf-e9d2-4ce7-92a6-543b144a1e4a",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": "855480d9-0a2a-418a-9651-31ff471fa7b9",
+      "name": "Order"
+    },
+    {
+      "id": "69885208-f36a-4998-9719-fee48f863f5e",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": "855480d9-0a2a-418a-9651-31ff471fa7b9",
+      "name": "Customer"
+    },
+    {
+      "id": "3a85458e-32c5-4d95-b386-833c0c37b917",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": "855480d9-0a2a-418a-9651-31ff471fa7b9",
+      "name": "Catalog"
+    },
+    {
+      "id": "b0e3fd25-2b01-4bff-8562-627ede98182f",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": null,
+      "name": "Payment"
+    },
+    {
+      "id": "a56194f7-f072-4bcf-b6d0-eefc740efca7",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": "855480d9-0a2a-418a-9651-31ff471fa7b9",
+      "name": "Inventory"
+    },
+    {
+      "id": "088652cb-c507-4ab6-98bc-03bc834ef52d",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": "855480d9-0a2a-418a-9651-31ff471fa7b9",
+      "name": "Category"
+    },
+    {
+      "id": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": null,
+      "name": "Catalog"
+    },
+    {
+      "id": "bd12c7b5-951b-4a20-99e9-a8f9be185e3b",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
+      "name": "Product"
+    },
+    {
+      "id": "d140f597-5214-433b-b121-c1abb5204f83",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
+      "name": "Combo"
+    },
+    {
+      "id": "354c406b-60a1-42ac-be41-4f03da2bd168",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": null,
+      "name": "Search"
+    },
+    {
+      "id": "41fbf4bf-a747-4881-84cb-07b32e77924b",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": "855480d9-0a2a-418a-9651-31ff471fa7b9",
+      "name": "Webhook"
+    },
+    {
+      "id": "edcb5ff9-e17a-4657-9c97-c9c1ca0f6ea9",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": "855480d9-0a2a-418a-9651-31ff471fa7b9",
+      "name": "State"
+    },
+    {
+      "id": "58f397c3-0b7c-47ec-a41e-7a4f0a9e859b",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
+      "name": "Product"
+    },
+    {
+      "id": "1ab43b4b-9819-4feb-9633-716b7bdf4ccc",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
+      "name": "Order"
     }
   ],
   "savedRequests": [
@@ -263,13 +353,13 @@
       "id": "e0c7a17f-afa5-4166-abb3-5eb22132a9e6",
       "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
       "folderId": null,
-      "name": "health",
+      "name": "Health",
       "request": {
-        "id": "761c550d-95ae-4b7d-ab07-d38a809729b3",
+        "id": "64aa25c4-2712-4f73-b7d1-213fa82ddebc",
         "savedRequestId": "e0c7a17f-afa5-4166-abb3-5eb22132a9e6",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": null,
-        "name": "health",
+        "name": "Health",
         "graphqlRootField": "health",
         "mode": "GRAPHQL",
         "method": "POST",
@@ -277,21 +367,14 @@
         "params": [],
         "headersList": [
           {
-            "id": "abd922de-1830-4d56-91fe-788938a11282",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
-          },
-          {
-            "id": "b28bbff0-b7d1-4364-a859-c21a481bc5c0",
-            "key": "Authorization",
-            "value": "Bearer {{token}}",
-            "enabled": true,
+            "id": "4b180b54-f757-4abb-bb26-df57c7eb194b",
+            "key": "",
+            "value": "",
+            "enabled": false,
             "description": ""
           }
         ],
-        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\"\n}",
+        "headersText": "{}",
         "auth": {
           "type": "none",
           "bearerToken": "",
@@ -313,7 +396,7 @@
         "responseTab": "PRETTY"
       },
       "createdAt": "2026-08-21T05:26:37.459Z",
-      "updatedAt": "2026-08-21T06:24:06.889Z"
+      "updatedAt": "2026-08-27T02:13:40.650Z"
     },
     {
       "id": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
@@ -321,7 +404,7 @@
       "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
       "name": "Tenant get list",
       "request": {
-        "id": "aff9c337-4eda-41b7-8148-07a1026aa4c6",
+        "id": "4d7faecc-6dec-4d08-8ef7-efef61de8ca2",
         "savedRequestId": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
@@ -369,7 +452,7 @@
         "responseTab": "PRETTY"
       },
       "createdAt": "2026-08-21T05:26:46.894Z",
-      "updatedAt": "2026-08-24T07:47:25.952Z"
+      "updatedAt": "2026-08-25T08:43:25.213Z"
     },
     {
       "id": "e99d94b1-c03f-4f53-87a0-189b2fad8d62",
@@ -440,7 +523,7 @@
       "folderId": "3eba61de-7e93-497e-ab02-0daac97727ae",
       "name": "KiotViet branch get pagination",
       "request": {
-        "id": "8a100543-4fc6-48a3-85ee-d98d1d57ff5c",
+        "id": "b7718e9a-ce1c-428b-9ee0-e4aea757035c",
         "savedRequestId": "c1ad8d59-9cce-45dc-b91e-f91ef779b4de",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": "3eba61de-7e93-497e-ab02-0daac97727ae",
@@ -455,13 +538,15 @@
             "id": "6274bea9-2d5b-462d-bbe6-a0776d595d87",
             "key": "Content-Type",
             "value": "application/json",
-            "enabled": true
+            "enabled": true,
+            "description": ""
           },
           {
             "id": "98f17cce-b64a-4fc7-8071-3348748b9f25",
             "key": "Authorization",
             "value": "Bearer {{token}}",
-            "enabled": true
+            "enabled": true,
+            "description": ""
           },
           {
             "id": "19d8cd28-a2be-4779-9f9c-6d2a33effa58",
@@ -474,7 +559,7 @@
             "id": "06ec2bd0-fae4-493e-b475-73081cc41baa",
             "key": "",
             "value": "",
-            "enabled": true,
+            "enabled": false,
             "description": ""
           }
         ],
@@ -493,14 +578,14 @@
         "rawText": "",
         "formData": [],
         "urlencoded": [],
-        "gqlQuery": "query KiotVietBranchGetPagination($filters: KiotVietBranchGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietBranchGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      kiotvietBranchId\n    }\n  }\n}",
+        "gqlQuery": "query KiotVietBranchGetPagination($filters: KiotVietBranchGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietBranchGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      kiotvietBranchId\n      branchName\n      address\n      locationName\n      wardName\n      retailerId\n      email\n      kiotvietModifiedAt\n      kiotvietCreatedAt\n      lastSyncedAt\n    }\n  }\n}",
         "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
         "testScript": "",
         "editorTab": "BODY",
         "responseTab": "PRETTY"
       },
       "createdAt": "2026-08-21T10:24:01.220Z",
-      "updatedAt": "2026-08-21T10:24:01.220Z"
+      "updatedAt": "2026-08-27T03:08:23.929Z"
     },
     {
       "id": "d25c79ba-a8bd-455d-b536-3b5282933bbe",
@@ -1840,17 +1925,1593 @@
       },
       "createdAt": "2026-08-25T08:03:26.435Z",
       "updatedAt": "2026-08-25T08:03:26.435Z"
+    },
+    {
+      "id": "db7ab6ee-7b20-448a-afef-8427db37b193",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "3f45ac07-3a2d-4224-b42c-5213bf304968",
+      "name": "Create Order",
+      "request": {
+        "id": "4b915b5b-31e4-468a-991e-0b2f6fced678",
+        "savedRequestId": "db7ab6ee-7b20-448a-afef-8427db37b193",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "3f45ac07-3a2d-4224-b42c-5213bf304968",
+        "name": "Create Order",
+        "mode": "REST",
+        "method": "POST",
+        "url": "{{Domain}}/orders",
+        "params": [],
+        "headersList": [
+          {
+            "id": "775ffb31-8472-4132-b4cd-a3e566de6f57",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "json",
+        "restBody": "{\n  \"order\": {\n    \"discounts\": [],\n    \"fulfillments\": [],\n    \"line_items\": [\n      {}\n    ]\n  }\n}",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "HEADERS",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-25T08:26:05.215Z",
+      "updatedAt": "2026-08-25T08:41:13.644Z"
+    },
+    {
+      "id": "7f74556f-b1fc-4fc6-a2a6-497b19203676",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "2c185edf-e9d2-4ce7-92a6-543b144a1e4a",
+      "name": "Square order get pagination",
+      "request": {
+        "id": "8cb577e2-b2a4-4e1e-b0dd-997e7902ea75",
+        "savedRequestId": "7f74556f-b1fc-4fc6-a2a6-497b19203676",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "2c185edf-e9d2-4ce7-92a6-543b144a1e4a",
+        "name": "Square order get pagination",
+        "graphqlRootField": "squareOrderGetPagination",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "a40674d0-3a32-4b04-95ea-451e67a03ec6",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "085297e0-1847-4c34-bb63-369f9da94d43",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query SquareOrderGetPagination($filters: SquareOrderGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareOrderGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      orderId\n      squareOrderId\n      squareLocationId\n      state\n      totalMoneyAmount\n      currency\n      syncStatus\n      errorMessage\n      lastSyncedAt\n    }\n  }\n}",
+        "gqlVariables": "{\n  \"filters\": {\n    \"orderId\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "HEADERS",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-26T03:10:22.976Z",
+      "updatedAt": "2026-08-26T03:10:22.976Z"
+    },
+    {
+      "id": "a74c7c50-61d0-4c15-9852-687e052838b1",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "2c185edf-e9d2-4ce7-92a6-543b144a1e4a",
+      "name": "Square order get by id",
+      "request": {
+        "id": "111860ad-cd5c-4f0b-840e-6748902b8432",
+        "savedRequestId": "a74c7c50-61d0-4c15-9852-687e052838b1",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "2c185edf-e9d2-4ce7-92a6-543b144a1e4a",
+        "name": "Square order get by id",
+        "graphqlRootField": "squareOrderGetById",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "a40674d0-3a32-4b04-95ea-451e67a03ec6",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "085297e0-1847-4c34-bb63-369f9da94d43",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query SquareOrderGetById($request: RequestParams!) {\n  squareOrderGetById(request: $request) {\n    id\n    orderId\n    squareOrderId\n    squareLocationId\n    state\n    totalMoneyAmount\n    currency\n    syncStatus\n    errorMessage\n    lastSyncedAt\n  }\n}",
+        "gqlVariables": "{\n  \"request\": {\n    \"id\": \"01a03c06-b814-701c-b9d0-7e1879ee42be\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-26T03:12:34.521Z",
+      "updatedAt": "2026-08-26T03:12:34.521Z"
+    },
+    {
+      "id": "889482e9-e4c6-48d8-b9d1-983a05674ad8",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "2c185edf-e9d2-4ce7-92a6-543b144a1e4a",
+      "name": "Square order status sync",
+      "request": {
+        "id": "8b683176-bfe0-49da-8e4d-a6827bad1d40",
+        "savedRequestId": "889482e9-e4c6-48d8-b9d1-983a05674ad8",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "2c185edf-e9d2-4ce7-92a6-543b144a1e4a",
+        "name": "Square order status sync",
+        "graphqlRootField": "squareOrderStatusSync",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "a40674d0-3a32-4b04-95ea-451e67a03ec6",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "085297e0-1847-4c34-bb63-369f9da94d43",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "mutation SquareOrderStatusSync($squareOrderId: String!) {\n  squareOrderStatusSync(squareOrderId: $squareOrderId) {\n    id\n    orderId\n    squareOrderId\n    squareLocationId\n    state\n    totalMoneyAmount\n    currency\n    syncStatus\n    errorMessage\n    lastSyncedAt\n  }\n}",
+        "gqlVariables": "{\n  \"squareOrderId\": \"MH1TrJ6ayEgsZQQZEb9zFoouUPFZY\"\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-26T03:12:52.445Z",
+      "updatedAt": "2026-08-26T03:12:52.445Z"
+    },
+    {
+      "id": "6b16cddd-eec5-44b8-bdb8-feda3eb8e63e",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "69885208-f36a-4998-9719-fee48f863f5e",
+      "name": "Square customer sync",
+      "request": {
+        "id": "328b5cc8-b000-492a-9511-7b49daac2c44",
+        "savedRequestId": "6b16cddd-eec5-44b8-bdb8-feda3eb8e63e",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "69885208-f36a-4998-9719-fee48f863f5e",
+        "name": "Square customer sync",
+        "graphqlRootField": "squareCustomerSync",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "a40674d0-3a32-4b04-95ea-451e67a03ec6",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "085297e0-1847-4c34-bb63-369f9da94d43",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "mutation SquareCustomerSync($syncMode: String) {\n  squareCustomerSync(syncMode: $syncMode) {\n    total\n    created\n    updated\n    failed\n    syncedAt\n    message\n  }\n}",
+        "gqlVariables": "{\n  \"syncMode\": \"FULL\"\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-26T03:13:37.168Z",
+      "updatedAt": "2026-08-26T03:13:44.874Z"
+    },
+    {
+      "id": "8e6c01d4-83b8-4961-b575-6a50e422ddcd",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "69885208-f36a-4998-9719-fee48f863f5e",
+      "name": "Square customer get pagination",
+      "request": {
+        "id": "66e695ad-cc9b-4b43-a4d0-7efc82d35183",
+        "savedRequestId": "8e6c01d4-83b8-4961-b575-6a50e422ddcd",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "69885208-f36a-4998-9719-fee48f863f5e",
+        "name": "Square customer get pagination",
+        "graphqlRootField": "squareCustomerGetPagination",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "566f8c45-589a-4727-9f7c-0a5d2f259c50",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true
+          },
+          {
+            "id": "a938fcae-49bd-455b-b2e9-3236d28767bf",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query SquareCustomerGetPagination($filters: SquareCustomerGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareCustomerGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      squareCustomerId\n      givenName\n      familyName\n      emailAddress\n      phoneNumber\n      companyName\n      nickname\n      address\n      version\n      isDeleted\n      lastSyncedAt\n    }\n  }\n}",
+        "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "HEADERS",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-26T03:14:48.216Z",
+      "updatedAt": "2026-08-26T03:14:49.442Z"
+    },
+    {
+      "id": "0ed4d0b0-470b-4c00-a876-d1606bd58554",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "69885208-f36a-4998-9719-fee48f863f5e",
+      "name": "Square customer get by id",
+      "request": {
+        "id": "0b0f1066-1a56-423a-8631-d5c24a2dedff",
+        "savedRequestId": "0ed4d0b0-470b-4c00-a876-d1606bd58554",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "69885208-f36a-4998-9719-fee48f863f5e",
+        "name": "Square customer get by id",
+        "graphqlRootField": "squareCustomerGetById",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "566f8c45-589a-4727-9f7c-0a5d2f259c50",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true
+          },
+          {
+            "id": "a938fcae-49bd-455b-b2e9-3236d28767bf",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query SquareCustomerGetById($request: RequestParams!) {\n  squareCustomerGetById(request: $request) {\n    id\n    squareCustomerId\n    givenName\n    familyName\n    emailAddress\n    companyName\n    nickname\n    phoneNumber\n    address\n    version\n    isDeleted\n    lastSyncedAt\n  }\n}",
+        "gqlVariables": "{\n  \"request\": {\n    \"id\": \"01a03c06-b804-7129-aa1f-fbce01695621\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-26T03:15:11.006Z",
+      "updatedAt": "2026-08-26T03:15:33.177Z"
+    },
+    {
+      "id": "091a34fe-638c-496a-ac4f-255eca07c8a1",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "b0e3fd25-2b01-4bff-8562-627ede98182f",
+      "name": "Payment update status transactions",
+      "request": {
+        "id": "b518fa80-9094-4db3-aafb-96780aee5cd7",
+        "savedRequestId": "091a34fe-638c-496a-ac4f-255eca07c8a1",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "b0e3fd25-2b01-4bff-8562-627ede98182f",
+        "name": "Payment update status transactions",
+        "graphqlRootField": "paymentUpdateStatusTransactions",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "62c0d41a-488a-4ce4-968a-0d1aaa9921ef",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true
+          },
+          {
+            "id": "48753b76-2aa9-4b50-98e1-1757f56b9aef",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "mutation PaymentUpdateStatusTransactions($request: PaymentUpdateStatusTransactionsDto!) {\n  paymentUpdateStatusTransactions(request: $request) {\n    processed\n    success\n  }\n}",
+        "gqlVariables": "{\n  \"request\": {\n    \"limit\": 100\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-26T06:25:23.915Z",
+      "updatedAt": "2026-08-26T06:25:23.915Z"
+    },
+    {
+      "id": "8c4f4dea-3570-4d1f-a133-7ca66ce5736c",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "3a85458e-32c5-4d95-b386-833c0c37b917",
+      "name": "Square category sync",
+      "request": {
+        "id": "03dba6d0-8f94-498d-a23a-c0808f596e23",
+        "savedRequestId": "8c4f4dea-3570-4d1f-a133-7ca66ce5736c",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "3a85458e-32c5-4d95-b386-833c0c37b917",
+        "name": "Square category sync",
+        "graphqlRootField": "squareCategorySync",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "62c0d41a-488a-4ce4-968a-0d1aaa9921ef",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true
+          },
+          {
+            "id": "48753b76-2aa9-4b50-98e1-1757f56b9aef",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "mutation SquareCategorySync($syncMode: String) {\n  squareCategorySync(syncMode: $syncMode) {\n    total\n    created\n    updated\n    failed\n    syncedAt\n    message\n  }\n}",
+        "gqlVariables": "{\n  \"syncMode\": \"FULL\"\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-26T06:35:24.475Z",
+      "updatedAt": "2026-08-26T06:36:11.736Z"
+    },
+    {
+      "id": "c6e6679a-9abe-417d-8f48-b6e5da6be744",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "a56194f7-f072-4bcf-b6d0-eefc740efca7",
+      "name": "Square inventory sync",
+      "request": {
+        "id": "04bcdc83-8a0f-4bda-8482-fa638a4b0219",
+        "savedRequestId": "c6e6679a-9abe-417d-8f48-b6e5da6be744",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "a56194f7-f072-4bcf-b6d0-eefc740efca7",
+        "name": "Square inventory sync",
+        "graphqlRootField": "squareInventorySync",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "62c0d41a-488a-4ce4-968a-0d1aaa9921ef",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true
+          },
+          {
+            "id": "48753b76-2aa9-4b50-98e1-1757f56b9aef",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "mutation SquareInventorySync($locationIds: [String!]) {\n  squareInventorySync(locationIds: $locationIds) {\n    total\n    created\n    updated\n    failed\n    syncedAt\n    message\n  }\n}",
+        "gqlVariables": "{\n  \"locationIds\": [\"L7JBFPYN8CG71\"]\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-26T06:36:52.899Z",
+      "updatedAt": "2026-08-26T06:36:52.899Z"
+    },
+    {
+      "id": "96b7dff2-a136-49ee-8537-be7250d16df2",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "088652cb-c507-4ab6-98bc-03bc834ef52d",
+      "name": "Square category sync",
+      "request": {
+        "id": "d4dba1f2-a4a8-45af-8486-345a16cff256",
+        "savedRequestId": "96b7dff2-a136-49ee-8537-be7250d16df2",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "088652cb-c507-4ab6-98bc-03bc834ef52d",
+        "name": "Square category sync",
+        "graphqlRootField": "squareCategorySync",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "62c0d41a-488a-4ce4-968a-0d1aaa9921ef",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true
+          },
+          {
+            "id": "48753b76-2aa9-4b50-98e1-1757f56b9aef",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "mutation SquareCategorySync($syncMode: String) {\n  squareCategorySync(syncMode: $syncMode) {\n    total\n    created\n    updated\n    failed\n    syncedAt\n    message\n  }\n}",
+        "gqlVariables": "{\n  \"syncMode\": \"FULL\"\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-26T06:37:33.081Z",
+      "updatedAt": "2026-08-26T06:37:33.081Z"
+    },
+    {
+      "id": "e30923d3-ecd0-428c-aa66-9bb68f05dbe7",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "088652cb-c507-4ab6-98bc-03bc834ef52d",
+      "name": "Square category get pagination",
+      "request": {
+        "id": "d4cfa241-85c5-4e11-a39e-2d675651628b",
+        "savedRequestId": "e30923d3-ecd0-428c-aa66-9bb68f05dbe7",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "088652cb-c507-4ab6-98bc-03bc834ef52d",
+        "name": "Square category get pagination",
+        "graphqlRootField": "squareCategoryGetPagination",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "62c0d41a-488a-4ce4-968a-0d1aaa9921ef",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true
+          },
+          {
+            "id": "48753b76-2aa9-4b50-98e1-1757f56b9aef",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query SquareCategoryGetPagination($filters: SquareCategoryGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareCategoryGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      squareCategoryId\n      name\n      parentCategoryId\n      isTopLevel\n      isDeleted\n      lastSyncedAt\n    }\n  }\n}",
+        "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-26T06:38:21.448Z",
+      "updatedAt": "2026-08-26T06:38:21.448Z"
+    },
+    {
+      "id": "36341a5b-262e-4716-8073-4c2fd2e52435",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "3a85458e-32c5-4d95-b386-833c0c37b917",
+      "name": "Square catalog item get pagination",
+      "request": {
+        "id": "c784e5f0-57ff-4f64-b16e-066a102fd3db",
+        "savedRequestId": "36341a5b-262e-4716-8073-4c2fd2e52435",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "3a85458e-32c5-4d95-b386-833c0c37b917",
+        "name": "Square catalog item get pagination",
+        "graphqlRootField": "squareCatalogItemGetPagination",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "62c0d41a-488a-4ce4-968a-0d1aaa9921ef",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "48753b76-2aa9-4b50-98e1-1757f56b9aef",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query SquareCatalogItemGetPagination($filters: SquareCatalogItemGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareCatalogItemGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      squareItemId\n      name\n      description\n      squareCategoryId\n      isTaxable\n      productType\n      ecomAvailable\n      variations {\n        id\n        squareVariationId\n        squareItemId\n        name\n        sku\n        upc\n        pricingType\n        priceAmount\n        currency\n        trackInventory\n        lastSyncedAt\n      }\n      lastSyncedAt\n    }\n  }\n}",
+        "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-26T06:39:13.182Z",
+      "updatedAt": "2026-08-27T02:23:16.288Z"
+    },
+    {
+      "id": "b0272508-b7ce-48e2-af98-c9336d7a4424",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "354c406b-60a1-42ac-be41-4f03da2bd168",
+      "name": "Order sync data DB to ES",
+      "request": {
+        "id": "98b0edb8-7c98-450b-ad98-b72a743813d9",
+        "savedRequestId": "b0272508-b7ce-48e2-af98-c9336d7a4424",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
+        "name": "Order sync data DB to ES",
+        "graphqlRootField": "orderSyncDataDBToES",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "62c0d41a-488a-4ce4-968a-0d1aaa9921ef",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "48753b76-2aa9-4b50-98e1-1757f56b9aef",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "mutation OrderSyncDataDBToES {\n  orderSyncDataDBToES\n}",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-26T07:54:46.001Z",
+      "updatedAt": "2026-08-26T07:55:04.654Z"
+    },
+    {
+      "id": "e7e4fe6b-1d56-4e6e-82e0-c97c4e613ebf",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "354c406b-60a1-42ac-be41-4f03da2bd168",
+      "name": "Combo sync data DB to ES",
+      "request": {
+        "id": "2ae4153e-67e7-4283-a201-3b314b860e53",
+        "savedRequestId": "e7e4fe6b-1d56-4e6e-82e0-c97c4e613ebf",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
+        "name": "Combo sync data DB to ES",
+        "graphqlRootField": "comboSyncDataDBToES",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "62c0d41a-488a-4ce4-968a-0d1aaa9921ef",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "48753b76-2aa9-4b50-98e1-1757f56b9aef",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "mutation ComboSyncDataDBToES {\n  comboSyncDataDBToES\n}",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-26T07:53:48.732Z",
+      "updatedAt": "2026-08-26T07:55:06.162Z"
+    },
+    {
+      "id": "263fc051-680b-4565-aca4-9c8dab6dd9d9",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "354c406b-60a1-42ac-be41-4f03da2bd168",
+      "name": "Product sync data DB to ES",
+      "request": {
+        "id": "ae7ed54a-5ce6-43a6-8256-e4a6c9ae4a33",
+        "savedRequestId": "263fc051-680b-4565-aca4-9c8dab6dd9d9",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": null,
+        "name": "Product sync data DB to ES",
+        "graphqlRootField": "productSyncDataDBToES",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "62c0d41a-488a-4ce4-968a-0d1aaa9921ef",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "48753b76-2aa9-4b50-98e1-1757f56b9aef",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "mutation ProductSyncDataDBToES {\n  productSyncDataDBToES\n}",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-26T07:53:17.687Z",
+      "updatedAt": "2026-08-26T07:55:08.344Z"
+    },
+    {
+      "id": "5fc928ca-4df3-47c5-a41e-1b8c50d82512",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "354c406b-60a1-42ac-be41-4f03da2bd168",
+      "name": "Customer sync data DB to ES",
+      "request": {
+        "id": "a649c186-993f-4b78-8593-fb190c7318e3",
+        "savedRequestId": "5fc928ca-4df3-47c5-a41e-1b8c50d82512",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "354c406b-60a1-42ac-be41-4f03da2bd168",
+        "name": "Customer sync data DB to ES",
+        "graphqlRootField": "customerSyncDataDBToES",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "62c0d41a-488a-4ce4-968a-0d1aaa9921ef",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "48753b76-2aa9-4b50-98e1-1757f56b9aef",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "mutation CustomerSyncDataDBToES {\n  customerSyncDataDBToES\n}",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-26T07:55:35.350Z",
+      "updatedAt": "2026-08-26T07:55:35.350Z"
+    },
+    {
+      "id": "d59b9da8-97c1-4369-b79e-ecf80eda9b76",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "354c406b-60a1-42ac-be41-4f03da2bd168",
+      "name": "Article sync data DB to ES",
+      "request": {
+        "id": "3e5b3d13-6925-4ec4-a3c7-7908dec4e12f",
+        "savedRequestId": "d59b9da8-97c1-4369-b79e-ecf80eda9b76",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "354c406b-60a1-42ac-be41-4f03da2bd168",
+        "name": "Article sync data DB to ES",
+        "graphqlRootField": "articleSyncDataDBToES",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "62c0d41a-488a-4ce4-968a-0d1aaa9921ef",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "48753b76-2aa9-4b50-98e1-1757f56b9aef",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "mutation ArticleSyncDataDBToES {\n  articleSyncDataDBToES\n}",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-26T07:55:52.339Z",
+      "updatedAt": "2026-08-26T07:55:52.339Z"
+    },
+    {
+      "id": "5b6ff2e2-5692-4d26-b7eb-584282725a74",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "41fbf4bf-a747-4881-84cb-07b32e77924b",
+      "name": "Square webhook event get pagination",
+      "request": {
+        "id": "22dbc6da-dd0e-4df2-9f85-fa3a3720ac04",
+        "savedRequestId": "5b6ff2e2-5692-4d26-b7eb-584282725a74",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "41fbf4bf-a747-4881-84cb-07b32e77924b",
+        "name": "Square webhook event get pagination",
+        "graphqlRootField": "squareWebhookEventGetPagination",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "4b180b54-f757-4abb-bb26-df57c7eb194b",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "5f70d98f-e2e0-488e-b7dd-3983b350fe53",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query SquareWebhookEventGetPagination($filters: SquareWebhookEventGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareWebhookEventGetPagination(filters: $filters, params: $params) {\n    items {\n      id\n      eventId\n      merchantId\n      eventType\n      entityId\n      status\n      payload\n      errorMessage\n      processedAt\n      createdAt\n    }\n    total\n  }\n}",
+        "gqlVariables": "{\n  \"filters\": {\n    \"eventType\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-27T02:26:47.255Z",
+      "updatedAt": "2026-08-27T02:46:29.243Z"
+    },
+    {
+      "id": "74dbcedb-3ad6-4994-b23c-2dd3ab8921fb",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
+      "name": "Order proactive sync square",
+      "request": {
+        "id": "e0b946c8-5661-4d2d-9051-4213555e0118",
+        "savedRequestId": "74dbcedb-3ad6-4994-b23c-2dd3ab8921fb",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
+        "name": "Order proactive sync square",
+        "graphqlRootField": "orderProactiveSyncSquare",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "4b180b54-f757-4abb-bb26-df57c7eb194b",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "5f70d98f-e2e0-488e-b7dd-3983b350fe53",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "mutation OrderProactiveSyncSquare($request: OrderProactiveSyncSquareDto!) {\n  orderProactiveSyncSquare(request: $request) {\n    success\n    message\n  }\n}",
+        "gqlVariables": "{\n  \"request\": {\n    \"orderId\": \"\",\n    \"orderNumber\": \"\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-27T02:27:22.960Z",
+      "updatedAt": "2026-08-27T02:27:33.451Z"
+    },
+    {
+      "id": "1a09e334-e3ae-4fd8-a93f-c52ae2ecb376",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "edcb5ff9-e17a-4657-9c97-c9c1ca0f6ea9",
+      "name": "Square sync state get pagination",
+      "request": {
+        "id": "f35f93a8-a665-456d-9a1c-57e1e4664f27",
+        "savedRequestId": "1a09e334-e3ae-4fd8-a93f-c52ae2ecb376",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "edcb5ff9-e17a-4657-9c97-c9c1ca0f6ea9",
+        "name": "Square sync state get pagination",
+        "graphqlRootField": "squareSyncStateGetPagination",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "4b180b54-f757-4abb-bb26-df57c7eb194b",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "5f70d98f-e2e0-488e-b7dd-3983b350fe53",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query SquareSyncStateGetPagination($filters: SquareSyncStateGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareSyncStateGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      resource\n      lastSyncedAt\n      lastCheckpoint\n      status\n      errorMessage\n    }\n  }\n}",
+        "gqlVariables": "{\n  \"filters\": {\n    \"resource\": []\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-27T02:29:02.175Z",
+      "updatedAt": "2026-08-27T02:29:02.175Z"
+    },
+    {
+      "id": "52d77fee-fd55-4878-811b-69b39d680c95",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "edcb5ff9-e17a-4657-9c97-c9c1ca0f6ea9",
+      "name": "Square sync state get by id",
+      "request": {
+        "id": "6a9f0fde-ecf9-486e-8e9b-0ae5438c0f51",
+        "savedRequestId": "52d77fee-fd55-4878-811b-69b39d680c95",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "edcb5ff9-e17a-4657-9c97-c9c1ca0f6ea9",
+        "name": "Square sync state get by id",
+        "graphqlRootField": "squareSyncStateGetById",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "4b180b54-f757-4abb-bb26-df57c7eb194b",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "5f70d98f-e2e0-488e-b7dd-3983b350fe53",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query SquareSyncStateGetById($request: RequestParams!) {\n  squareSyncStateGetById(request: $request) {\n    id\n    resource\n    lastSyncedAt\n    lastCheckpoint\n    status\n    errorMessage\n  }\n}",
+        "gqlVariables": "{\n  \"request\": {\n    \"id\": \"\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-27T02:29:37.807Z",
+      "updatedAt": "2026-08-27T02:29:37.807Z"
+    },
+    {
+      "id": "64519542-9ca5-45f1-b663-53b593bc2270",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "3a85458e-32c5-4d95-b386-833c0c37b917",
+      "name": "Square catalog item get list",
+      "request": {
+        "id": "b7c8b3ff-5efd-4658-902c-cc77dd9f4954",
+        "savedRequestId": "64519542-9ca5-45f1-b663-53b593bc2270",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "3a85458e-32c5-4d95-b386-833c0c37b917",
+        "name": "Square catalog item get list",
+        "graphqlRootField": "squareCatalogItemGetList",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "4b180b54-f757-4abb-bb26-df57c7eb194b",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "5f70d98f-e2e0-488e-b7dd-3983b350fe53",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query SquareCatalogItemGetList {\n  squareCatalogItemGetList {\n    id\n    squareItemId\n    itemName\n    itemDescription\n    squareCategoryId\n    squareVariationId\n    variationName\n    sku\n    priceAmount\n    currency\n    ordinal\n    pricingType\n    trackInventory\n    isTaxable\n    productType\n    imageUrls\n    lastSyncedAt\n    version\n  }\n}",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-27T02:42:00.941Z",
+      "updatedAt": "2026-08-27T02:42:00.941Z"
+    },
+    {
+      "id": "20ba9109-0f0e-45c6-a09a-506956152568",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "3eba61de-7e93-497e-ab02-0daac97727ae",
+      "name": "KiotViet branch get list",
+      "request": {
+        "id": "ef30278d-c4a3-4daa-b097-6d3646092488",
+        "savedRequestId": "20ba9109-0f0e-45c6-a09a-506956152568",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "3eba61de-7e93-497e-ab02-0daac97727ae",
+        "name": "KiotViet branch get list",
+        "graphqlRootField": "kiotVietBranchGetList",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "7fa85d76-06b4-4d15-a21b-af3bcfa9eef1",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "931d6f56-a47b-4c5a-be0f-cdbdb4e99292",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query KiotVietBranchGetList {\n  kiotVietBranchGetList {\n    id\n    kiotvietBranchId\n    branchName\n    address\n    locationName\n    wardName\n    retailerId\n    email\n    kiotvietModifiedAt\n    kiotvietCreatedAt\n    lastSyncedAt\n  }\n}",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-27T03:04:12.466Z",
+      "updatedAt": "2026-08-27T03:04:14.039Z"
+    },
+    {
+      "id": "b47058ed-8b5f-4bf8-8ad0-e36b1743563b",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "1ab43b4b-9819-4feb-9633-716b7bdf4ccc",
+      "name": "KiotViet order get pagination",
+      "request": {
+        "id": "517ce969-ada8-4af5-b546-83ee01aeefb7",
+        "savedRequestId": "b47058ed-8b5f-4bf8-8ad0-e36b1743563b",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "3eba61de-7e93-497e-ab02-0daac97727ae",
+        "name": "KiotViet order get pagination",
+        "graphqlRootField": "kiotVietOrderGetPagination",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "4b180b54-f757-4abb-bb26-df57c7eb194b",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "5f70d98f-e2e0-488e-b7dd-3983b350fe53",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query KiotVietOrderGetPagination($filters: KiotVietOrderGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietOrderGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      kiotvietOrderId\n      kiotvietOrderUuid\n      code\n      purchaseDate\n      retailerId\n      branchId\n      soldById\n      customerId\n      customerName\n      status\n      statusValue\n      total\n      totalPayment\n      totalQuantity\n      historyNote\n      dinningOption\n      lastSyncedAt\n    }\n  }\n}",
+        "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-27T02:33:10.093Z",
+      "updatedAt": "2026-08-27T03:05:11.400Z"
+    },
+    {
+      "id": "ad7e0be7-6b03-4d0b-882c-1100a15cdd4b",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "58f397c3-0b7c-47ec-a41e-7a4f0a9e859b",
+      "name": "KiotViet product get pagination",
+      "request": {
+        "id": "b9fdc2fc-9cee-4de1-a1f7-9469ae6ccce1",
+        "savedRequestId": "ad7e0be7-6b03-4d0b-882c-1100a15cdd4b",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "58f397c3-0b7c-47ec-a41e-7a4f0a9e859b",
+        "name": "KiotViet product get pagination",
+        "graphqlRootField": "kiotVietProductGetPagination",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "7fa85d76-06b4-4d15-a21b-af3bcfa9eef1",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "931d6f56-a47b-4c5a-be0f-cdbdb4e99292",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query KiotVietProductGetPagination($filters: KiotVietProductGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietProductGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      kiotvietProductId\n      code\n      retailerId\n      allowsSale\n      name\n      categoryId\n      categoryName\n      productType\n      isTopping\n      isProcessedGoods\n      isTimeType\n      isRewardPoint\n      fullName\n      description\n      orderTemplate\n      hasVariants\n      unit\n      masterUnitId\n      masterProductId\n      conversionValue\n      basePrice\n      weight\n      kiotvietModifiedAt\n      lastSyncedAt\n      inventories {\n        id\n        kiotvietProductId\n        kiotvietBranchId\n        productCode\n        productName\n        branchName\n        onHand\n        cost\n        reserved\n        lastSyncedAt\n      }\n      priceBooks {\n        id\n        kiotvietProductId\n        kiotvietPriceBookId\n        priceBookName\n        isActive\n        price\n        startDate\n        endDate\n        lastSyncedAt\n      }\n    }\n  }\n}",
+        "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-27T03:06:30.170Z",
+      "updatedAt": "2026-08-27T03:06:30.170Z"
+    },
+    {
+      "id": "d9647724-b406-4caa-adc9-aa383d4e61a5",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "58f397c3-0b7c-47ec-a41e-7a4f0a9e859b",
+      "name": "KiotViet product get list",
+      "request": {
+        "id": "a0ffa004-438e-468a-bd7b-6a39b8bd733c",
+        "savedRequestId": "d9647724-b406-4caa-adc9-aa383d4e61a5",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "58f397c3-0b7c-47ec-a41e-7a4f0a9e859b",
+        "name": "KiotViet product get list",
+        "graphqlRootField": "kiotVietProductGetList",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "7fa85d76-06b4-4d15-a21b-af3bcfa9eef1",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "931d6f56-a47b-4c5a-be0f-cdbdb4e99292",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query KiotVietProductGetList {\n  kiotVietProductGetList {\n    id\n    kiotvietProductId\n    code\n    retailerId\n    allowsSale\n    name\n    categoryId\n    categoryName\n    productType\n    isTopping\n    isProcessedGoods\n    isTimeType\n    isRewardPoint\n    fullName\n    description\n    orderTemplate\n    hasVariants\n    unit\n    masterUnitId\n    masterProductId\n    conversionValue\n    basePrice\n    weight\n    kiotvietModifiedAt\n    lastSyncedAt\n    inventories {\n      id\n      kiotvietProductId\n      kiotvietBranchId\n      productCode\n      productName\n      branchName\n      onHand\n      cost\n      reserved\n      lastSyncedAt\n    }\n    priceBooks {\n      id\n      kiotvietProductId\n      kiotvietPriceBookId\n      priceBookName\n      isActive\n      price\n      startDate\n      endDate\n      lastSyncedAt\n    }\n  }\n}",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-27T03:07:23.337Z",
+      "updatedAt": "2026-08-27T03:07:23.337Z"
+    },
+    {
+      "id": "8d932c9d-6266-4fb7-9e27-361e7c6537df",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "58f397c3-0b7c-47ec-a41e-7a4f0a9e859b",
+      "name": "KiotViet product get by id",
+      "request": {
+        "id": "5c8e8731-5051-4e82-a02b-e6a6a52de76c",
+        "savedRequestId": "8d932c9d-6266-4fb7-9e27-361e7c6537df",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "58f397c3-0b7c-47ec-a41e-7a4f0a9e859b",
+        "name": "KiotViet product get by id",
+        "graphqlRootField": "kiotVietProductGetById",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "1e895dae-959f-49d6-9ecf-c9564b754962",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "b775a4d8-e34b-44bc-a562-f333f758bcd5",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query KiotVietProductGetById($request: RequestParams!) {\n  kiotVietProductGetById(request: $request) {\n    id\n    kiotvietProductId\n    code\n    retailerId\n    allowsSale\n    name\n    categoryId\n    categoryName\n    productType\n    isTopping\n    isProcessedGoods\n    isTimeType\n    isRewardPoint\n    fullName\n    description\n    orderTemplate\n    hasVariants\n    unit\n    masterUnitId\n    masterProductId\n    conversionValue\n    basePrice\n    weight\n    kiotvietModifiedAt\n    lastSyncedAt\n    inventories {\n      id\n      kiotvietProductId\n      kiotvietBranchId\n      productCode\n      productName\n      branchName\n      onHand\n      cost\n      reserved\n      lastSyncedAt\n    }\n    priceBooks {\n      id\n      kiotvietProductId\n      kiotvietPriceBookId\n      priceBookName\n      isActive\n      price\n      startDate\n      endDate\n      lastSyncedAt\n    }\n  }\n}",
+        "gqlVariables": "{\n  \"request\": {\n    \"id\": \"01a00e77-043b-74ed-b467-e28b437f0fac\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-27T03:08:42.190Z",
+      "updatedAt": "2026-08-27T03:09:35.037Z"
     }
   ],
   "expandedCollectionIds": [
-    "a5c465a8-fdcf-4792-ab34-20d476ba7cf2"
+    "925ff10c-6428-4f56-b1e6-bd84786a0fb2"
   ],
   "expandedFolderIds": [
     "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8",
     "72d3d982-0101-4ffa-9672-a04ee8a5798d",
-    "855480d9-0a2a-418a-9651-31ff471fa7b9",
-    "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
-    "1d2a18d1-e2e3-4d00-b865-1e0746001508",
-    "3bd48a75-0a8c-4312-9be3-c4545f7a3164"
+    "58f397c3-0b7c-47ec-a41e-7a4f0a9e859b",
+    "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
+    "3eba61de-7e93-497e-ab02-0daac97727ae",
+    "785cea12-b358-4f53-bf46-46ebd0bf368c"
   ]
 }

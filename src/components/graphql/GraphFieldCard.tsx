@@ -37,6 +37,7 @@ interface GraphArgNodeProps {
   fieldName: string
   arg: GraphArg
   selectedKeys: string[]
+  highlightTrigger?: number
   onToggleArg: (arg: GraphArg, checked: boolean) => void
   onToggleInputField?: (arg: GraphArg, inputField: GraphInputField, checked: boolean) => void
 }
@@ -46,15 +47,16 @@ function GraphArgNode({
   fieldName,
   arg,
   selectedKeys,
+  highlightTrigger,
   onToggleArg,
   onToggleInputField,
 }: GraphArgNodeProps) {
-  const [isExpanded, setIsExpanded] = useState(false)
   const argKey = getGraphArgKey(kind, fieldName, arg.name)
   const hasInputFields = arg.inputFields && arg.inputFields.length > 0
 
   let isChecked = false
   let isIndeterminate = false
+  let hasSelectedChild = false
 
   if (!hasInputFields) {
     // Scalar argument
@@ -69,9 +71,18 @@ function GraphArgNode({
     ).length
     const totalChildCount = arg.inputFields.length
 
+    hasSelectedChild = selectedChildCount > 0
     isChecked = selectedChildCount === totalChildCount && totalChildCount > 0
     isIndeterminate = selectedChildCount > 0 && selectedChildCount < totalChildCount
   }
+
+  const [isExpanded, setIsExpanded] = useState(() => hasSelectedChild)
+
+  useEffect(() => {
+    if (hasSelectedChild) {
+      setIsExpanded(true)
+    }
+  }, [hasSelectedChild, highlightTrigger])
 
   return (
     <div className="graph-tree-node">
@@ -160,6 +171,7 @@ interface GraphOutputFieldNodeProps {
   item: GraphOutputField
   parentPath?: string
   selectedKeys: string[]
+  highlightTrigger?: number
   onToggleOutputField?: (path: string, checked: boolean) => void
 }
 
@@ -169,17 +181,30 @@ function GraphOutputFieldNode({
   item,
   parentPath,
   selectedKeys,
+  highlightTrigger,
   onToggleOutputField,
 }: GraphOutputFieldNodeProps) {
-  const [isExpanded, setIsExpanded] = useState(false)
   const fullPath = parentPath ? `${parentPath}.${item.name}` : item.name
   const outKey = getGraphOutputFieldKey(kind, fieldName, fullPath)
-
   const hasChildren = Boolean(item.fields && item.fields.length > 0)
+
+  // Nested Object / Array of Objects
+  const prefix = `${outKey}.`
+  const selectedChildren = hasChildren ? selectedKeys.filter((k) => k.startsWith(prefix)) : []
+  const isAnyChildSelected = selectedChildren.length > 0
+  const isChecked = selectedKeys.includes(outKey) || isAnyChildSelected
+
+  const [isExpanded, setIsExpanded] = useState(() => isAnyChildSelected)
+
+  useEffect(() => {
+    if (isAnyChildSelected) {
+      setIsExpanded(true)
+    }
+  }, [isAnyChildSelected, highlightTrigger])
 
   if (!hasChildren) {
     // Leaf / Scalar Output Field
-    const isChecked = selectedKeys.includes(outKey)
+    const isLeafChecked = selectedKeys.includes(outKey)
 
     return (
       <label
@@ -189,7 +214,7 @@ function GraphOutputFieldNode({
         <div className="graph-tree-spacer" />
         <input
           type="checkbox"
-          checked={isChecked}
+          checked={isLeafChecked}
           onChange={(e) => onToggleOutputField?.(fullPath, e.target.checked)}
           className="graph-card-checkbox cursor-pointer"
           style={{ transform: 'scale(0.85)' }}
@@ -201,12 +226,6 @@ function GraphOutputFieldNode({
       </label>
     )
   }
-
-  // Nested Object / Array of Objects
-  const prefix = `${outKey}.`
-  const selectedChildren = selectedKeys.filter((k) => k.startsWith(prefix))
-  const isAnyChildSelected = selectedChildren.length > 0
-  const isChecked = selectedKeys.includes(outKey) || isAnyChildSelected
 
   return (
     <div className="graph-tree-node">
@@ -254,6 +273,7 @@ function GraphOutputFieldNode({
               item={child}
               parentPath={fullPath}
               selectedKeys={selectedKeys}
+              highlightTrigger={highlightTrigger}
               onToggleOutputField={onToggleOutputField}
             />
           ))}
@@ -267,6 +287,8 @@ interface GraphFieldCardProps {
   kind: 'query' | 'mutation'
   field: GraphField
   selectedKeys: string[]
+  isHighlighted?: boolean
+  highlightTrigger?: number
   onOpenInTab: () => void
   onToggleArg: (arg: GraphArg, checked: boolean) => void
   onToggleInputField?: (arg: GraphArg, inputField: GraphInputField, checked: boolean) => void
@@ -277,12 +299,42 @@ export function GraphFieldCard({
   kind,
   field,
   selectedKeys,
+  isHighlighted,
+  highlightTrigger,
   onOpenInTab,
   onToggleArg,
   onToggleInputField,
   onToggleOutputField,
 }: GraphFieldCardProps) {
   const [isExpanded, setIsExpanded] = useState(false)
+  const [highlightActive, setHighlightActive] = useState(false)
+  const cardRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (isHighlighted) {
+      setIsExpanded(true)
+    }
+  }, [isHighlighted])
+
+  useEffect(() => {
+    if (highlightTrigger && isHighlighted) {
+      setIsExpanded(true)
+      setHighlightActive(true)
+
+      const scrollTimer = setTimeout(() => {
+        cardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }, 80)
+
+      const highlightTimer = setTimeout(() => {
+        setHighlightActive(false)
+      }, 1500)
+
+      return () => {
+        clearTimeout(scrollTimer)
+        clearTimeout(highlightTimer)
+      }
+    }
+  }, [highlightTrigger, isHighlighted])
 
   // Safely resolve output fields list with fallback to selectionFields
   const outputFields =
@@ -301,7 +353,10 @@ export function GraphFieldCard({
   const hasDetails = hasArgs || outputFields.length > 0 || Boolean(field.typeLabel)
 
   return (
-    <div className="graph-field-card">
+    <div
+      ref={cardRef}
+      className={`graph-field-card ${highlightActive ? 'is-highlighted' : ''}`}
+    >
       {/* Header Row - Full Row Clickable Accordion with Quick Open Action */}
       <div
         className="graph-card-header"
@@ -365,6 +420,7 @@ export function GraphFieldCard({
                     fieldName={field.name}
                     arg={arg}
                     selectedKeys={selectedKeys}
+                    highlightTrigger={highlightTrigger}
                     onToggleArg={onToggleArg}
                     onToggleInputField={onToggleInputField}
                   />
@@ -390,6 +446,7 @@ export function GraphFieldCard({
                   fieldName={field.name}
                   item={outField}
                   selectedKeys={selectedKeys}
+                  highlightTrigger={highlightTrigger}
                   onToggleOutputField={onToggleOutputField}
                 />
               ))}

@@ -50,6 +50,7 @@ import {
   buildGraphOperationFromFields,
   computeReverseSyncKeys,
   deepMergePreserveVariables,
+  extractGraphQLRootInfo,
   extractOutputPathsFromQuery,
   fetchGraphQLSchema,
   getGraphArgKey,
@@ -129,6 +130,7 @@ function App() {
     mutationFields: [],
   })
   const [selectedGraphFieldKeys, setSelectedGraphFieldKeys] = useState<string[]>([])
+  const [highlightedField, setHighlightedField] = useState<{ name: string; trigger: number } | null>(null)
   const isUpdatingFromExplorerRef = useRef(false)
 
   const isSendingRef = useRef(false)
@@ -548,20 +550,73 @@ function App() {
     if (existingTab) {
       setActiveTabId(existingTab.id)
       setMobileView('REQUEST')
-      return
+    } else {
+      const opened = reviveRequest({
+        ...saved.request,
+        id: createId(),
+        savedRequestId: saved.id,
+        collectionId: saved.collectionId,
+        folderId: saved.folderId,
+        name: saved.name,
+      })
+      setTabs((current) => [...current, opened])
+      setActiveTabId(opened.id)
+      setMobileView('REQUEST')
     }
 
-    const opened = reviveRequest({
-      ...saved.request,
-      id: createId(),
-      savedRequestId: saved.id,
-      collectionId: saved.collectionId,
-      folderId: saved.folderId,
-      name: saved.name,
-    })
-    setTabs((current) => [...current, opened])
-    setActiveTabId(opened.id)
-    setMobileView('REQUEST')
+    // Auto-locate & Reveal API in GraphQL Explorer
+    if (saved.request.mode === 'GRAPHQL') {
+      const { rootFieldName, kind } = extractGraphQLRootInfo(saved.request)
+
+      // 1. Auto-open Explorer Panel if closed
+      if (!isExplorerOpen) {
+        setIsExplorerOpen(true)
+      }
+
+      // 2. Compute reverse sync keys immediately if schema is loaded
+      if (graphExplorer.queryFields.length > 0 || graphExplorer.mutationFields.length > 0) {
+        const syncKeys = computeReverseSyncKeys(
+          [],
+          saved.request.gqlQuery || '',
+          saved.request.gqlVariables || '',
+          {
+            queryFields: graphExplorer.queryFields,
+            mutationFields: graphExplorer.mutationFields,
+          },
+          saved.request.graphqlRootField,
+        )
+        setSelectedGraphFieldKeys(syncKeys)
+      }
+
+      // 3. Set search term & active tab in Explorer
+      if (rootFieldName) {
+        setGraphExplorer((prev) => ({
+          ...prev,
+          search: rootFieldName,
+          activeTab: kind,
+        }))
+
+        // 4. Trigger highlight & reveal in Explorer
+        setHighlightedField({
+          name: rootFieldName,
+          trigger: Date.now(),
+        })
+      } else {
+        setGraphExplorer((prev) => ({
+          ...prev,
+          activeTab: kind,
+        }))
+      }
+
+      // 4. If schema not loaded yet, attempt auto-load
+      if (
+        graphExplorer.queryFields.length === 0 &&
+        graphExplorer.mutationFields.length === 0 &&
+        !graphExplorer.loading
+      ) {
+        void loadGraphSchema()
+      }
+    }
   }
 
   const removeSavedRequest = (savedId: string) => {
@@ -1003,6 +1058,23 @@ function App() {
     )
 
     setSelectedGraphFieldKeys(nextKeys)
+
+    const { rootFieldName, kind } = extractGraphQLRootInfo(activeTab)
+    if (!isExplorerOpen) {
+      setIsExplorerOpen(true)
+    }
+    if (rootFieldName) {
+      setGraphExplorer((prev) => ({
+        ...prev,
+        search: rootFieldName,
+        activeTab: kind,
+      }))
+      setHighlightedField({
+        name: rootFieldName,
+        trigger: Date.now(),
+      })
+    }
+
     showToast('Đã đồng bộ sang Explorer thành công', 'success')
     return { success: true }
   }
@@ -1716,9 +1788,11 @@ function App() {
                   graphExplorer={graphExplorer}
                   setGraphExplorer={setGraphExplorer}
                   selectedGraphFieldKeys={selectedGraphFieldKeys}
+                  highlightedField={highlightedField}
                   onLoadSchema={loadGraphSchema}
                   onCloseMobile={() => setMobileView('REQUEST')}
                   onCloseExplorer={() => setIsExplorerOpen(false)}
+                  onClearSearch={() => setHighlightedField(null)}
                   onOpenInTab={handleOpenGraphFieldInTab}
                   onToggleArg={toggleGraphArg}
                   onToggleInputField={toggleGraphInputField}

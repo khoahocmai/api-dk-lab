@@ -24,6 +24,7 @@ interface ExplorerProps {
   graphExplorer: GraphExplorerState
   setGraphExplorer: React.Dispatch<React.SetStateAction<GraphExplorerState>>
   selectedGraphFieldKeys: string[]
+  highlightedField?: { name: string; trigger: number } | null
   onLoadSchema: () => Promise<void>
   onCloseMobile: () => void
   onOpenInTab: (field: GraphField) => void
@@ -31,6 +32,7 @@ interface ExplorerProps {
   onToggleInputField?: (field: GraphField, arg: GraphArg, inputField: GraphInputField, checked: boolean) => void
   onToggleOutputField?: (field: GraphField, path: string, checked: boolean) => void
   onCloseExplorer?: () => void
+  onClearSearch?: () => void
 }
 
 export function Explorer({
@@ -38,6 +40,7 @@ export function Explorer({
   graphExplorer,
   setGraphExplorer,
   selectedGraphFieldKeys,
+  highlightedField,
   onLoadSchema,
   onCloseMobile,
   onOpenInTab,
@@ -45,6 +48,7 @@ export function Explorer({
   onToggleInputField,
   onToggleOutputField,
   onCloseExplorer,
+  onClearSearch,
 }: ExplorerProps) {
   const currentGraphOperationKind = graphExplorer.activeTab === 'MUTATION' ? 'mutation' : 'query'
 
@@ -157,7 +161,10 @@ export function Explorer({
             <button
               type="button"
               className="icon-button icon-button-sm"
-              onClick={() => setGraphExplorer((current) => ({ ...current, search: '' }))}
+              onClick={() => {
+                setGraphExplorer((current) => ({ ...current, search: '' }))
+                onClearSearch?.()
+              }}
               style={{ position: 'absolute', top: 3, right: 4, width: 20, height: 20 }}
               title="Clear search"
             >
@@ -247,12 +254,22 @@ export function Explorer({
             ) : (
               <div className="stack" style={{ gap: 6 }}>
                 {filteredExplorerFields.map((field) => {
+                  const isTarget = Boolean(
+                    highlightedField &&
+                    highlightedField.name.toLowerCase() === field.name.toLowerCase(),
+                  )
+                  const isExactSearch =
+                    Boolean(graphExplorer.search.trim()) &&
+                    graphExplorer.search.trim().toLowerCase() === field.name.toLowerCase()
+
                   return (
                     <GraphFieldCard
                       key={field.name}
                       kind={currentGraphOperationKind}
                       field={field}
                       selectedKeys={selectedGraphFieldKeys}
+                      isHighlighted={isTarget || isExactSearch}
+                      highlightTrigger={isTarget ? highlightedField?.trigger : undefined}
                       onOpenInTab={() => onOpenInTab(field)}
                       onToggleArg={(arg, checked) => onToggleArg(field, arg, checked)}
                       onToggleInputField={(arg, inputField, checked) =>

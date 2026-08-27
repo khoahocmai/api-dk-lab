@@ -85,11 +85,11 @@ export function RequestBodyEditor({
       onUpdateTab({ rawText: '' })
     } else if (activeTab.bodyType === 'form-data') {
       onUpdateTab({
-        formData: [{ id: createId(), key: '', value: '', enabled: true, description: '' }],
+        formData: [{ id: createId(), key: '', value: '', enabled: false, description: '' }],
       })
     } else if (activeTab.bodyType === 'x-www-form-urlencoded') {
       onUpdateTab({
-        urlencoded: [{ id: createId(), key: '', value: '', enabled: true, description: '' }],
+        urlencoded: [{ id: createId(), key: '', value: '', enabled: false, description: '' }],
       })
     }
   }

@@ -718,3 +718,50 @@ export function computeReverseSyncKeys(
 
   return Array.from(nextKeys)
 }
+
+export function extractGraphQLRootInfo(request?: {
+  graphqlRootField?: string
+  gqlQuery?: string
+  name?: string
+} | null): { rootFieldName: string; kind: 'QUERY' | 'MUTATION' } {
+  if (!request) {
+    return { rootFieldName: '', kind: 'QUERY' }
+  }
+
+  let rootFieldName = request.graphqlRootField?.trim() || ''
+  let kind: 'QUERY' | 'MUTATION' = 'QUERY'
+
+  const queryText = request.gqlQuery?.trim() || ''
+
+  if (queryText) {
+    const queryInfo = extractOutputPathsFromQuery(queryText)
+    if (queryInfo) {
+      if (!rootFieldName) {
+        rootFieldName = queryInfo.fieldName
+      }
+      kind = queryInfo.kind === 'mutation' ? 'MUTATION' : 'QUERY'
+    } else {
+      if (/\bmutation\b/i.test(queryText)) {
+        kind = 'MUTATION'
+      } else {
+        kind = 'QUERY'
+      }
+
+      if (!rootFieldName) {
+        const match = queryText.match(/\{\s*(?:#[^\n]*\n\s*)*([a-zA-Z0-9_]+)/)
+        if (match && match[1] && !['query', 'mutation', 'subscription'].includes(match[1].toLowerCase())) {
+          rootFieldName = match[1]
+        }
+      }
+    }
+  }
+
+  if (!rootFieldName && request.name) {
+    const trimmedName = request.name.trim()
+    if (/^[a-zA-Z][a-zA-Z0-9_]*$/.test(trimmedName)) {
+      rootFieldName = trimmedName
+    }
+  }
+
+  return { rootFieldName, kind }
+}

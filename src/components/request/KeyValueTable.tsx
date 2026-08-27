@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
 import { Eye, EyeOff, FileText, Lock, Plus, Trash2, Upload, X } from 'lucide-react'
 import type { EnvironmentItem, KeyValueRow } from '../../types'
 import { createId } from '../../utils/formatters'
@@ -19,6 +19,13 @@ export interface KeyValueTableProps {
   hideAddRow?: boolean
 }
 
+function isRowEmpty(row: KeyValueRow): boolean {
+  const hasKey = Boolean(row.key && row.key.trim() !== '')
+  const hasValue = Boolean(row.value && row.value.trim() !== '')
+  const hasFile = Boolean(row.fileName && row.fileName.trim() !== '')
+  return !hasKey && !hasValue && !hasFile
+}
+
 export function KeyValueTable({
   rows,
   autoRows = [],
@@ -33,54 +40,127 @@ export function KeyValueTable({
   isPathVariableTable = false,
   hideAddRow = false,
 }: KeyValueTableProps) {
-  const currentRows = Array.isArray(rows) && rows.length > 0 ? rows : []
+  const currentRows = Array.isArray(rows) ? rows : []
   const fileInputRefs = useRef<Record<string, HTMLInputElement | null>>({})
   const [showAutoHeaders, setShowAutoHeaders] = useState(false)
 
   // Track which keys the user has explicitly provided to mark overridden auto rows
-  const userOverriddenKeys = new Set(
-    currentRows
-      .filter((r) => r.enabled && r.key.trim() !== '')
-      .map((r) => r.key.trim().toLowerCase()),
+  const userOverriddenKeys = useMemo(
+    () =>
+      new Set(
+        currentRows
+          .filter((r) => r.enabled && r.key.trim() !== '')
+          .map((r) => r.key.trim().toLowerCase()),
+      ),
+    [currentRows],
   )
 
-  const updateRow = (id: string, patch: Partial<KeyValueRow>, index: number) => {
-    let baseList =
-      currentRows.length > 0
-        ? [...currentRows]
-        : [{ id, key: '', value: '', enabled: true, description: '', type: 'text' as const }]
-    if (!baseList.some((r) => r.id === id)) {
-      baseList = [
-        ...baseList,
-        { id, key: '', value: '', enabled: true, description: '', type: 'text' as const, ...patch },
+  // Compute displayRows ensuring ghost row when empty or trailing non-empty row
+  const displayRows = useMemo(() => {
+    if (isPathVariableTable) return currentRows
+
+    // Sanitize any empty rows to always have enabled: false
+    const sanitizedRows = currentRows.map((r) =>
+      isRowEmpty(r) && r.enabled ? { ...r, enabled: false } : r,
+    )
+
+    if (sanitizedRows.length === 0) {
+      return [
+        {
+          id: 'ghost-initial-row',
+          key: '',
+          value: '',
+          enabled: false,
+          description: '',
+          type: 'text' as const,
+        },
       ]
     }
 
-    const nextRows = baseList.map((row, i) =>
-      row.id === id || (baseList.length === 1 && i === 0) ? { ...row, ...patch } : row,
-    )
+    const lastRow = sanitizedRows[sanitizedRows.length - 1]
+    if (lastRow && !isRowEmpty(lastRow)) {
+      return [
+        ...sanitizedRows,
+        {
+          id: 'ghost-tail-row',
+          key: '',
+          value: '',
+          enabled: false,
+          description: '',
+          type: 'text' as const,
+        },
+      ]
+    }
 
-    // Auto-append an empty row if editing the very last row (only for normal query/header tables, not path variables)
-    if (
-      !isPathVariableTable &&
-      index === nextRows.length - 1 &&
-      (patch.key !== undefined ||
-        patch.value !== undefined ||
-        patch.fileName !== undefined ||
-        patch.type !== undefined)
-    ) {
-      const updatedRow = nextRows[index]
-      if (
-        updatedRow &&
-        (updatedRow.key.trim() !== '' ||
-          updatedRow.value.trim() !== '' ||
-          Boolean(updatedRow.fileName))
+    return sanitizedRows
+  }, [currentRows, isPathVariableTable])
+
+  const updateRow = (id: string, patch: Partial<KeyValueRow>, index: number) => {
+    let baseList = displayRows.length > 0 ? [...displayRows] : []
+
+    // If updating a ghost placeholder row, assign a real unique ID
+    if (id.startsWith('ghost-') || !baseList.some((r) => r.id === id)) {
+      const realId = createId()
+      if (baseList[index]) {
+        baseList[index] = { ...baseList[index], id: realId }
+      } else {
+        baseList.push({
+          id: realId,
+          key: '',
+          value: '',
+          enabled: false,
+          description: '',
+          type: 'text' as const,
+        })
+      }
+      id = realId
+    }
+
+    const nextRows = baseList.map((row, i) => {
+      if (row.id !== id && !(baseList.length === 1 && i === 0)) {
+        return row
+      }
+
+      const merged = { ...row, ...patch }
+
+      // When user modifies content (key, value, fileName, type) without explicit checkbox toggle:
+      if (patch.enabled === undefined) {
+        const isFilled =
+          (merged.key && merged.key.trim() !== '') ||
+          (merged.value && merged.value.trim() !== '') ||
+          Boolean(merged.fileName && merged.fileName.trim() !== '')
+
+        if (isFilled) {
+          // Rule 2.1: Auto-enable checkbox when user types key or value
+          merged.enabled = true
+        } else {
+          // Rule 3: Auto-disable checkbox when user clears all content
+          merged.enabled = false
+        }
+      }
+
+      return merged
+    })
+
+    // For normal tables: handle auto-append and auto-cleanup
+    if (!isPathVariableTable) {
+      // Clean up multiple trailing empty rows, keeping at most 1
+      while (
+        nextRows.length > 1 &&
+        isRowEmpty(nextRows[nextRows.length - 1]) &&
+        isRowEmpty(nextRows[nextRows.length - 2])
       ) {
+        nextRows.pop()
+      }
+
+      // Rule 2.2: Auto-append an empty row at the bottom if the last row is non-empty
+      const lastRow = nextRows[nextRows.length - 1]
+      if (lastRow && !isRowEmpty(lastRow)) {
         nextRows.push({
           id: createId(),
           key: '',
           value: '',
-          enabled: true,
+          enabled: false,
           description: '',
           type: 'text',
         })
@@ -91,16 +171,25 @@ export function KeyValueTable({
   }
 
   const removeRow = (id: string) => {
-    const nextRows = currentRows.filter((row) => row.id !== id)
-    if (nextRows.length === 0) {
-      nextRows.push({
-        id: createId(),
-        key: '',
-        value: '',
-        enabled: true,
-        description: '',
-        type: 'text',
-      })
+    let nextRows = currentRows.filter((row) => row.id !== id)
+    if (!isPathVariableTable) {
+      while (
+        nextRows.length > 1 &&
+        isRowEmpty(nextRows[nextRows.length - 1]) &&
+        isRowEmpty(nextRows[nextRows.length - 2])
+      ) {
+        nextRows.pop()
+      }
+      if (nextRows.length === 0 || !isRowEmpty(nextRows[nextRows.length - 1])) {
+        nextRows.push({
+          id: createId(),
+          key: '',
+          value: '',
+          enabled: false,
+          description: '',
+          type: 'text',
+        })
+      }
     }
     onChange(nextRows)
   }
@@ -112,7 +201,7 @@ export function KeyValueTable({
         id: createId(),
         key: '',
         value: '',
-        enabled: true,
+        enabled: false,
         description: '',
         type: 'text',
       },
@@ -132,13 +221,6 @@ export function KeyValueTable({
       )
     }
   }
-
-  const displayRows =
-    currentRows.length > 0
-      ? currentRows
-      : isPathVariableTable
-        ? []
-        : [{ id: 'empty-initial-row', key: '', value: '', enabled: true, description: '', type: 'text' as const }]
 
   return (
     <div className="kv-table-container">
