@@ -13,7 +13,7 @@ import type {
   SplitLayout,
 } from '../types'
 import { AppSettings, DEFAULT_APP_SETTINGS } from '../types/settings.types'
-import { createId } from '../utils/formatters'
+import { createId, createRequestSnapshot } from '../utils/formatters'
 import {
   convertRowsToHeadersJson,
   parseHeadersTextToRows,
@@ -46,7 +46,7 @@ export function createDefaultRequest(mode: Mode = 'REST'): RequestItem {
   const defaultHeaders = `{\n  "Content-Type": "application/json"\n}`
   const initialUrl = mode === 'GRAPHQL' ? '{{Domain}}/graphql' : ''
 
-  return {
+  const req: RequestItem = {
     id: createId(),
     name: mode === 'GRAPHQL' ? 'New GraphQL Request' : 'New Request',
     graphqlRootField: mode === 'GRAPHQL' ? 'health' : undefined,
@@ -75,6 +75,11 @@ export function createDefaultRequest(mode: Mode = 'REST'): RequestItem {
     savedRequestId: undefined,
     collectionId: undefined,
     folderId: undefined,
+  }
+
+  return {
+    ...req,
+    savedSnapshot: createRequestSnapshot(req),
   }
 }
 
@@ -154,7 +159,7 @@ export function reviveRequest(request: Partial<PersistedRequestItem>): RequestIt
       ? request.headersText
       : convertRowsToHeadersJson(headersList)
 
-  return {
+  const res: RequestItem = {
     ...def,
     ...request,
     graphqlRootField: request.graphqlRootField ?? (mode === 'GRAPHQL' ? def.graphqlRootField : undefined),
@@ -181,6 +186,11 @@ export function reviveRequest(request: Partial<PersistedRequestItem>): RequestIt
     response: null,
     loading: false,
     clientError: '',
+  }
+
+  return {
+    ...res,
+    savedSnapshot: request.savedSnapshot || createRequestSnapshot(res),
   }
 }
 

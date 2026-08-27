@@ -65,6 +65,8 @@ export type RequestItem = {
   response: ResponseState | null
   loading: boolean
   clientError: string
+  savedSnapshot?: string
+  isDirty?: boolean
 }
 
 export type PersistedRequestItem = Omit<

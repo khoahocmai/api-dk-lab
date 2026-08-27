@@ -341,6 +341,62 @@
   font-weight: 650;
 }
 
+/* Tab Dirty Dot & Close Button Hover Transition */
+.tab-close-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-dirty-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #f59e0b;
+  display: inline-block;
+  transition: all 0.15s ease;
+}
+
+.tab-chip.is-dirty .tab-close-icon {
+  display: none;
+}
+
+.tab-chip.is-dirty .tab-dirty-dot {
+  display: inline-block;
+}
+
+.tab-chip.is-dirty:hover .tab-close-icon {
+  display: inline-flex;
+}
+
+.tab-chip.is-dirty:hover .tab-dirty-dot {
+  display: none;
+}
+
+/* Save Button Dirty Indicator */
+.button-save-dirty {
+  background: rgba(59, 130, 246, 0.12) !important;
+  border-color: rgba(59, 130, 246, 0.45) !important;
+  color: #60a5fa !important;
+  font-weight: 600;
+}
+
+.button-save-dirty:hover {
+  background: rgba(59, 130, 246, 0.22) !important;
+  border-color: #3b82f6 !important;
+  color: #93c5fd !important;
+}
+
+.save-dirty-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #f59e0b;
+  display: inline-block;
+  margin-left: 2px;
+}
+
 .tab-main-button {
   min-width: 0;
   flex: 1;

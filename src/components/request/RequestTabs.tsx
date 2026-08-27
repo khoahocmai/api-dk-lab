@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { BookOpen, Copy, Globe, Layers3, PanelRightClose, PanelRightOpen, Plus, X } from 'lucide-react'
 import type { EnvironmentItem, Mode, RequestItem } from '../../types'
 import { EnvironmentSelector } from '../common/EnvironmentSelector'
-import { getMethodBadgeClass } from '../../utils/formatters'
+import { getMethodBadgeClass, isTabDirty } from '../../utils/formatters'
 
 interface RequestTabsProps {
   tabs: RequestItem[]
@@ -88,10 +88,12 @@ export function RequestTabs({
       <div className="tab-scroll">
         {tabs.map((item) => {
           const active = item.id === activeTabId
+          const dirty = item.isDirty ?? isTabDirty(item)
+
           return (
             <div
               key={item.id}
-              className={`tab-chip ${active ? 'is-active' : ''}`}
+              className={`tab-chip ${active ? 'is-active' : ''} ${dirty ? 'is-dirty' : ''}`}
               onClick={() => onSelectTab(item.id)}
               ref={active ? (el) => el?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' }) : undefined}
             >
@@ -127,16 +129,25 @@ export function RequestTabs({
               </button>
               <button
                 type="button"
-                className="icon-button"
+                className="icon-button tab-close-button"
                 onClick={(e) => {
                   e.stopPropagation()
                   onCloseTab(item.id)
                 }}
                 aria-label={`Close ${item.name}`}
-                title="Close Tab"
+                title={dirty ? 'Unsaved changes - Click to close' : 'Close Tab'}
                 style={{ width: 18, height: 18 }}
               >
-                <X size={11} />
+                {dirty ? (
+                  <>
+                    <span className="tab-dirty-dot" />
+                    <span className="tab-close-icon">
+                      <X size={11} />
+                    </span>
+                  </>
+                ) : (
+                  <X size={11} />
+                )}
               </button>
             </div>
           )

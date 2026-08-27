@@ -15,6 +15,7 @@ import {
 import type { EnvironmentItem, HttpMethod, Mode, RequestItem, SplitLayout } from '../../types'
 import { generateCurlCommand, parseCurlCommand } from '../../utils/curlHelper'
 import { parseUrlToQueryParams, syncPathVariables } from '../../utils/urlHelper'
+import { isTabDirty } from '../../utils/formatters'
 import { TemplateUrlInput } from '../common/TemplateUrlInput'
 
 interface UrlBarProps {
@@ -257,9 +258,15 @@ export function UrlBar({
           </button>
         )}
 
-        <button onClick={onSave} className="button" style={{ minWidth: 64 }}>
+        <button
+          onClick={onSave}
+          className={`button ${activeTab.isDirty ?? isTabDirty(activeTab) ? 'button-save-dirty' : ''}`}
+          style={{ minWidth: 64, position: 'relative' }}
+          title={activeTab.isDirty ?? isTabDirty(activeTab) ? 'Save changes (Ctrl+S)' : 'Save request'}
+        >
           <Save size={13} />
-          Save
+          <span>Save</span>
+          {(activeTab.isDirty ?? isTabDirty(activeTab)) && <span className="save-dirty-dot" />}
         </button>
       </div>
 

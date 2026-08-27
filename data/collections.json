@@ -523,7 +523,7 @@
       "folderId": "3eba61de-7e93-497e-ab02-0daac97727ae",
       "name": "KiotViet branch get pagination",
       "request": {
-        "id": "b7718e9a-ce1c-428b-9ee0-e4aea757035c",
+        "id": "461f7e02-3135-4ebd-91c9-f54f06065e93",
         "savedRequestId": "c1ad8d59-9cce-45dc-b91e-f91ef779b4de",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": "3eba61de-7e93-497e-ab02-0daac97727ae",
@@ -578,14 +578,14 @@
         "rawText": "",
         "formData": [],
         "urlencoded": [],
-        "gqlQuery": "query KiotVietBranchGetPagination($filters: KiotVietBranchGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietBranchGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      kiotvietBranchId\n      branchName\n      address\n      locationName\n      wardName\n      retailerId\n      email\n      kiotvietModifiedAt\n      kiotvietCreatedAt\n      lastSyncedAt\n    }\n  }\n}",
+        "gqlQuery": "query KiotVietBranchGetPagination($filters: KiotVietBranchGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietBranchGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      kiotvietBranchId\n      branchName\n      retailerId\n      email\n      kiotvietModifiedAt\n      kiotvietCreatedAt\n      lastSyncedAt\n      locationName\n      address\n    }\n  }\n}",
         "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
         "testScript": "",
         "editorTab": "BODY",
         "responseTab": "PRETTY"
       },
       "createdAt": "2026-08-21T10:24:01.220Z",
-      "updatedAt": "2026-08-27T03:08:23.929Z"
+      "updatedAt": "2026-08-27T03:19:17.158Z"
     },
     {
       "id": "d25c79ba-a8bd-455d-b536-3b5282933bbe",

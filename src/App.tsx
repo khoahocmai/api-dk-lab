@@ -24,7 +24,9 @@ import type {
 import { DEFAULT_APP_SETTINGS } from './types/settings.types'
 import {
   createId,
+  createRequestSnapshot,
   formatJsonSafely,
+  isTabDirty,
   parseJsonObject,
 } from './utils/formatters'
 import {
@@ -73,6 +75,7 @@ import { CurlImportModal } from './components/request/CurlImportModal'
 import { SettingsModal } from './components/settings/SettingsModal'
 import { CodeSnippetModal } from './components/common/CodeSnippetModal'
 import { SaveRequestModal } from './components/request/SaveRequestModal'
+import { UnsavedChangesModal } from './components/request/UnsavedChangesModal'
 import { Toast, type ToastData } from './components/common/Toast'
 import { useAppZoom } from './hooks/useAppZoom'
 
@@ -110,6 +113,7 @@ function App() {
     parentId: null,
   })
   const [saveRequestModalOpen, setSaveRequestModalOpen] = useState(false)
+  const [pendingCloseTab, setPendingCloseTab] = useState<RequestItem | null>(null)
   const [settingsModalOpen, setSettingsModalOpen] = useState(false)
   const [codeSnippetModalOpen, setCodeSnippetModalOpen] = useState(false)
   const [toast, setToast] = useState<ToastData | null>(null)
@@ -387,7 +391,7 @@ function App() {
       if (event.key.toLowerCase() === 'w') {
         event.preventDefault()
         if (activeTabId) {
-          closeTab(activeTabId)
+          handleRequestCloseTab(activeTabId)
         }
         return
       }
@@ -427,6 +431,7 @@ function App() {
       collectionId: undefined,
       folderId: undefined,
     }
+    newReq.savedSnapshot = createRequestSnapshot(newReq)
     setTabs((current) => [...current, newReq])
     setActiveTabId(newReq.id)
     setMobileView('REQUEST')
@@ -455,6 +460,60 @@ function App() {
     }
   }
 
+  const handleRequestCloseTab = (tabId: string) => {
+    const target = tabs.find((t) => t.id === tabId)
+    if (!target) return
+
+    if (isTabDirty(target)) {
+      setPendingCloseTab(target)
+    } else {
+      closeTab(tabId)
+    }
+  }
+
+  const handleConfirmSaveAndClose = () => {
+    if (!pendingCloseTab) return
+
+    // If tab is linked to collection: save directly and close
+    if (
+      pendingCloseTab.savedRequestId &&
+      savedRequests.some((r) => r.id === pendingCloseTab.savedRequestId)
+    ) {
+      const payload = stripTransientRequest(pendingCloseTab)
+      setSavedRequests((current) =>
+        current.map((item) =>
+          item.id === pendingCloseTab.savedRequestId
+            ? {
+                ...item,
+                name: pendingCloseTab.name,
+                request: payload,
+                updatedAt: new Date().toISOString(),
+              }
+            : item,
+        ),
+      )
+      closeTab(pendingCloseTab.id)
+      setPendingCloseTab(null)
+      showToast('Request saved successfully')
+      return
+    }
+
+    // Unsaved request: focus it, close unsaved modal and open Save Request modal
+    setActiveTabId(pendingCloseTab.id)
+    setPendingCloseTab(null)
+    setSaveRequestModalOpen(true)
+  }
+
+  const handleDiscardAndClose = () => {
+    if (!pendingCloseTab) return
+    closeTab(pendingCloseTab.id)
+    setPendingCloseTab(null)
+  }
+
+  const handleCancelClose = () => {
+    setPendingCloseTab(null)
+  }
+
   const duplicateTab = (source: RequestItem = activeTab) => {
     if (!source) return
     const duplicate: RequestItem = {
@@ -469,6 +528,7 @@ function App() {
       clientError: '',
       testResults: null,
     }
+    duplicate.savedSnapshot = createRequestSnapshot(duplicate)
     setTabs((current) => [...current, duplicate])
     setActiveTabId(duplicate.id)
   }
@@ -479,6 +539,8 @@ function App() {
     // Case 1: Tab is linked to an existing saved request in collections
     if (activeTab.savedRequestId && savedRequests.some((r) => r.id === activeTab.savedRequestId)) {
       const payload = stripTransientRequest(activeTab)
+      const newSnapshot = createRequestSnapshot(activeTab)
+
       setSavedRequests((current) =>
         current.map((item) =>
           item.id === activeTab.savedRequestId
@@ -488,6 +550,13 @@ function App() {
                 request: payload,
                 updatedAt: new Date().toISOString(),
               }
+            : item,
+        ),
+      )
+      setTabs((current) =>
+        current.map((item) =>
+          item.id === activeTab.id
+            ? { ...item, savedSnapshot: newSnapshot }
             : item,
         ),
       )
@@ -515,6 +584,7 @@ function App() {
       folderId: targetFolderId,
     }
     const payload = stripTransientRequest(updatedTabItem)
+    const newSnapshot = createRequestSnapshot(updatedTabItem)
 
     const newSavedRequest: SavedRequestItem = {
       id: newSavedId,
@@ -527,12 +597,20 @@ function App() {
     }
 
     setSavedRequests((current) => [...current, newSavedRequest])
-    updateActiveTab({
-      name: targetName,
-      savedRequestId: newSavedId,
-      collectionId: targetCollectionId,
-      folderId: targetFolderId,
-    })
+    setTabs((current) =>
+      current.map((item) =>
+        item.id === activeTab.id
+          ? {
+              ...item,
+              name: targetName,
+              savedRequestId: newSavedId,
+              collectionId: targetCollectionId,
+              folderId: targetFolderId,
+              savedSnapshot: newSnapshot,
+            }
+          : item,
+      ),
+    )
 
     if (!expandedCollectionIds.includes(targetCollectionId)) {
       setExpandedCollectionIds((current) => [...current, targetCollectionId])
@@ -551,6 +629,7 @@ function App() {
       setActiveTabId(existingTab.id)
       setMobileView('REQUEST')
     } else {
+      const initialSnapshot = createRequestSnapshot(saved.request)
       const opened = reviveRequest({
         ...saved.request,
         id: createId(),
@@ -558,7 +637,9 @@ function App() {
         collectionId: saved.collectionId,
         folderId: saved.folderId,
         name: saved.name,
+        savedSnapshot: initialSnapshot,
       })
+      opened.savedSnapshot = initialSnapshot
       setTabs((current) => [...current, opened])
       setActiveTabId(opened.id)
       setMobileView('REQUEST')
@@ -1836,7 +1917,7 @@ function App() {
             }
             onSelectTab={setActiveTabId}
             onDuplicateTab={duplicateTab}
-            onCloseTab={closeTab}
+            onCloseTab={handleRequestCloseTab}
             onAddTab={addTab}
             onUpdateActiveTab={updateActiveTab}
             onSend={handleSend}
@@ -2043,6 +2124,15 @@ function App() {
           onSave={handleSaveNewRequest}
         />
       )}
+
+      {/* Modal: Unsaved Changes Confirmation */}
+      <UnsavedChangesModal
+        isOpen={Boolean(pendingCloseTab)}
+        tabName={pendingCloseTab?.name || ''}
+        onSave={handleConfirmSaveAndClose}
+        onDiscard={handleDiscardAndClose}
+        onCancel={handleCancelClose}
+      />
 
       {/* Toast Notifications */}
       <Toast toast={toast} onClose={() => setToast(null)} />

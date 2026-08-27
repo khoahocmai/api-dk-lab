@@ -5,8 +5,71 @@
     "editorFontSize": 13
   },
   "activeEnvironmentId": "36eefd5b-4f5f-4a32-9b61-ae9b1ab57e32",
-  "activeTabId": "",
-  "tabs": [],
+  "activeTabId": "461f7e02-3135-4ebd-91c9-f54f06065e93",
+  "tabs": [
+    {
+      "id": "461f7e02-3135-4ebd-91c9-f54f06065e93",
+      "savedRequestId": "c1ad8d59-9cce-45dc-b91e-f91ef779b4de",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "3eba61de-7e93-497e-ab02-0daac97727ae",
+      "name": "KiotViet branch get pagination",
+      "graphqlRootField": "kiotVietBranchGetPagination",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "6274bea9-2d5b-462d-bbe6-a0776d595d87",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "98f17cce-b64a-4fc7-8071-3348748b9f25",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "19d8cd28-a2be-4779-9f9c-6d2a33effa58",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "06ec2bd0-fae4-493e-b475-73081cc41baa",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query KiotVietBranchGetPagination($filters: KiotVietBranchGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietBranchGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      kiotvietBranchId\n      branchName\n      retailerId\n      email\n      kiotvietModifiedAt\n      kiotvietCreatedAt\n      lastSyncedAt\n      locationName\n      address\n    }\n  }\n}",
+      "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY"
+    }
+  ],
   "splitLayout": "horizontal",
   "isSidebarCollapsed": false,
   "isExplorerOpen": true

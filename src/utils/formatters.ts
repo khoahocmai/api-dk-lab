@@ -1,3 +1,5 @@
+import type { KeyValueRow, RequestItem } from '../types'
+
 export function createId(): string {
   return crypto.randomUUID?.() ?? Math.random().toString(36).slice(2, 11)
 }
@@ -134,3 +136,62 @@ export function getMethodColor(mode?: string, method?: string): string {
       return 'var(--method-get)'
   }
 }
+
+/**
+ * Creates a serialized snapshot of key request properties to detect dirty / unsaved changes.
+ */
+export function createRequestSnapshot(tab?: Partial<RequestItem> | null): string {
+  if (!tab) return ''
+
+  const sanitizeRows = (rows?: KeyValueRow[]) =>
+    (rows || [])
+      .filter((r) => r.key?.trim() || r.value?.trim() || r.fileName?.trim())
+      .map((r) => ({
+        key: r.key?.trim() || '',
+        value: r.value || '',
+        enabled: Boolean(r.enabled),
+        type: r.type || 'text',
+        fileName: r.fileName || '',
+        description: r.description?.trim() || '',
+      }))
+
+  return JSON.stringify({
+    name: tab.name?.trim() || '',
+    url: tab.url?.trim() || '',
+    method: tab.method || 'GET',
+    mode: tab.mode || 'REST',
+    graphqlRootField: tab.graphqlRootField?.trim() || '',
+    params: sanitizeRows(tab.params),
+    pathVariables: sanitizeRows(tab.pathVariables),
+    headersList: sanitizeRows(tab.headersList),
+    auth: tab.auth
+      ? {
+          type: tab.auth.type,
+          bearerToken: tab.auth.bearerToken || '',
+          basicUsername: tab.auth.basicUsername || '',
+          basicPassword: tab.auth.basicPassword || '',
+          apiKeyName: tab.auth.apiKeyName || '',
+          apiKeyValue: tab.auth.apiKeyValue || '',
+          apiKeyAddTo: tab.auth.apiKeyAddTo || 'header',
+        }
+      : undefined,
+    bodyType: tab.bodyType || 'none',
+    restBody: tab.restBody || '',
+    rawText: tab.rawText || '',
+    formData: sanitizeRows(tab.formData),
+    urlencoded: sanitizeRows(tab.urlencoded),
+    gqlQuery: tab.gqlQuery || '',
+    gqlVariables: tab.gqlVariables || '',
+    testScript: tab.testScript || '',
+  })
+}
+
+/**
+ * Checks if a tab has unsaved changes compared to its savedSnapshot.
+ */
+export function isTabDirty(tab?: RequestItem | null): boolean {
+  if (!tab) return false
+  if (tab.savedSnapshot === undefined) return false
+  return createRequestSnapshot(tab) !== tab.savedSnapshot
+}
+
