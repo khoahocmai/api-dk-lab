@@ -803,6 +803,18 @@ function App() {
     setNewFolderModalOpen(false)
   }
 
+  const handleCreateFolderDirectly = (collectionId: string, parentId: string | null, name: string): string => {
+    const newFolder: FolderItem = {
+      id: createId(),
+      collectionId,
+      parentId,
+      name: name.trim(),
+    }
+    setFolders((prev) => [...prev, newFolder])
+    setExpandedFolderIds((prev) => [...prev, newFolder.id])
+    return newFolder.id
+  }
+
   const handleDeleteFolder = (folderId: string) => {
     const folderIdsToDelete = new Set<string>([folderId])
     let added = true
@@ -2164,6 +2176,7 @@ function App() {
           defaultCollectionId={activeTab.collectionId || collections[0]?.id}
           defaultFolderId={activeTab.folderId}
           onSave={handleSaveNewRequest}
+          onCreateFolder={handleCreateFolderDirectly}
         />
       )}
 

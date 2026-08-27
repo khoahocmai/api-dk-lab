@@ -14,7 +14,7 @@
         "key": "token",
         "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imtob2EuZGRkQHRhcHRhcC5jb20udm4iLCJzdWIiOiIwMTljMzg5ZC0yNmUyLTcxMWUtYjE3Ni02OTJlNTgwYTE2YjYiLCJ0ZW5hbnRJZCI6IjAxOTJmZGE0LWJhMWItNzZlZi1iYjFhLTY0YzA0M2E4ZTRhNCIsInBvcnRhbHMiOlsiSVQiXSwibmFtZSI6IsSQ4buXIETGsMahbmcgxJDEg25nIEtob2EiLCJlbWFpbCI6Imtob2EuZGRkQHRhcHRhcC5jb20udm4iLCJpYXQiOjE3ODc3OTY2ODcsImV4cCI6MTc4NzgzOTg4NywiaXNzIjoiRFhQIEF1dGggU2VydmljZSJ9.5a677XeB8SmpYhQCl4kHzFwrQKe0Aeniv6mU-WMSaNk",
         "enabled": true,
-        "secret": false
+        "secret": true
       }
     ]
   },

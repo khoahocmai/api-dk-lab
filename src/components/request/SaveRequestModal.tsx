@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import type { CollectionItem, FolderItem } from '../../types'
 import { Modal } from '../common/Modal'
+import { FolderPicker } from './FolderPicker'
 
 interface SaveRequestModalProps {
   isOpen: boolean
@@ -11,12 +12,7 @@ interface SaveRequestModalProps {
   defaultCollectionId?: string
   defaultFolderId?: string | null
   onSave: (name: string, collectionId: string, folderId: string | null) => void
-}
-
-interface HierarchicalFolder {
-  id: string
-  name: string
-  depth: number
+  onCreateFolder?: (collectionId: string, parentId: string | null, name: string) => string
 }
 
 export function SaveRequestModal({
@@ -28,6 +24,7 @@ export function SaveRequestModal({
   defaultCollectionId,
   defaultFolderId,
   onSave,
+  onCreateFolder,
 }: SaveRequestModalProps) {
   const [name, setName] = useState('')
   const [selectedCollectionId, setSelectedCollectionId] = useState('')
@@ -45,36 +42,44 @@ export function SaveRequestModal({
     }
   }, [isOpen, initialName, defaultCollectionId, defaultFolderId, collections])
 
-  // Build hierarchical folder list for the selected collection
-  const availableFolders = useMemo(() => {
-    if (!selectedCollectionId) return []
-
-    const result: HierarchicalFolder[] = []
-
-    function traverse(parentId: string | null = null, depth = 0) {
-      const children = folders.filter(
-        (f) => f.collectionId === selectedCollectionId && (f.parentId || null) === parentId,
+  // Reset folder selection when collection changes if folder does not belong to new collection
+  useEffect(() => {
+    if (selectedFolderId) {
+      const match = folders.find(
+        (f) => f.id === selectedFolderId && f.collectionId === selectedCollectionId,
       )
-      for (const child of children) {
-        result.push({
-          id: child.id,
-          name: child.name,
-          depth,
-        })
-        traverse(child.id, depth + 1)
+      if (!match) {
+        setSelectedFolderId('')
       }
     }
+  }, [selectedCollectionId, folders, selectedFolderId])
 
-    traverse(null, 0)
-    return result
-  }, [folders, selectedCollectionId])
+  // Selected collection object
+  const selectedCollection = useMemo(
+    () => collections.find((c) => c.id === selectedCollectionId),
+    [collections, selectedCollectionId],
+  )
 
-  // Reset folder selection if current selectedFolderId is not in availableFolders
-  useEffect(() => {
-    if (selectedFolderId && !availableFolders.some((f) => f.id === selectedFolderId)) {
-      setSelectedFolderId('')
+  // Compute folder breadcrumb
+  const folderBreadcrumb = useMemo(() => {
+    if (!selectedFolderId) return ''
+    const path: string[] = []
+    let current: FolderItem | undefined = folders.find((f) => f.id === selectedFolderId)
+    while (current) {
+      path.unshift(current.name)
+      current = current.parentId ? folders.find((f) => f.id === current?.parentId) : undefined
     }
-  }, [selectedCollectionId, availableFolders, selectedFolderId])
+    return path.join(' / ')
+  }, [selectedFolderId, folders])
+
+  // Full destination path for the footer preview
+  const fullTargetPath = useMemo(() => {
+    const colName = selectedCollection?.name || 'Collection'
+    if (!selectedFolderId || !folderBreadcrumb) {
+      return `${colName} (Root level)`
+    }
+    return `${colName} / ${folderBreadcrumb}`
+  }, [selectedCollection, selectedFolderId, folderBreadcrumb])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -84,70 +89,81 @@ export function SaveRequestModal({
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="Save Request" maxWidth="460px">
-      <form onSubmit={handleSubmit} className="stack" style={{ gap: 12 }}>
-        <div className="stack" style={{ gap: 4 }}>
-          <label className="caps" htmlFor="save-request-name">
-            Request Name
+    <Modal isOpen={isOpen} onClose={onClose} title="Save Request" maxWidth="800px">
+      <form onSubmit={handleSubmit} className="save-request-form">
+        {/* Top Fields Grid */}
+        <div className="save-request-top-grid">
+          <div className="save-request-field">
+            <label className="caps" htmlFor="save-request-name">
+              Request Name
+            </label>
+            <input
+              id="save-request-name"
+              className="input save-request-input"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="e.g. kiotVietCustomerGetBy3rdLookup"
+              autoFocus
+            />
+          </div>
+
+          <div className="save-request-field">
+            <label className="caps" htmlFor="save-request-collection">
+              Collection
+            </label>
+            <select
+              id="save-request-collection"
+              className="select save-request-select"
+              value={selectedCollectionId}
+              onChange={(e) => setSelectedCollectionId(e.target.value)}
+            >
+              {collections.map((col) => (
+                <option key={col.id} value={col.id}>
+                  {col.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {/* Central Inlined Folder Tree Browser */}
+        <div className="save-request-folder-section">
+          <label className="caps" htmlFor="save-request-folder">
+            Select Location (Folder)
           </label>
-          <input
-            id="save-request-name"
-            className="input"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="e.g. Get User Profile"
-            autoFocus
+          <FolderPicker
+            collectionId={selectedCollectionId}
+            folders={folders}
+            selectedFolderId={selectedFolderId}
+            onSelectFolder={setSelectedFolderId}
+            onCreateFolder={onCreateFolder}
           />
         </div>
 
-        <div className="stack" style={{ gap: 4 }}>
-          <label className="caps" htmlFor="save-request-collection">
-            Collection
-          </label>
-          <select
-            id="save-request-collection"
-            className="select"
-            value={selectedCollectionId}
-            onChange={(e) => setSelectedCollectionId(e.target.value)}
-          >
-            {collections.map((col) => (
-              <option key={col.id} value={col.id}>
-                {col.name}
-              </option>
-            ))}
-          </select>
-        </div>
+        {/* Footer with Destination Breadcrumb and Actions */}
+        <div className="save-request-footer">
+          <div className="save-request-target-path" title={fullTargetPath}>
+            <span className="save-request-pin">📍</span>
+            <span className="save-request-saving-label">Saving to:</span>
+            <span className="save-request-saving-path">{fullTargetPath}</span>
+          </div>
 
-        <div className="stack" style={{ gap: 4 }}>
-          <label className="caps" htmlFor="save-request-folder">
-            Folder (Optional)
-          </label>
-          <select
-            id="save-request-folder"
-            className="select"
-            value={selectedFolderId}
-            onChange={(e) => setSelectedFolderId(e.target.value)}
-          >
-            <option value="">(Root level - No folder)</option>
-            {availableFolders.map((folder) => (
-              <option key={folder.id} value={folder.id}>
-                {'\u00A0\u00A0'.repeat(folder.depth)}📁 {folder.name}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className="modal-footer" style={{ marginTop: 8 }}>
-          <button type="button" className="button" onClick={onClose}>
-            Cancel
-          </button>
-          <button
-            type="submit"
-            className="button button-primary"
-            disabled={!name.trim() || !selectedCollectionId}
-          >
-            Save to Collection
-          </button>
+          <div className="save-request-footer-buttons">
+            <button
+              type="button"
+              className="button save-request-btn-cancel"
+              onClick={onClose}
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="button button-primary save-request-btn-submit"
+              disabled={!name.trim() || !selectedCollectionId}
+            >
+              Save to Collection
+            </button>
+          </div>
         </div>
       </form>
     </Modal>

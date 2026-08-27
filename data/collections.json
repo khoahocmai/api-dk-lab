@@ -3858,6 +3858,63 @@
       },
       "createdAt": "2026-08-27T03:32:10.354Z",
       "updatedAt": "2026-08-27T03:32:14.434Z"
+    },
+    {
+      "id": "90d3b752-1b80-4ff1-901c-65f77a6c3c0e",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "ab934993-9c72-4386-bd8e-3e72044f3301",
+      "name": "KiotViet customer get by 3rd lookup",
+      "request": {
+        "id": "9e415619-86ad-4e60-a454-73d65b598582",
+        "savedRequestId": "90d3b752-1b80-4ff1-901c-65f77a6c3c0e",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "ab934993-9c72-4386-bd8e-3e72044f3301",
+        "name": "KiotViet customer get by 3rd lookup",
+        "graphqlRootField": "kiotVietCustomerGetBy3rdLookup",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "d323952e-1d16-477d-afdb-b4b654c43efb",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "ghost-tail-row",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query KiotVietCustomerGetBy3rdLookup($input: KiotVietLookupInputDto!) {\n  kiotVietCustomerGetBy3rdLookup(input: $input) {\n    id\n    code\n    name\n    gender\n    contactNumber\n    address\n    email\n    retailerId\n    branchId\n    debt\n    totalInvoiced\n    totalRevenue\n    totalPoint\n    modifiedDate\n    createdDate\n  }\n}",
+        "gqlVariables": "{\n  \"input\": {\n    \"type\": \"\",\n    \"value\": \"\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"kiotVietCustomerGetBy3rdLookup\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietCustomerGetBy3rdLookup\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietCustomerGetBy3rdLookup($input: KiotVietLookupInputDto!) {\\n  kiotVietCustomerGetBy3rdLookup(input: $input) {\\n    id\\n    code\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"input\\\": {\\n    \\\"type\\\": \\\"\\\",\\n    \\\"value\\\": \\\"\\\"\\n  }\\n}\",\"testScript\":\"\"}"
+      },
+      "createdAt": "2026-08-27T03:49:41.164Z",
+      "updatedAt": "2026-08-27T03:49:41.166Z"
     }
   ],
   "expandedCollectionIds": [

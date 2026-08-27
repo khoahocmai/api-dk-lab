@@ -3186,3 +3186,436 @@
   color: #64748b;
   font-family: var(--font-mono);
 }
+
+/* ==========================================================================
+   Folder Picker Tree & Popover (Postman-style)
+   ========================================================================== */
+
+.folder-picker-container {
+  position: relative;
+  width: 100%;
+}
+
+.folder-picker-trigger {
+  width: 100%;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 10px;
+  background: var(--bg-input, #12141a);
+  border: 1px solid var(--border, #282d3d);
+  border-radius: 6px;
+  color: var(--text-primary, #f1f5f9);
+  font-size: 13px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  user-select: none;
+}
+
+.folder-picker-trigger:hover {
+  border-color: #3b4256;
+}
+
+.folder-picker-trigger.is-open {
+  border-color: var(--primary, #3b82f6);
+  box-shadow: 0 0 0 1px var(--primary, #3b82f6);
+}
+
+.folder-picker-trigger-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.folder-picker-trigger-icon {
+  flex-shrink: 0;
+  color: #94a3b8;
+}
+
+.folder-picker-trigger-icon.is-selected {
+  color: #60a5fa;
+}
+
+.folder-picker-trigger-placeholder {
+  color: var(--text-dim, #64748b);
+  font-size: 12px;
+}
+
+.folder-picker-breadcrumb {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #f1f5f9;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.folder-picker-trigger-chevron {
+  flex-shrink: 0;
+  color: #64748b;
+  transition: transform 0.2s ease;
+}
+
+.folder-picker-trigger-chevron.is-rotated {
+  transform: rotate(180deg);
+}
+
+/* ==========================================================================
+   Save Request Modal (Large Explorer Dialog)
+   ========================================================================== */
+
+.save-request-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 440px;
+}
+
+.save-request-top-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.save-request-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.save-request-input,
+.save-request-select {
+  width: 100%;
+  height: 36px;
+  padding: 0 12px;
+  background: #181a24;
+  border: 1px solid #2b3042;
+  border-radius: 6px;
+  color: var(--text-primary, #f1f5f9);
+  font-size: 13.5px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.save-request-input:focus,
+.save-request-select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 1px #3b82f6;
+}
+
+.save-request-folder-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+/* Inlined Folder Tree Browser */
+.inlined-folder-browser {
+  display: flex;
+  flex-direction: column;
+  background: #0f1117;
+  border: 1px solid #232736;
+  border-radius: 6px;
+  height: 280px;
+  min-height: 260px;
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.inlined-folder-search-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background: #13151d;
+  border-bottom: 1px solid #232736;
+}
+
+.inlined-folder-search-icon {
+  position: absolute;
+  left: 22px;
+  top: 18px;
+  color: #64748b;
+  pointer-events: none;
+}
+
+.inlined-folder-search-input {
+  width: 100%;
+  height: 32px;
+  padding: 0 30px 0 32px;
+  background: #0b0d13;
+  border: 1px solid #232736;
+  border-radius: 4px;
+  color: #f1f5f9;
+  font-size: 12.5px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.inlined-folder-search-input:focus {
+  border-color: #3b82f6;
+}
+
+.inlined-folder-clear-search {
+  position: absolute;
+  right: 18px;
+  top: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: transparent;
+  border: 0;
+  color: #64748b;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.inlined-folder-clear-search:hover {
+  color: #e2e8f0;
+  background: #232736;
+}
+
+.inlined-folder-tree {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 6px 0;
+}
+
+.inlined-folder-node {
+  display: flex;
+  flex-direction: column;
+}
+
+.inlined-folder-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  min-height: 32px;
+  padding-right: 14px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 13px;
+  color: #cbd5e1;
+  border-left: 2px solid transparent;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+
+.inlined-folder-row:hover {
+  background: #181c28;
+  color: #f8fafc;
+}
+
+.inlined-folder-row.is-selected {
+  background: rgba(37, 99, 235, 0.2);
+  color: #60a5fa;
+  font-weight: 600;
+  border-left-color: #3b82f6;
+}
+
+.inlined-folder-root-row {
+  padding-left: 14px !important;
+  border-bottom: 1px dashed #232736;
+  margin-bottom: 4px;
+}
+
+.inlined-folder-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background: transparent;
+  border: 0;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.inlined-folder-chevron:hover {
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.inlined-folder-spacer {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.inlined-folder-icon {
+  flex-shrink: 0;
+  color: #94a3b8;
+}
+
+.inlined-folder-icon.is-active {
+  color: #60a5fa;
+}
+
+.inlined-folder-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.inlined-folder-empty {
+  padding: 32px 16px;
+  text-align: center;
+  font-size: 12.5px;
+  color: #64748b;
+  font-style: italic;
+}
+
+.inlined-folder-footer {
+  padding: 8px 12px;
+  border-top: 1px solid #232736;
+  background: #13151d;
+  display: flex;
+  align-items: center;
+}
+
+.inlined-folder-new-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  height: 30px;
+  padding: 0 10px;
+  background: transparent;
+  border: 1px dashed #2d3345;
+  border-radius: 4px;
+  color: #94a3b8;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.inlined-folder-new-btn:hover {
+  background: #1a1e2b;
+  border-color: #3b82f6;
+  color: #60a5fa;
+}
+
+.inlined-folder-create-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.inlined-folder-create-input {
+  flex: 1;
+  height: 30px;
+  padding: 0 10px;
+  background: #0b0d13;
+  border: 1px solid #3b82f6;
+  border-radius: 4px;
+  color: #f1f5f9;
+  font-size: 12px;
+  outline: none;
+}
+
+.inlined-folder-create-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Save Request Modal Footer */
+.save-request-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border, #282d3d);
+  margin-top: 4px;
+}
+
+.save-request-target-path {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.save-request-pin {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.save-request-saving-label {
+  color: var(--text-dim, #64748b);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.save-request-saving-path {
+  color: #60a5fa;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.save-request-footer-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.save-request-btn-cancel {
+  height: 36px;
+  padding: 0 16px;
+  font-size: 13px;
+  color: #cbd5e1;
+  background: #181a24;
+  border: 1px solid #2b3042;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.save-request-btn-cancel:hover {
+  background: #232736;
+  color: #f8fafc;
+}
+
+.save-request-btn-submit {
+  height: 36px;
+  padding: 0 20px;
+  font-size: 13px;
+  font-weight: 600;
+  background: #2563eb;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.4);
+  transition: all 0.15s ease;
+}
+
+.save-request-btn-submit:hover:not(:disabled) {
+  background: #1d4ed8;
+}
