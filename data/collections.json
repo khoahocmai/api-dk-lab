@@ -7179,7 +7179,7 @@
         "name": "Lấy thông tin token",
         "mode": "REST",
         "method": "POST",
-        "url": "https://id.kiotviet.vn/connect/token",
+        "url": "{{Domain-Token}}/identity/connect/token",
         "params": [],
         "headersList": [
           {
@@ -7245,12 +7245,12 @@
         "gqlQuery": "",
         "gqlVariables": "{}",
         "testScript": "var data = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"token\", jsonData.access_token);",
-        "editorTab": "HEADERS",
+        "editorTab": "BODY",
         "responseTab": "PRETTY",
         "savedSnapshot": "{\"name\":\"Lấy thông tin token\",\"url\":\"https://id.kiotviet.vn/connect/token\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/x-www-form-urlencoded\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"x-www-form-urlencoded\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[{\"key\":\"client_id\",\"value\":\"{{clientId}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"client_secret\",\"value\":\"{{clientSecret}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"grant_type\",\"value\":\"client_credentials\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"scopes\",\"value\":\"PublicApi.Access.FNB\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"var data = JSON.parse(responseBody);\\r\\npostman.setEnvironmentVariable(\\\"token\\\", jsonData.access_token);\"}"
       },
       "createdAt": "2026-08-28T04:09:46.149Z",
-      "updatedAt": "2026-08-28T04:31:29.844Z"
+      "updatedAt": "2026-08-28T04:35:49.757Z"
     },
     {
       "id": "b9fcaf09-5860-498d-ab4e-9bef6b82aff7",
@@ -7258,7 +7258,10 @@
       "folderId": null,
       "name": "Lấy Locations",
       "request": {
-        "id": "bba07216-4203-41f7-9529-2776ad937c21",
+        "id": "3b10027f-f44a-4fe4-bab7-e0888bee16d8",
+        "savedRequestId": "b9fcaf09-5860-498d-ab4e-9bef6b82aff7",
+        "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+        "folderId": null,
         "name": "Lấy Locations",
         "mode": "REST",
         "method": "GET",
@@ -7321,20 +7324,27 @@
             "description": ""
           }
         ],
-        "pathVariables": [],
         "headersList": [
           {
             "id": "1a112675-1469-43bb-8040-73a6bfe090f7",
             "key": "Retailer",
-            "value": "dvkh8235",
+            "value": "{{retailer}}",
             "enabled": true,
             "description": ""
+          },
+          {
+            "id": "ghost-tail-row",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
           }
         ],
-        "headersText": "{\n  \"Retailer\": \"dvkh8235\"\n}",
+        "headersText": "{\n  \"Retailer\": \"{{retailer}}\"\n}",
         "auth": {
           "type": "bearer",
-          "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MTUyNDkzMjAsImV4cCI6MTcxNTMzNTcyMCwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiODdhYTQzMzYtNDJkNS00YTQwLTk3YWUtYzQ0N2MyNTdkMzU2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2g4MjM1IiwiY2xpZW50X1JldGFpbGVySWQiOiIyODIxODQiLCJjbGllbnRfVXNlcklkIjoiMTQ2MjI3IiwiY2xpZW50X1NlbnNpdGl2ZUFwaSI6IlRydWUiLCJjbGllbnRfR3JvdXBJZCI6IjExIiwiaWF0IjoxNzE1MjQ5MzIwLCJzY29wZSI6WyJQdWJsaWNBcGkuQWNjZXNzIl19.00HxbsjV05WkxQXa_D4CLGwtGeljtTXhfzynrZeOjLt2VjYYaz1RcxrEP0n_Za9r8PIQGYCyQCLGZPWiN1E_1TQyUw0u5MWzyW08mwIwdFd8Mf9wdF1rcSMd-q60rn9H_0AbgaC3QKk9gR66m4mRyyY_otb-f7liM_2HuDDSoGn0VqFDDk1130esYejwSEvlwNjc7bLgWzvQ0cIPipS6DqE0tfi-S8g38lx_B2BBQlurs4jNs1ccsHXcAkAPcMBGYUAwm_ITbDqYlG_d7L97fbBypySyRF8KzJ6t7tnYGQK96vHsLnFoXGaYzxgh3kH2MmtID6c9DJHXbufDhyHH-w",
+          "bearerToken": "{{Token}}",
           "basicUsername": "",
           "basicPassword": "",
           "apiKeyName": "",
@@ -7350,10 +7360,11 @@
         "gqlVariables": "{}",
         "testScript": "",
         "editorTab": "PARAMS",
-        "responseTab": "PRETTY"
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Lấy Locations\",\"url\":\"https://public.kiotapi.com/locations\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[{\"key\":\"format\",\"value\":\"json\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"currentItem\",\"value\":\"1\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"includeInventory\",\"value\":\"True\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"isActive\",\"value\":\"true\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"includePricebook\",\"value\":\"true\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"orderBy\",\"value\":\"id\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"lastModifiedFrom\",\"value\":\"2018-01-01\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"orderDirection\",\"value\":\"desc\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"pathVariables\":[],\"headersList\":[{\"key\":\"Retailer\",\"value\":\"dvkh8235\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MTUyNDkzMjAsImV4cCI6MTcxNTMzNTcyMCwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiODdhYTQzMzYtNDJkNS00YTQwLTk3YWUtYzQ0N2MyNTdkMzU2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2g4MjM1IiwiY2xpZW50X1JldGFpbGVySWQiOiIyODIxODQiLCJjbGllbnRfVXNlcklkIjoiMTQ2MjI3IiwiY2xpZW50X1NlbnNpdGl2ZUFwaSI6IlRydWUiLCJjbGllbnRfR3JvdXBJZCI6IjExIiwiaWF0IjoxNzE1MjQ5MzIwLCJzY29wZSI6WyJQdWJsaWNBcGkuQWNjZXNzIl19.00HxbsjV05WkxQXa_D4CLGwtGeljtTXhfzynrZeOjLt2VjYYaz1RcxrEP0n_Za9r8PIQGYCyQCLGZPWiN1E_1TQyUw0u5MWzyW08mwIwdFd8Mf9wdF1rcSMd-q60rn9H_0AbgaC3QKk9gR66m4mRyyY_otb-f7liM_2HuDDSoGn0VqFDDk1130esYejwSEvlwNjc7bLgWzvQ0cIPipS6DqE0tfi-S8g38lx_B2BBQlurs4jNs1ccsHXcAkAPcMBGYUAwm_ITbDqYlG_d7L97fbBypySyRF8KzJ6t7tnYGQK96vHsLnFoXGaYzxgh3kH2MmtID6c9DJHXbufDhyHH-w\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
       },
       "createdAt": "2026-08-28T04:09:46.149Z",
-      "updatedAt": "2026-08-28T04:09:46.149Z"
+      "updatedAt": "2026-08-28T04:36:53.015Z"
     },
     {
       "id": "d9f23402-a0f2-4b1a-ae64-090dc23f2344",
@@ -7403,7 +7414,8 @@
     }
   ],
   "expandedCollectionIds": [
-    "821d46f0-a5ed-4549-8828-22161e5552a2"
+    "821d46f0-a5ed-4549-8828-22161e5552a2",
+    "541914c0-db85-4d91-987a-829b8e004631"
   ],
   "expandedFolderIds": [
     "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8",

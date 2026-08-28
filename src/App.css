@@ -620,6 +620,17 @@
   color: var(--danger);
 }
 
+.button-wrap-active {
+  background: rgba(59, 130, 246, 0.15) !important;
+  color: #60a5fa !important;
+  border-color: rgba(59, 130, 246, 0.35) !important;
+}
+
+.button-wrap-active:hover {
+  background: rgba(59, 130, 246, 0.25) !important;
+  color: #93c5fd !important;
+}
+
 /* ==========================================================================
    SEGMENTED CONTROLS & SUB-TABS
    ========================================================================== */

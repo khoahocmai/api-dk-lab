@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import CodeMirror, { Extension } from '@uiw/react-codemirror'
+import CodeMirror, { EditorView, Extension } from '@uiw/react-codemirror'
 import { json } from '@codemirror/lang-json'
 import { javascript } from '@codemirror/lang-javascript'
 import { oneDark } from '@codemirror/theme-one-dark'
@@ -14,6 +14,7 @@ export interface CodeEditorProps {
   minHeight?: string
   maxHeight?: string
   fontSize?: number
+  wrapLines?: boolean
 }
 
 export function CodeEditor({
@@ -26,6 +27,7 @@ export function CodeEditor({
   minHeight = '0px',
   maxHeight,
   fontSize,
+  wrapLines = false,
 }: CodeEditorProps) {
   const extensions = useMemo(() => {
     const ext: Extension[] = [oneDark]
@@ -34,8 +36,11 @@ export function CodeEditor({
     } else if (language === 'graphql' || language === 'javascript') {
       ext.push(javascript())
     }
+    if (wrapLines) {
+      ext.push(EditorView.lineWrapping)
+    }
     return ext
-  }, [language])
+  }, [language, wrapLines])
 
   return (
     <div

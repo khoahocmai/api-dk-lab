@@ -1,5 +1,141 @@
 [
   {
+    "id": "96f7b5c6-7233-4edd-baa8-cc654444898a",
+    "timestamp": "2026-08-28T04:36:41.051Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://public.kiotapi.com/locations",
+    "status": 401,
+    "duration": 161,
+    "request": {
+      "id": "3b10027f-f44a-4fe4-bab7-e0888bee16d8",
+      "savedRequestId": "b9fcaf09-5860-498d-ab4e-9bef6b82aff7",
+      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "folderId": null,
+      "name": "Lấy Locations",
+      "mode": "REST",
+      "method": "GET",
+      "url": "https://public.kiotapi.com/locations",
+      "params": [
+        {
+          "id": "d2a4b17f-79bb-4e4e-af7b-da8dbcc41b81",
+          "key": "format",
+          "value": "json",
+          "enabled": false,
+          "description": ""
+        },
+        {
+          "id": "9aa4b671-4900-4e7c-a963-bc3318859fbe",
+          "key": "currentItem",
+          "value": "1",
+          "enabled": false,
+          "description": ""
+        },
+        {
+          "id": "51e61c07-463a-4ddd-9b82-c9e24286a4ea",
+          "key": "includeInventory",
+          "value": "True",
+          "enabled": false,
+          "description": ""
+        },
+        {
+          "id": "a3fadc4f-f88d-4135-b987-69b348eb0da8",
+          "key": "isActive",
+          "value": "true",
+          "enabled": false,
+          "description": ""
+        },
+        {
+          "id": "f2ef89f0-8813-410c-98a1-c84f84dc2cc1",
+          "key": "includePricebook",
+          "value": "true",
+          "enabled": false,
+          "description": ""
+        },
+        {
+          "id": "f27f239b-0076-43ba-9943-8d865256e70c",
+          "key": "orderBy",
+          "value": "id",
+          "enabled": false,
+          "description": ""
+        },
+        {
+          "id": "1023a70d-dcb3-44ea-b2ad-01d2f49ab057",
+          "key": "lastModifiedFrom",
+          "value": "2018-01-01",
+          "enabled": false,
+          "description": ""
+        },
+        {
+          "id": "4608eea1-e852-4820-84ac-e686a6bd63f9",
+          "key": "orderDirection",
+          "value": "desc",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersList": [
+        {
+          "id": "1a112675-1469-43bb-8040-73a6bfe090f7",
+          "key": "Retailer",
+          "value": "{{retailer}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "ghost-tail-row",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": "",
+          "type": "text"
+        }
+      ],
+      "headersText": "{\n  \"Retailer\": \"{{retailer}}\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "PARAMS",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Lấy Locations\",\"url\":\"https://public.kiotapi.com/locations\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[{\"key\":\"format\",\"value\":\"json\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"currentItem\",\"value\":\"1\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"includeInventory\",\"value\":\"True\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"isActive\",\"value\":\"true\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"includePricebook\",\"value\":\"true\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"orderBy\",\"value\":\"id\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"lastModifiedFrom\",\"value\":\"2018-01-01\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"orderDirection\",\"value\":\"desc\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"pathVariables\":[],\"headersList\":[{\"key\":\"Retailer\",\"value\":\"dvkh8235\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MTUyNDkzMjAsImV4cCI6MTcxNTMzNTcyMCwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiODdhYTQzMzYtNDJkNS00YTQwLTk3YWUtYzQ0N2MyNTdkMzU2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2g4MjM1IiwiY2xpZW50X1JldGFpbGVySWQiOiIyODIxODQiLCJjbGllbnRfVXNlcklkIjoiMTQ2MjI3IiwiY2xpZW50X1NlbnNpdGl2ZUFwaSI6IlRydWUiLCJjbGllbnRfR3JvdXBJZCI6IjExIiwiaWF0IjoxNzE1MjQ5MzIwLCJzY29wZSI6WyJQdWJsaWNBcGkuQWNjZXNzIl19.00HxbsjV05WkxQXa_D4CLGwtGeljtTXhfzynrZeOjLt2VjYYaz1RcxrEP0n_Za9r8PIQGYCyQCLGZPWiN1E_1TQyUw0u5MWzyW08mwIwdFd8Mf9wdF1rcSMd-q60rn9H_0AbgaC3QKk9gR66m4mRyyY_otb-f7liM_2HuDDSoGn0VqFDDk1130esYejwSEvlwNjc7bLgWzvQ0cIPipS6DqE0tfi-S8g38lx_B2BBQlurs4jNs1ccsHXcAkAPcMBGYUAwm_ITbDqYlG_d7L97fbBypySyRF8KzJ6t7tnYGQK96vHsLnFoXGaYzxgh3kH2MmtID6c9DJHXbufDhyHH-w\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
+    },
+    "response": {
+      "status": 401,
+      "statusText": "Your account has been deactivated. Please contact the store owner for permission.",
+      "time": "161 ms",
+      "size": "141 B",
+      "data": {
+        "responseStatus": {
+          "errorCode": "Unauthorized",
+          "message": "Your account has been deactivated. Please contact the store owner for permission."
+        }
+      },
+      "headers": {
+        "cache-control": "private",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "date": "Fri, 28 Aug 2026 04:36:45 GMT",
+        "content-length": "141"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
     "id": "5ffa56b1-0d47-473f-b319-a21e5880a898",
     "timestamp": "2026-08-28T04:32:41.709Z",
     "method": "POST",
@@ -23857,93 +23993,6 @@
         "content-type": "application/json; charset=utf-8",
         "content-length": "249",
         "date": "Wed, 26 Aug 2026 03:09:39 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "db163cf8-5035-4b20-8712-1508de113fae",
-    "timestamp": "2026-08-26T03:09:27.869Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 21,
-    "request": {
-      "id": "8cb577e2-b2a4-4e1e-b0dd-997e7902ea75",
-      "name": "squareOrderGetPagination",
-      "graphqlRootField": "squareOrderGetPagination",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "f4370909-814f-455f-8ed5-018ee82bba0d",
-          "key": "Content-Type",
-          "value": "application/json",
-          "enabled": true
-        }
-      ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\"\n}",
-      "auth": {
-        "type": "none",
-        "bearerToken": "",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query SquareOrderGetPagination($filters: SquareOrderGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareOrderGetPagination(filters: $filters, params: $params) {\n    total\n  }\n}",
-      "gqlVariables": "{\n  \"filters\": {\n    \"orderId\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "21 ms",
-      "size": "248 B",
-      "data": {
-        "errors": [
-          {
-            "message": "Unauthorized",
-            "path": [
-              "squareOrderGetPagination"
-            ],
-            "locations": [
-              {
-                "line": 2,
-                "column": 3
-              }
-            ],
-            "extensions": {
-              "code": "UNAUTHENTICATED",
-              "originalError": {
-                "message": "Unauthorized",
-                "statusCode": 401
-              }
-            },
-            "code": "UNAUTHENTICATED"
-          }
-        ],
-        "data": null
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "249",
-        "date": "Wed, 26 Aug 2026 03:09:30 GMT",
         "connection": "keep-alive",
         "keep-alive": "timeout=72"
       },

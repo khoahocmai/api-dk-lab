@@ -1,4 +1,4 @@
-import { Check, Copy, FlaskConical, WifiOff } from 'lucide-react'
+import { Check, Copy, FlaskConical, WifiOff, WrapText } from 'lucide-react'
 import { useState } from 'react'
 import type { EnvironmentItem, RequestItem } from '../../types'
 import { resolveTemplates } from '../../services/templateService'
@@ -23,6 +23,18 @@ export function ResponseViewer({
 }: ResponseViewerProps) {
   const [copiedResponse, setCopiedResponse] = useState(false)
   const [copiedHeaders, setCopiedHeaders] = useState(false)
+  const [isWrapEnabled, setIsWrapEnabled] = useState<boolean>(() => {
+    const saved = localStorage.getItem('api_lab_response_wrap_lines')
+    return saved !== null ? saved === 'true' : true
+  })
+
+  const toggleWrap = () => {
+    setIsWrapEnabled((prev) => {
+      const next = !prev
+      localStorage.setItem('api_lab_response_wrap_lines', String(next))
+      return next
+    })
+  }
 
   const handleCopy = async () => {
     await onCopyResponse()
@@ -93,8 +105,8 @@ export function ResponseViewer({
           </button>
         </div>
 
-        {/* Right side: Status, Time, Size & Copy */}
-        <div className="row wrap" style={{ gap: 6 }}>
+        {/* Right side: Status, Time, Size, Wrap & Copy */}
+        <div className="row wrap" style={{ gap: 6, alignItems: 'center' }}>
           {activeTab.response && (
             <>
               <StatusBadge
@@ -108,6 +120,23 @@ export function ResponseViewer({
               <span className="badge" style={{ fontFamily: 'var(--font-mono)' }}>
                 {activeTab.response?.size ?? '-'}
               </span>
+
+              {!isNetworkError && activeTab.responseTab === 'PRETTY' && (
+                <button
+                  type="button"
+                  className={`button button-sm ${isWrapEnabled ? 'button-wrap-active' : ''}`}
+                  onClick={toggleWrap}
+                  title={isWrapEnabled ? 'Disable line wrapping' : 'Enable line wrapping'}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 4,
+                  }}
+                >
+                  <WrapText size={13} />
+                  <span>Wrap</span>
+                </button>
+              )}
 
               {!isNetworkError && (
                 activeTab.responseTab === 'HEADERS' && headerKeys.length > 0 ? (
@@ -248,6 +277,7 @@ export function ResponseViewer({
                 height="100%"
                 minHeight="350px"
                 fontSize={editorFontSize}
+                wrapLines={isWrapEnabled}
               />
             )}
 
