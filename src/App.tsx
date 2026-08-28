@@ -65,7 +65,7 @@ import {
 import { parseUrlToQueryParams } from './utils/urlHelper'
 import { exportPostmanCollectionV2, importPostmanCollectionV2 } from './utils/postmanHelper'
 import { moveFolderItem, moveRequestItem } from './utils/treeHelper'
-import { runTestScript } from './utils/testRunner'
+import { executeScript, type ScriptContext } from './services/scriptRunner'
 import { MobileNav } from './components/layout/MobileNav'
 import { Sidebar } from './components/layout/Sidebar'
 import { MainPanel } from './components/layout/MainPanel'
@@ -1261,7 +1261,7 @@ function App() {
       if (activeTab.editorTab === 'BODY') updateActiveTab({ gqlQuery: '' })
       else if (activeTab.editorTab === 'VARIABLES') updateActiveTab({ gqlVariables: '{}' })
       else if (activeTab.editorTab === 'HEADERS') updateActiveTab({ headersList: [], headersText: '{}' })
-      else if (activeTab.editorTab === 'TESTS') updateActiveTab({ testScript: '' })
+      else if (activeTab.editorTab === 'TESTS' || activeTab.editorTab === 'SCRIPTS') updateActiveTab({ preRequestScript: '', testScript: '' })
       return
     }
 
@@ -1275,8 +1275,8 @@ function App() {
     } else if (activeTab.editorTab === 'PARAMS') {
       const { baseUrl } = parseUrlToQueryParams(activeTab.url)
       updateActiveTab({ params: [], url: baseUrl })
-    } else if (activeTab.editorTab === 'TESTS') {
-      updateActiveTab({ testScript: '' })
+    } else if (activeTab.editorTab === 'TESTS' || activeTab.editorTab === 'SCRIPTS') {
+      updateActiveTab({ preRequestScript: '', testScript: '' })
     }
   }
 
@@ -1375,12 +1375,97 @@ function App() {
     isSendingRef.current = true
 
     try {
+      // 1. Prepare Environment & Run Pre-request Script (if any)
+      let effectiveEnvironment: EnvironmentItem | null = activeEnvironment
+        ? {
+            ...activeEnvironment,
+            variables: activeEnvironment.variables.map((v) => ({ ...v })),
+          }
+        : null
+
+      const currentEnvDict: Record<string, string> = {}
+      if (effectiveEnvironment?.variables) {
+        effectiveEnvironment.variables
+          .filter((v) => v.enabled)
+          .forEach((v) => {
+            currentEnvDict[v.key] = v.value
+          })
+      }
+
+      const preTestResults: Array<{ id: string; name: string; passed: boolean; error?: string }> = []
+      const preEnvMutations: Record<string, string> = {}
+
+      if (activeTab.preRequestScript && activeTab.preRequestScript.trim()) {
+        const rawHeaders: Record<string, string> = {}
+        ;(activeTab.headersList || [])
+          .filter((h) => h.enabled && h.key.trim())
+          .forEach((h) => {
+            rawHeaders[h.key.trim()] = h.value
+          })
+
+        const preContext: ScriptContext = {
+          environment: currentEnvDict,
+          request: {
+            url: activeTab.url,
+            method: activeTab.mode === 'GRAPHQL' ? 'POST' : activeTab.method,
+            headers: rawHeaders,
+            body:
+              activeTab.mode === 'GRAPHQL'
+                ? activeTab.gqlQuery
+                : activeTab.bodyType === 'json'
+                ? activeTab.restBody
+                : activeTab.rawText,
+          },
+        }
+
+        const preExec = executeScript(
+          activeTab.preRequestScript,
+          preContext,
+          (key: string, val: string) => {
+            preEnvMutations[key] = val
+          },
+        )
+
+        preTestResults.push(...preExec.testResults)
+
+        // Apply pre-request environment mutations immediately before resolving request parameters
+        if (Object.keys(preEnvMutations).length > 0) {
+          if (effectiveEnvironment) {
+            const updatedVars = [...effectiveEnvironment.variables]
+            Object.entries(preEnvMutations).forEach(([k, v]) => {
+              const existing = updatedVars.find((item) => item.key === k)
+              if (existing) {
+                existing.value = v
+              } else {
+                updatedVars.push({
+                  id: createId(),
+                  key: k,
+                  value: v,
+                  enabled: true,
+                })
+              }
+            })
+            effectiveEnvironment = { ...effectiveEnvironment, variables: updatedVars }
+
+            // Update React environment state & persist
+            setEnvironments((envs) => {
+              const nextEnvs = envs.map((env) =>
+                env.id === effectiveEnvironment!.id ? effectiveEnvironment! : env,
+              )
+              void saveEnvironments(nextEnvs)
+              return nextEnvs
+            })
+          }
+        }
+      }
+
+      // 2. Resolve URL, Auth, Headers and Body using the updated effectiveEnvironment
       const urlWithPathVars = resolvePathVariables(
         activeTab.url.trim(),
         activeTab.pathVariables,
-        activeEnvironment,
+        effectiveEnvironment,
       )
-      let finalUrl = resolveTemplates(urlWithPathVars, activeEnvironment)
+      let finalUrl = resolveTemplates(urlWithPathVars, effectiveEnvironment)
 
       if (!finalUrl) throw new Error('URL không được để trống')
       if (!finalUrl.startsWith('http://') && !finalUrl.startsWith('https://')) {
@@ -1388,10 +1473,10 @@ function App() {
       }
 
       // Inject API Key query param if configured
-      finalUrl = injectAuthToUrl(finalUrl, activeTab.auth, activeEnvironment)
+      finalUrl = injectAuthToUrl(finalUrl, activeTab.auth, effectiveEnvironment)
 
       // Build unified headers (Auto-generated + User headers with highest priority, deduplicated)
-      const headers = buildFinalHeaders(activeTab, activeEnvironment)
+      const headers = buildFinalHeaders(activeTab, effectiveEnvironment)
 
       const requestOptions: HttpRequestOptions = {
         method: activeTab.mode === 'GRAPHQL' ? 'POST' : activeTab.method,
@@ -1406,7 +1491,7 @@ function App() {
         try {
           parsedVariables = activeTab.gqlVariables.trim()
             ? parseJsonObject(
-                resolveTemplates(activeTab.gqlVariables, activeEnvironment),
+                resolveTemplates(activeTab.gqlVariables, effectiveEnvironment),
                 'GraphQL variables',
               )
             : {}
@@ -1415,7 +1500,7 @@ function App() {
         }
 
         requestOptions.data = {
-          query: resolveTemplates(activeTab.gqlQuery, activeEnvironment),
+          query: resolveTemplates(activeTab.gqlQuery, effectiveEnvironment),
           variables: parsedVariables,
         }
         if (!headers['Content-Type'] && !headers['content-type']) {
@@ -1426,7 +1511,7 @@ function App() {
 
         if (activeTab.bodyType === 'json') {
           if (activeTab.restBody && activeTab.restBody.trim()) {
-            const resolvedBody = resolveTemplates(activeTab.restBody, activeEnvironment)
+            const resolvedBody = resolveTemplates(activeTab.restBody, effectiveEnvironment)
             try {
               requestOptions.data = JSON.parse(resolvedBody)
             } catch {
@@ -1438,7 +1523,7 @@ function App() {
           }
         } else if (activeTab.bodyType === 'raw') {
           if (activeTab.rawText && activeTab.rawText.trim()) {
-            requestOptions.data = resolveTemplates(activeTab.rawText, activeEnvironment)
+            requestOptions.data = resolveTemplates(activeTab.rawText, effectiveEnvironment)
             if (!hasContentType) {
               headers['Content-Type'] = 'text/plain'
             }
@@ -1449,8 +1534,8 @@ function App() {
             .filter((r) => r.enabled && r.key.trim())
             .forEach((r) => {
               urlSearchParams.append(
-                resolveTemplates(r.key.trim(), activeEnvironment),
-                resolveTemplates(r.value, activeEnvironment),
+                resolveTemplates(r.key.trim(), effectiveEnvironment),
+                resolveTemplates(r.value, effectiveEnvironment),
               )
             })
           const dataStr = urlSearchParams.toString()
@@ -1465,8 +1550,8 @@ function App() {
           activeTab.formData
             .filter((r) => r.enabled && r.key.trim())
             .forEach((r) => {
-              formObject[resolveTemplates(r.key.trim(), activeEnvironment)] =
-                resolveTemplates(r.value, activeEnvironment)
+              formObject[resolveTemplates(r.key.trim(), effectiveEnvironment)] =
+                resolveTemplates(r.value, effectiveEnvironment)
             })
           requestOptions.data = formObject
           if (!hasContentType) {
@@ -1475,6 +1560,7 @@ function App() {
         }
       }
 
+      // 3. Send HTTP Request
       const result = await sendHttpRequest(requestOptions)
 
       if (!isSendingRef.current) return // cancelled
@@ -1494,17 +1580,60 @@ function App() {
         isNetworkError,
       }
 
-      // Execute Test Script
-      const testReport = runTestScript(activeTab.testScript, responseState, activeEnvironment)
+      // 4. Run Post-response / Tests Script (if any)
+      const postEnvMutations: Record<string, string> = {}
+      const postTestResults: Array<{ id: string; name: string; passed: boolean; error?: string }> = []
 
-      // If test script mutated environment variables, apply them to active environment!
-      if (activeEnvironment && Object.keys(testReport.envMutations).length > 0) {
-        setEnvironments((envs) =>
-          envs.map((env) => {
-            if (env.id !== activeEnvironment.id) return env
-            const updatedVars = [...env.variables]
+      const responseBodyStr =
+        typeof result.data === 'string'
+          ? result.data
+          : JSON.stringify(result.data ?? result.details ?? '')
 
-            Object.entries(testReport.envMutations).forEach(([k, v]) => {
+      const jsonFn = () => {
+        if (typeof result.data === 'object' && result.data !== null) return result.data
+        if (typeof result.data === 'string') {
+          try {
+            return JSON.parse(result.data)
+          } catch {
+            return result.data
+          }
+        }
+        return result.data ?? {}
+      }
+
+      if (activeTab.testScript && activeTab.testScript.trim()) {
+        const postContext: ScriptContext = {
+          environment: currentEnvDict,
+          request: {
+            url: finalUrl,
+            method: activeTab.mode === 'GRAPHQL' ? 'POST' : activeTab.method,
+            headers: (requestOptions.headers || {}) as Record<string, string>,
+            body: requestOptions.data,
+          },
+          response: {
+            status: result.status ?? 0,
+            headers: result.headers || {},
+            body: responseBodyStr,
+            json: jsonFn,
+            responseTime: result.duration ?? 0,
+          },
+        }
+
+        const postExec = executeScript(
+          activeTab.testScript,
+          postContext,
+          (key: string, val: string) => {
+            postEnvMutations[key] = val
+          },
+        )
+
+        postTestResults.push(...postExec.testResults)
+
+        // Apply post-response environment mutations to active environment & persist
+        if (Object.keys(postEnvMutations).length > 0) {
+          if (effectiveEnvironment) {
+            const updatedVars = [...effectiveEnvironment.variables]
+            Object.entries(postEnvMutations).forEach(([k, v]) => {
               const existing = updatedVars.find((item) => item.key === k)
               if (existing) {
                 existing.value = v
@@ -1517,10 +1646,28 @@ function App() {
                 })
               }
             })
+            effectiveEnvironment = { ...effectiveEnvironment, variables: updatedVars }
 
-            return { ...env, variables: updatedVars }
-          }),
-        )
+            setEnvironments((envs) => {
+              const nextEnvs = envs.map((env) =>
+                env.id === effectiveEnvironment!.id ? effectiveEnvironment! : env,
+              )
+              void saveEnvironments(nextEnvs)
+              return nextEnvs
+            })
+          }
+        }
+      }
+
+      // Combine test results & environment mutations
+      const allResults = [...preTestResults, ...postTestResults]
+      const allEnvMutations = { ...preEnvMutations, ...postEnvMutations }
+      const testReport = {
+        total: allResults.length,
+        passed: allResults.filter((r) => r.passed).length,
+        failed: allResults.filter((r) => !r.passed).length,
+        results: allResults,
+        envMutations: allEnvMutations,
       }
 
       if (result.error && !result.status) {

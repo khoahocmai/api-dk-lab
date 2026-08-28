@@ -9,8 +9,8 @@
       "name": "Square POS"
     },
     {
-      "id": "541914c0-db85-4d91-987a-829b8e004631",
-      "name": "KiotViet Api",
+      "id": "9112c630-a645-4c34-83a2-832cecf83531",
+      "name": "Public API Live",
       "description": ""
     }
   ],
@@ -226,86 +226,86 @@
       "name": "Customer"
     },
     {
-      "id": "ec84ec6b-4def-460d-b1ee-6372775366af",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "id": "8428f2cc-a7b7-494b-9a09-5005f1158b4d",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
       "parentId": null,
       "name": "Chi nhánh"
     },
     {
-      "id": "3be89a3f-63c9-452f-9963-dd4dfd67b439",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "id": "9f9013d9-929a-4d33-a566-709efd1e87f6",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
       "parentId": null,
       "name": "Hàng hóa"
     },
     {
-      "id": "a5581110-60d9-4249-8db7-d121d398ba9f",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "id": "576c68d6-8b99-4b11-a5a8-7c84e2791e7c",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
       "parentId": null,
       "name": "Khách Hàng"
     },
     {
-      "id": "63d1d02f-448f-48ad-9679-5a4a3ff2f4f5",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "id": "058c06da-0f37-48c7-9454-7415f3546d3d",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
       "parentId": null,
       "name": "Người dùng"
     },
     {
-      "id": "5d2ce53d-c169-484b-b4de-e4e7bdcf3a7a",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "id": "356d1b61-f5b3-4256-99d1-345aacee69f6",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
       "parentId": null,
       "name": "Nhóm hàng"
     },
     {
-      "id": "e058df6d-056c-4ac4-85e2-81d177bad6f1",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "id": "e013dce4-a20e-48bc-8a5e-9825a9ea4e79",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
       "parentId": null,
       "name": "Thu khác"
     },
     {
-      "id": "97fca1ec-7e06-42d1-a17c-05765ead5948",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "id": "ec564351-5520-4b36-809d-a4b502e234d8",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
       "parentId": null,
       "name": "Tài khoản ngân hàng"
     },
     {
-      "id": "6d0bb0e6-f56b-4f45-85d0-d9ffab5f3ff8",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "id": "f2cdc4f5-713e-4eaa-81fd-4a48010af6f6",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
       "parentId": null,
       "name": "Webhooks"
     },
     {
-      "id": "a6be4522-85e2-41dd-8636-594c0b2dc8b2",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "id": "fbc2692f-46eb-4b43-9459-ceba5f5e1628",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
       "parentId": null,
       "name": "Đặt hàng"
     },
     {
-      "id": "065ba1e9-ad2f-4692-b1e3-2aad75cac545",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "id": "0581ea83-f89e-477f-97c8-3a274bc1f6cd",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
       "parentId": null,
       "name": "Hóa đơn"
     },
     {
-      "id": "7ea692eb-1c62-48ba-af97-2a469b824a2b",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "id": "9869b652-ec88-4753-9880-4887348264f3",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
       "parentId": null,
       "name": "Nhập hàng"
     },
     {
-      "id": "ba2a9480-7e48-42a2-986c-9b973acd490f",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "id": "ca94946b-4e01-4e92-ac90-7491b12b5fdb",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
       "parentId": null,
       "name": "Trả hàng"
     },
     {
-      "id": "1d251bb1-966a-4990-862b-048d6e82ff05",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "id": "1a0cbd05-1d66-481b-b111-3f09cd623c0c",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
       "parentId": null,
       "name": "Chuyển hàng"
     },
     {
-      "id": "d5bcae01-5902-4b18-b189-1885c79cfdd3",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "id": "c5e5bfb9-2abe-469c-a7c2-ccf9968a9541",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
       "parentId": null,
       "name": "Sổ quỹ"
     }
@@ -386,10 +386,10 @@
       "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
       "name": "Order pagination list",
       "request": {
-        "id": "91b081c7-c7d9-4cf0-9a31-d899c8bfa342",
+        "id": "bb824bca-5e14-4135-8e14-eaf0d55ca0c5",
         "savedRequestId": "f7131e69-0126-4d33-b35b-68034993c842",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-        "folderId": null,
+        "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
         "name": "Order pagination list",
         "graphqlRootField": "orderPaginationList",
         "mode": "GRAPHQL",
@@ -422,7 +422,7 @@
             "id": "143f7dc1-67b4-4046-b9db-3453c8b570fd",
             "key": "",
             "value": "",
-            "enabled": true,
+            "enabled": false,
             "description": ""
           }
         ],
@@ -443,12 +443,14 @@
         "urlencoded": [],
         "gqlQuery": "query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\n  orderPaginationList(params: $params, filters: $filters) {\n    total\n  }\n}",
         "gqlVariables": "{\n  \"params\": {\n    \"page\": 0,\n    \"pageSize\": 0,\n    \"sortBy\": \"\",\n    \"sortDirection\": \"\"\n  },\n  \"filters\": {\n    \"keywords\": \"\",\n    \"orderStatus\": [],\n    \"financialStatus\": []\n  }\n}",
-        "testScript": "",
-        "editorTab": "VARIABLES",
-        "responseTab": "PRETTY"
+        "preRequestScript": "",
+        "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
+        "editorTab": "SCRIPTS",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Order pagination list\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"orderPaginationList\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"Authorization\",\"value\":\"Bearer {{token}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\\n  orderPaginationList(params: $params, filters: $filters) {\\n    total\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"params\\\": {\\n    \\\"page\\\": 0,\\n    \\\"pageSize\\\": 0,\\n    \\\"sortBy\\\": \\\"\\\",\\n    \\\"sortDirection\\\": \\\"\\\"\\n  },\\n  \\\"filters\\\": {\\n    \\\"keywords\\\": \\\"\\\",\\n    \\\"orderStatus\\\": [],\\n    \\\"financialStatus\\\": []\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\"}"
       },
       "createdAt": "2026-08-21T05:25:09.085Z",
-      "updatedAt": "2026-08-21T05:25:59.841Z"
+      "updatedAt": "2026-08-28T08:10:21.368Z"
     },
     {
       "id": "e0c7a17f-afa5-4166-abb3-5eb22132a9e6",
@@ -2427,7 +2429,7 @@
       "folderId": "b0e3fd25-2b01-4bff-8562-627ede98182f",
       "name": "Payment update status transactions",
       "request": {
-        "id": "885e3b01-89ea-4dfb-ad03-d818d0014389",
+        "id": "aa5296fe-5758-437d-8123-2b1d80de0b1c",
         "savedRequestId": "091a34fe-638c-496a-ac4f-255eca07c8a1",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": "b0e3fd25-2b01-4bff-8562-627ede98182f",
@@ -2473,10 +2475,10 @@
         "testScript": "",
         "editorTab": "BODY",
         "responseTab": "PRETTY",
-        "savedSnapshot": "{\"name\":\"Payment update status transactions\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"paymentUpdateStatusTransactions\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"mutation PaymentUpdateStatusTransactions($request: PaymentUpdateStatusTransactionsDto!) {\\n  paymentUpdateStatusTransactions(request: $request) {\\n    processed\\n    success\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"limit\\\": 100\\n  }\\n}\",\"testScript\":\"\"}"
+        "savedSnapshot": "{\"name\":\"Payment update status transactions\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"paymentUpdateStatusTransactions\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"mutation PaymentUpdateStatusTransactions($request: PaymentUpdateStatusTransactionsDto!) {\\n  paymentUpdateStatusTransactions(request: $request) {\\n    processed\\n    success\\n    noChange\\n    failed\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"limit\\\": 100\\n  }\\n}\",\"testScript\":\"\"}"
       },
       "createdAt": "2026-08-26T06:25:23.915Z",
-      "updatedAt": "2026-08-27T06:13:01.983Z"
+      "updatedAt": "2026-08-28T07:36:20.299Z"
     },
     {
       "id": "8c4f4dea-3570-4d1f-a133-7ca66ce5736c",
@@ -3101,7 +3103,7 @@
       "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
       "name": "Order proactive sync square",
       "request": {
-        "id": "ec392904-9155-4940-a4f0-09b5a6ce7910",
+        "id": "3ab8fe97-ce01-444a-8952-f5c4be2c31d9",
         "savedRequestId": "74dbcedb-3ad6-4994-b23c-2dd3ab8921fb",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
@@ -3144,13 +3146,14 @@
         "urlencoded": [],
         "gqlQuery": "mutation OrderProactiveSyncSquare($request: OrderProactiveSyncSquareDto!) {\n  orderProactiveSyncSquare(request: $request) {\n    success\n    message\n  }\n}",
         "gqlVariables": "{\n  \"request\": {\n    \"orderId\": \"01a041d7-ee85-705b-b712-3091777a6573\"\n  }\n}",
-        "testScript": "",
-        "editorTab": "BODY",
+        "preRequestScript": "",
+        "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
+        "editorTab": "SCRIPTS",
         "responseTab": "PRETTY",
-        "savedSnapshot": "{\"name\":\"Order proactive sync square\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"orderProactiveSyncSquare\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"mutation OrderProactiveSyncSquare($request: OrderProactiveSyncSquareDto!) {\\n  orderProactiveSyncSquare(request: $request) {\\n    success\\n    message\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"orderId\\\": \\\"01a041f2-b99a-74ac-aec9-98f259f9a357\\\"\\n  }\\n}\",\"testScript\":\"\"}"
+        "savedSnapshot": "{\"name\":\"Order proactive sync square\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"orderProactiveSyncSquare\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"mutation OrderProactiveSyncSquare($request: OrderProactiveSyncSquareDto!) {\\n  orderProactiveSyncSquare(request: $request) {\\n    success\\n    message\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"orderId\\\": \\\"01a041d7-ee85-705b-b712-3091777a6573\\\"\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\"}"
       },
       "createdAt": "2026-08-27T02:27:22.960Z",
-      "updatedAt": "2026-08-27T07:28:33.530Z"
+      "updatedAt": "2026-08-28T08:10:20.298Z"
     },
     {
       "id": "1a09e334-e3ae-4fd8-a93f-c52ae2ecb376",
@@ -4396,239 +4399,35 @@
       "updatedAt": "2026-08-28T02:52:36.118Z"
     },
     {
-      "id": "f68e377f-fb24-434c-8317-c4c72870daad",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "ec84ec6b-4def-460d-b1ee-6372775366af",
+      "id": "a96c6c80-9985-4282-b050-71615fd8ce79",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "8428f2cc-a7b7-494b-9a09-5005f1158b4d",
       "name": "Danh sách chi nhánh",
       "request": {
-        "id": "383a7b50-b31b-452a-b8f3-c9a9326799d9",
-        "savedRequestId": "f68e377f-fb24-434c-8317-c4c72870daad",
-        "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-        "folderId": "ec84ec6b-4def-460d-b1ee-6372775366af",
+        "id": "9681ac91-0ebc-450e-a5be-738193066af9",
         "name": "Danh sách chi nhánh",
         "mode": "REST",
         "method": "GET",
-        "url": "{{Domain}}/branches",
+        "url": "https://public.kiotapi.com/branches",
         "params": [
           {
-            "id": "5f8aa677-32a8-47ff-89aa-f4683315a216",
+            "id": "e1f1a153-28a1-4a5a-bff9-a2df8673da56",
             "key": "format",
             "value": "json",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "ce87a81e-d590-4bd3-9fc7-fb53ea1179b7",
+            "id": "340dede0-2cbe-401c-b655-85b970b9a491",
             "key": "includeRemoveIds",
             "value": "true",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "fd92c72e-3e60-4b83-be84-feb2f620d0c2",
+            "id": "8825f02d-56ca-47bb-a17e-14687c00b535",
             "key": "hierachicalData",
             "value": "true",
-            "enabled": false,
-            "description": ""
-          }
-        ],
-        "headersList": [
-          {
-            "id": "ec1f6562-b7dd-4e1d-87e9-dfa7ac724cc3",
-            "key": "Retailer",
-            "value": "{{retailer}}",
-            "enabled": true,
-            "description": ""
-          }
-        ],
-        "headersText": "{\n  \"Retailer\": \"{{retailer}}\"\n}",
-        "auth": {
-          "type": "bearer",
-          "bearerToken": "{{Token}}",
-          "basicUsername": "",
-          "basicPassword": "",
-          "apiKeyName": "",
-          "apiKeyValue": "",
-          "apiKeyAddTo": "header"
-        },
-        "bodyType": "none",
-        "restBody": "",
-        "rawText": "",
-        "formData": [],
-        "urlencoded": [],
-        "gqlQuery": "",
-        "gqlVariables": "{}",
-        "testScript": "",
-        "editorTab": "AUTH",
-        "responseTab": "PRETTY",
-        "savedSnapshot": "{\"name\":\"Danh sách chi nhánh\",\"url\":\"{{Domain}}/branches\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[{\"key\":\"format\",\"value\":\"json\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"includeRemoveIds\",\"value\":\"true\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"hierachicalData\",\"value\":\"true\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"pathVariables\":[],\"headersList\":[{\"key\":\"Retailer\",\"value\":\"{{retailer}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
-      },
-      "createdAt": "2026-08-28T04:09:46.141Z",
-      "updatedAt": "2026-08-28T04:27:20.938Z"
-    },
-    {
-      "id": "39e5f697-4019-4759-8094-763cba40d62c",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "3be89a3f-63c9-452f-9963-dd4dfd67b439",
-      "name": "Thêm mới hàng hoá",
-      "request": {
-        "id": "da68923e-1809-4bc5-be4e-e3d2e63933be",
-        "savedRequestId": "39e5f697-4019-4759-8094-763cba40d62c",
-        "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-        "folderId": "3be89a3f-63c9-452f-9963-dd4dfd67b439",
-        "name": "Thêm mới hàng hoá",
-        "mode": "REST",
-        "method": "POST",
-        "url": "{{Domain}}/products",
-        "params": [],
-        "headersList": [
-          {
-            "id": "3e3bd8f3-637f-4d54-9edb-2256c54aafab",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
-          },
-          {
-            "id": "ffa6d1d9-5464-4ad5-8a32-8ab354007a24",
-            "key": "Retailer",
-            "value": "{{retailer}}",
-            "enabled": true,
-            "description": ""
-          }
-        ],
-        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Retailer\": \"{{retailer}}\"\n}",
-        "auth": {
-          "type": "bearer",
-          "bearerToken": "{{Token}}",
-          "basicUsername": "",
-          "basicPassword": "",
-          "apiKeyName": "",
-          "apiKeyValue": "",
-          "apiKeyAddTo": "header"
-        },
-        "bodyType": "json",
-        "restBody": "{\n    \"code\": \"\",\n    \"name\": \"Thuoc Tinh 13/12\",\n    \"categoryName\": \"Con1\",\n    \"tradeMarkId\": 1230135,\n    \"allowsSale\": true,\n    \"description\": \"Sản phẩm thứ 3 của API\",\n    \"hasVariants\": true,\n    \"attributes\": [\n        {\n          \"attributeName\": \"BAND\",\n          \"attributeValue\": \"2\"\n        },\n        {\n          \"attributeName\": \"SIZE\",\n          \"attributeValue\": \"X\"\n        }\n      ],\n    \"masterProductId\": 1004444243,\n    \"unit\":\"Lần\",\n    \"conversionValue\": 1,\n    \"inventories\":[{\n          \"branchId\": 51472,\n          \"cost\": 10000,\n          \"onHand\": 0\n    }],\n    \"images\": [\n        \"https://lh3.googleusercontent.com/-Lx0oNOdeRVQ/U6K-cTFpKzI/AAAAAAAAAjo/x_C3uado0dU/w187-h296-no/6-19-2014+5-05-29+PM.jpg\"\n      ],\n      \"basePrice\": 110000,\n      \"weight\": 5\n}",
-        "rawText": "",
-        "formData": [],
-        "urlencoded": [],
-        "gqlQuery": "",
-        "gqlVariables": "{}",
-        "testScript": "",
-        "editorTab": "AUTH",
-        "responseTab": "PRETTY",
-        "savedSnapshot": "{\"name\":\"Thêm mới hàng hoá\",\"url\":\"https://public.kiotapi.com/products\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"Retailer\",\"value\":\"{{retailer}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MzQwNjA3ODMsImV4cCI6MTczNDE0NzE4MywiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiODdhYTQzMzYtNDJkNS00YTQwLTk3YWUtYzQ0N2MyNTdkMzU2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2g4MjM1IiwiY2xpZW50X1JldGFpbGVySWQiOiIyODIxODQiLCJjbGllbnRfVXNlcklkIjoiMTQ2MjI3IiwiY2xpZW50X1NlbnNpdGl2ZUFwaSI6IlRydWUiLCJjbGllbnRfR3JvdXBJZCI6IjExIiwiaWF0IjoxNzM0MDYwNzgzLCJzY29wZSI6WyJQdWJsaWNBcGkuQWNjZXNzIl19.qvzjqN6FBGYM54TSBlCk89oFJt2b50rbIsHMgU0UixlVdDkBQMl_bGg536olR7iXJDKvDHJF5_HmrhByPz8__iaP_43P3aV6hwWGJ3L0K2zQ3HvFmwvXipF4ItBgbv-SI0LX54-i1o9A005sWziK56BXHR6igyyiOvtlxt1eAuB6a-0fTBeu_8aqZQCEweZH2A9FMpG8yjZ3ycdSOl2b5Ao5VWYp_nCmb-R8DOBCJweBPy8C5dilc_htfo7uDzh3X2uUZYnHSZuKrwqVsDQX8IVamb0-u0CH2OjkFpvpMP0iB8PyN9xIBNlY2NqevUhq--ScurzGKTsbjolnymuabA\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"{\\n    \\\"code\\\": \\\"\\\",\\n    \\\"name\\\": \\\"Thuoc Tinh 13/12\\\",\\n    \\\"categoryName\\\": \\\"Con1\\\",\\n    \\\"tradeMarkId\\\": 1230135,\\n    \\\"allowsSale\\\": true,\\n    \\\"description\\\": \\\"Sản phẩm thứ 3 của API\\\",\\n    \\\"hasVariants\\\": true,\\n    \\\"attributes\\\": [\\n        {\\n          \\\"attributeName\\\": \\\"BAND\\\",\\n          \\\"attributeValue\\\": \\\"2\\\"\\n        },\\n        {\\n          \\\"attributeName\\\": \\\"SIZE\\\",\\n          \\\"attributeValue\\\": \\\"X\\\"\\n        }\\n      ],\\n    \\\"masterProductId\\\": 1004444243,\\n    \\\"unit\\\":\\\"Lần\\\",\\n    \\\"conversionValue\\\": 1,\\n    \\\"inventories\\\":[{\\n          \\\"branchId\\\": 51472,\\n          \\\"cost\\\": 10000,\\n          \\\"onHand\\\": 0\\n    }],\\n    \\\"images\\\": [\\n        \\\"https://lh3.googleusercontent.com/-Lx0oNOdeRVQ/U6K-cTFpKzI/AAAAAAAAAjo/x_C3uado0dU/w187-h296-no/6-19-2014+5-05-29+PM.jpg\\\"\\n      ],\\n      \\\"basePrice\\\": 110000,\\n      \\\"weight\\\": 5\\n}\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
-      },
-      "createdAt": "2026-08-28T04:09:46.147Z",
-      "updatedAt": "2026-08-28T04:25:32.470Z"
-    },
-    {
-      "id": "9b14b1e9-8f40-4685-a647-876dc06ef3af",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "3be89a3f-63c9-452f-9963-dd4dfd67b439",
-      "name": "Danh sách hàng hoá",
-      "request": {
-        "id": "dbe2d31f-c4b3-484c-bb29-95e4ded8b5c0",
-        "name": "Danh sách hàng hoá",
-        "mode": "REST",
-        "method": "GET",
-        "url": "https://public.kiotapi.com/Products/code/SP000065",
-        "params": [
-          {
-            "id": "6a895096-fb6c-4649-b084-81271bdd6043",
-            "key": "format",
-            "value": "json",
-            "enabled": false,
-            "description": ""
-          },
-          {
-            "id": "c222ed9c-144c-4de7-bf44-81c58dfc2045",
-            "key": "includeInventory",
-            "value": "True",
-            "enabled": false,
-            "description": ""
-          },
-          {
-            "id": "34daa62e-4362-42fe-bb28-e19aa88ec164",
-            "key": "isActive",
-            "value": "true",
-            "enabled": false,
-            "description": ""
-          },
-          {
-            "id": "9363ead6-bb32-4a15-b2eb-0b3acf9fe74c",
-            "key": "includePricebook",
-            "value": "true",
-            "enabled": false,
-            "description": ""
-          },
-          {
-            "id": "1db94b36-830b-4d48-85bd-696657e3f358",
-            "key": "orderBy",
-            "value": "modifiedDate",
-            "enabled": false,
-            "description": ""
-          },
-          {
-            "id": "e622c846-76b4-4f42-b6d4-15798745c55c",
-            "key": "lastModifiedFrom",
-            "value": "2024-06-17",
-            "enabled": false,
-            "description": ""
-          },
-          {
-            "id": "cdd70fd6-270f-40b8-94f3-2350f4f843ad",
-            "key": "orderDirection",
-            "value": "desc",
-            "enabled": false,
-            "description": ""
-          },
-          {
-            "id": "de250e43-e971-47cb-b5d7-78b96fa4dea1",
-            "key": "branchids",
-            "value": "253569",
-            "enabled": false,
-            "description": ""
-          },
-          {
-            "id": "819cdeaa-92d3-4b32-970f-7b3c30d04296",
-            "key": "includeInventory",
-            "value": "true",
-            "enabled": false,
-            "description": ""
-          },
-          {
-            "id": "03c1682d-0d52-4029-b3c0-5c84383942bd",
-            "key": "IncludeSerials",
-            "value": "true",
-            "enabled": false,
-            "description": ""
-          },
-          {
-            "id": "a3477fbd-5ead-4219-9a2a-8322a744985a",
-            "key": "currentItem",
-            "value": "0",
-            "enabled": false,
-            "description": ""
-          },
-          {
-            "id": "405fcbe1-8f09-4ddb-a790-1072344cf093",
-            "key": "pageSize",
-            "value": "100",
-            "enabled": false,
-            "description": ""
-          },
-          {
-            "id": "93f2bf65-d036-4048-84dd-28cbf2ed369e",
-            "key": "categoryId",
-            "value": "1251921",
-            "enabled": false,
-            "description": ""
-          },
-          {
-            "id": "cd41c739-099e-40ae-ba5e-4a8f1791dd17",
-            "key": "masterProductId",
-            "value": "36475818",
             "enabled": false,
             "description": ""
           }
@@ -4636,7 +4435,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "a51ddd5b-e867-482f-83c5-1d051575fdd3",
+            "id": "152d8cf1-cabc-4bba-b6fa-81853fabe299",
             "key": "Retailer",
             "value": "{{retailer}}",
             "enabled": true,
@@ -4664,16 +4463,214 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.147Z",
-      "updatedAt": "2026-08-28T04:09:46.147Z"
+      "createdAt": "2026-08-28T04:56:04.642Z",
+      "updatedAt": "2026-08-28T04:56:04.642Z"
     },
     {
-      "id": "f0d1304c-86fb-401f-9e07-c5aea23ceee7",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "3be89a3f-63c9-452f-9963-dd4dfd67b439",
+      "id": "c7a5a2b7-718c-46d5-b927-96d7438cb23f",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "9f9013d9-929a-4d33-a566-709efd1e87f6",
+      "name": "thêm mới hàng hoá",
+      "request": {
+        "id": "aec4f3cd-24b2-4be6-b697-819f72d65c96",
+        "name": "thêm mới hàng hoá",
+        "mode": "REST",
+        "method": "POST",
+        "url": "https://public.kiotapi.com/products",
+        "params": [],
+        "pathVariables": [],
+        "headersList": [
+          {
+            "id": "1419746d-71ad-4c2f-b4d2-6e746291bca1",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "a673d231-3d76-4c8f-9f31-7cab8cf79972",
+            "key": "Retailer",
+            "value": "{{retailer}}",
+            "enabled": true,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Retailer\": \"{{retailer}}\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MzQwNjA3ODMsImV4cCI6MTczNDE0NzE4MywiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiODdhYTQzMzYtNDJkNS00YTQwLTk3YWUtYzQ0N2MyNTdkMzU2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2g4MjM1IiwiY2xpZW50X1JldGFpbGVySWQiOiIyODIxODQiLCJjbGllbnRfVXNlcklkIjoiMTQ2MjI3IiwiY2xpZW50X1NlbnNpdGl2ZUFwaSI6IlRydWUiLCJjbGllbnRfR3JvdXBJZCI6IjExIiwiaWF0IjoxNzM0MDYwNzgzLCJzY29wZSI6WyJQdWJsaWNBcGkuQWNjZXNzIl19.qvzjqN6FBGYM54TSBlCk89oFJt2b50rbIsHMgU0UixlVdDkBQMl_bGg536olR7iXJDKvDHJF5_HmrhByPz8__iaP_43P3aV6hwWGJ3L0K2zQ3HvFmwvXipF4ItBgbv-SI0LX54-i1o9A005sWziK56BXHR6igyyiOvtlxt1eAuB6a-0fTBeu_8aqZQCEweZH2A9FMpG8yjZ3ycdSOl2b5Ao5VWYp_nCmb-R8DOBCJweBPy8C5dilc_htfo7uDzh3X2uUZYnHSZuKrwqVsDQX8IVamb0-u0CH2OjkFpvpMP0iB8PyN9xIBNlY2NqevUhq--ScurzGKTsbjolnymuabA",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "json",
+        "restBody": "{\n    \"code\": \"\",\n    \"name\": \"Thuoc Tinh 13/12\",\n    \"categoryName\": \"Con1\",\n    \"tradeMarkId\": 1230135,\n    \"allowsSale\": true,\n    \"description\": \"Sản phẩm thứ 3 của API\",\n    \"hasVariants\": true,\n    \"attributes\": [\n        {\n          \"attributeName\": \"BAND\",\n          \"attributeValue\": \"2\"\n        },\n        {\n          \"attributeName\": \"SIZE\",\n          \"attributeValue\": \"X\"\n        }\n      ],\n    \"masterProductId\": 1004444243,\n    \"unit\":\"Lần\",\n    \"conversionValue\": 1,\n    \"inventories\":[{\n          \"branchId\": 51472,\n          \"cost\": 10000,\n          \"onHand\": 0\n    }],\n    \"images\": [\n        \"https://lh3.googleusercontent.com/-Lx0oNOdeRVQ/U6K-cTFpKzI/AAAAAAAAAjo/x_C3uado0dU/w187-h296-no/6-19-2014+5-05-29+PM.jpg\"\n      ],\n      \"basePrice\": 110000,\n      \"weight\": 5\n}",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "PARAMS",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-28T04:56:04.642Z",
+      "updatedAt": "2026-08-28T04:56:04.642Z"
+    },
+    {
+      "id": "82385381-26ff-494c-8207-00399536ac21",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "9f9013d9-929a-4d33-a566-709efd1e87f6",
+      "name": "Danh sách hàng hoá",
+      "request": {
+        "id": "7d2801c0-eae6-4460-ad4f-c1203566c8b9",
+        "name": "Danh sách hàng hoá",
+        "mode": "REST",
+        "method": "GET",
+        "url": "https://public.kiotapi.com/Products/code/SP000065",
+        "params": [
+          {
+            "id": "07ea0bdc-c3bb-42d0-ae91-7aff95d7402f",
+            "key": "format",
+            "value": "json",
+            "enabled": false,
+            "description": ""
+          },
+          {
+            "id": "82a437c7-89ae-4f32-957b-e937bfbc3a7a",
+            "key": "includeInventory",
+            "value": "True",
+            "enabled": false,
+            "description": ""
+          },
+          {
+            "id": "554ebebf-30e0-496d-b877-19c8495a3b93",
+            "key": "isActive",
+            "value": "true",
+            "enabled": false,
+            "description": ""
+          },
+          {
+            "id": "11eee668-7022-4fbf-ab7d-8eb9dee80718",
+            "key": "includePricebook",
+            "value": "true",
+            "enabled": false,
+            "description": ""
+          },
+          {
+            "id": "9005ef88-ce36-4520-a689-590bd4902e32",
+            "key": "orderBy",
+            "value": "modifiedDate",
+            "enabled": false,
+            "description": ""
+          },
+          {
+            "id": "e5665e19-7388-469f-b57b-7c2f86e9b9e0",
+            "key": "lastModifiedFrom",
+            "value": "2024-06-17",
+            "enabled": false,
+            "description": ""
+          },
+          {
+            "id": "30ebe262-6cb5-4fab-b7b5-293bbe1d4ddc",
+            "key": "orderDirection",
+            "value": "desc",
+            "enabled": false,
+            "description": ""
+          },
+          {
+            "id": "c98f9353-2f8e-4c05-ad7d-a8f6cdde97d2",
+            "key": "branchids",
+            "value": "253569",
+            "enabled": false,
+            "description": ""
+          },
+          {
+            "id": "8b0f0531-3913-4a33-8f6c-68d94fb2b470",
+            "key": "includeInventory",
+            "value": "true",
+            "enabled": false,
+            "description": ""
+          },
+          {
+            "id": "c0f2fb69-a190-4efc-9cba-e8090943c2c9",
+            "key": "IncludeSerials",
+            "value": "true",
+            "enabled": false,
+            "description": ""
+          },
+          {
+            "id": "e367c138-a511-46c3-8327-b859e2817364",
+            "key": "currentItem",
+            "value": "0",
+            "enabled": false,
+            "description": ""
+          },
+          {
+            "id": "b822b942-eff9-4a0c-bf44-b942ac2f6a1c",
+            "key": "pageSize",
+            "value": "100",
+            "enabled": false,
+            "description": ""
+          },
+          {
+            "id": "7ef3e376-c574-4f17-8dbc-fa95ef0ff4cc",
+            "key": "categoryId",
+            "value": "1251921",
+            "enabled": false,
+            "description": ""
+          },
+          {
+            "id": "8039fc91-5b79-4ddd-99be-ac7cefcaaabc",
+            "key": "masterProductId",
+            "value": "36475818",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "pathVariables": [],
+        "headersList": [
+          {
+            "id": "480f56d4-a771-4ef1-9aa1-8e366c18ad07",
+            "key": "Retailer",
+            "value": "{{retailer}}",
+            "enabled": true,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Retailer\": \"{{retailer}}\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MzIxODE0NjgsImV4cCI6MTczMjI2Nzg2OCwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiYzdhZmY0ZTAtOTk0MC00ZmExLWEzNjEtOWI4MWNjYzRlZWE2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2hyZXRhaWx0ZWFtZG4xIiwiY2xpZW50X1JldGFpbGVySWQiOiIxNDk1NDUyIiwiY2xpZW50X1VzZXJJZCI6IjEzMDQ1NDAiLCJjbGllbnRfU2Vuc2l0aXZlQXBpIjoiVHJ1ZSIsImNsaWVudF9Hcm91cElkIjoiMjMiLCJpYXQiOjE3MzIxODE0NjgsInNjb3BlIjpbIlB1YmxpY0FwaS5BY2Nlc3MiXX0.qtxWSRdpYGJRXyniq55N3ybtPu4vRX8pGSYJ2ETgmSY5wl6ZtgIckFaxWWffrTsMcCqNSWpiWF0X98veDAHrHnDk4pr8ZHa2AE1hKFOsk28AksVC45nr5Fp67U6TgYvFftCRCiIbeIgi7Cu-FwgvtQcJzPz-0rB_5O1_fDmxxBvQmeN99hUA_5erR69LuCZzGwiS3l6swPNUbbywD136LH8zEgEV54DL6_h-7xbPEs_rqpwcIKHkI1qgRWz91_zLc5ScPP_ZjnDnRFmf2G-eLqRHl9aaBGTWYx4HRyA2qPvFW-F88lMBuprH6dO1VfLdCf3AqYGKNvqrpYAhH8cfbQ",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "PARAMS",
+        "responseTab": "PRETTY"
+      },
+      "createdAt": "2026-08-28T04:56:04.642Z",
+      "updatedAt": "2026-08-28T04:56:04.642Z"
+    },
+    {
+      "id": "55e8af20-9edd-494f-8312-76a994e14730",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "9f9013d9-929a-4d33-a566-709efd1e87f6",
       "name": "Chi tiết một hàng hoá",
       "request": {
-        "id": "9cdc64cf-61a5-468a-8f00-c7592586886f",
+        "id": "4ffe2165-4d90-4612-be71-3626df398882",
         "name": "Chi tiết một hàng hoá",
         "mode": "REST",
         "method": "GET",
@@ -4682,14 +4679,14 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "c5d84d08-51c6-4c01-839b-88e131bbe5bb",
+            "id": "eff4fd82-36d2-42a8-b0c5-d52a253d6b27",
             "key": "Retailer",
             "value": "{{retailer}}",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "6792abd9-f469-4478-a2d7-b7da61611d3e",
+            "id": "4ab3ecd4-28eb-4bfc-8012-71686e55f5a0",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": false,
@@ -4717,16 +4714,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.147Z",
-      "updatedAt": "2026-08-28T04:09:46.147Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "4caa669f-61ff-4714-a2e8-8734fa336be0",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "3be89a3f-63c9-452f-9963-dd4dfd67b439",
+      "id": "8beb871a-ff73-4f00-9352-0ff05f19bdc2",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "9f9013d9-929a-4d33-a566-709efd1e87f6",
       "name": "Cập nhật hàng hoá",
       "request": {
-        "id": "2a893ec5-a86e-4851-bf03-c5d6eaf60176",
+        "id": "99009893-0cb9-4684-9ff8-58b05ae1c86e",
         "name": "Cập nhật hàng hoá",
         "mode": "REST",
         "method": "PUT",
@@ -4735,14 +4732,14 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "10354000-62a7-47aa-b3ba-d4589c69d687",
+            "id": "50efec24-f68b-4f73-8eb5-80a9f0cb6dae",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "dcc367ba-0337-4558-807b-f155026006e4",
+            "id": "315de4d7-752a-4550-8d46-783fb6bcc92b",
             "key": "Retailer",
             "value": "{{retailer}}",
             "enabled": true,
@@ -4770,16 +4767,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.147Z",
-      "updatedAt": "2026-08-28T04:09:46.147Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "0c1d0434-5f16-4973-b0c8-d9d635823f24",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "3be89a3f-63c9-452f-9963-dd4dfd67b439",
+      "id": "7c2b07f8-4624-4415-b061-030a969786ac",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "9f9013d9-929a-4d33-a566-709efd1e87f6",
       "name": "Xoá hàng hoá",
       "request": {
-        "id": "8b057ac4-db90-4cbc-907c-0728d3654f54",
+        "id": "e89856d9-4476-4ef1-babe-1e500afe008e",
         "name": "Xoá hàng hoá",
         "mode": "REST",
         "method": "DELETE",
@@ -4788,7 +4785,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "e960f308-ceb2-4223-b939-4888499d7573",
+            "id": "f032dbd7-0591-4b29-859a-ab28f6380a80",
             "key": "Retailer",
             "value": "daidvkh",
             "enabled": true,
@@ -4816,16 +4813,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.147Z",
-      "updatedAt": "2026-08-28T04:09:46.147Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "1259206e-0934-4bcd-bb87-fd497cf43f6e",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "3be89a3f-63c9-452f-9963-dd4dfd67b439",
+      "id": "f26c91bb-816e-49cc-9a92-6a492c067040",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "9f9013d9-929a-4d33-a566-709efd1e87f6",
       "name": "Thêm List Hàng Hóa",
       "request": {
-        "id": "cf2ec3bf-29b5-4d89-a51d-0b5c5580256a",
+        "id": "86ba5648-8a76-45c9-85bf-426f5c127fde",
         "name": "Thêm List Hàng Hóa",
         "mode": "REST",
         "method": "POST",
@@ -4834,7 +4831,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "96b7375a-0be9-41fc-bd63-20f898f7374d",
+            "id": "6dd31c36-2f9b-4363-a06e-c8f35b3e3d9b",
             "key": "retailer",
             "value": "{{clientid}}",
             "enabled": true,
@@ -4862,16 +4859,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.147Z",
-      "updatedAt": "2026-08-28T04:09:46.147Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "f6643113-7b1f-43c2-8483-94f0ebe67407",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "3be89a3f-63c9-452f-9963-dd4dfd67b439",
+      "id": "758265ac-988b-4252-a0d0-6c9febaa063b",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "9f9013d9-929a-4d33-a566-709efd1e87f6",
       "name": "Cập nhật danh sách hàng hóa",
       "request": {
-        "id": "050df048-805a-4d43-b88f-1ca3c4ffbcd8",
+        "id": "faec7181-59c1-4a86-aabb-3923fb77c2e3",
         "name": "Cập nhật danh sách hàng hóa",
         "mode": "REST",
         "method": "PUT",
@@ -4880,7 +4877,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "4c6610ac-4a04-45c4-a9cf-f43b0b594dfd",
+            "id": "51017b3c-78b5-496c-b32e-bacf2034c2ba",
             "key": "retailer",
             "value": "{{retailer}}",
             "enabled": true,
@@ -4908,16 +4905,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.147Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "c959a09f-9d97-4b66-a661-3bb768d1f216",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "3be89a3f-63c9-452f-9963-dd4dfd67b439",
+      "id": "5a3ad819-1bdb-4865-b49e-8d0a0143c088",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "9f9013d9-929a-4d33-a566-709efd1e87f6",
       "name": "Tồn kho Hàng hóa",
       "request": {
-        "id": "dce62c7f-925c-4963-94e8-b7e6fa0ce567",
+        "id": "70d4b3fe-a628-4703-9db6-dde1342ae335",
         "name": "Tồn kho Hàng hóa",
         "mode": "REST",
         "method": "GET",
@@ -4926,7 +4923,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "3cf716a0-3205-4563-a8cb-aeb948ef64d3",
+            "id": "ea8e2116-01d1-48df-af2c-bcf04d0b9548",
             "key": "retailer",
             "value": "dvkh8235",
             "enabled": true,
@@ -4954,79 +4951,79 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "ca64e1ee-e812-4328-a3aa-d4d434cb0ab9",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "a5581110-60d9-4249-8db7-d121d398ba9f",
+      "id": "b51b814b-cffd-4e98-a4a0-311bd591fec5",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "576c68d6-8b99-4b11-a5a8-7c84e2791e7c",
       "name": "Danh sách khách hàng",
       "request": {
-        "id": "bac83093-0c8f-440f-a53a-2b7615883d3d",
+        "id": "763860b2-3028-4c8e-a112-91ac9891293c",
         "name": "Danh sách khách hàng",
         "mode": "REST",
         "method": "GET",
         "url": "https://public.kiotapi.com/customers?includeTotal=true",
         "params": [
           {
-            "id": "d75398c8-4584-4c99-9b5f-6408e4b28edf",
+            "id": "f072c67a-2d45-4434-9445-3653f97f5434",
             "key": "lastModifiedFrom",
             "value": "\"2016-01-01\"",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "eda0dd94-fb23-48a4-ae44-ee7b26df5ef7",
+            "id": "1766de83-09d3-4fe8-8d0f-d5d8a8b5a189",
             "key": "includerRemoveIds",
             "value": "true",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "0445cd75-110f-4dd2-b48a-4f721dd7d13f",
+            "id": "eafc1b1d-448b-45a9-ba67-a02e7f6e5f52",
             "key": "includeTotal",
             "value": "true",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "aa7feca8-e72f-4b66-8a08-26c49dbbc4a0",
+            "id": "8a3199bd-3b3c-49a3-8d5c-65f144e81352",
             "key": "pageSize",
             "value": "20",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "c7c1f4ca-532c-4ea3-a20c-500895766096",
+            "id": "db2e5dab-564b-403f-b3a7-0dd025e5accb",
             "key": "currentItem",
             "value": "0",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "358c2481-59bb-4896-89e0-cdf7e568f1bb",
+            "id": "754a33d7-1d09-4a55-8245-14afe982b2ac",
             "key": "orderBy",
             "value": "modifiedDate",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "beade8bc-9eef-41a7-b82f-fb118673267e",
+            "id": "7104aa5c-b06e-40eb-ae32-2036d36667d4",
             "key": "orderDirection",
             "value": "desc",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "115cc2a7-d144-46b7-8602-155802e2814f",
+            "id": "a8086bae-7d87-4977-8ae6-3fd4e7c564ff",
             "key": "contactNumber",
             "value": "109051142626",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "a9e656cf-9834-40ab-b97a-67f5486d90f7",
+            "id": "979a985b-80cb-49c3-a594-c9c51b0a635e",
             "key": "includeCustomerGroup",
             "value": "true",
             "enabled": false,
@@ -5036,7 +5033,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "7032d3bf-39ea-4d80-8293-3b2491519dd5",
+            "id": "b0f88139-25a3-41ff-ba82-ab4c4b2662ce",
             "key": "Retailer",
             "value": "{{retailer}}",
             "enabled": true,
@@ -5064,16 +5061,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "0abf3b37-9f4d-40b5-9bd3-9a3ef61e93b0",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "a5581110-60d9-4249-8db7-d121d398ba9f",
+      "id": "4684db2b-244b-48ea-b5a1-5d558956a5e4",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "576c68d6-8b99-4b11-a5a8-7c84e2791e7c",
       "name": "Chi tiết khách hàng",
       "request": {
-        "id": "c2eefa91-7c85-4956-83c8-c0f6c563d711",
+        "id": "e95349f7-1aed-4e39-9ceb-0449f5bd160d",
         "name": "Chi tiết khách hàng",
         "mode": "REST",
         "method": "GET",
@@ -5082,7 +5079,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "d1356114-e8f4-4736-9e77-deca59358e08",
+            "id": "c803693e-c0ac-4230-8e96-4ccd6e8185a3",
             "key": "Retailer",
             "value": "{{retailer}}",
             "enabled": true,
@@ -5110,16 +5107,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "273e5c51-26a3-4398-9368-746120028692",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "a5581110-60d9-4249-8db7-d121d398ba9f",
+      "id": "0387f426-cb21-4ed7-a64b-599c316c4204",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "576c68d6-8b99-4b11-a5a8-7c84e2791e7c",
       "name": "Thêm mới khách hàng",
       "request": {
-        "id": "802832b8-46b1-475b-8c6c-d850dd7eed0d",
+        "id": "51b1ef87-0d5e-42b4-840f-081c64dc1509",
         "name": "Thêm mới khách hàng",
         "mode": "REST",
         "method": "POST",
@@ -5128,14 +5125,14 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "23295a9d-f781-4c6e-98c3-b38585efc811",
+            "id": "49db8bb0-9c2e-47f7-92fa-b05a064a8905",
             "key": "Retailer",
             "value": "{{retailer}}",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "086595c7-8db7-4770-b308-720cbacbf637",
+            "id": "8ec7901b-e958-4f15-a52e-e965addb3fb4",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": true,
@@ -5163,16 +5160,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "bff7e000-a71a-4b03-815b-02598a839999",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "a5581110-60d9-4249-8db7-d121d398ba9f",
+      "id": "282b36e6-48f9-4c3e-85e9-f5d423554845",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "576c68d6-8b99-4b11-a5a8-7c84e2791e7c",
       "name": "Cập nhật khách hàng",
       "request": {
-        "id": "d805f3b7-d7f7-4186-9ca7-67d251e3f19e",
+        "id": "22714dc2-81e9-4b28-bb3e-b683b1cee503",
         "name": "Cập nhật khách hàng",
         "mode": "REST",
         "method": "PUT",
@@ -5181,14 +5178,14 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "a95d3d06-836c-4e3b-944d-344ec7f260db",
+            "id": "8bec8884-0d6a-4219-8c24-c752793d8129",
             "key": "Retailer",
             "value": "taphoa",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "002ef3eb-b005-4c0a-9be9-25916dfef37b",
+            "id": "9986bb43-b6aa-4e04-90bb-2127cad26408",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": true,
@@ -5216,16 +5213,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "7652f870-d878-435e-8afd-041595247218",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "a5581110-60d9-4249-8db7-d121d398ba9f",
+      "id": "2e6833f6-30a5-416e-b20f-70e5dbebf315",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "576c68d6-8b99-4b11-a5a8-7c84e2791e7c",
       "name": "Xóa khách hàng",
       "request": {
-        "id": "72687884-fa36-4f43-8ee1-c717e935f0a9",
+        "id": "b6e7b08b-8711-4829-811a-e8945bbb627c",
         "name": "Xóa khách hàng",
         "mode": "REST",
         "method": "DELETE",
@@ -5234,7 +5231,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "914ae687-6ccf-4ee8-9e04-96b6ef8fa5f4",
+            "id": "e4c32763-1573-4552-85b7-6fe57b76b120",
             "key": "Retailer",
             "value": "taphoa",
             "enabled": true,
@@ -5262,65 +5259,65 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "fa808c4e-8710-40ef-be8a-a5a8aa470878",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "a5581110-60d9-4249-8db7-d121d398ba9f",
+      "id": "a5c89625-a225-4f91-be9e-7bb94b95e5dc",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "576c68d6-8b99-4b11-a5a8-7c84e2791e7c",
       "name": "Danh sách nhóm khách hàng",
       "request": {
-        "id": "13ada39b-1efc-469c-a59b-afee67b4a45a",
+        "id": "043f3668-7b4b-4aa6-85fa-554c57b57b98",
         "name": "Danh sách nhóm khách hàng",
         "mode": "REST",
         "method": "GET",
         "url": "https://public.kiotapi.com/customers/group",
         "params": [
           {
-            "id": "dc61e0d1-d9f7-42b6-8a76-da0d80e6f755",
+            "id": "1fa151c6-caab-4219-8132-f094c830271e",
             "key": "lastModifiedFrom",
             "value": "\"2016-01-01\"",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "d5330383-fb3d-4b2a-9db5-c42af0b3c4c9",
+            "id": "16183f53-c4eb-42f2-aeb3-90bd8c595a11",
             "key": "includerRemoveIds",
             "value": "true",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "322e939a-5480-49d3-be9f-722b0118fb3b",
+            "id": "f97a0f4d-ec71-4212-a3e4-85f1e710398e",
             "key": "includeTotal",
             "value": "false",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "d27129e9-2a63-41a5-81ed-ef3be397d0e0",
+            "id": "b1e8cde6-eb7b-42ce-88dc-ab0de85020c4",
             "key": "pageSize",
             "value": "20",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "de270c6b-a745-425e-8134-7928c231406c",
+            "id": "19742c5e-dd3d-4526-81cd-a69d615f047f",
             "key": "currentItem",
             "value": "0",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "20f20240-8d5c-4896-a742-1a63087816b7",
+            "id": "a61062a0-e319-4b86-affc-6b5446413f41",
             "key": "orderBy",
             "value": "modifiedDate",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "ea96d100-5ecc-47d1-b183-530ed728d95d",
+            "id": "84927b5f-f7c5-447e-9c46-5188e317933e",
             "key": "orderDirection",
             "value": "desc",
             "enabled": false,
@@ -5330,7 +5327,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "4f8b111a-e2e6-4a09-a2c1-a1e7bf6f65a1",
+            "id": "f900c418-0264-4835-aa17-5b4933e1e9a1",
             "key": "Retailer",
             "value": "dvkh8235",
             "enabled": true,
@@ -5358,16 +5355,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "1baaa3f4-c346-4484-a971-07ef2485e7d2",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "a5581110-60d9-4249-8db7-d121d398ba9f",
+      "id": "891c61f4-49c1-4f4c-88f4-92ebc5b7af74",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "576c68d6-8b99-4b11-a5a8-7c84e2791e7c",
       "name": "Cập nhật danh sách khách hàng",
       "request": {
-        "id": "3a970b3c-4d61-4b67-af19-b6cd59687756",
+        "id": "f7020e08-50f5-4130-9554-e0795114e46f",
         "name": "Cập nhật danh sách khách hàng",
         "mode": "REST",
         "method": "PUT",
@@ -5376,7 +5373,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "d592a35f-2874-4d71-a033-414f6100aae5",
+            "id": "888cac9f-47c3-4734-b9b5-6fe1125a8fe0",
             "key": "retailer",
             "value": "{{retailer}}",
             "enabled": true,
@@ -5404,16 +5401,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "ad3c4ca3-e959-474e-b506-3bea7c337585",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "63d1d02f-448f-48ad-9679-5a4a3ff2f4f5",
+      "id": "4449c163-9a8e-470c-99cb-d75bbca2659c",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "058c06da-0f37-48c7-9454-7415f3546d3d",
       "name": "Danh sách Users",
       "request": {
-        "id": "0dae5f6d-7d41-466b-b03d-accef923715f",
+        "id": "ef50705a-ede2-4f30-a8b9-8eb0dbded473",
         "name": "Danh sách Users",
         "mode": "REST",
         "method": "GET",
@@ -5422,7 +5419,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "10b4f733-3baf-44a0-a740-dc163b258af2",
+            "id": "305411a0-b28e-4c64-b091-4f1317d870c1",
             "key": "Retailer",
             "value": "{{retailer}}",
             "enabled": true,
@@ -5450,72 +5447,72 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "b1a96988-50e8-43db-8839-14fe3e3f1c24",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "5d2ce53d-c169-484b-b4de-e4e7bdcf3a7a",
+      "id": "bcc4b84c-4ade-4714-882c-240456d462bc",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "356d1b61-f5b3-4256-99d1-345aacee69f6",
       "name": "Danh sách nhóm hàng",
       "request": {
-        "id": "21a7134f-fad6-45e7-be82-58a93333452b",
+        "id": "e7f4fa03-245d-4c00-b06c-bda9c4fb8aca",
         "name": "Danh sách nhóm hàng",
         "mode": "REST",
         "method": "GET",
         "url": "https://public.kiotapi.com/categories?format=json&includeRemoveIds=true&lastModifiedFrom=\"2022-03-28\"",
         "params": [
           {
-            "id": "df25b6e2-9f21-4ce8-aa5f-1a12034cae9e",
+            "id": "b4c175cf-0e65-4ed2-9cc8-843cb7ee5a1b",
             "key": "format",
             "value": "json",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "33c98358-f5aa-49fd-82f9-ca78bd3d3321",
+            "id": "b6f6d7e0-7192-4fa5-b43a-01d23e96e63d",
             "key": "includeRemoveIds",
             "value": "true",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "f30d62d2-a4e2-4eea-b69f-cbb52649f967",
+            "id": "29cea3ac-7faa-4a14-83fc-da5cb4ef9e6a",
             "key": "pageSize",
             "value": "100",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "2ce38a64-068e-4434-a29b-f1e834350489",
+            "id": "b0ddf471-f8bf-4088-ad55-ff436a199cea",
             "key": "currentItem",
             "value": "0",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "56928bc6-039e-45bd-b629-b7f43dc8eca3",
+            "id": "c42f2512-679d-43fe-8f35-a88ab45e6579",
             "key": "orderBy",
             "value": "categoryName",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "dade95d8-36f4-42a2-9bcc-d3f865da8b65",
+            "id": "6df66114-db7e-4b06-bbed-769e0b24883b",
             "key": "orderDirection",
             "value": "desc",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "691eba5a-ec36-40cb-bf36-e66964ed76b2",
+            "id": "658d79b1-c261-4681-a278-b9fc8302702a",
             "key": "hierachicalData",
             "value": "true",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "911ddf5a-ff50-4160-b0d2-391b33a46e4a",
+            "id": "90091e0a-692e-4eb9-a334-688ee02339e7",
             "key": "lastModifiedFrom",
             "value": "\"2022-03-28\"",
             "enabled": true,
@@ -5525,7 +5522,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "245f2e05-4ea6-4434-8d82-c0b350e70c65",
+            "id": "e9ff621d-b5ab-43c7-af45-1da0ab271c2b",
             "key": "Retailer",
             "value": "{{retailer}}",
             "enabled": true,
@@ -5553,16 +5550,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "49ac45d1-6a07-4c74-84d1-f539e2dccc42",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "5d2ce53d-c169-484b-b4de-e4e7bdcf3a7a",
+      "id": "fd063f75-eb45-4587-9cdb-d734e3da4b33",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "356d1b61-f5b3-4256-99d1-345aacee69f6",
       "name": "Thêm nhóm hàng mới",
       "request": {
-        "id": "d226d0ad-79c3-4574-b35c-a8cc2900e1f7",
+        "id": "75b60ce9-2433-4d2c-ae6e-7852a79e2251",
         "name": "Thêm nhóm hàng mới",
         "mode": "REST",
         "method": "POST",
@@ -5571,14 +5568,14 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "3d98af88-06c0-42ff-99a8-965563c91b48",
+            "id": "c8b00788-0483-42b0-ace2-19715d9375a4",
             "key": "Retailer",
             "value": "dvkh8235",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "acb45c0e-191b-4f5b-bb3e-10969b56d943",
+            "id": "ba7eb3f4-2bd7-4ba9-857e-5ce39711bc25",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": true,
@@ -5606,16 +5603,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "f6667383-44f4-4c24-9462-765efade3bfc",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "5d2ce53d-c169-484b-b4de-e4e7bdcf3a7a",
+      "id": "f8250727-49a8-453f-8fa7-c4f1364ef86d",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "356d1b61-f5b3-4256-99d1-345aacee69f6",
       "name": "Chi tiết nhóm hàng",
       "request": {
-        "id": "3eacd1a5-17b3-4e88-9177-7db1d2ec87f7",
+        "id": "d87a48b0-b1b0-4d20-a8a6-540c6b9074ad",
         "name": "Chi tiết nhóm hàng",
         "mode": "REST",
         "method": "GET",
@@ -5624,14 +5621,14 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "7e169a79-e2a3-4613-937d-56af52fe787f",
+            "id": "c897385e-4082-49ad-9ae3-859786b20d02",
             "key": "Retailer",
             "value": "taphoa",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "126e4420-28d9-4802-b9c1-d88d592b3703",
+            "id": "e322a681-eb7c-4acc-bbe4-38f4d026b4e8",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": true,
@@ -5659,16 +5656,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "2ca11150-c8ed-4ba5-9560-cc910b41d6c8",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "5d2ce53d-c169-484b-b4de-e4e7bdcf3a7a",
+      "id": "bcb20377-968f-47a5-a7e3-04935fe6edf8",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "356d1b61-f5b3-4256-99d1-345aacee69f6",
       "name": "Xoá nhóm hàng",
       "request": {
-        "id": "d8e37589-91b5-4dce-995c-bef9d2019ef7",
+        "id": "d404941d-197b-4e1d-a588-939f19d26d07",
         "name": "Xoá nhóm hàng",
         "mode": "REST",
         "method": "DELETE",
@@ -5677,7 +5674,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "9c659b0a-e275-4348-9531-220da4edbd7e",
+            "id": "c96dcfac-2721-41fe-ac05-03d642721768",
             "key": "Retailer",
             "value": "daidvkh",
             "enabled": true,
@@ -5705,16 +5702,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "9daaa4ca-f6a9-4a50-ace9-b0890e9d9617",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "5d2ce53d-c169-484b-b4de-e4e7bdcf3a7a",
+      "id": "4fc7141d-2b1d-40a5-ba7f-b9bf6d8f6906",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "356d1b61-f5b3-4256-99d1-345aacee69f6",
       "name": "Cập nhật nhóm hàng",
       "request": {
-        "id": "17cedf5f-e21a-425f-b58b-fff2a4de488e",
+        "id": "e7ab85fc-fb8c-4a0f-99ba-6b1fa4ab22d8",
         "name": "Cập nhật nhóm hàng",
         "mode": "REST",
         "method": "PUT",
@@ -5723,14 +5720,14 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "a4e5e6b6-815c-45f7-9555-c628bd41ae80",
+            "id": "3ba42341-0b59-4196-b774-fd5726ee868a",
             "key": "Retailer",
             "value": "taphoa",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "b91f40e1-7542-41fa-a122-0b451d16eafe",
+            "id": "39fab326-e897-4184-8197-4ce49fa26cf4",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": true,
@@ -5758,16 +5755,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "32b82fbb-a4e8-4d4a-a038-a99d542cacc9",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "e058df6d-056c-4ac4-85e2-81d177bad6f1",
+      "id": "f3081789-beb7-4e29-a7c2-875f96ecffa4",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "e013dce4-a20e-48bc-8a5e-9825a9ea4e79",
       "name": "Danh sách Thu khác",
       "request": {
-        "id": "2ac82568-ce1b-4578-ac86-7fcb01ff2b7a",
+        "id": "bdce864c-c1d7-4eba-a017-ceb7a8c99278",
         "name": "Danh sách Thu khác",
         "mode": "REST",
         "method": "GET",
@@ -5776,7 +5773,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "f086d335-be5e-43ca-83e6-098b19e250df",
+            "id": "0423fee5-89a3-42a7-a9f5-59d77f62c84b",
             "key": "Retailer",
             "value": "vinafecom",
             "enabled": true,
@@ -5804,65 +5801,65 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "3384dc72-49d0-4077-a601-d7fc6c59728b",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "97fca1ec-7e06-42d1-a17c-05765ead5948",
+      "id": "12911414-47db-47dc-b064-781f8bd9db93",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "ec564351-5520-4b36-809d-a4b502e234d8",
       "name": "Danh sách Tài khoản ngân hàng",
       "request": {
-        "id": "17bb3ab2-0a2a-44a2-bdf4-cc1b9b299bc2",
+        "id": "9f179e33-8308-4753-b7e8-fa585b5a20ff",
         "name": "Danh sách Tài khoản ngân hàng",
         "mode": "REST",
         "method": "GET",
         "url": "https://public.kiotapi.com/bankaccounts?format=json&includeRemoveIds=true&orderBy=createdDate&orderDirection=asc&pageSize=2&currentItems=0&lastModifiedFrom=\"2017-01-01\"",
         "params": [
           {
-            "id": "910bbece-b202-414e-ba48-75dc2140dbaf",
+            "id": "84221d21-a135-40b6-bcab-257c341677fb",
             "key": "format",
             "value": "json",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "3d081818-8d6d-4718-87e7-7d26e6fb2a23",
+            "id": "59c97982-d1a3-494e-87c6-fa41306ced4d",
             "key": "includeRemoveIds",
             "value": "true",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "262923df-1ea4-438f-827e-7d7b39fbfaaa",
+            "id": "8b0581ee-14d9-44ba-9c3d-2bc061845636",
             "key": "orderBy",
             "value": "createdDate",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "3202be11-413c-40bc-920f-71d840b48700",
+            "id": "b48f8a88-d694-4329-a13a-a8d06f69470d",
             "key": "orderDirection",
             "value": "asc",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "f2738aa2-b6fb-4fc5-9f46-da57c4f55521",
+            "id": "e72ab941-fa5b-408b-97d3-0e392d021438",
             "key": "pageSize",
             "value": "2",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "0ebad31d-b63c-474b-880c-328d49c091f7",
+            "id": "e939ddb6-7830-4c18-910c-d53647f4b7c9",
             "key": "currentItems",
             "value": "0",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "2dd5cc52-b2fc-4584-a88f-7b5d0b3be3c7",
+            "id": "7014e32b-baf6-4fa2-917e-383160478a0d",
             "key": "lastModifiedFrom",
             "value": "\"2017-01-01\"",
             "enabled": true,
@@ -5872,7 +5869,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "eaff413a-c942-4c66-ae90-569697b42eb5",
+            "id": "cb72783c-7594-4655-a281-fa12c3ccf119",
             "key": "Retailer",
             "value": "taphoa",
             "enabled": true,
@@ -5900,16 +5897,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "703bcf23-a035-4d16-94a0-0d8bf6cb5a94",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "6d0bb0e6-f56b-4f45-85d0-d9ffab5f3ff8",
+      "id": "35a22629-a81a-44dd-b486-b29b7f431456",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "f2cdc4f5-713e-4eaa-81fd-4a48010af6f6",
       "name": "Danh sách webhook",
       "request": {
-        "id": "5ca9885d-3008-41e1-9158-adcc4df21986",
+        "id": "18887969-cec7-4f53-a55c-9aa21eea5f44",
         "name": "Danh sách webhook",
         "mode": "REST",
         "method": "GET",
@@ -5918,14 +5915,14 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "ebc6a406-ee9e-45fa-a3ad-849f682ed13a",
+            "id": "3cb6512d-23a3-4850-90fd-88194585c575",
             "key": "Retailer",
             "value": "euronics",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "6297589b-301b-4fef-a5bf-9055d66961a8",
+            "id": "dbdb4668-be48-4348-9b3b-2827cd00f524",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": false,
@@ -5953,16 +5950,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "c8bf4a85-e7d9-497a-961e-964d3522d751",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "6d0bb0e6-f56b-4f45-85d0-d9ffab5f3ff8",
+      "id": "c6e8d3a5-c6ed-48ce-bd4c-39d10b004cee",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "f2cdc4f5-713e-4eaa-81fd-4a48010af6f6",
       "name": "Đăng ký webhooks",
       "request": {
-        "id": "28e68239-f660-47fc-80c9-7379be990ca2",
+        "id": "7b1c7c92-21ea-4f11-9fa5-a6bda1a042ef",
         "name": "Đăng ký webhooks",
         "mode": "REST",
         "method": "POST",
@@ -5971,14 +5968,14 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "df87d23e-7e18-4c2e-96b4-37536b15f151",
+            "id": "39a04de1-58e1-46d4-b421-dbbb024c8d49",
             "key": "Retailer",
             "value": "{{retailer}}",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "94dec6c4-326b-40cf-8769-54ba2ec111e0",
+            "id": "f79706aa-87ce-4af4-ac34-3442ca439b1e",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": true,
@@ -6006,16 +6003,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "33e575d4-d870-45f5-9652-6124946aa750",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "6d0bb0e6-f56b-4f45-85d0-d9ffab5f3ff8",
+      "id": "65db9aac-95d5-4ece-a697-4ecb43b458bb",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "f2cdc4f5-713e-4eaa-81fd-4a48010af6f6",
       "name": "Huỷ đăng ký webhooks",
       "request": {
-        "id": "ce5e94f2-0260-4078-86e3-b454da1f601f",
+        "id": "d1463403-e81b-4435-b6c8-ebd1abd3850c",
         "name": "Huỷ đăng ký webhooks",
         "mode": "REST",
         "method": "DELETE",
@@ -6024,7 +6021,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "0001bb7b-7147-43ea-9320-e062ff251627",
+            "id": "5e2620b6-3864-4f19-b330-c7d04a383987",
             "key": "Retailer",
             "value": "{{retailer}}",
             "enabled": true,
@@ -6052,16 +6049,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "80a0382f-b105-4219-b6f4-04b78c5532ef",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "6d0bb0e6-f56b-4f45-85d0-d9ffab5f3ff8",
+      "id": "d49b4dd7-a80b-4a56-b292-fa7a692c3966",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "f2cdc4f5-713e-4eaa-81fd-4a48010af6f6",
       "name": "Chi tiết webhooks",
       "request": {
-        "id": "05708bc4-0887-4df5-a4ed-da3adb6f7c6f",
+        "id": "485be86a-11eb-4a0d-a868-cd914974debc",
         "name": "Chi tiết webhooks",
         "mode": "REST",
         "method": "GET",
@@ -6070,7 +6067,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "b6e8f2d6-7975-4dcc-90d0-1ad0e8f26dd2",
+            "id": "39bfa1f8-886f-49e5-9f00-e1c6d111b3fe",
             "key": "Retailer",
             "value": "sI",
             "enabled": true,
@@ -6098,37 +6095,37 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "fcc4ae12-0490-4a5f-90f3-3de214b94d45",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "a6be4522-85e2-41dd-8636-594c0b2dc8b2",
+      "id": "d3517dce-2d4b-460d-a2ed-8951e1aaa4ef",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "fbc2692f-46eb-4b43-9459-ceba5f5e1628",
       "name": "Danh sách đặt hàng",
       "request": {
-        "id": "575d9459-b0ed-4483-afac-9f895b3ca4bc",
+        "id": "592ef5d9-d674-4b93-aa78-b61b10515540",
         "name": "Danh sách đặt hàng",
         "mode": "REST",
         "method": "GET",
         "url": "https://public.kiotapi.com/orders",
         "params": [
           {
-            "id": "b021e507-1ffc-4975-85a1-3c8cd6d02f3b",
+            "id": "940c7a26-ff3f-4bcf-aa64-ced8dee0164e",
             "key": "pageSize",
             "value": "200",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "bbe8a598-7c1f-42d1-be2e-3f0db4aa6df0",
+            "id": "08e64eeb-f4f2-4ed4-a281-98e8d3b36e0e",
             "key": "includePayment",
             "value": "true",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "47aa3f0f-f5ea-4630-898c-d0dc9a6d629b",
+            "id": "ac61cd7c-0632-4e52-8edd-0e8e6ab14832",
             "key": "includeOrderDelivery",
             "value": "true",
             "enabled": false,
@@ -6138,7 +6135,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "c6d3672a-5ab0-4e73-ba2c-c28057177be6",
+            "id": "6e4f8028-49a8-424e-a529-e042d38950b0",
             "key": "Retailer",
             "value": "{{retailer}}",
             "enabled": true,
@@ -6166,30 +6163,30 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "8596a0e7-fd3d-48ba-acb0-c672c56972f0",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "a6be4522-85e2-41dd-8636-594c0b2dc8b2",
+      "id": "a9ff502d-748e-434b-a20f-eb29f1b9d7d2",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "fbc2692f-46eb-4b43-9459-ceba5f5e1628",
       "name": "Danh sách đặt hàng nhập",
       "request": {
-        "id": "2e9c744b-ce4b-415a-bef2-db718b2b5747",
+        "id": "53e877e5-3d7c-4668-b5ad-20ef6f62fc6e",
         "name": "Danh sách đặt hàng nhập",
         "mode": "REST",
         "method": "GET",
         "url": "https://public.kiotapi.com/ordersuppliers?productKey=SPAPI004&productKey=SP00016",
         "params": [
           {
-            "id": "fd152b43-412d-4a8b-98d0-3b417b5c6be3",
+            "id": "7a17d9d0-1c2f-4130-ab0b-ae5df70b92e3",
             "key": "productKey",
             "value": "SPAPI004",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "163fc4e4-4cb5-41fc-b24d-683deff3507a",
+            "id": "0503b87f-1b68-43c9-a6b3-59e52145c66a",
             "key": "productKey",
             "value": "SP00016",
             "enabled": true,
@@ -6199,7 +6196,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "8e6bbeb7-9751-4350-af14-a8e2a9e59a88",
+            "id": "462ed002-c390-42ac-8443-e079e8a1e5e7",
             "key": "Retailer",
             "value": "{{retailer}}",
             "enabled": true,
@@ -6227,16 +6224,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "a97078b8-0d63-4aeb-ac9d-b871f2573e87",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "a6be4522-85e2-41dd-8636-594c0b2dc8b2",
+      "id": "cf018128-3012-4cb0-a4ef-3b0fd52ef6e1",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "fbc2692f-46eb-4b43-9459-ceba5f5e1628",
       "name": "Chi tiết đặt hàng",
       "request": {
-        "id": "3323861c-3cd5-48bf-b6dd-0df11e88feea",
+        "id": "ecde40b7-bb79-4b98-b60e-9fe43ed80ad4",
         "name": "Chi tiết đặt hàng",
         "mode": "REST",
         "method": "GET",
@@ -6245,7 +6242,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "12d57d2a-f731-4803-bf6e-c0d68623c386",
+            "id": "2b778d01-a759-4fcc-84c0-b5f73014c5f0",
             "key": "Retailer",
             "value": "{{retailer}}",
             "enabled": true,
@@ -6273,16 +6270,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.643Z",
+      "updatedAt": "2026-08-28T04:56:04.643Z"
     },
     {
-      "id": "dedba505-c0fc-4027-9ab3-217fdc341891",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "a6be4522-85e2-41dd-8636-594c0b2dc8b2",
+      "id": "0478ce05-7ac5-4796-91fd-8b198831a9d0",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "fbc2692f-46eb-4b43-9459-ceba5f5e1628",
       "name": "Thêm mới đặt hàng",
       "request": {
-        "id": "2a354665-3b24-4709-abc0-0be603a7e1b5",
+        "id": "3d167ff2-7c2a-4333-acfa-039ee45ea234",
         "name": "Thêm mới đặt hàng",
         "mode": "REST",
         "method": "POST",
@@ -6291,14 +6288,14 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "d99878e4-8060-4097-809e-2542caced09d",
+            "id": "c4a8462f-d4e5-464b-b07e-62ff7118a608",
             "key": "Retailer",
             "value": "{{retailer}}",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "5609667d-005a-432f-ab65-ee93ae1243a0",
+            "id": "b413b50b-57e8-4f4d-a3d3-67da5ddd7fa0",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": true,
@@ -6326,16 +6323,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.644Z",
+      "updatedAt": "2026-08-28T04:56:04.644Z"
     },
     {
-      "id": "ee6b37bd-43c9-4002-af3c-709ea8103fb0",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "a6be4522-85e2-41dd-8636-594c0b2dc8b2",
+      "id": "1d9e52e2-80d7-4958-9654-49d1b59f54ba",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "fbc2692f-46eb-4b43-9459-ceba5f5e1628",
       "name": "Cập nhật đặt hàng",
       "request": {
-        "id": "17190cbb-c60e-4ae2-92a8-89aa8e3c3214",
+        "id": "ce890196-df9a-486f-a863-639417ac6b37",
         "name": "Cập nhật đặt hàng",
         "mode": "REST",
         "method": "PUT",
@@ -6344,14 +6341,14 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "8dec29b1-b808-49af-989e-682f955501bf",
+            "id": "808b5ba5-49f9-484c-baab-874c20aefe8f",
             "key": "Retailer",
             "value": "dvkh8235",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "cd2ae5ec-261f-42fe-9c02-266494a2c1ec",
+            "id": "906e2bd7-088c-4ed0-b075-ecddd5346d5f",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": true,
@@ -6379,16 +6376,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.148Z",
-      "updatedAt": "2026-08-28T04:09:46.148Z"
+      "createdAt": "2026-08-28T04:56:04.644Z",
+      "updatedAt": "2026-08-28T04:56:04.644Z"
     },
     {
-      "id": "cb487960-c2a3-4ff7-8bcc-c76aec185b0b",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "a6be4522-85e2-41dd-8636-594c0b2dc8b2",
+      "id": "354f0af1-82a7-4fe9-a098-c4bb809e6cbc",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "fbc2692f-46eb-4b43-9459-ceba5f5e1628",
       "name": "Xóa đặt hàng",
       "request": {
-        "id": "4e192963-4f98-41d2-ba65-826385dfcaab",
+        "id": "d3ac121a-2451-4a5a-a488-dff9ce85497c",
         "name": "Xóa đặt hàng",
         "mode": "REST",
         "method": "DELETE",
@@ -6397,14 +6394,14 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "5ae1ed91-39d2-4c4d-9885-589ece8b429e",
+            "id": "96201c1c-f41a-4469-a280-f6916894ff16",
             "key": "Retailer",
             "value": "daidvkh",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "330f4719-9c45-4a97-9fc9-790180be0337",
+            "id": "7656d2a1-0ddc-49b8-a1d0-ef7fc03be2c0",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": true,
@@ -6432,16 +6429,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.149Z",
-      "updatedAt": "2026-08-28T04:09:46.149Z"
+      "createdAt": "2026-08-28T04:56:04.644Z",
+      "updatedAt": "2026-08-28T04:56:04.644Z"
     },
     {
-      "id": "f37b0769-0c97-42e7-8b2a-d681313f2380",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "065ba1e9-ad2f-4692-b1e3-2aad75cac545",
+      "id": "8208f239-4ddd-41bb-82e5-cdc482e4b9af",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "0581ea83-f89e-477f-97c8-3a274bc1f6cd",
       "name": "Xóa hóa đơn",
       "request": {
-        "id": "157a1e02-49ae-4114-8962-69a2c055a31e",
+        "id": "17980e21-0d23-4243-aa94-8ae1841f8cc3",
         "name": "Xóa hóa đơn",
         "mode": "REST",
         "method": "DELETE",
@@ -6450,14 +6447,14 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "6b79117a-987a-4cbe-9ea3-0dbd3ab0028e",
+            "id": "89a65452-1d97-4a94-af19-bee7da2d73ce",
             "key": "Retailer",
             "value": "{{retailer}}",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "7d77fed8-a0a2-4f6e-8256-e7c24d03f1fc",
+            "id": "ba03391f-2602-4126-8a18-2fcdf03c8ee8",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": true,
@@ -6485,16 +6482,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.149Z",
-      "updatedAt": "2026-08-28T04:09:46.149Z"
+      "createdAt": "2026-08-28T04:56:04.644Z",
+      "updatedAt": "2026-08-28T04:56:04.644Z"
     },
     {
-      "id": "04c834d8-896b-4848-a269-df2b6fd90389",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "065ba1e9-ad2f-4692-b1e3-2aad75cac545",
+      "id": "123205e6-d335-4d02-a433-abe997afdc26",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "0581ea83-f89e-477f-97c8-3a274bc1f6cd",
       "name": "Thêm hóa đơn",
       "request": {
-        "id": "17f2b09b-f90b-4f43-904c-a912b8e03bd4",
+        "id": "4f592f1c-85ca-4350-91d3-bddef012eacb",
         "name": "Thêm hóa đơn",
         "mode": "REST",
         "method": "POST",
@@ -6503,14 +6500,14 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "25cdcefb-219f-4760-94ba-f754bc25ff45",
+            "id": "d6806561-b64e-4f6b-ae44-e892eb53017c",
             "key": "Retailer",
             "value": "{{retailer}}",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "76e86213-8cbc-410b-9f39-05b1193607af",
+            "id": "a6625c26-fc04-4dcb-b471-3bd5c60f4465",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": true,
@@ -6538,37 +6535,37 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.149Z",
-      "updatedAt": "2026-08-28T04:09:46.149Z"
+      "createdAt": "2026-08-28T04:56:04.644Z",
+      "updatedAt": "2026-08-28T04:56:04.644Z"
     },
     {
-      "id": "b0d9b507-166f-420d-b501-1c4733f5ed54",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "065ba1e9-ad2f-4692-b1e3-2aad75cac545",
+      "id": "22b9cd86-0a91-4ff7-8f0e-cffdbe5f4c3c",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "0581ea83-f89e-477f-97c8-3a274bc1f6cd",
       "name": "Xem danh sách hóa đơn",
       "request": {
-        "id": "7c5e6350-27ee-4b97-95c4-6242de8746ef",
+        "id": "8a2f2825-906c-4b1b-b572-94598938fdd4",
         "name": "Xem danh sách hóa đơn",
         "mode": "REST",
         "method": "GET",
         "url": "https://public.kiotapi.com/invoices",
         "params": [
           {
-            "id": "e0d51a6c-a7bc-43b5-9fde-a9d6b325e2c0",
+            "id": "09d68a1f-57b5-49c9-9574-52889cc8993a",
             "key": "format",
             "value": "json",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "091c2935-21f9-4f6b-a4c8-82a8426aac26",
+            "id": "831a088a-1dbe-42be-9e20-fe2c6b0347b0",
             "key": "fromPurchaseDate",
             "value": "2022-01-11T16:37:00",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "a2dbc191-958c-43bd-88bf-60c6ebbbc887",
+            "id": "51fe5ba0-fb2d-4eab-b0fe-9593e47c4bb2",
             "key": "toPurchaseDate",
             "value": "2022-01-11T16:40:00",
             "enabled": false,
@@ -6578,7 +6575,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "1796d3d4-2704-4dc6-ab77-6b5fa5cae87a",
+            "id": "ab6a47b7-17c6-44d6-894c-3eba4bca679b",
             "key": "Retailer",
             "value": "{{retailer}}",
             "enabled": true,
@@ -6606,16 +6603,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.149Z",
-      "updatedAt": "2026-08-28T04:09:46.149Z"
+      "createdAt": "2026-08-28T04:56:04.644Z",
+      "updatedAt": "2026-08-28T04:56:04.644Z"
     },
     {
-      "id": "b93e82c2-01aa-4380-bc7b-e3f6660fa5d2",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "065ba1e9-ad2f-4692-b1e3-2aad75cac545",
+      "id": "51bb42a5-e8bf-469d-8273-abb77a32c160",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "0581ea83-f89e-477f-97c8-3a274bc1f6cd",
       "name": "Cập nhật hóa đơn",
       "request": {
-        "id": "3351838f-91a1-438c-a712-c7c0fc7e84b7",
+        "id": "16f451c8-1787-465e-9e67-adfeab29931e",
         "name": "Cập nhật hóa đơn",
         "mode": "REST",
         "method": "PUT",
@@ -6624,14 +6621,14 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "e1a87e95-e67b-47be-908d-c231d7a04282",
+            "id": "6e7bbb26-c73a-4c99-89d8-4c91943d5b66",
             "key": "Retailer",
             "value": "{{retailer}}",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "3d08b05b-fe7f-456b-b283-262fb9c28afd",
+            "id": "f9ace4da-ff7f-4d13-95eb-f61c333a5b73",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": true,
@@ -6659,23 +6656,23 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.149Z",
-      "updatedAt": "2026-08-28T04:09:46.149Z"
+      "createdAt": "2026-08-28T04:56:04.644Z",
+      "updatedAt": "2026-08-28T04:56:04.644Z"
     },
     {
-      "id": "89d8b0f5-6579-4c1d-9554-048fe3f1fc7e",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "7ea692eb-1c62-48ba-af97-2a469b824a2b",
+      "id": "fbb43a8c-4a64-42be-9293-3344b5180344",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "9869b652-ec88-4753-9880-4887348264f3",
       "name": "Danh sách nhập hàng",
       "request": {
-        "id": "9edaa351-dc39-4414-a354-0fbc16f5f72c",
+        "id": "1c93b4a0-47ab-4487-9266-eb8883570949",
         "name": "Danh sách nhập hàng",
         "mode": "REST",
         "method": "GET",
         "url": "https://public.kiotapi.com/purchaseorders",
         "params": [
           {
-            "id": "1365d918-21a9-468b-a86c-0451cb2ea193",
+            "id": "0ccad012-95ed-4947-8093-4b3f2d800abb",
             "key": "includeOrderDelivery",
             "value": "true",
             "enabled": false,
@@ -6685,7 +6682,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "9a982f1a-3332-468d-9a35-21178c6cebdc",
+            "id": "beb5c27d-d627-47ca-b64e-abd8819ccceb",
             "key": "Retailer",
             "value": "{{retailer}}",
             "enabled": true,
@@ -6713,16 +6710,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.149Z",
-      "updatedAt": "2026-08-28T04:09:46.149Z"
+      "createdAt": "2026-08-28T04:56:04.644Z",
+      "updatedAt": "2026-08-28T04:56:04.644Z"
     },
     {
-      "id": "bd0ecc3d-8af4-473e-a6b8-76566c77ee79",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "7ea692eb-1c62-48ba-af97-2a469b824a2b",
+      "id": "1ddc6cb0-f7c9-43c9-9573-cc40976e5335",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "9869b652-ec88-4753-9880-4887348264f3",
       "name": "Thêm mới Nhập hàng",
       "request": {
-        "id": "7033fe84-a6d7-46f6-9883-cf79c6824f58",
+        "id": "e620f20a-2d16-49aa-a4e1-a06539509ddf",
         "name": "Thêm mới Nhập hàng",
         "mode": "REST",
         "method": "POST",
@@ -6731,14 +6728,14 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "f7f127b3-f8d3-4175-a48b-4eafa6585ceb",
+            "id": "ab1b2d26-b983-4f3e-b928-f8ac7f88f20e",
             "key": "retailer",
             "value": "{{retailer}}",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "1964346a-3976-43c6-9748-b50f89d80c15",
+            "id": "5539db24-7e67-40a0-9213-3e60135cbec4",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": true,
@@ -6766,16 +6763,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.149Z",
-      "updatedAt": "2026-08-28T04:09:46.149Z"
+      "createdAt": "2026-08-28T04:56:04.644Z",
+      "updatedAt": "2026-08-28T04:56:04.644Z"
     },
     {
-      "id": "24112bc9-127e-418f-8a31-97fea617e28c",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "7ea692eb-1c62-48ba-af97-2a469b824a2b",
+      "id": "2e583440-db49-4153-b301-eb353105a906",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "9869b652-ec88-4753-9880-4887348264f3",
       "name": "Cập nhật Phiếu nhập hàng",
       "request": {
-        "id": "d83c45a3-7edb-4abc-a1c6-6614192daee6",
+        "id": "4a24c086-00be-4c42-a4b9-9d604fd9f2bc",
         "name": "Cập nhật Phiếu nhập hàng",
         "mode": "REST",
         "method": "PUT",
@@ -6784,14 +6781,14 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "9e230ffe-0421-460e-9e07-ae84c326e937",
+            "id": "f1dad48b-394a-4132-b7a0-08239292c54a",
             "key": "retailer",
             "value": "{{retailer}}",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "627c3304-8df4-4035-ad66-16415b30d998",
+            "id": "f587a437-dca4-4d94-a691-ed2d2bca1a8b",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": true,
@@ -6819,16 +6816,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.149Z",
-      "updatedAt": "2026-08-28T04:09:46.149Z"
+      "createdAt": "2026-08-28T04:56:04.644Z",
+      "updatedAt": "2026-08-28T04:56:04.644Z"
     },
     {
-      "id": "00161a44-eaf9-459f-8a89-39ad56096f22",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "ba2a9480-7e48-42a2-986c-9b973acd490f",
+      "id": "f79b7f82-234e-4594-8a6c-6ce18c77f177",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "ca94946b-4e01-4e92-ac90-7491b12b5fdb",
       "name": "Lấy thông tin trả hàng",
       "request": {
-        "id": "ab9a1cb3-9e4a-40bd-997b-cc049c32928c",
+        "id": "c4b40f0f-58d5-4e6f-8f21-8ef0f2fc7e60",
         "name": "Lấy thông tin trả hàng",
         "mode": "REST",
         "method": "GET",
@@ -6837,14 +6834,14 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "3b3613db-ff54-433a-8f87-0752c80bb645",
+            "id": "0b1d5d24-36ea-4fef-aaa2-2075caaa5c1a",
             "key": "Retailer",
             "value": "{{retailer}}",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "3464aba9-0011-4e97-b7be-cb0ecdfc9a4a",
+            "id": "1f67d10a-d4a6-4f6a-80d7-9cd062ff394d",
             "key": "Content-Type",
             "value": "application/json",
             "enabled": true,
@@ -6872,72 +6869,72 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.149Z",
-      "updatedAt": "2026-08-28T04:09:46.149Z"
+      "createdAt": "2026-08-28T04:56:04.644Z",
+      "updatedAt": "2026-08-28T04:56:04.644Z"
     },
     {
-      "id": "44cb8539-d419-4ee3-8eca-8925dd7267b1",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "1d251bb1-966a-4990-862b-048d6e82ff05",
+      "id": "8f524e9f-10ba-43c2-9055-a2348d69f0d6",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "1a0cbd05-1d66-481b-b111-3f09cd623c0c",
       "name": "Lấy danh sách chuyển hàng",
       "request": {
-        "id": "7b1eb0ef-613f-4873-9e78-c64ebffd8244",
+        "id": "5a3b5d27-c498-461c-b705-cd2aabe1d36b",
         "name": "Lấy danh sách chuyển hàng",
         "mode": "REST",
         "method": "GET",
         "url": "https://public.kiotapi.com/transfers?fromBranchIds=51586&status=1&status=2&status=3&status=4&dispatchedDate=2024-05-21",
         "params": [
           {
-            "id": "896900ae-4a19-4068-bdba-d71a382147eb",
+            "id": "35a0d5b7-cf27-4e5e-8cd4-d511eb0d8e4b",
             "key": "fromBranchIds",
             "value": "51586",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "bb57f3b8-2837-4f82-90f8-57931caf9f25",
+            "id": "f67c4544-d7b8-4ec6-8196-dd7d10b2bcb4",
             "key": "status",
             "value": "1",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "1030eeed-c3f5-44b9-ad75-5f0bd898b3fa",
+            "id": "69021f92-7442-4b9c-adaf-b859e65cfacf",
             "key": "status",
             "value": "2",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "156b201f-66ad-4889-8c52-7aebca5975b2",
+            "id": "5f511a8b-ee80-43dc-b144-b8d053947c83",
             "key": "status",
             "value": "3",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "6aaf1d00-0245-473f-9dde-8c2ca8a82ee9",
+            "id": "9ee8326e-7fae-42ff-99c2-8402011ca70b",
             "key": "fromTransferDate",
             "value": "2024-01-1T00:00:00",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "0d575bf8-8076-47fe-b44c-b51d44944ce5",
+            "id": "de6540f6-8634-42c6-8db2-3dbc99b4627f",
             "key": "toTransferDate",
             "value": "2024-05-16T23:59:59",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "6876314e-e631-46d6-a632-bd9215d1dc4a",
+            "id": "373d8852-7834-4fdd-b72a-3e64b0593599",
             "key": "status",
             "value": "4",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "0220ce0a-091c-4f1f-8ff0-31f3652e0b81",
+            "id": "2074f0ff-386e-466d-b161-665d25946197",
             "key": "dispatchedDate",
             "value": "2024-05-21",
             "enabled": true,
@@ -6947,7 +6944,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "716ef497-12e5-4666-b5d1-59603a8aca86",
+            "id": "ffca07b9-df9a-4754-b0b3-dd9c58d7ed63",
             "key": "retailer",
             "value": "{{retailer}}",
             "enabled": true,
@@ -6975,16 +6972,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.149Z",
-      "updatedAt": "2026-08-28T04:09:46.149Z"
+      "createdAt": "2026-08-28T04:56:04.644Z",
+      "updatedAt": "2026-08-28T04:56:04.644Z"
     },
     {
-      "id": "ee942340-4090-496d-acfb-1d4b853ba982",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "1d251bb1-966a-4990-862b-048d6e82ff05",
+      "id": "080f9abe-b72a-4365-a13a-78ffc10f4a1f",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "1a0cbd05-1d66-481b-b111-3f09cd623c0c",
       "name": "Thêm mới chuyển hàng",
       "request": {
-        "id": "4814763a-559c-4217-95f9-937457363c87",
+        "id": "67ae984c-1651-4f74-97f4-6ab73d3b1396",
         "name": "Thêm mới chuyển hàng",
         "mode": "REST",
         "method": "POST",
@@ -6993,7 +6990,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "59bcb958-6a6b-404b-96cc-ae04d8023f24",
+            "id": "30a23f9c-0fd6-4cbe-aef0-eb1d19c830b7",
             "key": "retailer",
             "value": "dvkh8235",
             "enabled": true,
@@ -7021,16 +7018,16 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.149Z",
-      "updatedAt": "2026-08-28T04:09:46.149Z"
+      "createdAt": "2026-08-28T04:56:04.644Z",
+      "updatedAt": "2026-08-28T04:56:04.644Z"
     },
     {
-      "id": "55ab3430-23a9-434b-9016-65e948970500",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "1d251bb1-966a-4990-862b-048d6e82ff05",
+      "id": "be94c819-c747-42a4-9667-9886308d041b",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "1a0cbd05-1d66-481b-b111-3f09cd623c0c",
       "name": "Cập nhật chuyển hàng",
       "request": {
-        "id": "1db3c573-7c89-4b2b-b5c9-e1c0e11b6d6b",
+        "id": "32ffddbb-509d-46b1-9e15-8477cdd7c3eb",
         "name": "Cập nhật chuyển hàng",
         "mode": "REST",
         "method": "PUT",
@@ -7039,7 +7036,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "f895b607-92d1-4b72-8275-fbf74ca1f6eb",
+            "id": "1bb2c466-567b-425c-879c-5b36096093a9",
             "key": "retailer",
             "value": "{{retailer}}",
             "enabled": true,
@@ -7067,65 +7064,65 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.149Z",
-      "updatedAt": "2026-08-28T04:09:46.149Z"
+      "createdAt": "2026-08-28T04:56:04.644Z",
+      "updatedAt": "2026-08-28T04:56:04.644Z"
     },
     {
-      "id": "a0080fa6-cbe5-4c7c-8919-fb853c479248",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "d5bcae01-5902-4b18-b189-1885c79cfdd3",
+      "id": "ecb00915-dfc4-4d49-b3aa-061eff76bc20",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "c5e5bfb9-2abe-469c-a7c2-ccf9968a9541",
       "name": "Lấy danh sách sổ quỹ",
       "request": {
-        "id": "c6a4693a-fb12-456c-9a67-393e9c418a18",
+        "id": "3bf217ce-5679-48c7-af28-5e1f8357310b",
         "name": "Lấy danh sách sổ quỹ",
         "mode": "REST",
         "method": "GET",
         "url": "https://public.kiotapi.com/cashflow?IncludeAccount=true&includeUser=true&includeBranch=true&startDate=2018-04-01&endDate=2018-04-02&CurrentItem=400&pageSize=100",
         "params": [
           {
-            "id": "2473db7a-4084-444d-8013-4b09fa6e6ce6",
+            "id": "fd417303-f2e0-4e59-9447-0995e8977c94",
             "key": "IncludeAccount",
             "value": "true",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "a10fcb69-286c-46a5-a14c-a63bee96e85b",
+            "id": "612fb39a-c3d4-416f-867d-f6bb1d87ca97",
             "key": "includeUser",
             "value": "true",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "e24ae454-0da4-46a2-9c20-30230ade078f",
+            "id": "b5de4349-c050-4aed-94d5-04364653496b",
             "key": "includeBranch",
             "value": "true",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "ec40fa9b-a1f1-4920-9c58-bedfd77b65f8",
+            "id": "b99ab21f-2ebd-45f1-b943-7f87825ad440",
             "key": "startDate",
             "value": "2018-04-01",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "63e4e870-35e4-4972-acb8-0795f08ecc41",
+            "id": "dc216ad8-616d-45c5-9e5c-921dd2fccaa8",
             "key": "endDate",
             "value": "2018-04-02",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "d01fe56a-5a5d-4b93-9107-d09f6ef116e9",
+            "id": "273368a8-a628-4c2f-a5fc-92837838d3e5",
             "key": "CurrentItem",
             "value": "400",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "877121ea-07da-48a5-9d3c-dca972b99573",
+            "id": "7a4d7a89-a3cd-4d0f-b45e-4598973a3fde",
             "key": "pageSize",
             "value": "100",
             "enabled": true,
@@ -7135,7 +7132,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "a1bcbaaf-b8fb-4bcf-b97c-a79e19ce4184",
+            "id": "c9f96785-aaba-4eb1-aa7c-bddcccef8caf",
             "key": "retailer",
             "value": "sevenfood",
             "enabled": true,
@@ -7163,27 +7160,25 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.149Z",
-      "updatedAt": "2026-08-28T04:09:46.149Z"
+      "createdAt": "2026-08-28T04:56:04.644Z",
+      "updatedAt": "2026-08-28T04:56:04.644Z"
     },
     {
-      "id": "f3dcc306-2ef0-4170-959f-ecdbe29d5220",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "id": "b6620062-8b94-4ea8-a4a5-5e5d94f0d85d",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
       "folderId": null,
       "name": "Lấy thông tin token",
       "request": {
-        "id": "ec05d135-711a-486d-bdd6-481112e8279c",
-        "savedRequestId": "f3dcc306-2ef0-4170-959f-ecdbe29d5220",
-        "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-        "folderId": null,
+        "id": "0eb64064-98f4-4690-b44f-c6edf137a156",
         "name": "Lấy thông tin token",
         "mode": "REST",
         "method": "POST",
-        "url": "{{Domain-Token}}/identity/connect/token",
+        "url": "https://id.kiotviet.vn/connect/token",
         "params": [],
+        "pathVariables": [],
         "headersList": [
           {
-            "id": "655f89ed-0106-4648-b15b-65a359345a73",
+            "id": "290356a7-3c34-4f09-80af-4c01005b6be2",
             "key": "Content-Type",
             "value": "application/x-www-form-urlencoded",
             "enabled": true,
@@ -7206,145 +7201,126 @@
         "formData": [],
         "urlencoded": [
           {
-            "id": "9421d7c2-4fda-4aff-8985-8b8c86a1251c",
+            "id": "641f7938-144d-45e5-9564-cb1ca3804bd0",
             "key": "client_id",
-            "value": "{{clientId}}",
+            "value": "{{clientid}}",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "20ce3c46-168f-4b8d-919e-d337db79e1a4",
+            "id": "11640293-3e5d-479d-a782-b3c793bfe7e3",
             "key": "client_secret",
-            "value": "{{clientSecret}}",
+            "value": "{{mabaomat}}",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "2a7403b9-cb48-41e9-a3e3-9bf1cb2ff1ca",
+            "id": "96166b5c-1ce5-4bdb-b2fa-65a11b1f6fd9",
             "key": "grant_type",
             "value": "client_credentials",
             "enabled": true,
             "description": ""
           },
           {
-            "id": "708813a9-5848-48fd-997d-c3e051192115",
+            "id": "389a7d17-8b8f-4de0-8187-df3f5039c17f",
             "key": "scopes",
-            "value": "PublicApi.Access.FNB",
+            "value": "PublicApi.Access",
             "enabled": true,
             "description": ""
-          },
-          {
-            "id": "ghost-tail-row",
-            "key": "",
-            "value": "",
-            "enabled": false,
-            "description": "",
-            "type": "text"
           }
         ],
         "gqlQuery": "",
         "gqlVariables": "{}",
         "testScript": "var data = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"token\", jsonData.access_token);",
-        "editorTab": "BODY",
-        "responseTab": "PRETTY",
-        "savedSnapshot": "{\"name\":\"Lấy thông tin token\",\"url\":\"https://id.kiotviet.vn/connect/token\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/x-www-form-urlencoded\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"x-www-form-urlencoded\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[{\"key\":\"client_id\",\"value\":\"{{clientId}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"client_secret\",\"value\":\"{{clientSecret}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"grant_type\",\"value\":\"client_credentials\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"scopes\",\"value\":\"PublicApi.Access.FNB\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"var data = JSON.parse(responseBody);\\r\\npostman.setEnvironmentVariable(\\\"token\\\", jsonData.access_token);\"}"
+        "editorTab": "PARAMS",
+        "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.149Z",
-      "updatedAt": "2026-08-28T04:35:49.757Z"
+      "createdAt": "2026-08-28T04:56:04.644Z",
+      "updatedAt": "2026-08-28T04:56:04.644Z"
     },
     {
-      "id": "b9fcaf09-5860-498d-ab4e-9bef6b82aff7",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "id": "ec163d71-9686-49e0-b73a-8b97219a37f0",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
       "folderId": null,
       "name": "Lấy Locations",
       "request": {
-        "id": "3b10027f-f44a-4fe4-bab7-e0888bee16d8",
-        "savedRequestId": "b9fcaf09-5860-498d-ab4e-9bef6b82aff7",
-        "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-        "folderId": null,
+        "id": "8228de0a-ba6f-4b03-8f4a-4e93ce6520b6",
         "name": "Lấy Locations",
         "mode": "REST",
         "method": "GET",
         "url": "https://public.kiotapi.com/locations",
         "params": [
           {
-            "id": "d2a4b17f-79bb-4e4e-af7b-da8dbcc41b81",
+            "id": "f377c180-1ad3-4db2-a114-f4754a0b1eec",
             "key": "format",
             "value": "json",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "9aa4b671-4900-4e7c-a963-bc3318859fbe",
+            "id": "6cffd078-89b1-445a-b0d0-1e64e8ab1a60",
             "key": "currentItem",
             "value": "1",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "51e61c07-463a-4ddd-9b82-c9e24286a4ea",
+            "id": "7583beb1-51d5-45a6-a229-fd0557aa9cd5",
             "key": "includeInventory",
             "value": "True",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "a3fadc4f-f88d-4135-b987-69b348eb0da8",
+            "id": "a60cd213-32e4-482f-a601-1d09f45ed87a",
             "key": "isActive",
             "value": "true",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "f2ef89f0-8813-410c-98a1-c84f84dc2cc1",
+            "id": "d9905235-1397-4478-82c9-605dc5831946",
             "key": "includePricebook",
             "value": "true",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "f27f239b-0076-43ba-9943-8d865256e70c",
+            "id": "304ae9c0-fae0-4834-913d-0605f29fd5e3",
             "key": "orderBy",
             "value": "id",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "1023a70d-dcb3-44ea-b2ad-01d2f49ab057",
+            "id": "31ac06dc-06ea-428c-b0cf-db1f230bd2d2",
             "key": "lastModifiedFrom",
             "value": "2018-01-01",
             "enabled": false,
             "description": ""
           },
           {
-            "id": "4608eea1-e852-4820-84ac-e686a6bd63f9",
+            "id": "eea947dc-8008-475f-8597-33fd8d969ef9",
             "key": "orderDirection",
             "value": "desc",
             "enabled": false,
             "description": ""
           }
         ],
+        "pathVariables": [],
         "headersList": [
           {
-            "id": "1a112675-1469-43bb-8040-73a6bfe090f7",
+            "id": "04830173-284d-4bf2-bbd1-ae11a5e700cb",
             "key": "Retailer",
-            "value": "{{retailer}}",
+            "value": "dvkh8235",
             "enabled": true,
             "description": ""
-          },
-          {
-            "id": "ghost-tail-row",
-            "key": "",
-            "value": "",
-            "enabled": false,
-            "description": "",
-            "type": "text"
           }
         ],
-        "headersText": "{\n  \"Retailer\": \"{{retailer}}\"\n}",
+        "headersText": "{\n  \"Retailer\": \"dvkh8235\"\n}",
         "auth": {
           "type": "bearer",
-          "bearerToken": "{{Token}}",
+          "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MTUyNDkzMjAsImV4cCI6MTcxNTMzNTcyMCwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiODdhYTQzMzYtNDJkNS00YTQwLTk3YWUtYzQ0N2MyNTdkMzU2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2g4MjM1IiwiY2xpZW50X1JldGFpbGVySWQiOiIyODIxODQiLCJjbGllbnRfVXNlcklkIjoiMTQ2MjI3IiwiY2xpZW50X1NlbnNpdGl2ZUFwaSI6IlRydWUiLCJjbGllbnRfR3JvdXBJZCI6IjExIiwiaWF0IjoxNzE1MjQ5MzIwLCJzY29wZSI6WyJQdWJsaWNBcGkuQWNjZXNzIl19.00HxbsjV05WkxQXa_D4CLGwtGeljtTXhfzynrZeOjLt2VjYYaz1RcxrEP0n_Za9r8PIQGYCyQCLGZPWiN1E_1TQyUw0u5MWzyW08mwIwdFd8Mf9wdF1rcSMd-q60rn9H_0AbgaC3QKk9gR66m4mRyyY_otb-f7liM_2HuDDSoGn0VqFDDk1130esYejwSEvlwNjc7bLgWzvQ0cIPipS6DqE0tfi-S8g38lx_B2BBQlurs4jNs1ccsHXcAkAPcMBGYUAwm_ITbDqYlG_d7L97fbBypySyRF8KzJ6t7tnYGQK96vHsLnFoXGaYzxgh3kH2MmtID6c9DJHXbufDhyHH-w",
           "basicUsername": "",
           "basicPassword": "",
           "apiKeyName": "",
@@ -7360,19 +7336,18 @@
         "gqlVariables": "{}",
         "testScript": "",
         "editorTab": "PARAMS",
-        "responseTab": "PRETTY",
-        "savedSnapshot": "{\"name\":\"Lấy Locations\",\"url\":\"https://public.kiotapi.com/locations\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[{\"key\":\"format\",\"value\":\"json\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"currentItem\",\"value\":\"1\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"includeInventory\",\"value\":\"True\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"isActive\",\"value\":\"true\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"includePricebook\",\"value\":\"true\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"orderBy\",\"value\":\"id\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"lastModifiedFrom\",\"value\":\"2018-01-01\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"orderDirection\",\"value\":\"desc\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"pathVariables\":[],\"headersList\":[{\"key\":\"Retailer\",\"value\":\"dvkh8235\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MTUyNDkzMjAsImV4cCI6MTcxNTMzNTcyMCwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiODdhYTQzMzYtNDJkNS00YTQwLTk3YWUtYzQ0N2MyNTdkMzU2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2g4MjM1IiwiY2xpZW50X1JldGFpbGVySWQiOiIyODIxODQiLCJjbGllbnRfVXNlcklkIjoiMTQ2MjI3IiwiY2xpZW50X1NlbnNpdGl2ZUFwaSI6IlRydWUiLCJjbGllbnRfR3JvdXBJZCI6IjExIiwiaWF0IjoxNzE1MjQ5MzIwLCJzY29wZSI6WyJQdWJsaWNBcGkuQWNjZXNzIl19.00HxbsjV05WkxQXa_D4CLGwtGeljtTXhfzynrZeOjLt2VjYYaz1RcxrEP0n_Za9r8PIQGYCyQCLGZPWiN1E_1TQyUw0u5MWzyW08mwIwdFd8Mf9wdF1rcSMd-q60rn9H_0AbgaC3QKk9gR66m4mRyyY_otb-f7liM_2HuDDSoGn0VqFDDk1130esYejwSEvlwNjc7bLgWzvQ0cIPipS6DqE0tfi-S8g38lx_B2BBQlurs4jNs1ccsHXcAkAPcMBGYUAwm_ITbDqYlG_d7L97fbBypySyRF8KzJ6t7tnYGQK96vHsLnFoXGaYzxgh3kH2MmtID6c9DJHXbufDhyHH-w\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
+        "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.149Z",
-      "updatedAt": "2026-08-28T04:36:53.015Z"
+      "createdAt": "2026-08-28T04:56:04.644Z",
+      "updatedAt": "2026-08-28T04:56:04.644Z"
     },
     {
-      "id": "d9f23402-a0f2-4b1a-ae64-090dc23f2344",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "id": "ebb84918-06ab-4ea0-a8ca-188382040359",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
       "folderId": null,
       "name": "Thiết lập cửa hàng",
       "request": {
-        "id": "8b9beb92-e198-40cd-bb2f-1bcd9037e8e0",
+        "id": "26d2e7c7-5634-4e1c-80a8-1e56ec616e98",
         "name": "Thiết lập cửa hàng",
         "mode": "REST",
         "method": "GET",
@@ -7381,7 +7356,7 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "2bdab868-26bc-46e8-8d64-b0e6c5428063",
+            "id": "332dcea0-d9c9-486b-8d93-e3aa26fabf2b",
             "key": "retailer",
             "value": "{{retailer}}",
             "enabled": true,
@@ -7409,13 +7384,13 @@
         "editorTab": "PARAMS",
         "responseTab": "PRETTY"
       },
-      "createdAt": "2026-08-28T04:09:46.149Z",
-      "updatedAt": "2026-08-28T04:09:46.149Z"
+      "createdAt": "2026-08-28T04:56:04.644Z",
+      "updatedAt": "2026-08-28T04:56:04.644Z"
     }
   ],
   "expandedCollectionIds": [
     "821d46f0-a5ed-4549-8828-22161e5552a2",
-    "541914c0-db85-4d91-987a-829b8e004631"
+    "925ff10c-6428-4f56-b1e6-bd84786a0fb2"
   ],
   "expandedFolderIds": [
     "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8",
@@ -7427,8 +7402,10 @@
     "bd12c7b5-951b-4a20-99e9-a8f9be185e3b",
     "d140f597-5214-433b-b121-c1abb5204f83",
     "3f45ac07-3a2d-4224-b42c-5213bf304968",
-    "04666320-928f-4e1f-b445-7665044efffa",
     "a9abb7ec-7230-461e-90e6-91477704638c",
-    "ec84ec6b-4def-460d-b1ee-6372775366af"
+    "ec84ec6b-4def-460d-b1ee-6372775366af",
+    "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+    "b0e3fd25-2b01-4bff-8562-627ede98182f",
+    "785cea12-b358-4f53-bf46-46ebd0bf368c"
   ]
 }

@@ -182,6 +182,7 @@ export function createRequestSnapshot(tab?: Partial<RequestItem> | null): string
     urlencoded: sanitizeRows(tab.urlencoded),
     gqlQuery: tab.gqlQuery || '',
     gqlVariables: tab.gqlVariables || '',
+    preRequestScript: tab.preRequestScript || '',
     testScript: tab.testScript || '',
   })
 }

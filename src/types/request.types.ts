@@ -6,7 +6,7 @@ import type { TestRunReport } from './test.types'
 
 export type Mode = 'REST' | 'GRAPHQL'
 export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
-export type RequestEditorTab = 'PARAMS' | 'HEADERS' | 'AUTH' | 'BODY' | 'VARIABLES' | 'TESTS'
+export type RequestEditorTab = 'PARAMS' | 'HEADERS' | 'AUTH' | 'BODY' | 'VARIABLES' | 'TESTS' | 'SCRIPTS'
 export type ResponseViewTab = 'PRETTY' | 'HEADERS' | 'TESTS'
 export type BodyType = 'none' | 'json' | 'form-data' | 'x-www-form-urlencoded' | 'raw'
 export type MobileView = 'COLLECTIONS' | 'REQUEST' | 'EXPLORER'
@@ -58,6 +58,7 @@ export type RequestItem = {
   urlencoded: KeyValueRow[]
   gqlQuery: string
   gqlVariables: string
+  preRequestScript?: string
   testScript: string
   testResults: TestRunReport | null
   editorTab: RequestEditorTab

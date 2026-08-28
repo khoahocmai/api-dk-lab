@@ -1,13 +1,54 @@
-import { PlayCircle, Plus } from 'lucide-react'
+import { useState } from 'react'
+import { FlaskConical, PlayCircle, Plus, Trash2, Wand2, Zap } from 'lucide-react'
 import { CodeEditor } from '../common/CodeEditor'
 
-interface TestSnippet {
+interface ScriptSnippet {
   title: string
   description: string
   code: string
 }
 
-const TEST_SNIPPETS: TestSnippet[] = [
+const PRE_REQUEST_SNIPPETS: ScriptSnippet[] = [
+  {
+    title: 'Set an environment variable',
+    description: 'Set a key-value pair in active environment',
+    code: `pm.environment.set("variable_key", "variable_value");`,
+  },
+  {
+    title: 'Get an environment variable',
+    description: 'Read an environment variable value',
+    code: `const val = pm.environment.get("variable_key");`,
+  },
+  {
+    title: 'Generate Timestamp (ISO)',
+    description: 'Save current ISO timestamp to environment',
+    code: `pm.environment.set("timestamp", new Date().toISOString());`,
+  },
+  {
+    title: 'Generate Random UUID / Nonce',
+    description: 'Create unique random string token',
+    code: `pm.environment.set("nonce", Math.random().toString(36).substring(2, 10) + Date.now().toString(36));`,
+  },
+  {
+    title: 'Add Request Header',
+    description: 'Append or set dynamic request header',
+    code: `pm.request.headers.add({ key: "X-Timestamp", value: new Date().toISOString() });`,
+  },
+  {
+    title: 'Check environment variable',
+    description: 'Check if key exists in environment',
+    code: `if (!pm.environment.has("token")) {
+    console.log("Token is not set");
+}`,
+  },
+  {
+    title: 'Clear environment variable',
+    description: 'Remove variable from active environment',
+    code: `pm.environment.unset("variable_key");`,
+  },
+]
+
+const POST_RESPONSE_SNIPPETS: ScriptSnippet[] = [
   {
     title: 'Status code: 200',
     description: 'Verify status equals 200',
@@ -23,28 +64,26 @@ const TEST_SNIPPETS: TestSnippet[] = [
 });`,
   },
   {
-    title: 'Response time < 200ms',
-    description: 'Verify latency under 200ms',
-    code: `pm.test("Response time is less than 200ms", function () {
-    pm.expect(pm.response.responseTime).to.be.below(200);
-});`,
+    title: 'Set token to environment',
+    description: 'Extract access_token / token into environment',
+    code: `const data = pm.response.json();
+if (data.access_token || data.token) {
+    pm.environment.set("token", data.access_token || data.token);
+}`,
   },
   {
     title: 'Check JSON property',
     description: 'Verify root JSON key exists',
     code: `pm.test("Response contains data", function () {
-    var jsonData = pm.response.json();
+    const jsonData = pm.response.json();
     pm.expect(jsonData).to.have.property("data");
 });`,
   },
   {
-    title: 'Set environment variable',
-    description: 'Save token to active environment',
-    code: `pm.test("Set environment variable", function () {
-    var jsonData = pm.response.json();
-    if (jsonData.token) {
-        pm.environment.set("token", jsonData.token);
-    }
+    title: 'Response time < 200ms',
+    description: 'Verify latency under 200ms',
+    code: `pm.test("Response time is less than 200ms", function () {
+    pm.expect(pm.response.responseTime).to.be.below(200);
 });`,
   },
   {
@@ -54,73 +93,240 @@ const TEST_SNIPPETS: TestSnippet[] = [
     pm.expect(pm.response.headers).to.have.property("content-type");
 });`,
   },
+  {
+    title: 'Response body contains string',
+    description: 'Verify raw response contains substring',
+    code: `pm.test("Body contains string", function () {
+    pm.expect(pm.response.text()).to.include("success");
+});`,
+  },
 ]
 
-interface TestScriptEditorProps {
-  script: string
-  onChange: (script: string) => void
+export type ScriptSubTab = 'PRE_REQUEST' | 'POST_RESPONSE'
+
+export interface TestScriptEditorProps {
+  preRequestScript?: string
+  testScript?: string
+  editorFontSize?: number
+  onChangePreRequest?: (script: string) => void
+  onChangeTest?: (script: string) => void
+  // Legacy / fallback props
+  script?: string
+  onChange?: (script: string) => void
 }
 
-export function TestScriptEditor({ script, onChange }: TestScriptEditorProps) {
-  const handleInsertSnippet = (snippetCode: string) => {
-    const updated = script.trim() ? `${script.trim()}\n\n${snippetCode}` : snippetCode
-    onChange(updated)
+function formatJsCode(code: string): string {
+  if (!code || !code.trim()) return ''
+  try {
+    const lines = code.split('\n')
+    let indent = 0
+    const result: string[] = []
+
+    for (const raw of lines) {
+      const trimmed = raw.trim()
+      if (!trimmed) {
+        result.push('')
+        continue
+      }
+
+      if (trimmed.startsWith('}') || trimmed.startsWith(']') || trimmed.startsWith(')')) {
+        indent = Math.max(0, indent - 1)
+      }
+
+      result.push('  '.repeat(indent) + trimmed)
+
+      const opens = (trimmed.match(/[{[(]/g) || []).length
+      const closes = (trimmed.match(/[}\])]/g) || []).length
+      const net = trimmed.startsWith('}') || trimmed.startsWith(']') || trimmed.startsWith(')')
+        ? opens - (closes - 1)
+        : opens - closes
+
+      indent = Math.max(0, indent + Math.max(0, net))
+    }
+
+    return result.join('\n')
+  } catch {
+    return code
+  }
+}
+
+export function TestScriptEditor({
+  preRequestScript = '',
+  testScript = '',
+  editorFontSize,
+  onChangePreRequest,
+  onChangeTest,
+  script,
+  onChange,
+}: TestScriptEditorProps) {
+  const [activeSubTab, setActiveSubTab] = useState<ScriptSubTab>('POST_RESPONSE')
+
+  const effectiveTestScript = testScript || script || ''
+  const effectivePreRequestScript = preRequestScript || ''
+
+  const handleTestScriptChange = (val: string) => {
+    if (onChangeTest) {
+      onChangeTest(val)
+    } else if (onChange) {
+      onChange(val)
+    }
   }
 
-  return (
-    <div
-      className="test-script-layout"
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'minmax(0, 1fr) 190px',
-        gap: 8,
-        height: '100%',
-      }}
-    >
-      <div className="stack" style={{ height: '100%', minHeight: 300, gap: 4 }}>
-        <div className="caps">Test Script (JavaScript Sandbox)</div>
-        <CodeEditor
-          value={script}
-          onChange={onChange}
-          language="javascript"
-          placeholder={`// Write test assertions using pm.test and pm.expect\npm.test("Status code is 200", function () {\n    pm.response.to.have.status(200);\n});`}
-          height="100%"
-          minHeight="300px"
-        />
-      </div>
+  const handlePreRequestScriptChange = (val: string) => {
+    if (onChangePreRequest) {
+      onChangePreRequest(val)
+    }
+  }
 
-      <div
-        className="test-snippets-panel stack"
-        style={{
-          borderLeft: '1px solid var(--border)',
-          paddingLeft: 8,
-          overflowY: 'auto',
-          gap: 6,
-        }}
-      >
-        <div className="row" style={{ gap: 4, color: 'var(--primary-bright)', fontWeight: 750, fontSize: 11 }}>
-          <PlayCircle size={13} />
-          <span>Snippets</span>
+  const handleFormat = () => {
+    if (activeSubTab === 'PRE_REQUEST') {
+      const formatted = formatJsCode(effectivePreRequestScript)
+      handlePreRequestScriptChange(formatted)
+    } else {
+      const formatted = formatJsCode(effectiveTestScript)
+      handleTestScriptChange(formatted)
+    }
+  }
+
+  const handleClear = () => {
+    if (activeSubTab === 'PRE_REQUEST') {
+      handlePreRequestScriptChange('')
+    } else {
+      handleTestScriptChange('')
+    }
+  }
+
+  const handleInsertSnippet = (snippetCode: string) => {
+    if (activeSubTab === 'PRE_REQUEST') {
+      const updated = effectivePreRequestScript.trim()
+        ? `${effectivePreRequestScript.trim()}\n\n${snippetCode}`
+        : snippetCode
+      handlePreRequestScriptChange(updated)
+    } else {
+      const updated = effectiveTestScript.trim()
+        ? `${effectiveTestScript.trim()}\n\n${snippetCode}`
+        : snippetCode
+      handleTestScriptChange(updated)
+    }
+  }
+
+  const hasPreReq = Boolean(effectivePreRequestScript.trim())
+  const hasTest = Boolean(effectiveTestScript.trim())
+  const currentSnippets =
+    activeSubTab === 'PRE_REQUEST' ? PRE_REQUEST_SNIPPETS : POST_RESPONSE_SNIPPETS
+
+  return (
+    <div className="scripts-editor-container">
+      {/* 1. HEADER TOOLBAR TINH GỌN (TẦNG 1) */}
+      <div className="scripts-editor-toolbar">
+        {/* Left: Segmented Sub-tab Switcher */}
+        <div className="scripts-segmented-control" role="tablist" aria-label="Script Type">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={activeSubTab === 'PRE_REQUEST'}
+            className={`scripts-segment-btn ${activeSubTab === 'PRE_REQUEST' ? 'is-active' : ''}`}
+            onClick={() => setActiveSubTab('PRE_REQUEST')}
+            title="Pre-request Script (executed before sending the request)"
+          >
+            <Zap size={13} style={{ color: activeSubTab === 'PRE_REQUEST' ? '#eab308' : '#ca8a04' }} />
+            <span>Pre-request Script</span>
+            {hasPreReq && <span className="scripts-dot-indicator scripts-dot-prerequest" title="Script has content" />}
+          </button>
+
+          <button
+            type="button"
+            role="tab"
+            aria-selected={activeSubTab === 'POST_RESPONSE'}
+            className={`scripts-segment-btn ${activeSubTab === 'POST_RESPONSE' ? 'is-active' : ''}`}
+            onClick={() => setActiveSubTab('POST_RESPONSE')}
+            title="Post-response / Tests (executed after receiving response)"
+          >
+            <FlaskConical size={13} style={{ color: activeSubTab === 'POST_RESPONSE' ? '#60a5fa' : '#3b82f6' }} />
+            <span>Post-response / Tests</span>
+            {hasTest && <span className="scripts-dot-indicator scripts-dot-test" title="Script has content" />}
+          </button>
         </div>
 
-        <div className="stack" style={{ gap: 4 }}>
-          {TEST_SNIPPETS.map((snippet) => (
-            <button
-              key={snippet.title}
-              type="button"
-              className="snippet-button"
-              onClick={() => handleInsertSnippet(snippet.code)}
-              title={snippet.description}
-            >
-              <div className="row" style={{ gap: 4, fontWeight: 700, fontSize: 11 }}>
-                <Plus size={11} style={{ color: 'var(--primary-bright)' }} />
-                <span>{snippet.title}</span>
-              </div>
-              <div className="meta-text" style={{ fontSize: 10, textAlign: 'left', marginTop: 1 }}>
-                {snippet.description}
-              </div>
-            </button>
-          ))}
+        {/* Right: Quick Action Controls (Format & Clear) */}
+        <div className="scripts-toolbar-actions">
+          <button
+            type="button"
+            className="scripts-toolbar-btn"
+            onClick={handleFormat}
+            title="Prettify & format script code"
+          >
+            <Wand2 size={12} />
+            <span>Format</span>
+          </button>
+
+          <button
+            type="button"
+            className="scripts-toolbar-btn"
+            onClick={handleClear}
+            title="Clear script content in active tab"
+          >
+            <Trash2 size={12} />
+            <span>Clear</span>
+          </button>
+        </div>
+      </div>
+
+      {/* 2. BỐ CỤC 2 CỘT NGANG (SPLIT LAYOUT - TẦNG 2) */}
+      <div className="scripts-editor-content">
+        {/* CỘT TRÁI: CodeMirror Editor full height (flex-1) */}
+        <div className="scripts-editor-pane">
+          {activeSubTab === 'PRE_REQUEST' ? (
+            <CodeEditor
+              value={effectivePreRequestScript}
+              onChange={handlePreRequestScriptChange}
+              language="javascript"
+              placeholder={`// Pre-request Script (executed before sending the request)\n// Example: Set a dynamic timestamp or calculate authorization token\npm.environment.set("timestamp", new Date().toISOString());`}
+              height="100%"
+              minHeight="100%"
+              fontSize={editorFontSize}
+            />
+          ) : (
+            <CodeEditor
+              value={effectiveTestScript}
+              onChange={handleTestScriptChange}
+              language="javascript"
+              placeholder={`// Post-response / Test Script (executed after receiving response)\nconst data = pm.response.json();\npm.environment.set("token", data.access_token);\n\npm.test("Status code is 200", function () {\n    pm.response.to.have.status(200);\n});`}
+              height="100%"
+              minHeight="100%"
+              fontSize={editorFontSize}
+            />
+          )}
+        </div>
+
+        {/* CỘT PHẢI: Snippets Sidebar (240px, border-left, full height) */}
+        <div className="scripts-snippets-sidebar">
+          <div className="scripts-snippets-header">
+            <PlayCircle size={13} style={{ color: 'var(--primary-bright)' }} />
+            <span>Snippets</span>
+          </div>
+
+          <div className="scripts-snippets-list custom-scrollbar">
+            {currentSnippets.map((snippet) => (
+              <button
+                key={snippet.title}
+                type="button"
+                className="scripts-snippet-item"
+                onClick={() => handleInsertSnippet(snippet.code)}
+                title={snippet.description}
+              >
+                <div className="scripts-snippet-title">
+                  <Plus size={11} style={{ color: 'var(--primary-bright)', flexShrink: 0 }} />
+                  <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    {snippet.title}
+                  </span>
+                </div>
+                <div className="scripts-snippet-desc">
+                  {snippet.description}
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>

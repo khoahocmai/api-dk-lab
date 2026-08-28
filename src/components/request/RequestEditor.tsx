@@ -110,7 +110,11 @@ export function RequestEditor({
   // Header tab counter ONLY counts user-defined headers (Postman Standard)
   const userHeaderCount = (activeTab.headersList || []).filter((h) => h.enabled && h.key.trim()).length
   const hasAuth = activeTab.auth && activeTab.auth.type !== 'none'
-  const hasTestScript = Boolean(activeTab.testScript && activeTab.testScript.trim())
+  const hasScripts = Boolean(
+    (activeTab.preRequestScript && activeTab.preRequestScript.trim()) ||
+      (activeTab.testScript && activeTab.testScript.trim()),
+  )
+  const isScriptsActive = activeTab.editorTab === 'SCRIPTS' || activeTab.editorTab === 'TESTS'
 
   return (
     <div className="request-editor" style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%', minHeight: 0, overflow: 'hidden' }}>
@@ -118,7 +122,7 @@ export function RequestEditor({
       <div className="section-header" style={{ flexShrink: 0 }}>
         <div className="row wrap">
           {isGraphQL ? (
-            /* GraphQL Mode Tab Order: Query -> Auth -> Headers -> Tests */
+            /* GraphQL Mode Tab Order: Query -> Auth -> Headers -> Scripts */
             <>
               <button
                 type="button"
@@ -146,14 +150,14 @@ export function RequestEditor({
 
               <button
                 type="button"
-                onClick={() => onUpdateTab({ editorTab: 'TESTS' })}
-                className={`editor-tab ${activeTab.editorTab === 'TESTS' ? 'is-active' : ''}`}
+                onClick={() => onUpdateTab({ editorTab: 'SCRIPTS' })}
+                className={`editor-tab ${isScriptsActive ? 'is-active' : ''}`}
               >
-                Tests {hasTestScript && <span className="tab-counter"><FlaskConical size={10} /></span>}
+                Scripts {hasScripts && <span className="tab-counter"><FlaskConical size={10} /></span>}
               </button>
             </>
           ) : (
-            /* REST Mode Tab Order: Params -> Auth -> Headers -> Body -> Tests */
+            /* REST Mode Tab Order: Params -> Auth -> Headers -> Body -> Scripts */
             <>
               <button
                 type="button"
@@ -189,10 +193,10 @@ export function RequestEditor({
 
               <button
                 type="button"
-                onClick={() => onUpdateTab({ editorTab: 'TESTS' })}
-                className={`editor-tab ${activeTab.editorTab === 'TESTS' ? 'is-active' : ''}`}
+                onClick={() => onUpdateTab({ editorTab: 'SCRIPTS' })}
+                className={`editor-tab ${isScriptsActive ? 'is-active' : ''}`}
               >
-                Tests {hasTestScript && <span className="tab-counter"><FlaskConical size={10} /></span>}
+                Scripts {hasScripts && <span className="tab-counter"><FlaskConical size={10} /></span>}
               </button>
             </>
           )}
@@ -466,14 +470,15 @@ export function RequestEditor({
           />
         )}
 
-        {/* TESTS TAB */}
-        {activeTab.editorTab === 'TESTS' && (
-          <div className="stack" style={{ flex: 1, minHeight: 0, padding: '10px 12px', height: '100%' }}>
-            <TestScriptEditor
-              script={activeTab.testScript}
-              onChange={(testScript) => onUpdateTab({ testScript })}
-            />
-          </div>
+        {/* SCRIPTS / TESTS TAB */}
+        {isScriptsActive && (
+          <TestScriptEditor
+            preRequestScript={activeTab.preRequestScript || ''}
+            testScript={activeTab.testScript || ''}
+            editorFontSize={editorFontSize}
+            onChangePreRequest={(preRequestScript) => onUpdateTab({ preRequestScript })}
+            onChangeTest={(testScript) => onUpdateTab({ testScript })}
+          />
         )}
       </div>
     </div>

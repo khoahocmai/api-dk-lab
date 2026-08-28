@@ -486,9 +486,23 @@ export function parsePostmanRequest(
     gqlVariables,
   } = parsePostmanBody(reqObj.body)
 
-  // 6. Test Scripts
+  // 6. Scripts (Pre-request & Test/Post-response)
+  let preRequestScript = ''
   let testScript = ''
   if (Array.isArray(itemObj.event)) {
+    const preReqEvent = itemObj.event.find(
+      (e: unknown) =>
+        e && typeof e === 'object' && (e as { listen?: string }).listen === 'prerequest',
+    ) as { script?: { exec?: string | string[] } } | undefined
+
+    if (preReqEvent?.script?.exec) {
+      if (Array.isArray(preReqEvent.script.exec)) {
+        preRequestScript = preReqEvent.script.exec.join('\n')
+      } else if (typeof preReqEvent.script.exec === 'string') {
+        preRequestScript = preReqEvent.script.exec
+      }
+    }
+
     const testEvent = itemObj.event.find(
       (e: unknown) =>
         e && typeof e === 'object' && (e as { listen?: string }).listen === 'test',
@@ -525,6 +539,7 @@ export function parsePostmanRequest(
     urlencoded,
     gqlQuery,
     gqlVariables,
+    preRequestScript,
     testScript,
     editorTab: mode === 'GRAPHQL' ? 'BODY' : 'PARAMS',
     responseTab: 'PRETTY',
@@ -700,17 +715,26 @@ export function exportPostmanCollectionV2(
       ]
     }
 
-    const event = r.testScript?.trim()
-      ? [
-          {
-            listen: 'test',
-            script: {
-              exec: r.testScript.split('\n'),
-              type: 'text/javascript',
-            },
-          },
-        ]
-      : undefined
+    const events: Array<{ listen: string; script: { exec: string[]; type: string } }> = []
+    if (r.preRequestScript?.trim()) {
+      events.push({
+        listen: 'prerequest',
+        script: {
+          exec: r.preRequestScript.split('\n'),
+          type: 'text/javascript',
+        },
+      })
+    }
+    if (r.testScript?.trim()) {
+      events.push({
+        listen: 'test',
+        script: {
+          exec: r.testScript.split('\n'),
+          type: 'text/javascript',
+        },
+      })
+    }
+    const event = events.length > 0 ? events : undefined
 
     return {
       name: req.name,

@@ -1,5 +1,809 @@
 [
   {
+    "id": "c9a1d5fe-5335-4c1d-b6d4-2184dddf5ea6",
+    "timestamp": "2026-08-28T08:10:23.169Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "https://api.dxpdemos.com/graphql",
+    "status": 200,
+    "duration": 392,
+    "request": {
+      "id": "bb824bca-5e14-4135-8e14-eaf0d55ca0c5",
+      "savedRequestId": "f7131e69-0126-4d33-b35b-68034993c842",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
+      "name": "Order pagination list",
+      "graphqlRootField": "orderPaginationList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
+          "key": "Authorization",
+          "value": "Bearer {{token}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "333c833b-9ada-48da-afa3-c737d8e6ae78",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "143f7dc1-67b4-4046-b9db-3453c8b570fd",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\n  orderPaginationList(params: $params, filters: $filters) {\n    total\n  }\n}",
+      "gqlVariables": "{\n  \"params\": {\n    \"page\": 0,\n    \"pageSize\": 0,\n    \"sortBy\": \"\",\n    \"sortDirection\": \"\"\n  },\n  \"filters\": {\n    \"keywords\": \"\",\n    \"orderStatus\": [],\n    \"financialStatus\": []\n  }\n}",
+      "preRequestScript": "",
+      "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
+      "editorTab": "SCRIPTS",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Order pagination list\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"orderPaginationList\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"Authorization\",\"value\":\"Bearer {{token}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\\n  orderPaginationList(params: $params, filters: $filters) {\\n    total\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"params\\\": {\\n    \\\"page\\\": 0,\\n    \\\"pageSize\\\": 0,\\n    \\\"sortBy\\\": \\\"\\\",\\n    \\\"sortDirection\\\": \\\"\\\"\\n  },\\n  \\\"filters\\\": {\\n    \\\"keywords\\\": \\\"\\\",\\n    \\\"orderStatus\\\": [],\\n    \\\"financialStatus\\\": []\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"pm.test(\\\"Status code is 200\\\", function () {\\n    pm.response.to.have.status(200);\\n});\"}"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "392 ms",
+      "size": "46 B",
+      "data": {
+        "data": {
+          "orderPaginationList": {
+            "total": 152
+          }
+        }
+      },
+      "headers": {
+        "server": "nginx/1.24.0 (Ubuntu)",
+        "date": "Fri, 28 Aug 2026 08:10:28 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "47",
+        "connection": "keep-alive",
+        "cache-control": "no-store",
+        "vary": "Origin"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "0a22018d-aa0c-4728-9e52-2a11d6955a6c",
+    "timestamp": "2026-08-28T07:39:00.540Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/locations",
+    "status": 200,
+    "duration": 1464,
+    "request": {
+      "id": "d03904e0-5426-4001-8f4b-97ef567e095f",
+      "savedRequestId": "6b97d2ab-1d61-48a7-8939-926dfd975ec8",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+      "name": "Get Location",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/locations",
+      "params": [],
+      "headersList": [
+        {
+          "id": "69fd8f9d-6f07-4ed2-930f-5f191564042c",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "e833c751-f6cf-4b39-9523-2edf5d0852c0",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Get Location\",\"url\":\"{{Domain}}/locations\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Square-Version\",\"value\":\"2026-08-19\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "1464 ms",
+      "size": "1.9 KB",
+      "data": {
+        "locations": [
+          {
+            "id": "LGE0P6VNQCYX7",
+            "name": "Chi nhánh Phan Đình Giót",
+            "address": {
+              "address_line_1": "24-26 Đ. Phan Đình Giót, Tân Sơn Hòa",
+              "locality": "Ho Chi Minh City",
+              "administrative_district_level_1": "CA",
+              "postal_code": "94103",
+              "country": "US"
+            },
+            "timezone": "Asia/Ho_Chi_Minh",
+            "capabilities": [
+              "CREDIT_CARD_PROCESSING",
+              "AUTOMATIC_TRANSFERS"
+            ],
+            "status": "ACTIVE",
+            "created_at": "2026-08-24T06:37:21.737Z",
+            "merchant_id": "MLTQ3MXGD4MH2",
+            "country": "US",
+            "language_code": "en-US",
+            "currency": "USD",
+            "phone_number": "+1 415-555-2671",
+            "business_name": "DXP Pizza",
+            "type": "PHYSICAL",
+            "business_hours": {},
+            "description": "Chi nhánh Tân Bình - 24-26 Phan Đình Giót",
+            "mcc": "7299"
+          },
+          {
+            "id": "L379743VY1ZBC",
+            "name": "Default Test Account",
+            "address": {
+              "address_line_1": "1600 Pennsylvania Ave NW",
+              "locality": "Washington",
+              "administrative_district_level_1": "DC",
+              "postal_code": "20500",
+              "country": "US"
+            },
+            "timezone": "UTC",
+            "capabilities": [
+              "CREDIT_CARD_PROCESSING",
+              "AUTOMATIC_TRANSFERS"
+            ],
+            "status": "ACTIVE",
+            "created_at": "2026-08-24T01:35:15.922Z",
+            "merchant_id": "MLTQ3MXGD4MH2",
+            "country": "US",
+            "language_code": "en-US",
+            "currency": "USD",
+            "business_name": "Default Test Account",
+            "type": "PHYSICAL",
+            "business_hours": {},
+            "mcc": "7299"
+          },
+          {
+            "id": "L7JBFPYN8CG71",
+            "name": "The Pizza Company Cầu Giấy - Q. Cầu Giấy",
+            "address": {
+              "address_line_1": "333 Cầu Giấy, P. Dịch Vọng, Q. Cầu Giấy",
+              "locality": "Ha Noi",
+              "administrative_district_level_1": "CA",
+              "postal_code": "94103",
+              "country": "US"
+            },
+            "timezone": "Asia/Ho_Chi_Minh",
+            "capabilities": [
+              "CREDIT_CARD_PROCESSING",
+              "AUTOMATIC_TRANSFERS"
+            ],
+            "status": "ACTIVE",
+            "created_at": "2026-08-25T07:09:01.696Z",
+            "merchant_id": "MLTQ3MXGD4MH2",
+            "country": "US",
+            "language_code": "en-US",
+            "currency": "USD",
+            "phone_number": "+1 415-555-2671",
+            "business_name": "The Pizza Company",
+            "type": "PHYSICAL",
+            "business_hours": {},
+            "description": "Chi nhánh Cầu Giấy - 333 Cầu Giấy, P. Dịch Vọng, TP Hà Nội",
+            "coordinates": {
+              "latitude": 21.035291,
+              "longitude": 105.7923853
+            },
+            "mcc": "7299"
+          }
+        ]
+      },
+      "headers": {
+        "date": "Fri, 28 Aug 2026 07:39:05 GMT",
+        "content-type": "application/json",
+        "content-length": "749",
+        "connection": "keep-alive",
+        "cf-ray": "a321a8fd3c64811b-SIN",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/locations",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=gfywIUthZ9zvJm1rr8YPUA_n.Au_Q8bUs1w3Vx.fhMU-1787902745.1540713-1.0.1.1-_omtoT5pcYrkJclPwYsHnTFOol62li_Fzr7zXIfqhggenB_ezp3O5dI4rSyvZj48Dr_AZcI33VvgpBQ1MyEMdWhOyqdD7q0GtQH1MhcSnEQUem7WtM.4taJb435MT_Lu; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Fri, 28 Aug 2026 08:09:05 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "4453d311-d3b8-493b-9698-77ec91a20915",
+    "timestamp": "2026-08-28T07:36:21.563Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "https://api.dxpdemos.com/graphql",
+    "status": 200,
+    "duration": 168,
+    "request": {
+      "id": "aa5296fe-5758-437d-8123-2b1d80de0b1c",
+      "savedRequestId": "091a34fe-638c-496a-ac4f-255eca07c8a1",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "b0e3fd25-2b01-4bff-8562-627ede98182f",
+      "name": "Payment update status transactions",
+      "graphqlRootField": "paymentUpdateStatusTransactions",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "62c0d41a-488a-4ce4-968a-0d1aaa9921ef",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "48753b76-2aa9-4b50-98e1-1757f56b9aef",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "mutation PaymentUpdateStatusTransactions($request: PaymentUpdateStatusTransactionsDto!) {\n  paymentUpdateStatusTransactions(request: $request) {\n    processed\n    success\n    noChange\n    failed\n  }\n}",
+      "gqlVariables": "{\n  \"request\": {\n    \"limit\": 100\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Payment update status transactions\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"paymentUpdateStatusTransactions\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"mutation PaymentUpdateStatusTransactions($request: PaymentUpdateStatusTransactionsDto!) {\\n  paymentUpdateStatusTransactions(request: $request) {\\n    processed\\n    success\\n    noChange\\n    failed\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"limit\\\": 100\\n  }\\n}\",\"testScript\":\"\"}"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "168 ms",
+      "size": "96 B",
+      "data": {
+        "data": {
+          "paymentUpdateStatusTransactions": {
+            "processed": 7,
+            "success": 0,
+            "noChange": 6,
+            "failed": 1
+          }
+        }
+      },
+      "headers": {
+        "server": "nginx/1.24.0 (Ubuntu)",
+        "date": "Fri, 28 Aug 2026 07:36:26 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "97",
+        "connection": "keep-alive",
+        "cache-control": "no-store",
+        "vary": "Origin"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "29234df9-be66-49da-b482-094307b40855",
+    "timestamp": "2026-08-28T07:36:13.044Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "https://api.dxpdemos.com/graphql",
+    "status": 200,
+    "duration": 281,
+    "request": {
+      "id": "aa5296fe-5758-437d-8123-2b1d80de0b1c",
+      "savedRequestId": "091a34fe-638c-496a-ac4f-255eca07c8a1",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "b0e3fd25-2b01-4bff-8562-627ede98182f",
+      "name": "Payment update status transactions",
+      "graphqlRootField": "paymentUpdateStatusTransactions",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "62c0d41a-488a-4ce4-968a-0d1aaa9921ef",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "48753b76-2aa9-4b50-98e1-1757f56b9aef",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "mutation PaymentUpdateStatusTransactions($request: PaymentUpdateStatusTransactionsDto!) {\n  paymentUpdateStatusTransactions(request: $request) {\n    processed\n    success\n    noChange\n    failed\n  }\n}",
+      "gqlVariables": "{\n  \"request\": {\n    \"limit\": 100\n  }\n}",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Payment update status transactions\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"paymentUpdateStatusTransactions\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"mutation PaymentUpdateStatusTransactions($request: PaymentUpdateStatusTransactionsDto!) {\\n  paymentUpdateStatusTransactions(request: $request) {\\n    processed\\n    success\\n    noChange\\n    failed\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"limit\\\": 100\\n  }\\n}\",\"testScript\":\"\"}"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "281 ms",
+      "size": "255 B",
+      "data": {
+        "errors": [
+          {
+            "message": "Unauthorized",
+            "path": [
+              "paymentUpdateStatusTransactions"
+            ],
+            "locations": [
+              {
+                "line": 2,
+                "column": 3
+              }
+            ],
+            "extensions": {
+              "code": "UNAUTHENTICATED",
+              "originalError": {
+                "message": "Unauthorized",
+                "statusCode": 401
+              }
+            },
+            "code": "UNAUTHENTICATED"
+          }
+        ],
+        "data": null
+      },
+      "headers": {
+        "server": "nginx/1.24.0 (Ubuntu)",
+        "date": "Fri, 28 Aug 2026 07:36:17 GMT",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "256",
+        "connection": "keep-alive",
+        "cache-control": "no-store",
+        "vary": "Origin"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "610e9f6c-c413-4d9e-83bc-04dc9f9e8590",
+    "timestamp": "2026-08-28T07:34:18.934Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://connect.squareupsandbox.com/v2/locations",
+    "status": 200,
+    "duration": 1073,
+    "request": {
+      "id": "07c4bb1b-8f59-49bd-9e45-85a89141dd6d",
+      "savedRequestId": "6b97d2ab-1d61-48a7-8939-926dfd975ec8",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+      "name": "Get Location",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/locations",
+      "params": [],
+      "headersList": [
+        {
+          "id": "69fd8f9d-6f07-4ed2-930f-5f191564042c",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "e833c751-f6cf-4b39-9523-2edf5d0852c0",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Get Location\",\"url\":\"{{Domain}}/locations\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Square-Version\",\"value\":\"2026-08-19\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "1073 ms",
+      "size": "1.9 KB",
+      "data": {
+        "locations": [
+          {
+            "id": "LGE0P6VNQCYX7",
+            "name": "Chi nhánh Phan Đình Giót",
+            "address": {
+              "address_line_1": "24-26 Đ. Phan Đình Giót, Tân Sơn Hòa",
+              "locality": "Ho Chi Minh City",
+              "administrative_district_level_1": "CA",
+              "postal_code": "94103",
+              "country": "US"
+            },
+            "timezone": "Asia/Ho_Chi_Minh",
+            "capabilities": [
+              "CREDIT_CARD_PROCESSING",
+              "AUTOMATIC_TRANSFERS"
+            ],
+            "status": "ACTIVE",
+            "created_at": "2026-08-24T06:37:21.737Z",
+            "merchant_id": "MLTQ3MXGD4MH2",
+            "country": "US",
+            "language_code": "en-US",
+            "currency": "USD",
+            "phone_number": "+1 415-555-2671",
+            "business_name": "DXP Pizza",
+            "type": "PHYSICAL",
+            "business_hours": {},
+            "description": "Chi nhánh Tân Bình - 24-26 Phan Đình Giót",
+            "mcc": "7299"
+          },
+          {
+            "id": "L379743VY1ZBC",
+            "name": "Default Test Account",
+            "address": {
+              "address_line_1": "1600 Pennsylvania Ave NW",
+              "locality": "Washington",
+              "administrative_district_level_1": "DC",
+              "postal_code": "20500",
+              "country": "US"
+            },
+            "timezone": "UTC",
+            "capabilities": [
+              "CREDIT_CARD_PROCESSING",
+              "AUTOMATIC_TRANSFERS"
+            ],
+            "status": "ACTIVE",
+            "created_at": "2026-08-24T01:35:15.922Z",
+            "merchant_id": "MLTQ3MXGD4MH2",
+            "country": "US",
+            "language_code": "en-US",
+            "currency": "USD",
+            "business_name": "Default Test Account",
+            "type": "PHYSICAL",
+            "business_hours": {},
+            "mcc": "7299"
+          },
+          {
+            "id": "L7JBFPYN8CG71",
+            "name": "The Pizza Company Cầu Giấy - Q. Cầu Giấy",
+            "address": {
+              "address_line_1": "333 Cầu Giấy, P. Dịch Vọng, Q. Cầu Giấy",
+              "locality": "Ha Noi",
+              "administrative_district_level_1": "CA",
+              "postal_code": "94103",
+              "country": "US"
+            },
+            "timezone": "Asia/Ho_Chi_Minh",
+            "capabilities": [
+              "CREDIT_CARD_PROCESSING",
+              "AUTOMATIC_TRANSFERS"
+            ],
+            "status": "ACTIVE",
+            "created_at": "2026-08-25T07:09:01.696Z",
+            "merchant_id": "MLTQ3MXGD4MH2",
+            "country": "US",
+            "language_code": "en-US",
+            "currency": "USD",
+            "phone_number": "+1 415-555-2671",
+            "business_name": "The Pizza Company",
+            "type": "PHYSICAL",
+            "business_hours": {},
+            "description": "Chi nhánh Cầu Giấy - 333 Cầu Giấy, P. Dịch Vọng, TP Hà Nội",
+            "coordinates": {
+              "latitude": 21.035291,
+              "longitude": 105.7923853
+            },
+            "mcc": "7299"
+          }
+        ]
+      },
+      "headers": {
+        "date": "Fri, 28 Aug 2026 07:34:23 GMT",
+        "content-type": "application/json",
+        "content-length": "749",
+        "connection": "keep-alive",
+        "cf-ray": "a321a21d1ae4fe13-SIN",
+        "cf-cache-status": "DYNAMIC",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=631152000; includeSubDomains; preload",
+        "vary": "Accept-Encoding",
+        "frame-options": "DENY",
+        "square-version": "2026-08-19",
+        "squareup--connect--v2--common--versionmetadata-bin": "CgoyMDI2LTA4LTE5",
+        "x-content-type-options": "nosniff",
+        "x-envoy-decorator-operation": "/v2/locations",
+        "x-frame-options": "DENY",
+        "x-sq-dc": "aws",
+        "x-sq-region": "us-west-2",
+        "x-xss-protection": "1; mode=block",
+        "set-cookie": [
+          "__cf_bm=YMIU4Oq_si8uY8zq9HcMXYJ7MTFsIlNahgds92lax5E-1787902463.533309-1.0.1.1-p9hUDfV_3I4YXradIphddaeOfat9cgAAhxAJHRRSQGNg5tjAnrpn.lnopiAXASSko1Kca4tj00y6TtZ8KxQ3EhQBbN9IjOUNcXp4iC2NHa8yNzNyGgxwA8.59WQF2Efb; HttpOnly; SameSite=None; Secure; Path=/; Domain=squareupsandbox.com; Expires=Fri, 28 Aug 2026 08:04:23 GMT"
+        ]
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "2f2be3e7-24eb-4b1b-8562-a64435185e07",
+    "timestamp": "2026-08-28T07:33:41.706Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://public.kiotapi.com/locations",
+    "status": 420,
+    "duration": 204,
+    "request": {
+      "id": "07c4bb1b-8f59-49bd-9e45-85a89141dd6d",
+      "savedRequestId": "6b97d2ab-1d61-48a7-8939-926dfd975ec8",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
+      "name": "Get Location",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/locations",
+      "params": [],
+      "headersList": [
+        {
+          "id": "69fd8f9d-6f07-4ed2-930f-5f191564042c",
+          "key": "Square-Version",
+          "value": "2026-08-19",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "e833c751-f6cf-4b39-9523-2edf5d0852c0",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Get Location\",\"url\":\"{{Domain}}/locations\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Square-Version\",\"value\":\"2026-08-19\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
+    },
+    "response": {
+      "status": 420,
+      "statusText": "Client Error",
+      "time": "204 ms",
+      "size": "93 B",
+      "data": {
+        "responseStatus": {
+          "errorCode": "KvUnauthorizedException",
+          "message": "Shop's name is invalid"
+        }
+      },
+      "headers": {
+        "cache-control": "private",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "date": "Fri, 28 Aug 2026 07:33:45 GMT",
+        "content-length": "93"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "01be3b58-7039-4570-8dfb-5fa9f035ff86",
+    "timestamp": "2026-08-28T04:57:47.050Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://public.kiotapi.com/branches",
+    "status": 401,
+    "duration": 135,
+    "request": {
+      "id": "08126179-5067-430a-8c7f-db3705116665",
+      "savedRequestId": "a96c6c80-9985-4282-b050-71615fd8ce79",
+      "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
+      "folderId": "8428f2cc-a7b7-494b-9a09-5005f1158b4d",
+      "name": "Danh sách chi nhánh",
+      "mode": "REST",
+      "method": "GET",
+      "url": "https://public.kiotapi.com/branches",
+      "params": [
+        {
+          "id": "e1f1a153-28a1-4a5a-bff9-a2df8673da56",
+          "key": "format",
+          "value": "json",
+          "enabled": false,
+          "description": ""
+        },
+        {
+          "id": "340dede0-2cbe-401c-b655-85b970b9a491",
+          "key": "includeRemoveIds",
+          "value": "true",
+          "enabled": false,
+          "description": ""
+        },
+        {
+          "id": "8825f02d-56ca-47bb-a17e-14687c00b535",
+          "key": "hierachicalData",
+          "value": "true",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersList": [
+        {
+          "id": "152d8cf1-cabc-4bba-b6fa-81853fabe299",
+          "key": "Retailer",
+          "value": "{{retailer}}",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Retailer\": \"{{retailer}}\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MzIxODE0NjgsImV4cCI6MTczMjI2Nzg2OCwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiYzdhZmY0ZTAtOTk0MC00ZmExLWEzNjEtOWI4MWNjYzRlZWE2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2hyZXRhaWx0ZWFtZG4xIiwiY2xpZW50X1JldGFpbGVySWQiOiIxNDk1NDUyIiwiY2xpZW50X1VzZXJJZCI6IjEzMDQ1NDAiLCJjbGllbnRfU2Vuc2l0aXZlQXBpIjoiVHJ1ZSIsImNsaWVudF9Hcm91cElkIjoiMjMiLCJpYXQiOjE3MzIxODE0NjgsInNjb3BlIjpbIlB1YmxpY0FwaS5BY2Nlc3MiXX0.qtxWSRdpYGJRXyniq55N3ybtPu4vRX8pGSYJ2ETgmSY5wl6ZtgIckFaxWWffrTsMcCqNSWpiWF0X98veDAHrHnDk4pr8ZHa2AE1hKFOsk28AksVC45nr5Fp67U6TgYvFftCRCiIbeIgi7Cu-FwgvtQcJzPz-0rB_5O1_fDmxxBvQmeN99hUA_5erR69LuCZzGwiS3l6swPNUbbywD136LH8zEgEV54DL6_h-7xbPEs_rqpwcIKHkI1qgRWz91_zLc5ScPP_ZjnDnRFmf2G-eLqRHl9aaBGTWYx4HRyA2qPvFW-F88lMBuprH6dO1VfLdCf3AqYGKNvqrpYAhH8cfbQ",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "PARAMS",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Danh sách chi nhánh\",\"url\":\"https://public.kiotapi.com/branches\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[{\"key\":\"format\",\"value\":\"json\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"includeRemoveIds\",\"value\":\"true\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"hierachicalData\",\"value\":\"true\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"pathVariables\":[],\"headersList\":[{\"key\":\"Retailer\",\"value\":\"{{retailer}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MzIxODE0NjgsImV4cCI6MTczMjI2Nzg2OCwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiYzdhZmY0ZTAtOTk0MC00ZmExLWEzNjEtOWI4MWNjYzRlZWE2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2hyZXRhaWx0ZWFtZG4xIiwiY2xpZW50X1JldGFpbGVySWQiOiIxNDk1NDUyIiwiY2xpZW50X1VzZXJJZCI6IjEzMDQ1NDAiLCJjbGllbnRfU2Vuc2l0aXZlQXBpIjoiVHJ1ZSIsImNsaWVudF9Hcm91cElkIjoiMjMiLCJpYXQiOjE3MzIxODE0NjgsInNjb3BlIjpbIlB1YmxpY0FwaS5BY2Nlc3MiXX0.qtxWSRdpYGJRXyniq55N3ybtPu4vRX8pGSYJ2ETgmSY5wl6ZtgIckFaxWWffrTsMcCqNSWpiWF0X98veDAHrHnDk4pr8ZHa2AE1hKFOsk28AksVC45nr5Fp67U6TgYvFftCRCiIbeIgi7Cu-FwgvtQcJzPz-0rB_5O1_fDmxxBvQmeN99hUA_5erR69LuCZzGwiS3l6swPNUbbywD136LH8zEgEV54DL6_h-7xbPEs_rqpwcIKHkI1qgRWz91_zLc5ScPP_ZjnDnRFmf2G-eLqRHl9aaBGTWYx4HRyA2qPvFW-F88lMBuprH6dO1VfLdCf3AqYGKNvqrpYAhH8cfbQ\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
+    },
+    "response": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "time": "135 ms",
+      "size": "79 B",
+      "data": {
+        "responseStatus": {
+          "errorCode": "TokenException",
+          "message": "Token has expired"
+        }
+      },
+      "headers": {
+        "cache-control": "private",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "date": "Fri, 28 Aug 2026 04:57:51 GMT",
+        "content-length": "79"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
     "id": "9e002220-4906-42ab-9c33-282c4d8b0606",
     "timestamp": "2026-08-28T04:49:56.863Z",
     "method": "GET",
@@ -23342,644 +24146,6 @@
         "content-type": "application/json; charset=utf-8",
         "content-length": "73",
         "date": "Wed, 26 Aug 2026 06:25:11 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "85286533-c57b-4927-8b4d-5260bcf01528",
-    "timestamp": "2026-08-26T03:46:51.453Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 0,
-    "duration": 17,
-    "request": {
-      "id": "e3329f33-8a1a-4f59-9bcd-ff286a7bd683",
-      "name": "squareCatalogSync",
-      "graphqlRootField": "squareCatalogSync",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "566f8c45-589a-4727-9f7c-0a5d2f259c50",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true
-        },
-        {
-          "id": "a938fcae-49bd-455b-b2e9-3236d28767bf",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": "",
-          "type": "text"
-        }
-      ],
-      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "mutation SquareCatalogSync($syncMode: String) {\n  squareCatalogSync(syncMode: $syncMode) {\n    total\n    created\n    updated\n    failed\n    syncedAt\n    message\n  }\n}",
-      "gqlVariables": "{\n  \"syncMode\": \"FULL\"\n}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 0,
-      "statusText": "Could not connect to server",
-      "time": "17 ms",
-      "size": "0 B",
-      "data": null,
-      "error": "",
-      "headers": {},
-      "isNetworkError": true
-    }
-  },
-  {
-    "id": "89d7d7a4-0ed2-4f04-adfc-95cac7617eb6",
-    "timestamp": "2026-08-26T03:15:32.066Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 28,
-    "request": {
-      "id": "0b0f1066-1a56-423a-8631-d5c24a2dedff",
-      "savedRequestId": "0ed4d0b0-470b-4c00-a876-d1606bd58554",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": "69885208-f36a-4998-9719-fee48f863f5e",
-      "name": "Square customer get by id",
-      "graphqlRootField": "squareCustomerGetById",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "566f8c45-589a-4727-9f7c-0a5d2f259c50",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true
-        },
-        {
-          "id": "a938fcae-49bd-455b-b2e9-3236d28767bf",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": "",
-          "type": "text"
-        }
-      ],
-      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query SquareCustomerGetById($request: RequestParams!) {\n  squareCustomerGetById(request: $request) {\n    id\n    squareCustomerId\n    givenName\n    familyName\n    emailAddress\n    companyName\n    nickname\n    phoneNumber\n    address\n    version\n    isDeleted\n    lastSyncedAt\n  }\n}",
-      "gqlVariables": "{\n  \"request\": {\n    \"id\": \"01a03c06-b804-7129-aa1f-fbce01695621\"\n  }\n}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "28 ms",
-      "size": "360 B",
-      "data": {
-        "data": {
-          "squareCustomerGetById": {
-            "id": "01a03c06-b804-7129-aa1f-fbce01695621",
-            "squareCustomerId": "9SPWCSH0C9711CF9XF9AGEVVP0",
-            "givenName": "Đỗ Dương Đăng Khoa",
-            "familyName": null,
-            "emailAddress": null,
-            "companyName": null,
-            "nickname": null,
-            "phoneNumber": "+84396090487",
-            "address": null,
-            "version": null,
-            "isDeleted": false,
-            "lastSyncedAt": "2026-08-26T03:13:40.324Z"
-          }
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "361",
-        "date": "Wed, 26 Aug 2026 03:15:33 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "6412547d-c9e0-4ada-b888-f763f496db1c",
-    "timestamp": "2026-08-26T03:14:32.790Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 39,
-    "request": {
-      "id": "66e695ad-cc9b-4b43-a4d0-7efc82d35183",
-      "name": "squareCustomerGetPagination",
-      "graphqlRootField": "squareCustomerGetPagination",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "566f8c45-589a-4727-9f7c-0a5d2f259c50",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true
-        },
-        {
-          "id": "a938fcae-49bd-455b-b2e9-3236d28767bf",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": "",
-          "type": "text"
-        }
-      ],
-      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query SquareCustomerGetPagination($filters: SquareCustomerGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareCustomerGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      squareCustomerId\n      givenName\n      familyName\n      emailAddress\n      phoneNumber\n      companyName\n      nickname\n      address\n      version\n      isDeleted\n      lastSyncedAt\n    }\n  }\n}",
-      "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
-      "testScript": "",
-      "editorTab": "HEADERS",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "39 ms",
-      "size": "1014 B",
-      "data": {
-        "data": {
-          "squareCustomerGetPagination": {
-            "total": 3,
-            "items": [
-              {
-                "id": "01a03c06-b804-7129-aa1f-fbce01695621",
-                "squareCustomerId": "9SPWCSH0C9711CF9XF9AGEVVP0",
-                "givenName": "Đỗ Dương Đăng Khoa",
-                "familyName": null,
-                "emailAddress": null,
-                "phoneNumber": "+84396090487",
-                "companyName": null,
-                "nickname": null,
-                "address": null,
-                "version": null,
-                "isDeleted": false,
-                "lastSyncedAt": "2026-08-26T03:13:40.324Z"
-              },
-              {
-                "id": "01a0332e-3b09-745f-b8bf-57d6a72b27d6",
-                "squareCustomerId": "5MJNZ04NXKW51HJ7SXMEFYV344",
-                "givenName": "Khoa Dang",
-                "familyName": "Duong Do",
-                "emailAddress": null,
-                "phoneNumber": null,
-                "companyName": null,
-                "nickname": "DK",
-                "address": "70000, VN",
-                "version": null,
-                "isDeleted": false,
-                "lastSyncedAt": "2026-08-26T03:13:40.316Z"
-              },
-              {
-                "id": "01a0332e-3b02-72db-aa88-069238403c19",
-                "squareCustomerId": "D7KBXFK77FCPXF2BAA48Z6GCAG",
-                "givenName": "Dang Khoa",
-                "familyName": "Do Duong",
-                "emailAddress": null,
-                "phoneNumber": null,
-                "companyName": null,
-                "nickname": "DK",
-                "address": "70000, VN",
-                "version": null,
-                "isDeleted": false,
-                "lastSyncedAt": "2026-08-26T03:13:40.309Z"
-              }
-            ]
-          }
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "1015",
-        "date": "Wed, 26 Aug 2026 03:14:31 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "8ccc6689-94db-4b42-925f-08a7cdbed53b",
-    "timestamp": "2026-08-26T03:14:15.300Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 6,
-    "request": {
-      "id": "66e695ad-cc9b-4b43-a4d0-7efc82d35183",
-      "name": "squareCustomerGetPagination",
-      "graphqlRootField": "squareCustomerGetPagination",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "566f8c45-589a-4727-9f7c-0a5d2f259c50",
-          "key": "Content-Type",
-          "value": "application/json",
-          "enabled": true
-        }
-      ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\"\n}",
-      "auth": {
-        "type": "none",
-        "bearerToken": "",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query SquareCustomerGetPagination($filters: SquareCustomerGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareCustomerGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      squareCustomerId\n      givenName\n      familyName\n      emailAddress\n      phoneNumber\n      companyName\n      nickname\n      address\n      version\n      isDeleted\n      lastSyncedAt\n    }\n  }\n}",
-      "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "6 ms",
-      "size": "251 B",
-      "data": {
-        "errors": [
-          {
-            "message": "Unauthorized",
-            "path": [
-              "squareCustomerGetPagination"
-            ],
-            "locations": [
-              {
-                "line": 2,
-                "column": 3
-              }
-            ],
-            "extensions": {
-              "code": "UNAUTHENTICATED",
-              "originalError": {
-                "message": "Unauthorized",
-                "statusCode": 401
-              }
-            },
-            "code": "UNAUTHENTICATED"
-          }
-        ],
-        "data": null
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "252",
-        "date": "Wed, 26 Aug 2026 03:14:15 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "83259386-8c11-4cf4-95e8-39c067139e27",
-    "timestamp": "2026-08-26T03:13:40.047Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 1340,
-    "request": {
-      "id": "328b5cc8-b000-492a-9511-7b49daac2c44",
-      "savedRequestId": "6b16cddd-eec5-44b8-bdb8-feda3eb8e63e",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": "69885208-f36a-4998-9719-fee48f863f5e",
-      "name": "Square customer sync",
-      "graphqlRootField": "squareCustomerSync",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "a40674d0-3a32-4b04-95ea-451e67a03ec6",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": "",
-          "type": "text"
-        },
-        {
-          "id": "085297e0-1847-4c34-bb63-369f9da94d43",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": "",
-          "type": "text"
-        }
-      ],
-      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "mutation SquareCustomerSync($syncMode: String) {\n  squareCustomerSync(syncMode: $syncMode) {\n    total\n    created\n    updated\n    failed\n    syncedAt\n    message\n  }\n}",
-      "gqlVariables": "{\n  \"syncMode\": \"FULL\"\n}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "1340 ms",
-      "size": "203 B",
-      "data": {
-        "data": {
-          "squareCustomerSync": {
-            "total": 3,
-            "created": 0,
-            "updated": 3,
-            "failed": 0,
-            "syncedAt": "2026-08-26T03:13:40.329Z",
-            "message": "Đã đồng bộ 3 khách hàng Square (0 mới, 3 cập nhật, 0 lỗi)"
-          }
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "204",
-        "date": "Wed, 26 Aug 2026 03:13:40 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "9c7b8d0a-bae8-4aa7-bda5-85b0e18bef7b",
-    "timestamp": "2026-08-26T03:12:04.692Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 18,
-    "request": {
-      "id": "8b683176-bfe0-49da-8e4d-a6827bad1d40",
-      "name": "squareOrderStatusSync",
-      "graphqlRootField": "squareOrderStatusSync",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "a40674d0-3a32-4b04-95ea-451e67a03ec6",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": "",
-          "type": "text"
-        },
-        {
-          "id": "085297e0-1847-4c34-bb63-369f9da94d43",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": "",
-          "type": "text"
-        }
-      ],
-      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "mutation SquareOrderStatusSync($squareOrderId: String!) {\n  squareOrderStatusSync(squareOrderId: $squareOrderId) {\n    id\n    orderId\n    squareOrderId\n    squareLocationId\n    state\n    totalMoneyAmount\n    currency\n    syncStatus\n    errorMessage\n    lastSyncedAt\n  }\n}",
-      "gqlVariables": "{\n  \"squareOrderId\": \"MH1TrJ6ayEgsZQQZEb9zFoouUPFZY\"\n}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "18 ms",
-      "size": "302 B",
-      "data": {
-        "errors": [
-          {
-            "message": "FORBIDDEN_ACTION",
-            "path": [
-              "squareOrderStatusSync"
-            ],
-            "locations": [
-              {
-                "line": 2,
-                "column": 3
-              }
-            ],
-            "extensions": {
-              "code": "UNAUTHENTICATED",
-              "originalError": {
-                "message": "FORBIDDEN_ACTION",
-                "error": "Unauthorized",
-                "statusCode": 401
-              }
-            },
-            "code": "UNAUTHENTICATED"
-          }
-        ],
-        "data": {
-          "squareOrderStatusSync": null
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "303",
-        "date": "Wed, 26 Aug 2026 03:12:04 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "40ab60b1-f257-4c21-bf26-8825b968b96c",
-    "timestamp": "2026-08-26T03:10:49.961Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 15,
-    "request": {
-      "id": "111860ad-cd5c-4f0b-840e-6748902b8432",
-      "name": "squareOrderGetById",
-      "graphqlRootField": "squareOrderGetById",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "a40674d0-3a32-4b04-95ea-451e67a03ec6",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": "",
-          "type": "text"
-        },
-        {
-          "id": "085297e0-1847-4c34-bb63-369f9da94d43",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": "",
-          "type": "text"
-        }
-      ],
-      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query SquareOrderGetById($request: RequestParams!) {\n  squareOrderGetById(request: $request) {\n    id\n    orderId\n    squareOrderId\n    squareLocationId\n    state\n    totalMoneyAmount\n    currency\n    syncStatus\n    errorMessage\n    lastSyncedAt\n  }\n}",
-      "gqlVariables": "{\n  \"request\": {\n    \"id\": \"01a03c06-b814-701c-b9d0-7e1879ee42be\"\n  }\n}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "15 ms",
-      "size": "351 B",
-      "data": {
-        "data": {
-          "squareOrderGetById": {
-            "id": "01a03c06-b814-701c-b9d0-7e1879ee42be",
-            "orderId": "01a03c06-8b0d-709c-bf8e-bae7f918fc60",
-            "squareOrderId": "MH1TrJ6ayEgsZQQZEb9zFoouUPFZY",
-            "squareLocationId": "L7JBFPYN8CG71",
-            "state": "OPEN",
-            "totalMoneyAmount": 688500,
-            "currency": "USD",
-            "syncStatus": "SYNCED",
-            "errorMessage": null,
-            "lastSyncedAt": "2026-08-26T03:04:32.260Z"
-          }
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "352",
-        "date": "Wed, 26 Aug 2026 03:10:50 GMT",
         "connection": "keep-alive",
         "keep-alive": "timeout=72"
       },
