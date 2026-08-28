@@ -1945,7 +1945,7 @@
       "folderId": "3f45ac07-3a2d-4224-b42c-5213bf304968",
       "name": "Create Order",
       "request": {
-        "id": "4b915b5b-31e4-468a-991e-0b2f6fced678",
+        "id": "87f4e468-b496-44e7-9576-4cc5247af102",
         "savedRequestId": "db7ab6ee-7b20-448a-afef-8427db37b193",
         "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
         "folderId": "3f45ac07-3a2d-4224-b42c-5213bf304968",
@@ -1959,7 +1959,8 @@
             "id": "775ffb31-8472-4132-b4cd-a3e566de6f57",
             "key": "Square-Version",
             "value": "2026-08-19",
-            "enabled": true
+            "enabled": true,
+            "description": ""
           }
         ],
         "headersText": "{\n  \"Square-Version\": \"2026-08-19\"\n}",
@@ -1973,18 +1974,19 @@
           "apiKeyAddTo": "header"
         },
         "bodyType": "json",
-        "restBody": "{\n  \"order\": {\n    \"discounts\": [],\n    \"fulfillments\": [],\n    \"line_items\": [\n      {}\n    ]\n  }\n}",
+        "restBody": "{\n  \"order\": {\n    \"line_items\": [\n      {\n        \"name\": \"Milano Salami & Chorizo Margherita Pizza\",\n        \"note\": \"\",\n        \"quantity\": \"5\",\n        \"base_price_money\": {\n          \"amount\": 22950000,\n          \"currency\": \"USD\"\n        },\n        \"catalog_object_id\": \"C7FOY5JCAIETUFMD5CH2I5AZ\"\n      }\n    ],\n    \"customer_id\": \"9SPWCSH0C9711CF9XF9AGEVVP0\",\n    \"location_id\": \"L7JBFPYN8CG71\",\n    \"fulfillments\": [\n      {\n        \"type\": \"DELIVERY\",\n        \"state\": \"PROPOSED\",\n        \"delivery_details\": {\n          \"note\": \"\",\n          \"recipient\": {\n            \"address\": {\n              \"address_line_1\": \"333 Cầu Giấy, Dịch Vọng, Cầu Giấy, Hà Nội\"\n            },\n            \"display_name\": \"Đỗ Dương Đăng Khoa\",\n            \"phone_number\": \"+84396090487\"\n          },\n          \"schedule_type\": \"ASAP\"\n        }\n      }\n    ],\n    \"reference_id\": \"4260838202\",\n    \"pricing_options\": {\n      \"auto_apply_taxes\": false,\n      \"auto_apply_discounts\": false\n    },\n    \"service_charges\": [\n      {\n        \"uid\": \"sc_0\",\n        \"name\": \"Delivery Fee\",\n        \"taxable\": false,\n        \"amount_money\": {\n          \"amount\": 2500000,\n          \"currency\": \"USD\"\n        },\n        \"calculation_phase\": \"SUBTOTAL_PHASE\"\n      }\n    ]\n  },\n  \"idempotency_key\": \"01a04201-b3dc-715a-9c37-d4a489e929af\"\n}",
         "rawText": "",
         "formData": [],
         "urlencoded": [],
         "gqlQuery": "",
         "gqlVariables": "{}",
         "testScript": "",
-        "editorTab": "HEADERS",
-        "responseTab": "PRETTY"
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Create Order\",\"url\":\"{{Domain}}/orders\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Square-Version\",\"value\":\"2026-08-19\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"{\\n  \\\"order\\\": {\\n    \\\"discounts\\\": [],\\n    \\\"fulfillments\\\": [],\\n    \\\"line_items\\\": [\\n      {}\\n    ]\\n  }\\n}\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
       },
       "createdAt": "2026-08-25T08:26:05.215Z",
-      "updatedAt": "2026-08-25T08:41:13.644Z"
+      "updatedAt": "2026-08-27T07:01:54.620Z"
     },
     {
       "id": "7f74556f-b1fc-4fc6-a2a6-497b19203676",
@@ -2336,7 +2338,7 @@
       "folderId": "b0e3fd25-2b01-4bff-8562-627ede98182f",
       "name": "Payment update status transactions",
       "request": {
-        "id": "b518fa80-9094-4db3-aafb-96780aee5cd7",
+        "id": "885e3b01-89ea-4dfb-ad03-d818d0014389",
         "savedRequestId": "091a34fe-638c-496a-ac4f-255eca07c8a1",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": "b0e3fd25-2b01-4bff-8562-627ede98182f",
@@ -2351,15 +2353,15 @@
             "id": "62c0d41a-488a-4ce4-968a-0d1aaa9921ef",
             "key": "X-Requested-Portal",
             "value": "IT",
-            "enabled": true
+            "enabled": true,
+            "description": ""
           },
           {
             "id": "48753b76-2aa9-4b50-98e1-1757f56b9aef",
             "key": "",
             "value": "",
             "enabled": false,
-            "description": "",
-            "type": "text"
+            "description": ""
           }
         ],
         "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
@@ -2377,14 +2379,15 @@
         "rawText": "",
         "formData": [],
         "urlencoded": [],
-        "gqlQuery": "mutation PaymentUpdateStatusTransactions($request: PaymentUpdateStatusTransactionsDto!) {\n  paymentUpdateStatusTransactions(request: $request) {\n    processed\n    success\n  }\n}",
+        "gqlQuery": "mutation PaymentUpdateStatusTransactions($request: PaymentUpdateStatusTransactionsDto!) {\n  paymentUpdateStatusTransactions(request: $request) {\n    processed\n    success\n    noChange\n    failed\n  }\n}",
         "gqlVariables": "{\n  \"request\": {\n    \"limit\": 100\n  }\n}",
         "testScript": "",
         "editorTab": "BODY",
-        "responseTab": "PRETTY"
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Payment update status transactions\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"paymentUpdateStatusTransactions\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"mutation PaymentUpdateStatusTransactions($request: PaymentUpdateStatusTransactionsDto!) {\\n  paymentUpdateStatusTransactions(request: $request) {\\n    processed\\n    success\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"limit\\\": 100\\n  }\\n}\",\"testScript\":\"\"}"
       },
       "createdAt": "2026-08-26T06:25:23.915Z",
-      "updatedAt": "2026-08-26T06:25:23.915Z"
+      "updatedAt": "2026-08-27T06:13:01.983Z"
     },
     {
       "id": "8c4f4dea-3570-4d1f-a133-7ca66ce5736c",
@@ -3009,7 +3012,7 @@
       "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
       "name": "Order proactive sync square",
       "request": {
-        "id": "e0b946c8-5661-4d2d-9051-4213555e0118",
+        "id": "ec392904-9155-4940-a4f0-09b5a6ce7910",
         "savedRequestId": "74dbcedb-3ad6-4994-b23c-2dd3ab8921fb",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
@@ -3032,8 +3035,7 @@
             "key": "",
             "value": "",
             "enabled": false,
-            "description": "",
-            "type": "text"
+            "description": ""
           }
         ],
         "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
@@ -3052,13 +3054,14 @@
         "formData": [],
         "urlencoded": [],
         "gqlQuery": "mutation OrderProactiveSyncSquare($request: OrderProactiveSyncSquareDto!) {\n  orderProactiveSyncSquare(request: $request) {\n    success\n    message\n  }\n}",
-        "gqlVariables": "{\n  \"request\": {\n    \"orderId\": \"\",\n    \"orderNumber\": \"\"\n  }\n}",
+        "gqlVariables": "{\n  \"request\": {\n    \"orderId\": \"01a041d7-ee85-705b-b712-3091777a6573\"\n  }\n}",
         "testScript": "",
         "editorTab": "BODY",
-        "responseTab": "PRETTY"
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Order proactive sync square\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"orderProactiveSyncSquare\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"mutation OrderProactiveSyncSquare($request: OrderProactiveSyncSquareDto!) {\\n  orderProactiveSyncSquare(request: $request) {\\n    success\\n    message\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"orderId\\\": \\\"01a041f2-b99a-74ac-aec9-98f259f9a357\\\"\\n  }\\n}\",\"testScript\":\"\"}"
       },
       "createdAt": "2026-08-27T02:27:22.960Z",
-      "updatedAt": "2026-08-27T02:27:33.451Z"
+      "updatedAt": "2026-08-27T07:28:33.530Z"
     },
     {
       "id": "1a09e334-e3ae-4fd8-a93f-c52ae2ecb376",
@@ -3915,19 +3918,407 @@
       },
       "createdAt": "2026-08-27T03:49:41.164Z",
       "updatedAt": "2026-08-27T03:49:41.166Z"
+    },
+    {
+      "id": "5dc175af-cfb3-4854-87dd-76b9c75c9025",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "bd12c7b5-951b-4a20-99e9-a8f9be185e3b",
+      "name": "Product list",
+      "request": {
+        "id": "b9ea02ca-c24e-4c60-ace1-23c719e2c83d",
+        "savedRequestId": "5dc175af-cfb3-4854-87dd-76b9c75c9025",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "bd12c7b5-951b-4a20-99e9-a8f9be185e3b",
+        "name": "Product list",
+        "graphqlRootField": "productList",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "576eecf0-b93a-4dd8-ba3b-f07ffa78c392",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true
+          },
+          {
+            "id": "ghost-tail-row",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query ProductList($request: ProductGetListFilterDto) {\n  productList(request: $request) {\n    id\n    categoryId\n    productName\n    images {\n      id\n      url\n    }\n    category {\n      id\n      name\n    }\n    sku\n    productType\n    shortDescription\n    description\n    weight\n    price\n    calorie\n    ingredient\n    status\n    display\n    displaySearch\n    displayCategory\n    variants {\n      id\n      variantName\n      sku\n      price\n      image {\n        id\n        url\n      }\n      option1\n      option2\n      option3\n      toppingGroupIds\n      barcode\n      displayOrder\n      stockStatus\n      isSell\n      grabfoodSyncStatus\n      grabfoodSynedAt\n      grabfoodAvailableStatus\n      unit {\n        id\n        code\n        name\n      }\n      sapMaterialMasterPackaging {\n        sapMaterialMasterPackagingId\n        packagingName\n        unitPackagingId\n        skuPackaging\n      }\n    }\n    createdAt\n    lastUpdatedByInfo {\n      id\n      fullName\n    }\n    createdByInfo {\n      id\n      fullName\n    }\n    lastUpdatedAt\n    allowRating\n    taxGroupId\n    isPriceIncludeTax\n    seoTitle\n    seoDescription\n    slug\n    metafields\n    relatedProductIds\n    modifierGroup {\n      id\n      name\n      description\n      modifiers {\n        modifierId\n        displayOrder\n        displayType\n        options\n      }\n      status\n      modifierGroupCode\n      createdAt\n      lastUpdatedAt\n      createdBy\n      lastUpdatedBy\n      nameEn\n      descriptionEn\n    }\n    modifierGroupId\n    channelIds\n    displayedAt\n    isOnlyHiddenProductList\n    productOptions {\n      id\n      productId\n      position\n      name\n      nameEn\n      value\n      displayType\n    }\n    collections {\n      id\n      name\n      status\n      slug\n      image {\n        id\n        url\n      }\n    }\n    brand {\n      id\n      name\n      isActive\n      createdAt\n      createdByInfo {\n        id\n        fullName\n      }\n      lastUpdatedByInfo {\n        id\n        fullName\n      }\n      lastUpdatedAt\n    }\n    tags {\n      id\n      title\n      isActive\n      slug\n      seoTitle\n      seoDescription\n      description\n      image {\n        id\n        url\n      }\n      titleEn\n      seoTitleEn\n      seoDescriptionEn\n      descriptionEn\n      imageEn {\n        id\n        url\n      }\n      createdAt\n      lastUpdatedAt\n    }\n    productNameEn\n    synonyms\n    shortDescriptionEn\n    descriptionEn\n    seoTitleEn\n    seoDescriptionEn\n    stockStatus\n    saleChannels\n    priority\n    grabfoodSyncStatus\n    grabfoodSynedAt\n    grabfoodAvailableStatus\n    pairingId\n    imagesEn {\n      id\n      url\n    }\n  }\n}",
+        "gqlVariables": "{\n  \"request\": {\n    \"storeId\": \"\",\n    \"saleChannel\": \"\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "HEADERS",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Product list\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"productList\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query ProductList($request: ProductGetListFilterDto) {\\n  productList(request: $request) {\\n    id\\n    categoryId\\n    productName\\n    images {\\n      id\\n      url\\n    }\\n    category {\\n      id\\n      name\\n    }\\n    sku\\n    productType\\n    shortDescription\\n    description\\n    weight\\n    price\\n    calorie\\n    ingredient\\n    status\\n    display\\n    displaySearch\\n    displayCategory\\n    variants {\\n      id\\n      variantName\\n      sku\\n      price\\n      image {\\n        id\\n        url\\n      }\\n      option1\\n      option2\\n      option3\\n      toppingGroupIds\\n      barcode\\n      displayOrder\\n      stockStatus\\n      isSell\\n      grabfoodSyncStatus\\n      grabfoodSynedAt\\n      grabfoodAvailableStatus\\n      unit {\\n        id\\n        code\\n        name\\n      }\\n      sapMaterialMasterPackaging {\\n        sapMaterialMasterPackagingId\\n        packagingName\\n        unitPackagingId\\n        skuPackaging\\n      }\\n    }\\n    createdAt\\n    lastUpdatedByInfo {\\n      id\\n      fullName\\n    }\\n    createdByInfo {\\n      id\\n      fullName\\n    }\\n    lastUpdatedAt\\n    allowRating\\n    taxGroupId\\n    isPriceIncludeTax\\n    seoTitle\\n    seoDescription\\n    slug\\n    metafields\\n    relatedProductIds\\n    modifierGroup {\\n      id\\n      name\\n      description\\n      modifiers {\\n        modifierId\\n        displayOrder\\n        displayType\\n        options\\n      }\\n      status\\n      modifierGroupCode\\n      createdAt\\n      lastUpdatedAt\\n      createdBy\\n      lastUpdatedBy\\n      nameEn\\n      descriptionEn\\n    }\\n    modifierGroupId\\n    channelIds\\n    displayedAt\\n    isOnlyHiddenProductList\\n    productOptions {\\n      id\\n      productId\\n      position\\n      name\\n      nameEn\\n      value\\n      displayType\\n    }\\n    collections {\\n      id\\n      name\\n      status\\n      slug\\n      image {\\n        id\\n        url\\n      }\\n    }\\n    brand {\\n      id\\n      name\\n      isActive\\n      createdAt\\n      createdByInfo {\\n        id\\n        fullName\\n      }\\n      lastUpdatedByInfo {\\n        id\\n        fullName\\n      }\\n      lastUpdatedAt\\n    }\\n    tags {\\n      id\\n      title\\n      isActive\\n      slug\\n      seoTitle\\n      seoDescription\\n      description\\n      image {\\n        id\\n        url\\n      }\\n      titleEn\\n      seoTitleEn\\n      seoDescriptionEn\\n      descriptionEn\\n      imageEn {\\n        id\\n        url\\n      }\\n      createdAt\\n      lastUpdatedAt\\n    }\\n    productNameEn\\n    synonyms\\n    shortDescriptionEn\\n    descriptionEn\\n    seoTitleEn\\n    seoDescriptionEn\\n    stockStatus\\n    saleChannels\\n    priority\\n    grabfoodSyncStatus\\n    grabfoodSynedAt\\n    grabfoodAvailableStatus\\n    pairingId\\n    imagesEn {\\n      id\\n      url\\n    }\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"storeId\\\": \\\"\\\",\\n    \\\"saleChannel\\\": \\\"\\\"\\n  }\\n}\",\"testScript\":\"\"}"
+      },
+      "createdAt": "2026-08-27T04:09:07.629Z",
+      "updatedAt": "2026-08-27T04:09:28.091Z"
+    },
+    {
+      "id": "8c972036-5e44-47fb-9c1a-af6faa69c2d2",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "bd12c7b5-951b-4a20-99e9-a8f9be185e3b",
+      "name": "Product pagination list",
+      "request": {
+        "id": "4224f79f-b749-4069-9696-85e1d1799e15",
+        "savedRequestId": "8c972036-5e44-47fb-9c1a-af6faa69c2d2",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "bd12c7b5-951b-4a20-99e9-a8f9be185e3b",
+        "name": "Product pagination list",
+        "graphqlRootField": "productPaginationList",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "576eecf0-b93a-4dd8-ba3b-f07ffa78c392",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true
+          },
+          {
+            "id": "ghost-tail-row",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query ProductPaginationList($params: PaginationDto!, $filters: ProductGetListDto!) {\n  productPaginationList(params: $params, filters: $filters) {\n    total\n    items {\n      id\n      categoryId\n      productName\n      sku\n      productType\n      shortDescription\n      description\n    }\n  }\n}",
+        "gqlVariables": "{\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  },\n  \"filters\": {\n    \"ids\": []\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"productPaginationList\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"productPaginationList\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query ProductPaginationList($params: PaginationDto!) {\\n  productPaginationList(params: $params) {\\n    total\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"params\\\": {\\n    \\\"page\\\": 0,\\n    \\\"pageSize\\\": 0\\n  }\\n}\",\"testScript\":\"\"}"
+      },
+      "createdAt": "2026-08-27T04:10:25.250Z",
+      "updatedAt": "2026-08-27T04:10:25.250Z"
+    },
+    {
+      "id": "b1a60790-eb76-4a57-8ab4-4543ac835e92",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "d140f597-5214-433b-b121-c1abb5204f83",
+      "name": "Combo get list",
+      "request": {
+        "id": "49b68ce4-46b1-4d91-bfb9-368d03f4adfa",
+        "savedRequestId": "b1a60790-eb76-4a57-8ab4-4543ac835e92",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "d140f597-5214-433b-b121-c1abb5204f83",
+        "name": "Combo get list",
+        "graphqlRootField": "comboGetList",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "c1c87ac7-3342-4706-8bea-b5699a3ebd42",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "headersText": "{\n  \"Content-Type\": \"application/json\"\n}",
+        "auth": {
+          "type": "none",
+          "bearerToken": "",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query ComboGetList($filters: ComboGetListFilterReqDto) {\n  comboGetList(filters: $filters) {\n    id\n    name\n    sku\n    shortDescription\n    description\n    priority\n    status\n    startTime\n    createdAt\n    endTime\n  }\n}",
+        "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  }\n}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"comboGetList\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"comboGetList\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query ComboGetList {\\n  comboGetList {\\n    id\\n    name\\n  }\\n}\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
+      },
+      "createdAt": "2026-08-27T04:11:14.358Z",
+      "updatedAt": "2026-08-27T04:11:14.358Z"
+    },
+    {
+      "id": "83107136-bb7b-479a-843c-dd30c32bc85b",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "04666320-928f-4e1f-b445-7665044efffa",
+      "name": "Batch upsert catalog objects - Category",
+      "request": {
+        "id": "298234bd-a7ad-4a17-a5a8-4cf65c2a7d7f",
+        "savedRequestId": "83107136-bb7b-479a-843c-dd30c32bc85b",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "04666320-928f-4e1f-b445-7665044efffa",
+        "name": "Batch upsert catalog objects - Category",
+        "mode": "REST",
+        "method": "POST",
+        "url": "{{Domain}}/catalog/batch-upsert",
+        "params": [],
+        "headersList": [
+          {
+            "id": "1f979522-1f36-4b2d-ab9a-03a14527448b",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "bc66465e-3cc9-4574-b216-42a71f9d3d02",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "json",
+        "restBody": "{\n  \"idempotency_key\": \"cafe-categories-batch-001\",\n  \"batches\": [\n    {\n      \"objects\": [\n        {\n          \"type\": \"CATEGORY\",\n          \"id\": \"#cat_traditional_coffee\",\n          \"category_data\": {\n            \"name\": \"Cà Phê Truyền Thống\"\n          }\n        },\n        {\n          \"type\": \"CATEGORY\",\n          \"id\": \"#cat_espresso_coffee\",\n          \"category_data\": {\n            \"name\": \"Cà Phê Pha Máy (Espresso)\"\n          }\n        },\n        {\n          \"type\": \"CATEGORY\",\n          \"id\": \"#cat_milktea\",\n          \"category_data\": {\n            \"name\": \"Trà Sữa (Milk Tea)\"\n          }\n        },\n        {\n          \"type\": \"CATEGORY\",\n          \"id\": \"#cat_fruit_tea\",\n          \"category_data\": {\n            \"name\": \"Trà Trái Cây & Trà Đậm Vị\"\n          }\n        },\n        {\n          \"type\": \"CATEGORY\",\n          \"id\": \"#cat_ice_blended\",\n          \"category_data\": {\n            \"name\": \"Đá Xay (Ice Blended)\"\n          }\n        },\n        {\n          \"type\": \"CATEGORY\",\n          \"id\": \"#cat_bakery_snacks\",\n          \"category_data\": {\n            \"name\": \"Bánh Ngọt & Ăn Vặt\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Batch upsert catalog objects\",\"url\":\"{{Domain}}/catalog/batch-upsert\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Square-Version\",\"value\":\"2026-08-19\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"{\\n  \\\"idempotency_key\\\": \\\"cafe-categories-batch-001\\\",\\n  \\\"batches\\\": [\\n    {\\n      \\\"objects\\\": [\\n        {\\n          \\\"type\\\": \\\"CATEGORY\\\",\\n          \\\"id\\\": \\\"#cat_traditional_coffee\\\",\\n          \\\"category_data\\\": {\\n            \\\"name\\\": \\\"Cà Phê Truyền Thống\\\"\\n          }\\n        },\\n        {\\n          \\\"type\\\": \\\"CATEGORY\\\",\\n          \\\"id\\\": \\\"#cat_espresso_coffee\\\",\\n          \\\"category_data\\\": {\\n            \\\"name\\\": \\\"Cà Phê Pha Máy (Espresso)\\\"\\n          }\\n        },\\n        {\\n          \\\"type\\\": \\\"CATEGORY\\\",\\n          \\\"id\\\": \\\"#cat_milktea\\\",\\n          \\\"category_data\\\": {\\n            \\\"name\\\": \\\"Trà Sữa (Milk Tea)\\\"\\n          }\\n        },\\n        {\\n          \\\"type\\\": \\\"CATEGORY\\\",\\n          \\\"id\\\": \\\"#cat_fruit_tea\\\",\\n          \\\"category_data\\\": {\\n            \\\"name\\\": \\\"Trà Trái Cây & Trà Đậm Vị\\\"\\n          }\\n        },\\n        {\\n          \\\"type\\\": \\\"CATEGORY\\\",\\n          \\\"id\\\": \\\"#cat_ice_blended\\\",\\n          \\\"category_data\\\": {\\n            \\\"name\\\": \\\"Đá Xay (Ice Blended)\\\"\\n          }\\n        },\\n        {\\n          \\\"type\\\": \\\"CATEGORY\\\",\\n          \\\"id\\\": \\\"#cat_bakery_snacks\\\",\\n          \\\"category_data\\\": {\\n            \\\"name\\\": \\\"Bánh Ngọt & Ăn Vặt\\\"\\n          }\\n        }\\n      ]\\n    }\\n  ]\\n}\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
+      },
+      "createdAt": "2026-08-28T02:40:26.495Z",
+      "updatedAt": "2026-08-28T02:42:20.535Z"
+    },
+    {
+      "id": "f598d8d6-d565-4193-b531-fa0109617f58",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "04666320-928f-4e1f-b445-7665044efffa",
+      "name": "Batch upsert catalog objects - Unit",
+      "request": {
+        "id": "1e008b5c-f3ab-4002-9dfd-4b9884394681",
+        "savedRequestId": "f598d8d6-d565-4193-b531-fa0109617f58",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "04666320-928f-4e1f-b445-7665044efffa",
+        "name": "Batch upsert catalog objects - Unit",
+        "mode": "REST",
+        "method": "POST",
+        "url": "{{Domain}}/catalog/batch-upsert",
+        "params": [],
+        "headersList": [
+          {
+            "id": "1f979522-1f36-4b2d-ab9a-03a14527448b",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "bc66465e-3cc9-4574-b216-42a71f9d3d02",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "json",
+        "restBody": "{\n  \"idempotency_key\": \"cafe-measurement-units-002\",\n  \"batches\": [\n    {\n      \"objects\": [\n        {\n          \"type\": \"MEASUREMENT_UNIT\",\n          \"id\": \"#unit_milliliter\",\n          \"measurement_unit_data\": {\n            \"measurement_unit\": {\n              \"type\": \"TYPE_VOLUME\",\n              \"volume_unit\": \"METRIC_MILLILITER\"\n            },\n            \"precision\": 0\n          }\n        },\n        {\n          \"type\": \"MEASUREMENT_UNIT\",\n          \"id\": \"#unit_liter\",\n          \"measurement_unit_data\": {\n            \"measurement_unit\": {\n              \"type\": \"TYPE_VOLUME\",\n              \"volume_unit\": \"METRIC_LITER\"\n            },\n            \"precision\": 2\n          }\n        },\n        {\n          \"type\": \"MEASUREMENT_UNIT\",\n          \"id\": \"#unit_shot\",\n          \"measurement_unit_data\": {\n            \"measurement_unit\": {\n              \"type\": \"TYPE_VOLUME\",\n              \"volume_unit\": \"GENERIC_SHOT\"\n            },\n            \"precision\": 0\n          }\n        },\n        {\n          \"type\": \"MEASUREMENT_UNIT\",\n          \"id\": \"#unit_gram\",\n          \"measurement_unit_data\": {\n            \"measurement_unit\": {\n              \"type\": \"TYPE_WEIGHT\",\n              \"weight_unit\": \"METRIC_GRAM\"\n            },\n            \"precision\": 0\n          }\n        },\n        {\n          \"type\": \"MEASUREMENT_UNIT\",\n          \"id\": \"#unit_kilogram\",\n          \"measurement_unit_data\": {\n            \"measurement_unit\": {\n              \"type\": \"TYPE_WEIGHT\",\n              \"weight_unit\": \"METRIC_KILOGRAM\"\n            },\n            \"precision\": 2\n          }\n        }\n      ]\n    }\n  ]\n}",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Batch upsert catalog objects - Unit\",\"url\":\"{{Domain}}/catalog/batch-upsert\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Square-Version\",\"value\":\"2026-08-19\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"{\\n  \\\"idempotency_key\\\": \\\"cafe-measurement-units-001\\\",\\n  \\\"batches\\\": [\\n    {\\n      \\\"objects\\\": [\\n        {\\n          \\\"type\\\": \\\"MEASUREMENT_UNIT\\\",\\n          \\\"id\\\": \\\"#unit_milliliter\\\",\\n          \\\"measurement_unit_data\\\": {\\n            \\\"measurement_unit\\\": {\\n              \\\"type\\\": \\\"TYPE_VOLUME\\\",\\n              \\\"volume_unit\\\": \\\"METRIC_MILLILITER\\\"\\n            },\\n            \\\"precision\\\": 0\\n          }\\n        },\\n        {\\n          \\\"type\\\": \\\"MEASUREMENT_UNIT\\\",\\n          \\\"id\\\": \\\"#unit_liter\\\",\\n          \\\"measurement_unit_data\\\": {\\n            \\\"measurement_unit\\\": {\\n              \\\"type\\\": \\\"TYPE_VOLUME\\\",\\n              \\\"volume_unit\\\": \\\"METRIC_LITER\\\"\\n            },\\n            \\\"precision\\\": 2\\n          }\\n        },\\n        {\\n          \\\"type\\\": \\\"MEASUREMENT_UNIT\\\",\\n          \\\"id\\\": \\\"#unit_shot\\\",\\n          \\\"measurement_unit_data\\\": {\\n            \\\"measurement_unit\\\": {\\n              \\\"type\\\": \\\"TYPE_VOLUME\\\",\\n              \\\"volume_unit\\\": \\\"IMPERIAL_SHOT\\\"\\n            },\\n            \\\"precision\\\": 0\\n          }\\n        },\\n        {\\n          \\\"type\\\": \\\"MEASUREMENT_UNIT\\\",\\n          \\\"id\\\": \\\"#unit_gram\\\",\\n          \\\"measurement_unit_data\\\": {\\n            \\\"measurement_unit\\\": {\\n              \\\"type\\\": \\\"TYPE_WEIGHT\\\",\\n              \\\"weight_unit\\\": \\\"METRIC_GRAM\\\"\\n            },\\n            \\\"precision\\\": 0\\n          }\\n        },\\n        {\\n          \\\"type\\\": \\\"MEASUREMENT_UNIT\\\",\\n          \\\"id\\\": \\\"#unit_kilogram\\\",\\n          \\\"measurement_unit_data\\\": {\\n            \\\"measurement_unit\\\": {\\n              \\\"type\\\": \\\"TYPE_WEIGHT\\\",\\n              \\\"weight_unit\\\": \\\"METRIC_KILOGRAM\\\"\\n            },\\n            \\\"precision\\\": 2\\n          }\\n        }\\n      ]\\n    }\\n  ]\\n}\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
+      },
+      "createdAt": "2026-08-28T02:42:33.162Z",
+      "updatedAt": "2026-08-28T02:43:45.426Z"
+    },
+    {
+      "id": "e542dcad-7a21-4e46-95cd-93f0fafa69cb",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "04666320-928f-4e1f-b445-7665044efffa",
+      "name": "Batch upsert catalog objects - Option",
+      "request": {
+        "id": "5d430267-8caa-4821-91f3-7bc0279fb6dd",
+        "savedRequestId": "e542dcad-7a21-4e46-95cd-93f0fafa69cb",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "04666320-928f-4e1f-b445-7665044efffa",
+        "name": "Batch upsert catalog objects - Option",
+        "mode": "REST",
+        "method": "POST",
+        "url": "{{Domain}}/catalog/batch-upsert",
+        "params": [],
+        "headersList": [
+          {
+            "id": "1f979522-1f36-4b2d-ab9a-03a14527448b",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "bc66465e-3cc9-4574-b216-42a71f9d3d02",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "json",
+        "restBody": "{\n  \"idempotency_key\": \"cafe-item-options-batch-001\",\n  \"batches\": [\n    {\n      \"objects\": [\n        {\n          \"type\": \"ITEM_OPTION\",\n          \"id\": \"#opt_size\",\n          \"item_option_data\": {\n            \"name\": \"Kích cỡ (Size)\",\n            \"display_name\": \"Size\",\n            \"values\": [\n              {\n                \"type\": \"ITEM_OPTION_VAL\",\n                \"id\": \"#optval_size_s\",\n                \"item_option_value_data\": {\n                  \"name\": \"Size S (Nhỏ - 350ml)\",\n                  \"ordinal\": 0\n                }\n              },\n              {\n                \"type\": \"ITEM_OPTION_VAL\",\n                \"id\": \"#optval_size_m\",\n                \"item_option_value_data\": {\n                  \"name\": \"Size M (Vừa - 500ml)\",\n                  \"ordinal\": 1\n                }\n              },\n              {\n                \"type\": \"ITEM_OPTION_VAL\",\n                \"id\": \"#optval_size_l\",\n                \"item_option_value_data\": {\n                  \"name\": \"Size L (Lớn - 700ml)\",\n                  \"ordinal\": 2\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"type\": \"ITEM_OPTION\",\n          \"id\": \"#opt_sweetness\",\n          \"item_option_data\": {\n            \"name\": \"Mức độ ngọt (Đường)\",\n            \"display_name\": \"Đường\",\n            \"values\": [\n              {\n                \"type\": \"ITEM_OPTION_VAL\",\n                \"id\": \"#optval_sugar_100\",\n                \"item_option_value_data\": {\n                  \"name\": \"100% Đường (Chuẩn)\",\n                  \"ordinal\": 0\n                }\n              },\n              {\n                \"type\": \"ITEM_OPTION_VAL\",\n                \"id\": \"#optval_sugar_70\",\n                \"item_option_value_data\": {\n                  \"name\": \"70% Đường\",\n                  \"ordinal\": 1\n                }\n              },\n              {\n                \"type\": \"ITEM_OPTION_VAL\",\n                \"id\": \"#optval_sugar_50\",\n                \"item_option_value_data\": {\n                  \"name\": \"50% Đường\",\n                  \"ordinal\": 2\n                }\n              },\n              {\n                \"type\": \"ITEM_OPTION_VAL\",\n                \"id\": \"#optval_sugar_30\",\n                \"item_option_value_data\": {\n                  \"name\": \"30% Đường\",\n                  \"ordinal\": 3\n                }\n              },\n              {\n                \"type\": \"ITEM_OPTION_VAL\",\n                \"id\": \"#optval_sugar_0\",\n                \"item_option_value_data\": {\n                  \"name\": \"Không đường (0%)\",\n                  \"ordinal\": 4\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"type\": \"ITEM_OPTION\",\n          \"id\": \"#opt_ice\",\n          \"item_option_data\": {\n            \"name\": \"Lượng đá\",\n            \"display_name\": \"Đá\",\n            \"values\": [\n              {\n                \"type\": \"ITEM_OPTION_VAL\",\n                \"id\": \"#optval_ice_100\",\n                \"item_option_value_data\": {\n                  \"name\": \"100% Đá (Chuẩn)\",\n                  \"ordinal\": 0\n                }\n              },\n              {\n                \"type\": \"ITEM_OPTION_VAL\",\n                \"id\": \"#optval_ice_50\",\n                \"item_option_value_data\": {\n                  \"name\": \"50% Đá\",\n                  \"ordinal\": 1\n                }\n              },\n              {\n                \"type\": \"ITEM_OPTION_VAL\",\n                \"id\": \"#optval_ice_0\",\n                \"item_option_value_data\": {\n                  \"name\": \"Không đá / Để riêng\",\n                  \"ordinal\": 2\n                }\n              },\n              {\n                \"type\": \"ITEM_OPTION_VAL\",\n                \"id\": \"#optval_hot\",\n                \"item_option_value_data\": {\n                  \"name\": \"Uống Nóng\",\n                  \"ordinal\": 3\n                }\n              }\n            ]\n          }\n        }\n      ]\n    }\n  ]\n}",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Batch upsert catalog objects - Unit Copy\",\"url\":\"{{Domain}}/catalog/batch-upsert\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Square-Version\",\"value\":\"2026-08-19\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"{\\n  \\\"idempotency_key\\\": \\\"cafe-measurement-units-002\\\",\\n  \\\"batches\\\": [\\n    {\\n      \\\"objects\\\": [\\n        {\\n          \\\"type\\\": \\\"MEASUREMENT_UNIT\\\",\\n          \\\"id\\\": \\\"#unit_milliliter\\\",\\n          \\\"measurement_unit_data\\\": {\\n            \\\"measurement_unit\\\": {\\n              \\\"type\\\": \\\"TYPE_VOLUME\\\",\\n              \\\"volume_unit\\\": \\\"METRIC_MILLILITER\\\"\\n            },\\n            \\\"precision\\\": 0\\n          }\\n        },\\n        {\\n          \\\"type\\\": \\\"MEASUREMENT_UNIT\\\",\\n          \\\"id\\\": \\\"#unit_liter\\\",\\n          \\\"measurement_unit_data\\\": {\\n            \\\"measurement_unit\\\": {\\n              \\\"type\\\": \\\"TYPE_VOLUME\\\",\\n              \\\"volume_unit\\\": \\\"METRIC_LITER\\\"\\n            },\\n            \\\"precision\\\": 2\\n          }\\n        },\\n        {\\n          \\\"type\\\": \\\"MEASUREMENT_UNIT\\\",\\n          \\\"id\\\": \\\"#unit_shot\\\",\\n          \\\"measurement_unit_data\\\": {\\n            \\\"measurement_unit\\\": {\\n              \\\"type\\\": \\\"TYPE_VOLUME\\\",\\n              \\\"volume_unit\\\": \\\"GENERIC_SHOT\\\"\\n            },\\n            \\\"precision\\\": 0\\n          }\\n        },\\n        {\\n          \\\"type\\\": \\\"MEASUREMENT_UNIT\\\",\\n          \\\"id\\\": \\\"#unit_gram\\\",\\n          \\\"measurement_unit_data\\\": {\\n            \\\"measurement_unit\\\": {\\n              \\\"type\\\": \\\"TYPE_WEIGHT\\\",\\n              \\\"weight_unit\\\": \\\"METRIC_GRAM\\\"\\n            },\\n            \\\"precision\\\": 0\\n          }\\n        },\\n        {\\n          \\\"type\\\": \\\"MEASUREMENT_UNIT\\\",\\n          \\\"id\\\": \\\"#unit_kilogram\\\",\\n          \\\"measurement_unit_data\\\": {\\n            \\\"measurement_unit\\\": {\\n              \\\"type\\\": \\\"TYPE_WEIGHT\\\",\\n              \\\"weight_unit\\\": \\\"METRIC_KILOGRAM\\\"\\n            },\\n            \\\"precision\\\": 2\\n          }\\n        }\\n      ]\\n    }\\n  ]\\n}\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
+      },
+      "createdAt": "2026-08-28T02:45:21.584Z",
+      "updatedAt": "2026-08-28T02:45:21.584Z"
+    },
+    {
+      "id": "fbae5a17-d91d-4db8-a4de-9bfd65a4f80e",
+      "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+      "folderId": "04666320-928f-4e1f-b445-7665044efffa",
+      "name": "Batch upsert catalog objects - Modifier - Item",
+      "request": {
+        "id": "adc1a166-6cd2-448c-9c7a-ee2d101b4b60",
+        "savedRequestId": "fbae5a17-d91d-4db8-a4de-9bfd65a4f80e",
+        "collectionId": "a5c465a8-fdcf-4792-ab34-20d476ba7cf2",
+        "folderId": "04666320-928f-4e1f-b445-7665044efffa",
+        "name": "Batch upsert catalog objects - Modifier - Item",
+        "mode": "REST",
+        "method": "POST",
+        "url": "{{Domain}}/catalog/batch-upsert",
+        "params": [],
+        "headersList": [
+          {
+            "id": "1f979522-1f36-4b2d-ab9a-03a14527448b",
+            "key": "Square-Version",
+            "value": "2026-08-19",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "bc66465e-3cc9-4574-b216-42a71f9d3d02",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "json",
+        "restBody": "{\n  \"idempotency_key\": \"cafe-menu-full-batch-usd-001\",\n  \"batches\": [\n    {\n      \"objects\": [\n        {\n          \"type\": \"MODIFIER_LIST\",\n          \"id\": \"#modlist_coffee_options\",\n          \"modifier_list_data\": {\n            \"name\": \"Tùy chọn Cà phê (Extra)\",\n            \"selection_type\": \"MULTIPLE\",\n            \"modifiers\": [\n              {\n                \"type\": \"MODIFIER\",\n                \"id\": \"#mod_extra_shot\",\n                \"modifier_data\": {\n                  \"name\": \"Thêm 1 Shot Espresso\",\n                  \"price_money\": { \"amount\": 50, \"currency\": \"USD\" }\n                }\n              },\n              {\n                \"type\": \"MODIFIER\",\n                \"id\": \"#mod_oat_milk\",\n                \"modifier_data\": {\n                  \"name\": \"Đổi Sữa Yến Mạch (Oat Milk)\",\n                  \"price_money\": { \"amount\": 75, \"currency\": \"USD\" }\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"type\": \"MODIFIER_LIST\",\n          \"id\": \"#modlist_toppings\",\n          \"modifier_list_data\": {\n            \"name\": \"Topping Trà & Trà Sữa\",\n            \"selection_type\": \"MULTIPLE\",\n            \"modifiers\": [\n              {\n                \"type\": \"MODIFIER\",\n                \"id\": \"#mod_black_pearl\",\n                \"modifier_data\": {\n                  \"name\": \"Trân châu hoàng kim\",\n                  \"price_money\": { \"amount\": 50, \"currency\": \"USD\" }\n                }\n              },\n              {\n                \"type\": \"MODIFIER\",\n                \"id\": \"#mod_cheese_foam\",\n                \"modifier_data\": {\n                  \"name\": \"Kem Phô Mai (Cheese Foam)\",\n                  \"price_money\": { \"amount\": 75, \"currency\": \"USD\" }\n                }\n              },\n              {\n                \"type\": \"MODIFIER\",\n                \"id\": \"#mod_aloe_vera\",\n                \"modifier_data\": {\n                  \"name\": \"Thạch nha đam\",\n                  \"price_money\": { \"amount\": 50, \"currency\": \"USD\" }\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"type\": \"ITEM\",\n          \"id\": \"#item_bac_xiu\",\n          \"item_data\": {\n            \"name\": \"Bạc Xỉu Sài Gòn\",\n            \"description\": \"Cà phê sữa nhiều sữa ngọt ngào, thơm béo đậm đà chuẩn vị truyền thống\",\n            \"modifier_list_info\": [\n              { \"modifier_list_id\": \"#modlist_coffee_options\" }\n            ],\n            \"variations\": [\n              {\n                \"type\": \"ITEM_VARIATION\",\n                \"id\": \"#var_bacxiu_m\",\n                \"item_variation_data\": {\n                  \"name\": \"Size M (500ml)\",\n                  \"sku\": \"CF-BX-M\",\n                  \"pricing_type\": \"FIXED_PRICING\",\n                  \"price_money\": { \"amount\": 350, \"currency\": \"USD\" }\n                }\n              },\n              {\n                \"type\": \"ITEM_VARIATION\",\n                \"id\": \"#var_bacxiu_l\",\n                \"item_variation_data\": {\n                  \"name\": \"Size L (700ml)\",\n                  \"sku\": \"CF-BX-L\",\n                  \"pricing_type\": \"FIXED_PRICING\",\n                  \"price_money\": { \"amount\": 420, \"currency\": \"USD\" }\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"type\": \"ITEM\",\n          \"id\": \"#item_matcha_latte\",\n          \"item_data\": {\n            \"name\": \"Matcha Latte Nhật Bản\",\n            \"description\": \"Bột trà xanh Uji kết hợp sữa tươi nguyên kem béo ngậy\",\n            \"modifier_list_info\": [\n              { \"modifier_list_id\": \"#modlist_toppings\" }\n            ],\n            \"variations\": [\n              {\n                \"type\": \"ITEM_VARIATION\",\n                \"id\": \"#var_matcha_m\",\n                \"item_variation_data\": {\n                  \"name\": \"Size M (500ml)\",\n                  \"sku\": \"TEA-MAT-M\",\n                  \"pricing_type\": \"FIXED_PRICING\",\n                  \"price_money\": { \"amount\": 450, \"currency\": \"USD\" }\n                }\n              },\n              {\n                \"type\": \"ITEM_VARIATION\",\n                \"id\": \"#var_matcha_l\",\n                \"item_variation_data\": {\n                  \"name\": \"Size L (700ml)\",\n                  \"sku\": \"TEA-MAT-L\",\n                  \"pricing_type\": \"FIXED_PRICING\",\n                  \"price_money\": { \"amount\": 550, \"currency\": \"USD\" }\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"type\": \"ITEM\",\n          \"id\": \"#item_oolong_tea\",\n          \"item_data\": {\n            \"name\": \"Trà Ô Long Mãng Cầu Đậm Vị\",\n            \"description\": \"Cốt trà ô long thượng hạng kết hợp thịt mãng cầu tươi chua ngọt\",\n            \"modifier_list_info\": [\n              { \"modifier_list_id\": \"#modlist_toppings\" }\n            ],\n            \"variations\": [\n              {\n                \"type\": \"ITEM_VARIATION\",\n                \"id\": \"#var_oolong_m\",\n                \"item_variation_data\": {\n                  \"name\": \"Size M (500ml)\",\n                  \"sku\": \"TEA-OL-M\",\n                  \"pricing_type\": \"FIXED_PRICING\",\n                  \"price_money\": { \"amount\": 400, \"currency\": \"USD\" }\n                }\n              },\n              {\n                \"type\": \"ITEM_VARIATION\",\n                \"id\": \"#var_oolong_l\",\n                \"item_variation_data\": {\n                  \"name\": \"Size L (700ml)\",\n                  \"sku\": \"TEA-OL-L\",\n                  \"pricing_type\": \"FIXED_PRICING\",\n                  \"price_money\": { \"amount\": 480, \"currency\": \"USD\" }\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"type\": \"ITEM\",\n          \"id\": \"#item_croissant\",\n          \"item_data\": {\n            \"name\": \"Bánh Sừng Bò Bơ Pháp (Croissant)\",\n            \"description\": \"Bánh nướng ngàn lớp bơ giòn rụm bên ngoài, mềm xốp bên trong\",\n            \"variations\": [\n              {\n                \"type\": \"ITEM_VARIATION\",\n                \"id\": \"#var_croissant_default\",\n                \"item_variation_data\": {\n                  \"name\": \"Tiêu chuẩn (1 chiếc)\",\n                  \"sku\": \"BAK-CR-01\",\n                  \"pricing_type\": \"FIXED_PRICING\",\n                  \"price_money\": { \"amount\": 300, \"currency\": \"USD\" }\n                }\n              }\n            ]\n          }\n        }\n      ]\n    }\n  ]\n}",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Batch upsert catalog objects - Modifier - Item\",\"url\":\"{{Domain}}/catalog/batch-upsert\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Square-Version\",\"value\":\"2026-08-19\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"curl --location --request POST 'https://connect.squareupsandbox.com/v2/catalog/batch-upsert' \\\\\\n  --header 'Content-Type: application/json' \\\\\\n  --header 'Authorization: Bearer EAAAl3FywnIbTOAqDynTVSM7tGwYo2KsYjDGEHRTEzp_-NG08WxfD26-2CcE4AcT' \\\\\\n  --header 'Square-Version: 2026-08-19' \\\\\\n  --data '{\\n  \\\"idempotency_key\\\": \\\"cafe-menu-full-batch-usd-001\\\",\\n  \\\"batches\\\": [\\n    {\\n      \\\"objects\\\": [\\n        {\\n          \\\"type\\\": \\\"MODIFIER_LIST\\\",\\n          \\\"id\\\": \\\"#modlist_coffee_options\\\",\\n          \\\"modifier_list_data\\\": {\\n            \\\"name\\\": \\\"Tùy chọn Cà phê (Extra)\\\",\\n            \\\"selection_type\\\": \\\"MULTIPLE\\\",\\n            \\\"modifiers\\\": [\\n              {\\n                \\\"type\\\": \\\"MODIFIER\\\",\\n                \\\"id\\\": \\\"#mod_extra_shot\\\",\\n                \\\"modifier_data\\\": {\\n                  \\\"name\\\": \\\"Thêm 1 Shot Espresso\\\",\\n                  \\\"price_money\\\": { \\\"amount\\\": 50, \\\"currency\\\": \\\"USD\\\" }\\n                }\\n              },\\n              {\\n                \\\"type\\\": \\\"MODIFIER\\\",\\n                \\\"id\\\": \\\"#mod_oat_milk\\\",\\n                \\\"modifier_data\\\": {\\n                  \\\"name\\\": \\\"Đổi Sữa Yến Mạch (Oat Milk)\\\",\\n                  \\\"price_money\\\": { \\\"amount\\\": 75, \\\"currency\\\": \\\"USD\\\" }\\n                }\\n              }\\n            ]\\n          }\\n        },\\n        {\\n          \\\"type\\\": \\\"MODIFIER_LIST\\\",\\n          \\\"id\\\": \\\"#modlist_toppings\\\",\\n          \\\"modifier_list_data\\\": {\\n            \\\"name\\\": \\\"Topping Trà & Trà Sữa\\\",\\n            \\\"selection_type\\\": \\\"MULTIPLE\\\",\\n            \\\"modifiers\\\": [\\n              {\\n                \\\"type\\\": \\\"MODIFIER\\\",\\n                \\\"id\\\": \\\"#mod_black_pearl\\\",\\n                \\\"modifier_data\\\": {\\n                  \\\"name\\\": \\\"Trân châu hoàng kim\\\",\\n                  \\\"price_money\\\": { \\\"amount\\\": 50, \\\"currency\\\": \\\"USD\\\" }\\n                }\\n              },\\n              {\\n                \\\"type\\\": \\\"MODIFIER\\\",\\n                \\\"id\\\": \\\"#mod_cheese_foam\\\",\\n                \\\"modifier_data\\\": {\\n                  \\\"name\\\": \\\"Kem Phô Mai (Cheese Foam)\\\",\\n                  \\\"price_money\\\": { \\\"amount\\\": 75, \\\"currency\\\": \\\"USD\\\" }\\n                }\\n              },\\n              {\\n                \\\"type\\\": \\\"MODIFIER\\\",\\n                \\\"id\\\": \\\"#mod_aloe_vera\\\",\\n                \\\"modifier_data\\\": {\\n                  \\\"name\\\": \\\"Thạch nha đam\\\",\\n                  \\\"price_money\\\": { \\\"amount\\\": 50, \\\"currency\\\": \\\"USD\\\" }\\n                }\\n              }\\n            ]\\n          }\\n        },\\n        {\\n          \\\"type\\\": \\\"ITEM\\\",\\n          \\\"id\\\": \\\"#item_bac_xiu\\\",\\n          \\\"item_data\\\": {\\n            \\\"name\\\": \\\"Bạc Xỉu Sài Gòn\\\",\\n            \\\"description\\\": \\\"Cà phê sữa nhiều sữa ngọt ngào, thơm béo đậm đà chuẩn vị truyền thống\\\",\\n            \\\"modifier_list_info\\\": [\\n              { \\\"modifier_list_id\\\": \\\"#modlist_coffee_options\\\" }\\n            ],\\n            \\\"variations\\\": [\\n              {\\n                \\\"type\\\": \\\"ITEM_VARIATION\\\",\\n                \\\"id\\\": \\\"#var_bacxiu_m\\\",\\n                \\\"item_variation_data\\\": {\\n                  \\\"name\\\": \\\"Size M (500ml)\\\",\\n                  \\\"sku\\\": \\\"CF-BX-M\\\",\\n                  \\\"pricing_type\\\": \\\"FIXED_PRICING\\\",\\n                  \\\"price_money\\\": { \\\"amount\\\": 350, \\\"currency\\\": \\\"USD\\\" }\\n                }\\n              },\\n              {\\n                \\\"type\\\": \\\"ITEM_VARIATION\\\",\\n                \\\"id\\\": \\\"#var_bacxiu_l\\\",\\n                \\\"item_variation_data\\\": {\\n                  \\\"name\\\": \\\"Size L (700ml)\\\",\\n                  \\\"sku\\\": \\\"CF-BX-L\\\",\\n                  \\\"pricing_type\\\": \\\"FIXED_PRICING\\\",\\n                  \\\"price_money\\\": { \\\"amount\\\": 420, \\\"currency\\\": \\\"USD\\\" }\\n                }\\n              }\\n            ]\\n          }\\n        },\\n        {\\n          \\\"type\\\": \\\"ITEM\\\",\\n          \\\"id\\\": \\\"#item_matcha_latte\\\",\\n          \\\"item_data\\\": {\\n            \\\"name\\\": \\\"Matcha Latte Nhật Bản\\\",\\n            \\\"description\\\": \\\"Bột trà xanh Uji kết hợp sữa tươi nguyên kem béo ngậy\\\",\\n            \\\"modifier_list_info\\\": [\\n              { \\\"modifier_list_id\\\": \\\"#modlist_toppings\\\" }\\n            ],\\n            \\\"variations\\\": [\\n              {\\n                \\\"type\\\": \\\"ITEM_VARIATION\\\",\\n                \\\"id\\\": \\\"#var_matcha_m\\\",\\n                \\\"item_variation_data\\\": {\\n                  \\\"name\\\": \\\"Size M (500ml)\\\",\\n                  \\\"sku\\\": \\\"TEA-MAT-M\\\",\\n                  \\\"pricing_type\\\": \\\"FIXED_PRICING\\\",\\n                  \\\"price_money\\\": { \\\"amount\\\": 450, \\\"currency\\\": \\\"USD\\\" }\\n                }\\n              },\\n              {\\n                \\\"type\\\": \\\"ITEM_VARIATION\\\",\\n                \\\"id\\\": \\\"#var_matcha_l\\\",\\n                \\\"item_variation_data\\\": {\\n                  \\\"name\\\": \\\"Size L (700ml)\\\",\\n                  \\\"sku\\\": \\\"TEA-MAT-L\\\",\\n                  \\\"pricing_type\\\": \\\"FIXED_PRICING\\\",\\n                  \\\"price_money\\\": { \\\"amount\\\": 550, \\\"currency\\\": \\\"USD\\\" }\\n                }\\n              }\\n            ]\\n          }\\n        },\\n        {\\n          \\\"type\\\": \\\"ITEM\\\",\\n          \\\"id\\\": \\\"#item_oolong_tea\\\",\\n          \\\"item_data\\\": {\\n            \\\"name\\\": \\\"Trà Ô Long Mãng Cầu Đậm Vị\\\",\\n            \\\"description\\\": \\\"Cốt trà ô long thượng hạng kết hợp thịt mãng cầu tươi chua ngọt\\\",\\n            \\\"modifier_list_info\\\": [\\n              { \\\"modifier_list_id\\\": \\\"#modlist_toppings\\\" }\\n            ],\\n            \\\"variations\\\": [\\n              {\\n                \\\"type\\\": \\\"ITEM_VARIATION\\\",\\n                \\\"id\\\": \\\"#var_oolong_m\\\",\\n                \\\"item_variation_data\\\": {\\n                  \\\"name\\\": \\\"Size M (500ml)\\\",\\n                  \\\"sku\\\": \\\"TEA-OL-M\\\",\\n                  \\\"pricing_type\\\": \\\"FIXED_PRICING\\\",\\n                  \\\"price_money\\\": { \\\"amount\\\": 400, \\\"currency\\\": \\\"USD\\\" }\\n                }\\n              },\\n              {\\n                \\\"type\\\": \\\"ITEM_VARIATION\\\",\\n                \\\"id\\\": \\\"#var_oolong_l\\\",\\n                \\\"item_variation_data\\\": {\\n                  \\\"name\\\": \\\"Size L (700ml)\\\",\\n                  \\\"sku\\\": \\\"TEA-OL-L\\\",\\n                  \\\"pricing_type\\\": \\\"FIXED_PRICING\\\",\\n                  \\\"price_money\\\": { \\\"amount\\\": 480, \\\"currency\\\": \\\"USD\\\" }\\n                }\\n              }\\n            ]\\n          }\\n        },\\n        {\\n          \\\"type\\\": \\\"ITEM\\\",\\n          \\\"id\\\": \\\"#item_croissant\\\",\\n          \\\"item_data\\\": {\\n            \\\"name\\\": \\\"Bánh Sừng Bò Bơ Pháp (Croissant)\\\",\\n            \\\"description\\\": \\\"Bánh nướng ngàn lớp bơ giòn rụm bên ngoài, mềm xốp bên trong\\\",\\n            \\\"variations\\\": [\\n              {\\n                \\\"type\\\": \\\"ITEM_VARIATION\\\",\\n                \\\"id\\\": \\\"#var_croissant_default\\\",\\n                \\\"item_variation_data\\\": {\\n                  \\\"name\\\": \\\"Tiêu chuẩn (1 chiếc)\\\",\\n                  \\\"sku\\\": \\\"BAK-CR-01\\\",\\n                  \\\"pricing_type\\\": \\\"FIXED_PRICING\\\",\\n                  \\\"price_money\\\": { \\\"amount\\\": 300, \\\"currency\\\": \\\"USD\\\" }\\n                }\\n              }\\n            ]\\n          }\\n        }\\n      ]\\n    }\\n  ]\\n}'\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
+      },
+      "createdAt": "2026-08-28T02:49:11.664Z",
+      "updatedAt": "2026-08-28T02:52:36.118Z"
     }
   ],
-  "expandedCollectionIds": [
-    "925ff10c-6428-4f56-b1e6-bd84786a0fb2"
-  ],
+  "expandedCollectionIds": [],
   "expandedFolderIds": [
     "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8",
-    "72d3d982-0101-4ffa-9672-a04ee8a5798d",
     "58f397c3-0b7c-47ec-a41e-7a4f0a9e859b",
-    "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
     "3eba61de-7e93-497e-ab02-0daac97727ae",
     "3d6946a8-8c7c-47e7-9a5d-c14772c1a9b3",
     "1ab43b4b-9819-4feb-9633-716b7bdf4ccc",
-    "ab934993-9c72-4386-bd8e-3e72044f3301"
+    "ab934993-9c72-4386-bd8e-3e72044f3301",
+    "bd12c7b5-951b-4a20-99e9-a8f9be185e3b",
+    "d140f597-5214-433b-b121-c1abb5204f83",
+    "3f45ac07-3a2d-4224-b42c-5213bf304968",
+    "04666320-928f-4e1f-b445-7665044efffa",
+    "a9abb7ec-7230-461e-90e6-91477704638c"
   ]
 }

@@ -29,6 +29,9 @@ interface MainPanelProps {
   onSelectTab: (id: string) => void
   onDuplicateTab: (tab: RequestItem) => void
   onCloseTab: (id: string) => void
+  onCloseOthers: (id: string) => void
+  onCloseToRight: (id: string) => void
+  onCloseAll: () => void
   onAddTab: (mode: Mode) => void
   onUpdateActiveTab: (patch: Partial<RequestItem>) => void
   onSend: () => Promise<void>
@@ -66,6 +69,9 @@ export function MainPanel({
   onSelectTab,
   onDuplicateTab,
   onCloseTab,
+  onCloseOthers,
+  onCloseToRight,
+  onCloseAll,
   onAddTab,
   onUpdateActiveTab,
   onImportCurl,
@@ -97,6 +103,9 @@ export function MainPanel({
         onSelectTab={onSelectTab}
         onDuplicateTab={onDuplicateTab}
         onCloseTab={onCloseTab}
+        onCloseOthers={onCloseOthers}
+        onCloseToRight={onCloseToRight}
+        onCloseAll={onCloseAll}
         onAddTab={onAddTab}
       />
 

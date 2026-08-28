@@ -548,6 +548,79 @@
 }
 
 /* ==========================================================================
+   TAB CONTEXT MENU (VS Code Style)
+   ========================================================================== */
+
+.tab-context-menu {
+  position: fixed;
+  min-width: 190px;
+  background: #181a26;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.7), 0 4px 12px -2px rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+  padding: 4px;
+  animation: fade-in 0.1s ease;
+  user-select: none;
+}
+
+.tab-context-menu-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: 0;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.1s ease, color 0.1s ease;
+}
+
+.tab-context-menu-item:hover:not(:disabled) {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.tab-context-menu-item:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.tab-context-menu-item-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tab-context-shortcut {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  padding: 1px 4px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.tab-context-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 3px 2px;
+}
+
+.tab-context-menu-danger:hover:not(:disabled) {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+/* ==========================================================================
    SEGMENTED CONTROLS & SUB-TABS
    ========================================================================== */
 

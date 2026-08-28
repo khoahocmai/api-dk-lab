@@ -114,6 +114,9 @@ function App() {
   })
   const [saveRequestModalOpen, setSaveRequestModalOpen] = useState(false)
   const [pendingCloseTab, setPendingCloseTab] = useState<RequestItem | null>(null)
+  const [closeQueue, setCloseQueue] = useState<RequestItem[]>([])
+  const [batchPostCloseActiveId, setBatchPostCloseActiveId] = useState<string | null>(null)
+  const [isSaveModalFromClose, setIsSaveModalFromClose] = useState(false)
   const [settingsModalOpen, setSettingsModalOpen] = useState(false)
   const [codeSnippetModalOpen, setCodeSnippetModalOpen] = useState(false)
   const [toast, setToast] = useState<ToastData | null>(null)
@@ -461,7 +464,7 @@ function App() {
     setMobileView('REQUEST')
   }
 
-  const closeTab = (tabId: string) => {
+  const closeTab = (tabId: string, customNextActiveId?: string | null) => {
     const currentIndex = tabs.findIndex((item) => item.id === tabId)
     const nextTabs = tabs.filter((item) => item.id !== tabId)
 
@@ -474,7 +477,19 @@ function App() {
       return
     }
 
-    if (activeTabId === tabId) {
+    if (customNextActiveId !== undefined) {
+      if (customNextActiveId && nextTabs.some((t) => t.id === customNextActiveId)) {
+        setActiveTabId(customNextActiveId)
+        const targetTab = nextTabs.find((t) => t.id === customNextActiveId)
+        if (targetTab && targetTab.mode !== 'GRAPHQL') {
+          setSelectedGraphFieldKeys([])
+          setHighlightedField(null)
+          setGraphExplorer((prev) => ({ ...prev, search: '' }))
+        }
+      } else if (customNextActiveId === '') {
+        setActiveTabId('')
+      }
+    } else if (activeTabId === tabId) {
       const nextTab = nextTabs[Math.max(0, currentIndex - 1)] || nextTabs[0]
       setActiveTabId(nextTab.id)
       if (nextTab.mode !== 'GRAPHQL') {
@@ -485,21 +500,133 @@ function App() {
     }
   }
 
+  const advanceCloseQueue = (closedTabId: string) => {
+    const nextQueue = closeQueue.filter((t) => t.id !== closedTabId)
+    if (nextQueue.length > 0) {
+      const nextTab = nextQueue[0]
+      closeTab(closedTabId, nextTab.id)
+      setPendingCloseTab(nextTab)
+      setCloseQueue(nextQueue.slice(1))
+      setActiveTabId(nextTab.id)
+    } else {
+      closeTab(closedTabId, batchPostCloseActiveId)
+      setPendingCloseTab(null)
+      setCloseQueue([])
+      setBatchPostCloseActiveId(null)
+      setIsSaveModalFromClose(false)
+    }
+  }
+
   const handleRequestCloseTab = (tabId: string) => {
     const target = tabs.find((t) => t.id === tabId)
     if (!target) return
 
     if (isTabDirty(target)) {
+      setBatchPostCloseActiveId(null)
+      setCloseQueue([])
       setPendingCloseTab(target)
+      setActiveTabId(target.id)
     } else {
       closeTab(tabId)
     }
   }
 
+  const handleCloseOthers = (tabId: string) => {
+    const targetTab = tabs.find((t) => t.id === tabId)
+    if (!targetTab) return
+
+    const candidateTabs = tabs.filter((t) => t.id !== tabId)
+    if (candidateTabs.length === 0) return
+
+    const cleanTabs = candidateTabs.filter((t) => !isTabDirty(t))
+    const dirtyTabs = candidateTabs.filter((t) => isTabDirty(t))
+
+    if (dirtyTabs.length === 0) {
+      setTabs([targetTab])
+      setActiveTabId(targetTab.id)
+      if (targetTab.mode !== 'GRAPHQL') {
+        setSelectedGraphFieldKeys([])
+        setHighlightedField(null)
+        setGraphExplorer((prev) => ({ ...prev, search: '' }))
+      }
+      return
+    }
+
+    // Clean tabs close immediately
+    const remainingTabs = tabs.filter((t) => !cleanTabs.some((c) => c.id === t.id))
+    setTabs(remainingTabs)
+
+    setBatchPostCloseActiveId(targetTab.id)
+    setPendingCloseTab(dirtyTabs[0])
+    setCloseQueue(dirtyTabs.slice(1))
+    setActiveTabId(dirtyTabs[0].id)
+  }
+
+  const handleCloseToRight = (tabId: string) => {
+    const targetIndex = tabs.findIndex((t) => t.id === tabId)
+    if (targetIndex === -1 || targetIndex >= tabs.length - 1) return
+
+    const candidateTabs = tabs.slice(targetIndex + 1)
+    if (candidateTabs.length === 0) return
+
+    const cleanTabs = candidateTabs.filter((t) => !isTabDirty(t))
+    const dirtyTabs = candidateTabs.filter((t) => isTabDirty(t))
+
+    const activeIsClosing = candidateTabs.some((t) => t.id === activeTabId)
+    const targetActive = activeIsClosing ? tabId : activeTabId
+
+    if (dirtyTabs.length === 0) {
+      const nextTabs = tabs.slice(0, targetIndex + 1)
+      setTabs(nextTabs)
+      if (activeIsClosing) {
+        setActiveTabId(tabId)
+        const targetTab = tabs[targetIndex]
+        if (targetTab && targetTab.mode !== 'GRAPHQL') {
+          setSelectedGraphFieldKeys([])
+          setHighlightedField(null)
+          setGraphExplorer((prev) => ({ ...prev, search: '' }))
+        }
+      }
+      return
+    }
+
+    const remainingTabs = tabs.filter((t) => !cleanTabs.some((c) => c.id === t.id))
+    setTabs(remainingTabs)
+
+    setBatchPostCloseActiveId(targetActive)
+    setPendingCloseTab(dirtyTabs[0])
+    setCloseQueue(dirtyTabs.slice(1))
+    setActiveTabId(dirtyTabs[0].id)
+  }
+
+  const handleCloseAll = () => {
+    if (tabs.length === 0) return
+
+    const cleanTabs = tabs.filter((t) => !isTabDirty(t))
+    const dirtyTabs = tabs.filter((t) => isTabDirty(t))
+
+    if (dirtyTabs.length === 0) {
+      setTabs([])
+      setActiveTabId('')
+      setSelectedGraphFieldKeys([])
+      setHighlightedField(null)
+      setGraphExplorer((prev) => ({ ...prev, search: '' }))
+      return
+    }
+
+    const remainingTabs = tabs.filter((t) => !cleanTabs.some((c) => c.id === t.id))
+    setTabs(remainingTabs)
+
+    setBatchPostCloseActiveId('')
+    setPendingCloseTab(dirtyTabs[0])
+    setCloseQueue(dirtyTabs.slice(1))
+    setActiveTabId(dirtyTabs[0].id)
+  }
+
   const handleConfirmSaveAndClose = () => {
     if (!pendingCloseTab) return
 
-    // If tab is linked to collection: save directly and close
+    // If tab is linked to collection: save directly and advance queue
     if (
       pendingCloseTab.savedRequestId &&
       savedRequests.some((r) => r.id === pendingCloseTab.savedRequestId)
@@ -517,26 +644,29 @@ function App() {
             : item,
         ),
       )
-      closeTab(pendingCloseTab.id)
-      setPendingCloseTab(null)
+      const idToClose = pendingCloseTab.id
       showToast('Request saved successfully')
+      advanceCloseQueue(idToClose)
       return
     }
 
     // Unsaved request: focus it, close unsaved modal and open Save Request modal
     setActiveTabId(pendingCloseTab.id)
-    setPendingCloseTab(null)
+    setIsSaveModalFromClose(true)
     setSaveRequestModalOpen(true)
   }
 
   const handleDiscardAndClose = () => {
     if (!pendingCloseTab) return
-    closeTab(pendingCloseTab.id)
-    setPendingCloseTab(null)
+    const idToClose = pendingCloseTab.id
+    advanceCloseQueue(idToClose)
   }
 
   const handleCancelClose = () => {
     setPendingCloseTab(null)
+    setCloseQueue([])
+    setBatchPostCloseActiveId(null)
+    setIsSaveModalFromClose(false)
   }
 
   const duplicateTab = (source?: RequestItem) => {
@@ -623,20 +753,6 @@ function App() {
     }
 
     setSavedRequests((current) => [...current, newSavedRequest])
-    setTabs((current) =>
-      current.map((item) =>
-        item.id === activeTab.id
-          ? {
-              ...item,
-              name: targetName,
-              savedRequestId: newSavedId,
-              collectionId: targetCollectionId,
-              folderId: targetFolderId,
-              savedSnapshot: newSnapshot,
-            }
-          : item,
-      ),
-    )
 
     if (!expandedCollectionIds.includes(targetCollectionId)) {
       setExpandedCollectionIds((current) => [...current, targetCollectionId])
@@ -647,6 +763,37 @@ function App() {
 
     setSaveRequestModalOpen(false)
     showToast('Request saved successfully')
+
+    if (isSaveModalFromClose && pendingCloseTab) {
+      const idToClose = pendingCloseTab.id
+      setIsSaveModalFromClose(false)
+      advanceCloseQueue(idToClose)
+    } else {
+      setTabs((current) =>
+        current.map((item) =>
+          item.id === activeTab.id
+            ? {
+                ...item,
+                name: targetName,
+                savedRequestId: newSavedId,
+                collectionId: targetCollectionId,
+                folderId: targetFolderId,
+                savedSnapshot: newSnapshot,
+              }
+            : item,
+        ),
+      )
+    }
+  }
+
+  const handleCancelSaveRequest = () => {
+    setSaveRequestModalOpen(false)
+    if (isSaveModalFromClose) {
+      setIsSaveModalFromClose(false)
+      setPendingCloseTab(null)
+      setCloseQueue([])
+      setBatchPostCloseActiveId(null)
+    }
   }
 
   const openSavedRequest = (saved: SavedRequestItem) => {
@@ -1972,6 +2119,9 @@ function App() {
             onSelectTab={setActiveTabId}
             onDuplicateTab={duplicateTab}
             onCloseTab={handleRequestCloseTab}
+            onCloseOthers={handleCloseOthers}
+            onCloseToRight={handleCloseToRight}
+            onCloseAll={handleCloseAll}
             onAddTab={addTab}
             onUpdateActiveTab={updateActiveTab}
             onSend={handleSend}
@@ -2169,7 +2319,7 @@ function App() {
       {activeTab && (
         <SaveRequestModal
           isOpen={saveRequestModalOpen}
-          onClose={() => setSaveRequestModalOpen(false)}
+          onClose={handleCancelSaveRequest}
           initialName={activeTab.name}
           collections={collections}
           folders={folders}
