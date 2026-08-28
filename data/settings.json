@@ -5,10 +5,58 @@
     "editorFontSize": 13
   },
   "activeEnvironmentId": "0de3bdf9-0a91-4ba5-bcc5-05744f2d55c4",
-  "activeTabId": "3b10027f-f44a-4fe4-bab7-e0888bee16d8",
+  "activeTabId": "b036754c-ae19-4c14-93c7-618321cd0393",
   "tabs": [
     {
-      "id": "383a7b50-b31b-452a-b8f3-c9a9326799d9",
+      "id": "9baa2dbe-de4d-4572-bc6e-1d4db6019d14",
+      "savedRequestId": "00161a44-eaf9-459f-8a89-39ad56096f22",
+      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "folderId": "ba2a9480-7e48-42a2-986c-9b973acd490f",
+      "name": "Lấy thông tin trả hàng",
+      "mode": "REST",
+      "method": "GET",
+      "url": "https://public.kiotapi.com/returns",
+      "params": [],
+      "headersList": [
+        {
+          "id": "3b3613db-ff54-433a-8f87-0752c80bb645",
+          "key": "Retailer",
+          "value": "{{retailer}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "3464aba9-0011-4e97-b7be-cb0ecdfc9a4a",
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Retailer\": \"{{retailer}}\",\n  \"Content-Type\": \"application/json\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MzA3ODk1MTYsImV4cCI6MTczMDg3NTkxNiwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiODdhYTQzMzYtNDJkNS00YTQwLTk3YWUtYzQ0N2MyNTdkMzU2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2g4MjM1IiwiY2xpZW50X1JldGFpbGVySWQiOiIyODIxODQiLCJjbGllbnRfVXNlcklkIjoiMTQ2MjI3IiwiY2xpZW50X1NlbnNpdGl2ZUFwaSI6IlRydWUiLCJjbGllbnRfR3JvdXBJZCI6IjExIiwiaWF0IjoxNzMwNzg5NTE2LCJzY29wZSI6WyJQdWJsaWNBcGkuQWNjZXNzIl19.Ki0G_Appe-c2FuhH1VUrX2VORC9Mdzd3V2OKpZ37qtfziTfj1REvIFBKPWyYs5xDzGrXgPhWtt5F3ZUJ84fyw6F2QSOKQQT9ky1Q7QXglL9UKhSzI8eV16tP3ggZS98DcCmufqIj97up3g6Ujy-WIiScSDumwVGrZtJMr2zr3Nfh3BJENq4rMxaYA_fhPFqnesinYL1j1RTsWhYY8aOGCCATnLnZMZIP3zm9OmWgkCIS_KOUe0tOC_6sjWT2jy60QAaO6U9B71hfk7glZyVIQGPFl7fH1-zyxy9HjZZOF3X_YVNIfvp1Ryq612gMroOA6JVMue8BDHE8P9irquT-GQ",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "PARAMS",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Lấy thông tin trả hàng\",\"url\":\"https://public.kiotapi.com/returns\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Retailer\",\"value\":\"{{retailer}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MzA3ODk1MTYsImV4cCI6MTczMDg3NTkxNiwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiODdhYTQzMzYtNDJkNS00YTQwLTk3YWUtYzQ0N2MyNTdkMzU2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2g4MjM1IiwiY2xpZW50X1JldGFpbGVySWQiOiIyODIxODQiLCJjbGllbnRfVXNlcklkIjoiMTQ2MjI3IiwiY2xpZW50X1NlbnNpdGl2ZUFwaSI6IlRydWUiLCJjbGllbnRfR3JvdXBJZCI6IjExIiwiaWF0IjoxNzMwNzg5NTE2LCJzY29wZSI6WyJQdWJsaWNBcGkuQWNjZXNzIl19.Ki0G_Appe-c2FuhH1VUrX2VORC9Mdzd3V2OKpZ37qtfziTfj1REvIFBKPWyYs5xDzGrXgPhWtt5F3ZUJ84fyw6F2QSOKQQT9ky1Q7QXglL9UKhSzI8eV16tP3ggZS98DcCmufqIj97up3g6Ujy-WIiScSDumwVGrZtJMr2zr3Nfh3BJENq4rMxaYA_fhPFqnesinYL1j1RTsWhYY8aOGCCATnLnZMZIP3zm9OmWgkCIS_KOUe0tOC_6sjWT2jy60QAaO6U9B71hfk7glZyVIQGPFl7fH1-zyxy9HjZZOF3X_YVNIfvp1Ryq612gMroOA6JVMue8BDHE8P9irquT-GQ\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
+    },
+    {
+      "id": "b036754c-ae19-4c14-93c7-618321cd0393",
       "savedRequestId": "f68e377f-fb24-434c-8317-c4c72870daad",
       "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
       "folderId": "ec84ec6b-4def-460d-b1ee-6372775366af",
@@ -69,286 +117,6 @@
       "editorTab": "AUTH",
       "responseTab": "PRETTY",
       "savedSnapshot": "{\"name\":\"Danh sách chi nhánh\",\"url\":\"{{Domain}}/branches\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[{\"key\":\"format\",\"value\":\"json\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"includeRemoveIds\",\"value\":\"true\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"hierachicalData\",\"value\":\"true\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"pathVariables\":[],\"headersList\":[{\"key\":\"Retailer\",\"value\":\"{{retailer}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
-    },
-    {
-      "id": "da68923e-1809-4bc5-be4e-e3d2e63933be",
-      "savedRequestId": "39e5f697-4019-4759-8094-763cba40d62c",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "3be89a3f-63c9-452f-9963-dd4dfd67b439",
-      "name": "Thêm mới hàng hoá",
-      "mode": "REST",
-      "method": "POST",
-      "url": "{{Domain}}/products",
-      "params": [],
-      "headersList": [
-        {
-          "id": "3e3bd8f3-637f-4d54-9edb-2256c54aafab",
-          "key": "Content-Type",
-          "value": "application/json",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "ffa6d1d9-5464-4ad5-8a32-8ab354007a24",
-          "key": "Retailer",
-          "value": "{{retailer}}",
-          "enabled": true,
-          "description": ""
-        }
-      ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Retailer\": \"{{retailer}}\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "json",
-      "restBody": "{\n    \"code\": \"\",\n    \"name\": \"Thuoc Tinh 13/12\",\n    \"categoryName\": \"Con1\",\n    \"tradeMarkId\": 1230135,\n    \"allowsSale\": true,\n    \"description\": \"Sản phẩm thứ 3 của API\",\n    \"hasVariants\": true,\n    \"attributes\": [\n        {\n          \"attributeName\": \"BAND\",\n          \"attributeValue\": \"2\"\n        },\n        {\n          \"attributeName\": \"SIZE\",\n          \"attributeValue\": \"X\"\n        }\n      ],\n    \"masterProductId\": 1004444243,\n    \"unit\":\"Lần\",\n    \"conversionValue\": 1,\n    \"inventories\":[{\n          \"branchId\": 51472,\n          \"cost\": 10000,\n          \"onHand\": 0\n    }],\n    \"images\": [\n        \"https://lh3.googleusercontent.com/-Lx0oNOdeRVQ/U6K-cTFpKzI/AAAAAAAAAjo/x_C3uado0dU/w187-h296-no/6-19-2014+5-05-29+PM.jpg\"\n      ],\n      \"basePrice\": 110000,\n      \"weight\": 5\n}",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "",
-      "gqlVariables": "{}",
-      "testScript": "",
-      "editorTab": "AUTH",
-      "responseTab": "PRETTY",
-      "savedSnapshot": "{\"name\":\"Thêm mới hàng hoá\",\"url\":\"{{Domain}}/products\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"Retailer\",\"value\":\"{{retailer}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"{\\n    \\\"code\\\": \\\"\\\",\\n    \\\"name\\\": \\\"Thuoc Tinh 13/12\\\",\\n    \\\"categoryName\\\": \\\"Con1\\\",\\n    \\\"tradeMarkId\\\": 1230135,\\n    \\\"allowsSale\\\": true,\\n    \\\"description\\\": \\\"Sản phẩm thứ 3 của API\\\",\\n    \\\"hasVariants\\\": true,\\n    \\\"attributes\\\": [\\n        {\\n          \\\"attributeName\\\": \\\"BAND\\\",\\n          \\\"attributeValue\\\": \\\"2\\\"\\n        },\\n        {\\n          \\\"attributeName\\\": \\\"SIZE\\\",\\n          \\\"attributeValue\\\": \\\"X\\\"\\n        }\\n      ],\\n    \\\"masterProductId\\\": 1004444243,\\n    \\\"unit\\\":\\\"Lần\\\",\\n    \\\"conversionValue\\\": 1,\\n    \\\"inventories\\\":[{\\n          \\\"branchId\\\": 51472,\\n          \\\"cost\\\": 10000,\\n          \\\"onHand\\\": 0\\n    }],\\n    \\\"images\\\": [\\n        \\\"https://lh3.googleusercontent.com/-Lx0oNOdeRVQ/U6K-cTFpKzI/AAAAAAAAAjo/x_C3uado0dU/w187-h296-no/6-19-2014+5-05-29+PM.jpg\\\"\\n      ],\\n      \\\"basePrice\\\": 110000,\\n      \\\"weight\\\": 5\\n}\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
-    },
-    {
-      "id": "2b029353-1f9b-44c6-9c66-92846d0ee731",
-      "savedRequestId": "00161a44-eaf9-459f-8a89-39ad56096f22",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": "ba2a9480-7e48-42a2-986c-9b973acd490f",
-      "name": "Lấy thông tin trả hàng",
-      "mode": "REST",
-      "method": "GET",
-      "url": "https://public.kiotapi.com/returns",
-      "params": [],
-      "headersList": [
-        {
-          "id": "3b3613db-ff54-433a-8f87-0752c80bb645",
-          "key": "Retailer",
-          "value": "{{retailer}}",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "3464aba9-0011-4e97-b7be-cb0ecdfc9a4a",
-          "key": "Content-Type",
-          "value": "application/json",
-          "enabled": true,
-          "description": ""
-        }
-      ],
-      "headersText": "{\n  \"Retailer\": \"{{retailer}}\",\n  \"Content-Type\": \"application/json\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MzA3ODk1MTYsImV4cCI6MTczMDg3NTkxNiwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiODdhYTQzMzYtNDJkNS00YTQwLTk3YWUtYzQ0N2MyNTdkMzU2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2g4MjM1IiwiY2xpZW50X1JldGFpbGVySWQiOiIyODIxODQiLCJjbGllbnRfVXNlcklkIjoiMTQ2MjI3IiwiY2xpZW50X1NlbnNpdGl2ZUFwaSI6IlRydWUiLCJjbGllbnRfR3JvdXBJZCI6IjExIiwiaWF0IjoxNzMwNzg5NTE2LCJzY29wZSI6WyJQdWJsaWNBcGkuQWNjZXNzIl19.Ki0G_Appe-c2FuhH1VUrX2VORC9Mdzd3V2OKpZ37qtfziTfj1REvIFBKPWyYs5xDzGrXgPhWtt5F3ZUJ84fyw6F2QSOKQQT9ky1Q7QXglL9UKhSzI8eV16tP3ggZS98DcCmufqIj97up3g6Ujy-WIiScSDumwVGrZtJMr2zr3Nfh3BJENq4rMxaYA_fhPFqnesinYL1j1RTsWhYY8aOGCCATnLnZMZIP3zm9OmWgkCIS_KOUe0tOC_6sjWT2jy60QAaO6U9B71hfk7glZyVIQGPFl7fH1-zyxy9HjZZOF3X_YVNIfvp1Ryq612gMroOA6JVMue8BDHE8P9irquT-GQ",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "",
-      "gqlVariables": "{}",
-      "testScript": "",
-      "editorTab": "PARAMS",
-      "responseTab": "PRETTY",
-      "savedSnapshot": "{\"name\":\"Lấy thông tin trả hàng\",\"url\":\"https://public.kiotapi.com/returns\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Retailer\",\"value\":\"{{retailer}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MzA3ODk1MTYsImV4cCI6MTczMDg3NTkxNiwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiODdhYTQzMzYtNDJkNS00YTQwLTk3YWUtYzQ0N2MyNTdkMzU2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2g4MjM1IiwiY2xpZW50X1JldGFpbGVySWQiOiIyODIxODQiLCJjbGllbnRfVXNlcklkIjoiMTQ2MjI3IiwiY2xpZW50X1NlbnNpdGl2ZUFwaSI6IlRydWUiLCJjbGllbnRfR3JvdXBJZCI6IjExIiwiaWF0IjoxNzMwNzg5NTE2LCJzY29wZSI6WyJQdWJsaWNBcGkuQWNjZXNzIl19.Ki0G_Appe-c2FuhH1VUrX2VORC9Mdzd3V2OKpZ37qtfziTfj1REvIFBKPWyYs5xDzGrXgPhWtt5F3ZUJ84fyw6F2QSOKQQT9ky1Q7QXglL9UKhSzI8eV16tP3ggZS98DcCmufqIj97up3g6Ujy-WIiScSDumwVGrZtJMr2zr3Nfh3BJENq4rMxaYA_fhPFqnesinYL1j1RTsWhYY8aOGCCATnLnZMZIP3zm9OmWgkCIS_KOUe0tOC_6sjWT2jy60QAaO6U9B71hfk7glZyVIQGPFl7fH1-zyxy9HjZZOF3X_YVNIfvp1Ryq612gMroOA6JVMue8BDHE8P9irquT-GQ\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
-    },
-    {
-      "id": "ec05d135-711a-486d-bdd6-481112e8279c",
-      "savedRequestId": "f3dcc306-2ef0-4170-959f-ecdbe29d5220",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": null,
-      "name": "Lấy thông tin token",
-      "mode": "REST",
-      "method": "POST",
-      "url": "{{Domain-Token}}/identity/connect/token",
-      "params": [],
-      "headersList": [
-        {
-          "id": "655f89ed-0106-4648-b15b-65a359345a73",
-          "key": "Content-Type",
-          "value": "application/x-www-form-urlencoded",
-          "enabled": true,
-          "description": ""
-        }
-      ],
-      "headersText": "{\n  \"Content-Type\": \"application/x-www-form-urlencoded\"\n}",
-      "auth": {
-        "type": "none",
-        "bearerToken": "",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "x-www-form-urlencoded",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [
-        {
-          "id": "9421d7c2-4fda-4aff-8985-8b8c86a1251c",
-          "key": "client_id",
-          "value": "{{clientId}}",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "20ce3c46-168f-4b8d-919e-d337db79e1a4",
-          "key": "client_secret",
-          "value": "{{clientSecret}}",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "2a7403b9-cb48-41e9-a3e3-9bf1cb2ff1ca",
-          "key": "grant_type",
-          "value": "client_credentials",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "708813a9-5848-48fd-997d-c3e051192115",
-          "key": "scopes",
-          "value": "PublicApi.Access.FNB",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "ghost-tail-row",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": "",
-          "type": "text"
-        }
-      ],
-      "gqlQuery": "",
-      "gqlVariables": "{}",
-      "testScript": "var data = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"token\", jsonData.access_token);",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY",
-      "savedSnapshot": "{\"name\":\"Lấy thông tin token\",\"url\":\"{{Domain-Token}}/identity/connect/token\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/x-www-form-urlencoded\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"x-www-form-urlencoded\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[{\"key\":\"client_id\",\"value\":\"{{clientId}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"client_secret\",\"value\":\"{{clientSecret}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"grant_type\",\"value\":\"client_credentials\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"scopes\",\"value\":\"PublicApi.Access.FNB\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"var data = JSON.parse(responseBody);\\r\\npostman.setEnvironmentVariable(\\\"token\\\", jsonData.access_token);\"}"
-    },
-    {
-      "id": "3b10027f-f44a-4fe4-bab7-e0888bee16d8",
-      "savedRequestId": "b9fcaf09-5860-498d-ab4e-9bef6b82aff7",
-      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
-      "folderId": null,
-      "name": "Lấy Locations",
-      "mode": "REST",
-      "method": "GET",
-      "url": "https://public.kiotapi.com/locations",
-      "params": [
-        {
-          "id": "d2a4b17f-79bb-4e4e-af7b-da8dbcc41b81",
-          "key": "format",
-          "value": "json",
-          "enabled": false,
-          "description": ""
-        },
-        {
-          "id": "9aa4b671-4900-4e7c-a963-bc3318859fbe",
-          "key": "currentItem",
-          "value": "1",
-          "enabled": false,
-          "description": ""
-        },
-        {
-          "id": "51e61c07-463a-4ddd-9b82-c9e24286a4ea",
-          "key": "includeInventory",
-          "value": "True",
-          "enabled": false,
-          "description": ""
-        },
-        {
-          "id": "a3fadc4f-f88d-4135-b987-69b348eb0da8",
-          "key": "isActive",
-          "value": "true",
-          "enabled": false,
-          "description": ""
-        },
-        {
-          "id": "f2ef89f0-8813-410c-98a1-c84f84dc2cc1",
-          "key": "includePricebook",
-          "value": "true",
-          "enabled": false,
-          "description": ""
-        },
-        {
-          "id": "f27f239b-0076-43ba-9943-8d865256e70c",
-          "key": "orderBy",
-          "value": "id",
-          "enabled": false,
-          "description": ""
-        },
-        {
-          "id": "1023a70d-dcb3-44ea-b2ad-01d2f49ab057",
-          "key": "lastModifiedFrom",
-          "value": "2018-01-01",
-          "enabled": false,
-          "description": ""
-        },
-        {
-          "id": "4608eea1-e852-4820-84ac-e686a6bd63f9",
-          "key": "orderDirection",
-          "value": "desc",
-          "enabled": false,
-          "description": ""
-        }
-      ],
-      "headersList": [
-        {
-          "id": "1a112675-1469-43bb-8040-73a6bfe090f7",
-          "key": "Retailer",
-          "value": "{{retailer}}",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "ghost-tail-row",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": "",
-          "type": "text"
-        }
-      ],
-      "headersText": "{\n  \"Retailer\": \"{{retailer}}\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "",
-      "gqlVariables": "{}",
-      "testScript": "",
-      "editorTab": "PARAMS",
-      "responseTab": "PRETTY",
-      "savedSnapshot": "{\"name\":\"Lấy Locations\",\"url\":\"https://public.kiotapi.com/locations\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[{\"key\":\"format\",\"value\":\"json\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"currentItem\",\"value\":\"1\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"includeInventory\",\"value\":\"True\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"isActive\",\"value\":\"true\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"includePricebook\",\"value\":\"true\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"orderBy\",\"value\":\"id\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"lastModifiedFrom\",\"value\":\"2018-01-01\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"orderDirection\",\"value\":\"desc\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"pathVariables\":[],\"headersList\":[{\"key\":\"Retailer\",\"value\":\"{{retailer}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
     }
   ],
   "splitLayout": "horizontal",

@@ -1,5 +1,333 @@
 [
   {
+    "id": "9e002220-4906-42ab-9c33-282c4d8b0606",
+    "timestamp": "2026-08-28T04:49:56.863Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://public.kiotapi.com/branches",
+    "status": 401,
+    "duration": 176,
+    "request": {
+      "id": "b036754c-ae19-4c14-93c7-618321cd0393",
+      "savedRequestId": "f68e377f-fb24-434c-8317-c4c72870daad",
+      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "folderId": "ec84ec6b-4def-460d-b1ee-6372775366af",
+      "name": "Danh sách chi nhánh",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/branches",
+      "params": [
+        {
+          "id": "5f8aa677-32a8-47ff-89aa-f4683315a216",
+          "key": "format",
+          "value": "json",
+          "enabled": false,
+          "description": ""
+        },
+        {
+          "id": "ce87a81e-d590-4bd3-9fc7-fb53ea1179b7",
+          "key": "includeRemoveIds",
+          "value": "true",
+          "enabled": false,
+          "description": ""
+        },
+        {
+          "id": "fd92c72e-3e60-4b83-be84-feb2f620d0c2",
+          "key": "hierachicalData",
+          "value": "true",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersList": [
+        {
+          "id": "ec1f6562-b7dd-4e1d-87e9-dfa7ac724cc3",
+          "key": "Retailer",
+          "value": "{{retailer}}",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Retailer\": \"{{retailer}}\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "AUTH",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Danh sách chi nhánh\",\"url\":\"{{Domain}}/branches\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[{\"key\":\"format\",\"value\":\"json\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"includeRemoveIds\",\"value\":\"true\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"hierachicalData\",\"value\":\"true\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"pathVariables\":[],\"headersList\":[{\"key\":\"Retailer\",\"value\":\"{{retailer}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
+    },
+    "response": {
+      "status": 401,
+      "statusText": "Your account has been deactivated. Please contact the store owner for permission.",
+      "time": "176 ms",
+      "size": "141 B",
+      "data": {
+        "responseStatus": {
+          "errorCode": "Unauthorized",
+          "message": "Your account has been deactivated. Please contact the store owner for permission."
+        }
+      },
+      "headers": {
+        "cache-control": "private",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "date": "Fri, 28 Aug 2026 04:50:01 GMT",
+        "content-length": "141"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "f67a1da9-fe28-4d6c-8028-37caacb8678e",
+    "timestamp": "2026-08-28T04:43:38.162Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://public.kiotapi.com/branches",
+    "status": 401,
+    "duration": 121,
+    "request": {
+      "id": "b036754c-ae19-4c14-93c7-618321cd0393",
+      "savedRequestId": "f68e377f-fb24-434c-8317-c4c72870daad",
+      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "folderId": "ec84ec6b-4def-460d-b1ee-6372775366af",
+      "name": "Danh sách chi nhánh",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/branches",
+      "params": [
+        {
+          "id": "5f8aa677-32a8-47ff-89aa-f4683315a216",
+          "key": "format",
+          "value": "json",
+          "enabled": false,
+          "description": ""
+        },
+        {
+          "id": "ce87a81e-d590-4bd3-9fc7-fb53ea1179b7",
+          "key": "includeRemoveIds",
+          "value": "true",
+          "enabled": false,
+          "description": ""
+        },
+        {
+          "id": "fd92c72e-3e60-4b83-be84-feb2f620d0c2",
+          "key": "hierachicalData",
+          "value": "true",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersList": [
+        {
+          "id": "ec1f6562-b7dd-4e1d-87e9-dfa7ac724cc3",
+          "key": "Retailer",
+          "value": "{{retailer}}",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Retailer\": \"{{retailer}}\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "AUTH",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Danh sách chi nhánh\",\"url\":\"{{Domain}}/branches\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[{\"key\":\"format\",\"value\":\"json\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"includeRemoveIds\",\"value\":\"true\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"hierachicalData\",\"value\":\"true\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"pathVariables\":[],\"headersList\":[{\"key\":\"Retailer\",\"value\":\"{{retailer}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
+    },
+    "response": {
+      "status": 401,
+      "statusText": "Your account has been deactivated. Please contact the store owner for permission.",
+      "time": "121 ms",
+      "size": "141 B",
+      "data": {
+        "responseStatus": {
+          "errorCode": "Unauthorized",
+          "message": "Your account has been deactivated. Please contact the store owner for permission."
+        }
+      },
+      "headers": {
+        "cache-control": "private",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "date": "Fri, 28 Aug 2026 04:43:42 GMT",
+        "content-length": "141"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "303bfb3e-50c1-436e-84d0-19096681b04d",
+    "timestamp": "2026-08-28T04:43:01.053Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 0,
+    "duration": 27,
+    "request": {
+      "id": "61c8ed20-2973-4fdd-9a38-0530a05d7a04",
+      "savedRequestId": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
+      "name": "Tenant get list",
+      "graphqlRootField": "tenantGetList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "3d095786-c99c-461d-a6ba-5f784c0f3e22",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "752fb8d8-d656-4b74-a4c1-b0d540a19212",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query TenantGetList {\n  tenantGetList {\n    id\n    name\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "AUTH",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Tenant get list\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"tenantGetList\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query TenantGetList {\\n  tenantGetList {\\n    id\\n    name\\n  }\\n}\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
+    },
+    "response": {
+      "status": 0,
+      "statusText": "Could not connect to server",
+      "time": "27 ms",
+      "size": "0 B",
+      "data": null,
+      "error": "",
+      "headers": {},
+      "isNetworkError": true
+    }
+  },
+  {
+    "id": "5689c5db-4aec-4472-b20a-a3b8ca4c9c04",
+    "timestamp": "2026-08-28T04:42:49.805Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "https://public.kiotapi.com/graphql",
+    "status": 404,
+    "duration": 30,
+    "request": {
+      "id": "61c8ed20-2973-4fdd-9a38-0530a05d7a04",
+      "savedRequestId": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
+      "name": "Tenant get list",
+      "graphqlRootField": "tenantGetList",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "3d095786-c99c-461d-a6ba-5f784c0f3e22",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "752fb8d8-d656-4b74-a4c1-b0d540a19212",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query TenantGetList {\n  tenantGetList {\n    id\n    name\n  }\n}",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "AUTH",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Tenant get list\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"tenantGetList\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query TenantGetList {\\n  tenantGetList {\\n    id\\n    name\\n  }\\n}\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
+    },
+    "response": {
+      "status": 404,
+      "statusText": "Not Found",
+      "time": "30 ms",
+      "size": "3 B",
+      "data": 404,
+      "headers": {
+        "cache-control": "private",
+        "content-type": "text/plain; charset=utf-8",
+        "vary": "Accept",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "date": "Fri, 28 Aug 2026 04:42:53 GMT",
+        "content-length": "3"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
     "id": "96f7b5c6-7233-4edd-baa8-cc654444898a",
     "timestamp": "2026-08-28T04:36:41.051Z",
     "method": "GET",
@@ -23652,347 +23980,6 @@
         "content-type": "application/json; charset=utf-8",
         "content-length": "352",
         "date": "Wed, 26 Aug 2026 03:10:50 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "040722ae-7787-4a56-b535-3f7fd6764485",
-    "timestamp": "2026-08-26T03:10:41.442Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 31,
-    "request": {
-      "id": "111860ad-cd5c-4f0b-840e-6748902b8432",
-      "name": "squareOrderGetById",
-      "graphqlRootField": "squareOrderGetById",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "a40674d0-3a32-4b04-95ea-451e67a03ec6",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": "",
-          "type": "text"
-        },
-        {
-          "id": "085297e0-1847-4c34-bb63-369f9da94d43",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": "",
-          "type": "text"
-        }
-      ],
-      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query SquareOrderGetById($request: RequestParams!) {\n  squareOrderGetById(request: $request) {\n    id\n    orderId\n  }\n}",
-      "gqlVariables": "{\n  \"request\": {\n    \"id\": \"01a03c06-b814-701c-b9d0-7e1879ee42be\"\n  }\n}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "31 ms",
-      "size": "126 B",
-      "data": {
-        "data": {
-          "squareOrderGetById": {
-            "id": "01a03c06-b814-701c-b9d0-7e1879ee42be",
-            "orderId": "01a03c06-8b0d-709c-bf8e-bae7f918fc60"
-          }
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "127",
-        "date": "Wed, 26 Aug 2026 03:10:43 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "e32c73c5-50cc-47f9-aaca-760f3e01819f",
-    "timestamp": "2026-08-26T03:09:59.004Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 17,
-    "request": {
-      "id": "8cb577e2-b2a4-4e1e-b0dd-997e7902ea75",
-      "name": "squareOrderGetPagination",
-      "graphqlRootField": "squareOrderGetPagination",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "a40674d0-3a32-4b04-95ea-451e67a03ec6",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": "",
-          "type": "text"
-        },
-        {
-          "id": "085297e0-1847-4c34-bb63-369f9da94d43",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": "",
-          "type": "text"
-        }
-      ],
-      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query SquareOrderGetPagination($filters: SquareOrderGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareOrderGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      orderId\n      squareOrderId\n      squareLocationId\n      state\n      totalMoneyAmount\n      currency\n      syncStatus\n      errorMessage\n      lastSyncedAt\n    }\n  }\n}",
-      "gqlVariables": "{\n  \"filters\": {\n    \"orderId\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
-      "testScript": "",
-      "editorTab": "HEADERS",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "17 ms",
-      "size": "379 B",
-      "data": {
-        "data": {
-          "squareOrderGetPagination": {
-            "total": 1,
-            "items": [
-              {
-                "id": "01a03c06-b814-701c-b9d0-7e1879ee42be",
-                "orderId": "01a03c06-8b0d-709c-bf8e-bae7f918fc60",
-                "squareOrderId": "MH1TrJ6ayEgsZQQZEb9zFoouUPFZY",
-                "squareLocationId": "L7JBFPYN8CG71",
-                "state": "OPEN",
-                "totalMoneyAmount": 688500,
-                "currency": "USD",
-                "syncStatus": "SYNCED",
-                "errorMessage": null,
-                "lastSyncedAt": "2026-08-26T03:04:32.260Z"
-              }
-            ]
-          }
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "380",
-        "date": "Wed, 26 Aug 2026 03:10:01 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "df688035-bc68-47a2-90d9-2102a507e4f6",
-    "timestamp": "2026-08-26T03:09:50.917Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 44,
-    "request": {
-      "id": "8cb577e2-b2a4-4e1e-b0dd-997e7902ea75",
-      "name": "squareOrderGetPagination",
-      "graphqlRootField": "squareOrderGetPagination",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "a40674d0-3a32-4b04-95ea-451e67a03ec6",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": "",
-          "type": "text"
-        },
-        {
-          "id": "085297e0-1847-4c34-bb63-369f9da94d43",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": "",
-          "type": "text"
-        }
-      ],
-      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query SquareOrderGetPagination($filters: SquareOrderGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareOrderGetPagination(filters: $filters, params: $params) {\n    total\n  }\n}",
-      "gqlVariables": "{\n  \"filters\": {\n    \"orderId\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
-      "testScript": "",
-      "editorTab": "HEADERS",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "44 ms",
-      "size": "49 B",
-      "data": {
-        "data": {
-          "squareOrderGetPagination": {
-            "total": 1
-          }
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "50",
-        "date": "Wed, 26 Aug 2026 03:09:51 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "550e525e-e8f7-444f-b08d-fa0f12c235d1",
-    "timestamp": "2026-08-26T03:09:38.096Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 11,
-    "request": {
-      "id": "8cb577e2-b2a4-4e1e-b0dd-997e7902ea75",
-      "name": "squareOrderGetPagination",
-      "graphqlRootField": "squareOrderGetPagination",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "a40674d0-3a32-4b04-95ea-451e67a03ec6",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": "",
-          "type": "text"
-        }
-      ],
-      "headersText": "{}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query SquareOrderGetPagination($filters: SquareOrderGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareOrderGetPagination(filters: $filters, params: $params) {\n    total\n  }\n}",
-      "gqlVariables": "{\n  \"filters\": {\n    \"orderId\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
-      "testScript": "",
-      "editorTab": "HEADERS",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "11 ms",
-      "size": "248 B",
-      "data": {
-        "errors": [
-          {
-            "message": "Unauthorized",
-            "path": [
-              "squareOrderGetPagination"
-            ],
-            "locations": [
-              {
-                "line": 2,
-                "column": 3
-              }
-            ],
-            "extensions": {
-              "code": "UNAUTHENTICATED",
-              "originalError": {
-                "message": "Unauthorized",
-                "statusCode": 401
-              }
-            },
-            "code": "UNAUTHENTICATED"
-          }
-        ],
-        "data": null
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "249",
-        "date": "Wed, 26 Aug 2026 03:09:39 GMT",
         "connection": "keep-alive",
         "keep-alive": "timeout=72"
       },

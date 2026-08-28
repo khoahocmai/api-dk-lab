@@ -141,7 +141,7 @@ export function RequestTabs({
           className={`button button-sm ${isExplorerOpen ? 'button-primary' : ''}`}
           onClick={onToggleExplorer}
           title={isExplorerOpen ? 'Hide GraphQL Explorer' : 'Open GraphQL Explorer'}
-          style={{ height: 26, padding: '0 8px', marginRight: 4 }}
+          style={{ height: 26, padding: '0 8px', marginRight: 4, flexShrink: 0 }}
         >
           <BookOpen size={12} />
           <span>Explorer</span>

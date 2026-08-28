@@ -1,5 +1,5 @@
-import { Check, Copy, FlaskConical, WifiOff, WrapText } from 'lucide-react'
-import { useState } from 'react'
+import { AlertTriangle, Check, Copy, FlaskConical, WifiOff, WrapText } from 'lucide-react'
+import { useMemo, useState } from 'react'
 import type { EnvironmentItem, RequestItem } from '../../types'
 import { resolveTemplates } from '../../services/templateService'
 import { CodeEditor } from '../common/CodeEditor'
@@ -57,6 +57,74 @@ export function ResponseViewer({
       (!activeTab.response?.status && activeTab.response?.error && !activeTab.response?.data),
   )
 
+  // Extract server error or notice message to display in the dedicated alert banner
+  const serverErrorMessage = useMemo(() => {
+    if (!activeTab.response || isNetworkError) return null
+    const { data, status, statusText, error } = activeTab.response
+
+    // Only extract when there's an HTTP error (>= 400) or error payload
+    if (status && status < 400 && !error) return null
+
+    if (data && typeof data === 'object') {
+      const payload = data as Record<string, any>
+      // 1. payload.message
+      if (typeof payload.message === 'string' && payload.message.trim()) {
+        return payload.message.trim()
+      }
+      // 2. payload.responseStatus.message (e.g. ServiceStack / KiotViet)
+      if (
+        payload.responseStatus &&
+        typeof payload.responseStatus.message === 'string' &&
+        payload.responseStatus.message.trim()
+      ) {
+        return payload.responseStatus.message.trim()
+      }
+      // 3. payload.error
+      if (typeof payload.error === 'string' && payload.error.trim()) {
+        return payload.error.trim()
+      }
+      if (
+        payload.error &&
+        typeof payload.error.message === 'string' &&
+        payload.error.message.trim()
+      ) {
+        return payload.error.message.trim()
+      }
+      // 4. GraphQL errors
+      if (Array.isArray(payload.errors) && payload.errors.length > 0) {
+        const firstErr = payload.errors[0]
+        if (typeof firstErr === 'string' && firstErr.trim()) return firstErr.trim()
+        if (firstErr && typeof firstErr.message === 'string' && firstErr.message.trim()) {
+          return firstErr.message.trim()
+        }
+      }
+      // 5. payload.detail or payload.title
+      if (typeof payload.detail === 'string' && payload.detail.trim()) {
+        return payload.detail.trim()
+      }
+      if (
+        typeof payload.title === 'string' &&
+        payload.title.trim() &&
+        payload.title !== 'Bad Request' &&
+        payload.title !== 'Unauthorized'
+      ) {
+        return payload.title.trim()
+      }
+    }
+
+    // 6. If statusText has a descriptive sentence from backend
+    if (statusText && statusText.trim() && statusText.length > 18) {
+      return statusText.trim()
+    }
+
+    // 7. If response.error string exists
+    if (error && typeof error === 'string' && error.trim() && !error.includes('[object Object]')) {
+      return error.trim()
+    }
+
+    return null
+  }, [activeTab.response, isNetworkError])
+
   const resolvedUrl = resolveTemplates(activeTab.url || '', activeEnvironment)
 
   const rawContent =
@@ -73,9 +141,9 @@ export function ResponseViewer({
   const testReport = activeTab.testResults
 
   return (
-    <section className="response-panel">
-      {/* Response Sub-Tabs Header (Underline style matching RequestEditor) */}
-      <div className="section-header">
+    <section className="response-panel" style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%', overflow: 'hidden' }}>
+      {/* 1. TOP SUB-TABS HEADER: Pretty JSON | Headers | Test Results */}
+      <div className="section-header" style={{ flexShrink: 0 }}>
         <div className="row wrap">
           <button
             type="button"
@@ -104,63 +172,103 @@ export function ResponseViewer({
             )}
           </button>
         </div>
+      </div>
 
-        {/* Right side: Status, Time, Size, Wrap & Copy */}
-        <div className="row wrap" style={{ gap: 6, alignItems: 'center' }}>
-          {activeTab.response && (
-            <>
-              <StatusBadge
-                status={activeTab.response?.status}
-                statusText={activeTab.response?.statusText}
-                isNetworkError={isNetworkError}
-              />
-              <span className="badge" style={{ fontFamily: 'var(--font-mono)' }}>
-                {activeTab.response?.time ?? '-'}
-              </span>
-              <span className="badge" style={{ fontFamily: 'var(--font-mono)' }}>
-                {activeTab.response?.size ?? '-'}
-              </span>
+      {/* 2. DEDICATED METRICS & ACTIONS TOOLBAR (1 HÀNG PHẲNG) */}
+      {activeTab.response && !activeTab.loading && (
+        <div
+          className="response-toolbar"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            padding: '6px 12px',
+            background: 'var(--bg-input)',
+            borderBottom: '1px solid var(--border)',
+            flexShrink: 0,
+            gap: 8,
+          }}
+        >
+          {/* Left metrics */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, minWidth: 0, overflow: 'hidden' }}>
+            <StatusBadge
+              status={activeTab.response?.status}
+              statusText={activeTab.response?.statusText}
+              isNetworkError={isNetworkError}
+            />
+            <span className="badge" style={{ fontFamily: 'var(--font-mono)', flexShrink: 0 }}>
+              {activeTab.response?.time ?? '-'}
+            </span>
+            <span className="badge" style={{ fontFamily: 'var(--font-mono)', flexShrink: 0 }}>
+              {activeTab.response?.size ?? '-'}
+            </span>
+          </div>
 
-              {!isNetworkError && activeTab.responseTab === 'PRETTY' && (
+          {/* Right actions */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
+            {!isNetworkError && activeTab.responseTab === 'PRETTY' && (
+              <button
+                type="button"
+                className={`button button-sm ${isWrapEnabled ? 'button-wrap-active' : ''}`}
+                onClick={toggleWrap}
+                title={isWrapEnabled ? 'Disable line wrapping' : 'Enable line wrapping'}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 4,
+                  height: 24,
+                  padding: '0 8px',
+                  fontSize: 11,
+                }}
+              >
+                <WrapText size={12} />
+                <span>Wrap</span>
+              </button>
+            )}
+
+            {!isNetworkError && (
+              activeTab.responseTab === 'HEADERS' && headerKeys.length > 0 ? (
                 <button
                   type="button"
-                  className={`button button-sm ${isWrapEnabled ? 'button-wrap-active' : ''}`}
-                  onClick={toggleWrap}
-                  title={isWrapEnabled ? 'Disable line wrapping' : 'Enable line wrapping'}
+                  className="button button-sm"
+                  onClick={() => void handleCopyHeaders()}
                   style={{
                     display: 'flex',
                     alignItems: 'center',
                     gap: 4,
+                    height: 24,
+                    padding: '0 8px',
+                    fontSize: 11,
                   }}
                 >
-                  <WrapText size={13} />
-                  <span>Wrap</span>
+                  {copiedHeaders ? <Check size={12} /> : <Copy size={12} />}
+                  <span>Copy Headers</span>
                 </button>
-              )}
-
-              {!isNetworkError && (
-                activeTab.responseTab === 'HEADERS' && headerKeys.length > 0 ? (
-                  <button
-                    type="button"
-                    className="button button-sm"
-                    onClick={() => void handleCopyHeaders()}
-                  >
-                    {copiedHeaders ? <Check size={12} /> : <Copy size={12} />}
-                    <span>Copy Headers</span>
-                  </button>
-                ) : (
-                  <button onClick={() => void handleCopy()} className="button button-sm">
-                    {copiedResponse ? <Check size={12} style={{ color: 'var(--success)' }} /> : <Copy size={12} />}
-                    <span>{copiedResponse ? 'Copied' : 'Copy'}</span>
-                  </button>
-                )
-              )}
-            </>
-          )}
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => void handleCopy()}
+                  className="button button-sm"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 4,
+                    height: 24,
+                    padding: '0 8px',
+                    fontSize: 11,
+                  }}
+                >
+                  {copiedResponse ? <Check size={12} style={{ color: 'var(--success)' }} /> : <Copy size={12} />}
+                  <span>{copiedResponse ? 'Copied' : 'Copy'}</span>
+                </button>
+              )
+            )}
+          </div>
         </div>
-      </div>
+      )}
 
-      <div className="scroll-area">
+      {/* 3. CONTENT AREA */}
+      <div className="scroll-area" style={{ flex: 1, minHeight: 0, overflow: 'auto' }}>
         {activeTab.loading ? (
           <div className="response-empty">
             <div className="spinner" style={{ width: 22, height: 22, marginBottom: 8 }} />
@@ -265,6 +373,38 @@ export function ResponseViewer({
             {activeTab.response.previewTruncated && (
               <div className="banner banner-warning" style={{ margin: '6px 10px' }}>
                 Response payload lớn (&gt;1MB) đã được cắt ngắn để đảm bảo hiệu năng.
+              </div>
+            )}
+
+            {/* ALERT BANNER: FULL ERROR / NOTICE MESSAGE FROM SERVER */}
+            {serverErrorMessage && activeTab.responseTab === 'PRETTY' && (
+              <div
+                style={{
+                  margin: '10px 12px 6px 12px',
+                  padding: '8px 12px',
+                  borderRadius: 4,
+                  background: 'rgba(245, 158, 11, 0.12)',
+                  border: '1px solid rgba(245, 158, 11, 0.35)',
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: 8,
+                  fontSize: 12,
+                  color: '#fcd34d',
+                  fontFamily: 'var(--font-mono)',
+                  lineHeight: 1.5,
+                }}
+              >
+                <AlertTriangle
+                  size={14}
+                  style={{
+                    color: '#f59e0b',
+                    flexShrink: 0,
+                    marginTop: 2,
+                  }}
+                />
+                <span style={{ flex: 1, wordBreak: 'break-word', whiteSpace: 'pre-wrap' }}>
+                  {serverErrorMessage}
+                </span>
               </div>
             )}
 

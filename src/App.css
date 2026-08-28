@@ -291,11 +291,14 @@
 .tabbar {
   display: flex;
   align-items: center;
-  padding: 4px 8px 0 8px;
+  padding: 3px 8px 0 8px;
   background: var(--bg-sidebar);
   border-bottom: 1px solid var(--border);
   min-height: 36px;
-  gap: 4px;
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
+  user-select: none;
 }
 
 .tab-scroll {
@@ -305,11 +308,19 @@
   overflow-x: auto;
   flex: 1;
   min-width: 0;
-  padding-bottom: 0;
+  padding: 0 4px 0 2px;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.tab-scroll::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .tab-chip {
-  min-width: 120px;
+  min-width: 130px;
   max-width: 220px;
   height: 30px;
   display: inline-flex;
