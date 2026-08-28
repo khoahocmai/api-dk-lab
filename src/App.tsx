@@ -19,6 +19,7 @@ import type {
   RequestItem,
   ResponseState,
   SavedRequestItem,
+  SidebarTab,
   SplitLayout,
 } from './types'
 import { DEFAULT_APP_SETTINGS } from './types/settings.types'
@@ -95,6 +96,7 @@ function App() {
   const [activeEnvironmentId, setActiveEnvironmentId] = useState('')
   const [mobileView, setMobileView] = useState<MobileView>('REQUEST')
   const [splitLayout, setSplitLayout] = useState<SplitLayout>('horizontal')
+  const [sidebarTab, setSidebarTab] = useState<SidebarTab>('COLLECTIONS')
   const [history, setHistory] = useState<HistoryItem[]>([])
   const [settings, setSettings] = useState<AppSettings>(DEFAULT_APP_SETTINGS)
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
@@ -1155,21 +1157,7 @@ function App() {
     }
   }
 
-  // History Operations
-  const handleRestoreHistory = (item: HistoryItem) => {
-    const restored = reviveRequest({ ...item.request, id: createId() })
-    setTabs((current) => [...current, restored])
-    setActiveTabId(restored.id)
-    setMobileView('REQUEST')
-  }
 
-  const handleDeleteHistoryItem = (id: string) => {
-    setHistory((prev) => prev.filter((h) => h.id !== id))
-  }
-
-  const handleClearHistory = () => {
-    setHistory([])
-  }
 
   const addEnvironment = () => {
     const env = createDefaultEnvironment(
@@ -1178,6 +1166,23 @@ function App() {
     )
     setEnvironments((current) => [...current, env])
     setActiveEnvironmentId(env.id)
+  }
+
+  const handleDuplicateEnvironment = (envId: string) => {
+    const source = environments.find((e) => e.id === envId)
+    if (!source) return
+    const duplicated: EnvironmentItem = {
+      ...source,
+      id: createId(),
+      name: `${source.name} (Copy)`,
+      variables: source.variables.map((v) => ({
+        ...v,
+        id: createId(),
+      })),
+    }
+    setEnvironments((current) => [...current, duplicated])
+    setActiveEnvironmentId(duplicated.id)
+    showToast(`Đã nhân bản môi trường "${source.name}"`, 'success')
   }
 
   const updateEnvironmentVariable = (
@@ -1199,11 +1204,12 @@ function App() {
     )
   }
 
-  const addEnvironmentVariable = () => {
-    if (!activeEnvironment) return
+  const addEnvironmentVariable = (targetEnvId?: string) => {
+    const envId = targetEnvId || activeEnvironment?.id || environments[0]?.id
+    if (!envId) return
     setEnvironments((current) =>
       current.map((env) =>
-        env.id !== activeEnvironment.id
+        env.id !== envId
           ? env
           : {
               ...env,
@@ -2110,7 +2116,10 @@ function App() {
             isExplorerOpen={isExplorerOpen}
             onSelectEnvironment={setActiveEnvironmentId}
             onAddEnvironment={addEnvironment}
-            onOpenManageEnvironments={() => setIsSidebarCollapsed(false)}
+            onOpenManageEnvironments={() => {
+              setIsSidebarCollapsed(false)
+              setSidebarTab('ENVIRONMENTS')
+            }}
             onToggleSidebar={() => setIsSidebarCollapsed((prev) => !prev)}
             onToggleExplorer={() => setIsExplorerOpen((prev) => !prev)}
             onToggleSplitLayout={() =>
@@ -2151,6 +2160,8 @@ function App() {
             >
               <Sidebar
                 isMobileActive={mobileView === 'COLLECTIONS'}
+                activeSidebarTab={sidebarTab}
+                onSelectSidebarTab={setSidebarTab}
                 environments={environments}
                 activeEnvironmentId={activeEnvironmentId}
                 activeEnvironment={activeEnvironment}
@@ -2159,9 +2170,9 @@ function App() {
                 savedRequests={savedRequests}
                 expandedCollectionIds={expandedCollectionIds}
                 expandedFolderIds={expandedFolderIds}
-                history={history}
                 onAddTab={() => addTab('GRAPHQL')}
                 onAddEnvironment={addEnvironment}
+                onDuplicateEnvironment={handleDuplicateEnvironment}
                 onSelectEnvironment={setActiveEnvironmentId}
                 onRenameEnvironment={handleRenameEnvironment}
                 onDeleteEnvironment={handleDeleteEnvironment}
@@ -2180,13 +2191,9 @@ function App() {
                 onRenameFolder={handleRenameFolder}
                 onRenameRequest={handleRenameRequest}
                 onImportPostman={() => setImportPostmanModalOpen(true)}
-                onImportCurl={() => setImportCurlModalOpen(true)}
                 onExportCollection={handleExportPostmanCollection}
                 onMoveRequest={handleMoveRequest}
                 onMoveFolder={handleMoveFolder}
-                onRestoreHistory={handleRestoreHistory}
-                onDeleteHistoryItem={handleDeleteHistoryItem}
-                onClearHistory={handleClearHistory}
                 onOpenSettings={() => setSettingsModalOpen(true)}
                 onToggleCollapseSidebar={() => setIsSidebarCollapsed(true)}
               />

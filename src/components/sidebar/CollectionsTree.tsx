@@ -8,7 +8,6 @@ import {
   FolderPlus,
   Pencil,
   Plus,
-  Terminal,
   Trash2,
   Upload,
 } from 'lucide-react'
@@ -47,7 +46,6 @@ interface CollectionsTreeProps {
   onRenameFolder?: (id: string, newName: string) => void
   onRenameRequest?: (id: string, newName: string) => void
   onImportPostman: () => void
-  onImportCurl?: () => void
   onExportCollection: (c: CollectionItem) => void
   onMoveRequest?: (
     requestId: string,
@@ -83,7 +81,6 @@ export function CollectionsTree({
   onRenameFolder,
   onRenameRequest,
   onImportPostman,
-  onImportCurl,
   onExportCollection,
   onMoveRequest,
   onMoveFolder,
@@ -370,11 +367,9 @@ export function CollectionsTree({
                 </div>
               ) : (
                 <div
-                  className={`folder-row group-hover-row tree-item-draggable ${
-                    isFolderDragging ? 'is-dragging' : ''
-                  } ${isTargetInside ? 'drop-target-inside' : ''} ${
-                    isTargetBefore ? 'drop-target-before' : ''
-                  } ${isTargetAfter ? 'drop-target-after' : ''}`}
+                  className={`folder-row group-hover-row tree-item-draggable ${isFolderDragging ? 'is-dragging' : ''
+                    } ${isTargetInside ? 'drop-target-inside' : ''} ${isTargetBefore ? 'drop-target-before' : ''
+                    } ${isTargetAfter ? 'drop-target-after' : ''}`}
                   draggable={!isEditingAny}
                   onDragStart={(e) => handleFolderDragStart(e, folder)}
                   onDragOver={(e) => handleFolderDragOver(e, folder)}
@@ -446,11 +441,9 @@ export function CollectionsTree({
           return (
             <div
               key={item.id}
-              className={`saved-row group-hover-row tree-item-draggable ${
-                isItemDragging ? 'is-dragging' : ''
-              } ${isTargetBefore ? 'drop-target-before' : ''} ${
-                isTargetAfter ? 'drop-target-after' : ''
-              }`}
+              className={`saved-row group-hover-row tree-item-draggable ${isItemDragging ? 'is-dragging' : ''
+                } ${isTargetBefore ? 'drop-target-before' : ''} ${isTargetAfter ? 'drop-target-after' : ''
+                }`}
               draggable={!isEditingAny}
               onDragStart={(e) => handleRequestDragStart(e, item)}
               onDragOver={(e) => handleRequestDragOver(e, item)}
@@ -513,11 +506,10 @@ export function CollectionsTree({
 
         {childFolders.length === 0 && childRequests.length === 0 && (
           <div
-            className={`empty-folder-drop-zone ${
-              dropTarget?.type === 'FOLDER' && dropTarget.id === parentId
+            className={`empty-folder-drop-zone ${dropTarget?.type === 'FOLDER' && dropTarget.id === parentId
                 ? 'drop-target-inside'
                 : ''
-            }`}
+              }`}
             onDragOver={(e) => {
               if (parentId) {
                 const targetFolder = folders.find((f) => f.id === parentId)
@@ -539,20 +531,10 @@ export function CollectionsTree({
   }
 
   return (
-    <div className="collections-tree-section">
+    <div className="collections-tree-section collections-tree-container collections-tree">
       <div className="row-between" style={{ padding: '0 4px 8px 4px' }}>
         <div className="caps">Collections ({collections.length})</div>
         <div className="row" style={{ gap: 4 }}>
-          {onImportCurl && (
-            <button
-              type="button"
-              className="icon-button icon-button-sm"
-              onClick={onImportCurl}
-              title="Import cURL command"
-            >
-              <Terminal size={14} />
-            </button>
-          )}
           <button
             type="button"
             className="icon-button icon-button-sm"
@@ -670,12 +652,11 @@ export function CollectionsTree({
 
                   {draggedItem && (
                     <div
-                      className={`collection-root-drop-zone ${
-                        dropTarget?.type === 'COLLECTION' &&
-                        dropTarget.id === `${collection.id}-root-zone`
+                      className={`collection-root-drop-zone ${dropTarget?.type === 'COLLECTION' &&
+                          dropTarget.id === `${collection.id}-root-zone`
                           ? 'drop-target-inside'
                           : ''
-                      }`}
+                        }`}
                       onDragOver={(e) => {
                         e.preventDefault()
                         e.stopPropagation()

@@ -11,7 +11,7 @@ export type ResponseViewTab = 'PRETTY' | 'HEADERS' | 'TESTS'
 export type BodyType = 'none' | 'json' | 'form-data' | 'x-www-form-urlencoded' | 'raw'
 export type MobileView = 'COLLECTIONS' | 'REQUEST' | 'EXPLORER'
 export type SplitLayout = 'horizontal' | 'vertical'
-export type SidebarTab = 'COLLECTIONS' | 'HISTORY'
+export type SidebarTab = 'COLLECTIONS' | 'ENVIRONMENTS'
 
 export interface KeyValueRow {
   id: string

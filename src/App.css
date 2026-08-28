@@ -747,51 +747,246 @@
 }
 
 /* ==========================================================================
-   SIDEBAR & ENVIRONMENT TABLE
+   SIDEBAR & ENVIRONMENT MANAGER
    ========================================================================== */
 
-.env-grid {
-  display: grid;
-  gap: 3px;
-  margin-top: 6px;
+.env-manager-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.env-row {
-  display: grid;
-  grid-template-columns: 18px minmax(0, 1fr) minmax(0, 1fr) 22px 22px;
+.env-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 26px;
+  padding-bottom: 2px;
+}
+
+.env-list-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.env-card-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  padding: 6px 8px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.env-card-item:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-strong);
+}
+
+.env-card-item.is-selected {
+  border-color: var(--primary);
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.env-card-item.is-active {
+  border-left: 3px solid #22c55e;
+}
+
+.env-card-main-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.env-card-rename-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.env-card-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+  gap: 2px;
+}
+
+.env-card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.env-card-name {
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.env-active-badge {
+  display: inline-flex;
   align-items: center;
   gap: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #4ade80;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  padding: 1px 5px;
+  border-radius: 9999px;
+  line-height: 1.2;
 }
 
-.env-row input[type="checkbox"] {
-  margin: 0;
+.env-card-meta {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.env-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  opacity: 0.7;
+  transition: opacity 0.12s ease;
+}
+
+.env-card-item:hover .env-card-actions,
+.env-card-item.is-selected .env-card-actions {
+  opacity: 1;
+}
+
+.env-activate-btn:hover {
+  color: #4ade80 !important;
+  background: rgba(34, 197, 94, 0.15) !important;
+}
+
+.env-card-delete-btn:hover:not(:disabled) {
+  color: #f87171 !important;
+  background: rgba(239, 68, 68, 0.15) !important;
+}
+
+/* Variables Table */
+.env-variables-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}
+
+.env-vars-table {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px;
+}
+
+.env-vars-table-header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 4px 4px 4px;
+  border-bottom: 1px solid var(--border);
+  font-size: 10px;
+  font-weight: 750;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+.env-vars-table-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 4px;
+}
+
+.env-vars-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.env-vars-checkbox {
+  width: 16px;
+  height: 16px;
+  margin: 0 2px 0 0;
   cursor: pointer;
   accent-color: var(--primary);
+  flex-shrink: 0;
 }
 
-.env-row .secret-toggle {
-  width: 22px;
-  height: 22px;
-  padding: 0;
-  border-radius: var(--radius-xs);
+.env-vars-key-input {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  height: 26px;
+}
+
+.env-vars-value-input {
+  flex: 1.2;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  height: 26px;
+}
+
+.env-vars-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 10px;
+  background: var(--bg-card);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
   color: var(--text-dim);
+  font-size: 11px;
+  text-align: center;
 }
 
-.env-row .secret-toggle:hover {
-  color: var(--text-primary);
-}
-
-.env-row .env-delete-btn {
-  width: 22px;
-  height: 22px;
-  padding: 0;
-  border-radius: var(--radius-xs);
+.env-tip-text {
+  font-size: 11px;
   color: var(--text-dim);
+  line-height: 1.4;
+  padding: 4px 2px;
 }
 
-.env-row .env-delete-btn:hover {
-  color: #f87171;
-  background: rgba(239, 68, 68, 0.15);
+.env-tip-text code {
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+/* ==========================================================================
+   COLLECTIONS TREE SCROLLBAR HIDING (Smooth scrolling without visible bar)
+   ========================================================================== */
+
+.collections-tree-container,
+.collections-tree,
+.sidebar-collections-scroll {
+  overflow-y: auto !important;
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;  /* Firefox */
+}
+
+.collections-tree-container::-webkit-scrollbar,
+.collections-tree::-webkit-scrollbar,
+.sidebar-collections-scroll::-webkit-scrollbar {
+  display: none !important; /* Chrome, Safari, Chromium/Electron */
+  width: 0px !important;
+  background: transparent !important;
 }
 
 /* Collections & Saved Requests */
