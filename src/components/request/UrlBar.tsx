@@ -8,7 +8,6 @@ import {
   Rows2,
   Save,
   Send,
-  ShieldAlert,
   StopCircle,
   Terminal,
 } from 'lucide-react'
@@ -22,7 +21,6 @@ interface UrlBarProps {
   activeTab: RequestItem
   activeEnvironment: EnvironmentItem | null
   previewUrl?: string
-  domainWarning: boolean
   splitLayout: SplitLayout
   onToggleSplitLayout: () => void
   onUpdateTab: (patch: Partial<RequestItem>) => void
@@ -45,7 +43,6 @@ const METHOD_COLORS: Record<HttpMethod, string> = {
 export function UrlBar({
   activeTab,
   activeEnvironment,
-  domainWarning,
   splitLayout,
   onToggleSplitLayout,
   onUpdateTab,
@@ -271,14 +268,6 @@ export function UrlBar({
       </div>
 
       {/* Error Banners */}
-
-      {domainWarning && (
-        <div className="banner banner-warning" style={{ marginTop: 8 }}>
-          <ShieldAlert size={14} />
-          Authorization header đang được gửi tới host khác với biến Domain của
-          environment.
-        </div>
-      )}
 
       {activeTab.clientError && (
         <div className="banner banner-danger" style={{ marginTop: 8 }}>

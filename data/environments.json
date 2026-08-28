@@ -74,5 +74,48 @@
         "secret": true
       }
     ]
+  },
+  {
+    "id": "0de3bdf9-0a91-4ba5-bcc5-05744f2d55c4",
+    "name": "KiotViet POS",
+    "variables": [
+      {
+        "id": "e87b09cb-0a52-417b-8370-06b804a58e5e",
+        "key": "Domain",
+        "value": "https://public.kiotapi.com",
+        "enabled": true
+      },
+      {
+        "id": "52635b29-6a7b-4353-9d89-0383afaa60f0",
+        "key": "token",
+        "value": "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MzIxODE0NjgsImV4cCI6MTczMjI2Nzg2OCwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiYzdhZmY0ZTAtOTk0MC00ZmExLWEzNjEtOWI4MWNjYzRlZWE2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2hyZXRhaWx0ZWFtZG4xIiwiY2xpZW50X1JldGFpbGVySWQiOiIxNDk1NDUyIiwiY2xpZW50X1VzZXJJZCI6IjEzMDQ1NDAiLCJjbGllbnRfU2Vuc2l0aXZlQXBpIjoiVHJ1ZSIsImNsaWVudF9Hcm91cElkIjoiMjMiLCJpYXQiOjE3MzIxODE0NjgsInNjb3BlIjpbIlB1YmxpY0FwaS5BY2Nlc3MiXX0.qtxWSRdpYGJRXyniq55N3ybtPu4vRX8pGSYJ2ETgmSY5wl6ZtgIckFaxWWffrTsMcCqNSWpiWF0X98veDAHrHnDk4pr8ZHa2AE1hKFOsk28AksVC45nr5Fp67U6TgYvFftCRCiIbeIgi7Cu-FwgvtQcJzPz-0rB_5O1_fDmxxBvQmeN99hUA_5erR69LuCZzGwiS3l6swPNUbbywD136LH8zEgEV54DL6_h-7xbPEs_rqpwcIKHkI1qgRWz91_zLc5ScPP_ZjnDnRFmf2G-eLqRHl9aaBGTWYx4HRyA2qPvFW-F88lMBuprH6dO1VfLdCf3AqYGKNvqrpYAhH8cfbQ",
+        "enabled": true,
+        "secret": true
+      },
+      {
+        "id": "5a030490-c348-455c-9dbe-fadfd9e101ac",
+        "key": "retailer",
+        "value": "dxpsoftware",
+        "enabled": true
+      },
+      {
+        "id": "c9f0947f-0e22-4a3e-8d56-c27ef154f24e",
+        "key": "clientId",
+        "value": "a726cff4-a4b7-4735-ba58-9d35a7a587c9",
+        "enabled": true
+      },
+      {
+        "id": "11051729-46c1-4399-9b6c-da2292e72b98",
+        "key": "clientSecret",
+        "value": "82D20F07073E8892AA29EF40E64E9AF1E370B84B",
+        "enabled": true
+      },
+      {
+        "id": "89e6ceae-f55a-42fc-b14e-eea4ac8e6e9a",
+        "key": "Domain-Token",
+        "value": "https://api.fnb.kiotviet.vn",
+        "enabled": true
+      }
+    ]
   }
 ]

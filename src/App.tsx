@@ -35,7 +35,6 @@ import {
   injectAuthToUrl,
   resolvePathVariables,
   resolveTemplates,
-  shouldWarnDomainMismatch,
 } from './services/templateService'
 import { sendHttpRequest } from './services/httpService'
 import {
@@ -159,11 +158,6 @@ function App() {
       null
     )
   }, [environments, activeEnvironmentId])
-
-  const domainWarning = useMemo(
-    () => shouldWarnDomainMismatch(activeTab, activeEnvironment),
-    [activeTab, activeEnvironment],
-  )
 
   const currentGraphOperationKind =
     graphExplorer.activeTab === 'MUTATION' ? 'mutation' : 'query'
@@ -1150,8 +1144,16 @@ function App() {
       setFolders((prev) => [...prev, ...result.folders])
       setSavedRequests((prev) => [...prev, ...result.requests])
       setExpandedCollectionIds((prev) => [...prev, result.collection.id])
+      setExpandedFolderIds((prev) => [
+        ...prev,
+        ...result.folders.map((f) => f.id),
+      ])
       setImportPostmanText('')
       setImportPostmanModalOpen(false)
+      showToast(
+        `Đã import thành công "${result.collection.name}" (${result.requests.length} requests, ${result.folders.length} folders)`,
+        'success',
+      )
     } catch {
       alert('Postman Collection JSON không hợp lệ. Vui lòng kiểm tra lại.')
     }
@@ -2109,7 +2111,6 @@ function App() {
             activeEnvironmentId={activeEnvironmentId}
             activeEnvironment={activeEnvironment}
             previewUrl={previewUrl}
-            domainWarning={domainWarning}
             splitLayout={splitLayout}
             editorFontSize={settings.editorFontSize}
             isSidebarCollapsed={isSidebarCollapsed}

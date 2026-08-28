@@ -15,7 +15,6 @@ interface MainPanelProps {
   activeEnvironmentId: string
   activeEnvironment: EnvironmentItem | null
   previewUrl: string
-  domainWarning: boolean
   splitLayout: SplitLayout
   editorFontSize?: number
   isSidebarCollapsed?: boolean
@@ -55,7 +54,6 @@ export function MainPanel({
   activeEnvironmentId,
   activeEnvironment,
   previewUrl,
-  domainWarning,
   splitLayout,
   editorFontSize,
   isSidebarCollapsed,
@@ -115,7 +113,6 @@ export function MainPanel({
             activeTab={activeTab}
             activeEnvironment={activeEnvironment}
             previewUrl={previewUrl}
-            domainWarning={domainWarning}
             splitLayout={splitLayout}
             onToggleSplitLayout={onToggleSplitLayout}
             onUpdateTab={onUpdateActiveTab}

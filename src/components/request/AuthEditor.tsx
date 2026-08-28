@@ -10,9 +10,13 @@ interface AuthEditorProps {
 }
 
 export function AuthEditor({ auth, onChange, environment }: AuthEditorProps) {
-  const [showBearerToken, setShowBearerToken] = useState(true)
-  const [showBasicPassword, setShowBasicPassword] = useState(false)
-  const [showApiKey, setShowApiKey] = useState(false)
+  const [showRawBearerToken, setShowRawBearerToken] = useState(false)
+  const [showRawBasicPassword, setShowRawBasicPassword] = useState(false)
+  const [showRawApiKey, setShowRawApiKey] = useState(false)
+
+  const isBearerTemplateVar = /\{\{.+?\}\}/.test(auth.bearerToken || '')
+  const isBasicPasswordTemplateVar = /\{\{.+?\}\}/.test(auth.basicPassword || '')
+  const isApiKeyTemplateVar = /\{\{.+?\}\}/.test(auth.apiKeyValue || '')
 
   const handleTypeChange = (type: AuthType) => {
     onChange({ ...auth, type })
@@ -47,23 +51,26 @@ export function AuthEditor({ auth, onChange, environment }: AuthEditorProps) {
       {auth.type === 'bearer' && (
         <div className="stack" style={{ maxWidth: 520, gap: 8, marginTop: 4 }}>
           <div className="caps">Token</div>
+
           <TemplateInput
             size="default"
-            type={showBearerToken ? 'text' : 'password'}
-            startIcon={<Lock size={14} className="text-gray-400 pointer-events-none" />}
+            type={isBearerTemplateVar || showRawBearerToken ? 'text' : 'password'}
+            startIcon={<Lock size={13} className="pointer-events-none" />}
             endAction={
-              <button
-                type="button"
-                onClick={() => setShowBearerToken(!showBearerToken)}
-                title={showBearerToken ? 'Hide Token' : 'Show Token'}
-                aria-label={showBearerToken ? 'Hide Token' : 'Show Token'}
-              >
-                {showBearerToken ? <EyeOff size={14} /> : <Eye size={14} />}
-              </button>
+              !isBearerTemplateVar ? (
+                <button
+                  type="button"
+                  onClick={() => setShowRawBearerToken(!showRawBearerToken)}
+                  title={showRawBearerToken ? 'Hide Token' : 'Show Token'}
+                  aria-label={showRawBearerToken ? 'Hide Token' : 'Show Token'}
+                >
+                  {showRawBearerToken ? <EyeOff size={13} /> : <Eye size={13} />}
+                </button>
+              ) : undefined
             }
             value={auth.bearerToken || ''}
             onChange={(val) => onChange({ ...auth, bearerToken: val })}
-            placeholder="Enter Token or {{variable}}..."
+            placeholder="Enter Bearer Token or {{Token}}..."
             environment={environment}
             aria-label="Bearer Token"
           />
@@ -84,7 +91,7 @@ export function AuthEditor({ auth, onChange, environment }: AuthEditorProps) {
             <div className="caps">Username</div>
             <TemplateInput
               size="default"
-              startIcon={<User size={14} className="text-gray-400 pointer-events-none" />}
+              startIcon={<User size={13} className="pointer-events-none" />}
               value={auth.basicUsername || ''}
               onChange={(val) => onChange({ ...auth, basicUsername: val })}
               placeholder="Username (e.g. admin or {{user}})"
@@ -97,17 +104,19 @@ export function AuthEditor({ auth, onChange, environment }: AuthEditorProps) {
             <div className="caps">Password</div>
             <TemplateInput
               size="default"
-              type={showBasicPassword ? 'text' : 'password'}
-              startIcon={<Lock size={14} className="text-gray-400 pointer-events-none" />}
+              type={isBasicPasswordTemplateVar || showRawBasicPassword ? 'text' : 'password'}
+              startIcon={<Lock size={13} className="pointer-events-none" />}
               endAction={
-                <button
-                  type="button"
-                  onClick={() => setShowBasicPassword(!showBasicPassword)}
-                  title={showBasicPassword ? 'Hide Password' : 'Show Password'}
-                  aria-label={showBasicPassword ? 'Hide Password' : 'Show Password'}
-                >
-                  {showBasicPassword ? <EyeOff size={14} /> : <Eye size={14} />}
-                </button>
+                !isBasicPasswordTemplateVar ? (
+                  <button
+                    type="button"
+                    onClick={() => setShowRawBasicPassword(!showRawBasicPassword)}
+                    title={showRawBasicPassword ? 'Hide Password' : 'Show Password'}
+                    aria-label={showRawBasicPassword ? 'Hide Password' : 'Show Password'}
+                  >
+                    {showRawBasicPassword ? <EyeOff size={13} /> : <Eye size={13} />}
+                  </button>
+                ) : undefined
               }
               value={auth.basicPassword || ''}
               onChange={(val) => onChange({ ...auth, basicPassword: val })}
@@ -133,7 +142,7 @@ export function AuthEditor({ auth, onChange, environment }: AuthEditorProps) {
             <div className="caps">Key Name</div>
             <TemplateInput
               size="default"
-              startIcon={<Key size={14} className="text-gray-400 pointer-events-none" />}
+              startIcon={<Key size={13} className="pointer-events-none" />}
               value={auth.apiKeyName || ''}
               onChange={(val) => onChange({ ...auth, apiKeyName: val })}
               placeholder="e.g. X-API-Key or api_key"
@@ -146,17 +155,19 @@ export function AuthEditor({ auth, onChange, environment }: AuthEditorProps) {
             <div className="caps">Key Value</div>
             <TemplateInput
               size="default"
-              type={showApiKey ? 'text' : 'password'}
-              startIcon={<Lock size={14} className="text-gray-400 pointer-events-none" />}
+              type={isApiKeyTemplateVar || showRawApiKey ? 'text' : 'password'}
+              startIcon={<Lock size={13} className="pointer-events-none" />}
               endAction={
-                <button
-                  type="button"
-                  onClick={() => setShowApiKey(!showApiKey)}
-                  title={showApiKey ? 'Hide Key Value' : 'Show Key Value'}
-                  aria-label={showApiKey ? 'Hide Key Value' : 'Show Key Value'}
-                >
-                  {showApiKey ? <EyeOff size={14} /> : <Eye size={14} />}
-                </button>
+                !isApiKeyTemplateVar ? (
+                  <button
+                    type="button"
+                    onClick={() => setShowRawApiKey(!showRawApiKey)}
+                    title={showRawApiKey ? 'Hide Key Value' : 'Show Key Value'}
+                    aria-label={showRawApiKey ? 'Hide Key Value' : 'Show Key Value'}
+                  >
+                    {showRawApiKey ? <EyeOff size={13} /> : <Eye size={13} />}
+                  </button>
+                ) : undefined
               }
               value={auth.apiKeyValue || ''}
               onChange={(val) => onChange({ ...auth, apiKeyValue: val })}

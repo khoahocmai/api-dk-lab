@@ -1,5 +1,627 @@
 [
   {
+    "id": "5ffa56b1-0d47-473f-b319-a21e5880a898",
+    "timestamp": "2026-08-28T04:32:41.709Z",
+    "method": "POST",
+    "mode": "REST",
+    "url": "https://api.fnb.kiotviet.vn/identity/connect/token",
+    "status": 200,
+    "duration": 346,
+    "request": {
+      "id": "ec05d135-711a-486d-bdd6-481112e8279c",
+      "savedRequestId": "f3dcc306-2ef0-4170-959f-ecdbe29d5220",
+      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "folderId": null,
+      "name": "Lấy thông tin token",
+      "mode": "REST",
+      "method": "POST",
+      "url": "{{Domain-Token}}/identity/connect/token",
+      "params": [],
+      "headersList": [
+        {
+          "id": "655f89ed-0106-4648-b15b-65a359345a73",
+          "key": "Content-Type",
+          "value": "application/x-www-form-urlencoded",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/x-www-form-urlencoded\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "x-www-form-urlencoded",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [
+        {
+          "id": "9421d7c2-4fda-4aff-8985-8b8c86a1251c",
+          "key": "client_id",
+          "value": "{{clientId}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "20ce3c46-168f-4b8d-919e-d337db79e1a4",
+          "key": "client_secret",
+          "value": "{{clientSecret}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "2a7403b9-cb48-41e9-a3e3-9bf1cb2ff1ca",
+          "key": "grant_type",
+          "value": "client_credentials",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "708813a9-5848-48fd-997d-c3e051192115",
+          "key": "scopes",
+          "value": "PublicApi.Access.FNB",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "ghost-tail-row",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": "",
+          "type": "text"
+        }
+      ],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "var data = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"token\", jsonData.access_token);",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Lấy thông tin token\",\"url\":\"https://id.kiotviet.vn/connect/token\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/x-www-form-urlencoded\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"x-www-form-urlencoded\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[{\"key\":\"client_id\",\"value\":\"{{clientId}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"client_secret\",\"value\":\"{{clientSecret}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"grant_type\",\"value\":\"client_credentials\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"scopes\",\"value\":\"PublicApi.Access.FNB\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"var data = JSON.parse(responseBody);\\r\\npostman.setEnvironmentVariable(\\\"token\\\", jsonData.access_token);\"}"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "346 ms",
+      "size": "827 B",
+      "data": {
+        "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3ODc4OTE1NjYsImV4cCI6MTc4Nzk3Nzk2NiwiaXNzIjoiaHR0cDovL2FwaS5mbmIua2lvdHZpZXQudm4iLCJjbGllbnRfaWQiOiJhNzI2Y2ZmNC1hNGI3LTQ3MzUtYmE1OC05ZDM1YTdhNTg3YzkiLCJjbGllbnRfUmV0YWlsZXJDb2RlIjoiZHhwc29mdHdhcmUiLCJjbGllbnRfUmV0YWlsZXJJZCI6IjUwMTE4MTI1MiIsImNsaWVudF9Vc2VySWQiOiI0NzIyMDUiLCJpYXQiOjE3ODc4OTE1NjYsInNjb3BlIjpbIlB1YmxpY0FwaS5BY2Nlc3MuRk5CIl19.Ev_lGV4nrRHAEGhCmfPNRRV12f8afHU5AQwL7eko4czzpNUzacyfL3kCIw2aBHd3FuonnQ9vUftcJEpctTw7_4GHAF_9hVaqpYiCEfYrdlr2aVvXEL9Fg4DynYitFboSnNBXrBOfxIjuY0BSTmdBUhe-Z3UxTswTtWdfeM-sNTRoB4eD3x5vT1sNChvJkGUvni3Np50v2NgXJ-nEmXdo8e-D8XYNptaDgVGuc5JqBAMoEAuf9fvI7WgKkDYoXFXHxcU_0x7tO3S709UsQSqgzyxqnk15LgGdWJIhnuPFs0xv2GI_7cqAvYWc3tK2qK0pIR-GB59RVM0cpV1k1aJ_fw",
+        "expires_in": 86400,
+        "token_type": "Bearer",
+        "scope": "PublicApi.Access.FNB"
+      },
+      "headers": {
+        "content-type": "application/json; charset=UTF-8",
+        "transfer-encoding": "chunked",
+        "date": "Fri, 28 Aug 2026 04:32:46 GMT",
+        "cache-control": "no-store, no-cache, max-age=0",
+        "pragma": "no-cache",
+        "server": "kiotviet",
+        "vary": "Accept-Encoding"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "e775580f-50b7-4f96-81d0-1c06539ea81a",
+    "timestamp": "2026-08-28T04:31:31.105Z",
+    "method": "POST",
+    "mode": "REST",
+    "url": "https://id.kiotviet.vn/connect/token",
+    "status": 400,
+    "duration": 179,
+    "request": {
+      "id": "ec05d135-711a-486d-bdd6-481112e8279c",
+      "savedRequestId": "f3dcc306-2ef0-4170-959f-ecdbe29d5220",
+      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "folderId": null,
+      "name": "Lấy thông tin token",
+      "mode": "REST",
+      "method": "POST",
+      "url": "https://id.kiotviet.vn/connect/token",
+      "params": [],
+      "headersList": [
+        {
+          "id": "655f89ed-0106-4648-b15b-65a359345a73",
+          "key": "Content-Type",
+          "value": "application/x-www-form-urlencoded",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/x-www-form-urlencoded\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "x-www-form-urlencoded",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [
+        {
+          "id": "9421d7c2-4fda-4aff-8985-8b8c86a1251c",
+          "key": "client_id",
+          "value": "{{clientId}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "20ce3c46-168f-4b8d-919e-d337db79e1a4",
+          "key": "client_secret",
+          "value": "{{clientSecret}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "2a7403b9-cb48-41e9-a3e3-9bf1cb2ff1ca",
+          "key": "grant_type",
+          "value": "client_credentials",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "708813a9-5848-48fd-997d-c3e051192115",
+          "key": "scopes",
+          "value": "PublicApi.Access.FNB",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "ghost-tail-row",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": "",
+          "type": "text"
+        }
+      ],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "var data = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"token\", jsonData.access_token);",
+      "editorTab": "HEADERS",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Lấy thông tin token\",\"url\":\"https://id.kiotviet.vn/connect/token\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/x-www-form-urlencoded\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"x-www-form-urlencoded\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[{\"key\":\"client_id\",\"value\":\"{{clientId}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"client_secret\",\"value\":\"{{clientSecret}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"grant_type\",\"value\":\"client_credentials\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"scopes\",\"value\":\"PublicApi.Access.FNB\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"var data = JSON.parse(responseBody);\\r\\npostman.setEnvironmentVariable(\\\"token\\\", jsonData.access_token);\"}"
+    },
+    "response": {
+      "status": 400,
+      "statusText": "Bad Request",
+      "time": "179 ms",
+      "size": "26 B",
+      "data": {
+        "error": "invalid_client"
+      },
+      "headers": {
+        "date": "Fri, 28 Aug 2026 04:31:35 GMT",
+        "content-type": "application/json; charset=UTF-8",
+        "server": "Kestrel",
+        "cache-control": "no-store, no-cache, max-age=0",
+        "pragma": "no-cache",
+        "transfer-encoding": "chunked"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "fcb2d188-eecf-4d53-99e6-24d186dba839",
+    "timestamp": "2026-08-28T04:31:13.646Z",
+    "method": "POST",
+    "mode": "REST",
+    "url": "https://id.kiotviet.vn/connect/token",
+    "status": 400,
+    "duration": 135,
+    "request": {
+      "id": "ec05d135-711a-486d-bdd6-481112e8279c",
+      "savedRequestId": "f3dcc306-2ef0-4170-959f-ecdbe29d5220",
+      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "folderId": null,
+      "name": "Lấy thông tin token",
+      "mode": "REST",
+      "method": "POST",
+      "url": "https://id.kiotviet.vn/connect/token",
+      "params": [],
+      "headersList": [
+        {
+          "id": "655f89ed-0106-4648-b15b-65a359345a73",
+          "key": "Content-Type",
+          "value": "application/x-www-form-urlencoded",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/x-www-form-urlencoded\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "x-www-form-urlencoded",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [
+        {
+          "id": "9421d7c2-4fda-4aff-8985-8b8c86a1251c",
+          "key": "client_id",
+          "value": "{{clientId}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "20ce3c46-168f-4b8d-919e-d337db79e1a4",
+          "key": "client_secret",
+          "value": "{{clientSecret}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "2a7403b9-cb48-41e9-a3e3-9bf1cb2ff1ca",
+          "key": "grant_type",
+          "value": "client_credentials",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "708813a9-5848-48fd-997d-c3e051192115",
+          "key": "scopes",
+          "value": "PublicApi.Access.FNB",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "ghost-tail-row",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": "",
+          "type": "text"
+        }
+      ],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "var data = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"token\", jsonData.access_token);",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Lấy thông tin token\",\"url\":\"https://id.kiotviet.vn/connect/token\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/x-www-form-urlencoded\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"x-www-form-urlencoded\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[{\"key\":\"client_id\",\"value\":\"{{clientId}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"client_secret\",\"value\":\"{{clientSecret}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"grant_type\",\"value\":\"client_credentials\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"scopes\",\"value\":\"PublicApi.Access\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"var data = JSON.parse(responseBody);\\r\\npostman.setEnvironmentVariable(\\\"token\\\", jsonData.access_token);\"}"
+    },
+    "response": {
+      "status": 400,
+      "statusText": "Bad Request",
+      "time": "135 ms",
+      "size": "26 B",
+      "data": {
+        "error": "invalid_client"
+      },
+      "headers": {
+        "date": "Fri, 28 Aug 2026 04:31:18 GMT",
+        "content-type": "application/json; charset=UTF-8",
+        "server": "Kestrel",
+        "cache-control": "no-store, no-cache, max-age=0",
+        "pragma": "no-cache",
+        "transfer-encoding": "chunked"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "09f1dce3-70f7-478a-a051-76e2e5eda258",
+    "timestamp": "2026-08-28T04:31:02.580Z",
+    "method": "POST",
+    "mode": "REST",
+    "url": "https://id.kiotviet.vn/connect/token",
+    "status": 400,
+    "duration": 136,
+    "request": {
+      "id": "ec05d135-711a-486d-bdd6-481112e8279c",
+      "savedRequestId": "f3dcc306-2ef0-4170-959f-ecdbe29d5220",
+      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "folderId": null,
+      "name": "Lấy thông tin token",
+      "mode": "REST",
+      "method": "POST",
+      "url": "https://id.kiotviet.vn/connect/token",
+      "params": [],
+      "headersList": [
+        {
+          "id": "655f89ed-0106-4648-b15b-65a359345a73",
+          "key": "Content-Type",
+          "value": "application/x-www-form-urlencoded",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/x-www-form-urlencoded\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "x-www-form-urlencoded",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [
+        {
+          "id": "9421d7c2-4fda-4aff-8985-8b8c86a1251c",
+          "key": "client_id",
+          "value": "{{clientId}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "20ce3c46-168f-4b8d-919e-d337db79e1a4",
+          "key": "client_secret",
+          "value": "{{clientSecret}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "2a7403b9-cb48-41e9-a3e3-9bf1cb2ff1ca",
+          "key": "grant_type",
+          "value": "client_credentials",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "708813a9-5848-48fd-997d-c3e051192115",
+          "key": "scopes",
+          "value": "PublicApi.Access.FNB",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "ghost-tail-row",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": "",
+          "type": "text"
+        }
+      ],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "var data = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"token\", jsonData.access_token);",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Lấy thông tin token\",\"url\":\"https://id.kiotviet.vn/connect/token\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/x-www-form-urlencoded\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"x-www-form-urlencoded\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[{\"key\":\"client_id\",\"value\":\"{{clientId}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"client_secret\",\"value\":\"{{clientSecret}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"grant_type\",\"value\":\"client_credentials\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"scopes\",\"value\":\"PublicApi.Access\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"var data = JSON.parse(responseBody);\\r\\npostman.setEnvironmentVariable(\\\"token\\\", jsonData.access_token);\"}"
+    },
+    "response": {
+      "status": 400,
+      "statusText": "Bad Request",
+      "time": "136 ms",
+      "size": "26 B",
+      "data": {
+        "error": "invalid_client"
+      },
+      "headers": {
+        "date": "Fri, 28 Aug 2026 04:31:06 GMT",
+        "content-type": "application/json; charset=UTF-8",
+        "server": "Kestrel",
+        "cache-control": "no-store, no-cache, max-age=0",
+        "pragma": "no-cache",
+        "transfer-encoding": "chunked"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "5cedc81f-d17d-4690-974a-55c4b3e57942",
+    "timestamp": "2026-08-28T04:29:04.648Z",
+    "method": "POST",
+    "mode": "REST",
+    "url": "https://id.kiotviet.vn/connect/token",
+    "status": 400,
+    "duration": 145,
+    "request": {
+      "id": "ec05d135-711a-486d-bdd6-481112e8279c",
+      "savedRequestId": "f3dcc306-2ef0-4170-959f-ecdbe29d5220",
+      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "folderId": null,
+      "name": "Lấy thông tin token",
+      "mode": "REST",
+      "method": "POST",
+      "url": "https://id.kiotviet.vn/connect/token",
+      "params": [],
+      "headersList": [
+        {
+          "id": "655f89ed-0106-4648-b15b-65a359345a73",
+          "key": "Content-Type",
+          "value": "application/x-www-form-urlencoded",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Content-Type\": \"application/x-www-form-urlencoded\"\n}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "x-www-form-urlencoded",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [
+        {
+          "id": "9421d7c2-4fda-4aff-8985-8b8c86a1251c",
+          "key": "client_id",
+          "value": "{{clientId}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "20ce3c46-168f-4b8d-919e-d337db79e1a4",
+          "key": "client_secret",
+          "value": "{{clientSecret}}",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "2a7403b9-cb48-41e9-a3e3-9bf1cb2ff1ca",
+          "key": "grant_type",
+          "value": "client_credentials",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "708813a9-5848-48fd-997d-c3e051192115",
+          "key": "scopes",
+          "value": "PublicApi.Access",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "ghost-tail-row",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": "",
+          "type": "text"
+        }
+      ],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "var data = JSON.parse(responseBody);\r\npostman.setEnvironmentVariable(\"token\", jsonData.access_token);",
+      "editorTab": "AUTH",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Lấy thông tin token\",\"url\":\"https://id.kiotviet.vn/connect/token\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/x-www-form-urlencoded\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"x-www-form-urlencoded\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[{\"key\":\"client_id\",\"value\":\"{{clientId}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"client_secret\",\"value\":\"{{clientSecret}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"grant_type\",\"value\":\"client_credentials\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"scopes\",\"value\":\"PublicApi.Access\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"var data = JSON.parse(responseBody);\\r\\npostman.setEnvironmentVariable(\\\"token\\\", jsonData.access_token);\"}"
+    },
+    "response": {
+      "status": 400,
+      "statusText": "Bad Request",
+      "time": "145 ms",
+      "size": "26 B",
+      "data": {
+        "error": "invalid_client"
+      },
+      "headers": {
+        "date": "Fri, 28 Aug 2026 04:29:09 GMT",
+        "content-type": "application/json; charset=UTF-8",
+        "server": "Kestrel",
+        "cache-control": "no-store, no-cache, max-age=0",
+        "pragma": "no-cache",
+        "transfer-encoding": "chunked"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "484a75b3-bfc0-4b86-9656-6866103b20dc",
+    "timestamp": "2026-08-28T04:25:44.863Z",
+    "method": "GET",
+    "mode": "REST",
+    "url": "https://public.kiotapi.com/branches",
+    "status": 401,
+    "duration": 167,
+    "request": {
+      "id": "383a7b50-b31b-452a-b8f3-c9a9326799d9",
+      "savedRequestId": "f68e377f-fb24-434c-8317-c4c72870daad",
+      "collectionId": "541914c0-db85-4d91-987a-829b8e004631",
+      "folderId": "ec84ec6b-4def-460d-b1ee-6372775366af",
+      "name": "Danh sách chi nhánh",
+      "mode": "REST",
+      "method": "GET",
+      "url": "{{Domain}}/branches",
+      "params": [
+        {
+          "id": "5f8aa677-32a8-47ff-89aa-f4683315a216",
+          "key": "format",
+          "value": "json",
+          "enabled": false,
+          "description": ""
+        },
+        {
+          "id": "ce87a81e-d590-4bd3-9fc7-fb53ea1179b7",
+          "key": "includeRemoveIds",
+          "value": "true",
+          "enabled": false,
+          "description": ""
+        },
+        {
+          "id": "fd92c72e-3e60-4b83-be84-feb2f620d0c2",
+          "key": "hierachicalData",
+          "value": "true",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersList": [
+        {
+          "id": "ec1f6562-b7dd-4e1d-87e9-dfa7ac724cc3",
+          "key": "Retailer",
+          "value": "{{retailer}}",
+          "enabled": true,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"Retailer\": \"{{retailer}}\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "testScript": "",
+      "editorTab": "AUTH",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Danh sách chi nhánh\",\"url\":\"{{Domain}}/branches\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[{\"key\":\"format\",\"value\":\"json\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"includeRemoveIds\",\"value\":\"true\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"hierachicalData\",\"value\":\"true\",\"enabled\":false,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"pathVariables\":[],\"headersList\":[{\"key\":\"Retailer\",\"value\":\"{{retailer}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
+    },
+    "response": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "time": "167 ms",
+      "size": "79 B",
+      "data": {
+        "responseStatus": {
+          "errorCode": "TokenException",
+          "message": "Token has expired"
+        }
+      },
+      "headers": {
+        "cache-control": "private",
+        "content-type": "application/json; charset=utf-8",
+        "vary": "Accept",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "date": "Fri, 28 Aug 2026 04:25:49 GMT",
+        "content-length": "79"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
     "id": "459ba601-e5aa-4119-91bd-0fe61521ddd4",
     "timestamp": "2026-08-28T02:52:37.059Z",
     "method": "POST",
@@ -23322,474 +23944,6 @@
         "content-type": "application/json; charset=utf-8",
         "content-length": "249",
         "date": "Wed, 26 Aug 2026 03:09:30 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "8f799c75-811d-4ddb-ae73-0c37ed1fc4b7",
-    "timestamp": "2026-08-26T03:08:32.414Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 41,
-    "request": {
-      "id": "594eee64-0ec0-40a0-a62e-f03f1bb4a10c",
-      "savedRequestId": "e0c7a17f-afa5-4166-abb3-5eb22132a9e6",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": null,
-      "name": "health",
-      "graphqlRootField": "health",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "4b180b54-f757-4abb-bb26-df57c7eb194b",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": ""
-        }
-      ],
-      "headersText": "{}",
-      "auth": {
-        "type": "none",
-        "bearerToken": "",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query Health {\n  health {\n    message\n  }\n}",
-      "gqlVariables": "{}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "41 ms",
-      "size": "36 B",
-      "data": {
-        "data": {
-          "health": {
-            "message": "Ok"
-          }
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "37",
-        "date": "Wed, 26 Aug 2026 03:08:33 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "cdf24869-a504-4786-a599-9494e41a4f54",
-    "timestamp": "2026-08-26T02:47:35.797Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "https://api.dxpdemos.com/graphql",
-    "status": 200,
-    "duration": 131,
-    "request": {
-      "id": "29f32d7d-60b7-40d1-b6fb-5c4c33b757e8",
-      "savedRequestId": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
-      "name": "Tenant get list",
-      "graphqlRootField": "tenantGetList",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "3d095786-c99c-461d-a6ba-5f784c0f3e22",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "752fb8d8-d656-4b74-a4c1-b0d540a19212",
-          "key": "",
-          "value": "",
-          "enabled": true,
-          "description": ""
-        }
-      ],
-      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query TenantGetList {\n  tenantGetList {\n    id\n    name\n  }\n}",
-      "gqlVariables": "{}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "131 ms",
-      "size": "163 B",
-      "data": {
-        "data": {
-          "tenantGetList": [
-            {
-              "id": "019f4b8e-a513-72eb-8dbc-7b8fc300355c",
-              "name": "Thai Food"
-            },
-            {
-              "id": "0192fda4-ba1b-76ef-bb1a-64c043a8e4a4",
-              "name": "The Pizza Town"
-            }
-          ]
-        }
-      },
-      "headers": {
-        "server": "nginx/1.24.0 (Ubuntu)",
-        "date": "Wed, 26 Aug 2026 02:47:38 GMT",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "164",
-        "connection": "keep-alive",
-        "cache-control": "no-store",
-        "vary": "Origin"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "3df36f40-2296-4648-87a6-f8f6d5f8ebdb",
-    "timestamp": "2026-08-26T02:34:20.636Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "https://api.dxpdemos.com/graphql",
-    "status": 200,
-    "duration": 53,
-    "request": {
-      "id": "29f32d7d-60b7-40d1-b6fb-5c4c33b757e8",
-      "savedRequestId": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": "4b3124b2-b790-470f-aaf5-41ef20e75b1b",
-      "name": "Tenant get list",
-      "graphqlRootField": "tenantGetList",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "3d095786-c99c-461d-a6ba-5f784c0f3e22",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "752fb8d8-d656-4b74-a4c1-b0d540a19212",
-          "key": "",
-          "value": "",
-          "enabled": true,
-          "description": ""
-        }
-      ],
-      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query TenantGetList {\n  tenantGetList {\n    id\n    name\n  }\n}",
-      "gqlVariables": "{}",
-      "testScript": "",
-      "editorTab": "AUTH",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "53 ms",
-      "size": "163 B",
-      "data": {
-        "data": {
-          "tenantGetList": [
-            {
-              "id": "019f4b8e-a513-72eb-8dbc-7b8fc300355c",
-              "name": "Thai Food"
-            },
-            {
-              "id": "0192fda4-ba1b-76ef-bb1a-64c043a8e4a4",
-              "name": "The Pizza Town"
-            }
-          ]
-        }
-      },
-      "headers": {
-        "server": "nginx/1.24.0 (Ubuntu)",
-        "date": "Wed, 26 Aug 2026 02:34:23 GMT",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "164",
-        "connection": "keep-alive",
-        "cache-control": "no-store",
-        "vary": "Origin"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "1f64eb5f-b152-4bbb-a751-e8d8009883f8",
-    "timestamp": "2026-08-26T02:34:11.929Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "https://api.dxpdemos.com/graphql",
-    "status": 200,
-    "duration": 14,
-    "request": {
-      "id": "aa406e4d-c43c-4af5-a896-ddce858c433f",
-      "savedRequestId": "e0c7a17f-afa5-4166-abb3-5eb22132a9e6",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": null,
-      "name": "health",
-      "graphqlRootField": "health",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "4b180b54-f757-4abb-bb26-df57c7eb194b",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": "",
-          "type": "text"
-        }
-      ],
-      "headersText": "{}",
-      "auth": {
-        "type": "none",
-        "bearerToken": "",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query Health {\n  health {\n    message\n  }\n}",
-      "gqlVariables": "{}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "14 ms",
-      "size": "36 B",
-      "data": {
-        "data": {
-          "health": {
-            "message": "Ok"
-          }
-        }
-      },
-      "headers": {
-        "server": "nginx/1.24.0 (Ubuntu)",
-        "date": "Wed, 26 Aug 2026 02:34:14 GMT",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "37",
-        "connection": "keep-alive",
-        "cache-control": "no-store",
-        "vary": "Origin"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "1f016e28-9ce8-4a19-94d6-a931da6be152",
-    "timestamp": "2026-08-26T02:33:34.008Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "https://api.dxpdemos.com/graphql",
-    "status": 200,
-    "duration": 205,
-    "request": {
-      "id": "aa406e4d-c43c-4af5-a896-ddce858c433f",
-      "savedRequestId": "e0c7a17f-afa5-4166-abb3-5eb22132a9e6",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": null,
-      "name": "health",
-      "graphqlRootField": "health",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "4b180b54-f757-4abb-bb26-df57c7eb194b",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": "",
-          "type": "text"
-        }
-      ],
-      "headersText": "{}",
-      "auth": {
-        "type": "none",
-        "bearerToken": "",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query Health {\n  health {\n    message\n  }\n}",
-      "gqlVariables": "{}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "205 ms",
-      "size": "36 B",
-      "data": {
-        "data": {
-          "health": {
-            "message": "Ok"
-          }
-        }
-      },
-      "headers": {
-        "server": "nginx/1.24.0 (Ubuntu)",
-        "date": "Wed, 26 Aug 2026 02:33:36 GMT",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "37",
-        "connection": "keep-alive",
-        "cache-control": "no-store",
-        "vary": "Origin"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "c248e823-dc46-4661-b399-783f50b3ad1f",
-    "timestamp": "2026-08-26T02:19:16.891Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 4,
-    "request": {
-      "id": "aa406e4d-c43c-4af5-a896-ddce858c433f",
-      "savedRequestId": "e0c7a17f-afa5-4166-abb3-5eb22132a9e6",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": null,
-      "name": "health",
-      "graphqlRootField": "health",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "b28bbff0-b7d1-4364-a859-c21a481bc5c0",
-          "key": "Authorization",
-          "value": "Bearer {{token}}",
-          "enabled": false,
-          "description": ""
-        }
-      ],
-      "headersText": "{}",
-      "auth": {
-        "type": "none",
-        "bearerToken": "",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query Health {\n  health {\n    message\n  }\n}",
-      "gqlVariables": "{}",
-      "testScript": "",
-      "editorTab": "HEADERS",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "4 ms",
-      "size": "36 B",
-      "data": {
-        "data": {
-          "health": {
-            "message": "Ok"
-          }
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "37",
-        "date": "Wed, 26 Aug 2026 02:19:19 GMT",
         "connection": "keep-alive",
         "keep-alive": "timeout=72"
       },

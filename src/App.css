@@ -1493,6 +1493,105 @@
   font-weight: 600;
 }
 
+/* Auth Native Input (Single layer robust input) */
+.auth-native-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 34px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.auth-native-input-wrapper:focus-within {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.18);
+}
+
+.auth-native-input-icon-box {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-input);
+  z-index: 10;
+  user-select: none;
+  pointer-events: none;
+  color: #94a3b8;
+}
+
+.auth-native-input-action-box {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-input);
+  z-index: 10;
+}
+
+.auth-native-input-action-box button {
+  background: transparent;
+  border: 0;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 3px;
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.12s ease;
+}
+
+.auth-native-input-action-box button:hover {
+  color: #ffffff;
+}
+
+.auth-native-input-control {
+  width: 100%;
+  height: 100%;
+  background: transparent !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 12px !important;
+  line-height: 20px !important;
+  border: none !important;
+  outline: none !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 10px !important;
+}
+
+.auth-native-input-control.has-start-icon {
+  padding-left: 36px !important;
+}
+
+.auth-native-input-control.has-end-action {
+  padding-right: 36px !important;
+}
+
+.auth-native-input-control::selection {
+  background-color: #2563eb !important; /* Blue-600 */
+  color: #ffffff !important;
+}
+
+.auth-native-input-control::placeholder {
+  color: var(--text-dim);
+  opacity: 1;
+}
+
 .meta-text {
   color: var(--text-dim);
   font-size: 11px;
@@ -2693,7 +2792,7 @@
 
 .template-url-wrapper,
 .template-input-wrapper.is-default {
-  height: 32px;
+  height: 34px;
   flex: 1;
 }
 
@@ -2710,7 +2809,7 @@
 
 .template-input-icon {
   position: absolute;
-  left: 9px;
+  left: 10px;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
@@ -2725,7 +2824,7 @@
 
 .template-input-end-action {
   position: absolute;
-  right: 6px;
+  right: 8px;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
@@ -2756,6 +2855,8 @@
 .template-url-underlay {
   position: absolute;
   inset: 0;
+  width: 100% !important;
+  height: 100% !important;
   display: flex;
   align-items: center;
   padding: 0 10px;
@@ -2764,7 +2865,7 @@
   pointer-events: none !important;
   font-family: var(--font-mono) !important;
   font-size: 12px !important;
-  line-height: normal !important;
+  line-height: 20px !important;
   letter-spacing: 0px !important;
   border: 0 !important;
   margin: 0 !important;
@@ -2775,15 +2876,16 @@
 .template-input-wrapper.is-sm .template-input-underlay {
   padding: 0 8px;
   font-size: 12px !important;
+  line-height: 18px !important;
 }
 
 .template-input-underlay.has-icon,
 .template-input-underlay.has-start-icon {
-  padding-left: 32px !important;
+  padding-left: 36px !important;
 }
 
 .template-input-underlay.has-end-action {
-  padding-right: 32px !important;
+  padding-right: 36px !important;
 }
 
 .template-text-token {
@@ -2838,8 +2940,8 @@
 
 .template-input-control,
 .template-url-input {
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  height: 100% !important;
   background: transparent !important;
   border: 0 !important;
   outline: none !important;
@@ -2848,7 +2950,7 @@
   caret-color: #ffffff !important;
   font-family: var(--font-mono) !important;
   font-size: 12px !important;
-  line-height: normal !important;
+  line-height: 20px !important;
   letter-spacing: 0px !important;
   position: relative;
   z-index: 1;
@@ -2860,15 +2962,16 @@
 .template-input-wrapper.is-sm .template-input-control {
   padding: 0 8px !important;
   font-size: 12px !important;
+  line-height: 18px !important;
 }
 
 .template-input-control.has-icon,
 .template-input-control.has-start-icon {
-  padding-left: 32px !important;
+  padding-left: 36px !important;
 }
 
 .template-input-control.has-end-action {
-  padding-right: 32px !important;
+  padding-right: 36px !important;
 }
 
 .template-input-control.is-pwd {
@@ -2876,14 +2979,11 @@
 }
 
 .template-input-control::selection,
-.template-url-input::selection {
-  background: rgba(59, 130, 246, 0.35);
-  color: transparent;
-}
-
-.template-input-control.is-pwd::selection {
-  background: rgba(59, 130, 246, 0.35);
-  color: #ffffff;
+.template-url-input::selection,
+.template-input-control.is-pwd::selection,
+input::selection {
+  background-color: #2563eb !important; /* Blue-600 */
+  color: #ffffff !important;
 }
 
 .template-input-control::placeholder,
