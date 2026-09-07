@@ -26,24 +26,25 @@ function bytesToReadable(bytes: number) {
 }
 
 // Persistent HTTP and HTTPS agents with keepAlive and socket pooling
+// Set timeout: 0 to prevent Node socket inactivity disconnects when user sets timeout: 0 for debugging
 const defaultHttpAgent = new http.Agent({
   keepAlive: true,
   maxSockets: 100,
-  timeout: 60000,
+  timeout: 0,
 })
 
 const defaultHttpsAgent = new https.Agent({
   keepAlive: true,
   maxSockets: 100,
   rejectUnauthorized: true,
-  timeout: 60000,
+  timeout: 0,
 })
 
 const insecureHttpsAgent = new https.Agent({
   keepAlive: true,
   maxSockets: 100,
   rejectUnauthorized: false,
-  timeout: 60000,
+  timeout: 0,
 })
 
 // Base Axios instance with proxy scan disabled (bypasses Windows OS proxy scan delays on localhost/127.0.0.1)
@@ -51,14 +52,53 @@ const httpClient = axios.create({
   proxy: false,
   httpAgent: defaultHttpAgent,
   httpsAgent: defaultHttpsAgent,
-  timeout: 60000,
+  timeout: 0,
   maxBodyLength: Infinity,
   maxContentLength: Infinity,
   validateStatus: () => true,
   decompress: true,
 })
 
+function isLocalhostUrl(urlString: string): boolean {
+  if (!urlString) return false
+  try {
+    const formatted =
+      urlString.startsWith('http://') || urlString.startsWith('https://')
+        ? urlString
+        : `http://${urlString}`
+    const parsed = new URL(formatted)
+    const hostname = parsed.hostname.toLowerCase()
+    return (
+      hostname === 'localhost' ||
+      hostname === '127.0.0.1' ||
+      hostname === '::1' ||
+      hostname === '0.0.0.0' ||
+      hostname.endsWith('.localhost')
+    )
+  } catch {
+    const lower = (urlString || '').toLowerCase()
+    return (
+      lower.includes('localhost') ||
+      lower.includes('127.0.0.1') ||
+      lower.includes('::1')
+    )
+  }
+}
+
+const activeRequests = new Map<string, AbortController>()
+
 function registerIpcHandlers() {
+  ipcMain.handle('http-cancel', (_event, requestId: string) => {
+    if (!requestId) return { success: false }
+    const controller = activeRequests.get(requestId)
+    if (controller) {
+      controller.abort()
+      activeRequests.delete(requestId)
+      return { success: true }
+    }
+    return { success: false }
+  })
+
   ipcMain.handle('http-request', async (_event, options: {
     method?: string
     url: string
@@ -66,9 +106,24 @@ function registerIpcHandlers() {
     data?: unknown
     timeout?: number
     rejectUnauthorized?: boolean
+    disableLocalhostTimeout?: boolean
+    requestId?: string
   }) => {
     // High-precision timing using process.hrtime.bigint()
     const startTime = process.hrtime.bigint()
+
+    const isLocal = isLocalhostUrl(options.url)
+    let effectiveTimeout = typeof options.timeout === 'number' ? options.timeout : 60000
+    if (effectiveTimeout < 0) effectiveTimeout = 0
+    if (options.disableLocalhostTimeout && isLocal) {
+      effectiveTimeout = 0
+    }
+
+    const requestId =
+      options.requestId || `req_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`
+    const abortController = new AbortController()
+    activeRequests.set(requestId, abortController)
+
     try {
       const isRejectUnauthorized = options.rejectUnauthorized ?? true
       const selectedHttpsAgent = isRejectUnauthorized ? defaultHttpsAgent : insecureHttpsAgent
@@ -85,7 +140,8 @@ function registerIpcHandlers() {
         url: options.url,
         headers,
         data: options.data,
-        timeout: options.timeout ?? 60000,
+        timeout: effectiveTimeout,
+        signal: abortController.signal,
         validateStatus: () => true,
         maxBodyLength: Infinity,
         maxContentLength: Infinity,
@@ -124,10 +180,30 @@ function registerIpcHandlers() {
       const endTime = process.hrtime.bigint()
       const duration = Math.max(1, Number((endTime - startTime) / 1000000n))
       const isAxios = axios.isAxiosError(error)
-      const errorMessage = error instanceof Error ? error.message : 'Network request failed'
+      let errorMessage = error instanceof Error ? error.message : 'Network request failed'
       const details = isAxios ? error.response?.data : undefined
       const status = isAxios ? error.response?.status : undefined
       const isNetworkError = !status
+
+      const isCanceled =
+        axios.isCancel(error) ||
+        (error instanceof Error && (error.name === 'CanceledError' || error.name === 'AbortError')) ||
+        (isAxios && error.code === 'ERR_CANCELED')
+
+      const isTimeout =
+        !isCanceled &&
+        ((isAxios && (error.code === 'ECONNABORTED' || error.code === 'ETIMEDOUT')) ||
+          (error instanceof Error && (
+            error.name === 'TimeoutError' ||
+            error.message.toLowerCase().includes('timeout') ||
+            error.message.toLowerCase().includes('timed out')
+          )))
+
+      if (isCanceled) {
+        errorMessage = 'Request was canceled by user'
+      } else if (isTimeout) {
+        errorMessage = `Request timed out after ${effectiveTimeout} ms. If you are debugging code at breakpoints, please set Request Timeout to 0 in App Settings.`
+      }
 
       const raw = details !== undefined ? JSON.stringify(details) : ''
       const sizeInBytes = raw ? Buffer.byteLength(raw, 'utf8') : 0
@@ -135,7 +211,9 @@ function registerIpcHandlers() {
 
       return {
         status: status ?? 0,
-        statusText: isAxios && error.response?.statusText
+        statusText: isCanceled
+          ? 'Canceled'
+          : isAxios && error.response?.statusText
           ? error.response.statusText
           : (isNetworkError ? 'Could not connect to server' : undefined),
         headers: (isAxios ? error.response?.headers : {}) || {},
@@ -145,14 +223,17 @@ function registerIpcHandlers() {
         error: errorMessage,
         details,
         isNetworkError,
+        isCanceled,
       }
+    } finally {
+      activeRequests.delete(requestId)
     }
   })
 }
 
 function createWindow() {
   win = new BrowserWindow({
-    title: 'API Lab',
+    title: 'API DK Lab',
     width: 1440,
     height: 920,
     minWidth: 1024,

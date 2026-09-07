@@ -36,7 +36,7 @@ import {
   resolvePathVariables,
   resolveTemplates,
 } from './services/templateService'
-import { sendHttpRequest } from './services/httpService'
+import { cancelHttpRequest, sendHttpRequest } from './services/httpService'
 import {
   createDefaultEnvironment,
   createDefaultRequest,
@@ -62,7 +62,7 @@ import {
   getIntrospectionEndpointAndHeaders,
   parseRelaxedJSON,
 } from './services/graphqlService'
-import { parseUrlToQueryParams } from './utils/urlHelper'
+import { isLocalhostUrl, parseUrlToQueryParams } from './utils/urlHelper'
 import { exportPostmanCollectionV2, importPostmanCollectionV2 } from './utils/postmanHelper'
 import { moveFolderItem, moveRequestItem } from './utils/treeHelper'
 import { executeScript, type ScriptContext } from './services/scriptRunner'
@@ -142,6 +142,9 @@ function App() {
   const isUpdatingFromExplorerRef = useRef(false)
 
   const isSendingRef = useRef(false)
+  const activeAbortControllersRef = useRef<
+    Map<string, { controller: AbortController; requestId: string }>
+  >(new Map())
   const [isHydrated, setIsHydrated] = useState(false)
 
   const activeTab = useMemo(
@@ -415,7 +418,11 @@ function App() {
 
       if (event.key === 'Enter') {
         event.preventDefault()
-        void handleSend()
+        if (activeTab.loading) {
+          handleCancelRequest()
+        } else {
+          void handleSend()
+        }
       }
 
       if (event.key.toLowerCase() === 's') {
@@ -429,11 +436,15 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab, activeEnvironment, tabs, collections, savedRequests])
 
+  const updateTab = (tabId: string, patch: Partial<RequestItem>) => {
+    setTabs((current) =>
+      current.map((item) => (item.id === tabId ? { ...item, ...patch } : item)),
+    )
+  }
+
   const updateActiveTab = (patch: Partial<RequestItem>) => {
     if (!activeTab) return
-    setTabs((current) =>
-      current.map((item) => (item.id === activeTab.id ? { ...item, ...patch } : item)),
-    )
+    updateTab(activeTab.id, patch)
   }
 
   const handleImportCurl = (parsed: Partial<RequestItem>) => {
@@ -461,6 +472,13 @@ function App() {
   }
 
   const closeTab = (tabId: string, customNextActiveId?: string | null) => {
+    const active = activeAbortControllersRef.current.get(tabId)
+    if (active) {
+      active.controller.abort()
+      void cancelHttpRequest(active.requestId)
+      activeAbortControllersRef.current.delete(tabId)
+    }
+
     const currentIndex = tabs.findIndex((item) => item.id === tabId)
     const nextTabs = tabs.filter((item) => item.id !== tabId)
 
@@ -1363,15 +1381,51 @@ function App() {
     await navigator.clipboard.writeText(content)
   }
 
-  const handleCancelRequest = () => {
+  const handleCancelRequest = (targetTabId?: string) => {
+    const tabId = targetTabId || activeTab?.id
+    if (!tabId) return
+
+    const active = activeAbortControllersRef.current.get(tabId)
+    if (active) {
+      active.controller.abort()
+      void cancelHttpRequest(active.requestId)
+      activeAbortControllersRef.current.delete(tabId)
+    }
+
     isSendingRef.current = false
-    updateActiveTab({ loading: false, clientError: 'Request đã bị huỷ bởi người dùng' })
+    updateTab(tabId, {
+      loading: false,
+      clientError: 'Request đã bị huỷ bởi người dùng',
+      response: {
+        status: 0,
+        statusText: 'Canceled',
+        time: '-',
+        size: '0 B',
+        error: 'Request đã bị huỷ bởi người dùng',
+        data: null,
+        isNetworkError: true,
+        isCanceled: true,
+      },
+    })
   }
 
   const handleSend = async () => {
-    if (!activeTab) return
+    if (!activeTab || activeTab.loading) return
+    const tabId = activeTab.id
 
-    updateActiveTab({ loading: true, clientError: '', response: null, testResults: null })
+    // Abort previous in-flight request on this tab if any
+    const existing = activeAbortControllersRef.current.get(tabId)
+    if (existing) {
+      existing.controller.abort()
+      void cancelHttpRequest(existing.requestId)
+      activeAbortControllersRef.current.delete(tabId)
+    }
+
+    const abortController = new AbortController()
+    const requestId = `req_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`
+    activeAbortControllersRef.current.set(tabId, { controller: abortController, requestId })
+
+    updateTab(tabId, { loading: true, clientError: '', response: null, testResults: null })
     isSendingRef.current = true
 
     try {
@@ -1478,12 +1532,21 @@ function App() {
       // Build unified headers (Auto-generated + User headers with highest priority, deduplicated)
       const headers = buildFinalHeaders(activeTab, effectiveEnvironment)
 
+      const isLocal = isLocalhostUrl(finalUrl)
+      const effectiveTimeout =
+        settings.disableLocalhostTimeout && isLocal
+          ? 0
+          : (settings.requestTimeout ?? 30000)
+
       const requestOptions: HttpRequestOptions = {
         method: activeTab.mode === 'GRAPHQL' ? 'POST' : activeTab.method,
         url: finalUrl,
         headers,
-        timeout: settings.requestTimeout ?? 30000,
+        timeout: effectiveTimeout,
         rejectUnauthorized: settings.rejectUnauthorized ?? true,
+        disableLocalhostTimeout: settings.disableLocalhostTimeout,
+        requestId,
+        signal: abortController.signal,
       }
 
       if (activeTab.mode === 'GRAPHQL') {
@@ -1563,7 +1626,9 @@ function App() {
       // 3. Send HTTP Request
       const result = await sendHttpRequest(requestOptions)
 
-      if (!isSendingRef.current) return // cancelled
+      if (abortController.signal.aborted || result.isCanceled || !isSendingRef.current) {
+        return // cancelled
+      }
 
       const isNetworkError =
         result.isNetworkError ?? (result.status === 0 || (!result.status && Boolean(result.error)))
@@ -1671,13 +1736,13 @@ function App() {
       }
 
       if (result.error && !result.status) {
-        updateActiveTab({
+        updateTab(tabId, {
           clientError: result.error,
           response: responseState,
           testResults: testReport,
         })
       } else {
-        updateActiveTab({
+        updateTab(tabId, {
           response: responseState,
           testResults: testReport,
         })
@@ -1698,11 +1763,11 @@ function App() {
 
       setHistory((prev) => [historyItem, ...prev.slice(0, MAX_HISTORY_ITEMS - 1)])
     } catch (error) {
-      if (!isSendingRef.current) return
+      if (abortController.signal.aborted || !isSendingRef.current) return
       const errorMessage =
         error instanceof Error ? error.message : 'Unknown client error'
 
-      updateActiveTab({
+      updateTab(tabId, {
         clientError: errorMessage,
         response: {
           status: 0,
@@ -1715,8 +1780,9 @@ function App() {
         },
       })
     } finally {
+      activeAbortControllersRef.current.delete(tabId)
       isSendingRef.current = false
-      updateActiveTab({ loading: false })
+      updateTab(tabId, { loading: false })
     }
   }
 

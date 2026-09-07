@@ -14,6 +14,8 @@ export interface HttpRequestOptions {
   data?: unknown
   timeout?: number
   rejectUnauthorized?: boolean
+  disableLocalhostTimeout?: boolean
+  requestId?: string
 }
 
 export interface HttpResponseData {
@@ -25,6 +27,8 @@ export interface HttpResponseData {
   size?: string
   error?: string
   details?: unknown
+  isNetworkError?: boolean
+  isCanceled?: boolean
 }
 
 declare global {
@@ -33,6 +37,7 @@ declare global {
       on(channel: string, listener: (...args: unknown[]) => void): () => void
       send(channel: string, ...args: unknown[]): void
       invoke<T = unknown>(channel: string, ...args: unknown[]): Promise<T>
+      cancelRequest(requestId: string): Promise<boolean>
       readStorage<T = unknown>(fileName: string): Promise<T | null>
       writeStorage(fileName: string, data: unknown): Promise<boolean>
       setZoomFactor(factor: number): void

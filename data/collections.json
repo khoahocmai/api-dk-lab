@@ -10,7 +10,7 @@
     },
     {
       "id": "9112c630-a645-4c34-83a2-832cecf83531",
-      "name": "Public API Live",
+      "name": "KiotViet POS",
       "description": ""
     }
   ],
@@ -316,11 +316,12 @@
       "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
       "name": "Find delivery store",
       "request": {
-        "id": "9c6896fe-3fd2-4a0e-b59f-49e1cf6aa955",
+        "id": "539e2120-f719-429d-a7a8-e03261a294b8",
         "savedRequestId": "ffde20c0-eda2-479d-9298-891f9032458b",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8",
         "name": "Find delivery store",
+        "graphqlRootField": "health",
         "mode": "GRAPHQL",
         "method": "POST",
         "url": "{{Domain}}/graphql",
@@ -351,7 +352,7 @@
             "id": "f19ddf45-3d43-446f-90f1-7806c24f78f7",
             "key": "",
             "value": "",
-            "enabled": true,
+            "enabled": false,
             "description": ""
           }
         ],
@@ -366,18 +367,20 @@
           "apiKeyAddTo": "header"
         },
         "bodyType": "json",
-        "restBody": "{\n  \"name\": \"API Lab User\"\n}",
+        "restBody": "{\n  \"name\": \"API DK Lab User\"\n}",
         "rawText": "",
         "formData": [],
         "urlencoded": [],
         "gqlQuery": "query FindDeliveryStore($input: StoreGetDeliveryStoreDto) {\n  findDeliveryStore(input: $input) {\n    id\n    code\n    name\n    status\n    address\n    addressEn\n    alertOverloadPercent\n    backupStoreIds\n    cooldownTime\n    countryId\n    countyId\n    countyName\n    distance\n    eHoaDonAddress\n    eHoaDonCompanyName\n    eHoaDonInvoiceSerial\n  }\n}",
         "gqlVariables": "{\n  \"input\": {\n    \"address\": \"Crescent Mall, 101 Tôn Dật Tiên, Tân Mỹ, Hồ Chí Minh\",\n    \"latitude\": 10.729084,\n    \"longitude\": 106.718872\n  }\n}",
+        "preRequestScript": "",
         "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
         "editorTab": "HEADERS",
-        "responseTab": "PRETTY"
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Find delivery store\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"Authorization\",\"value\":\"Bearer {{token}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"{\\n  \\\"name\\\": \\\"API DK Lab User\\\"\\n}\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query FindDeliveryStore($input: StoreGetDeliveryStoreDto) {\\n  findDeliveryStore(input: $input) {\\n    id\\n    code\\n    name\\n    status\\n    address\\n    addressEn\\n    alertOverloadPercent\\n    backupStoreIds\\n    cooldownTime\\n    countryId\\n    countyId\\n    countyName\\n    distance\\n    eHoaDonAddress\\n    eHoaDonCompanyName\\n    eHoaDonInvoiceSerial\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"input\\\": {\\n    \\\"address\\\": \\\"Crescent Mall, 101 Tôn Dật Tiên, Tân Mỹ, Hồ Chí Minh\\\",\\n    \\\"latitude\\\": 10.729084,\\n    \\\"longitude\\\": 106.718872\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"pm.test(\\\"Status code is 200\\\", function () {\\n    pm.response.to.have.status(200);\\n});\"}"
       },
       "createdAt": "2026-08-20T08:38:33.811Z",
-      "updatedAt": "2026-08-21T02:38:56.653Z",
+      "updatedAt": "2026-09-07T03:18:24.362Z",
       "folderId": "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8"
     },
     {
@@ -2429,7 +2432,7 @@
       "folderId": "b0e3fd25-2b01-4bff-8562-627ede98182f",
       "name": "Payment update status transactions",
       "request": {
-        "id": "aa5296fe-5758-437d-8123-2b1d80de0b1c",
+        "id": "13a96cfa-b7ad-4e53-91a9-5d0a67943110",
         "savedRequestId": "091a34fe-638c-496a-ac4f-255eca07c8a1",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": "b0e3fd25-2b01-4bff-8562-627ede98182f",
@@ -2472,13 +2475,14 @@
         "urlencoded": [],
         "gqlQuery": "mutation PaymentUpdateStatusTransactions($request: PaymentUpdateStatusTransactionsDto!) {\n  paymentUpdateStatusTransactions(request: $request) {\n    processed\n    success\n    noChange\n    failed\n  }\n}",
         "gqlVariables": "{\n  \"request\": {\n    \"limit\": 100\n  }\n}",
+        "preRequestScript": "",
         "testScript": "",
         "editorTab": "BODY",
         "responseTab": "PRETTY",
-        "savedSnapshot": "{\"name\":\"Payment update status transactions\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"paymentUpdateStatusTransactions\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"mutation PaymentUpdateStatusTransactions($request: PaymentUpdateStatusTransactionsDto!) {\\n  paymentUpdateStatusTransactions(request: $request) {\\n    processed\\n    success\\n    noChange\\n    failed\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"limit\\\": 100\\n  }\\n}\",\"testScript\":\"\"}"
+        "savedSnapshot": "{\"name\":\"Payment update status transactions\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"paymentUpdateStatusTransactions\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"mutation PaymentUpdateStatusTransactions($request: PaymentUpdateStatusTransactionsDto!) {\\n  paymentUpdateStatusTransactions(request: $request) {\\n    processed\\n    success\\n    noChange\\n    failed\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"limit\\\": 100\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\"}"
       },
       "createdAt": "2026-08-26T06:25:23.915Z",
-      "updatedAt": "2026-08-28T07:36:20.299Z"
+      "updatedAt": "2026-09-07T03:08:10.963Z"
     },
     {
       "id": "8c4f4dea-3570-4d1f-a133-7ca66ce5736c",
@@ -4131,7 +4135,7 @@
       "folderId": "d140f597-5214-433b-b121-c1abb5204f83",
       "name": "Combo get list",
       "request": {
-        "id": "49b68ce4-46b1-4d91-bfb9-368d03f4adfa",
+        "id": "872112b8-09dd-4f1b-8305-fde778391b00",
         "savedRequestId": "b1a60790-eb76-4a57-8ab4-4543ac835e92",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": "d140f597-5214-433b-b121-c1abb5204f83",
@@ -4143,16 +4147,17 @@
         "params": [],
         "headersList": [
           {
-            "id": "c1c87ac7-3342-4706-8bea-b5699a3ebd42",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true
+            "id": "d7969a50-84c9-44eb-bbae-04afad9d287d",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
           }
         ],
-        "headersText": "{\n  \"Content-Type\": \"application/json\"\n}",
+        "headersText": "{}",
         "auth": {
-          "type": "none",
-          "bearerToken": "",
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
           "basicUsername": "",
           "basicPassword": "",
           "apiKeyName": "",
@@ -4166,13 +4171,14 @@
         "urlencoded": [],
         "gqlQuery": "query ComboGetList($filters: ComboGetListFilterReqDto) {\n  comboGetList(filters: $filters) {\n    id\n    name\n    sku\n    shortDescription\n    description\n    priority\n    status\n    startTime\n    createdAt\n    endTime\n  }\n}",
         "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  }\n}",
+        "preRequestScript": "",
         "testScript": "",
-        "editorTab": "BODY",
+        "editorTab": "AUTH",
         "responseTab": "PRETTY",
-        "savedSnapshot": "{\"name\":\"comboGetList\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"comboGetList\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query ComboGetList {\\n  comboGetList {\\n    id\\n    name\\n  }\\n}\",\"gqlVariables\":\"{}\",\"testScript\":\"\"}"
+        "savedSnapshot": "{\"name\":\"Combo get list\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"comboGetList\",\"params\":[],\"pathVariables\":[],\"headersList\":[],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query ComboGetList($filters: ComboGetListFilterReqDto) {\\n  comboGetList(filters: $filters) {\\n    id\\n    name\\n    sku\\n    shortDescription\\n    description\\n    priority\\n    status\\n    startTime\\n    createdAt\\n    endTime\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"filters\\\": {\\n    \\\"keywords\\\": \\\"\\\"\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\"}"
       },
       "createdAt": "2026-08-27T04:11:14.358Z",
-      "updatedAt": "2026-08-27T04:11:14.358Z"
+      "updatedAt": "2026-09-07T03:19:46.640Z"
     },
     {
       "id": "83107136-bb7b-479a-843c-dd30c32bc85b",
@@ -7386,6 +7392,170 @@
       },
       "createdAt": "2026-08-28T04:56:04.644Z",
       "updatedAt": "2026-08-28T04:56:04.644Z"
+    },
+    {
+      "id": "0aa4c21a-e71c-4077-b5cc-7b6addb6b437",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
+      "name": "Check item availability",
+      "request": {
+        "id": "ec4dfa2b-08ac-4085-af44-820b77541e44",
+        "savedRequestId": "0aa4c21a-e71c-4077-b5cc-7b6addb6b437",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
+        "name": "Check item availability",
+        "graphqlRootField": "checkItemAvailability",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "4b7605eb-0acd-4c27-b80d-537db33c1b14",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "cec4d1f2-65b2-40dd-9eb6-6aa13cd3d42f",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query CheckItemAvailability($request: ItemCheckAvailabilityRequestDto!) {\n  checkItemAvailability(request: $request) {\n    id\n    type\n    storeId\n    isAvailable\n    unavailabilityReason\n    message\n    storeStatus {\n      isOpen\n      isOverloaded\n      operationStatus\n      reason\n    }\n    variants {\n      variantId\n      variantName\n      isSell\n      onHand\n      isAvailable\n      reason\n    }\n    comboGroups {\n      groupId\n      groupTitle\n      isRequired\n      minSelection\n      maxSelection\n      isGroupSatisfied\n      items {\n        productId\n        productName\n        variantId\n        variantName\n        isSell\n        onHand\n        isAvailable\n        reason\n      }\n    }\n  }\n}",
+        "gqlVariables": "{\n  \"request\": {\n    \"id\": \"019a7101-8006-755c-8b52-ceaf5d94fac5\",\n    \"type\": \"COMBO\",\n    \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\"\n  }\n}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Check item availability\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"checkItemAvailability\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query CheckItemAvailability($request: ItemCheckAvailabilityRequestDto!) {\\n  checkItemAvailability(request: $request) {\\n    id\\n    type\\n    storeId\\n    isAvailable\\n    unavailabilityReason\\n    message\\n    storeStatus {\\n      isOpen\\n      isOverloaded\\n      operationStatus\\n      reason\\n    }\\n    variants {\\n      variantId\\n      variantName\\n      isSell\\n      onHand\\n      isAvailable\\n      reason\\n    }\\n    comboGroups {\\n      groupId\\n      groupTitle\\n      isRequired\\n      minSelection\\n      maxSelection\\n      isGroupSatisfied\\n      items {\\n        productId\\n        productName\\n        variantId\\n        variantName\\n        isSell\\n        onHand\\n        isAvailable\\n        reason\\n      }\\n    }\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"01a017bd-b396-72ce-8002-bb0248ce1345\\\",\\n    \\\"type\\\": \\\"PRODUCT\\\"\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\"}"
+      },
+      "createdAt": "2026-09-07T03:13:44.467Z",
+      "updatedAt": "2026-09-07T04:47:10.039Z"
+    },
+    {
+      "id": "493c0ab3-aa7a-4fe3-bce5-0a6a02f4dd98",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
+      "name": "Check item availability",
+      "request": {
+        "id": "6f4c75af-9b1f-4601-b3f2-57af92f8ee06",
+        "savedRequestId": "493c0ab3-aa7a-4fe3-bce5-0a6a02f4dd98",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
+        "name": "Check item availability",
+        "mode": "REST",
+        "method": "POST",
+        "url": "{{Domain}}/products/check-availability",
+        "params": [],
+        "headersList": [
+          {
+            "id": "be94173b-692b-4cfb-88df-7f006b940e35",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "headersText": "{\n  \"Content-Type\": \"application/json\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Check item availability\",\"url\":\"{{Domain}}/products/check-availability\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\"}"
+      },
+      "createdAt": "2026-09-07T04:49:20.528Z",
+      "updatedAt": "2026-09-07T04:50:07.229Z"
+    },
+    {
+      "id": "d0ddc0cf-6884-4d11-9086-e3b71758f5e3",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
+      "name": "Check item availability",
+      "request": {
+        "id": "643fc79a-3d6a-4461-833f-09f026db7d2f",
+        "savedRequestId": "d0ddc0cf-6884-4d11-9086-e3b71758f5e3",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
+        "name": "Check item availability",
+        "mode": "REST",
+        "method": "POST",
+        "url": "{{Domain}}/products/check-availability",
+        "params": [],
+        "headersList": [
+          {
+            "id": "a7dcb065-32d9-4587-a6d4-cfba021e76de",
+            "key": "x-requested-portal",
+            "value": "IT",
+            "enabled": true
+          },
+          {
+            "id": "7d8e57c7-0299-4bd3-8572-c64b5bc58155",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"x-requested-portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "json",
+        "restBody": "{\n  \"id\": \"019a7101-8006-755c-8b52-ceaf5d94fac5\",\n  \"type\": \"COMBO\",\n  \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\",\n  \"tenantId\": \"0192fda4-ba1b-76ef-bb1a-64c043a8e4a4\",\n}",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Check item availability\",\"url\":\"{{Domain}}/products/check-availability\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"x-requested-portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"{\\n  \\\"id\\\": \\\"019a7101-8006-755c-8b52-ceaf5d94fac5\\\",\\n  \\\"type\\\": \\\"COMBO\\\",\\n  \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\",\\n  \\\"tenantId\\\": \\\"0192fda4-ba1b-76ef-bb1a-64c043a8e4a4\\\"\\n}\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\"}"
+      },
+      "createdAt": "2026-09-07T04:51:07.277Z",
+      "updatedAt": "2026-09-07T05:17:40.794Z"
     }
   ],
   "expandedCollectionIds": [
@@ -7399,13 +7569,11 @@
     "3d6946a8-8c7c-47e7-9a5d-c14772c1a9b3",
     "1ab43b4b-9819-4feb-9633-716b7bdf4ccc",
     "ab934993-9c72-4386-bd8e-3e72044f3301",
-    "bd12c7b5-951b-4a20-99e9-a8f9be185e3b",
-    "d140f597-5214-433b-b121-c1abb5204f83",
     "3f45ac07-3a2d-4224-b42c-5213bf304968",
     "a9abb7ec-7230-461e-90e6-91477704638c",
     "ec84ec6b-4def-460d-b1ee-6372775366af",
     "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
-    "b0e3fd25-2b01-4bff-8562-627ede98182f",
-    "785cea12-b358-4f53-bf46-46ebd0bf368c"
+    "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
+    "bbe24b51-62c6-4249-8de3-a781ba19ae86"
   ]
 }

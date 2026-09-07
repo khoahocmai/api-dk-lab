@@ -65,7 +65,7 @@ export function CurlImportModal({ isOpen, onClose, onImport }: CurlImportModalPr
         >
           <Terminal size={16} style={{ color: 'var(--primary)', flexShrink: 0 }} />
           <span>
-            Paste your full cURL command below. API Lab will automatically detect REST or GraphQL,
+            Paste your full cURL command below. API DK Lab will automatically detect REST or GraphQL,
             extract URL, Method, Headers, Auth tokens, and Query / Variables.
           </span>
         </div>

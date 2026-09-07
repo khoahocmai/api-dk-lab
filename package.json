@@ -1,7 +1,7 @@
 {
   "name": "api-dk-lab",
-  "productName": "API Lab",
-  "description": "API Lab - Modern lightweight REST & GraphQL workspace for developers",
+  "productName": "API DK Lab",
+  "description": "API DK Lab - Modern lightweight REST & GraphQL workspace for developers",
   "private": true,
   "version": "1.0.0",
   "type": "module",

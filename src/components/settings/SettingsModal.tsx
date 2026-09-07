@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { RotateCcw, ShieldCheck, Type, Zap } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { Bug, RotateCcw, ShieldCheck, Type, Zap } from 'lucide-react'
 import { type AppSettings, DEFAULT_APP_SETTINGS } from '../../types'
 import { Modal } from '../common/Modal'
 
@@ -18,6 +18,12 @@ export function SettingsModal({
 }: SettingsModalProps) {
   const [form, setForm] = useState<AppSettings>({ ...settings })
 
+  useEffect(() => {
+    if (isOpen) {
+      setForm({ ...settings })
+    }
+  }, [isOpen, settings])
+
   const handleSave = () => {
     onSaveSettings(form)
     onClose()
@@ -28,26 +34,72 @@ export function SettingsModal({
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="Application Settings" maxWidth="540px">
+    <Modal isOpen={isOpen} onClose={onClose} title="Application Settings" maxWidth="560px">
       <div className="stack" style={{ gap: 16 }}>
         {/* Request Timeout */}
         <div className="stack" style={{ gap: 6 }}>
           <div className="row" style={{ gap: 6, fontWeight: 750, fontSize: 13 }}>
             <Zap size={15} style={{ color: 'var(--primary-bright)' }} />
-            <span>Request Timeout (milliseconds)</span>
+            <span>Request Timeout (ms)</span>
           </div>
           <input
             className="input input-sm"
             type="number"
-            min={1000}
-            max={300000}
+            min={0}
             step={1000}
             value={form.requestTimeout}
-            onChange={(e) => setForm({ ...form, requestTimeout: Number(e.target.value) || 30000 })}
-            placeholder="30000"
+            onChange={(e) => {
+              const val = e.target.value === '' ? 0 : parseInt(e.target.value, 10)
+              setForm({ ...form, requestTimeout: isNaN(val) ? 0 : Math.max(0, val) })
+            }}
+            placeholder="30000 (hoặc 0 để tắt timeout)"
           />
-          <div className="meta-text">
-            Maximum time to wait before timing out a request (default: 30,000 ms).
+          <div className="meta-text" style={{ lineHeight: 1.5 }}>
+            Đặt <code style={{ color: 'var(--primary-bright)', background: 'var(--bg-card)', padding: '1px 5px', borderRadius: 4 }}>0</code> để tắt timeout hoàn toàn (không giới hạn thời gian chờ - khuyên dùng khi debug code tại breakpoint).
+          </div>
+
+          {/* Localhost Debug Mode Toggle */}
+          <div
+            className="row-between"
+            style={{
+              marginTop: 6,
+              padding: '8px 12px',
+              background: 'var(--bg-input)',
+              borderRadius: 6,
+              border: '1px solid var(--border)',
+            }}
+          >
+            <label
+              htmlFor="disable-localhost-timeout"
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 3,
+                cursor: 'pointer',
+                flex: 1,
+                marginRight: 12,
+              }}
+            >
+              <div className="row" style={{ gap: 6, fontWeight: 700, fontSize: 12.5 }}>
+                <Bug
+                  size={14}
+                  style={{
+                    color: form.disableLocalhostTimeout ? 'var(--warning)' : 'var(--text-muted)',
+                  }}
+                />
+                <span>Disable timeout for localhost / 127.0.0.1 (Debug Mode)</span>
+              </div>
+              <span className="meta-text" style={{ fontSize: 11.5, lineHeight: 1.4 }}>
+                Khi bật tùy chọn này, bất kỳ request nào gửi tới domain <code>localhost</code> hoặc <code>127.0.0.1</code> sẽ tự động áp dụng <code>timeout: 0</code> mà không ảnh hưởng tới các domain staging/production khác.
+              </span>
+            </label>
+            <input
+              id="disable-localhost-timeout"
+              type="checkbox"
+              checked={Boolean(form.disableLocalhostTimeout)}
+              onChange={(e) => setForm({ ...form, disableLocalhostTimeout: e.target.checked })}
+              style={{ width: 16, height: 16, cursor: 'pointer' }}
+            />
           </div>
         </div>
 

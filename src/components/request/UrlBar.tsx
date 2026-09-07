@@ -5,10 +5,10 @@ import {
   Code,
   Columns2,
   Copy,
+  Loader2,
   Rows2,
   Save,
   Send,
-  StopCircle,
   Terminal,
 } from 'lucide-react'
 import type { EnvironmentItem, HttpMethod, Mode, RequestItem, SplitLayout } from '../../types'
@@ -244,14 +244,25 @@ export function UrlBar({
         />
 
         {activeTab.loading ? (
-          <button onClick={onCancel} className="button button-danger" style={{ minWidth: 78 }}>
-            <StopCircle size={13} />
-            Cancel
+          <button
+            type="button"
+            onClick={onCancel}
+            className="button button-danger"
+            style={{ minWidth: 84, display: 'inline-flex', alignItems: 'center', gap: 6 }}
+            title="Cancel request (Abort)"
+          >
+            <Loader2 size={13} className="loading-icon" />
+            <span>Cancel</span>
           </button>
         ) : (
-          <button onClick={() => void onSend()} className="button button-primary" style={{ minWidth: 78 }}>
+          <button
+            type="button"
+            onClick={() => void onSend()}
+            className="button button-primary"
+            style={{ minWidth: 84, display: 'inline-flex', alignItems: 'center', gap: 6 }}
+          >
             <Send size={13} />
-            Send
+            <span>Send</span>
           </button>
         )}
 

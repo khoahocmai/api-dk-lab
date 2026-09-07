@@ -12,9 +12,9 @@
       {
         "id": "68e78681-e640-4795-8c0d-f92c307a183f",
         "key": "token",
-        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imtob2EuZGRkQHRhcHRhcC5jb20udm4iLCJzdWIiOiIwMTljMzg5ZC0yNmUyLTcxMWUtYjE3Ni02OTJlNTgwYTE2YjYiLCJ0ZW5hbnRJZCI6IjAxOTJmZGE0LWJhMWItNzZlZi1iYjFhLTY0YzA0M2E4ZTRhNCIsInBvcnRhbHMiOlsiSVQiXSwibmFtZSI6IsSQ4buXIETGsMahbmcgxJDEg25nIEtob2EiLCJlbWFpbCI6Imtob2EuZGRkQHRhcHRhcC5jb20udm4iLCJpYXQiOjE3ODc3OTY2ODcsImV4cCI6MTc4NzgzOTg4NywiaXNzIjoiRFhQIEF1dGggU2VydmljZSJ9.5a677XeB8SmpYhQCl4kHzFwrQKe0Aeniv6mU-WMSaNk",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imtob2EuZGRkQHRhcHRhcC5jb20udm4iLCJzdWIiOiIwMTljMzg5ZC0yNmUyLTcxMWUtYjE3Ni02OTJlNTgwYTE2YjYiLCJ0ZW5hbnRJZCI6IjAxOTJmZGE0LWJhMWItNzZlZi1iYjFhLTY0YzA0M2E4ZTRhNCIsInBvcnRhbHMiOlsiSVQiXSwibmFtZSI6IsSQ4buXIETGsMahbmcgxJDEg25nIEtob2EiLCJlbWFpbCI6Imtob2EuZGRkQHRhcHRhcC5jb20udm4iLCJpYXQiOjE3ODg3NTA5MjAsImV4cCI6MTc4ODc5NDEyMCwiaXNzIjoiRFhQIEF1dGggU2VydmljZSJ9.-c-15xgYWDTI8YDKxsgadTXMyti9rHe7ywPAaKIMmzU",
         "enabled": true,
-        "secret": true
+        "secret": false
       }
     ]
   },
@@ -25,7 +25,7 @@
       {
         "id": "2ba61a28-af51-4818-a65d-330683e8236d",
         "key": "Domain",
-        "value": "https://api.dxpdemos.com",
+        "value": "https://api.ec.dxpdemos.com",
         "enabled": true
       },
       {

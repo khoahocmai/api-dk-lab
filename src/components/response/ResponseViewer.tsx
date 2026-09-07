@@ -300,13 +300,17 @@ export function ResponseViewer({
               </div>
               <div>
                 <div style={{ fontSize: 15, fontWeight: 750, color: 'var(--text-primary)', marginBottom: 2 }}>
-                  Could not get any response
+                  {activeTab.response.isCanceled ? 'Request Canceled' : 'Could not get any response'}
                 </div>
                 <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>
-                  There was an error connecting to{' '}
-                  <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--primary-bright)' }}>
-                    {resolvedUrl || 'the server'}
-                  </span>
+                  {activeTab.response.isCanceled
+                    ? 'The request was canceled before completion.'
+                    : 'There was an error connecting to '}
+                  {!activeTab.response.isCanceled && (
+                    <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--primary-bright)' }}>
+                      {resolvedUrl || 'the server'}
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
@@ -326,7 +330,7 @@ export function ResponseViewer({
                   wordBreak: 'break-all',
                 }}
               >
-                <strong>Error:</strong> {activeTab.response.error}
+                <strong>{activeTab.response.isCanceled ? 'Notice:' : 'Error:'}</strong> {activeTab.response.error}
               </div>
             )}
 
@@ -353,6 +357,9 @@ export function ResponseViewer({
                   gap: 8,
                 }}
               >
+                <li>
+                  <strong>Request Timeout:</strong> If debugging code at breakpoints, set <em>Request Timeout</em> to <code>0</code> or enable <em>Disable timeout for localhost</em> in App Settings.
+                </li>
                 <li>
                   <strong>The server is offline:</strong> Check if your backend server (e.g. Express, NestJS, FastAPI, Spring Boot) is running locally.
                 </li>

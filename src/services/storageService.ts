@@ -386,6 +386,7 @@ export interface PersistedSettingsData {
 
 type RawSettingsFile = Partial<PersistedSettingsData> & {
   requestTimeout?: number
+  disableLocalhostTimeout?: boolean
   rejectUnauthorized?: boolean
   editorFontSize?: number
 }
@@ -396,13 +397,25 @@ export async function loadSettings(): Promise<PersistedSettingsData> {
     const settings: AppSettings =
       data.settings && typeof data.settings === 'object'
         ? {
-            requestTimeout: data.settings.requestTimeout ?? DEFAULT_APP_SETTINGS.requestTimeout,
+            requestTimeout:
+              data.settings.requestTimeout !== undefined
+                ? Number(data.settings.requestTimeout)
+                : DEFAULT_APP_SETTINGS.requestTimeout,
+            disableLocalhostTimeout:
+              data.settings.disableLocalhostTimeout ??
+              DEFAULT_APP_SETTINGS.disableLocalhostTimeout,
             rejectUnauthorized:
               data.settings.rejectUnauthorized ?? DEFAULT_APP_SETTINGS.rejectUnauthorized,
             editorFontSize: data.settings.editorFontSize ?? DEFAULT_APP_SETTINGS.editorFontSize,
           }
         : {
-            requestTimeout: data.requestTimeout ?? DEFAULT_APP_SETTINGS.requestTimeout,
+            requestTimeout:
+              data.requestTimeout !== undefined
+                ? Number(data.requestTimeout)
+                : DEFAULT_APP_SETTINGS.requestTimeout,
+            disableLocalhostTimeout:
+              data.disableLocalhostTimeout ??
+              DEFAULT_APP_SETTINGS.disableLocalhostTimeout,
             rejectUnauthorized:
               data.rejectUnauthorized ?? DEFAULT_APP_SETTINGS.rejectUnauthorized,
             editorFontSize: data.editorFontSize ?? DEFAULT_APP_SETTINGS.editorFontSize,

@@ -10,7 +10,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* ==========================================================================
-     API Lab - Standard Surface Palette Hierarchy (Dark Mode)
+     API DK Lab - Standard Surface Palette Hierarchy (Dark Mode)
      ========================================================================== */
   /* Background Gốc / Khung ngoài */
   --bg-app: #0f1117;
@@ -172,6 +172,7 @@ select {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

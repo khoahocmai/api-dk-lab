@@ -1,6 +1,6 @@
-# API Lab
+# API DK Lab
 
-API Lab is a fast, lightweight, and modern REST and GraphQL API client for local development and testing.
+API DK Lab is a fast, lightweight, and modern REST and GraphQL API client for local development and testing.
 
 ## Features
 - **REST & GraphQL Support**: Send GET, POST, PUT, PATCH, DELETE and GraphQL queries/mutations with full variable support.

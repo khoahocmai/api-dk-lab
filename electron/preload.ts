@@ -2,6 +2,7 @@ import { contextBridge, ipcRenderer, webFrame } from 'electron'
 
 const allowedInvokeChannels = new Set<string>([
   'http-request',
+  'http-cancel',
   'storage:read',
   'storage:write',
 ])
@@ -29,6 +30,10 @@ contextBridge.exposeInMainWorld('desktopApi', {
     }
 
     return ipcRenderer.invoke(channel, ...args)
+  },
+
+  cancelRequest(requestId: string) {
+    return ipcRenderer.invoke('http-cancel', requestId)
   },
 
   readStorage(fileName: string) {

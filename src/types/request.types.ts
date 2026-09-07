@@ -34,6 +34,7 @@ export type ResponseState = {
   headers?: Record<string, string | string[]>
   previewTruncated?: boolean
   isNetworkError?: boolean
+  isCanceled?: boolean
 }
 
 export type RequestItem = {
@@ -123,6 +124,9 @@ export interface HttpRequestOptions {
   data?: unknown
   timeout?: number
   rejectUnauthorized?: boolean
+  disableLocalhostTimeout?: boolean
+  requestId?: string
+  signal?: AbortSignal
 }
 
 export interface HttpResponseData {
@@ -135,4 +139,5 @@ export interface HttpResponseData {
   error?: string
   details?: unknown
   isNetworkError?: boolean
+  isCanceled?: boolean
 }

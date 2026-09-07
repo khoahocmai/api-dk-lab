@@ -1,12 +1,113 @@
 {
   "settings": {
     "requestTimeout": 30000,
+    "disableLocalhostTimeout": true,
     "rejectUnauthorized": true,
     "editorFontSize": 13
   },
-  "activeEnvironmentId": "ab200199-1137-40c1-822a-3ea3d74259e8",
-  "activeTabId": "",
-  "tabs": [],
+  "activeEnvironmentId": "36eefd5b-4f5f-4a32-9b61-ae9b1ab57e32",
+  "activeTabId": "643fc79a-3d6a-4461-833f-09f026db7d2f",
+  "tabs": [
+    {
+      "id": "ec4dfa2b-08ac-4085-af44-820b77541e44",
+      "savedRequestId": "0aa4c21a-e71c-4077-b5cc-7b6addb6b437",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
+      "name": "Check item availability",
+      "graphqlRootField": "checkItemAvailability",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "4b7605eb-0acd-4c27-b80d-537db33c1b14",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "cec4d1f2-65b2-40dd-9eb6-6aa13cd3d42f",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query CheckItemAvailability($request: ItemCheckAvailabilityRequestDto!) {\n  checkItemAvailability(request: $request) {\n    id\n    type\n    storeId\n    isAvailable\n    unavailabilityReason\n    message\n    storeStatus {\n      isOpen\n      isOverloaded\n      operationStatus\n      reason\n    }\n    variants {\n      variantId\n      variantName\n      isSell\n      onHand\n      isAvailable\n      reason\n    }\n    comboGroups {\n      groupId\n      groupTitle\n      isRequired\n      minSelection\n      maxSelection\n      isGroupSatisfied\n      items {\n        productId\n        productName\n        variantId\n        variantName\n        isSell\n        onHand\n        isAvailable\n        reason\n      }\n    }\n  }\n}",
+      "gqlVariables": "{\n  \"request\": {\n    \"id\": \"019a7101-8006-755c-8b52-ceaf5d94fac5\",\n    \"type\": \"COMBO\",\n    \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\"\n  }\n}",
+      "preRequestScript": "",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Check item availability\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"checkItemAvailability\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query CheckItemAvailability($request: ItemCheckAvailabilityRequestDto!) {\\n  checkItemAvailability(request: $request) {\\n    id\\n    type\\n    storeId\\n    isAvailable\\n    unavailabilityReason\\n    message\\n    storeStatus {\\n      isOpen\\n      isOverloaded\\n      operationStatus\\n      reason\\n    }\\n    variants {\\n      variantId\\n      variantName\\n      isSell\\n      onHand\\n      isAvailable\\n      reason\\n    }\\n    comboGroups {\\n      groupId\\n      groupTitle\\n      isRequired\\n      minSelection\\n      maxSelection\\n      isGroupSatisfied\\n      items {\\n        productId\\n        productName\\n        variantId\\n        variantName\\n        isSell\\n        onHand\\n        isAvailable\\n        reason\\n      }\\n    }\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"019a7101-8006-755c-8b52-ceaf5d94fac5\\\",\\n    \\\"type\\\": \\\"COMBO\\\",\\n    \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\"\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\"}"
+    },
+    {
+      "id": "643fc79a-3d6a-4461-833f-09f026db7d2f",
+      "savedRequestId": "d0ddc0cf-6884-4d11-9086-e3b71758f5e3",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
+      "name": "Check item availability",
+      "mode": "REST",
+      "method": "POST",
+      "url": "{{Domain}}/products/check-availability",
+      "params": [],
+      "headersList": [
+        {
+          "id": "a7dcb065-32d9-4587-a6d4-cfba021e76de",
+          "key": "x-requested-portal",
+          "value": "IT",
+          "enabled": true
+        },
+        {
+          "id": "7d8e57c7-0299-4bd3-8572-c64b5bc58155",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": "",
+          "type": "text"
+        }
+      ],
+      "headersText": "{\n  \"x-requested-portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "json",
+      "restBody": "{\n  \"id\": \"019a7101-8006-755c-8b52-ceaf5d94fac5\",\n  \"type\": \"COMBO\",\n  \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\",\n  \"tenantId\": \"0192fda4-ba1b-76ef-bb1a-64c043a8e4a4\",\n}",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "preRequestScript": "",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Check item availability\",\"url\":\"{{Domain}}/products/check-availability\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"x-requested-portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"{\\n  \\\"id\\\": \\\"019a7101-8006-755c-8b52-ceaf5d94fac5\\\",\\n  \\\"type\\\": \\\"COMBO\\\",\\n  \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\",\\n  \\\"tenantId\\\": \\\"0192fda4-ba1b-76ef-bb1a-64c043a8e4a4\\\",\\n}\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\"}"
+    }
+  ],
   "splitLayout": "horizontal",
   "isSidebarCollapsed": false,
   "isExplorerOpen": true

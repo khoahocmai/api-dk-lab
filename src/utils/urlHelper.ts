@@ -133,3 +133,33 @@ export function convertRowsToHeadersJson(rows: KeyValueRow[]): string {
   const obj = convertRowsToHeadersObject(rows)
   return JSON.stringify(obj, null, 2)
 }
+
+/**
+ * Checks if a given URL targets localhost or loopback IP (127.0.0.1, ::1, 0.0.0.0).
+ */
+export function isLocalhostUrl(urlString: string): boolean {
+  if (!urlString) return false
+  try {
+    const formatted =
+      urlString.startsWith('http://') || urlString.startsWith('https://')
+        ? urlString
+        : `http://${urlString}`
+    const parsed = new URL(formatted)
+    const hostname = parsed.hostname.toLowerCase()
+    return (
+      hostname === 'localhost' ||
+      hostname === '127.0.0.1' ||
+      hostname === '::1' ||
+      hostname === '0.0.0.0' ||
+      hostname.endsWith('.localhost')
+    )
+  } catch {
+    const lower = urlString.toLowerCase()
+    return (
+      lower.includes('localhost') ||
+      lower.includes('127.0.0.1') ||
+      lower.includes('::1')
+    )
+  }
+}
+

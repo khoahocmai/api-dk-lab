@@ -126,7 +126,7 @@ export function Sidebar({
       {/* Workspace Header */}
       <div className="panel-header" style={{ padding: '8px 10px' }}>
         <div className="row-between" style={{ marginBottom: 8 }}>
-          <div className="workspace-title">API Lab</div>
+          <div className="workspace-title">API DK Lab</div>
           <div className="row" style={{ gap: 2 }}>
             {onAddTab && (
               <button
