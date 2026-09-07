@@ -43,6 +43,7 @@ interface MainPanelProps {
   onImportCurl?: (parsed: Partial<RequestItem>) => void
   onOpenImportCurlModal: () => void
   onOpenCodeSnippetModal: () => void
+  onShowToast?: (message: string, type?: 'success' | 'info' | 'warning' | 'error') => void
 }
 
 export function MainPanel({
@@ -82,6 +83,7 @@ export function MainPanel({
   onCopyResponse,
   onOpenImportCurlModal,
   onOpenCodeSnippetModal,
+  onShowToast,
 }: MainPanelProps) {
   return (
     <main className={`main-panel ${isMobileActive ? 'is-mobile-active' : ''}`}>
@@ -156,6 +158,7 @@ export function MainPanel({
                     onFormat={onFormat}
                     onClear={onClear}
                     onSyncToExplorer={onSyncToExplorer}
+                    onShowToast={onShowToast}
                   />
                 </div>
               </Panel>

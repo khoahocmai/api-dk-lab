@@ -26,10 +26,11 @@ import { DEFAULT_APP_SETTINGS } from './types/settings.types'
 import {
   createId,
   createRequestSnapshot,
-  formatJsonSafely,
   isTabDirty,
   parseJsonObject,
 } from './utils/formatters'
+import { formatAndPrettifyJson, sanitizeTrailingCommas } from './utils/jsonHelper'
+import { formatGraphQLQuery } from './utils/curlHelper'
 import {
   buildFinalHeaders,
   injectAuthToUrl,
@@ -128,6 +129,20 @@ function App() {
   ) => {
     setToast({ id: createId(), message, type })
   }
+
+  useEffect(() => {
+    const handleToastEvent = (e: Event) => {
+      const customEvent = e as CustomEvent<{
+        message: string
+        type?: 'success' | 'info' | 'warning' | 'error'
+      }>
+      if (customEvent.detail?.message) {
+        showToast(customEvent.detail.message, customEvent.detail.type ?? 'info')
+      }
+    }
+    window.addEventListener('app:toast', handleToastEvent)
+    return () => window.removeEventListener('app:toast', handleToastEvent)
+  }, [])
 
   const [graphExplorer, setGraphExplorer] = useState<GraphExplorerState>({
     loading: false,
@@ -1261,13 +1276,29 @@ function App() {
 
     if (activeTab.mode === 'GRAPHQL') {
       if (activeTab.editorTab === 'VARIABLES') {
-        updateActiveTab({ gqlVariables: formatJsonSafely(activeTab.gqlVariables) })
+        const raw = activeTab.gqlVariables || ''
+        if (!raw.trim()) return
+        const result = formatAndPrettifyJson(raw)
+        if (result.success) {
+          updateActiveTab({ gqlVariables: result.formatted })
+        } else {
+          showToast(`Lỗi cú pháp JSON Variables: ${result.error || 'Cú pháp không hợp lệ'}`, 'error')
+        }
+      } else if (activeTab.gqlQuery) {
+        updateActiveTab({ gqlQuery: formatGraphQLQuery(activeTab.gqlQuery) })
       }
       return
     }
 
     if (activeTab.editorTab === 'BODY' && activeTab.bodyType === 'json') {
-      updateActiveTab({ restBody: formatJsonSafely(activeTab.restBody) })
+      const raw = activeTab.restBody || ''
+      if (!raw.trim()) return
+      const result = formatAndPrettifyJson(raw)
+      if (result.success) {
+        updateActiveTab({ restBody: result.formatted })
+      } else {
+        showToast(`Lỗi cú pháp JSON Body: ${result.error || 'Cú pháp không hợp lệ'}`, 'error')
+      }
     }
   }
 
@@ -1552,9 +1583,13 @@ function App() {
       if (activeTab.mode === 'GRAPHQL') {
         let parsedVariables: Record<string, unknown> = {}
         try {
-          parsedVariables = activeTab.gqlVariables.trim()
+          const rawVars = activeTab.gqlVariables?.trim()
+            ? resolveTemplates(activeTab.gqlVariables, effectiveEnvironment)
+            : ''
+          const sanitizedVars = sanitizeTrailingCommas(rawVars)
+          parsedVariables = sanitizedVars.trim()
             ? parseJsonObject(
-                resolveTemplates(activeTab.gqlVariables, effectiveEnvironment),
+                sanitizedVars,
                 'GraphQL variables',
               )
             : {}
@@ -1575,10 +1610,11 @@ function App() {
         if (activeTab.bodyType === 'json') {
           if (activeTab.restBody && activeTab.restBody.trim()) {
             const resolvedBody = resolveTemplates(activeTab.restBody, effectiveEnvironment)
+            const sanitizedBody = sanitizeTrailingCommas(resolvedBody)
             try {
-              requestOptions.data = JSON.parse(resolvedBody)
+              requestOptions.data = JSON.parse(sanitizedBody)
             } catch {
-              requestOptions.data = resolvedBody
+              requestOptions.data = sanitizedBody
             }
             if (!hasContentType) {
               headers['Content-Type'] = 'application/json'
@@ -1586,7 +1622,12 @@ function App() {
           }
         } else if (activeTab.bodyType === 'raw') {
           if (activeTab.rawText && activeTab.rawText.trim()) {
-            requestOptions.data = resolveTemplates(activeTab.rawText, effectiveEnvironment)
+            let resolvedRaw = resolveTemplates(activeTab.rawText, effectiveEnvironment)
+            const contentTypeVal = (headers['Content-Type'] || headers['content-type'] || '').toLowerCase()
+            if (contentTypeVal.includes('application/json')) {
+              resolvedRaw = sanitizeTrailingCommas(resolvedRaw)
+            }
+            requestOptions.data = resolvedRaw
             if (!hasContentType) {
               headers['Content-Type'] = 'text/plain'
             }
@@ -2357,6 +2398,7 @@ function App() {
             onImportCurl={handleImportCurl}
             onOpenImportCurlModal={() => setImportCurlModalOpen(true)}
             onOpenCodeSnippetModal={() => setCodeSnippetModalOpen(true)}
+            onShowToast={showToast}
           />
         </Panel>
 

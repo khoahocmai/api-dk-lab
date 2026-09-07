@@ -1,5 +1,1215 @@
 [
   {
+    "id": "ad49b808-8130-4a2a-9e9a-b1b86a9c2007",
+    "timestamp": "2026-09-07T06:27:54.417Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 276,
+    "request": {
+      "id": "ec4dfa2b-08ac-4085-af44-820b77541e44",
+      "savedRequestId": "0aa4c21a-e71c-4077-b5cc-7b6addb6b437",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
+      "name": "Check item availability",
+      "graphqlRootField": "checkItemAvailability",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "4b7605eb-0acd-4c27-b80d-537db33c1b14",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "cec4d1f2-65b2-40dd-9eb6-6aa13cd3d42f",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query CheckItemAvailability($request: ItemCheckAvailabilityRequestDto!) {\n  checkItemAvailability(request: $request) {\n    id\n    type\n    storeId\n    isAvailable\n    unavailabilityReason\n    message\n    storeStatus {\n      isOpen\n      isOverloaded\n      operationStatus\n      reason\n    }\n    variants {\n      variantId\n      variantName\n      isSell\n      onHand\n      isAvailable\n      reason\n    }\n    comboGroups {\n      groupId\n      groupTitle\n      isRequired\n      minSelection\n      maxSelection\n      isGroupSatisfied\n      items {\n        productId\n        productName\n        variantId\n        variantName\n        isSell\n        onHand\n        isAvailable\n        reason\n      }\n    }\n  }\n}",
+      "gqlVariables": "{\n  \"request\": {\n    \"id\": \"019a7101-8006-755c-8b52-ceaf5d94fac5\",\n    \"type\": \"COMBO\",\n    \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\"\n  }\n}",
+      "preRequestScript": "",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Check item availability\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"checkItemAvailability\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query CheckItemAvailability($request: ItemCheckAvailabilityRequestDto!) {\\n  checkItemAvailability(request: $request) {\\n    id\\n    type\\n    storeId\\n    isAvailable\\n    unavailabilityReason\\n    message\\n    storeStatus {\\n      isOpen\\n      isOverloaded\\n      operationStatus\\n      reason\\n    }\\n    variants {\\n      variantId\\n      variantName\\n      isSell\\n      onHand\\n      isAvailable\\n      reason\\n    }\\n    comboGroups {\\n      groupId\\n      groupTitle\\n      isRequired\\n      minSelection\\n      maxSelection\\n      isGroupSatisfied\\n      items {\\n        productId\\n        productName\\n        variantId\\n        variantName\\n        isSell\\n        onHand\\n        isAvailable\\n        reason\\n      }\\n    }\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"019a7101-8006-755c-8b52-ceaf5d94fac5\\\",\\n    \\\"type\\\": \\\"COMBO\\\",\\n    \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\"\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\"}"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "276 ms",
+      "size": "8.5 KB",
+      "data": {
+        "data": {
+          "checkItemAvailability": {
+            "id": "019a7101-8006-755c-8b52-ceaf5d94fac5",
+            "type": "COMBO",
+            "storeId": "0196486d-d25a-7f24-86c8-115e0c77026b",
+            "isAvailable": true,
+            "unavailabilityReason": null,
+            "message": "Combo khả dụng để đặt hàng",
+            "storeStatus": {
+              "isOpen": true,
+              "isOverloaded": false,
+              "operationStatus": "OPENING",
+              "reason": null
+            },
+            "variants": null,
+            "comboGroups": [
+              {
+                "groupId": "019a7101-80f3-714a-8ddc-5b6608e450df",
+                "groupTitle": "Pizza",
+                "isRequired": true,
+                "minSelection": 1,
+                "maxSelection": 1,
+                "isGroupSatisfied": true,
+                "items": [
+                  {
+                    "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                    "productName": "Pizza Hải Sản Pesto Xanh",
+                    "variantId": "019eab23-84ef-773c-b65d-ffc285064684",
+                    "variantName": "Kích thước Vừa 9 inch - Đế viền Viền dày",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                    "productName": "Pizza Hải Sản Pesto Xanh",
+                    "variantId": "019eab23-84ef-773c-b65d-faa4f88c67d4",
+                    "variantName": "Kích thước Vừa 9 inch - Đế viền Viền vừa",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                    "productName": "Pizza Hải Sản Pesto Xanh",
+                    "variantId": "019eab23-84ef-773c-b65d-ea60134f85cf",
+                    "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền mỏng",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                    "productName": "Pizza Hải Sản Pesto Xanh",
+                    "variantId": "019eab23-84ef-773c-b65e-064f2a65368d",
+                    "variantName": "Kích thước Lớn 12 inch - Đế viền Viền vừa",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                    "productName": "Pizza Hải Sản Pesto Xanh",
+                    "variantId": "019eab23-84ef-773c-b65d-f442c8945afc",
+                    "variantName": "Kích thước Vừa 9 inch - Đế viền Viền mỏng",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                    "productName": "Pizza Hải Sản Pesto Xanh",
+                    "variantId": "019eab23-84ef-773c-b65e-08509a58f752",
+                    "variantName": "Kích thước Lớn 12 inch - Đế viền Viền dày",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                    "productName": "Pizza Hải Sản Pesto Xanh",
+                    "variantId": "019eab23-84ef-773c-b65d-f0a005f23b72",
+                    "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền dày",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                    "productName": "Pizza Hải Sản Pesto Xanh",
+                    "variantId": "019eab23-84ef-773c-b65d-ef4570042191",
+                    "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền vừa",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                    "productName": "Pizza Hải Sản Pesto Xanh",
+                    "variantId": "019eab23-84ef-773c-b65e-00cbba55a690",
+                    "variantName": "Kích thước Lớn 12 inch - Đế viền Viền mỏng",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab30-4e4b-75af-ad80-237fa33e46a4",
+                    "productName": "Pizza 4 Cheese Dừa Non - Mật Hoa Dừa",
+                    "variantId": "019eab30-4e5c-735a-9f5f-7501667819e9",
+                    "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền phomai",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab30-4e4b-75af-ad80-237fa33e46a4",
+                    "productName": "Pizza 4 Cheese Dừa Non - Mật Hoa Dừa",
+                    "variantId": "019eab30-4e5c-735a-9f5f-781541d61498",
+                    "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền dừa non",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab30-4e4b-75af-ad80-237fa33e46a4",
+                    "productName": "Pizza 4 Cheese Dừa Non - Mật Hoa Dừa",
+                    "variantId": "019eab30-4e5c-735a-9f5f-7dd1802200ce",
+                    "variantName": "Kích thước Vừa 9 inch - Đế viền Viền phomai",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab30-4e4b-75af-ad80-237fa33e46a4",
+                    "productName": "Pizza 4 Cheese Dừa Non - Mật Hoa Dừa",
+                    "variantId": "019eab30-4e5c-735a-9f5f-8172ac7b0bcf",
+                    "variantName": "Kích thước Vừa 9 inch - Đế viền Viền dừa non",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab37-95ad-7239-876d-d0838ed56428",
+                    "productName": "Pizza 4 Cheese Dừa Non Tôm Nõn - Mật Hoa Dừa",
+                    "variantId": "019eab37-95c3-7392-ac96-9b702fdb1e9d",
+                    "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền phomai",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab37-95ad-7239-876d-d0838ed56428",
+                    "productName": "Pizza 4 Cheese Dừa Non Tôm Nõn - Mật Hoa Dừa",
+                    "variantId": "019eab37-95c4-75db-9d7f-a9bc716d299b",
+                    "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền dừa non",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab37-95ad-7239-876d-d0838ed56428",
+                    "productName": "Pizza 4 Cheese Dừa Non Tôm Nõn - Mật Hoa Dừa",
+                    "variantId": "019eab37-95c4-75db-9d7f-af7638aff0fc",
+                    "variantName": "Kích thước Vừa 9 inch - Đế viền Viền phomai",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab37-95ad-7239-876d-d0838ed56428",
+                    "productName": "Pizza 4 Cheese Dừa Non Tôm Nõn - Mật Hoa Dừa",
+                    "variantId": "019eab37-95c4-75db-9d7f-b0f9eecd84b4",
+                    "variantName": "Kích thước Vừa 9 inch - Đế viền Viền dừa non",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  }
+                ]
+              },
+              {
+                "groupId": "019a7101-80f3-714a-8ddc-5d04b09ae31b",
+                "groupTitle": "Nước uống",
+                "isRequired": true,
+                "minSelection": 2,
+                "maxSelection": 2,
+                "isGroupSatisfied": true,
+                "items": [
+                  {
+                    "productId": "019e8c5f-e06b-75bb-917d-a4d277ec6f39",
+                    "productName": "Coca-Cola",
+                    "variantId": "019e8c5f-e077-730f-a93c-c9aebbf7a692",
+                    "variantName": "Coca-Cola",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019e8c64-7e87-712b-86cd-4bc95037e083",
+                    "productName": "Pepsi",
+                    "variantId": "019e8c64-7e9e-714e-a2b7-5e5517c3ffde",
+                    "variantName": "Pepsi",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019e8c66-08f2-736f-8435-57aea50485b8",
+                    "productName": "Lemon Iced Tea",
+                    "variantId": "019e8c66-091c-727e-be4c-5e5999d33903",
+                    "variantName": "Lemon Iced Tea",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab62-473e-75aa-b708-41ecc0e4f822",
+                    "productName": "Mirinda Soda Kem",
+                    "variantId": "019eab62-474f-7035-93d7-09ae4652b06c",
+                    "variantName": "Mirinda Soda Kem",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  }
+                ]
+              },
+              {
+                "groupId": "019a7101-80f3-714a-8ddc-67410844cd8c",
+                "groupTitle": "Salad",
+                "isRequired": true,
+                "minSelection": 1,
+                "maxSelection": 1,
+                "isGroupSatisfied": true,
+                "items": [
+                  {
+                    "productId": "019e8c46-f8de-779c-b299-81f6b48bed0c",
+                    "productName": "Caesar Salad",
+                    "variantId": "019e8c46-f8f7-75ed-814e-098b5d6b5150",
+                    "variantName": "Salad Salad lớn",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019e8c46-f8de-779c-b299-81f6b48bed0c",
+                    "productName": "Caesar Salad",
+                    "variantId": "019e8c46-f8f6-73dd-bc93-98954a95397f",
+                    "variantName": "Salad Salad nhỏ",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019e8c4b-2be7-7566-81ab-ad7ca5489ccc",
+                    "productName": "Burrata Tomato Salad",
+                    "variantId": "019e8c4b-2c04-700b-b21c-7042abeb9622",
+                    "variantName": "Burrata Tomato Salad",
+                    "isSell": true,
+                    "onHand": 0,
+                    "isAvailable": false,
+                    "reason": "Hết hàng tại chi nhánh"
+                  }
+                ]
+              },
+              {
+                "groupId": "019a7101-80f3-714a-8ddc-63bdc0e1af76",
+                "groupTitle": "Mỳ Ý",
+                "isRequired": true,
+                "minSelection": 1,
+                "maxSelection": 1,
+                "isGroupSatisfied": true,
+                "items": [
+                  {
+                    "productId": "019e8ca8-9075-7121-9979-9e78875de277",
+                    "productName": "Clam & Basil Sauce Spaghetti",
+                    "variantId": "019e8ca8-9096-76aa-bc6c-e6ab39f56e41",
+                    "variantName": "Clam & Basil Sauce Spaghetti",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019e8ca9-aa12-7179-861e-6c532342caab",
+                    "productName": "Crab Tomato Cream Spaghetti with Ricotta Cheese",
+                    "variantId": "019e8ca9-aa21-75ca-9d66-61b40054b30e",
+                    "variantName": "Crab Tomato Cream Spaghetti with Ricotta Cheese",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  }
+                ]
+              },
+              {
+                "groupId": "019a7101-80f3-714a-8ddc-6b13a61c22f5",
+                "groupTitle": "Beer",
+                "isRequired": true,
+                "minSelection": 2,
+                "maxSelection": 2,
+                "isGroupSatisfied": true,
+                "items": [
+                  {
+                    "productId": "019e8cfe-546b-73ad-8ab4-a520f76680a3",
+                    "productName": "Heineken",
+                    "variantId": "019e8cfe-5493-77ff-b451-79f8a373f5f3",
+                    "variantName": "Heineken",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab65-01b3-74a9-b187-23b4b1083972",
+                    "productName": "Tiger Bạc",
+                    "variantId": "019eab65-01c3-739a-9f17-84c11846ad0b",
+                    "variantName": "Tiger Bạc",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "8723",
+        "date": "Mon, 07 Sep 2026 06:27:54 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "3d6d9b94-255d-411d-af8a-a162899d2c81",
+    "timestamp": "2026-09-07T06:27:35.663Z",
+    "method": "POST",
+    "mode": "REST",
+    "url": "http://localhost:3030/products/check-availability",
+    "status": 201,
+    "duration": 477,
+    "request": {
+      "id": "643fc79a-3d6a-4461-833f-09f026db7d2f",
+      "savedRequestId": "d0ddc0cf-6884-4d11-9086-e3b71758f5e3",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
+      "name": "Check item availability",
+      "mode": "REST",
+      "method": "POST",
+      "url": "{{Domain}}/products/check-availability",
+      "params": [],
+      "headersList": [
+        {
+          "id": "a7dcb065-32d9-4587-a6d4-cfba021e76de",
+          "key": "x-requested-portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "7d8e57c7-0299-4bd3-8572-c64b5bc58155",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"x-requested-portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "json",
+      "restBody": "{\n  \"id\": \"019a7101-8006-755c-8b52-ceaf5d94fac5\",\n  \"type\": \"COMBO\",\n  \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\",\n  \"tenantId\": \"0192fda4-ba1b-76ef-bb1a-64c043a8e4a4\"\n}",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "preRequestScript": "",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Check item availability\",\"url\":\"{{Domain}}/products/check-availability\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"x-requested-portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"{\\n  \\\"id\\\": \\\"019a7101-8006-755c-8b52-ceaf5d94fac5\\\",\\n  \\\"type\\\": \\\"COMBO\\\",\\n  \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\",\\n  \\\"tenantId\\\": \\\"0192fda4-ba1b-76ef-bb1a-64c043a8e4a4\\\"\\n}\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\"}"
+    },
+    "response": {
+      "status": 201,
+      "statusText": "Created",
+      "time": "477 ms",
+      "size": "8.1 KB",
+      "data": {
+        "data": {
+          "id": "019a7101-8006-755c-8b52-ceaf5d94fac5",
+          "type": "COMBO",
+          "storeId": "0196486d-d25a-7f24-86c8-115e0c77026b",
+          "isAvailable": true,
+          "message": "Combo khả dụng để đặt hàng",
+          "storeStatus": {
+            "isOpen": true,
+            "isOverloaded": false,
+            "operationStatus": "OPENING"
+          },
+          "comboGroups": [
+            {
+              "groupId": "019a7101-80f3-714a-8ddc-5b6608e450df",
+              "groupTitle": "Pizza",
+              "isRequired": true,
+              "minSelection": 1,
+              "maxSelection": 1,
+              "isGroupSatisfied": true,
+              "items": [
+                {
+                  "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                  "productName": "Pizza Hải Sản Pesto Xanh",
+                  "variantId": "019eab23-84ef-773c-b65d-ffc285064684",
+                  "variantName": "Kích thước Vừa 9 inch - Đế viền Viền dày",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                  "productName": "Pizza Hải Sản Pesto Xanh",
+                  "variantId": "019eab23-84ef-773c-b65d-faa4f88c67d4",
+                  "variantName": "Kích thước Vừa 9 inch - Đế viền Viền vừa",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                  "productName": "Pizza Hải Sản Pesto Xanh",
+                  "variantId": "019eab23-84ef-773c-b65d-ea60134f85cf",
+                  "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền mỏng",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                  "productName": "Pizza Hải Sản Pesto Xanh",
+                  "variantId": "019eab23-84ef-773c-b65e-064f2a65368d",
+                  "variantName": "Kích thước Lớn 12 inch - Đế viền Viền vừa",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                  "productName": "Pizza Hải Sản Pesto Xanh",
+                  "variantId": "019eab23-84ef-773c-b65d-f442c8945afc",
+                  "variantName": "Kích thước Vừa 9 inch - Đế viền Viền mỏng",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                  "productName": "Pizza Hải Sản Pesto Xanh",
+                  "variantId": "019eab23-84ef-773c-b65e-08509a58f752",
+                  "variantName": "Kích thước Lớn 12 inch - Đế viền Viền dày",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                  "productName": "Pizza Hải Sản Pesto Xanh",
+                  "variantId": "019eab23-84ef-773c-b65d-f0a005f23b72",
+                  "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền dày",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                  "productName": "Pizza Hải Sản Pesto Xanh",
+                  "variantId": "019eab23-84ef-773c-b65d-ef4570042191",
+                  "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền vừa",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                  "productName": "Pizza Hải Sản Pesto Xanh",
+                  "variantId": "019eab23-84ef-773c-b65e-00cbba55a690",
+                  "variantName": "Kích thước Lớn 12 inch - Đế viền Viền mỏng",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab30-4e4b-75af-ad80-237fa33e46a4",
+                  "productName": "Pizza 4 Cheese Dừa Non - Mật Hoa Dừa",
+                  "variantId": "019eab30-4e5c-735a-9f5f-7501667819e9",
+                  "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền phomai",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab30-4e4b-75af-ad80-237fa33e46a4",
+                  "productName": "Pizza 4 Cheese Dừa Non - Mật Hoa Dừa",
+                  "variantId": "019eab30-4e5c-735a-9f5f-781541d61498",
+                  "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền dừa non",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab30-4e4b-75af-ad80-237fa33e46a4",
+                  "productName": "Pizza 4 Cheese Dừa Non - Mật Hoa Dừa",
+                  "variantId": "019eab30-4e5c-735a-9f5f-7dd1802200ce",
+                  "variantName": "Kích thước Vừa 9 inch - Đế viền Viền phomai",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab30-4e4b-75af-ad80-237fa33e46a4",
+                  "productName": "Pizza 4 Cheese Dừa Non - Mật Hoa Dừa",
+                  "variantId": "019eab30-4e5c-735a-9f5f-8172ac7b0bcf",
+                  "variantName": "Kích thước Vừa 9 inch - Đế viền Viền dừa non",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab37-95ad-7239-876d-d0838ed56428",
+                  "productName": "Pizza 4 Cheese Dừa Non Tôm Nõn - Mật Hoa Dừa",
+                  "variantId": "019eab37-95c3-7392-ac96-9b702fdb1e9d",
+                  "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền phomai",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab37-95ad-7239-876d-d0838ed56428",
+                  "productName": "Pizza 4 Cheese Dừa Non Tôm Nõn - Mật Hoa Dừa",
+                  "variantId": "019eab37-95c4-75db-9d7f-a9bc716d299b",
+                  "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền dừa non",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab37-95ad-7239-876d-d0838ed56428",
+                  "productName": "Pizza 4 Cheese Dừa Non Tôm Nõn - Mật Hoa Dừa",
+                  "variantId": "019eab37-95c4-75db-9d7f-af7638aff0fc",
+                  "variantName": "Kích thước Vừa 9 inch - Đế viền Viền phomai",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab37-95ad-7239-876d-d0838ed56428",
+                  "productName": "Pizza 4 Cheese Dừa Non Tôm Nõn - Mật Hoa Dừa",
+                  "variantId": "019eab37-95c4-75db-9d7f-b0f9eecd84b4",
+                  "variantName": "Kích thước Vừa 9 inch - Đế viền Viền dừa non",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                }
+              ]
+            },
+            {
+              "groupId": "019a7101-80f3-714a-8ddc-5d04b09ae31b",
+              "groupTitle": "Nước uống",
+              "isRequired": true,
+              "minSelection": 2,
+              "maxSelection": 2,
+              "isGroupSatisfied": true,
+              "items": [
+                {
+                  "productId": "019e8c5f-e06b-75bb-917d-a4d277ec6f39",
+                  "productName": "Coca-Cola",
+                  "variantId": "019e8c5f-e077-730f-a93c-c9aebbf7a692",
+                  "variantName": "Coca-Cola",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019e8c64-7e87-712b-86cd-4bc95037e083",
+                  "productName": "Pepsi",
+                  "variantId": "019e8c64-7e9e-714e-a2b7-5e5517c3ffde",
+                  "variantName": "Pepsi",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019e8c66-08f2-736f-8435-57aea50485b8",
+                  "productName": "Lemon Iced Tea",
+                  "variantId": "019e8c66-091c-727e-be4c-5e5999d33903",
+                  "variantName": "Lemon Iced Tea",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab62-473e-75aa-b708-41ecc0e4f822",
+                  "productName": "Mirinda Soda Kem",
+                  "variantId": "019eab62-474f-7035-93d7-09ae4652b06c",
+                  "variantName": "Mirinda Soda Kem",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                }
+              ]
+            },
+            {
+              "groupId": "019a7101-80f3-714a-8ddc-67410844cd8c",
+              "groupTitle": "Salad",
+              "isRequired": true,
+              "minSelection": 1,
+              "maxSelection": 1,
+              "isGroupSatisfied": true,
+              "items": [
+                {
+                  "productId": "019e8c46-f8de-779c-b299-81f6b48bed0c",
+                  "productName": "Caesar Salad",
+                  "variantId": "019e8c46-f8f7-75ed-814e-098b5d6b5150",
+                  "variantName": "Salad Salad lớn",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019e8c46-f8de-779c-b299-81f6b48bed0c",
+                  "productName": "Caesar Salad",
+                  "variantId": "019e8c46-f8f6-73dd-bc93-98954a95397f",
+                  "variantName": "Salad Salad nhỏ",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019e8c4b-2be7-7566-81ab-ad7ca5489ccc",
+                  "productName": "Burrata Tomato Salad",
+                  "variantId": "019e8c4b-2c04-700b-b21c-7042abeb9622",
+                  "variantName": "Burrata Tomato Salad",
+                  "isSell": true,
+                  "onHand": 0,
+                  "isAvailable": false,
+                  "reason": "Hết hàng tại chi nhánh"
+                }
+              ]
+            },
+            {
+              "groupId": "019a7101-80f3-714a-8ddc-63bdc0e1af76",
+              "groupTitle": "Mỳ Ý",
+              "isRequired": true,
+              "minSelection": 1,
+              "maxSelection": 1,
+              "isGroupSatisfied": true,
+              "items": [
+                {
+                  "productId": "019e8ca8-9075-7121-9979-9e78875de277",
+                  "productName": "Clam & Basil Sauce Spaghetti",
+                  "variantId": "019e8ca8-9096-76aa-bc6c-e6ab39f56e41",
+                  "variantName": "Clam & Basil Sauce Spaghetti",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019e8ca9-aa12-7179-861e-6c532342caab",
+                  "productName": "Crab Tomato Cream Spaghetti with Ricotta Cheese",
+                  "variantId": "019e8ca9-aa21-75ca-9d66-61b40054b30e",
+                  "variantName": "Crab Tomato Cream Spaghetti with Ricotta Cheese",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                }
+              ]
+            },
+            {
+              "groupId": "019a7101-80f3-714a-8ddc-6b13a61c22f5",
+              "groupTitle": "Beer",
+              "isRequired": true,
+              "minSelection": 2,
+              "maxSelection": 2,
+              "isGroupSatisfied": true,
+              "items": [
+                {
+                  "productId": "019e8cfe-546b-73ad-8ab4-a520f76680a3",
+                  "productName": "Heineken",
+                  "variantId": "019e8cfe-5493-77ff-b451-79f8a373f5f3",
+                  "variantName": "Heineken",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab65-01b3-74a9-b187-23b4b1083972",
+                  "productName": "Tiger Bạc",
+                  "variantId": "019eab65-01c3-739a-9f17-84c11846ad0b",
+                  "variantName": "Tiger Bạc",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "8260",
+        "date": "Mon, 07 Sep 2026 06:27:35 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "d29241da-8c23-4030-b97c-18f3138575ef",
+    "timestamp": "2026-09-07T06:27:22.649Z",
+    "method": "POST",
+    "mode": "REST",
+    "url": "http://localhost:3030/products/check-availability",
+    "status": 201,
+    "duration": 2801,
+    "request": {
+      "id": "643fc79a-3d6a-4461-833f-09f026db7d2f",
+      "savedRequestId": "d0ddc0cf-6884-4d11-9086-e3b71758f5e3",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
+      "name": "Check item availability",
+      "mode": "REST",
+      "method": "POST",
+      "url": "{{Domain}}/products/check-availability",
+      "params": [],
+      "headersList": [
+        {
+          "id": "a7dcb065-32d9-4587-a6d4-cfba021e76de",
+          "key": "x-requested-portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "7d8e57c7-0299-4bd3-8572-c64b5bc58155",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"x-requested-portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "json",
+      "restBody": "{\n  \"id\": \"019a7101-8006-755c-8b52-ceaf5d94fac5\",\n  \"type\": \"COMBO\",\n  \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\",\n  \"tenantId\": \"0192fda4-ba1b-76ef-bb1a-64c043a8e4a4\",\n}",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "preRequestScript": "",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Check item availability\",\"url\":\"{{Domain}}/products/check-availability\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"x-requested-portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"{\\n  \\\"id\\\": \\\"019a7101-8006-755c-8b52-ceaf5d94fac5\\\",\\n  \\\"type\\\": \\\"COMBO\\\",\\n  \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\",\\n  \\\"tenantId\\\": \\\"0192fda4-ba1b-76ef-bb1a-64c043a8e4a4\\\",\\n}\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\"}"
+    },
+    "response": {
+      "status": 201,
+      "statusText": "Created",
+      "time": "2801 ms",
+      "size": "8.1 KB",
+      "data": {
+        "data": {
+          "id": "019a7101-8006-755c-8b52-ceaf5d94fac5",
+          "type": "COMBO",
+          "storeId": "0196486d-d25a-7f24-86c8-115e0c77026b",
+          "isAvailable": true,
+          "message": "Combo khả dụng để đặt hàng",
+          "storeStatus": {
+            "isOpen": true,
+            "isOverloaded": false,
+            "operationStatus": "OPENING"
+          },
+          "comboGroups": [
+            {
+              "groupId": "019a7101-80f3-714a-8ddc-5b6608e450df",
+              "groupTitle": "Pizza",
+              "isRequired": true,
+              "minSelection": 1,
+              "maxSelection": 1,
+              "isGroupSatisfied": true,
+              "items": [
+                {
+                  "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                  "productName": "Pizza Hải Sản Pesto Xanh",
+                  "variantId": "019eab23-84ef-773c-b65d-ffc285064684",
+                  "variantName": "Kích thước Vừa 9 inch - Đế viền Viền dày",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                  "productName": "Pizza Hải Sản Pesto Xanh",
+                  "variantId": "019eab23-84ef-773c-b65d-faa4f88c67d4",
+                  "variantName": "Kích thước Vừa 9 inch - Đế viền Viền vừa",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                  "productName": "Pizza Hải Sản Pesto Xanh",
+                  "variantId": "019eab23-84ef-773c-b65d-ea60134f85cf",
+                  "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền mỏng",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                  "productName": "Pizza Hải Sản Pesto Xanh",
+                  "variantId": "019eab23-84ef-773c-b65e-064f2a65368d",
+                  "variantName": "Kích thước Lớn 12 inch - Đế viền Viền vừa",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                  "productName": "Pizza Hải Sản Pesto Xanh",
+                  "variantId": "019eab23-84ef-773c-b65d-f442c8945afc",
+                  "variantName": "Kích thước Vừa 9 inch - Đế viền Viền mỏng",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                  "productName": "Pizza Hải Sản Pesto Xanh",
+                  "variantId": "019eab23-84ef-773c-b65e-08509a58f752",
+                  "variantName": "Kích thước Lớn 12 inch - Đế viền Viền dày",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                  "productName": "Pizza Hải Sản Pesto Xanh",
+                  "variantId": "019eab23-84ef-773c-b65d-f0a005f23b72",
+                  "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền dày",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                  "productName": "Pizza Hải Sản Pesto Xanh",
+                  "variantId": "019eab23-84ef-773c-b65d-ef4570042191",
+                  "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền vừa",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                  "productName": "Pizza Hải Sản Pesto Xanh",
+                  "variantId": "019eab23-84ef-773c-b65e-00cbba55a690",
+                  "variantName": "Kích thước Lớn 12 inch - Đế viền Viền mỏng",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab30-4e4b-75af-ad80-237fa33e46a4",
+                  "productName": "Pizza 4 Cheese Dừa Non - Mật Hoa Dừa",
+                  "variantId": "019eab30-4e5c-735a-9f5f-7501667819e9",
+                  "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền phomai",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab30-4e4b-75af-ad80-237fa33e46a4",
+                  "productName": "Pizza 4 Cheese Dừa Non - Mật Hoa Dừa",
+                  "variantId": "019eab30-4e5c-735a-9f5f-781541d61498",
+                  "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền dừa non",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab30-4e4b-75af-ad80-237fa33e46a4",
+                  "productName": "Pizza 4 Cheese Dừa Non - Mật Hoa Dừa",
+                  "variantId": "019eab30-4e5c-735a-9f5f-7dd1802200ce",
+                  "variantName": "Kích thước Vừa 9 inch - Đế viền Viền phomai",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab30-4e4b-75af-ad80-237fa33e46a4",
+                  "productName": "Pizza 4 Cheese Dừa Non - Mật Hoa Dừa",
+                  "variantId": "019eab30-4e5c-735a-9f5f-8172ac7b0bcf",
+                  "variantName": "Kích thước Vừa 9 inch - Đế viền Viền dừa non",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab37-95ad-7239-876d-d0838ed56428",
+                  "productName": "Pizza 4 Cheese Dừa Non Tôm Nõn - Mật Hoa Dừa",
+                  "variantId": "019eab37-95c3-7392-ac96-9b702fdb1e9d",
+                  "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền phomai",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab37-95ad-7239-876d-d0838ed56428",
+                  "productName": "Pizza 4 Cheese Dừa Non Tôm Nõn - Mật Hoa Dừa",
+                  "variantId": "019eab37-95c4-75db-9d7f-a9bc716d299b",
+                  "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền dừa non",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab37-95ad-7239-876d-d0838ed56428",
+                  "productName": "Pizza 4 Cheese Dừa Non Tôm Nõn - Mật Hoa Dừa",
+                  "variantId": "019eab37-95c4-75db-9d7f-af7638aff0fc",
+                  "variantName": "Kích thước Vừa 9 inch - Đế viền Viền phomai",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab37-95ad-7239-876d-d0838ed56428",
+                  "productName": "Pizza 4 Cheese Dừa Non Tôm Nõn - Mật Hoa Dừa",
+                  "variantId": "019eab37-95c4-75db-9d7f-b0f9eecd84b4",
+                  "variantName": "Kích thước Vừa 9 inch - Đế viền Viền dừa non",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                }
+              ]
+            },
+            {
+              "groupId": "019a7101-80f3-714a-8ddc-5d04b09ae31b",
+              "groupTitle": "Nước uống",
+              "isRequired": true,
+              "minSelection": 2,
+              "maxSelection": 2,
+              "isGroupSatisfied": true,
+              "items": [
+                {
+                  "productId": "019e8c5f-e06b-75bb-917d-a4d277ec6f39",
+                  "productName": "Coca-Cola",
+                  "variantId": "019e8c5f-e077-730f-a93c-c9aebbf7a692",
+                  "variantName": "Coca-Cola",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019e8c64-7e87-712b-86cd-4bc95037e083",
+                  "productName": "Pepsi",
+                  "variantId": "019e8c64-7e9e-714e-a2b7-5e5517c3ffde",
+                  "variantName": "Pepsi",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019e8c66-08f2-736f-8435-57aea50485b8",
+                  "productName": "Lemon Iced Tea",
+                  "variantId": "019e8c66-091c-727e-be4c-5e5999d33903",
+                  "variantName": "Lemon Iced Tea",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab62-473e-75aa-b708-41ecc0e4f822",
+                  "productName": "Mirinda Soda Kem",
+                  "variantId": "019eab62-474f-7035-93d7-09ae4652b06c",
+                  "variantName": "Mirinda Soda Kem",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                }
+              ]
+            },
+            {
+              "groupId": "019a7101-80f3-714a-8ddc-67410844cd8c",
+              "groupTitle": "Salad",
+              "isRequired": true,
+              "minSelection": 1,
+              "maxSelection": 1,
+              "isGroupSatisfied": true,
+              "items": [
+                {
+                  "productId": "019e8c46-f8de-779c-b299-81f6b48bed0c",
+                  "productName": "Caesar Salad",
+                  "variantId": "019e8c46-f8f7-75ed-814e-098b5d6b5150",
+                  "variantName": "Salad Salad lớn",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019e8c46-f8de-779c-b299-81f6b48bed0c",
+                  "productName": "Caesar Salad",
+                  "variantId": "019e8c46-f8f6-73dd-bc93-98954a95397f",
+                  "variantName": "Salad Salad nhỏ",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019e8c4b-2be7-7566-81ab-ad7ca5489ccc",
+                  "productName": "Burrata Tomato Salad",
+                  "variantId": "019e8c4b-2c04-700b-b21c-7042abeb9622",
+                  "variantName": "Burrata Tomato Salad",
+                  "isSell": true,
+                  "onHand": 0,
+                  "isAvailable": false,
+                  "reason": "Hết hàng tại chi nhánh"
+                }
+              ]
+            },
+            {
+              "groupId": "019a7101-80f3-714a-8ddc-63bdc0e1af76",
+              "groupTitle": "Mỳ Ý",
+              "isRequired": true,
+              "minSelection": 1,
+              "maxSelection": 1,
+              "isGroupSatisfied": true,
+              "items": [
+                {
+                  "productId": "019e8ca8-9075-7121-9979-9e78875de277",
+                  "productName": "Clam & Basil Sauce Spaghetti",
+                  "variantId": "019e8ca8-9096-76aa-bc6c-e6ab39f56e41",
+                  "variantName": "Clam & Basil Sauce Spaghetti",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019e8ca9-aa12-7179-861e-6c532342caab",
+                  "productName": "Crab Tomato Cream Spaghetti with Ricotta Cheese",
+                  "variantId": "019e8ca9-aa21-75ca-9d66-61b40054b30e",
+                  "variantName": "Crab Tomato Cream Spaghetti with Ricotta Cheese",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                }
+              ]
+            },
+            {
+              "groupId": "019a7101-80f3-714a-8ddc-6b13a61c22f5",
+              "groupTitle": "Beer",
+              "isRequired": true,
+              "minSelection": 2,
+              "maxSelection": 2,
+              "isGroupSatisfied": true,
+              "items": [
+                {
+                  "productId": "019e8cfe-546b-73ad-8ab4-a520f76680a3",
+                  "productName": "Heineken",
+                  "variantId": "019e8cfe-5493-77ff-b451-79f8a373f5f3",
+                  "variantName": "Heineken",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                },
+                {
+                  "productId": "019eab65-01b3-74a9-b187-23b4b1083972",
+                  "productName": "Tiger Bạc",
+                  "variantId": "019eab65-01c3-739a-9f17-84c11846ad0b",
+                  "variantName": "Tiger Bạc",
+                  "isSell": true,
+                  "onHand": 9999,
+                  "isAvailable": true
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "8260",
+        "date": "Mon, 07 Sep 2026 06:27:22 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
     "id": "75e31f35-f728-497b-82c5-7da25d275a73",
     "timestamp": "2026-09-07T05:02:31.516Z",
     "method": "POST",
@@ -25294,894 +26504,6 @@
         "content-type": "application/json; charset=utf-8",
         "content-length": "2021",
         "date": "Thu, 27 Aug 2026 02:47:46 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "5f15dada-be99-443c-83f2-114f64700a22",
-    "timestamp": "2026-08-27T02:47:37.056Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 57,
-    "request": {
-      "id": "51871c61-6cf4-4298-bffb-be679c8af6be",
-      "savedRequestId": "36341a5b-262e-4716-8073-4c2fd2e52435",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": "3a85458e-32c5-4d95-b386-833c0c37b917",
-      "name": "Square catalog item get pagination",
-      "graphqlRootField": "squareCatalogItemGetPagination",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "62c0d41a-488a-4ce4-968a-0d1aaa9921ef",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "48753b76-2aa9-4b50-98e1-1757f56b9aef",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": ""
-        }
-      ],
-      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query SquareCatalogItemGetPagination($filters: SquareCatalogItemGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareCatalogItemGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      squareItemId\n      name\n      description\n      squareCategoryId\n      isTaxable\n      productType\n      ecomAvailable\n      variations {\n        id\n        squareVariationId\n        squareItemId\n        name\n        sku\n        upc\n        pricingType\n        priceAmount\n        currency\n        trackInventory\n        lastSyncedAt\n      }\n      lastSyncedAt\n    }\n  }\n}",
-      "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "57 ms",
-      "size": "5.4 KB",
-      "data": {
-        "data": {
-          "squareCatalogItemGetPagination": {
-            "total": 5,
-            "items": [
-              {
-                "id": "01a0330d-0d89-72e6-ba51-e4784ca7b442",
-                "squareItemId": "YHMWJBLAGTDHNQKDJMR4XHCK",
-                "name": "Coca-Cola Original",
-                "description": "Nước ngọt có gas Coca-Cola ướp lạnh",
-                "squareCategoryId": null,
-                "isTaxable": true,
-                "productType": "FOOD_AND_BEV",
-                "ecomAvailable": true,
-                "variations": [
-                  {
-                    "id": "01a0330d-0d9b-71aa-93b0-1d72431db7fd",
-                    "squareVariationId": "KLA4WXLAQ53IGZQA3E5JQXYG",
-                    "squareItemId": "YHMWJBLAGTDHNQKDJMR4XHCK",
-                    "name": "Bottle 1.5L",
-                    "sku": "BEV-COK-15L",
-                    "upc": null,
-                    "pricingType": "FIXED_PRICING",
-                    "priceAmount": 4,
-                    "currency": "USD",
-                    "trackInventory": false,
-                    "lastSyncedAt": "2026-08-24T10:00:28.376Z"
-                  },
-                  {
-                    "id": "01a0330d-0d91-75eb-830b-40630e329bc2",
-                    "squareVariationId": "T3XKHU5GDKV2WPWI7BVSTFI2",
-                    "squareItemId": "YHMWJBLAGTDHNQKDJMR4XHCK",
-                    "name": "Can 330ml",
-                    "sku": "BEV-COK-CAN",
-                    "upc": null,
-                    "pricingType": "FIXED_PRICING",
-                    "priceAmount": 2,
-                    "currency": "USD",
-                    "trackInventory": false,
-                    "lastSyncedAt": "2026-08-24T10:00:28.373Z"
-                  }
-                ],
-                "lastSyncedAt": "2026-08-24T10:00:28.369Z"
-              },
-              {
-                "id": "01a0330d-0d7a-7022-a358-b72c162ff074",
-                "squareItemId": "WTZQFQJST4RTV7CCLWXQMLDX",
-                "name": "Garlic Herb Bread",
-                "description": "Bánh mì nướng bơ tỏi và lá oregano giòn rụm",
-                "squareCategoryId": null,
-                "isTaxable": true,
-                "productType": "FOOD_AND_BEV",
-                "ecomAvailable": true,
-                "variations": [
-                  {
-                    "id": "01a0330d-0d82-779f-a9a4-cf0b76a62378",
-                    "squareVariationId": "FLAIOJ7JHK26S4TXHJZVAFLX",
-                    "squareItemId": "WTZQFQJST4RTV7CCLWXQMLDX",
-                    "name": "Regular (4 pcs)",
-                    "sku": "SID-GBR-04",
-                    "upc": null,
-                    "pricingType": "FIXED_PRICING",
-                    "priceAmount": 4,
-                    "currency": "USD",
-                    "trackInventory": false,
-                    "lastSyncedAt": "2026-08-24T10:00:28.366Z"
-                  }
-                ],
-                "lastSyncedAt": "2026-08-24T10:00:28.362Z"
-              },
-              {
-                "id": "01a0330d-0d4a-72c9-9eb9-1edd8766b5a9",
-                "squareItemId": "DTRGO5GVMW2G6AL2FYNXIFMX",
-                "name": "Seafood Supreme Pizza",
-                "description": "Tôm tỏi bơ, mực vòng, ớt chuông nướng và sốt kem Alfredo",
-                "squareCategoryId": null,
-                "isTaxable": true,
-                "productType": "FOOD_AND_BEV",
-                "ecomAvailable": true,
-                "variations": [
-                  {
-                    "id": "01a0330d-0d67-74d9-8bfb-bdf4b4dfdd60",
-                    "squareVariationId": "NKPRFAEOO55MTZJYWY6L6IH6",
-                    "squareItemId": "DTRGO5GVMW2G6AL2FYNXIFMX",
-                    "name": "Medium (12\")",
-                    "sku": "PIZ-SEA-M",
-                    "upc": null,
-                    "pricingType": "FIXED_PRICING",
-                    "priceAmount": 19,
-                    "currency": "USD",
-                    "trackInventory": false,
-                    "lastSyncedAt": "2026-08-24T10:00:28.353Z"
-                  },
-                  {
-                    "id": "01a0330d-0d5d-7588-a133-e704c06f20a1",
-                    "squareVariationId": "UHFKLYGCHWDQMD4XXFHI4CWK",
-                    "squareItemId": "DTRGO5GVMW2G6AL2FYNXIFMX",
-                    "name": "Small (9\")",
-                    "sku": "PIZ-SEA-S",
-                    "upc": null,
-                    "pricingType": "FIXED_PRICING",
-                    "priceAmount": 14,
-                    "currency": "USD",
-                    "trackInventory": false,
-                    "lastSyncedAt": "2026-08-24T10:00:28.348Z"
-                  },
-                  {
-                    "id": "01a0330d-0d70-7428-b5b3-aed9df6bce3b",
-                    "squareVariationId": "YDOIS2WPZCSN7CQ5D7WACDIC",
-                    "squareItemId": "DTRGO5GVMW2G6AL2FYNXIFMX",
-                    "name": "Large (14\")",
-                    "sku": "PIZ-SEA-L",
-                    "upc": null,
-                    "pricingType": "FIXED_PRICING",
-                    "priceAmount": 24,
-                    "currency": "USD",
-                    "trackInventory": false,
-                    "lastSyncedAt": "2026-08-24T10:00:28.358Z"
-                  }
-                ],
-                "lastSyncedAt": "2026-08-24T10:00:28.343Z"
-              },
-              {
-                "id": "01a0330d-0d18-7762-8452-089ef7127feb",
-                "squareItemId": "ZFSNIX3YUYM6D63Y3BSCHIXE",
-                "name": "Pepperoni Pizza",
-                "description": "Xúc xích bò Pepperoni cay nhẹ, phô mai Mozzarella béo ngậy",
-                "squareCategoryId": null,
-                "isTaxable": true,
-                "productType": "FOOD_AND_BEV",
-                "ecomAvailable": true,
-                "variations": [
-                  {
-                    "id": "01a0330d-0d3b-71a2-b1e6-b27023ddfc8c",
-                    "squareVariationId": "QQAK4Z6L7CJHXV34WRIIDWLN",
-                    "squareItemId": "ZFSNIX3YUYM6D63Y3BSCHIXE",
-                    "name": "Large (14\")",
-                    "sku": "PIZ-PEP-L",
-                    "upc": null,
-                    "pricingType": "FIXED_PRICING",
-                    "priceAmount": 21,
-                    "currency": "USD",
-                    "trackInventory": false,
-                    "lastSyncedAt": "2026-08-24T10:00:28.338Z"
-                  },
-                  {
-                    "id": "01a0330d-0d2e-767d-8ae6-7b89299635b9",
-                    "squareVariationId": "V5VF3GBQRXFYYLS6TDGA743M",
-                    "squareItemId": "ZFSNIX3YUYM6D63Y3BSCHIXE",
-                    "name": "Medium (12\")",
-                    "sku": "PIZ-PEP-M",
-                    "upc": null,
-                    "pricingType": "FIXED_PRICING",
-                    "priceAmount": 16,
-                    "currency": "USD",
-                    "trackInventory": false,
-                    "lastSyncedAt": "2026-08-24T10:00:28.333Z"
-                  },
-                  {
-                    "id": "01a0330d-0d23-779a-9076-b4c5829837dd",
-                    "squareVariationId": "WPOJSLNFKHLY7YGTFLOP6TIL",
-                    "squareItemId": "ZFSNIX3YUYM6D63Y3BSCHIXE",
-                    "name": "Small (9\")",
-                    "sku": "PIZ-PEP-S",
-                    "upc": null,
-                    "pricingType": "FIXED_PRICING",
-                    "priceAmount": 12,
-                    "currency": "USD",
-                    "trackInventory": false,
-                    "lastSyncedAt": "2026-08-24T10:00:28.325Z"
-                  }
-                ],
-                "lastSyncedAt": "2026-08-24T10:00:28.321Z"
-              },
-              {
-                "id": "01a0330d-0cd8-74ba-9599-a883291825b2",
-                "squareItemId": "T6XO6TSSO7MA2I2GEONGHDBR",
-                "name": "Margherita Pizza",
-                "description": "Sốt cà chua San Marzano, phô mai Mozzarella tươi và lá húng tây Basil",
-                "squareCategoryId": null,
-                "isTaxable": true,
-                "productType": "FOOD_AND_BEV",
-                "ecomAvailable": true,
-                "variations": [
-                  {
-                    "id": "01a0330d-0ced-70e5-8e43-fdd80ee67a76",
-                    "squareVariationId": "C7FOY5JCAIETUFMD5CH2I5AZ",
-                    "squareItemId": "T6XO6TSSO7MA2I2GEONGHDBR",
-                    "name": "Small (9\")",
-                    "sku": "PIZ-MAR-S",
-                    "upc": null,
-                    "pricingType": "FIXED_PRICING",
-                    "priceAmount": 10,
-                    "currency": "USD",
-                    "trackInventory": false,
-                    "lastSyncedAt": "2026-08-24T10:00:28.306Z"
-                  },
-                  {
-                    "id": "01a0330d-0d00-7591-a14b-272688ff3654",
-                    "squareVariationId": "EZXQORG5XCBMTONYBILP3X6X",
-                    "squareItemId": "T6XO6TSSO7MA2I2GEONGHDBR",
-                    "name": "Medium (12\")",
-                    "sku": "PIZ-MAR-M",
-                    "upc": null,
-                    "pricingType": "FIXED_PRICING",
-                    "priceAmount": 14,
-                    "currency": "USD",
-                    "trackInventory": false,
-                    "lastSyncedAt": "2026-08-24T10:00:28.312Z"
-                  },
-                  {
-                    "id": "01a0330d-0d0b-76a5-9d3a-44db4286f143",
-                    "squareVariationId": "W3O6FTTQOMVJLPYDN4FJFHTI",
-                    "squareItemId": "T6XO6TSSO7MA2I2GEONGHDBR",
-                    "name": "Large (14\")",
-                    "sku": "PIZ-MAR-L",
-                    "upc": null,
-                    "pricingType": "FIXED_PRICING",
-                    "priceAmount": 18,
-                    "currency": "USD",
-                    "trackInventory": false,
-                    "lastSyncedAt": "2026-08-24T10:00:28.316Z"
-                  }
-                ],
-                "lastSyncedAt": "2026-08-24T10:00:28.299Z"
-              }
-            ]
-          }
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "5569",
-        "date": "Thu, 27 Aug 2026 02:47:39 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "334793c9-4945-453e-b5b3-8b3620c8cc34",
-    "timestamp": "2026-08-27T02:46:45.197Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 50,
-    "request": {
-      "id": "87ae8a49-cf0a-4653-9c31-a51b95a842bc",
-      "savedRequestId": "7f74556f-b1fc-4fc6-a2a6-497b19203676",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": "2c185edf-e9d2-4ce7-92a6-543b144a1e4a",
-      "name": "Square order get pagination",
-      "graphqlRootField": "squareOrderGetPagination",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "a40674d0-3a32-4b04-95ea-451e67a03ec6",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "085297e0-1847-4c34-bb63-369f9da94d43",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": ""
-        }
-      ],
-      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query SquareOrderGetPagination($filters: SquareOrderGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareOrderGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      orderId\n      squareOrderId\n      squareLocationId\n      state\n      totalMoneyAmount\n      currency\n      syncStatus\n      errorMessage\n      lastSyncedAt\n    }\n  }\n}",
-      "gqlVariables": "{\n  \"filters\": {\n    \"orderId\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
-      "testScript": "",
-      "editorTab": "HEADERS",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "50 ms",
-      "size": "1.3 KB",
-      "data": {
-        "data": {
-          "squareOrderGetPagination": {
-            "total": 4,
-            "items": [
-              {
-                "id": "01a03cf1-d6b2-77ee-9c24-27fee2891753",
-                "orderId": "01a03cef-e67b-7388-bc92-1b02a901791a",
-                "squareOrderId": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                "squareLocationId": "L7JBFPYN8CG71",
-                "state": "COMPLETED",
-                "totalMoneyAmount": 688500,
-                "currency": "USD",
-                "syncStatus": "SYNCED",
-                "errorMessage": null,
-                "lastSyncedAt": "2026-08-26T08:24:43.183Z"
-              },
-              {
-                "id": "01a03cbb-7006-71e3-9811-6569555b5c3c",
-                "orderId": "01a03cbb-21dc-74aa-9a60-7ced2d8b26e9",
-                "squareOrderId": "iapJCBflDDsiLL7QjAt9n7lApa7YY",
-                "squareLocationId": "L7JBFPYN8CG71",
-                "state": "OPEN",
-                "totalMoneyAmount": 918000,
-                "currency": "USD",
-                "syncStatus": "SYNCED",
-                "errorMessage": null,
-                "lastSyncedAt": "2026-08-26T08:25:12.741Z"
-              },
-              {
-                "id": "01a03cb0-ce4e-75c0-acd8-d8dfd75e48ba",
-                "orderId": "01a03cb0-a403-73f3-ab7e-057148c07388",
-                "squareOrderId": "6s60qYx8njVKDIIysQWWyKcJnh9YY",
-                "squareLocationId": "L7JBFPYN8CG71",
-                "state": "OPEN",
-                "totalMoneyAmount": 688500,
-                "currency": "USD",
-                "syncStatus": "SYNCED",
-                "errorMessage": null,
-                "lastSyncedAt": "2026-08-26T06:10:16.106Z"
-              },
-              {
-                "id": "01a03c06-b814-701c-b9d0-7e1879ee42be",
-                "orderId": "01a03c06-8b0d-709c-bf8e-bae7f918fc60",
-                "squareOrderId": "MH1TrJ6ayEgsZQQZEb9zFoouUPFZY",
-                "squareLocationId": "L7JBFPYN8CG71",
-                "state": "OPEN",
-                "totalMoneyAmount": 688500,
-                "currency": "USD",
-                "syncStatus": "SYNCED",
-                "errorMessage": null,
-                "lastSyncedAt": "2026-08-26T03:04:32.260Z"
-              }
-            ]
-          }
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "1345",
-        "date": "Thu, 27 Aug 2026 02:46:46 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "9b531616-cf36-473f-9d6b-a38144787390",
-    "timestamp": "2026-08-27T02:46:04.753Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 296,
-    "request": {
-      "id": "22dbc6da-dd0e-4df2-9f85-fa3a3720ac04",
-      "savedRequestId": "5b6ff2e2-5692-4d26-b7eb-584282725a74",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": "41fbf4bf-a747-4881-84cb-07b32e77924b",
-      "name": "Square webhook event get pagination",
-      "graphqlRootField": "squareWebhookEventGetPagination",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "4b180b54-f757-4abb-bb26-df57c7eb194b",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "5f70d98f-e2e0-488e-b7dd-3983b350fe53",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": "",
-          "type": "text"
-        }
-      ],
-      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query SquareWebhookEventGetPagination($filters: SquareWebhookEventGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareWebhookEventGetPagination(filters: $filters, params: $params) {\n    items {\n      id\n      eventId\n      merchantId\n      eventType\n      entityId\n      status\n      payload\n      errorMessage\n      processedAt\n      createdAt\n    }\n    total\n  }\n}",
-      "gqlVariables": "{\n  \"filters\": {\n    \"eventType\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "296 ms",
-      "size": "8.8 KB",
-      "data": {
-        "data": {
-          "squareWebhookEventGetPagination": {
-            "items": [
-              {
-                "id": "01a03d2c-59cc-76e8-af88-e7d7e1bf4ba3",
-                "eventId": "7afc2c2b-d6dd-3262-a926-f54bba4e8051",
-                "merchantId": "MLTQ3MXGD4MH2",
-                "eventType": "order.fulfillment.updated",
-                "entityId": "iapJCBflDDsiLL7QjAt9n7lApa7YY",
-                "status": "PROCESSED",
-                "payload": {
-                  "data": {
-                    "id": "iapJCBflDDsiLL7QjAt9n7lApa7YY",
-                    "type": "order_fulfillment_updated",
-                    "object": {
-                      "order_fulfillment_updated": {
-                        "state": "OPEN",
-                        "version": 1,
-                        "order_id": "iapJCBflDDsiLL7QjAt9n7lApa7YY",
-                        "created_at": "2026-08-26T06:21:52.986Z",
-                        "updated_at": "2026-08-26T06:21:52.986Z",
-                        "location_id": "L7JBFPYN8CG71",
-                        "fulfillment_update": [
-                          {
-                            "new_state": "PROPOSED",
-                            "fulfillment_uid": "034DhK8fH0iwr7wsaPuerP"
-                          }
-                        ]
-                      }
-                    }
-                  },
-                  "type": "order.fulfillment.updated",
-                  "event_id": "7afc2c2b-d6dd-3262-a926-f54bba4e8051",
-                  "created_at": "2026-08-26T06:21:53.449Z",
-                  "merchant_id": "MLTQ3MXGD4MH2"
-                },
-                "errorMessage": null,
-                "processedAt": "2026-08-26T08:25:12.756Z",
-                "createdAt": "2026-08-26T08:25:11.884Z"
-              },
-              {
-                "id": "01a03d2c-5662-74a8-a202-d9769c8429b7",
-                "eventId": "a6213544-3342-333e-83cb-5f325a70bbf6",
-                "merchantId": "MLTQ3MXGD4MH2",
-                "eventType": "order.created",
-                "entityId": "iapJCBflDDsiLL7QjAt9n7lApa7YY",
-                "status": "PROCESSED",
-                "payload": {
-                  "data": {
-                    "id": "iapJCBflDDsiLL7QjAt9n7lApa7YY",
-                    "type": "order_created",
-                    "object": {
-                      "order_created": {
-                        "state": "OPEN",
-                        "version": 1,
-                        "order_id": "iapJCBflDDsiLL7QjAt9n7lApa7YY",
-                        "created_at": "2026-08-26T06:21:52.986Z",
-                        "location_id": "L7JBFPYN8CG71"
-                      }
-                    }
-                  },
-                  "type": "order.created",
-                  "event_id": "a6213544-3342-333e-83cb-5f325a70bbf6",
-                  "created_at": "2026-08-26T06:21:53.449Z",
-                  "merchant_id": "MLTQ3MXGD4MH2"
-                },
-                "errorMessage": null,
-                "processedAt": "2026-08-26T08:25:12.344Z",
-                "createdAt": "2026-08-26T08:25:11.010Z"
-              },
-              {
-                "id": "01a03d2b-e783-7099-bcdb-c1a829c60e40",
-                "eventId": "c835ef52-edbb-3fbd-9b81-6dff9493d1fe",
-                "merchantId": "MLTQ3MXGD4MH2",
-                "eventType": "order.created",
-                "entityId": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                "status": "PROCESSED",
-                "payload": {
-                  "data": {
-                    "id": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                    "type": "order_created",
-                    "object": {
-                      "order_created": {
-                        "state": "OPEN",
-                        "version": 1,
-                        "order_id": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                        "created_at": "2026-08-26T07:21:19.162Z",
-                        "location_id": "L7JBFPYN8CG71"
-                      }
-                    }
-                  },
-                  "type": "order.created",
-                  "event_id": "c835ef52-edbb-3fbd-9b81-6dff9493d1fe",
-                  "created_at": "2026-08-26T07:21:19.566Z",
-                  "merchant_id": "MLTQ3MXGD4MH2"
-                },
-                "errorMessage": null,
-                "processedAt": "2026-08-26T08:24:43.207Z",
-                "createdAt": "2026-08-26T08:24:42.627Z"
-              },
-              {
-                "id": "01a03d2b-dcdb-73de-8222-4ba810bf0979",
-                "eventId": "c15af901-525b-3f2b-8254-10ae1b6951a9",
-                "merchantId": "MLTQ3MXGD4MH2",
-                "eventType": "order.updated",
-                "entityId": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                "status": "PROCESSED",
-                "payload": {
-                  "data": {
-                    "id": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                    "type": "order_updated",
-                    "object": {
-                      "order_updated": {
-                        "state": "OPEN",
-                        "version": 4,
-                        "order_id": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                        "created_at": "2026-08-26T07:21:19.162Z",
-                        "updated_at": "2026-08-26T07:21:23.000Z",
-                        "location_id": "L7JBFPYN8CG71"
-                      }
-                    }
-                  },
-                  "type": "order.updated",
-                  "event_id": "c15af901-525b-3f2b-8254-10ae1b6951a9",
-                  "created_at": "2026-08-26T07:21:24.71Z",
-                  "merchant_id": "MLTQ3MXGD4MH2"
-                },
-                "errorMessage": null,
-                "processedAt": "2026-08-26T08:24:40.390Z",
-                "createdAt": "2026-08-26T08:24:39.899Z"
-              },
-              {
-                "id": "01a03d2b-d700-71a5-9d7a-05887ec13e81",
-                "eventId": "b99d9c50-46f4-31d5-b2db-abfba5d3abe3",
-                "merchantId": "MLTQ3MXGD4MH2",
-                "eventType": "order.fulfillment.updated",
-                "entityId": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                "status": "PROCESSED",
-                "payload": {
-                  "data": {
-                    "id": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                    "type": "order_fulfillment_updated",
-                    "object": {
-                      "order_fulfillment_updated": {
-                        "state": "OPEN",
-                        "version": 3,
-                        "order_id": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                        "created_at": "2026-08-26T07:21:19.162Z",
-                        "updated_at": "2026-08-26T07:21:20.113Z",
-                        "location_id": "L7JBFPYN8CG71",
-                        "fulfillment_update": [
-                          {
-                            "new_state": "PROPOSED",
-                            "old_state": "PROPOSED",
-                            "fulfillment_uid": "034DimZcUwDi2imApVZegm"
-                          }
-                        ]
-                      }
-                    }
-                  },
-                  "type": "order.fulfillment.updated",
-                  "event_id": "b99d9c50-46f4-31d5-b2db-abfba5d3abe3",
-                  "created_at": "2026-08-26T07:21:20.417Z",
-                  "merchant_id": "MLTQ3MXGD4MH2"
-                },
-                "errorMessage": null,
-                "processedAt": "2026-08-26T08:24:38.935Z",
-                "createdAt": "2026-08-26T08:24:38.400Z"
-              },
-              {
-                "id": "01a03d2b-d59a-71bd-a647-3cf3b1cd6c6c",
-                "eventId": "ad4d5937-00f9-3ccd-9be5-104f569cd85d",
-                "merchantId": "MLTQ3MXGD4MH2",
-                "eventType": "order.updated",
-                "entityId": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                "status": "PROCESSED",
-                "payload": {
-                  "data": {
-                    "id": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                    "type": "order_updated",
-                    "object": {
-                      "order_updated": {
-                        "state": "OPEN",
-                        "version": 3,
-                        "order_id": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                        "created_at": "2026-08-26T07:21:19.162Z",
-                        "updated_at": "2026-08-26T07:21:20.113Z",
-                        "location_id": "L7JBFPYN8CG71"
-                      }
-                    }
-                  },
-                  "type": "order.updated",
-                  "event_id": "ad4d5937-00f9-3ccd-9be5-104f569cd85d",
-                  "created_at": "2026-08-26T07:21:20.417Z",
-                  "merchant_id": "MLTQ3MXGD4MH2"
-                },
-                "errorMessage": null,
-                "processedAt": "2026-08-26T08:24:38.603Z",
-                "createdAt": "2026-08-26T08:24:38.042Z"
-              },
-              {
-                "id": "01a03d2b-d2f1-72df-a40c-4df9b14c9de6",
-                "eventId": "9b537179-1b86-325a-b394-090b20a1c68c",
-                "merchantId": "MLTQ3MXGD4MH2",
-                "eventType": "order.fulfillment.updated",
-                "entityId": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                "status": "PROCESSED",
-                "payload": {
-                  "data": {
-                    "id": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                    "type": "order_fulfillment_updated",
-                    "object": {
-                      "order_fulfillment_updated": {
-                        "state": "OPEN",
-                        "version": 1,
-                        "order_id": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                        "created_at": "2026-08-26T07:21:19.162Z",
-                        "updated_at": "2026-08-26T07:21:19.162Z",
-                        "location_id": "L7JBFPYN8CG71",
-                        "fulfillment_update": [
-                          {
-                            "new_state": "PROPOSED",
-                            "fulfillment_uid": "034DimZcUwDi2imApVZegm"
-                          }
-                        ]
-                      }
-                    }
-                  },
-                  "type": "order.fulfillment.updated",
-                  "event_id": "9b537179-1b86-325a-b394-090b20a1c68c",
-                  "created_at": "2026-08-26T07:21:19.566Z",
-                  "merchant_id": "MLTQ3MXGD4MH2"
-                },
-                "errorMessage": null,
-                "processedAt": "2026-08-26T08:24:38.800Z",
-                "createdAt": "2026-08-26T08:24:37.361Z"
-              },
-              {
-                "id": "01a03d25-5fb1-75bf-bc03-308e34d00b84",
-                "eventId": "ebcc72e7-d63c-35fb-915f-dbe9b4360804",
-                "merchantId": "MLTQ3MXGD4MH2",
-                "eventType": "order.updated",
-                "entityId": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                "status": "PROCESSED",
-                "payload": {
-                  "data": {
-                    "id": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                    "type": "order_updated",
-                    "object": {
-                      "order_updated": {
-                        "state": "COMPLETED",
-                        "version": 8,
-                        "order_id": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                        "created_at": "2026-08-26T07:21:19.162Z",
-                        "updated_at": "2026-08-26T08:17:31.278Z",
-                        "location_id": "L7JBFPYN8CG71"
-                      }
-                    }
-                  },
-                  "type": "order.updated",
-                  "event_id": "ebcc72e7-d63c-35fb-915f-dbe9b4360804",
-                  "created_at": "2026-08-26T08:17:31.518Z",
-                  "merchant_id": "MLTQ3MXGD4MH2"
-                },
-                "errorMessage": null,
-                "processedAt": "2026-08-26T08:17:35.150Z",
-                "createdAt": "2026-08-26T08:17:34.641Z"
-              },
-              {
-                "id": "01a03d25-58b9-77cf-b4c4-205186f73f40",
-                "eventId": "300898dd-49cc-3bf7-ab22-9deee3861fe7",
-                "merchantId": "MLTQ3MXGD4MH2",
-                "eventType": "order.fulfillment.updated",
-                "entityId": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                "status": "PROCESSED",
-                "payload": {
-                  "data": {
-                    "id": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                    "type": "order_fulfillment_updated",
-                    "object": {
-                      "order_fulfillment_updated": {
-                        "state": "COMPLETED",
-                        "version": 8,
-                        "order_id": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                        "created_at": "2026-08-26T07:21:19.162Z",
-                        "updated_at": "2026-08-26T08:17:31.278Z",
-                        "location_id": "L7JBFPYN8CG71",
-                        "fulfillment_update": [
-                          {
-                            "new_state": "COMPLETED",
-                            "old_state": "PREPARED",
-                            "fulfillment_uid": "034DimZcUwDi2imApVZegm"
-                          }
-                        ]
-                      }
-                    }
-                  },
-                  "type": "order.fulfillment.updated",
-                  "event_id": "300898dd-49cc-3bf7-ab22-9deee3861fe7",
-                  "created_at": "2026-08-26T08:17:31.518Z",
-                  "merchant_id": "MLTQ3MXGD4MH2"
-                },
-                "errorMessage": null,
-                "processedAt": "2026-08-26T08:17:33.360Z",
-                "createdAt": "2026-08-26T08:17:32.857Z"
-              },
-              {
-                "id": "01a03d24-e4dd-764f-b7e6-51b0db8acacf",
-                "eventId": "2ec29539-bf9c-37b4-9f40-0d7303ca4b78",
-                "merchantId": "MLTQ3MXGD4MH2",
-                "eventType": "order.updated",
-                "entityId": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                "status": "PROCESSED",
-                "payload": {
-                  "data": {
-                    "id": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                    "type": "order_updated",
-                    "object": {
-                      "order_updated": {
-                        "state": "OPEN",
-                        "version": 7,
-                        "order_id": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                        "created_at": "2026-08-26T07:21:19.162Z",
-                        "updated_at": "2026-08-26T08:16:59.707Z",
-                        "location_id": "L7JBFPYN8CG71"
-                      }
-                    }
-                  },
-                  "type": "order.updated",
-                  "event_id": "2ec29539-bf9c-37b4-9f40-0d7303ca4b78",
-                  "created_at": "2026-08-26T08:17:00.02Z",
-                  "merchant_id": "MLTQ3MXGD4MH2"
-                },
-                "errorMessage": null,
-                "processedAt": "2026-08-26T08:17:04.609Z",
-                "createdAt": "2026-08-26T08:17:03.197Z"
-              },
-              {
-                "id": "01a03d24-e4dd-764f-b7e6-56be91598b1e",
-                "eventId": "144b1c55-d5ab-347c-8100-b35295887c8d",
-                "merchantId": "MLTQ3MXGD4MH2",
-                "eventType": "order.fulfillment.updated",
-                "entityId": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                "status": "PROCESSED",
-                "payload": {
-                  "data": {
-                    "id": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                    "type": "order_fulfillment_updated",
-                    "object": {
-                      "order_fulfillment_updated": {
-                        "state": "OPEN",
-                        "version": 7,
-                        "order_id": "uotPHaTuSkAcinfALJAwmjLTsnVZY",
-                        "created_at": "2026-08-26T07:21:19.162Z",
-                        "updated_at": "2026-08-26T08:16:59.707Z",
-                        "location_id": "L7JBFPYN8CG71",
-                        "fulfillment_update": [
-                          {
-                            "new_state": "PREPARED",
-                            "old_state": "RESERVED",
-                            "fulfillment_uid": "034DimZcUwDi2imApVZegm"
-                          }
-                        ]
-                      }
-                    }
-                  },
-                  "type": "order.fulfillment.updated",
-                  "event_id": "144b1c55-d5ab-347c-8100-b35295887c8d",
-                  "created_at": "2026-08-26T08:17:00.02Z",
-                  "merchant_id": "MLTQ3MXGD4MH2"
-                },
-                "errorMessage": null,
-                "processedAt": "2026-08-26T08:17:04.165Z",
-                "createdAt": "2026-08-26T08:17:03.197Z"
-              }
-            ],
-            "total": 11
-          }
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "8999",
-        "date": "Thu, 27 Aug 2026 02:46:06 GMT",
         "connection": "keep-alive",
         "keep-alive": "timeout=72"
       },

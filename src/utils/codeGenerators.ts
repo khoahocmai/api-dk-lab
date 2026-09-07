@@ -1,5 +1,6 @@
 import type { EnvironmentItem, RequestItem } from '../types'
 import { generateCurlCommand } from './curlHelper'
+import { sanitizeTrailingCommas } from './jsonHelper'
 import {
   buildFinalHeaders,
   injectAuthToUrl,
@@ -49,7 +50,7 @@ function getRequestBodyString(
     let vars: Record<string, unknown> = {}
     try {
       vars = request.gqlVariables.trim()
-        ? JSON.parse(resolveTemplates(request.gqlVariables, environment))
+        ? JSON.parse(sanitizeTrailingCommas(resolveTemplates(request.gqlVariables, environment)))
         : {}
     } catch {
       // ignore
@@ -63,7 +64,7 @@ function getRequestBodyString(
   if (['GET', 'DELETE'].includes(request.method)) return null
 
   if (request.bodyType === 'json' && request.restBody.trim()) {
-    return resolveTemplates(request.restBody, environment)
+    return sanitizeTrailingCommas(resolveTemplates(request.restBody, environment))
   }
 
   if (request.bodyType === 'raw' && request.rawText) {

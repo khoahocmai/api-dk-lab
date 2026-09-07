@@ -7520,15 +7520,15 @@
             "id": "a7dcb065-32d9-4587-a6d4-cfba021e76de",
             "key": "x-requested-portal",
             "value": "IT",
-            "enabled": true
+            "enabled": true,
+            "description": ""
           },
           {
             "id": "7d8e57c7-0299-4bd3-8572-c64b5bc58155",
             "key": "",
             "value": "",
             "enabled": false,
-            "description": "",
-            "type": "text"
+            "description": ""
           }
         ],
         "headersText": "{\n  \"x-requested-portal\": \"IT\"\n}",
@@ -7542,7 +7542,7 @@
           "apiKeyAddTo": "header"
         },
         "bodyType": "json",
-        "restBody": "{\n  \"id\": \"019a7101-8006-755c-8b52-ceaf5d94fac5\",\n  \"type\": \"COMBO\",\n  \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\",\n  \"tenantId\": \"0192fda4-ba1b-76ef-bb1a-64c043a8e4a4\",\n}",
+        "restBody": "{\n  \"id\": \"019a7101-8006-755c-8b52-ceaf5d94fac5\",\n  \"type\": \"COMBO\",\n  \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\",\n  \"tenantId\": \"0192fda4-ba1b-76ef-bb1a-64c043a8e4a4\"\n}",
         "rawText": "",
         "formData": [],
         "urlencoded": [],
@@ -7552,10 +7552,10 @@
         "testScript": "",
         "editorTab": "BODY",
         "responseTab": "PRETTY",
-        "savedSnapshot": "{\"name\":\"Check item availability\",\"url\":\"{{Domain}}/products/check-availability\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"x-requested-portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"{\\n  \\\"id\\\": \\\"019a7101-8006-755c-8b52-ceaf5d94fac5\\\",\\n  \\\"type\\\": \\\"COMBO\\\",\\n  \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\",\\n  \\\"tenantId\\\": \\\"0192fda4-ba1b-76ef-bb1a-64c043a8e4a4\\\"\\n}\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\"}"
+        "savedSnapshot": "{\"name\":\"Check item availability\",\"url\":\"{{Domain}}/products/check-availability\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"x-requested-portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"{\\n  \\\"id\\\": \\\"019a7101-8006-755c-8b52-ceaf5d94fac5\\\",\\n  \\\"type\\\": \\\"COMBO\\\",\\n  \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\",\\n  \\\"tenantId\\\": \\\"0192fda4-ba1b-76ef-bb1a-64c043a8e4a4\\\",\\n}\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\"}"
       },
       "createdAt": "2026-09-07T04:51:07.277Z",
-      "updatedAt": "2026-09-07T05:17:40.794Z"
+      "updatedAt": "2026-09-07T06:27:32.779Z"
     }
   ],
   "expandedCollectionIds": [

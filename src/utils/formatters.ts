@@ -1,4 +1,5 @@
 import type { KeyValueRow, RequestItem } from '../types'
+import { sanitizeTrailingCommas } from './jsonHelper'
 
 export function createId(): string {
   return crypto.randomUUID?.() ?? Math.random().toString(36).slice(2, 11)
@@ -6,7 +7,7 @@ export function createId(): string {
 
 export function formatJsonSafely(value: string): string {
   try {
-    const sanitized = value.replace(/,(\s*[}\]])/g, '$1').trim()
+    const sanitized = sanitizeTrailingCommas(value).trim()
     return JSON.stringify(JSON.parse(sanitized), null, 2)
   } catch {
     return value
@@ -29,7 +30,8 @@ export function getErrorMessage(error: unknown): string {
 
 export function parseJsonObject(raw: string, label: string): Record<string, unknown> {
   try {
-    const parsed = raw.trim() ? JSON.parse(raw) : {}
+    const sanitized = sanitizeTrailingCommas(raw).trim()
+    const parsed = sanitized ? JSON.parse(sanitized) : {}
     if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
       throw new Error(`${label} phải là JSON object`)
     }

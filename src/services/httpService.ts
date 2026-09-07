@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import type { HttpRequestOptions, HttpResponseData } from '../types'
 import { bytesToReadable, getErrorMessage } from '../utils/formatters'
+import { sanitizeTrailingCommas } from '../utils/jsonHelper'
 import { isLocalhostUrl } from '../utils/urlHelper'
 
 export async function sendHttpRequest(options: HttpRequestOptions): Promise<HttpResponseData> {
@@ -11,6 +12,24 @@ export async function sendHttpRequest(options: HttpRequestOptions): Promise<Http
       : options.timeout !== undefined
       ? options.timeout
       : 60000
+
+  // Automatically sanitize JSON payload if data is a raw string and Content-Type is application/json or payload looks like JSON
+  let sanitizedData = options.data
+  if (typeof sanitizedData === 'string' && sanitizedData.trim()) {
+    const isJsonHeader = Object.entries(options.headers || {}).some(
+      ([k, v]) =>
+        k.toLowerCase() === 'content-type' &&
+        typeof v === 'string' &&
+        v.toLowerCase().includes('application/json'),
+    )
+    const trimmed = sanitizedData.trim()
+    const looksLikeJson =
+      (trimmed.startsWith('{') && trimmed.endsWith('}')) ||
+      (trimmed.startsWith('[') && trimmed.endsWith(']'))
+    if (isJsonHeader || looksLikeJson) {
+      sanitizedData = sanitizeTrailingCommas(sanitizedData)
+    }
+  }
 
   // If running inside Electron desktop environment, use IPC to bypass CORS
   if (window.desktopApi?.invoke) {
@@ -29,6 +48,7 @@ export async function sendHttpRequest(options: HttpRequestOptions): Promise<Http
     try {
       return await window.desktopApi.invoke<HttpResponseData>('http-request', {
         ...options,
+        data: sanitizedData,
         timeout: effectiveTimeout,
       })
     } catch (error) {
@@ -68,7 +88,7 @@ export async function sendHttpRequest(options: HttpRequestOptions): Promise<Http
         'Accept-Encoding': 'gzip, deflate, br',
         ...(options.headers || {}),
       },
-      data: options.data,
+      data: sanitizedData,
       timeout: effectiveTimeout,
       signal: options.signal,
       validateStatus: () => true,

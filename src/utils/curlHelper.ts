@@ -8,6 +8,7 @@ import type {
   RequestItem,
 } from '../types'
 import { createId } from './formatters'
+import { sanitizeTrailingCommas } from './jsonHelper'
 import { parseUrlToQueryParams, syncPathVariables } from './urlHelper'
 import {
   buildFinalHeaders,
@@ -751,7 +752,7 @@ export function generateCurlCommand(
     let vars: Record<string, unknown> = {}
     try {
       vars = request.gqlVariables.trim()
-        ? JSON.parse(resolveTemplates(request.gqlVariables, environment))
+        ? JSON.parse(sanitizeTrailingCommas(resolveTemplates(request.gqlVariables, environment)))
         : {}
     } catch {
       // ignore
@@ -763,7 +764,7 @@ export function generateCurlCommand(
     lines.push(`--data '${payload.replace(/'/g, "\\'")}'`)
   } else if (!['GET', 'DELETE'].includes(request.method)) {
     if (request.bodyType === 'json' && request.restBody.trim()) {
-      const payload = resolveTemplates(request.restBody, environment)
+      const payload = sanitizeTrailingCommas(resolveTemplates(request.restBody, environment))
       lines.push(`--data '${payload.replace(/'/g, "\\'")}'`)
     } else if (request.bodyType === 'raw' && request.rawText) {
       const payload = resolveTemplates(request.rawText, environment)

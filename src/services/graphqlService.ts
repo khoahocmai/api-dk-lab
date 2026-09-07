@@ -18,6 +18,7 @@ import {
 } from 'graphql'
 import type { EnvironmentItem, GraphField, GraphInputField, GraphOutputField } from '../types'
 import { capitalize, sanitizeVariableName } from '../utils/formatters'
+import { sanitizeTrailingCommas } from '../utils/jsonHelper'
 import { sendHttpRequest } from './httpService'
 import { resolveTemplates } from './templateService'
 
@@ -527,9 +528,8 @@ function extractOutputPathsFromSelectionSet(
 
 export function parseRelaxedJSON(jsonString: string): unknown {
   if (!jsonString || !jsonString.trim()) return {}
-  // Sanitize trailing commas before closing braces/brackets
-  const sanitized = jsonString.replace(/,(\s*[}\]])/g, '$1').trim()
-  return JSON.parse(sanitized)
+  const clean = sanitizeTrailingCommas(jsonString)
+  return JSON.parse(clean)
 }
 
 export function extractVariablePathsFromJSON(jsonString: string): Set<string> | null {

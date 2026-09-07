@@ -7,6 +7,19 @@ export interface ToastData {
   type?: 'success' | 'info' | 'warning' | 'error'
 }
 
+export function emitToast(
+  message: string,
+  type: 'success' | 'info' | 'warning' | 'error' = 'success',
+) {
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(
+      new CustomEvent('app:toast', {
+        detail: { message, type },
+      }),
+    )
+  }
+}
+
 interface ToastProps {
   toast: ToastData | null
   onClose: () => void

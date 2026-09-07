@@ -1,7 +1,9 @@
 import { FileX, Trash2, Wand2 } from 'lucide-react'
 import type { BodyType, EnvironmentItem, KeyValueRow, RequestItem } from '../../types'
 import { convertRowsToHeadersJson } from '../../utils/urlHelper'
-import { createId, formatJsonSafely } from '../../utils/formatters'
+import { createId } from '../../utils/formatters'
+import { formatAndPrettifyJson } from '../../utils/jsonHelper'
+import { emitToast } from '../common/Toast'
 import { CodeEditor } from '../common/CodeEditor'
 import { KeyValueTable } from './KeyValueTable'
 
@@ -12,6 +14,7 @@ export interface RequestBodyEditorProps {
   onUpdateTab: (patch: Partial<RequestItem>) => void
   onFormat?: () => void
   onClear?: () => void
+  onShowToast?: (message: string, type?: 'success' | 'info' | 'warning' | 'error') => void
 }
 
 const BODY_FORMAT_OPTIONS: { type: BodyType; label: string }[] = [
@@ -29,8 +32,17 @@ export function RequestBodyEditor({
   onUpdateTab,
   onFormat,
   onClear,
+  onShowToast,
 }: RequestBodyEditorProps) {
   const isGetOrDelete = ['GET', 'DELETE'].includes(activeTab.method)
+
+  const triggerToast = (message: string, type: 'success' | 'info' | 'warning' | 'error' = 'error') => {
+    if (onShowToast) {
+      onShowToast(message, type)
+    } else {
+      emitToast(message, type)
+    }
+  }
 
   const handleBodyTypeChange = (type: BodyType) => {
     const patch: Partial<RequestItem> = { bodyType: type }
@@ -65,11 +77,18 @@ export function RequestBodyEditor({
   }
 
   const handleFormatJson = () => {
-    if (onFormat) {
-      onFormat()
-    } else if (activeTab.restBody) {
-      const formatted = formatJsonSafely(activeTab.restBody)
-      onUpdateTab({ restBody: formatted })
+    const raw = activeTab.restBody || ''
+    if (!raw.trim()) return
+
+    const result = formatAndPrettifyJson(raw)
+    if (result.success) {
+      onUpdateTab({ restBody: result.formatted })
+      if (onFormat) {
+        onFormat()
+      }
+    } else {
+      const errorMsg = `Lỗi cú pháp JSON: ${result.error || 'Cú pháp không hợp lệ'}`
+      triggerToast(errorMsg, 'error')
     }
   }
 
