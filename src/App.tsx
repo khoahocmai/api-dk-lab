@@ -847,16 +847,11 @@ function App() {
       setMobileView('REQUEST')
     }
 
-    // Auto-locate & Reveal API in GraphQL Explorer
+    // Auto-locate & Reveal API in GraphQL Explorer (sync state in background without forcing panel open)
     if (saved.request.mode === 'GRAPHQL') {
       const { rootFieldName, kind } = extractGraphQLRootInfo(saved.request)
 
-      // 1. Auto-open Explorer Panel if closed
-      if (!isExplorerOpen) {
-        setIsExplorerOpen(true)
-      }
-
-      // 2. Compute reverse sync keys immediately if schema is loaded
+      // 1. Compute reverse sync keys immediately if schema is loaded
       if (graphExplorer.queryFields.length > 0 || graphExplorer.mutationFields.length > 0) {
         const syncKeys = computeReverseSyncKeys(
           [],
