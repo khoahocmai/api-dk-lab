@@ -181,16 +181,14 @@ export function selectionFieldsForOutputType(type: GraphQLOutputType): string[] 
       .map((field) => field.name)
 
     const preferredOrder = ['id', 'code', 'name', 'title', 'total', 'message', 'status', 'success', 'createdAt', 'updatedAt']
-    return scalarFields
-      .sort((a, b) => {
-        const aIndex = preferredOrder.indexOf(a)
-        const bIndex = preferredOrder.indexOf(b)
-        if (aIndex >= 0 && bIndex >= 0) return aIndex - bIndex
-        if (aIndex >= 0) return -1
-        if (bIndex >= 0) return 1
-        return a.localeCompare(b)
-      })
-      .slice(0, 2)
+    return scalarFields.sort((a, b) => {
+      const aIndex = preferredOrder.indexOf(a)
+      const bIndex = preferredOrder.indexOf(b)
+      if (aIndex >= 0 && bIndex >= 0) return aIndex - bIndex
+      if (aIndex >= 0) return -1
+      if (bIndex >= 0) return 1
+      return a.localeCompare(b)
+    })
   } catch {
     return []
   }
@@ -251,6 +249,17 @@ export function getGraphOutputFieldKey(
   path: string,
 ): string {
   return `${kind}:${fieldName}:out:${path}`
+}
+
+export function findOutputFieldByPath(
+  fields: GraphOutputField[],
+  parts: string[],
+): GraphOutputField | undefined {
+  if (parts.length === 0) return undefined
+  const current = fields.find((f) => f.name === parts[0])
+  if (!current) return undefined
+  if (parts.length === 1) return current
+  return current.fields ? findOutputFieldByPath(current.fields, parts.slice(1)) : undefined
 }
 
 export interface SelectionTree {
@@ -418,9 +427,20 @@ export function buildGraphOperationFromFields(
     let selectionLines: string[] = []
     if (keySet) {
       const outPrefix = `${kind}:${field.name}:out:`
-      const selectedOutPaths = Array.from(keySet)
+      const rawOutPaths = Array.from(keySet)
         .filter((k) => k.startsWith(outPrefix))
         .map((k) => k.slice(outPrefix.length))
+
+      // Filter out non-scalar object paths that have no child paths selected
+      const selectedOutPaths = rawOutPaths.filter((path) => {
+        if (!field.outputFields || field.outputFields.length === 0) return true
+        const target = findOutputFieldByPath(field.outputFields, path.split('.'))
+        if (target && !target.isScalar) {
+          const prefix = `${path}.`
+          return rawOutPaths.some((other) => other.startsWith(prefix))
+        }
+        return true
+      })
 
       if (selectedOutPaths.length > 0) {
         const tree = pathsToSelectionTree(selectedOutPaths)

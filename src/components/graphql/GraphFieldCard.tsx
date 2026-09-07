@@ -194,7 +194,25 @@ function GraphOutputFieldNode({
   const prefix = `${outKey}.`
   const selectedChildren = hasChildren ? selectedKeys.filter((k) => k.startsWith(prefix)) : []
   const isAnyChildSelected = selectedChildren.length > 0
-  const isChecked = selectedKeys.includes(outKey) || isAnyChildSelected
+
+  const directScalarChildren = hasChildren && item.fields
+    ? item.fields.filter((f) => f.isScalar)
+    : []
+
+  const areAllDirectScalarsSelected =
+    directScalarChildren.length > 0 &&
+    directScalarChildren.every((child) =>
+      selectedKeys.includes(
+        getGraphOutputFieldKey(kind, fieldName, `${fullPath}.${child.name}`),
+      ),
+    )
+
+  const isChecked =
+    directScalarChildren.length > 0
+      ? areAllDirectScalarsSelected
+      : selectedKeys.includes(outKey) || isAnyChildSelected
+
+  const isIndeterminate = !isChecked && isAnyChildSelected
 
   const [isExpanded, setIsExpanded] = useState(() => isAnyChildSelected)
 
@@ -251,7 +269,7 @@ function GraphOutputFieldNode({
 
         <IndeterminateCheckbox
           checked={isChecked}
-          indeterminate={isAnyChildSelected && !selectedKeys.includes(outKey)}
+          indeterminate={isIndeterminate}
           onChange={(e) => {
             e.stopPropagation()
             onToggleOutputField?.(fullPath, e.target.checked)

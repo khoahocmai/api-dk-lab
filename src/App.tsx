@@ -11,7 +11,6 @@ import type {
   GraphExplorerState,
   GraphField,
   GraphInputField,
-  GraphOutputField,
   HistoryItem,
   HttpRequestOptions,
   MobileView,
@@ -56,6 +55,7 @@ import {
   extractGraphQLRootInfo,
   extractOutputPathsFromQuery,
   fetchGraphQLSchema,
+  findOutputFieldByPath,
   getGraphArgKey,
   getGraphFieldKey,
   getGraphInputFieldKey,
@@ -2131,10 +2131,10 @@ function App() {
       }
     })
 
-    // For output fields: auto-select top 2 scalar return fields
+    // For output fields: auto-select all direct scalar return fields
     if (field.outputFields && field.outputFields.length > 0) {
-      const topScalars = field.outputFields.filter((f) => f.isScalar).slice(0, 2)
-      topScalars.forEach((f) => {
+      const allScalars = field.outputFields.filter((f) => f.isScalar)
+      allScalars.forEach((f) => {
         nextKeys.add(
           getGraphOutputFieldKey(currentGraphOperationKind, field.name, f.name),
         )
@@ -2262,33 +2262,39 @@ function App() {
       nextKeys.add(fieldKey)
       nextKeys.add(outKey)
 
-      // Find the output field in the tree to check if it's an object with child fields
-      const findFieldByPath = (
-        fields: GraphOutputField[],
-        parts: string[],
-      ): GraphOutputField | undefined => {
-        if (parts.length === 0) return undefined
-        const current = fields.find((f) => f.name === parts[0])
-        if (!current) return undefined
-        if (parts.length === 1) return current
-        return current.fields ? findFieldByPath(current.fields, parts.slice(1)) : undefined
+      // Ensure all ancestor paths are also marked in nextKeys
+      const parts = path.split('.')
+      for (let i = 1; i < parts.length; i++) {
+        const ancestorPath = parts.slice(0, i).join('.')
+        nextKeys.add(getGraphOutputFieldKey(currentGraphOperationKind, field.name, ancestorPath))
       }
 
       const targetOutField = field.outputFields
-        ? findFieldByPath(field.outputFields, path.split('.'))
+        ? findOutputFieldByPath(field.outputFields, path.split('.'))
         : undefined
       if (targetOutField && targetOutField.fields && targetOutField.fields.length > 0) {
-        // Auto-select at most 2 basic scalar child fields if none selected
-        const topScalarChildren = targetOutField.fields.filter((f) => f.isScalar).slice(0, 2)
-        topScalarChildren.forEach((child) => {
+        // Auto-select ALL direct level-1 scalar children (no limit)
+        const scalarChildren = targetOutField.fields.filter((f) => f.isScalar)
+        if (scalarChildren.length > 0) {
+          scalarChildren.forEach((child) => {
+            nextKeys.add(
+              getGraphOutputFieldKey(
+                currentGraphOperationKind,
+                field.name,
+                `${path}.${child.name}`,
+              ),
+            )
+          })
+        } else {
+          // If no scalar children exist at level 1, select __typename to ensure a valid GraphQL selection
           nextKeys.add(
             getGraphOutputFieldKey(
               currentGraphOperationKind,
               field.name,
-              `${path}.${child.name}`,
+              `${path}.__typename`,
             ),
           )
-        })
+        }
       }
     } else {
       // Remove this output field key and all descendant sub-keys
@@ -2298,6 +2304,19 @@ function App() {
           (item) => item !== outKey && !item.startsWith(prefix),
         ),
       )
+
+      // Check ancestor paths: if a parent object has no remaining selected descendants, remove the parent key as well
+      const parts = path.split('.')
+      while (parts.length > 1) {
+        parts.pop()
+        const parentPath = parts.join('.')
+        const parentKey = getGraphOutputFieldKey(currentGraphOperationKind, field.name, parentPath)
+        const parentPrefix = `${parentKey}.`
+        const hasDescendantLeft = Array.from(nextKeys).some((k) => k.startsWith(parentPrefix))
+        if (!hasDescendantLeft) {
+          nextKeys.delete(parentKey)
+        }
+      }
     }
 
     const nextKeysArr = Array.from(nextKeys)

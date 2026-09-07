@@ -4021,7 +4021,7 @@
       "folderId": "bd12c7b5-951b-4a20-99e9-a8f9be185e3b",
       "name": "Product list",
       "request": {
-        "id": "b9ea02ca-c24e-4c60-ace1-23c719e2c83d",
+        "id": "694d7fbc-843b-4863-af05-a9170aab05f7",
         "savedRequestId": "5dc175af-cfb3-4854-87dd-76b9c75c9025",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": "bd12c7b5-951b-4a20-99e9-a8f9be185e3b",
@@ -4036,15 +4036,15 @@
             "id": "576eecf0-b93a-4dd8-ba3b-f07ffa78c392",
             "key": "X-Requested-Portal",
             "value": "IT",
-            "enabled": true
+            "enabled": true,
+            "description": ""
           },
           {
             "id": "ghost-tail-row",
             "key": "",
             "value": "",
             "enabled": false,
-            "description": "",
-            "type": "text"
+            "description": ""
           }
         ],
         "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
@@ -4062,15 +4062,17 @@
         "rawText": "",
         "formData": [],
         "urlencoded": [],
-        "gqlQuery": "query ProductList($request: ProductGetListFilterDto) {\n  productList(request: $request) {\n    id\n    categoryId\n    productName\n    images {\n      id\n      url\n    }\n    category {\n      id\n      name\n    }\n    sku\n    productType\n    shortDescription\n    description\n    weight\n    price\n    calorie\n    ingredient\n    status\n    display\n    displaySearch\n    displayCategory\n    variants {\n      id\n      variantName\n      sku\n      price\n      image {\n        id\n        url\n      }\n      option1\n      option2\n      option3\n      toppingGroupIds\n      barcode\n      displayOrder\n      stockStatus\n      isSell\n      grabfoodSyncStatus\n      grabfoodSynedAt\n      grabfoodAvailableStatus\n      unit {\n        id\n        code\n        name\n      }\n      sapMaterialMasterPackaging {\n        sapMaterialMasterPackagingId\n        packagingName\n        unitPackagingId\n        skuPackaging\n      }\n    }\n    createdAt\n    lastUpdatedByInfo {\n      id\n      fullName\n    }\n    createdByInfo {\n      id\n      fullName\n    }\n    lastUpdatedAt\n    allowRating\n    taxGroupId\n    isPriceIncludeTax\n    seoTitle\n    seoDescription\n    slug\n    metafields\n    relatedProductIds\n    modifierGroup {\n      id\n      name\n      description\n      modifiers {\n        modifierId\n        displayOrder\n        displayType\n        options\n      }\n      status\n      modifierGroupCode\n      createdAt\n      lastUpdatedAt\n      createdBy\n      lastUpdatedBy\n      nameEn\n      descriptionEn\n    }\n    modifierGroupId\n    channelIds\n    displayedAt\n    isOnlyHiddenProductList\n    productOptions {\n      id\n      productId\n      position\n      name\n      nameEn\n      value\n      displayType\n    }\n    collections {\n      id\n      name\n      status\n      slug\n      image {\n        id\n        url\n      }\n    }\n    brand {\n      id\n      name\n      isActive\n      createdAt\n      createdByInfo {\n        id\n        fullName\n      }\n      lastUpdatedByInfo {\n        id\n        fullName\n      }\n      lastUpdatedAt\n    }\n    tags {\n      id\n      title\n      isActive\n      slug\n      seoTitle\n      seoDescription\n      description\n      image {\n        id\n        url\n      }\n      titleEn\n      seoTitleEn\n      seoDescriptionEn\n      descriptionEn\n      imageEn {\n        id\n        url\n      }\n      createdAt\n      lastUpdatedAt\n    }\n    productNameEn\n    synonyms\n    shortDescriptionEn\n    descriptionEn\n    seoTitleEn\n    seoDescriptionEn\n    stockStatus\n    saleChannels\n    priority\n    grabfoodSyncStatus\n    grabfoodSynedAt\n    grabfoodAvailableStatus\n    pairingId\n    imagesEn {\n      id\n      url\n    }\n  }\n}",
+        "gqlQuery": "query ProductList($request: ProductGetListFilterDto) {\n  productList(request: $request) {\n    id\n    categoryId\n    productName\n    images {\n      id\n      url\n    }\n    category {\n      id\n      name\n    }\n    sku\n    productType\n    shortDescription\n    description\n    weight\n    price\n    calorie\n    ingredient\n    status\n    display\n    displaySearch\n    displayCategory\n    variants {\n      id\n      variantName\n      sku\n      price\n      image {\n        id\n        url\n      }\n      option1\n      option2\n      option3\n      toppingGroupIds\n      barcode\n      displayOrder\n      stockStatus\n      isSell\n      grabfoodSyncStatus\n      grabfoodSynedAt\n      grabfoodAvailableStatus\n      unit {\n        id\n        code\n        name\n      }\n      sapMaterialMasterPackaging {\n        sapMaterialMasterPackagingId\n        packagingName\n        unitPackagingId\n        skuPackaging\n      }\n    }\n    createdAt\n    lastUpdatedByInfo {\n      id\n      fullName\n    }\n    createdByInfo {\n      id\n      fullName\n    }\n    lastUpdatedAt\n    allowRating\n    taxGroupId\n    isPriceIncludeTax\n    seoTitle\n    seoDescription\n    slug\n    metafields\n    relatedProductIds\n    modifierGroup {\n      id\n      name\n      description\n      modifiers {\n        modifierId\n        displayOrder\n        displayType\n        options\n      }\n      status\n      modifierGroupCode\n      createdAt\n      lastUpdatedAt\n      createdBy\n      lastUpdatedBy\n      nameEn\n      descriptionEn\n    }\n    modifierGroupId\n    channelIds\n    displayedAt\n    isOnlyHiddenProductList\n    productOptions {\n      id\n      productId\n      position\n      name\n      nameEn\n      value\n      displayType\n    }\n    collections {\n      id\n      name\n      status\n      slug\n      image {\n        id\n        url\n      }\n    }\n    productNameEn\n    synonyms\n    shortDescriptionEn\n    descriptionEn\n    seoTitleEn\n    seoDescriptionEn\n    stockStatus\n    saleChannels\n    priority\n    grabfoodSyncStatus\n    grabfoodSynedAt\n    grabfoodAvailableStatus\n    pairingId\n    imagesEn {\n      id\n      url\n    }\n    tags {\n      id\n      title\n      isActive\n      slug\n      seoTitle\n      seoDescription\n      description\n      titleEn\n      seoTitleEn\n      seoDescriptionEn\n      descriptionEn\n      createdAt\n      lastUpdatedAt\n    }\n    brand {\n      id\n      name\n      isActive\n      createdAt\n      lastUpdatedAt\n      createdByInfo {\n        id\n        fullName\n      }\n      lastUpdatedByInfo {\n        id\n        fullName\n      }\n    }\n  }\n}",
         "gqlVariables": "{\n  \"request\": {\n    \"storeId\": \"\",\n    \"saleChannel\": \"\"\n  }\n}",
+        "preRequestScript": "",
         "testScript": "",
-        "editorTab": "HEADERS",
+        "editorTab": "BODY",
         "responseTab": "PRETTY",
-        "savedSnapshot": "{\"name\":\"Product list\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"productList\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query ProductList($request: ProductGetListFilterDto) {\\n  productList(request: $request) {\\n    id\\n    categoryId\\n    productName\\n    images {\\n      id\\n      url\\n    }\\n    category {\\n      id\\n      name\\n    }\\n    sku\\n    productType\\n    shortDescription\\n    description\\n    weight\\n    price\\n    calorie\\n    ingredient\\n    status\\n    display\\n    displaySearch\\n    displayCategory\\n    variants {\\n      id\\n      variantName\\n      sku\\n      price\\n      image {\\n        id\\n        url\\n      }\\n      option1\\n      option2\\n      option3\\n      toppingGroupIds\\n      barcode\\n      displayOrder\\n      stockStatus\\n      isSell\\n      grabfoodSyncStatus\\n      grabfoodSynedAt\\n      grabfoodAvailableStatus\\n      unit {\\n        id\\n        code\\n        name\\n      }\\n      sapMaterialMasterPackaging {\\n        sapMaterialMasterPackagingId\\n        packagingName\\n        unitPackagingId\\n        skuPackaging\\n      }\\n    }\\n    createdAt\\n    lastUpdatedByInfo {\\n      id\\n      fullName\\n    }\\n    createdByInfo {\\n      id\\n      fullName\\n    }\\n    lastUpdatedAt\\n    allowRating\\n    taxGroupId\\n    isPriceIncludeTax\\n    seoTitle\\n    seoDescription\\n    slug\\n    metafields\\n    relatedProductIds\\n    modifierGroup {\\n      id\\n      name\\n      description\\n      modifiers {\\n        modifierId\\n        displayOrder\\n        displayType\\n        options\\n      }\\n      status\\n      modifierGroupCode\\n      createdAt\\n      lastUpdatedAt\\n      createdBy\\n      lastUpdatedBy\\n      nameEn\\n      descriptionEn\\n    }\\n    modifierGroupId\\n    channelIds\\n    displayedAt\\n    isOnlyHiddenProductList\\n    productOptions {\\n      id\\n      productId\\n      position\\n      name\\n      nameEn\\n      value\\n      displayType\\n    }\\n    collections {\\n      id\\n      name\\n      status\\n      slug\\n      image {\\n        id\\n        url\\n      }\\n    }\\n    brand {\\n      id\\n      name\\n      isActive\\n      createdAt\\n      createdByInfo {\\n        id\\n        fullName\\n      }\\n      lastUpdatedByInfo {\\n        id\\n        fullName\\n      }\\n      lastUpdatedAt\\n    }\\n    tags {\\n      id\\n      title\\n      isActive\\n      slug\\n      seoTitle\\n      seoDescription\\n      description\\n      image {\\n        id\\n        url\\n      }\\n      titleEn\\n      seoTitleEn\\n      seoDescriptionEn\\n      descriptionEn\\n      imageEn {\\n        id\\n        url\\n      }\\n      createdAt\\n      lastUpdatedAt\\n    }\\n    productNameEn\\n    synonyms\\n    shortDescriptionEn\\n    descriptionEn\\n    seoTitleEn\\n    seoDescriptionEn\\n    stockStatus\\n    saleChannels\\n    priority\\n    grabfoodSyncStatus\\n    grabfoodSynedAt\\n    grabfoodAvailableStatus\\n    pairingId\\n    imagesEn {\\n      id\\n      url\\n    }\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"storeId\\\": \\\"\\\",\\n    \\\"saleChannel\\\": \\\"\\\"\\n  }\\n}\",\"testScript\":\"\"}"
+        "savedSnapshot": "{\"name\":\"Product list\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"productList\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query ProductList($request: ProductGetListFilterDto) {\\n  productList(request: $request) {\\n    id\\n    categoryId\\n    productName\\n    images {\\n      id\\n      url\\n    }\\n    category {\\n      id\\n      name\\n    }\\n    sku\\n    productType\\n    shortDescription\\n    description\\n    weight\\n    price\\n    calorie\\n    ingredient\\n    status\\n    display\\n    displaySearch\\n    displayCategory\\n    variants {\\n      id\\n      variantName\\n      sku\\n      price\\n      image {\\n        id\\n        url\\n      }\\n      option1\\n      option2\\n      option3\\n      toppingGroupIds\\n      barcode\\n      displayOrder\\n      stockStatus\\n      isSell\\n      grabfoodSyncStatus\\n      grabfoodSynedAt\\n      grabfoodAvailableStatus\\n      unit {\\n        id\\n        code\\n        name\\n      }\\n      sapMaterialMasterPackaging {\\n        sapMaterialMasterPackagingId\\n        packagingName\\n        unitPackagingId\\n        skuPackaging\\n      }\\n    }\\n    createdAt\\n    lastUpdatedByInfo {\\n      id\\n      fullName\\n    }\\n    createdByInfo {\\n      id\\n      fullName\\n    }\\n    lastUpdatedAt\\n    allowRating\\n    taxGroupId\\n    isPriceIncludeTax\\n    seoTitle\\n    seoDescription\\n    slug\\n    metafields\\n    relatedProductIds\\n    modifierGroup {\\n      id\\n      name\\n      description\\n      modifiers {\\n        modifierId\\n        displayOrder\\n        displayType\\n        options\\n      }\\n      status\\n      modifierGroupCode\\n      createdAt\\n      lastUpdatedAt\\n      createdBy\\n      lastUpdatedBy\\n      nameEn\\n      descriptionEn\\n    }\\n    modifierGroupId\\n    channelIds\\n    displayedAt\\n    isOnlyHiddenProductList\\n    productOptions {\\n      id\\n      productId\\n      position\\n      name\\n      nameEn\\n      value\\n      displayType\\n    }\\n    collections {\\n      id\\n      name\\n      status\\n      slug\\n      image {\\n        id\\n        url\\n      }\\n    }\\n    brand {\\n      id\\n      name\\n      isActive\\n      createdAt\\n      createdByInfo {\\n        id\\n        fullName\\n      }\\n      lastUpdatedByInfo {\\n        id\\n        fullName\\n      }\\n      lastUpdatedAt\\n    }\\n    tags {\\n      id\\n      title\\n      isActive\\n      slug\\n      seoTitle\\n      seoDescription\\n      description\\n      image {\\n        id\\n        url\\n      }\\n      titleEn\\n      seoTitleEn\\n      seoDescriptionEn\\n      descriptionEn\\n      imageEn {\\n        id\\n        url\\n      }\\n      createdAt\\n      lastUpdatedAt\\n    }\\n    productNameEn\\n    synonyms\\n    shortDescriptionEn\\n    descriptionEn\\n    seoTitleEn\\n    seoDescriptionEn\\n    stockStatus\\n    saleChannels\\n    priority\\n    grabfoodSyncStatus\\n    grabfoodSynedAt\\n    grabfoodAvailableStatus\\n    pairingId\\n    imagesEn {\\n      id\\n      url\\n    }\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"storeId\\\": \\\"\\\",\\n    \\\"saleChannel\\\": \\\"\\\"\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
       },
       "createdAt": "2026-08-27T04:09:07.629Z",
-      "updatedAt": "2026-08-27T04:09:28.091Z"
+      "updatedAt": "2026-09-07T07:25:01.274Z"
     },
     {
       "id": "8c972036-5e44-47fb-9c1a-af6faa69c2d2",
@@ -4078,7 +4080,7 @@
       "folderId": "bd12c7b5-951b-4a20-99e9-a8f9be185e3b",
       "name": "Product pagination list",
       "request": {
-        "id": "4224f79f-b749-4069-9696-85e1d1799e15",
+        "id": "4ab376b2-723b-4ce3-9c0b-6216247b0af6",
         "savedRequestId": "8c972036-5e44-47fb-9c1a-af6faa69c2d2",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": "bd12c7b5-951b-4a20-99e9-a8f9be185e3b",
@@ -4093,15 +4095,15 @@
             "id": "576eecf0-b93a-4dd8-ba3b-f07ffa78c392",
             "key": "X-Requested-Portal",
             "value": "IT",
-            "enabled": true
+            "enabled": true,
+            "description": ""
           },
           {
             "id": "ghost-tail-row",
             "key": "",
             "value": "",
             "enabled": false,
-            "description": "",
-            "type": "text"
+            "description": ""
           }
         ],
         "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
@@ -4119,15 +4121,17 @@
         "rawText": "",
         "formData": [],
         "urlencoded": [],
-        "gqlQuery": "query ProductPaginationList($params: PaginationDto!, $filters: ProductGetListDto!) {\n  productPaginationList(params: $params, filters: $filters) {\n    total\n    items {\n      id\n      categoryId\n      productName\n      sku\n      productType\n      shortDescription\n      description\n    }\n  }\n}",
+        "gqlQuery": "query ProductPaginationList($params: PaginationDto!, $filters: ProductGetListDto!) {\n  productPaginationList(params: $params, filters: $filters) {\n    total\n    items {\n      id\n      categoryId\n      productName\n      sku\n      productType\n      shortDescription\n      description\n      variants {\n        id\n        variantName\n      }\n    }\n  }\n}",
         "gqlVariables": "{\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  },\n  \"filters\": {\n    \"ids\": []\n  }\n}",
+        "preRequestScript": "",
         "testScript": "",
         "editorTab": "BODY",
         "responseTab": "PRETTY",
-        "savedSnapshot": "{\"name\":\"productPaginationList\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"productPaginationList\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query ProductPaginationList($params: PaginationDto!) {\\n  productPaginationList(params: $params) {\\n    total\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"params\\\": {\\n    \\\"page\\\": 0,\\n    \\\"pageSize\\\": 0\\n  }\\n}\",\"testScript\":\"\"}"
+        "savedSnapshot": "{\"name\":\"Product pagination list\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"productPaginationList\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query ProductPaginationList($params: PaginationDto!, $filters: ProductGetListDto!) {\\n  productPaginationList(params: $params, filters: $filters) {\\n    total\\n    items {\\n      id\\n      categoryId\\n      productName\\n      sku\\n      productType\\n      shortDescription\\n      description\\n    }\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"params\\\": {\\n    \\\"page\\\": 1,\\n    \\\"pageSize\\\": 20,\\n    \\\"sortBy\\\": \\\"createdAt\\\",\\n    \\\"sortDirection\\\": \\\"DESC\\\"\\n  },\\n  \\\"filters\\\": {\\n    \\\"ids\\\": []\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
       },
       "createdAt": "2026-08-27T04:10:25.250Z",
-      "updatedAt": "2026-08-27T04:10:25.250Z"
+      "updatedAt": "2026-09-07T07:24:31.744Z"
     },
     {
       "id": "b1a60790-eb76-4a57-8ab4-4543ac835e92",
@@ -7399,7 +7403,7 @@
       "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
       "name": "Check item availability",
       "request": {
-        "id": "ec4dfa2b-08ac-4085-af44-820b77541e44",
+        "id": "e5d900ef-b162-4344-83f6-4e834bf8cd35",
         "savedRequestId": "0aa4c21a-e71c-4077-b5cc-7b6addb6b437",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
@@ -7441,7 +7445,7 @@
         "formData": [],
         "urlencoded": [],
         "gqlQuery": "query CheckItemAvailability($request: ItemCheckAvailabilityRequestDto!) {\n  checkItemAvailability(request: $request) {\n    id\n    type\n    storeId\n    isAvailable\n    unavailabilityReason\n    message\n    storeStatus {\n      isOpen\n      isOverloaded\n      operationStatus\n      reason\n    }\n    variants {\n      variantId\n      variantName\n      isSell\n      onHand\n      isAvailable\n      reason\n    }\n    comboGroups {\n      groupId\n      groupTitle\n      isRequired\n      minSelection\n      maxSelection\n      isGroupSatisfied\n      items {\n        productId\n        productName\n        variantId\n        variantName\n        isSell\n        onHand\n        isAvailable\n        reason\n      }\n    }\n  }\n}",
-        "gqlVariables": "{\n  \"request\": {\n    \"id\": \"01a017bf-b07c-755e-b224-0289c55faa73\",\n    \"type\": \"PRODUCT\",\n    \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\"\n  }\n}",
+        "gqlVariables": "{\n  \"request\": {\n    \"id\": \"019a7101-8006-755c-8b52-ceaf5d94fac5\",\n    \"type\": \"COMBO\",\n    \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\"\n  }\n}",
         "preRequestScript": "",
         "testScript": "",
         "editorTab": "BODY",
@@ -7461,59 +7465,10 @@
             "createdAt": 1788763364066
           }
         ],
-        "activePresetId": "bf2ab484-6fb2-4add-a7e6-caa6475970b5"
+        "activePresetId": "c50e7590-8ca7-4bd4-b1f5-8d9639eedb31"
       },
       "createdAt": "2026-09-07T03:13:44.467Z",
-      "updatedAt": "2026-09-07T06:49:25.300Z"
-    },
-    {
-      "id": "493c0ab3-aa7a-4fe3-bce5-0a6a02f4dd98",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
-      "name": "Check item availability",
-      "request": {
-        "id": "6f4c75af-9b1f-4601-b3f2-57af92f8ee06",
-        "savedRequestId": "493c0ab3-aa7a-4fe3-bce5-0a6a02f4dd98",
-        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-        "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
-        "name": "Check item availability",
-        "mode": "REST",
-        "method": "POST",
-        "url": "{{Domain}}/products/check-availability",
-        "params": [],
-        "headersList": [
-          {
-            "id": "be94173b-692b-4cfb-88df-7f006b940e35",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true
-          }
-        ],
-        "headersText": "{\n  \"Content-Type\": \"application/json\"\n}",
-        "auth": {
-          "type": "bearer",
-          "bearerToken": "{{Token}}",
-          "basicUsername": "",
-          "basicPassword": "",
-          "apiKeyName": "",
-          "apiKeyValue": "",
-          "apiKeyAddTo": "header"
-        },
-        "bodyType": "none",
-        "restBody": "",
-        "rawText": "",
-        "formData": [],
-        "urlencoded": [],
-        "gqlQuery": "",
-        "gqlVariables": "{}",
-        "preRequestScript": "",
-        "testScript": "",
-        "editorTab": "BODY",
-        "responseTab": "PRETTY",
-        "savedSnapshot": "{\"name\":\"Check item availability\",\"url\":\"{{Domain}}/products/check-availability\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\"}"
-      },
-      "createdAt": "2026-09-07T04:49:20.528Z",
-      "updatedAt": "2026-09-07T04:50:07.229Z"
+      "updatedAt": "2026-09-07T07:06:45.548Z"
     },
     {
       "id": "d0ddc0cf-6884-4d11-9086-e3b71758f5e3",
@@ -7588,7 +7543,8 @@
     "a9abb7ec-7230-461e-90e6-91477704638c",
     "ec84ec6b-4def-460d-b1ee-6372775366af",
     "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
-    "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
-    "bbe24b51-62c6-4249-8de3-a781ba19ae86"
+    "bbe24b51-62c6-4249-8de3-a781ba19ae86",
+    "bd12c7b5-951b-4a20-99e9-a8f9be185e3b",
+    "10e7b2c7-f803-451a-8ef8-a899bb5cc93b"
   ]
 }
