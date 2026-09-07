@@ -1,5 +1,768 @@
 [
   {
+    "id": "909738d8-5d05-42e4-ae9b-94610d3775c2",
+    "timestamp": "2026-09-07T06:46:21.951Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 141,
+    "request": {
+      "id": "ec4dfa2b-08ac-4085-af44-820b77541e44",
+      "savedRequestId": "0aa4c21a-e71c-4077-b5cc-7b6addb6b437",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
+      "name": "Check item availability",
+      "graphqlRootField": "checkItemAvailability",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "4b7605eb-0acd-4c27-b80d-537db33c1b14",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "cec4d1f2-65b2-40dd-9eb6-6aa13cd3d42f",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query CheckItemAvailability($request: ItemCheckAvailabilityRequestDto!) {\n  checkItemAvailability(request: $request) {\n    id\n    type\n    storeId\n    isAvailable\n    unavailabilityReason\n    message\n    storeStatus {\n      isOpen\n      isOverloaded\n      operationStatus\n      reason\n    }\n    variants {\n      variantId\n      variantName\n      isSell\n      onHand\n      isAvailable\n      reason\n    }\n    comboGroups {\n      groupId\n      groupTitle\n      isRequired\n      minSelection\n      maxSelection\n      isGroupSatisfied\n      items {\n        productId\n        productName\n        variantId\n        variantName\n        isSell\n        onHand\n        isAvailable\n        reason\n      }\n    }\n  }\n}",
+      "gqlVariables": "{\n  \"request\": {\n    \"id\": \"01a017bf-b07c-755e-b224-0289c55faa73\",\n    \"type\": \"PRODUCT\",\n    \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\"\n  }\n}",
+      "preRequestScript": "",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Check item availability\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"checkItemAvailability\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query CheckItemAvailability($request: ItemCheckAvailabilityRequestDto!) {\\n  checkItemAvailability(request: $request) {\\n    id\\n    type\\n    storeId\\n    isAvailable\\n    unavailabilityReason\\n    message\\n    storeStatus {\\n      isOpen\\n      isOverloaded\\n      operationStatus\\n      reason\\n    }\\n    variants {\\n      variantId\\n      variantName\\n      isSell\\n      onHand\\n      isAvailable\\n      reason\\n    }\\n    comboGroups {\\n      groupId\\n      groupTitle\\n      isRequired\\n      minSelection\\n      maxSelection\\n      isGroupSatisfied\\n      items {\\n        productId\\n        productName\\n        variantId\\n        variantName\\n        isSell\\n        onHand\\n        isAvailable\\n        reason\\n      }\\n    }\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"01a017bf-b07c-755e-b224-0289c55faa73\\\",\\n    \\\"type\\\": \\\"PRODUCT\\\",\\n    \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\"\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[{\"id\":\"c50e7590-8ca7-4bd4-b1f5-8d9639eedb31\",\"name\":\"Combo Dừa Dặn - Store Cầu Giấy\",\"content\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"019a7101-8006-755c-8b52-ceaf5d94fac5\\\",\\n    \\\"type\\\": \\\"COMBO\\\",\\n    \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\"\\n  }\\n}\"},{\"id\":\"bf2ab484-6fb2-4add-a7e6-caa6475970b5\",\"name\":\"Product Xúc xích Đức nướng - Store Cầu Giấy (Copy)\",\"content\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"01a017bf-b07c-755e-b224-0289c55faa73\\\",\\n    \\\"type\\\": \\\"PRODUCT\\\",\\n    \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\"\\n  }\\n}\"}],\"activePresetId\":\"bf2ab484-6fb2-4add-a7e6-caa6475970b5\"}",
+      "presets": [
+        {
+          "id": "c50e7590-8ca7-4bd4-b1f5-8d9639eedb31",
+          "name": "Combo Dừa Dặn - Store Cầu Giấy",
+          "content": "{\n  \"request\": {\n    \"id\": \"019a7101-8006-755c-8b52-ceaf5d94fac5\",\n    \"type\": \"COMBO\",\n    \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\"\n  }\n}",
+          "createdAt": 1788763255553
+        },
+        {
+          "id": "bf2ab484-6fb2-4add-a7e6-caa6475970b5",
+          "name": "Product Xúc xích Đức nướng - Store Cầu Giấy (Copy)",
+          "content": "{\n  \"request\": {\n    \"id\": \"01a017bf-b07c-755e-b224-0289c55faa73\",\n    \"type\": \"PRODUCT\",\n    \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\"\n  }\n}",
+          "createdAt": 1788763364066
+        }
+      ],
+      "activePresetId": "bf2ab484-6fb2-4add-a7e6-caa6475970b5"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "141 ms",
+      "size": "588 B",
+      "data": {
+        "data": {
+          "checkItemAvailability": {
+            "id": "01a017bf-b07c-755e-b224-0289c55faa73",
+            "type": "PRODUCT",
+            "storeId": "0196486d-d25a-7f24-86c8-115e0c77026b",
+            "isAvailable": false,
+            "unavailabilityReason": "REASON_ITEM_DISABLED_AT_STORE",
+            "message": "Món ăn đang tạm tắt bán tại chi nhánh",
+            "storeStatus": {
+              "isOpen": true,
+              "isOverloaded": false,
+              "operationStatus": "OPENING",
+              "reason": null
+            },
+            "variants": [
+              {
+                "variantId": "01a017bf-b089-7244-a540-04a3b500ceea",
+                "variantName": "Xúc xích Đức nướng",
+                "isSell": false,
+                "onHand": 0,
+                "isAvailable": false,
+                "reason": "Tắt bán tại chi nhánh"
+              }
+            ],
+            "comboGroups": null
+          }
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "589",
+        "date": "Mon, 07 Sep 2026 06:46:21 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "f6a15a54-3d49-49aa-ad88-aea32b8bbb2b",
+    "timestamp": "2026-09-07T06:46:17.879Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 396,
+    "request": {
+      "id": "ec4dfa2b-08ac-4085-af44-820b77541e44",
+      "savedRequestId": "0aa4c21a-e71c-4077-b5cc-7b6addb6b437",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
+      "name": "Check item availability",
+      "graphqlRootField": "checkItemAvailability",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "4b7605eb-0acd-4c27-b80d-537db33c1b14",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "cec4d1f2-65b2-40dd-9eb6-6aa13cd3d42f",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query CheckItemAvailability($request: ItemCheckAvailabilityRequestDto!) {\n  checkItemAvailability(request: $request) {\n    id\n    type\n    storeId\n    isAvailable\n    unavailabilityReason\n    message\n    storeStatus {\n      isOpen\n      isOverloaded\n      operationStatus\n      reason\n    }\n    variants {\n      variantId\n      variantName\n      isSell\n      onHand\n      isAvailable\n      reason\n    }\n    comboGroups {\n      groupId\n      groupTitle\n      isRequired\n      minSelection\n      maxSelection\n      isGroupSatisfied\n      items {\n        productId\n        productName\n        variantId\n        variantName\n        isSell\n        onHand\n        isAvailable\n        reason\n      }\n    }\n  }\n}",
+      "gqlVariables": "{\n  \"request\": {\n    \"id\": \"019a7101-8006-755c-8b52-ceaf5d94fac5\",\n    \"type\": \"COMBO\",\n    \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\"\n  }\n}",
+      "preRequestScript": "",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Check item availability\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"checkItemAvailability\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query CheckItemAvailability($request: ItemCheckAvailabilityRequestDto!) {\\n  checkItemAvailability(request: $request) {\\n    id\\n    type\\n    storeId\\n    isAvailable\\n    unavailabilityReason\\n    message\\n    storeStatus {\\n      isOpen\\n      isOverloaded\\n      operationStatus\\n      reason\\n    }\\n    variants {\\n      variantId\\n      variantName\\n      isSell\\n      onHand\\n      isAvailable\\n      reason\\n    }\\n    comboGroups {\\n      groupId\\n      groupTitle\\n      isRequired\\n      minSelection\\n      maxSelection\\n      isGroupSatisfied\\n      items {\\n        productId\\n        productName\\n        variantId\\n        variantName\\n        isSell\\n        onHand\\n        isAvailable\\n        reason\\n      }\\n    }\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"01a017bf-b07c-755e-b224-0289c55faa73\\\",\\n    \\\"type\\\": \\\"PRODUCT\\\",\\n    \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\"\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[{\"id\":\"c50e7590-8ca7-4bd4-b1f5-8d9639eedb31\",\"name\":\"Combo Dừa Dặn - Store Cầu Giấy\",\"content\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"019a7101-8006-755c-8b52-ceaf5d94fac5\\\",\\n    \\\"type\\\": \\\"COMBO\\\",\\n    \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\"\\n  }\\n}\"},{\"id\":\"bf2ab484-6fb2-4add-a7e6-caa6475970b5\",\"name\":\"Product Xúc xích Đức nướng - Store Cầu Giấy (Copy)\",\"content\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"01a017bf-b07c-755e-b224-0289c55faa73\\\",\\n    \\\"type\\\": \\\"PRODUCT\\\",\\n    \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\"\\n  }\\n}\"}],\"activePresetId\":\"bf2ab484-6fb2-4add-a7e6-caa6475970b5\"}",
+      "presets": [
+        {
+          "id": "c50e7590-8ca7-4bd4-b1f5-8d9639eedb31",
+          "name": "Combo Dừa Dặn - Store Cầu Giấy",
+          "content": "{\n  \"request\": {\n    \"id\": \"019a7101-8006-755c-8b52-ceaf5d94fac5\",\n    \"type\": \"COMBO\",\n    \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\"\n  }\n}",
+          "createdAt": 1788763255553
+        },
+        {
+          "id": "bf2ab484-6fb2-4add-a7e6-caa6475970b5",
+          "name": "Product Xúc xích Đức nướng - Store Cầu Giấy (Copy)",
+          "content": "{\n  \"request\": {\n    \"id\": \"01a017bf-b07c-755e-b224-0289c55faa73\",\n    \"type\": \"PRODUCT\",\n    \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\"\n  }\n}",
+          "createdAt": 1788763364066
+        }
+      ],
+      "activePresetId": "c50e7590-8ca7-4bd4-b1f5-8d9639eedb31"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "396 ms",
+      "size": "8.5 KB",
+      "data": {
+        "data": {
+          "checkItemAvailability": {
+            "id": "019a7101-8006-755c-8b52-ceaf5d94fac5",
+            "type": "COMBO",
+            "storeId": "0196486d-d25a-7f24-86c8-115e0c77026b",
+            "isAvailable": true,
+            "unavailabilityReason": null,
+            "message": "Combo khả dụng để đặt hàng",
+            "storeStatus": {
+              "isOpen": true,
+              "isOverloaded": false,
+              "operationStatus": "OPENING",
+              "reason": null
+            },
+            "variants": null,
+            "comboGroups": [
+              {
+                "groupId": "019a7101-80f3-714a-8ddc-5b6608e450df",
+                "groupTitle": "Pizza",
+                "isRequired": true,
+                "minSelection": 1,
+                "maxSelection": 1,
+                "isGroupSatisfied": true,
+                "items": [
+                  {
+                    "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                    "productName": "Pizza Hải Sản Pesto Xanh",
+                    "variantId": "019eab23-84ef-773c-b65d-ffc285064684",
+                    "variantName": "Kích thước Vừa 9 inch - Đế viền Viền dày",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                    "productName": "Pizza Hải Sản Pesto Xanh",
+                    "variantId": "019eab23-84ef-773c-b65d-faa4f88c67d4",
+                    "variantName": "Kích thước Vừa 9 inch - Đế viền Viền vừa",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                    "productName": "Pizza Hải Sản Pesto Xanh",
+                    "variantId": "019eab23-84ef-773c-b65d-ea60134f85cf",
+                    "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền mỏng",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                    "productName": "Pizza Hải Sản Pesto Xanh",
+                    "variantId": "019eab23-84ef-773c-b65e-064f2a65368d",
+                    "variantName": "Kích thước Lớn 12 inch - Đế viền Viền vừa",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                    "productName": "Pizza Hải Sản Pesto Xanh",
+                    "variantId": "019eab23-84ef-773c-b65d-f442c8945afc",
+                    "variantName": "Kích thước Vừa 9 inch - Đế viền Viền mỏng",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                    "productName": "Pizza Hải Sản Pesto Xanh",
+                    "variantId": "019eab23-84ef-773c-b65e-08509a58f752",
+                    "variantName": "Kích thước Lớn 12 inch - Đế viền Viền dày",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                    "productName": "Pizza Hải Sản Pesto Xanh",
+                    "variantId": "019eab23-84ef-773c-b65d-f0a005f23b72",
+                    "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền dày",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                    "productName": "Pizza Hải Sản Pesto Xanh",
+                    "variantId": "019eab23-84ef-773c-b65d-ef4570042191",
+                    "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền vừa",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab23-84d3-740c-aee4-d49f2e8c02dd",
+                    "productName": "Pizza Hải Sản Pesto Xanh",
+                    "variantId": "019eab23-84ef-773c-b65e-00cbba55a690",
+                    "variantName": "Kích thước Lớn 12 inch - Đế viền Viền mỏng",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab30-4e4b-75af-ad80-237fa33e46a4",
+                    "productName": "Pizza 4 Cheese Dừa Non - Mật Hoa Dừa",
+                    "variantId": "019eab30-4e5c-735a-9f5f-7501667819e9",
+                    "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền phomai",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab30-4e4b-75af-ad80-237fa33e46a4",
+                    "productName": "Pizza 4 Cheese Dừa Non - Mật Hoa Dừa",
+                    "variantId": "019eab30-4e5c-735a-9f5f-781541d61498",
+                    "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền dừa non",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab30-4e4b-75af-ad80-237fa33e46a4",
+                    "productName": "Pizza 4 Cheese Dừa Non - Mật Hoa Dừa",
+                    "variantId": "019eab30-4e5c-735a-9f5f-7dd1802200ce",
+                    "variantName": "Kích thước Vừa 9 inch - Đế viền Viền phomai",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab30-4e4b-75af-ad80-237fa33e46a4",
+                    "productName": "Pizza 4 Cheese Dừa Non - Mật Hoa Dừa",
+                    "variantId": "019eab30-4e5c-735a-9f5f-8172ac7b0bcf",
+                    "variantName": "Kích thước Vừa 9 inch - Đế viền Viền dừa non",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab37-95ad-7239-876d-d0838ed56428",
+                    "productName": "Pizza 4 Cheese Dừa Non Tôm Nõn - Mật Hoa Dừa",
+                    "variantId": "019eab37-95c3-7392-ac96-9b702fdb1e9d",
+                    "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền phomai",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab37-95ad-7239-876d-d0838ed56428",
+                    "productName": "Pizza 4 Cheese Dừa Non Tôm Nõn - Mật Hoa Dừa",
+                    "variantId": "019eab37-95c4-75db-9d7f-a9bc716d299b",
+                    "variantName": "Kích thước Nhỏ 6 inch - Đế viền Viền dừa non",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab37-95ad-7239-876d-d0838ed56428",
+                    "productName": "Pizza 4 Cheese Dừa Non Tôm Nõn - Mật Hoa Dừa",
+                    "variantId": "019eab37-95c4-75db-9d7f-af7638aff0fc",
+                    "variantName": "Kích thước Vừa 9 inch - Đế viền Viền phomai",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab37-95ad-7239-876d-d0838ed56428",
+                    "productName": "Pizza 4 Cheese Dừa Non Tôm Nõn - Mật Hoa Dừa",
+                    "variantId": "019eab37-95c4-75db-9d7f-b0f9eecd84b4",
+                    "variantName": "Kích thước Vừa 9 inch - Đế viền Viền dừa non",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  }
+                ]
+              },
+              {
+                "groupId": "019a7101-80f3-714a-8ddc-5d04b09ae31b",
+                "groupTitle": "Nước uống",
+                "isRequired": true,
+                "minSelection": 2,
+                "maxSelection": 2,
+                "isGroupSatisfied": true,
+                "items": [
+                  {
+                    "productId": "019e8c5f-e06b-75bb-917d-a4d277ec6f39",
+                    "productName": "Coca-Cola",
+                    "variantId": "019e8c5f-e077-730f-a93c-c9aebbf7a692",
+                    "variantName": "Coca-Cola",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019e8c64-7e87-712b-86cd-4bc95037e083",
+                    "productName": "Pepsi",
+                    "variantId": "019e8c64-7e9e-714e-a2b7-5e5517c3ffde",
+                    "variantName": "Pepsi",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019e8c66-08f2-736f-8435-57aea50485b8",
+                    "productName": "Lemon Iced Tea",
+                    "variantId": "019e8c66-091c-727e-be4c-5e5999d33903",
+                    "variantName": "Lemon Iced Tea",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab62-473e-75aa-b708-41ecc0e4f822",
+                    "productName": "Mirinda Soda Kem",
+                    "variantId": "019eab62-474f-7035-93d7-09ae4652b06c",
+                    "variantName": "Mirinda Soda Kem",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  }
+                ]
+              },
+              {
+                "groupId": "019a7101-80f3-714a-8ddc-67410844cd8c",
+                "groupTitle": "Salad",
+                "isRequired": true,
+                "minSelection": 1,
+                "maxSelection": 1,
+                "isGroupSatisfied": true,
+                "items": [
+                  {
+                    "productId": "019e8c46-f8de-779c-b299-81f6b48bed0c",
+                    "productName": "Caesar Salad",
+                    "variantId": "019e8c46-f8f7-75ed-814e-098b5d6b5150",
+                    "variantName": "Salad Salad lớn",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019e8c46-f8de-779c-b299-81f6b48bed0c",
+                    "productName": "Caesar Salad",
+                    "variantId": "019e8c46-f8f6-73dd-bc93-98954a95397f",
+                    "variantName": "Salad Salad nhỏ",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019e8c4b-2be7-7566-81ab-ad7ca5489ccc",
+                    "productName": "Burrata Tomato Salad",
+                    "variantId": "019e8c4b-2c04-700b-b21c-7042abeb9622",
+                    "variantName": "Burrata Tomato Salad",
+                    "isSell": true,
+                    "onHand": 0,
+                    "isAvailable": false,
+                    "reason": "Hết hàng tại chi nhánh"
+                  }
+                ]
+              },
+              {
+                "groupId": "019a7101-80f3-714a-8ddc-63bdc0e1af76",
+                "groupTitle": "Mỳ Ý",
+                "isRequired": true,
+                "minSelection": 1,
+                "maxSelection": 1,
+                "isGroupSatisfied": true,
+                "items": [
+                  {
+                    "productId": "019e8ca8-9075-7121-9979-9e78875de277",
+                    "productName": "Clam & Basil Sauce Spaghetti",
+                    "variantId": "019e8ca8-9096-76aa-bc6c-e6ab39f56e41",
+                    "variantName": "Clam & Basil Sauce Spaghetti",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019e8ca9-aa12-7179-861e-6c532342caab",
+                    "productName": "Crab Tomato Cream Spaghetti with Ricotta Cheese",
+                    "variantId": "019e8ca9-aa21-75ca-9d66-61b40054b30e",
+                    "variantName": "Crab Tomato Cream Spaghetti with Ricotta Cheese",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  }
+                ]
+              },
+              {
+                "groupId": "019a7101-80f3-714a-8ddc-6b13a61c22f5",
+                "groupTitle": "Beer",
+                "isRequired": true,
+                "minSelection": 2,
+                "maxSelection": 2,
+                "isGroupSatisfied": true,
+                "items": [
+                  {
+                    "productId": "019e8cfe-546b-73ad-8ab4-a520f76680a3",
+                    "productName": "Heineken",
+                    "variantId": "019e8cfe-5493-77ff-b451-79f8a373f5f3",
+                    "variantName": "Heineken",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  },
+                  {
+                    "productId": "019eab65-01b3-74a9-b187-23b4b1083972",
+                    "productName": "Tiger Bạc",
+                    "variantId": "019eab65-01c3-739a-9f17-84c11846ad0b",
+                    "variantName": "Tiger Bạc",
+                    "isSell": true,
+                    "onHand": 9999,
+                    "isAvailable": true,
+                    "reason": null
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "8723",
+        "date": "Mon, 07 Sep 2026 06:46:17 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "946d265b-d2c8-417e-ad0c-0abf756844a0",
+    "timestamp": "2026-09-07T06:46:11.803Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 200,
+    "duration": 1466,
+    "request": {
+      "id": "ec4dfa2b-08ac-4085-af44-820b77541e44",
+      "savedRequestId": "0aa4c21a-e71c-4077-b5cc-7b6addb6b437",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
+      "name": "Check item availability",
+      "graphqlRootField": "checkItemAvailability",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "4b7605eb-0acd-4c27-b80d-537db33c1b14",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "cec4d1f2-65b2-40dd-9eb6-6aa13cd3d42f",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query CheckItemAvailability($request: ItemCheckAvailabilityRequestDto!) {\n  checkItemAvailability(request: $request) {\n    id\n    type\n    storeId\n    isAvailable\n    unavailabilityReason\n    message\n    storeStatus {\n      isOpen\n      isOverloaded\n      operationStatus\n      reason\n    }\n    variants {\n      variantId\n      variantName\n      isSell\n      onHand\n      isAvailable\n      reason\n    }\n    comboGroups {\n      groupId\n      groupTitle\n      isRequired\n      minSelection\n      maxSelection\n      isGroupSatisfied\n      items {\n        productId\n        productName\n        variantId\n        variantName\n        isSell\n        onHand\n        isAvailable\n        reason\n      }\n    }\n  }\n}",
+      "gqlVariables": "{\n  \"request\": {\n    \"id\": \"01a017bf-b07c-755e-b224-0289c55faa73\",\n    \"type\": \"PRODUCT\",\n    \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\"\n  }\n}",
+      "preRequestScript": "",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Check item availability\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"checkItemAvailability\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query CheckItemAvailability($request: ItemCheckAvailabilityRequestDto!) {\\n  checkItemAvailability(request: $request) {\\n    id\\n    type\\n    storeId\\n    isAvailable\\n    unavailabilityReason\\n    message\\n    storeStatus {\\n      isOpen\\n      isOverloaded\\n      operationStatus\\n      reason\\n    }\\n    variants {\\n      variantId\\n      variantName\\n      isSell\\n      onHand\\n      isAvailable\\n      reason\\n    }\\n    comboGroups {\\n      groupId\\n      groupTitle\\n      isRequired\\n      minSelection\\n      maxSelection\\n      isGroupSatisfied\\n      items {\\n        productId\\n        productName\\n        variantId\\n        variantName\\n        isSell\\n        onHand\\n        isAvailable\\n        reason\\n      }\\n    }\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"01a017bf-b07c-755e-b224-0289c55faa73\\\",\\n    \\\"type\\\": \\\"PRODUCT\\\",\\n    \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\"\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[{\"id\":\"c50e7590-8ca7-4bd4-b1f5-8d9639eedb31\",\"name\":\"Combo Dừa Dặn - Store Cầu Giấy\",\"content\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"019a7101-8006-755c-8b52-ceaf5d94fac5\\\",\\n    \\\"type\\\": \\\"COMBO\\\",\\n    \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\"\\n  }\\n}\"},{\"id\":\"bf2ab484-6fb2-4add-a7e6-caa6475970b5\",\"name\":\"Product Xúc xích Đức nướng - Store Cầu Giấy (Copy)\",\"content\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"01a017bf-b07c-755e-b224-0289c55faa73\\\",\\n    \\\"type\\\": \\\"PRODUCT\\\",\\n    \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\"\\n  }\\n}\"}],\"activePresetId\":\"bf2ab484-6fb2-4add-a7e6-caa6475970b5\"}",
+      "presets": [
+        {
+          "id": "c50e7590-8ca7-4bd4-b1f5-8d9639eedb31",
+          "name": "Combo Dừa Dặn - Store Cầu Giấy",
+          "content": "{\n  \"request\": {\n    \"id\": \"019a7101-8006-755c-8b52-ceaf5d94fac5\",\n    \"type\": \"COMBO\",\n    \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\"\n  }\n}",
+          "createdAt": 1788763255553
+        },
+        {
+          "id": "bf2ab484-6fb2-4add-a7e6-caa6475970b5",
+          "name": "Product Xúc xích Đức nướng - Store Cầu Giấy (Copy)",
+          "content": "{\n  \"request\": {\n    \"id\": \"01a017bf-b07c-755e-b224-0289c55faa73\",\n    \"type\": \"PRODUCT\",\n    \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\"\n  }\n}",
+          "createdAt": 1788763364066
+        }
+      ],
+      "activePresetId": "bf2ab484-6fb2-4add-a7e6-caa6475970b5"
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "1466 ms",
+      "size": "588 B",
+      "data": {
+        "data": {
+          "checkItemAvailability": {
+            "id": "01a017bf-b07c-755e-b224-0289c55faa73",
+            "type": "PRODUCT",
+            "storeId": "0196486d-d25a-7f24-86c8-115e0c77026b",
+            "isAvailable": false,
+            "unavailabilityReason": "REASON_ITEM_DISABLED_AT_STORE",
+            "message": "Món ăn đang tạm tắt bán tại chi nhánh",
+            "storeStatus": {
+              "isOpen": true,
+              "isOverloaded": false,
+              "operationStatus": "OPENING",
+              "reason": null
+            },
+            "variants": [
+              {
+                "variantId": "01a017bf-b089-7244-a540-04a3b500ceea",
+                "variantName": "Xúc xích Đức nướng",
+                "isSell": false,
+                "onHand": 0,
+                "isAvailable": false,
+                "reason": "Tắt bán tại chi nhánh"
+              }
+            ],
+            "comboGroups": null
+          }
+        }
+      },
+      "headers": {
+        "vary": "Origin",
+        "cache-control": "no-store",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "589",
+        "date": "Mon, 07 Sep 2026 06:46:11 GMT",
+        "connection": "keep-alive",
+        "keep-alive": "timeout=72"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
+    "id": "bc43a473-c5e8-4a3a-a5c0-ff65acfb91f1",
+    "timestamp": "2026-09-07T06:42:47.066Z",
+    "method": "GQL",
+    "mode": "GRAPHQL",
+    "url": "http://localhost:3030/graphql",
+    "status": 0,
+    "duration": 73,
+    "request": {
+      "id": "ec4dfa2b-08ac-4085-af44-820b77541e44",
+      "savedRequestId": "0aa4c21a-e71c-4077-b5cc-7b6addb6b437",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
+      "name": "Check item availability",
+      "graphqlRootField": "checkItemAvailability",
+      "mode": "GRAPHQL",
+      "method": "POST",
+      "url": "{{Domain}}/graphql",
+      "params": [],
+      "headersList": [
+        {
+          "id": "4b7605eb-0acd-4c27-b80d-537db33c1b14",
+          "key": "X-Requested-Portal",
+          "value": "IT",
+          "enabled": true,
+          "description": ""
+        },
+        {
+          "id": "cec4d1f2-65b2-40dd-9eb6-6aa13cd3d42f",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+      "auth": {
+        "type": "bearer",
+        "bearerToken": "{{Token}}",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "none",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [],
+      "gqlQuery": "query CheckItemAvailability($request: ItemCheckAvailabilityRequestDto!) {\n  checkItemAvailability(request: $request) {\n    id\n    type\n    storeId\n    isAvailable\n    unavailabilityReason\n    message\n    storeStatus {\n      isOpen\n      isOverloaded\n      operationStatus\n      reason\n    }\n    variants {\n      variantId\n      variantName\n      isSell\n      onHand\n      isAvailable\n      reason\n    }\n    comboGroups {\n      groupId\n      groupTitle\n      isRequired\n      minSelection\n      maxSelection\n      isGroupSatisfied\n      items {\n        productId\n        productName\n        variantId\n        variantName\n        isSell\n        onHand\n        isAvailable\n        reason\n      }\n    }\n  }\n}",
+      "gqlVariables": "{\n  \"request\": {\n    \"id\": \"01a017bf-b07c-755e-b224-0289c55faa73\",\n    \"type\": \"PRODUCT\",\n    \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\"\n  }\n}",
+      "preRequestScript": "",
+      "testScript": "",
+      "editorTab": "BODY",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Check item availability\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"checkItemAvailability\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query CheckItemAvailability($request: ItemCheckAvailabilityRequestDto!) {\\n  checkItemAvailability(request: $request) {\\n    id\\n    type\\n    storeId\\n    isAvailable\\n    unavailabilityReason\\n    message\\n    storeStatus {\\n      isOpen\\n      isOverloaded\\n      operationStatus\\n      reason\\n    }\\n    variants {\\n      variantId\\n      variantName\\n      isSell\\n      onHand\\n      isAvailable\\n      reason\\n    }\\n    comboGroups {\\n      groupId\\n      groupTitle\\n      isRequired\\n      minSelection\\n      maxSelection\\n      isGroupSatisfied\\n      items {\\n        productId\\n        productName\\n        variantId\\n        variantName\\n        isSell\\n        onHand\\n        isAvailable\\n        reason\\n      }\\n    }\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"019a7101-8006-755c-8b52-ceaf5d94fac5\\\",\\n    \\\"type\\\": \\\"COMBO\\\",\\n    \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\"\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[{\"id\":\"c50e7590-8ca7-4bd4-b1f5-8d9639eedb31\",\"name\":\"Combo Dừa Dặn - Store Cầu Giấy\",\"content\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"019a7101-8006-755c-8b52-ceaf5d94fac5\\\",\\n    \\\"type\\\": \\\"COMBO\\\",\\n    \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\"\\n  }\\n}\"}],\"activePresetId\":\"c50e7590-8ca7-4bd4-b1f5-8d9639eedb31\"}",
+      "presets": [
+        {
+          "id": "c50e7590-8ca7-4bd4-b1f5-8d9639eedb31",
+          "name": "Combo Dừa Dặn - Store Cầu Giấy",
+          "content": "{\n  \"request\": {\n    \"id\": \"019a7101-8006-755c-8b52-ceaf5d94fac5\",\n    \"type\": \"COMBO\",\n    \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\"\n  }\n}",
+          "createdAt": 1788763255553
+        },
+        {
+          "id": "bf2ab484-6fb2-4add-a7e6-caa6475970b5",
+          "name": "Product Xúc xích Đức nướng - Store Cầu Giấy (Copy)",
+          "content": "{\n  \"request\": {\n    \"id\": \"01a017bf-b07c-755e-b224-0289c55faa73\",\n    \"type\": \"PRODUCT\",\n    \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\"\n  }\n}",
+          "createdAt": 1788763364066
+        }
+      ],
+      "activePresetId": "bf2ab484-6fb2-4add-a7e6-caa6475970b5"
+    },
+    "response": {
+      "status": 0,
+      "statusText": "Could not connect to server",
+      "time": "73 ms",
+      "size": "0 B",
+      "data": null,
+      "error": "",
+      "headers": {},
+      "isNetworkError": true
+    }
+  },
+  {
     "id": "ad49b808-8130-4a2a-9e9a-b1b86a9c2007",
     "timestamp": "2026-09-07T06:27:54.417Z",
     "method": "GQL",
@@ -25245,1265 +26008,6 @@
         "content-type": "application/json; charset=utf-8",
         "content-length": "26964",
         "date": "Thu, 27 Aug 2026 03:07:09 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "43dcd4db-faa1-43fd-bf46-80ef77e91905",
-    "timestamp": "2026-08-27T03:06:11.582Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 106,
-    "request": {
-      "id": "b9fdc2fc-9cee-4de1-a1f7-9469ae6ccce1",
-      "name": "kiotVietProductGetPagination",
-      "graphqlRootField": "kiotVietProductGetPagination",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "7fa85d76-06b4-4d15-a21b-af3bcfa9eef1",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "931d6f56-a47b-4c5a-be0f-cdbdb4e99292",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": ""
-        }
-      ],
-      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query KiotVietProductGetPagination($filters: KiotVietProductGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietProductGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      kiotvietProductId\n      code\n      retailerId\n      allowsSale\n      name\n      categoryId\n      categoryName\n      productType\n      isTopping\n      isProcessedGoods\n      isTimeType\n      isRewardPoint\n      fullName\n      description\n      orderTemplate\n      hasVariants\n      unit\n      masterUnitId\n      masterProductId\n      conversionValue\n      basePrice\n      weight\n      kiotvietModifiedAt\n      lastSyncedAt\n      inventories {\n        id\n        kiotvietProductId\n        kiotvietBranchId\n        productCode\n        productName\n        branchName\n        onHand\n        cost\n        reserved\n        lastSyncedAt\n      }\n      priceBooks {\n        id\n        kiotvietProductId\n        kiotvietPriceBookId\n        priceBookName\n        isActive\n        price\n        startDate\n        endDate\n        lastSyncedAt\n      }\n    }\n  }\n}",
-      "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "106 ms",
-      "size": "17.7 KB",
-      "data": {
-        "data": {
-          "kiotVietProductGetPagination": {
-            "total": 30,
-            "items": [
-              {
-                "id": "01a00e77-043b-74ed-b467-e28b437f0fac",
-                "kiotvietProductId": "5709834",
-                "code": "SP000030",
-                "retailerId": "501181252",
-                "allowsSale": true,
-                "name": "Trân châu đen",
-                "categoryId": "604545",
-                "categoryName": "TEA",
-                "productType": 2,
-                "isTopping": true,
-                "isProcessedGoods": false,
-                "isTimeType": false,
-                "isRewardPoint": true,
-                "fullName": "Trân châu đen",
-                "description": null,
-                "orderTemplate": null,
-                "hasVariants": false,
-                "unit": null,
-                "masterUnitId": null,
-                "masterProductId": null,
-                "conversionValue": 1,
-                "basePrice": 8000,
-                "weight": 0,
-                "kiotvietModifiedAt": "2026-08-14T08:41:52.587Z",
-                "lastSyncedAt": "2026-08-17T06:44:36.027Z",
-                "inventories": [
-                  {
-                    "id": "01a00e77-0442-726e-bb94-c1bde7018db8",
-                    "kiotvietProductId": "5709834",
-                    "kiotvietBranchId": "354676",
-                    "productCode": "SP000030",
-                    "productName": "Trân châu đen",
-                    "branchName": "TPT - Quận 7",
-                    "onHand": -1,
-                    "cost": 8000,
-                    "reserved": 0,
-                    "lastSyncedAt": "2026-08-17T06:44:36.034Z"
-                  }
-                ],
-                "priceBooks": []
-              },
-              {
-                "id": "01a00e77-0336-71d5-a084-9f7e60e472fd",
-                "kiotvietProductId": "5709816",
-                "code": "SP000029",
-                "retailerId": "501181252",
-                "allowsSale": true,
-                "name": "COMBO CỐ ĐỊNH",
-                "categoryId": "604545",
-                "categoryName": "TEA",
-                "productType": 1,
-                "isTopping": false,
-                "isProcessedGoods": null,
-                "isTimeType": false,
-                "isRewardPoint": true,
-                "fullName": "COMBO CỐ ĐỊNH",
-                "description": null,
-                "orderTemplate": null,
-                "hasVariants": false,
-                "unit": null,
-                "masterUnitId": null,
-                "masterProductId": null,
-                "conversionValue": 1,
-                "basePrice": 100000,
-                "weight": null,
-                "kiotvietModifiedAt": "2026-08-14T08:32:54.703Z",
-                "lastSyncedAt": "2026-08-17T06:44:35.766Z",
-                "inventories": [
-                  {
-                    "id": "01a00e77-0341-7433-948a-dcd2f6fccc68",
-                    "kiotvietProductId": "5709816",
-                    "kiotvietBranchId": "354676",
-                    "productCode": "SP000029",
-                    "productName": "COMBO CỐ ĐỊNH",
-                    "branchName": "TPT - Quận 7",
-                    "onHand": 0,
-                    "cost": 0,
-                    "reserved": 0,
-                    "lastSyncedAt": "2026-08-17T06:44:35.777Z"
-                  }
-                ],
-                "priceBooks": []
-              },
-              {
-                "id": "019ffefa-0596-76d3-9f67-776e6e2bb71a",
-                "kiotvietProductId": "5707328",
-                "code": "SP000028",
-                "retailerId": "501181252",
-                "allowsSale": true,
-                "name": "Trà sữa Xanh Thái",
-                "categoryId": "604545",
-                "categoryName": "TEA",
-                "productType": 2,
-                "isTopping": false,
-                "isProcessedGoods": null,
-                "isTimeType": false,
-                "isRewardPoint": true,
-                "fullName": "Trà sữa Xanh Thái-Lớn",
-                "description": null,
-                "orderTemplate": null,
-                "hasVariants": true,
-                "unit": null,
-                "masterUnitId": null,
-                "masterProductId": "5707326",
-                "conversionValue": 1,
-                "basePrice": 39000,
-                "weight": null,
-                "kiotvietModifiedAt": "2026-08-14T08:41:52.587Z",
-                "lastSyncedAt": "2026-08-17T06:44:36.014Z",
-                "inventories": [
-                  {
-                    "id": "019ffefa-05a9-74e6-90d1-d70ca37f30a6",
-                    "kiotvietProductId": "5707328",
-                    "kiotvietBranchId": "354676",
-                    "productCode": "SP000028",
-                    "productName": "Trà sữa Xanh Thái",
-                    "branchName": "TPT - Quận 7",
-                    "onHand": 0,
-                    "cost": 0,
-                    "reserved": 0,
-                    "lastSyncedAt": "2026-08-17T06:44:36.019Z"
-                  }
-                ],
-                "priceBooks": []
-              },
-              {
-                "id": "019ffefa-0579-7119-b4c6-375cb5086f46",
-                "kiotvietProductId": "5707327",
-                "code": "SP000027",
-                "retailerId": "501181252",
-                "allowsSale": true,
-                "name": "Trà sữa Xanh Thái",
-                "categoryId": "604545",
-                "categoryName": "TEA",
-                "productType": 2,
-                "isTopping": false,
-                "isProcessedGoods": null,
-                "isTimeType": false,
-                "isRewardPoint": true,
-                "fullName": "Trà sữa Xanh Thái-Vừa",
-                "description": null,
-                "orderTemplate": null,
-                "hasVariants": true,
-                "unit": null,
-                "masterUnitId": null,
-                "masterProductId": "5707326",
-                "conversionValue": 1,
-                "basePrice": 37000,
-                "weight": null,
-                "kiotvietModifiedAt": "2026-08-14T08:41:52.587Z",
-                "lastSyncedAt": "2026-08-17T06:44:36.001Z",
-                "inventories": [
-                  {
-                    "id": "019ffefa-0587-7422-a613-9a53ab9aacfc",
-                    "kiotvietProductId": "5707327",
-                    "kiotvietBranchId": "354676",
-                    "productCode": "SP000027",
-                    "productName": "Trà sữa Xanh Thái",
-                    "branchName": "TPT - Quận 7",
-                    "onHand": 0,
-                    "cost": 0,
-                    "reserved": 0,
-                    "lastSyncedAt": "2026-08-17T06:44:36.008Z"
-                  }
-                ],
-                "priceBooks": []
-              },
-              {
-                "id": "019ffefa-055d-75b6-88df-5777a93f28da",
-                "kiotvietProductId": "5707326",
-                "code": "SP000026",
-                "retailerId": "501181252",
-                "allowsSale": true,
-                "name": "Trà sữa Xanh Thái",
-                "categoryId": "604545",
-                "categoryName": "TEA",
-                "productType": 2,
-                "isTopping": false,
-                "isProcessedGoods": null,
-                "isTimeType": false,
-                "isRewardPoint": true,
-                "fullName": "Trà sữa Xanh Thái-Nhỏ",
-                "description": null,
-                "orderTemplate": null,
-                "hasVariants": true,
-                "unit": null,
-                "masterUnitId": null,
-                "masterProductId": null,
-                "conversionValue": 1,
-                "basePrice": 30000,
-                "weight": null,
-                "kiotvietModifiedAt": "2026-08-14T08:41:52.587Z",
-                "lastSyncedAt": "2026-08-17T06:44:35.990Z",
-                "inventories": [
-                  {
-                    "id": "019ffefa-056b-705e-85ff-74ffdeba1a23",
-                    "kiotvietProductId": "5707326",
-                    "kiotvietBranchId": "354676",
-                    "productCode": "SP000026",
-                    "productName": "Trà sữa Xanh Thái",
-                    "branchName": "TPT - Quận 7",
-                    "onHand": -1,
-                    "cost": 0,
-                    "reserved": 0,
-                    "lastSyncedAt": "2026-08-17T06:44:35.996Z"
-                  }
-                ],
-                "priceBooks": []
-              },
-              {
-                "id": "019ff4a8-c86a-709d-9373-e0ddef526a1d",
-                "kiotvietProductId": "5563521",
-                "code": "SP000010",
-                "retailerId": "501181252",
-                "allowsSale": true,
-                "name": "Xúc xích Đức nướng mù tạt vàng",
-                "categoryId": "604543",
-                "categoryName": "MÓN KHAI VỊ",
-                "productType": 2,
-                "isTopping": null,
-                "isProcessedGoods": false,
-                "isTimeType": null,
-                "isRewardPoint": true,
-                "fullName": "Xúc xích Đức nướng mù tạt vàng",
-                "description": null,
-                "orderTemplate": null,
-                "hasVariants": false,
-                "unit": null,
-                "masterUnitId": null,
-                "masterProductId": null,
-                "conversionValue": 1,
-                "basePrice": 125000,
-                "weight": null,
-                "kiotvietModifiedAt": null,
-                "lastSyncedAt": "2026-08-17T06:44:36.040Z",
-                "inventories": [
-                  {
-                    "id": "019ff4a8-c87f-75df-8a6f-e027525e4b9d",
-                    "kiotvietProductId": "5563521",
-                    "kiotvietBranchId": "354676",
-                    "productCode": "SP000010",
-                    "productName": "Xúc xích Đức nướng mù tạt vàng",
-                    "branchName": "TPT - Quận 7",
-                    "onHand": 1011,
-                    "cost": 100500,
-                    "reserved": 0,
-                    "lastSyncedAt": "2026-08-17T06:44:36.045Z"
-                  }
-                ],
-                "priceBooks": []
-              },
-              {
-                "id": "019ff4a8-c85c-751a-85a7-5b91029d7f1f",
-                "kiotvietProductId": "5563534",
-                "code": "SP000023",
-                "retailerId": "501181252",
-                "allowsSale": true,
-                "name": "Thuốc lá Vinataba",
-                "categoryId": "604546",
-                "categoryName": "BIA & THUỐC LÁ",
-                "productType": 2,
-                "isTopping": null,
-                "isProcessedGoods": false,
-                "isTimeType": null,
-                "isRewardPoint": true,
-                "fullName": "Thuốc lá Vinataba",
-                "description": null,
-                "orderTemplate": null,
-                "hasVariants": false,
-                "unit": null,
-                "masterUnitId": null,
-                "masterProductId": null,
-                "conversionValue": 1,
-                "basePrice": 30000,
-                "weight": null,
-                "kiotvietModifiedAt": null,
-                "lastSyncedAt": "2026-08-17T06:44:35.979Z",
-                "inventories": [
-                  {
-                    "id": "019ff4a8-c862-74bb-9182-674612569e28",
-                    "kiotvietProductId": "5563534",
-                    "kiotvietBranchId": "354676",
-                    "productCode": "SP000023",
-                    "productName": "Thuốc lá Vinataba",
-                    "branchName": "TPT - Quận 7",
-                    "onHand": 1017,
-                    "cost": 20500,
-                    "reserved": 0,
-                    "lastSyncedAt": "2026-08-17T06:44:35.985Z"
-                  }
-                ],
-                "priceBooks": []
-              },
-              {
-                "id": "019ff4a8-c84e-7629-baa1-37eb69cc43d4",
-                "kiotvietProductId": "5563535",
-                "code": "SP000024",
-                "retailerId": "501181252",
-                "allowsSale": true,
-                "name": "Thuốc lá Marlboro",
-                "categoryId": "604546",
-                "categoryName": "BIA & THUỐC LÁ",
-                "productType": 2,
-                "isTopping": null,
-                "isProcessedGoods": false,
-                "isTimeType": null,
-                "isRewardPoint": true,
-                "fullName": "Thuốc lá Marlboro",
-                "description": null,
-                "orderTemplate": null,
-                "hasVariants": false,
-                "unit": null,
-                "masterUnitId": null,
-                "masterProductId": null,
-                "conversionValue": 1,
-                "basePrice": 30000,
-                "weight": null,
-                "kiotvietModifiedAt": null,
-                "lastSyncedAt": "2026-08-17T06:44:35.968Z",
-                "inventories": [
-                  {
-                    "id": "019ff4a8-c855-7419-ab0f-3241d811ed54",
-                    "kiotvietProductId": "5563535",
-                    "kiotvietBranchId": "354676",
-                    "productCode": "SP000024",
-                    "productName": "Thuốc lá Marlboro",
-                    "branchName": "TPT - Quận 7",
-                    "onHand": 1005,
-                    "cost": 20500,
-                    "reserved": 0,
-                    "lastSyncedAt": "2026-08-17T06:44:35.974Z"
-                  }
-                ],
-                "priceBooks": []
-              },
-              {
-                "id": "019ff4a8-c840-70c9-9404-01b37bbb7ce8",
-                "kiotvietProductId": "5563536",
-                "code": "SP000025",
-                "retailerId": "501181252",
-                "allowsSale": true,
-                "name": "Thuốc lá Kent HD",
-                "categoryId": "604546",
-                "categoryName": "BIA & THUỐC LÁ",
-                "productType": 2,
-                "isTopping": null,
-                "isProcessedGoods": false,
-                "isTimeType": null,
-                "isRewardPoint": true,
-                "fullName": "Thuốc lá Kent HD",
-                "description": null,
-                "orderTemplate": null,
-                "hasVariants": false,
-                "unit": null,
-                "masterUnitId": null,
-                "masterProductId": null,
-                "conversionValue": 1,
-                "basePrice": 30000,
-                "weight": null,
-                "kiotvietModifiedAt": null,
-                "lastSyncedAt": "2026-08-17T06:44:35.958Z",
-                "inventories": [
-                  {
-                    "id": "019ff4a8-c848-76be-b0bb-3090f938f0c7",
-                    "kiotvietProductId": "5563536",
-                    "kiotvietBranchId": "354676",
-                    "productCode": "SP000025",
-                    "productName": "Thuốc lá Kent HD",
-                    "branchName": "TPT - Quận 7",
-                    "onHand": 1011,
-                    "cost": 20500,
-                    "reserved": 0,
-                    "lastSyncedAt": "2026-08-17T06:44:35.963Z"
-                  }
-                ],
-                "priceBooks": []
-              },
-              {
-                "id": "019ff4a8-c832-707d-a21c-20a06fbe0d12",
-                "kiotvietProductId": "5563518",
-                "code": "SP000007",
-                "retailerId": "501181252",
-                "allowsSale": true,
-                "name": "Thịt nguội & phomai viên chiên kiểu Tây Ba Nha",
-                "categoryId": "604543",
-                "categoryName": "MÓN KHAI VỊ",
-                "productType": 2,
-                "isTopping": null,
-                "isProcessedGoods": false,
-                "isTimeType": null,
-                "isRewardPoint": true,
-                "fullName": "Thịt nguội & phomai viên chiên kiểu Tây Ba Nha",
-                "description": null,
-                "orderTemplate": null,
-                "hasVariants": false,
-                "unit": null,
-                "masterUnitId": null,
-                "masterProductId": null,
-                "conversionValue": 1,
-                "basePrice": 125000,
-                "weight": null,
-                "kiotvietModifiedAt": null,
-                "lastSyncedAt": "2026-08-17T06:44:35.947Z",
-                "inventories": [
-                  {
-                    "id": "019ff4a8-c839-7044-b74c-35f376d18683",
-                    "kiotvietProductId": "5563518",
-                    "kiotvietBranchId": "354676",
-                    "productCode": "SP000007",
-                    "productName": "Thịt nguội & phomai viên chiên kiểu Tây Ba Nha",
-                    "branchName": "TPT - Quận 7",
-                    "onHand": 1001,
-                    "cost": 100500,
-                    "reserved": 0,
-                    "lastSyncedAt": "2026-08-17T06:44:35.952Z"
-                  }
-                ],
-                "priceBooks": []
-              },
-              {
-                "id": "019ff4a8-c824-7266-b061-2ad614638c46",
-                "kiotvietProductId": "5563522",
-                "code": "SP000011",
-                "retailerId": "501181252",
-                "allowsSale": true,
-                "name": "Súp kem rau 4 mùa",
-                "categoryId": "604544",
-                "categoryName": "SÚP",
-                "productType": 2,
-                "isTopping": null,
-                "isProcessedGoods": false,
-                "isTimeType": null,
-                "isRewardPoint": true,
-                "fullName": "Súp kem rau 4 mùa",
-                "description": null,
-                "orderTemplate": null,
-                "hasVariants": false,
-                "unit": null,
-                "masterUnitId": null,
-                "masterProductId": null,
-                "conversionValue": 1,
-                "basePrice": 125000,
-                "weight": null,
-                "kiotvietModifiedAt": null,
-                "lastSyncedAt": "2026-08-17T06:44:35.937Z",
-                "inventories": [
-                  {
-                    "id": "019ff4a8-c82b-766b-9f30-5f9c07216804",
-                    "kiotvietProductId": "5563522",
-                    "kiotvietBranchId": "354676",
-                    "productCode": "SP000011",
-                    "productName": "Súp kem rau 4 mùa",
-                    "branchName": "TPT - Quận 7",
-                    "onHand": 1001,
-                    "cost": 100500,
-                    "reserved": 0,
-                    "lastSyncedAt": "2026-08-17T06:44:35.942Z"
-                  }
-                ],
-                "priceBooks": []
-              },
-              {
-                "id": "019ff4a8-c814-71b9-8f02-ecb15fb0d3bb",
-                "kiotvietProductId": "5563526",
-                "code": "SP000015",
-                "retailerId": "501181252",
-                "allowsSale": true,
-                "name": "Súp kem kiểu Paris",
-                "categoryId": "604544",
-                "categoryName": "SÚP",
-                "productType": 2,
-                "isTopping": null,
-                "isProcessedGoods": false,
-                "isTimeType": null,
-                "isRewardPoint": true,
-                "fullName": "Súp kem kiểu Paris",
-                "description": null,
-                "orderTemplate": null,
-                "hasVariants": false,
-                "unit": null,
-                "masterUnitId": null,
-                "masterProductId": null,
-                "conversionValue": 1,
-                "basePrice": 125000,
-                "weight": null,
-                "kiotvietModifiedAt": null,
-                "lastSyncedAt": "2026-08-17T06:44:35.925Z",
-                "inventories": [
-                  {
-                    "id": "019ff4a8-c81c-72d8-b6dc-60e1f640dcf6",
-                    "kiotvietProductId": "5563526",
-                    "kiotvietBranchId": "354676",
-                    "productCode": "SP000015",
-                    "productName": "Súp kem kiểu Paris",
-                    "branchName": "TPT - Quận 7",
-                    "onHand": 1007,
-                    "cost": 100500,
-                    "reserved": 0,
-                    "lastSyncedAt": "2026-08-17T06:44:35.930Z"
-                  }
-                ],
-                "priceBooks": []
-              },
-              {
-                "id": "019ff4a8-c802-722c-8dd2-1848d9ac58f4",
-                "kiotvietProductId": "5563523",
-                "code": "SP000012",
-                "retailerId": "501181252",
-                "allowsSale": true,
-                "name": "Súp kem gà nữ hoàng",
-                "categoryId": "604544",
-                "categoryName": "SÚP",
-                "productType": 2,
-                "isTopping": null,
-                "isProcessedGoods": false,
-                "isTimeType": null,
-                "isRewardPoint": true,
-                "fullName": "Súp kem gà nữ hoàng",
-                "description": null,
-                "orderTemplate": null,
-                "hasVariants": false,
-                "unit": null,
-                "masterUnitId": null,
-                "masterProductId": null,
-                "conversionValue": 1,
-                "basePrice": 125000,
-                "weight": null,
-                "kiotvietModifiedAt": null,
-                "lastSyncedAt": "2026-08-17T06:44:35.913Z",
-                "inventories": [
-                  {
-                    "id": "019ff4a8-c80a-72c9-b4fd-83e4b2117160",
-                    "kiotvietProductId": "5563523",
-                    "kiotvietBranchId": "354676",
-                    "productCode": "SP000012",
-                    "productName": "Súp kem gà nữ hoàng",
-                    "branchName": "TPT - Quận 7",
-                    "onHand": 1009,
-                    "cost": 100500,
-                    "reserved": 0,
-                    "lastSyncedAt": "2026-08-17T06:44:35.920Z"
-                  }
-                ],
-                "priceBooks": []
-              },
-              {
-                "id": "019ff4a8-c7ee-755a-89bb-473f5782d314",
-                "kiotvietProductId": "5563525",
-                "code": "SP000014",
-                "retailerId": "501181252",
-                "allowsSale": true,
-                "name": "Súp kém bí đỏ với sữa dừa",
-                "categoryId": "604544",
-                "categoryName": "SÚP",
-                "productType": 2,
-                "isTopping": null,
-                "isProcessedGoods": false,
-                "isTimeType": null,
-                "isRewardPoint": true,
-                "fullName": "Súp kém bí đỏ với sữa dừa",
-                "description": null,
-                "orderTemplate": null,
-                "hasVariants": false,
-                "unit": null,
-                "masterUnitId": null,
-                "masterProductId": null,
-                "conversionValue": 1,
-                "basePrice": 125000,
-                "weight": null,
-                "kiotvietModifiedAt": null,
-                "lastSyncedAt": "2026-08-17T06:44:35.902Z",
-                "inventories": [
-                  {
-                    "id": "019ff4a8-c7f7-7279-8cc2-dc94d0ee3382",
-                    "kiotvietProductId": "5563525",
-                    "kiotvietBranchId": "354676",
-                    "productCode": "SP000014",
-                    "productName": "Súp kém bí đỏ với sữa dừa",
-                    "branchName": "TPT - Quận 7",
-                    "onHand": 1005,
-                    "cost": 100500,
-                    "reserved": 0,
-                    "lastSyncedAt": "2026-08-17T06:44:35.908Z"
-                  }
-                ],
-                "priceBooks": []
-              },
-              {
-                "id": "019ff4a8-c7db-740d-a950-681c3c887d24",
-                "kiotvietProductId": "5563524",
-                "code": "SP000013",
-                "retailerId": "501181252",
-                "allowsSale": true,
-                "name": "Súp hành tây kiểu Pháp",
-                "categoryId": "604544",
-                "categoryName": "SÚP",
-                "productType": 2,
-                "isTopping": null,
-                "isProcessedGoods": false,
-                "isTimeType": null,
-                "isRewardPoint": true,
-                "fullName": "Súp hành tây kiểu Pháp",
-                "description": null,
-                "orderTemplate": null,
-                "hasVariants": false,
-                "unit": null,
-                "masterUnitId": null,
-                "masterProductId": null,
-                "conversionValue": 1,
-                "basePrice": 125000,
-                "weight": null,
-                "kiotvietModifiedAt": null,
-                "lastSyncedAt": "2026-08-17T06:44:35.893Z",
-                "inventories": [
-                  {
-                    "id": "019ff4a8-c7e6-7334-9f03-731e74187279",
-                    "kiotvietProductId": "5563524",
-                    "kiotvietBranchId": "354676",
-                    "productCode": "SP000013",
-                    "productName": "Súp hành tây kiểu Pháp",
-                    "branchName": "TPT - Quận 7",
-                    "onHand": 1005,
-                    "cost": 100500,
-                    "reserved": 0,
-                    "lastSyncedAt": "2026-08-17T06:44:35.898Z"
-                  }
-                ],
-                "priceBooks": []
-              },
-              {
-                "id": "019ff4a8-c7bf-71ae-973e-5a361c3e65bd",
-                "kiotvietProductId": "5563520",
-                "code": "SP000009",
-                "retailerId": "501181252",
-                "allowsSale": true,
-                "name": "Phomai dây Nga",
-                "categoryId": "604543",
-                "categoryName": "MÓN KHAI VỊ",
-                "productType": 2,
-                "isTopping": null,
-                "isProcessedGoods": false,
-                "isTimeType": null,
-                "isRewardPoint": true,
-                "fullName": "Phomai dây Nga",
-                "description": null,
-                "orderTemplate": null,
-                "hasVariants": false,
-                "unit": null,
-                "masterUnitId": null,
-                "masterProductId": null,
-                "conversionValue": 1,
-                "basePrice": 125000,
-                "weight": null,
-                "kiotvietModifiedAt": null,
-                "lastSyncedAt": "2026-08-17T06:44:35.882Z",
-                "inventories": [
-                  {
-                    "id": "019ff4a8-c7ca-7139-a97d-0f7113bd9458",
-                    "kiotvietProductId": "5563520",
-                    "kiotvietBranchId": "354676",
-                    "productCode": "SP000009",
-                    "productName": "Phomai dây Nga",
-                    "branchName": "TPT - Quận 7",
-                    "onHand": 1009,
-                    "cost": 100500,
-                    "reserved": 0,
-                    "lastSyncedAt": "2026-08-17T06:44:35.887Z"
-                  }
-                ],
-                "priceBooks": []
-              },
-              {
-                "id": "019ff4a8-c7af-77ae-9c37-1a395ec51bcb",
-                "kiotvietProductId": "5563528",
-                "code": "SP000017",
-                "retailerId": "501181252",
-                "allowsSale": true,
-                "name": "Peach Tea",
-                "categoryId": "604545",
-                "categoryName": "TEA",
-                "productType": 2,
-                "isTopping": null,
-                "isProcessedGoods": false,
-                "isTimeType": null,
-                "isRewardPoint": true,
-                "fullName": "Peach Tea",
-                "description": null,
-                "orderTemplate": null,
-                "hasVariants": false,
-                "unit": null,
-                "masterUnitId": null,
-                "masterProductId": null,
-                "conversionValue": 1,
-                "basePrice": 15000,
-                "weight": null,
-                "kiotvietModifiedAt": null,
-                "lastSyncedAt": "2026-08-17T06:44:35.871Z",
-                "inventories": [
-                  {
-                    "id": "019ff4a8-c7b6-77be-b020-1e2d2c34c879",
-                    "kiotvietProductId": "5563528",
-                    "kiotvietBranchId": "354676",
-                    "productCode": "SP000017",
-                    "productName": "Peach Tea",
-                    "branchName": "TPT - Quận 7",
-                    "onHand": 1007,
-                    "cost": 7000,
-                    "reserved": 0,
-                    "lastSyncedAt": "2026-08-17T06:44:35.877Z"
-                  }
-                ],
-                "priceBooks": []
-              },
-              {
-                "id": "019ff4a8-c7a0-72a1-8d04-ed1c1b4e4af5",
-                "kiotvietProductId": "5563529",
-                "code": "SP000018",
-                "retailerId": "501181252",
-                "allowsSale": true,
-                "name": "Mint Tea",
-                "categoryId": "604545",
-                "categoryName": "TEA",
-                "productType": 2,
-                "isTopping": null,
-                "isProcessedGoods": false,
-                "isTimeType": null,
-                "isRewardPoint": true,
-                "fullName": "Mint Tea",
-                "description": null,
-                "orderTemplate": null,
-                "hasVariants": false,
-                "unit": null,
-                "masterUnitId": null,
-                "masterProductId": null,
-                "conversionValue": 1,
-                "basePrice": 15000,
-                "weight": null,
-                "kiotvietModifiedAt": null,
-                "lastSyncedAt": "2026-08-17T06:44:35.862Z",
-                "inventories": [
-                  {
-                    "id": "019ff4a8-c7a7-77da-9d78-fba9b8a4d2ce",
-                    "kiotvietProductId": "5563529",
-                    "kiotvietBranchId": "354676",
-                    "productCode": "SP000018",
-                    "productName": "Mint Tea",
-                    "branchName": "TPT - Quận 7",
-                    "onHand": 1001,
-                    "cost": 7000,
-                    "reserved": 0,
-                    "lastSyncedAt": "2026-08-17T06:44:35.867Z"
-                  }
-                ],
-                "priceBooks": []
-              },
-              {
-                "id": "019ff4a8-c793-7491-849f-5d80f5f5a2c8",
-                "kiotvietProductId": "5563512",
-                "code": "SP000001",
-                "retailerId": "501181252",
-                "allowsSale": true,
-                "name": "MILANO",
-                "categoryId": "604542",
-                "categoryName": "CLASSIC COCKTAILS",
-                "productType": 2,
-                "isTopping": null,
-                "isProcessedGoods": false,
-                "isTimeType": null,
-                "isRewardPoint": true,
-                "fullName": "MILANO",
-                "description": null,
-                "orderTemplate": null,
-                "hasVariants": false,
-                "unit": null,
-                "masterUnitId": null,
-                "masterProductId": null,
-                "conversionValue": 1,
-                "basePrice": 30000,
-                "weight": null,
-                "kiotvietModifiedAt": null,
-                "lastSyncedAt": "2026-08-17T06:44:35.852Z",
-                "inventories": [
-                  {
-                    "id": "019ff4a8-c799-734f-b255-8f905a5e75ce",
-                    "kiotvietProductId": "5563512",
-                    "kiotvietBranchId": "354676",
-                    "productCode": "SP000001",
-                    "productName": "MILANO",
-                    "branchName": "TPT - Quận 7",
-                    "onHand": 1009,
-                    "cost": 15000,
-                    "reserved": 0,
-                    "lastSyncedAt": "2026-08-17T06:44:35.857Z"
-                  }
-                ],
-                "priceBooks": []
-              },
-              {
-                "id": "019ff4a8-c783-767e-bb39-42b1e2d79509",
-                "kiotvietProductId": "5563530",
-                "code": "SP000019",
-                "retailerId": "501181252",
-                "allowsSale": true,
-                "name": "Lipton with milk",
-                "categoryId": "604545",
-                "categoryName": "TEA",
-                "productType": 2,
-                "isTopping": null,
-                "isProcessedGoods": false,
-                "isTimeType": null,
-                "isRewardPoint": true,
-                "fullName": "Lipton with milk",
-                "description": null,
-                "orderTemplate": null,
-                "hasVariants": false,
-                "unit": null,
-                "masterUnitId": null,
-                "masterProductId": null,
-                "conversionValue": 1,
-                "basePrice": 15000,
-                "weight": null,
-                "kiotvietModifiedAt": null,
-                "lastSyncedAt": "2026-08-17T06:44:35.841Z",
-                "inventories": [
-                  {
-                    "id": "019ff4a8-c78b-74b0-812d-a5b41478b919",
-                    "kiotvietProductId": "5563530",
-                    "kiotvietBranchId": "354676",
-                    "productCode": "SP000019",
-                    "productName": "Lipton with milk",
-                    "branchName": "TPT - Quận 7",
-                    "onHand": 1009,
-                    "cost": 7000,
-                    "reserved": 0,
-                    "lastSyncedAt": "2026-08-17T06:44:35.847Z"
-                  }
-                ],
-                "priceBooks": []
-              }
-            ]
-          }
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "18107",
-        "date": "Thu, 27 Aug 2026 03:06:13 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "1f4fcf24-d233-4788-8718-ac9ceb118a5f",
-    "timestamp": "2026-08-27T03:03:57.354Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 54,
-    "request": {
-      "id": "ef30278d-c4a3-4daa-b097-6d3646092488",
-      "name": "kiotVietBranchGetList",
-      "graphqlRootField": "kiotVietBranchGetList",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "7fa85d76-06b4-4d15-a21b-af3bcfa9eef1",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "931d6f56-a47b-4c5a-be0f-cdbdb4e99292",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": "",
-          "type": "text"
-        }
-      ],
-      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query KiotVietBranchGetList {\n  kiotVietBranchGetList {\n    id\n    kiotvietBranchId\n    branchName\n    address\n    locationName\n    wardName\n    retailerId\n    email\n    kiotvietModifiedAt\n    kiotvietCreatedAt\n    lastSyncedAt\n  }\n}",
-      "gqlVariables": "{}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "54 ms",
-      "size": "462 B",
-      "data": {
-        "data": {
-          "kiotVietBranchGetList": [
-            {
-              "id": "019ff450-faf2-74fb-a3a6-bc181784124a",
-              "kiotvietBranchId": "354676",
-              "branchName": "TPT - Quận 7",
-              "address": "Lô Z06, Đường số 13, Phường Tân Thuận",
-              "locationName": "Hồ Chí Minh - Quận 7",
-              "wardName": "Phường Tân Thuận Tây",
-              "retailerId": "501181252",
-              "email": null,
-              "kiotvietModifiedAt": "2026-08-17T02:27:44.783Z",
-              "kiotvietCreatedAt": "2026-08-03T01:50:58.520Z",
-              "lastSyncedAt": "2026-08-18T10:16:18.602Z"
-            }
-          ]
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "463",
-        "date": "Thu, 27 Aug 2026 03:03:59 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "8c7ca8ef-07b7-4221-8bbc-3ad87cc03818",
-    "timestamp": "2026-08-27T03:01:09.190Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 19,
-    "request": {
-      "id": "ef30278d-c4a3-4daa-b097-6d3646092488",
-      "name": "kiotVietBranchGetList",
-      "graphqlRootField": "kiotVietBranchGetList",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "1820a97e-a59d-4843-9d0d-2af54fe1d457",
-          "key": "Content-Type",
-          "value": "application/json",
-          "enabled": true
-        }
-      ],
-      "headersText": "{\n  \"Content-Type\": \"application/json\"\n}",
-      "auth": {
-        "type": "none",
-        "bearerToken": "",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query KiotVietBranchGetList {\n  kiotVietBranchGetList {\n    id\n    kiotvietBranchId\n    branchName\n    address\n    locationName\n    wardName\n    retailerId\n    email\n    kiotvietModifiedAt\n    kiotvietCreatedAt\n    lastSyncedAt\n  }\n}",
-      "gqlVariables": "{}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "19 ms",
-      "size": "245 B",
-      "data": {
-        "errors": [
-          {
-            "message": "Unauthorized",
-            "path": [
-              "kiotVietBranchGetList"
-            ],
-            "locations": [
-              {
-                "line": 2,
-                "column": 3
-              }
-            ],
-            "extensions": {
-              "code": "UNAUTHENTICATED",
-              "originalError": {
-                "message": "Unauthorized",
-                "statusCode": 401
-              }
-            },
-            "code": "UNAUTHENTICATED"
-          }
-        ],
-        "data": null
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "246",
-        "date": "Thu, 27 Aug 2026 03:01:11 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "1b64a929-fffb-4f25-a4f0-ca6072a71f13",
-    "timestamp": "2026-08-27T02:47:45.216Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 28,
-    "request": {
-      "id": "8825f7d9-e531-4221-a278-e33ebe8afcf6",
-      "savedRequestId": "e30923d3-ecd0-428c-aa66-9bb68f05dbe7",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": "088652cb-c507-4ab6-98bc-03bc834ef52d",
-      "name": "Square category get pagination",
-      "graphqlRootField": "squareCategoryGetPagination",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "62c0d41a-488a-4ce4-968a-0d1aaa9921ef",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": ""
-        },
-        {
-          "id": "48753b76-2aa9-4b50-98e1-1757f56b9aef",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": ""
-        }
-      ],
-      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query SquareCategoryGetPagination($filters: SquareCategoryGetPaginationFilterDto!, $params: PaginationDto!) {\n  squareCategoryGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      squareCategoryId\n      name\n      parentCategoryId\n      isTopLevel\n      isDeleted\n      lastSyncedAt\n    }\n  }\n}",
-      "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "28 ms",
-      "size": "2.0 KB",
-      "data": {
-        "data": {
-          "squareCategoryGetPagination": {
-            "total": 9,
-            "items": [
-              {
-                "id": "01a0330d-0ddc-75dd-87a7-99ed27ef7fe1",
-                "squareCategoryId": "7NGATLZNF4ABBIVJ2T5WX5U7",
-                "name": "Beverages",
-                "parentCategoryId": null,
-                "isTopLevel": true,
-                "isDeleted": false,
-                "lastSyncedAt": "2026-08-26T06:37:26.153Z"
-              },
-              {
-                "id": "01a0330d-0dd4-7639-a483-451bb79593e0",
-                "squareCategoryId": "ZYJSRWGSM636X2GZP5FNWOI6",
-                "name": "Sides & Appetizers",
-                "parentCategoryId": null,
-                "isTopLevel": true,
-                "isDeleted": false,
-                "lastSyncedAt": "2026-08-26T06:37:26.147Z"
-              },
-              {
-                "id": "01a0330d-0dce-763f-a17e-59840eb80163",
-                "squareCategoryId": "W2CKK5ICI4ESVK2U4ZAUFXNB",
-                "name": "Specialty Pizzas",
-                "parentCategoryId": null,
-                "isTopLevel": true,
-                "isDeleted": false,
-                "lastSyncedAt": "2026-08-26T06:37:26.127Z"
-              },
-              {
-                "id": "01a0330d-0dc5-7535-b09e-b966d53414da",
-                "squareCategoryId": "ZDDUMSCXX2Z4NOMWG2GJZYTJ",
-                "name": "Classic Pizzas",
-                "parentCategoryId": null,
-                "isTopLevel": true,
-                "isDeleted": false,
-                "lastSyncedAt": "2026-08-26T06:37:26.120Z"
-              },
-              {
-                "id": "01a032fd-beb4-715a-816d-cd1abda2e898",
-                "squareCategoryId": "Z4GWARMZ7EKUZHOK6IITNJ3U",
-                "name": "Desserts",
-                "parentCategoryId": null,
-                "isTopLevel": true,
-                "isDeleted": false,
-                "lastSyncedAt": "2026-08-26T06:37:26.112Z"
-              },
-              {
-                "id": "01a032fd-bea8-77f9-b019-96780d064b5c",
-                "squareCategoryId": "674QVAVT5PK2PCYWMQLVOFPW",
-                "name": "Beverages",
-                "parentCategoryId": null,
-                "isTopLevel": true,
-                "isDeleted": false,
-                "lastSyncedAt": "2026-08-26T06:37:26.106Z"
-              },
-              {
-                "id": "01a032fd-be9f-707b-8fa4-b6c4dfa06126",
-                "squareCategoryId": "4XV2ZBCYTBDVBG4NHV24C6IO",
-                "name": "Sides & Appetizers",
-                "parentCategoryId": null,
-                "isTopLevel": true,
-                "isDeleted": false,
-                "lastSyncedAt": "2026-08-26T06:37:26.099Z"
-              },
-              {
-                "id": "01a032fd-be95-7254-9926-0ed39589cf65",
-                "squareCategoryId": "QDIGZRRDH2IPP5QH7X6RQZXB",
-                "name": "Specialty Pizzas",
-                "parentCategoryId": null,
-                "isTopLevel": true,
-                "isDeleted": false,
-                "lastSyncedAt": "2026-08-26T06:37:26.090Z"
-              },
-              {
-                "id": "01a032fd-be86-730e-b0f3-bac531969e0e",
-                "squareCategoryId": "BQ4PHLQIL44VP4I7ECKEMFTD",
-                "name": "Classic Pizzas",
-                "parentCategoryId": null,
-                "isTopLevel": true,
-                "isDeleted": false,
-                "lastSyncedAt": "2026-08-26T06:37:26.078Z"
-              }
-            ]
-          }
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "2021",
-        "date": "Thu, 27 Aug 2026 02:47:46 GMT",
         "connection": "keep-alive",
         "keep-alive": "timeout=72"
       },

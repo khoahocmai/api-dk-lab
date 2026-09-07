@@ -76,6 +76,8 @@ export function createDefaultRequest(mode: Mode = 'REST'): RequestItem {
     savedRequestId: undefined,
     collectionId: undefined,
     folderId: undefined,
+    presets: [],
+    activePresetId: undefined,
   }
 
   return {
@@ -126,6 +128,8 @@ export function stripTransientRequest(request: RequestItem): PersistedRequestIte
     editorTab: request.editorTab,
     responseTab: request.responseTab,
     savedSnapshot: request.savedSnapshot,
+    presets: Array.isArray(request.presets) ? request.presets : [],
+    activePresetId: request.activePresetId,
   }
 }
 
@@ -190,6 +194,8 @@ export function reviveRequest(request: Partial<PersistedRequestItem>): RequestIt
     response: null,
     loading: false,
     clientError: '',
+    presets: Array.isArray(request.presets) ? request.presets : [],
+    activePresetId: request.activePresetId,
   }
 
   return {

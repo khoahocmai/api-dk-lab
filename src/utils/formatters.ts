@@ -186,6 +186,12 @@ export function createRequestSnapshot(tab?: Partial<RequestItem> | null): string
     gqlVariables: tab.gqlVariables || '',
     preRequestScript: tab.preRequestScript || '',
     testScript: tab.testScript || '',
+    presets: (tab.presets || []).map((p) => ({
+      id: p.id,
+      name: p.name?.trim() || '',
+      content: p.content || '',
+    })),
+    activePresetId: tab.activePresetId || '',
   })
 }
 

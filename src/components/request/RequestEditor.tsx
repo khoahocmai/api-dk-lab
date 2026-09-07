@@ -9,7 +9,7 @@ import {
   Trash2,
   Wand2,
 } from 'lucide-react'
-import type { EnvironmentItem, KeyValueRow, RequestItem } from '../../types'
+import type { DataPreset, EnvironmentItem, KeyValueRow, RequestItem } from '../../types'
 import {
   buildUrlWithQueryParams,
   convertRowsToHeadersJson,
@@ -23,6 +23,7 @@ import { KeyValueTable } from './KeyValueTable'
 import { AuthEditor } from './AuthEditor'
 import { TestScriptEditor } from './TestScriptEditor'
 import { RequestBodyEditor } from './RequestBodyEditor'
+import { PresetSelector } from './PresetSelector'
 
 interface RequestEditorProps {
   activeTab: RequestItem
@@ -84,6 +85,26 @@ export function RequestEditor({
 
   const handleClearVariables = () => {
     onUpdateTab({ gqlVariables: '{}' })
+  }
+
+  const handleSelectPreset = (preset: DataPreset) => {
+    onUpdateTab({
+      gqlVariables: preset.content,
+      activePresetId: preset.id,
+    })
+    triggerToast(`Đã áp dụng preset: "${preset.name}"`, 'success')
+    if (onSyncToExplorer) {
+      setTimeout(() => {
+        onSyncToExplorer()
+      }, 50)
+    }
+  }
+
+  const handleUpdatePresets = (newPresets: DataPreset[], nextActivePresetId?: string) => {
+    onUpdateTab({
+      presets: newPresets,
+      ...(nextActivePresetId !== undefined ? { activePresetId: nextActivePresetId } : {}),
+    })
   }
 
   // 2-way sync: Params change -> update URL
@@ -317,7 +338,18 @@ export function RequestEditor({
                       </span>
                     </div>
 
-                    <div className="row" style={{ gap: '4px' }} onClick={(e) => e.stopPropagation()}>
+                    <div className="row" style={{ gap: '6px', alignItems: 'center' }} onClick={(e) => e.stopPropagation()}>
+                      <PresetSelector
+                        presets={activeTab.presets}
+                        activePresetId={activeTab.activePresetId}
+                        currentContent={activeTab.gqlVariables || ''}
+                        onSelectPreset={handleSelectPreset}
+                        onUpdatePresets={handleUpdatePresets}
+                        onShowToast={onShowToast}
+                      />
+
+                      <div style={{ width: '1px', height: '16px', background: '#282e42', margin: '0 2px' }} />
+
                       <button
                         type="button"
                         title="Format JSON"

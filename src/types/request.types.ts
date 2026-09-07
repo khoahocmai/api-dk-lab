@@ -37,6 +37,13 @@ export type ResponseState = {
   isCanceled?: boolean
 }
 
+export interface DataPreset {
+  id: string
+  name: string
+  content: string
+  createdAt: number
+}
+
 export type RequestItem = {
   id: string
   savedRequestId?: string
@@ -69,7 +76,11 @@ export type RequestItem = {
   clientError: string
   savedSnapshot?: string
   isDirty?: boolean
+  presets?: DataPreset[]
+  activePresetId?: string
 }
+
+export type RequestTab = RequestItem
 
 export type PersistedRequestItem = Omit<
   RequestItem,

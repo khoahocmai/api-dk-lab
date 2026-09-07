@@ -1,11 +1,12 @@
 import { FileX, Trash2, Wand2 } from 'lucide-react'
-import type { BodyType, EnvironmentItem, KeyValueRow, RequestItem } from '../../types'
+import type { BodyType, DataPreset, EnvironmentItem, KeyValueRow, RequestItem } from '../../types'
 import { convertRowsToHeadersJson } from '../../utils/urlHelper'
 import { createId } from '../../utils/formatters'
 import { formatAndPrettifyJson } from '../../utils/jsonHelper'
 import { emitToast } from '../common/Toast'
 import { CodeEditor } from '../common/CodeEditor'
 import { KeyValueTable } from './KeyValueTable'
+import { PresetSelector } from './PresetSelector'
 
 export interface RequestBodyEditorProps {
   activeTab: RequestItem
@@ -92,6 +93,21 @@ export function RequestBodyEditor({
     }
   }
 
+  const handleSelectPreset = (preset: DataPreset) => {
+    onUpdateTab({
+      restBody: preset.content,
+      activePresetId: preset.id,
+    })
+    triggerToast(`Đã áp dụng preset: "${preset.name}"`, 'success')
+  }
+
+  const handleUpdatePresets = (newPresets: DataPreset[], nextActivePresetId?: string) => {
+    onUpdateTab({
+      presets: newPresets,
+      ...(nextActivePresetId !== undefined ? { activePresetId: nextActivePresetId } : {}),
+    })
+  }
+
   const handleClearCurrent = () => {
     if (onClear) {
       onClear()
@@ -141,17 +157,30 @@ export function RequestBodyEditor({
         </div>
 
         {/* Right: Quick Action Controls */}
-        <div className="body-toolbar-actions">
+        <div className="body-toolbar-actions" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
           {activeTab.bodyType === 'json' && (
-            <button
-              type="button"
-              className="body-toolbar-btn"
-              onClick={handleFormatJson}
-              title="Prettify and format JSON body"
-            >
-              <Wand2 size={12} />
-              <span>Format JSON</span>
-            </button>
+            <>
+              <PresetSelector
+                presets={activeTab.presets}
+                activePresetId={activeTab.activePresetId}
+                currentContent={activeTab.restBody || ''}
+                onSelectPreset={handleSelectPreset}
+                onUpdatePresets={handleUpdatePresets}
+                onShowToast={onShowToast}
+              />
+
+              <div style={{ width: '1px', height: '16px', background: '#232736', margin: '0 2px' }} />
+
+              <button
+                type="button"
+                className="body-toolbar-btn"
+                onClick={handleFormatJson}
+                title="Prettify and format JSON body"
+              >
+                <Wand2 size={12} />
+                <span>Format JSON</span>
+              </button>
+            </>
           )}
 
           {activeTab.bodyType !== 'none' && (
