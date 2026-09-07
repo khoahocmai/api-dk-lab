@@ -7,6 +7,7 @@ export interface ToastData {
   type?: 'success' | 'info' | 'warning' | 'error'
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function emitToast(
   message: string,
   type: 'success' | 'info' | 'warning' | 'error' = 'success',

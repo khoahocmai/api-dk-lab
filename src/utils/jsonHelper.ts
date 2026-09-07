@@ -53,7 +53,7 @@ export function sanitizeTrailingCommas(jsonStr: string): string {
 /**
  * Parse JSON an toàn kể cả khi có trailing commas
  */
-export function safeParseRelaxedJSON<T = any>(jsonStr: string, fallbackValue: T): T {
+export function safeParseRelaxedJSON<T = unknown>(jsonStr: string, fallbackValue: T): T {
   try {
     const clean = sanitizeTrailingCommas(jsonStr)
     return JSON.parse(clean) as T
