@@ -43,7 +43,6 @@ export function createDefaultAuth(): AuthConfig {
 }
 
 export function createDefaultRequest(mode: Mode = 'REST'): RequestItem {
-  const defaultHeaders = `{\n  "Content-Type": "application/json"\n}`
   const initialUrl = mode === 'GRAPHQL' ? '{{Domain}}/graphql' : ''
 
   const req: RequestItem = {
@@ -55,8 +54,8 @@ export function createDefaultRequest(mode: Mode = 'REST'): RequestItem {
     url: initialUrl,
     params: parseUrlToQueryParams(initialUrl).params,
     pathVariables: syncPathVariables(initialUrl, []),
-    headersList: parseHeadersTextToRows(defaultHeaders),
-    headersText: defaultHeaders,
+    headersList: [],
+    headersText: '{}',
     auth: createDefaultAuth(),
     bodyType: 'none',
     restBody: '',
@@ -85,6 +84,8 @@ export function createDefaultRequest(mode: Mode = 'REST'): RequestItem {
     savedSnapshot: createRequestSnapshot(req),
   }
 }
+
+export const createDefaultTab = createDefaultRequest
 
 export function createDefaultEnvironment(name: string, domain: string): EnvironmentItem {
   return {
@@ -133,7 +134,88 @@ export function stripTransientRequest(request: RequestItem): PersistedRequestIte
   }
 }
 
-export function reviveRequest(request: Partial<PersistedRequestItem>): RequestItem {
+/**
+ * Strips redundant auto-generated 'Content-Type: application/json' header from user headers
+ * if mode is GRAPHQL or REST body is JSON.
+ * Preserves custom Content-Type headers (e.g. 'text/plain', 'application/xml', etc.).
+ */
+export function stripRedundantContentTypeHeader<T extends Partial<PersistedRequestItem>>(request: T): T {
+  if (!request) return request
+
+  const mode = request.mode ?? 'REST'
+  const bodyType = request.bodyType ?? (mode === 'GRAPHQL' ? 'none' : 'none')
+  const isGraphQL = mode === 'GRAPHQL'
+  const isJsonBody = !isGraphQL && bodyType === 'json'
+
+  if (!isGraphQL && !isJsonBody) {
+    return request
+  }
+
+  let modified = false
+
+  let newHeadersList = request.headersList
+  if (Array.isArray(newHeadersList)) {
+    const filtered = newHeadersList.filter((h) => {
+      const isContentType = h.key?.trim().toLowerCase() === 'content-type'
+      const isAppJson = h.value?.trim().toLowerCase() === 'application/json'
+      if (isContentType && isAppJson) {
+        modified = true
+        return false
+      }
+      return true
+    })
+    if (modified) {
+      newHeadersList = filtered
+    }
+  }
+
+  let newHeadersText = request.headersText
+  if (request.headersText && request.headersText.trim() && request.headersText !== '{}') {
+    try {
+      const parsed = JSON.parse(request.headersText)
+      let textModified = false
+      if (typeof parsed === 'object' && parsed !== null) {
+        for (const key of Object.keys(parsed)) {
+          if (
+            key.trim().toLowerCase() === 'content-type' &&
+            String(parsed[key]).trim().toLowerCase() === 'application/json'
+          ) {
+            delete parsed[key]
+            textModified = true
+          }
+        }
+      }
+      if (textModified) {
+        newHeadersText = JSON.stringify(parsed, null, 2)
+        modified = true
+      }
+    } catch {
+      // not valid json, ignore
+    }
+  }
+
+  if (!modified) {
+    return request
+  }
+
+  const updated: T = {
+    ...request,
+    headersList: newHeadersList,
+    headersText:
+      newHeadersText !== undefined
+        ? newHeadersText
+        : (newHeadersList && newHeadersList.length > 0 ? convertRowsToHeadersJson(newHeadersList) : '{}'),
+  }
+
+  if (updated.savedSnapshot) {
+    updated.savedSnapshot = createRequestSnapshot(updated as any)
+  }
+
+  return updated
+}
+
+export function reviveRequest(rawRequest: Partial<PersistedRequestItem>): RequestItem {
+  const request = stripRedundantContentTypeHeader(rawRequest)
   const mode = request.mode ?? 'GRAPHQL'
   const def = createDefaultRequest(mode)
 
@@ -153,7 +235,7 @@ export function reviveRequest(request: Partial<PersistedRequestItem>): RequestIt
       ? parseHeadersTextToRows(request.headersText)
       : def.headersList
 
-  const headersList: KeyValueRow[] = rawHeadersList.map((h: any) => ({
+  let headersList: KeyValueRow[] = rawHeadersList.map((h: any) => ({
     id: h.id || createId(),
     key: h.key ?? '',
     value: h.value ?? '',
@@ -161,10 +243,26 @@ export function reviveRequest(request: Partial<PersistedRequestItem>): RequestIt
     description: h.description ?? '',
   }))
 
+  const bodyType = request.bodyType ?? (mode === 'GRAPHQL' ? 'none' : 'none')
+  const isGraphQL = mode === 'GRAPHQL'
+  const isJsonBody = !isGraphQL && bodyType === 'json'
+
+  // Migration: Strip redundant Content-Type: application/json from User Headers
+  // if request is GraphQL or REST with JSON body
+  if (isGraphQL || isJsonBody) {
+    headersList = headersList.filter(
+      (h) =>
+        !(
+          h.key?.trim().toLowerCase() === 'content-type' &&
+          h.value?.trim().toLowerCase() === 'application/json'
+        ),
+    )
+  }
+
   const headersText =
-    request.headersText !== undefined
-      ? request.headersText
-      : convertRowsToHeadersJson(headersList)
+    headersList.length > 0
+      ? convertRowsToHeadersJson(headersList)
+      : '{}'
 
   const res: RequestItem = {
     ...def,
@@ -182,7 +280,7 @@ export function reviveRequest(request: Partial<PersistedRequestItem>): RequestIt
     headersList,
     headersText,
     auth: request.auth ?? createDefaultAuth(),
-    bodyType: request.bodyType ?? 'json',
+    bodyType,
     formData: Array.isArray(request.formData) ? request.formData : [],
     urlencoded: Array.isArray(request.urlencoded) ? request.urlencoded : [],
     rawText: request.rawText ?? '',
@@ -198,9 +296,22 @@ export function reviveRequest(request: Partial<PersistedRequestItem>): RequestIt
     activePresetId: request.activePresetId,
   }
 
+  // Handle savedSnapshot: if request was not modified before migration, keep it clean
+  const cleanSnapshot = createRequestSnapshot(res)
+  let savedSnapshot = request.savedSnapshot
+  if (!savedSnapshot) {
+    savedSnapshot = cleanSnapshot
+  } else {
+    // If previous snapshot matches rawRequest (up to redundant header stripping), update to cleanSnapshot
+    const rawSnapshot = createRequestSnapshot(rawRequest as any)
+    if (savedSnapshot === rawSnapshot) {
+      savedSnapshot = cleanSnapshot
+    }
+  }
+
   return {
     ...res,
-    savedSnapshot: request.savedSnapshot || createRequestSnapshot(res),
+    savedSnapshot,
   }
 }
 
@@ -341,10 +452,21 @@ export async function loadCollections(): Promise<PersistedCollectionsData> {
         ? data.collections
         : [{ id: createId(), name: 'Default Collection' }]
 
+    const rawSavedRequests = Array.isArray(data.savedRequests) ? data.savedRequests : []
+    const savedRequests = rawSavedRequests.map((sr) => {
+      if (sr && sr.request) {
+        return {
+          ...sr,
+          request: stripRedundantContentTypeHeader(sr.request),
+        }
+      }
+      return sr
+    })
+
     return {
       collections,
       folders: Array.isArray(data.folders) ? data.folders : [],
-      savedRequests: Array.isArray(data.savedRequests) ? data.savedRequests : [],
+      savedRequests,
       expandedCollectionIds:
         Array.isArray(data.expandedCollectionIds) && data.expandedCollectionIds.length > 0
           ? data.expandedCollectionIds
@@ -431,7 +553,7 @@ export async function loadSettings(): Promise<PersistedSettingsData> {
       settings,
       activeEnvironmentId: data.activeEnvironmentId,
       activeTabId: data.activeTabId,
-      tabs: Array.isArray(data.tabs) ? data.tabs : [],
+      tabs: Array.isArray(data.tabs) ? data.tabs.map((tab) => stripRedundantContentTypeHeader(tab)) : [],
       splitLayout: data.splitLayout,
       isSidebarCollapsed: data.isSidebarCollapsed,
       isExplorerOpen: data.isExplorerOpen,

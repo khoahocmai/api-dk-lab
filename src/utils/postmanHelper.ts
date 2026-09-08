@@ -517,6 +517,17 @@ export function parsePostmanRequest(
     }
   }
 
+  let finalHeadersList = headersList
+  if (mode === 'GRAPHQL' || bodyType === 'json') {
+    finalHeadersList = headersList.filter(
+      (h) =>
+        !(
+          h.key.trim().toLowerCase() === 'content-type' &&
+          h.value.trim().toLowerCase() === 'application/json'
+        ),
+    )
+  }
+
   const persistedRequest: PersistedRequestItem = {
     id: createId(),
     name,
@@ -525,9 +536,9 @@ export function parsePostmanRequest(
     url: urlStr,
     params: queryParams,
     pathVariables,
-    headersList,
+    headersList: finalHeadersList,
     headersText: JSON.stringify(
-      Object.fromEntries(headersList.filter((h) => h.enabled).map((h) => [h.key, h.value])),
+      Object.fromEntries(finalHeadersList.filter((h) => h.enabled).map((h) => [h.key, h.value])),
       null,
       2,
     ),

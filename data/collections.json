@@ -308,6 +308,12 @@
       "collectionId": "9112c630-a645-4c34-83a2-832cecf83531",
       "parentId": null,
       "name": "Sổ quỹ"
+    },
+    {
+      "id": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
+      "name": "3rd call api"
     }
   ],
   "savedRequests": [
@@ -327,13 +333,6 @@
         "url": "{{Domain}}/graphql",
         "params": [],
         "headersList": [
-          {
-            "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
-          },
           {
             "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
             "key": "Authorization",
@@ -356,7 +355,7 @@
             "description": ""
           }
         ],
-        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "headersText": "{\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
         "auth": {
           "type": "none",
           "bearerToken": "",
@@ -377,7 +376,7 @@
         "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
         "editorTab": "HEADERS",
         "responseTab": "PRETTY",
-        "savedSnapshot": "{\"name\":\"Find delivery store\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"Authorization\",\"value\":\"Bearer {{token}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"{\\n  \\\"name\\\": \\\"API DK Lab User\\\"\\n}\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query FindDeliveryStore($input: StoreGetDeliveryStoreDto) {\\n  findDeliveryStore(input: $input) {\\n    id\\n    code\\n    name\\n    status\\n    address\\n    addressEn\\n    alertOverloadPercent\\n    backupStoreIds\\n    cooldownTime\\n    countryId\\n    countyId\\n    countyName\\n    distance\\n    eHoaDonAddress\\n    eHoaDonCompanyName\\n    eHoaDonInvoiceSerial\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"input\\\": {\\n    \\\"address\\\": \\\"Crescent Mall, 101 Tôn Dật Tiên, Tân Mỹ, Hồ Chí Minh\\\",\\n    \\\"latitude\\\": 10.729084,\\n    \\\"longitude\\\": 106.718872\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"pm.test(\\\"Status code is 200\\\", function () {\\n    pm.response.to.have.status(200);\\n});\"}"
+        "savedSnapshot": "{\"name\":\"Find delivery store\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Authorization\",\"value\":\"Bearer {{token}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"{\\n  \\\"name\\\": \\\"API DK Lab User\\\"\\n}\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query FindDeliveryStore($input: StoreGetDeliveryStoreDto) {\\n  findDeliveryStore(input: $input) {\\n    id\\n    code\\n    name\\n    status\\n    address\\n    addressEn\\n    alertOverloadPercent\\n    backupStoreIds\\n    cooldownTime\\n    countryId\\n    countyId\\n    countyName\\n    distance\\n    eHoaDonAddress\\n    eHoaDonCompanyName\\n    eHoaDonInvoiceSerial\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"input\\\": {\\n    \\\"address\\\": \\\"Crescent Mall, 101 Tôn Dật Tiên, Tân Mỹ, Hồ Chí Minh\\\",\\n    \\\"latitude\\\": 10.729084,\\n    \\\"longitude\\\": 106.718872\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"pm.test(\\\"Status code is 200\\\", function () {\\n    pm.response.to.have.status(200);\\n});\"}"
       },
       "createdAt": "2026-08-20T08:38:33.811Z",
       "updatedAt": "2026-09-07T03:18:24.362Z",
@@ -401,13 +400,6 @@
         "params": [],
         "headersList": [
           {
-            "id": "17b33ae6-9437-4749-8a6d-8a4682e6ef5a",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
-          },
-          {
             "id": "b0af4984-aad6-4187-8c98-e8b007a450cc",
             "key": "Authorization",
             "value": "Bearer {{token}}",
@@ -429,7 +421,7 @@
             "description": ""
           }
         ],
-        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "headersText": "{\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
         "auth": {
           "type": "none",
           "bearerToken": "",
@@ -450,7 +442,7 @@
         "testScript": "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});",
         "editorTab": "SCRIPTS",
         "responseTab": "PRETTY",
-        "savedSnapshot": "{\"name\":\"Order pagination list\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"orderPaginationList\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"Authorization\",\"value\":\"Bearer {{token}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\\n  orderPaginationList(params: $params, filters: $filters) {\\n    total\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"params\\\": {\\n    \\\"page\\\": 0,\\n    \\\"pageSize\\\": 0,\\n    \\\"sortBy\\\": \\\"\\\",\\n    \\\"sortDirection\\\": \\\"\\\"\\n  },\\n  \\\"filters\\\": {\\n    \\\"keywords\\\": \\\"\\\",\\n    \\\"orderStatus\\\": [],\\n    \\\"financialStatus\\\": []\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\"}"
+        "savedSnapshot": "{\"name\":\"Order pagination list\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"orderPaginationList\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Authorization\",\"value\":\"Bearer {{token}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query OrderPaginationList($params: PaginationDto!, $filters: OrderGetListFilterReqDto!) {\\n  orderPaginationList(params: $params, filters: $filters) {\\n    total\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"params\\\": {\\n    \\\"page\\\": 0,\\n    \\\"pageSize\\\": 0,\\n    \\\"sortBy\\\": \\\"\\\",\\n    \\\"sortDirection\\\": \\\"\\\"\\n  },\\n  \\\"filters\\\": {\\n    \\\"keywords\\\": \\\"\\\",\\n    \\\"orderStatus\\\": [],\\n    \\\"financialStatus\\\": []\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\"}"
       },
       "createdAt": "2026-08-21T05:25:09.085Z",
       "updatedAt": "2026-08-28T08:10:21.368Z"
@@ -578,13 +570,6 @@
         "params": [],
         "headersList": [
           {
-            "id": "abd922de-1830-4d56-91fe-788938a11282",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
-          },
-          {
             "id": "03df64d4-d351-4053-8844-043517f353ea",
             "key": "X-Requested-Portal",
             "value": "IT",
@@ -599,7 +584,7 @@
             "description": ""
           }
         ],
-        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
         "auth": {
           "type": "bearer",
           "bearerToken": "{{Token}}",
@@ -641,13 +626,6 @@
         "params": [],
         "headersList": [
           {
-            "id": "6274bea9-2d5b-462d-bbe6-a0776d595d87",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
-          },
-          {
             "id": "98f17cce-b64a-4fc7-8071-3348748b9f25",
             "key": "Authorization",
             "value": "Bearer {{token}}",
@@ -669,7 +647,7 @@
             "description": ""
           }
         ],
-        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "headersText": "{\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
         "auth": {
           "type": "none",
           "bearerToken": "",
@@ -689,7 +667,7 @@
         "testScript": "",
         "editorTab": "BODY",
         "responseTab": "PRETTY",
-        "savedSnapshot": "{\"name\":\"KiotViet branch get pagination\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietBranchGetPagination\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"Authorization\",\"value\":\"Bearer {{token}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietBranchGetPagination($filters: KiotVietBranchGetPaginationFilterDto!, $params: PaginationDto!) {\\n  kiotVietBranchGetPagination(filters: $filters, params: $params) {\\n    total\\n    items {\\n      id\\n      kiotvietBranchId\\n      branchName\\n      retailerId\\n      email\\n      kiotvietModifiedAt\\n      kiotvietCreatedAt\\n      lastSyncedAt\\n      locationName\\n      address\\n    }\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"filters\\\": {\\n    \\\"keywords\\\": \\\"\\\"\\n  },\\n  \\\"params\\\": {\\n    \\\"page\\\": 1,\\n    \\\"pageSize\\\": 20,\\n    \\\"sortBy\\\": \\\"createdAt\\\",\\n    \\\"sortDirection\\\": \\\"DESC\\\"\\n  }\\n}\",\"testScript\":\"\"}"
+        "savedSnapshot": "{\"name\":\"KiotViet branch get pagination\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietBranchGetPagination\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Authorization\",\"value\":\"Bearer {{token}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietBranchGetPagination($filters: KiotVietBranchGetPaginationFilterDto!, $params: PaginationDto!) {\\n  kiotVietBranchGetPagination(filters: $filters, params: $params) {\\n    total\\n    items {\\n      id\\n      kiotvietBranchId\\n      branchName\\n      retailerId\\n      email\\n      kiotvietModifiedAt\\n      kiotvietCreatedAt\\n      lastSyncedAt\\n      locationName\\n      address\\n    }\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"filters\\\": {\\n    \\\"keywords\\\": \\\"\\\"\\n  },\\n  \\\"params\\\": {\\n    \\\"page\\\": 1,\\n    \\\"pageSize\\\": 20,\\n    \\\"sortBy\\\": \\\"createdAt\\\",\\n    \\\"sortDirection\\\": \\\"DESC\\\"\\n  }\\n}\",\"testScript\":\"\"}"
       },
       "createdAt": "2026-08-21T10:24:01.220Z",
       "updatedAt": "2026-08-27T03:20:29.463Z"
@@ -712,12 +690,6 @@
         "params": [],
         "headersList": [
           {
-            "id": "798cb6d1-5f56-4d6e-bc24-d8ef6b788ae2",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true
-          },
-          {
             "id": "7b8d3666-0dca-486a-9b93-1f66611e1dd6",
             "key": "Authorization",
             "value": "Bearer {{token}}",
@@ -738,7 +710,7 @@
             "description": ""
           }
         ],
-        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "headersText": "{\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
         "auth": {
           "type": "none",
           "bearerToken": "",
@@ -780,12 +752,6 @@
         "params": [],
         "headersList": [
           {
-            "id": "48091c9b-47a5-465f-8c46-a0a9776f3e70",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true
-          },
-          {
             "id": "b2590b6d-39ed-49dd-8f27-87273201b35d",
             "key": "Authorization",
             "value": "Bearer {{token}}",
@@ -806,7 +772,7 @@
             "description": ""
           }
         ],
-        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "headersText": "{\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
         "auth": {
           "type": "none",
           "bearerToken": "",
@@ -852,16 +818,9 @@
             "value": "2026-08-19",
             "enabled": true,
             "description": ""
-          },
-          {
-            "id": "28689c0d-2be7-4d3f-bbca-dfea9a4968fa",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
           }
         ],
-        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\"\n}",
         "auth": {
           "type": "bearer",
           "bearerToken": "{{Token}}",
@@ -1564,16 +1523,9 @@
             "value": "2026-08-19",
             "enabled": true,
             "description": ""
-          },
-          {
-            "id": "d1ea2bd6-70f4-42ca-9088-28be49af20d8",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
           }
         ],
-        "headersText": "{\n  \"Square-Version\": \"2026-08-19\",\n  \"Content-Type\": \"application/json\"\n}",
+        "headersText": "{\n  \"Square-Version\": \"2026-08-19\"\n}",
         "auth": {
           "type": "bearer",
           "bearerToken": "{{Token}}",
@@ -4491,13 +4443,6 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "1419746d-71ad-4c2f-b4d2-6e746291bca1",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
-          },
-          {
             "id": "a673d231-3d76-4c8f-9f31-7cab8cf79972",
             "key": "Retailer",
             "value": "{{retailer}}",
@@ -4505,7 +4450,7 @@
             "description": ""
           }
         ],
-        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Retailer\": \"{{retailer}}\"\n}",
+        "headersText": "{\n  \"Retailer\": \"{{retailer}}\"\n}",
         "auth": {
           "type": "bearer",
           "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MzQwNjA3ODMsImV4cCI6MTczNDE0NzE4MywiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiODdhYTQzMzYtNDJkNS00YTQwLTk3YWUtYzQ0N2MyNTdkMzU2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2g4MjM1IiwiY2xpZW50X1JldGFpbGVySWQiOiIyODIxODQiLCJjbGllbnRfVXNlcklkIjoiMTQ2MjI3IiwiY2xpZW50X1NlbnNpdGl2ZUFwaSI6IlRydWUiLCJjbGllbnRfR3JvdXBJZCI6IjExIiwiaWF0IjoxNzM0MDYwNzgzLCJzY29wZSI6WyJQdWJsaWNBcGkuQWNjZXNzIl19.qvzjqN6FBGYM54TSBlCk89oFJt2b50rbIsHMgU0UixlVdDkBQMl_bGg536olR7iXJDKvDHJF5_HmrhByPz8__iaP_43P3aV6hwWGJ3L0K2zQ3HvFmwvXipF4ItBgbv-SI0LX54-i1o9A005sWziK56BXHR6igyyiOvtlxt1eAuB6a-0fTBeu_8aqZQCEweZH2A9FMpG8yjZ3ycdSOl2b5Ao5VWYp_nCmb-R8DOBCJweBPy8C5dilc_htfo7uDzh3X2uUZYnHSZuKrwqVsDQX8IVamb0-u0CH2OjkFpvpMP0iB8PyN9xIBNlY2NqevUhq--ScurzGKTsbjolnymuabA",
@@ -4742,13 +4687,6 @@
         "pathVariables": [],
         "headersList": [
           {
-            "id": "50efec24-f68b-4f73-8eb5-80a9f0cb6dae",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
-          },
-          {
             "id": "315de4d7-752a-4550-8d46-783fb6bcc92b",
             "key": "Retailer",
             "value": "{{retailer}}",
@@ -4756,7 +4694,7 @@
             "description": ""
           }
         ],
-        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Retailer\": \"{{retailer}}\"\n}",
+        "headersText": "{\n  \"Retailer\": \"{{retailer}}\"\n}",
         "auth": {
           "type": "bearer",
           "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE2MjEzMjAzNjQsImV4cCI6MTYyMTQwNjc2NCwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiYXVkIjpbImh0dHA6Ly9pZC5raW90dmlldC52bi9yZXNvdXJjZXMiLCJLaW90VmlldC5BcGkuUHVibGljIl0sImNsaWVudF9pZCI6IjhjN2VhNjdmLTExMjYtNGJkYS1hMTQ3LTNkMWI3MzI0YTcwOSIsImNsaWVudF9SZXRhaWxlckNvZGUiOiJkdmtoODIzNSIsImNsaWVudF9SZXRhaWxlcklkIjoiMjgyMTg0IiwiY2xpZW50X1VzZXJJZCI6IjE0NjIyNyIsImNsaWVudF9TZW5zaXRpdmVBcGkiOiJUcnVlIiwic2NvcGUiOlsiUHVibGljQXBpLkFjY2VzcyJdfQ.ZDMlLoDjIjGGlxLJvNrbvWGXf7yYaFpMjonmDQ80xkKRS8T9VnqakqAmi-11rq5lcGSvg8RtjqzpRu55B6pG8icc0o4Jc8VnTDZN14Hy5_qwdO3j25iLE1mFeldjrRJvMKoHWKtqtTo0maydLwJVDI_rUbTmTDvYiwmgHoP6HsVz1fnTElAaH8JwSdDKQR6Cg-tcw8ieVJ5l69ZJR6QLdHT-71-8H19k41ODHH05-BbNJ5besSfjdM_FSbGLXLiqPF04_x0Xwcr-8RceogxMHdCsJY8b9toIyju0NlkjJSFe9pD2ri6uVA2Pr5xLxiboHNX3Tc46TN-b8XNUw-t0SA",
@@ -5140,16 +5078,9 @@
             "value": "{{retailer}}",
             "enabled": true,
             "description": ""
-          },
-          {
-            "id": "8ec7901b-e958-4f15-a52e-e965addb3fb4",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
           }
         ],
-        "headersText": "{\n  \"Retailer\": \"{{retailer}}\",\n  \"Content-Type\": \"application/json\"\n}",
+        "headersText": "{\n  \"Retailer\": \"{{retailer}}\"\n}",
         "auth": {
           "type": "bearer",
           "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MzE1NzQzMTksImV4cCI6MTczMTY2MDcxOSwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiYzdhZmY0ZTAtOTk0MC00ZmExLWEzNjEtOWI4MWNjYzRlZWE2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2hyZXRhaWx0ZWFtZG4xIiwiY2xpZW50X1JldGFpbGVySWQiOiIxNDk1NDUyIiwiY2xpZW50X1VzZXJJZCI6IjEzMDQ1NDAiLCJjbGllbnRfU2Vuc2l0aXZlQXBpIjoiVHJ1ZSIsImNsaWVudF9Hcm91cElkIjoiMjMiLCJpYXQiOjE3MzE1NzQzMTksInNjb3BlIjpbIlB1YmxpY0FwaS5BY2Nlc3MiXX0.VNhmj4_GIO83WNrXtHc1poPxCIzoshygLGI_dJ100aVj7TlZO0T3MR7Z24ZFeJ374wY9LfpiPR_YXal7Ar6Kut04N9QmWF6BLCv4YTij56V63ZSvJV-5l3khlqHYmgbfniEIZIHXlOZE4xp_2XgssMYkq7Pi8q7WNStlGks_Ktp_-hbHzWAGxMiMRuTwSBDRj3NtgTr6ra4l0Ao680VMideeRdkv5WI0ed1Fn6fKXfI8BDF4js5d-vAJJ2xpchHsaZxYBO-Rmvfc0cnrIVHacFlY0_NaVA13p4gqvujJ8n1NaStPLtM7tk17xqZJLYzq7vakI0MABez_fCldA0Mv7w",
@@ -5193,16 +5124,9 @@
             "value": "taphoa",
             "enabled": true,
             "description": ""
-          },
-          {
-            "id": "9986bb43-b6aa-4e04-90bb-2127cad26408",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
           }
         ],
-        "headersText": "{\n  \"Retailer\": \"taphoa\",\n  \"Content-Type\": \"application/json\"\n}",
+        "headersText": "{\n  \"Retailer\": \"taphoa\"\n}",
         "auth": {
           "type": "bearer",
           "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE0OTgxMTQxODQsImV4cCI6MTQ5ODIwMDU4NCwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiYXVkIjpbImh0dHA6Ly9pZC5raW90dmlldC52bi9yZXNvdXJjZXMiLCJLaW90VmlldC5BcGkuUHVibGljIl0sImNsaWVudF9pZCI6IjgzYTViY2JlLTNjMzktNDU4Yy1iZGQ5LTEyODExMmNlZjNmNyIsImNsaWVudF9SZXRhaWxlckNvZGUiOiJ0YXBob2EiLCJjbGllbnRfUmV0YWlsZXJJZCI6IjE0OSIsImNsaWVudF9Vc2VySWQiOiIzMTEiLCJzY29wZSI6WyJQdWJsaWNBcGkuQWNjZXNzIl19.RDirVst315IQefeoCpg8zU-XIXcerIhLUYf3-UwKWY9Koo8M59dV-JHJ6ShET3uVAQnFt6s0wKnLEwTHtiq__tPuvb5RUjn88UM7Bb6LVOHGGubeyZt2s8MH8qTnbgy24iYzt2dnnNXk_h-tC1XVmu2pUHLdO9HhlcmPu3JjB5qyXMBlnL4bLjTggABAI_kgrXAboyKvQvbfb0Sq4pcu15W6R9Ci0OSJnciIZ3UAQ-IzFpxUCslB50xRyQNLpCn6PcgaEvdWkPiB7bWd8ktxYmtdKdU0jSoQqQaC85ob5CjxVbBxq-Z5nQP6dSQ42QOVSBN6Yy45ZTVK8HvBl4--Uw",
@@ -5583,16 +5507,9 @@
             "value": "dvkh8235",
             "enabled": true,
             "description": ""
-          },
-          {
-            "id": "ba7eb3f4-2bd7-4ba9-857e-5ce39711bc25",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
           }
         ],
-        "headersText": "{\n  \"Retailer\": \"dvkh8235\",\n  \"Content-Type\": \"application/json\"\n}",
+        "headersText": "{\n  \"Retailer\": \"dvkh8235\"\n}",
         "auth": {
           "type": "bearer",
           "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE1NzU4NTkwNzIsImV4cCI6MTU3NTk0NTQ3MiwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiYXVkIjpbImh0dHA6Ly9pZC5raW90dmlldC52bi9yZXNvdXJjZXMiLCJLaW90VmlldC5BcGkuUHVibGljIl0sImNsaWVudF9pZCI6IjNmM2I5ZWU1LWUzOTktNDkwZi04ZDY2LThmMjM4Nzk2YzZlMCIsImNsaWVudF9SZXRhaWxlckNvZGUiOiJkdmtoODIzNSIsImNsaWVudF9SZXRhaWxlcklkIjoiMjgyMTg0IiwiY2xpZW50X1VzZXJJZCI6IjE0NjIyNyIsInNjb3BlIjpbIlB1YmxpY0FwaS5BY2Nlc3MiXX0.SJgEwrWvQa1jv23mibOAI2x5xx393bXjmHA1f8DpYD3-ECDWka1kngkDWxKY6uJc7plo3_J_XVFkZh2VVyPcgewk59wsPa6UUX3Uad1DvcykEnA0IOFJTlRwouX3FTNWK1iyulCbXPzuVJSqtfhPMJ0sneOCD-2DA2k0yW9vVShE8bITkOAKXsxWhhpvbShh1sarcJPhY3uSRQQ2euFl_omHETtvt-Mk8F_yVGtt6fFr-znX42kAEVF1mNMA9DpkPteXgBv5rwO51GoW59uIBOdtyZWivHYTocatxOoM4e3zyNuRjU2yDLRyv5P4V3tPbJ58TJgTAaL-XZVSWAP2xQ",
@@ -5735,16 +5652,9 @@
             "value": "taphoa",
             "enabled": true,
             "description": ""
-          },
-          {
-            "id": "39fab326-e897-4184-8197-4ce49fa26cf4",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
           }
         ],
-        "headersText": "{\n  \"Retailer\": \"taphoa\",\n  \"Content-Type\": \"application/json\"\n}",
+        "headersText": "{\n  \"Retailer\": \"taphoa\"\n}",
         "auth": {
           "type": "bearer",
           "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE0OTg2MTg1MTgsImV4cCI6MTQ5ODcwNDkxOCwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiYXVkIjpbImh0dHA6Ly9pZC5raW90dmlldC52bi9yZXNvdXJjZXMiLCJLaW90VmlldC5BcGkuUHVibGljIl0sImNsaWVudF9pZCI6IjgzYTViY2JlLTNjMzktNDU4Yy1iZGQ5LTEyODExMmNlZjNmNyIsImNsaWVudF9SZXRhaWxlckNvZGUiOiJ0YXBob2EiLCJjbGllbnRfUmV0YWlsZXJJZCI6IjE0OSIsImNsaWVudF9Vc2VySWQiOiIzMTEiLCJzY29wZSI6WyJQdWJsaWNBcGkuQWNjZXNzIl19.CYqrKVeJoO8Mc9OOd0mZ5_qfPMw6gzIF0c2XmHsoCIU3o4o_KiJAB5ampP-fH-NTX64P0ZgZwF_iEZBUJbAS6cQWXuIF3OXyPmEFkPImlfgqBihSxykgctVbXpKoTucA64t9nW-XlXEPnR8OfkT8n4_Wf__IIuT8zZUWackgqMqeF7b-b0CGUaYe8H9AvWt4l80KI4UK9G2NigoXTEEsvix_h5_ULQpH7XRgD8nZvLbJZEZDorXgby1XeBibEV-ZY8sFx5b_hGbeFLZsa1EM3EwMME-caxCHorclTUkJ3qPjPOUvnbs_2HNW_XhaxNA9Cmf99B4CQeIHuD2-B4QZxA",
@@ -5930,13 +5840,6 @@
             "value": "euronics",
             "enabled": true,
             "description": ""
-          },
-          {
-            "id": "dbdb4668-be48-4348-9b3b-2827cd00f524",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": false,
-            "description": ""
           }
         ],
         "headersText": "{\n  \"Retailer\": \"euronics\"\n}",
@@ -5983,16 +5886,9 @@
             "value": "{{retailer}}",
             "enabled": true,
             "description": ""
-          },
-          {
-            "id": "f79706aa-87ce-4af4-ac34-3442ca439b1e",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
           }
         ],
-        "headersText": "{\n  \"Retailer\": \"{{retailer}}\",\n  \"Content-Type\": \"application/json\"\n}",
+        "headersText": "{\n  \"Retailer\": \"{{retailer}}\"\n}",
         "auth": {
           "type": "bearer",
           "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE2OTgyOTYwMDksImV4cCI6MTY5ODM4MjQwOSwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiODdhYTQzMzYtNDJkNS00YTQwLTk3YWUtYzQ0N2MyNTdkMzU2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2g4MjM1IiwiY2xpZW50X1JldGFpbGVySWQiOiIyODIxODQiLCJjbGllbnRfVXNlcklkIjoiMTQ2MjI3IiwiY2xpZW50X1NlbnNpdGl2ZUFwaSI6IlRydWUiLCJjbGllbnRfR3JvdXBJZCI6IjExIiwiaWF0IjoxNjk4Mjk2MDA5LCJzY29wZSI6WyJQdWJsaWNBcGkuQWNjZXNzIl19.ZezlQZZopqd-DhGup5_s2eAO1KCluJL4LnXkpw41Eq3Xn9q8kUgTVWrBQrQLmAi6NR2XQuffN-xZscngs2mlJwQzjJsSsaH0PXW5F8DzQRcooNFdDFo_bQ3MCi1r0P3WR889jLbwcttzIEtaGTt8yexbp-u0y-f2OfM5iJhF3xp5ymS6b-ju6ysohrmHbmcEyk-k3tZkkvf9tcGHhecOERM4x3H7wJApQlgVIqOOcoL5AKPFGjb-_wfhAxOkpHZL7qjfFmpyFC2yaHde2R-EOm4tFgjyzUgjgWUmDRFCHotMq7jJ1WZLHY4OyKYLAlM1FjYrhc5xybp0vQFXPwb4cw",
@@ -6303,16 +6199,9 @@
             "value": "{{retailer}}",
             "enabled": true,
             "description": ""
-          },
-          {
-            "id": "b413b50b-57e8-4f4d-a3d3-67da5ddd7fa0",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
           }
         ],
-        "headersText": "{\n  \"Retailer\": \"{{retailer}}\",\n  \"Content-Type\": \"application/json\"\n}",
+        "headersText": "{\n  \"Retailer\": \"{{retailer}}\"\n}",
         "auth": {
           "type": "bearer",
           "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MzY0OTg4NzUsImV4cCI6MTczNjU4NTI3NSwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiODdhYTQzMzYtNDJkNS00YTQwLTk3YWUtYzQ0N2MyNTdkMzU2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2g4MjM1IiwiY2xpZW50X1JldGFpbGVySWQiOiIyODIxODQiLCJjbGllbnRfVXNlcklkIjoiMTQ2MjI3IiwiY2xpZW50X1NlbnNpdGl2ZUFwaSI6IlRydWUiLCJjbGllbnRfR3JvdXBJZCI6IjExIiwiaWF0IjoxNzM2NDk4ODc1LCJzY29wZSI6WyJQdWJsaWNBcGkuQWNjZXNzIl19.JyLGNl82Db6Assh4EvKBvRe2vp6WP6FFAwlw8rkivTyBS5LoGTCBHmnOeL-UELRQfG4XkX4kuPQaw9vJ6-pCbPIPQLD9dUGamGHiMAip2EWZdrNaz9ax9s-4nZKgJNlOhK0fNzyRQdXn4IplH0xBVq04gWKbsjND8Mq_mYLeRgk6mHmLj7_LsAjXvoq9yaY6uflSimxufyJV8yXLD_MLd5sfKsU9sAw08TBFWkpQXKbM5hYXFBPZNWOw_UPe9lGFIy1NatFsj8kEzyeo7F0fXnEJc_bHU-8FlK7LHYtytxOwbnIw4plLzq_pjo8vZpVzFZD_N78y6QAtCNQLWPkMpQ",
@@ -6409,16 +6298,9 @@
             "value": "daidvkh",
             "enabled": true,
             "description": ""
-          },
-          {
-            "id": "7656d2a1-0ddc-49b8-a1d0-ef7fc03be2c0",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
           }
         ],
-        "headersText": "{\n  \"Retailer\": \"daidvkh\",\n  \"Content-Type\": \"application/json\"\n}",
+        "headersText": "{\n  \"Retailer\": \"daidvkh\"\n}",
         "auth": {
           "type": "bearer",
           "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE1NDQ1ODUxMTAsImV4cCI6MTU0NDY3MTUxMCwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiYXVkIjpbImh0dHA6Ly9pZC5raW90dmlldC52bi9yZXNvdXJjZXMiLCJLaW90VmlldC5BcGkuUHVibGljIl0sImNsaWVudF9pZCI6ImJkMTMzODdiLWIwMGUtNDNmNy05NGU4LTE3MTY5NDg2NjZlNyIsImNsaWVudF9SZXRhaWxlckNvZGUiOiJkYWlkdmtoIiwiY2xpZW50X1JldGFpbGVySWQiOiIyODIxODQiLCJjbGllbnRfVXNlcklkIjoiMTQ2MjI3Iiwic2NvcGUiOlsiUHVibGljQXBpLkFjY2VzcyJdfQ.DNut9bVA6LWLbDiEIwjFwUbp03eXDsgasPbjM84WKUN4fpdX7fL3KelDMOwb4PFBy7Rjq7sN9MNZsJ0fwUTVr4Z099GowzQAYphfP1oOpEhs9JwXJJO9Vyqg4FSUpI7MiANKR9riQ6SxWbDyh2Fx2z3kUirvqE1JdPcSKeTzyO4VTRTatZ0_BlFgcrORUlPGtGyGlssEOIyCcT-Fpe4_f1Z-r1Y8Wk2Ve2lixdAF2Okb59NT-b6DXVrcAyzGuLsKrLOsQoQrYTeC_FvXuT3VeNIqyPCjC62eAZHDx_KIh8FpAWofNlTQq8H7BbhClPodNq9mz-xP3soW9pPejMlWVw",
@@ -6462,16 +6344,9 @@
             "value": "{{retailer}}",
             "enabled": true,
             "description": ""
-          },
-          {
-            "id": "ba03391f-2602-4126-8a18-2fcdf03c8ee8",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
           }
         ],
-        "headersText": "{\n  \"Retailer\": \"{{retailer}}\",\n  \"Content-Type\": \"application/json\"\n}",
+        "headersText": "{\n  \"Retailer\": \"{{retailer}}\"\n}",
         "auth": {
           "type": "bearer",
           "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE2Mzk3MTA5NjIsImV4cCI6MTYzOTc5NzM2MiwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiYXVkIjpbImh0dHA6Ly9pZC5raW90dmlldC52bi9yZXNvdXJjZXMiLCJLaW90VmlldC5BcGkuUHVibGljIl0sImNsaWVudF9pZCI6IjhjN2VhNjdmLTExMjYtNGJkYS1hMTQ3LTNkMWI3MzI0YTcwOSIsImNsaWVudF9SZXRhaWxlckNvZGUiOiJkdmtoODIzNSIsImNsaWVudF9SZXRhaWxlcklkIjoiMjgyMTg0IiwiY2xpZW50X1VzZXJJZCI6IjE0NjIyNyIsImNsaWVudF9TZW5zaXRpdmVBcGkiOiJUcnVlIiwic2NvcGUiOlsiUHVibGljQXBpLkFjY2VzcyJdfQ.MzF_IwgBhx0sFaTP23PRpLx7ghJJ4KqJxHZfMebrvHRCxn3GC9JeI93qDV8CsXH3iPQc2-Ei6FUQLob5MQgICANZGwQNOHCWUy97BUg9qwz0qh7KQpibWYQghRYAGfRo-PWevZeBZNCi7aQrEfyNJDvLoLhRw3pNtSiZp2hqr_wMBwyv1y3GUwaUzAsCQU4_wjho5s8X4KsCl_OCJk2ouuYDnlWMaOv75YLuYv8pPUaxKam9eBAmPVa0QhyR-DkUO9e7F7-e7PRZyKOYdezAOInMQ5RXLQNpxwE2uL90BYCEpAqOvzxBvNsBnc12FjcACYGlODCJN1lM5AbtFoVKGg",
@@ -6515,16 +6390,9 @@
             "value": "{{retailer}}",
             "enabled": true,
             "description": ""
-          },
-          {
-            "id": "a6625c26-fc04-4dcb-b471-3bd5c60f4465",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
           }
         ],
-        "headersText": "{\n  \"Retailer\": \"{{retailer}}\",\n  \"Content-Type\": \"application/json\"\n}",
+        "headersText": "{\n  \"Retailer\": \"{{retailer}}\"\n}",
         "auth": {
           "type": "bearer",
           "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MzM5NjkyMjYsImV4cCI6MTczNDA1NTYyNiwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiYzdhZmY0ZTAtOTk0MC00ZmExLWEzNjEtOWI4MWNjYzRlZWE2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2hyZXRhaWx0ZWFtZG4xIiwiY2xpZW50X1JldGFpbGVySWQiOiIxNDk1NDUyIiwiY2xpZW50X1VzZXJJZCI6IjEzMDQ1NDAiLCJjbGllbnRfU2Vuc2l0aXZlQXBpIjoiVHJ1ZSIsImNsaWVudF9Hcm91cElkIjoiMjMiLCJpYXQiOjE3MzM5NjkyMjYsInNjb3BlIjpbIlB1YmxpY0FwaS5BY2Nlc3MiXX0.eEZsp5dmOgeKXlGXpqnxOMNnV4xg4QG0rMfhvzojUUHQ0u7pxxffKslwLY-U6jOD4iv7_fbwoj39JZ_RxoEbJO1NYjkwUWOSgXFL_bWb6Mp0urBHNjvZJ6TpiH1_yDQJ75w6S8dX8favfLwNEOsH83vekfSaQw77PbA0f7kbsYOeRBn5__unHpqHEOzh7fvbHpb4diA3cqjNyi6nVNVkSiw7GiI0TbPbwkmRxuCayMPi6BPX0DBny8LZV5ztSphNmy_2jbto1q1fEHma1J1H5cG83b3TZVjvFbtSXWOMrpUn_MWnh9Wlrf53nJg7ilwbQHjjdakqaU8VhWt1eOw0tQ",
@@ -6636,16 +6504,9 @@
             "value": "{{retailer}}",
             "enabled": true,
             "description": ""
-          },
-          {
-            "id": "f9ace4da-ff7f-4d13-95eb-f61c333a5b73",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
           }
         ],
-        "headersText": "{\n  \"Retailer\": \"{{retailer}}\",\n  \"Content-Type\": \"application/json\"\n}",
+        "headersText": "{\n  \"Retailer\": \"{{retailer}}\"\n}",
         "auth": {
           "type": "bearer",
           "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3NDk1Mjg2ODAsImV4cCI6MTc0OTYxNTA4MCwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiODdhYTQzMzYtNDJkNS00YTQwLTk3YWUtYzQ0N2MyNTdkMzU2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2g4MjM1IiwiY2xpZW50X1JldGFpbGVySWQiOiIyODIxODQiLCJjbGllbnRfVXNlcklkIjoiMTQ2MjI3IiwiY2xpZW50X1NlbnNpdGl2ZUFwaSI6IlRydWUiLCJjbGllbnRfR3JvdXBJZCI6IjExIiwiaWF0IjoxNzQ5NTI4NjgwLCJzY29wZSI6WyJQdWJsaWNBcGkuQWNjZXNzIl19.yHY4SaW9WiFzTayMu4VQM4peA_mU5mR4OL8VbhL0yssSHx3V1RLYbv7Dd2liNnqqQrv0hUvz4QaOUY86wJD29cqK-4FDqdX_y3yQkxDqYXTQFPmynDKp8Zqgnkw1D11Aukot8TIljYmrSwU4eXzV8rRbEbN_S8PRTcvLZ63Lkn9lEAO6AoL-Uu1s1YxcsDIG-uVzTSJMUWv2J5fvpdYweoDbA1I0xzL8e7BjF-Gpxuf4tmYUV6zHkGwEof8SJpemeMALzF8SiqjVPk7wdfwNin4loBEcVQfHWe7V5a9h0KXyuCfyfH5g3ESwmg_Sl-2MVVFHPjHdL49f8JF0e2zysA",
@@ -6743,16 +6604,9 @@
             "value": "{{retailer}}",
             "enabled": true,
             "description": ""
-          },
-          {
-            "id": "5539db24-7e67-40a0-9213-3e60135cbec4",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
           }
         ],
-        "headersText": "{\n  \"retailer\": \"{{retailer}}\",\n  \"Content-Type\": \"application/json\"\n}",
+        "headersText": "{\n  \"retailer\": \"{{retailer}}\"\n}",
         "auth": {
           "type": "bearer",
           "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MDIzNzk2NzYsImV4cCI6MTcwMjQ2NjA3NiwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiODdhYTQzMzYtNDJkNS00YTQwLTk3YWUtYzQ0N2MyNTdkMzU2IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2g4MjM1IiwiY2xpZW50X1JldGFpbGVySWQiOiIyODIxODQiLCJjbGllbnRfVXNlcklkIjoiMTQ2MjI3IiwiY2xpZW50X1NlbnNpdGl2ZUFwaSI6IlRydWUiLCJjbGllbnRfR3JvdXBJZCI6IjExIiwiaWF0IjoxNzAyMzc5Njc2LCJzY29wZSI6WyJQdWJsaWNBcGkuQWNjZXNzIl19.fNRBT8DB4Qw4THLJc4vUXqmNDBo-Zi3f8NG4vE_8q_rA2qw4cew2wfhmdV0UAVlID59epz7je_PqxvXbgpbfXPKo_J6GV3YZ802iwflLXAvVJz5AC3a0qmS1NLFMK-LuJkLSo-xqNS5-JWbDbCykzVBycCMb8s8PBmX1qLbinNdR3EpqYjF55s3DIV4inTtUu-OkgyNB7YUIub_v_1FruH-5z1O2gfctpTsQ0Lzwbt_r4vJ03vG_5WVCyzWAF-mnQDFHoifcMn8WDfkmu0QbJ2_1hXRWPtanEsyuiXlUTeWisZpaqrotGfVsVq_gr2Hw_Ux68M6mDOtd6gSwdJ-q9Q",
@@ -6796,16 +6650,9 @@
             "value": "{{retailer}}",
             "enabled": true,
             "description": ""
-          },
-          {
-            "id": "f587a437-dca4-4d94-a691-ed2d2bca1a8b",
-            "key": "Content-Type",
-            "value": "application/json",
-            "enabled": true,
-            "description": ""
           }
         ],
-        "headersText": "{\n  \"retailer\": \"{{retailer}}\",\n  \"Content-Type\": \"application/json\"\n}",
+        "headersText": "{\n  \"retailer\": \"{{retailer}}\"\n}",
         "auth": {
           "type": "bearer",
           "bearerToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE2OTQyNTI0MzQsImV4cCI6MTY5NDMzODgzNCwiaXNzIjoiaHR0cDovL2lkLmtpb3R2aWV0LnZuIiwiY2xpZW50X2lkIjoiOGM3ZWE2N2YtMTEyNi00YmRhLWExNDctM2QxYjczMjRhNzA5IiwiY2xpZW50X1JldGFpbGVyQ29kZSI6ImR2a2g4MjM1IiwiY2xpZW50X1JldGFpbGVySWQiOiIyODIxODQiLCJjbGllbnRfVXNlcklkIjoiMTQ2MjI3IiwiY2xpZW50X1NlbnNpdGl2ZUFwaSI6IlRydWUiLCJjbGllbnRfR3JvdXBJZCI6IjExIiwiaWF0IjoxNjk0MjUyNDM0LCJzY29wZSI6WyJQdWJsaWNBcGkuQWNjZXNzIl19.LSL9Ze0B-tQCCgopRLujlccaYbYRSEaM62AtH8KtpUXRDL1aLFYuhgFDjvTxfe4uH2ZEHfxifLJ6Vae-6KpGqOcLbz2rt_kxaAbJs2PrS4s14zU98ZBNiZVD_SxEjEP81ZSLYjRcvbdshECMOuBcHoNParNTU-bcR_LxQjJ_-8ezMhemIgp-Rj9UAf1iIHlSJeRln0n8rIyH6CC_4cfveY0sZpFXVz6zIt3g35PXE1bLk1_KGS3zYaWH5b7m-yV63mo7U35mW1SERQ4nvccD4tJICive4-UiZPCemhOuRYWGot21iudPqLj08a2sF8fcWyxo-hFe8UrTZ-pVQsxg4w",
@@ -7476,7 +7323,7 @@
       "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
       "name": "Check item availability",
       "request": {
-        "id": "643fc79a-3d6a-4461-833f-09f026db7d2f",
+        "id": "809e7c2d-7bda-4fda-b9c6-46f8d5d1fd40",
         "savedRequestId": "d0ddc0cf-6884-4d11-9086-e3b71758f5e3",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
@@ -7512,7 +7359,7 @@
           "apiKeyAddTo": "header"
         },
         "bodyType": "json",
-        "restBody": "{\n  \"id\": \"019a7101-8006-755c-8b52-ceaf5d94fac5\",\n  \"type\": \"COMBO\",\n  \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\",\n  \"tenantId\": \"0192fda4-ba1b-76ef-bb1a-64c043a8e4a4\"\n}",
+        "restBody": "{\n  \"id\": \"019a7233-5526-75f3-b061-b86de40a0963\",\n  \"type\": \"COMBO\",\n  \"storeId\": \"0196486d-d25a-74b9-99ba-f2c401fd3f6a\",\n  \"channel\": \"WEB\",\n  \"shippingType\": \"TAKEAWAY\"\n}",
         "rawText": "",
         "formData": [],
         "urlencoded": [],
@@ -7522,10 +7369,572 @@
         "testScript": "",
         "editorTab": "BODY",
         "responseTab": "PRETTY",
-        "savedSnapshot": "{\"name\":\"Check item availability\",\"url\":\"{{Domain}}/products/check-availability\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"x-requested-portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"{\\n  \\\"id\\\": \\\"019a7101-8006-755c-8b52-ceaf5d94fac5\\\",\\n  \\\"type\\\": \\\"COMBO\\\",\\n  \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\",\\n  \\\"tenantId\\\": \\\"0192fda4-ba1b-76ef-bb1a-64c043a8e4a4\\\",\\n}\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\"}"
+        "savedSnapshot": "{\"name\":\"Check item availability\",\"url\":\"{{Domain}}/products/check-availability\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"x-requested-portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"{\\n  \\\"id\\\": \\\"019a7101-8006-755c-8b52-ceaf5d94fac5\\\",\\n  \\\"type\\\": \\\"COMBO\\\",\\n  \\\"storeId\\\": \\\"0196486d-d25a-7f24-86c8-115e0c77026b\\\",\\n  \\\"tenantId\\\": \\\"0192fda4-ba1b-76ef-bb1a-64c043a8e4a4\\\"\\n}\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": [
+          {
+            "id": "7a404737-80b5-4301-88f9-fc565b69943a",
+            "name": "Combo Dừa Dặn - Dev",
+            "content": "{\n  \"id\": \"019a7101-8006-755c-8b52-ceaf5d94fac5\",\n  \"type\": \"COMBO\",\n  \"storeId\": \"0196486d-d25a-7f24-86c8-115e0c77026b\",\n  \"tenantId\": \"0192fda4-ba1b-76ef-bb1a-64c043a8e4a4\"\n}",
+            "createdAt": 1788836234682
+          },
+          {
+            "id": "e63197a5-ec52-4ea8-9cec-15866f7e8062",
+            "name": "Ngon Lắm 3 - Dev",
+            "content": "{\n  \"id\": \"019a7233-5526-75f3-b061-b86de40a0963\",\n  \"type\": \"COMBO\",\n  \"storeId\": \"0196486d-d25a-74b9-99ba-f2c401fd3f6a\",\n  \"channel\": \"WEB\",\n  \"shippingType\": \"TAKEAWAY\"\n}",
+            "createdAt": 1788836262388
+          }
+        ],
+        "activePresetId": "e63197a5-ec52-4ea8-9cec-15866f7e8062"
       },
       "createdAt": "2026-09-07T04:51:07.277Z",
-      "updatedAt": "2026-09-07T06:27:32.779Z"
+      "updatedAt": "2026-09-08T02:59:18.709Z"
+    },
+    {
+      "id": "9a4f2cd7-9fa2-4bfa-9c95-6397296fa49b",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
+      "name": "Get Token",
+      "request": {
+        "id": "d01d80ee-5f71-41ae-afe3-6d6dae0d0bab",
+        "savedRequestId": "9a4f2cd7-9fa2-4bfa-9c95-6397296fa49b",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
+        "name": "Get Token",
+        "mode": "REST",
+        "method": "POST",
+        "url": "{{Domain-Token}}/identity/connect/token",
+        "params": [],
+        "headersList": [
+          {
+            "id": "edd08aa5-36c4-4aeb-bc8f-04be5829669c",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{}",
+        "auth": {
+          "type": "none",
+          "bearerToken": "",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "x-www-form-urlencoded",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [
+          {
+            "id": "d63e44a1-5711-43e7-9ca2-f31e7051b124",
+            "key": "scope",
+            "value": "PublicApi.Access.FNB",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "aec8902c-6c26-4cc0-bc45-8981a7db0442",
+            "key": "grant_type",
+            "value": "client_credentials",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "70cf8d00-fb7a-499d-8c34-bfde2b337a78",
+            "key": "client_id",
+            "value": "{{KiotViet-ClientId}}",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "bc15523f-c5bc-4e41-a33a-9b4715dc4c14",
+            "key": "client_secret",
+            "value": "{{KiotViet-ClientSecret}}",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "de51c464-9689-42f3-a4fd-132095f5c480",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "preRequestScript": "",
+        "testScript": "const response = pm.response.json();\n\nif (response.access_token) {\n  pm.environment.set(\"KiotViet-Token\", response.access_token);\n\n  console.log(\"KiotViet token saved successfully\");\n  console.log(\"Expires in:\", response.expires_in, \"seconds\");\n} else {\n  console.error(\"Cannot get KiotViet access token\");\n  console.error(response);\n}",
+        "editorTab": "SCRIPTS",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Get Token\",\"url\":\"{{Domain-Token}}/identity/connect/token\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"x-www-form-urlencoded\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[{\"key\":\"scope\",\"value\":\"PublicApi.Access.FNB\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"grant_type\",\"value\":\"client_credentials\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"client_id\",\"value\":\"{{KiotViet-ClientId}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"client_secret\",\"value\":\"{{KiotViet-ClientSecret}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"const response = pm.response.json();\\n\\nif (response.access_token) {\\n  pm.environment.set(\\\"KiotViet-Token\\\", response.access_token);\\n\\n  console.log(\\\"KiotViet token saved successfully\\\");\\n  console.log(\\\"Expires in:\\\", response.expires_in, \\\"seconds\\\");\\n} else {\\n  console.error(\\\"Cannot get KiotViet access token\\\");\\n  console.error(response);\\n}\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-08T09:34:01.630Z",
+      "updatedAt": "2026-09-08T10:12:57.670Z"
+    },
+    {
+      "id": "49022171-215e-4f18-9695-b94ff6ef1f33",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
+      "name": "Get Webhook",
+      "request": {
+        "id": "a779dd2f-f2a1-4f86-9636-23e171163544",
+        "savedRequestId": "49022171-215e-4f18-9695-b94ff6ef1f33",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
+        "name": "Get Webhook",
+        "mode": "REST",
+        "method": "GET",
+        "url": "https://publicfnb.kiotapi.com/webhooks",
+        "params": [],
+        "headersList": [
+          {
+            "id": "555bea58-4280-43a9-8e7e-469a6053192d",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "id": "dc234e3b-527f-40b9-bbb1-e03385323f2b",
+            "key": "Retailer",
+            "value": "{{Retailer}}",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "0dc3597f-af9d-4f9b-a73d-00138fd156d9",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Retailer\": \"{{Retailer}}\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{KiotViet-Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "HEADERS",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Get Webhook\",\"url\":\"https://publicfnb.kiotapi.com/webhooks\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-08T09:38:18.927Z",
+      "updatedAt": "2026-09-08T09:39:16.347Z"
+    },
+    {
+      "id": "a1f8bd7a-4a89-4182-8a85-c4db2a6d417c",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
+      "name": "Post Webhook",
+      "request": {
+        "id": "62972cdb-b667-48a5-9b1f-658d75d6baa6",
+        "savedRequestId": "a1f8bd7a-4a89-4182-8a85-c4db2a6d417c",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
+        "name": "Post Webhook",
+        "mode": "REST",
+        "method": "POST",
+        "url": "https://publicfnb.kiotapi.com/webhooks",
+        "params": [],
+        "headersList": [
+          {
+            "id": "29210815-dc8d-480f-8b08-377ef8ab108d",
+            "key": "Retailer",
+            "value": "{{Retailer}}",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "e18982a9-7f5c-4515-9f7d-e0cd5904fa50",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"Retailer\": \"{{Retailer}}\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{KiotViet-Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "json",
+        "restBody": "{\n  \"Webhook\": {\n    \"Type\": \"customer.update\",\n    \"Url\": \"https://api.dxpdemos.com/kiotviet/webhooks/customer/update?noecho\",\n    \"IsActive\": true,\n    \"Description\": \"URL Webhook customer update\"\n  }\n}",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"New Request\",\"url\":\"\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-08T09:40:06.688Z",
+      "updatedAt": "2026-09-08T09:40:06.688Z"
+    },
+    {
+      "id": "c7b2ea77-7c23-495c-b197-f23842249246",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
+      "name": "Put Customer",
+      "request": {
+        "id": "c5d66aff-c9d0-4a0a-8118-a75d4930ee29",
+        "savedRequestId": "c7b2ea77-7c23-495c-b197-f23842249246",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
+        "name": "Put Customer",
+        "mode": "REST",
+        "method": "PUT",
+        "url": "https://publicfnb.kiotapi.com/customers/1868745",
+        "params": [],
+        "headersList": [
+          {
+            "id": "b83ea489-cd74-4241-b8c7-8e39a6ddba60",
+            "key": "Retailer",
+            "value": "{{Retailer}}",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "7ca0cc31-88c6-4675-9b61-3397b3d43c6c",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"Retailer\": \"{{Retailer}}\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{KiotViet-Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "json",
+        "restBody": "{\n    \"address\": \"Address webhook test 20260817\"\n}",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"New Request\",\"url\":\"\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-08T09:41:05.230Z",
+      "updatedAt": "2026-09-08T09:41:05.230Z"
+    },
+    {
+      "id": "fa4288c0-8cb0-4bd3-8f4e-1eb5abca2ddc",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
+      "name": "Post Order - Giao đến",
+      "request": {
+        "id": "85caf8eb-1f98-476f-96e3-17bd0047db4f",
+        "savedRequestId": "fa4288c0-8cb0-4bd3-8f4e-1eb5abca2ddc",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
+        "name": "Post Order - Giao đến",
+        "mode": "REST",
+        "method": "POST",
+        "url": "https://publicfnb.kiotapi.com/orders/create",
+        "params": [],
+        "headersList": [
+          {
+            "id": "f45ee27f-2921-4a63-8470-15c4f415302f",
+            "key": "Retailer",
+            "value": "{{Retailer}}",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "f2e9021e-4de7-4660-907b-5204f15f7e52",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Retailer\": \"{{Retailer}}\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{KiotViet-Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "json",
+        "restBody": "{\n    \"branchId\": 354676,\n    \"customerId\": 1959494,\n    \"orderDetails\": [\n        {\n            \"note\": \"\",\n            \"rank\": 1,\n            \"price\": 125000,\n            \"quantity\": 3,\n            \"productId\": 5563519\n        },\n        {\n            \"note\": \"\",\n            \"rank\": 1,\n            \"price\": 15000,\n            \"quantity\": 2,\n            \"productId\": 5563529\n        }\n    ],\n    \"deliveryDetail\": {\n        \"price\": 15000,\n        \"status\": 1,\n        \"address\": \"Crescent Mall, Số 101 Tôn Dật Tiên, Phường Tân Mỹ, Thành phố Hồ Chí Minh, Việt Nam\",\n        \"receiver\": \"Đỗ Dương Đăng Khoa\",\n        \"wardName\": \"\",\n        \"deliveryCode\": \"2985262645\",\n        \"locationName\": \"\",\n        \"contactNumber\": \"0396090487\",\n        \"partnerDelivery\": {\n            \"code\": \"DT00003\",\n            \"name\": \"Đăng Khoa Giao Hàng\"\n        }\n    }\n}",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "AUTH",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Post Order - Giao đến\",\"url\":\"https://publicfnb.kiotapi.com/orders/create\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Retailer\",\"value\":\"{{Retailer}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{KiotViet-Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"{\\n    \\\"branchId\\\": 354676,\\n    \\\"customerId\\\": 1959494,\\n    \\\"orderDetails\\\": [\\n        {\\n            \\\"note\\\": \\\"\\\",\\n            \\\"rank\\\": 1,\\n            \\\"price\\\": 125000,\\n            \\\"quantity\\\": 3,\\n            \\\"productId\\\": 5563519\\n        },\\n        {\\n            \\\"note\\\": \\\"\\\",\\n            \\\"rank\\\": 1,\\n            \\\"price\\\": 15000,\\n            \\\"quantity\\\": 2,\\n            \\\"productId\\\": 5563529\\n        }\\n    ],\\n    \\\"deliveryDetail\\\": {\\n        \\\"price\\\": 15000,\\n        \\\"status\\\": 1,\\n        \\\"address\\\": \\\"Crescent Mall, Số 101 Tôn Dật Tiên, Phường Tân Mỹ, Thành phố Hồ Chí Minh, Việt Nam\\\",\\n        \\\"receiver\\\": \\\"Đỗ Dương Đăng Khoa\\\",\\n        \\\"wardName\\\": \\\"\\\",\\n        \\\"deliveryCode\\\": \\\"2985262645\\\",\\n        \\\"locationName\\\": \\\"\\\",\\n        \\\"contactNumber\\\": \\\"0396090487\\\",\\n        \\\"partnerDelivery\\\": {\\n            \\\"code\\\": \\\"DT00003\\\",\\n            \\\"name\\\": \\\"Đăng Khoa Giao Hàng\\\"\\n        }\\n    }\\n}\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-08T09:41:39.497Z",
+      "updatedAt": "2026-09-08T10:11:14.294Z"
+    },
+    {
+      "id": "7ce4f821-aaef-488a-8ab5-aa90cf1ca123",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
+      "name": "Get Order",
+      "request": {
+        "id": "587d86e7-07a1-4f56-9d10-9a18eeb22ad4",
+        "savedRequestId": "7ce4f821-aaef-488a-8ab5-aa90cf1ca123",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
+        "name": "Get Order",
+        "mode": "REST",
+        "method": "GET",
+        "url": "https://publicfnb.kiotapi.com/orders/uuid/:uuid",
+        "params": [],
+        "headersList": [
+          {
+            "id": "64c6e4c7-50cd-4a55-8f44-df38d3f7b7c8",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "id": "5e23b630-b3a3-4837-ad60-511b660b570a",
+            "key": "Retailer",
+            "value": "{{Retailer}}",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "815bbf38-3d10-4eaa-a24a-1213f80945a2",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Retailer\": \"{{Retailer}}\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{KiotViet-Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "PARAMS",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"New Request\",\"url\":\"\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-08T09:42:21.709Z",
+      "updatedAt": "2026-09-08T09:42:21.709Z"
+    },
+    {
+      "id": "431b5181-c417-4530-a9be-6f180bc878a1",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
+      "name": "Get Invoices",
+      "request": {
+        "id": "c73bdb72-4ac5-4569-ba7f-2d23a6440364",
+        "savedRequestId": "431b5181-c417-4530-a9be-6f180bc878a1",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
+        "name": "Get Invoices",
+        "mode": "REST",
+        "method": "GET",
+        "url": "https://publicfnb.kiotapi.com/invoices?orderId=192774079&includeInvoiceDelivery=true",
+        "params": [
+          {
+            "id": "4a523b7a-44dd-41fb-bd69-feee81cd39c7",
+            "key": "orderId",
+            "value": "192774079",
+            "enabled": true
+          },
+          {
+            "id": "4b20d057-62ac-4ea8-954e-9a1c83e36d72",
+            "key": "includeInvoiceDelivery",
+            "value": "true",
+            "enabled": true
+          }
+        ],
+        "headersList": [
+          {
+            "id": "7933adcd-2412-4c19-b227-e17eceb26b94",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "id": "1d1069ed-478e-49af-87fa-a88470a741ee",
+            "key": "Retailer",
+            "value": "{{Retailer}}",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "ae6807a7-47e7-4093-8fc0-a31db6ab7854",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Retailer\": \"{{Retailer}}\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{KiotViet-Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"New Request\",\"url\":\"\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-08T09:43:01.975Z",
+      "updatedAt": "2026-09-08T09:43:01.975Z"
+    },
+    {
+      "id": "e5c72e03-e38a-42dd-806f-3d950ab167c3",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
+      "name": "Get Invoice by Id",
+      "request": {
+        "id": "900c9409-31a4-4bbf-8b3f-7d2b603c5a9a",
+        "savedRequestId": "e5c72e03-e38a-42dd-806f-3d950ab167c3",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
+        "name": "Get Invoice by Id",
+        "mode": "REST",
+        "method": "GET",
+        "url": "https://publicfnb.kiotapi.com/invoices/:id",
+        "params": [],
+        "headersList": [
+          {
+            "id": "8f730160-a5f4-4cb8-8438-9838fab7e5f5",
+            "key": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "id": "f6e2f3aa-dbe9-4b91-936d-20f43dfe961e",
+            "key": "Retailer",
+            "value": "{{Retailer}}",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "7ac1ae72-b222-4291-af68-050ee6d36db2",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"Content-Type\": \"application/json\",\n  \"Retailer\": \"{{Retailer}}\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{KiotViet-ClientId}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "HEADERS",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Get Invoice by Id\",\"url\":\"https://publicfnb.kiotapi.com/invoices/:id\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[{\"key\":\"id\",\"value\":\"\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"headersList\":[{\"key\":\"Content-Type\",\"value\":\"application/json\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{KiotViet-ClientId}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-08T09:43:19.539Z",
+      "updatedAt": "2026-09-08T09:43:25.871Z"
     }
   ],
   "expandedCollectionIds": [
@@ -7533,19 +7942,12 @@
     "925ff10c-6428-4f56-b1e6-bd84786a0fb2"
   ],
   "expandedFolderIds": [
-    "a6bed4b5-2fa6-49c4-8e17-6af73ac60dd8",
-    "58f397c3-0b7c-47ec-a41e-7a4f0a9e859b",
-    "3eba61de-7e93-497e-ab02-0daac97727ae",
-    "3d6946a8-8c7c-47e7-9a5d-c14772c1a9b3",
-    "1ab43b4b-9819-4feb-9633-716b7bdf4ccc",
-    "ab934993-9c72-4386-bd8e-3e72044f3301",
     "3f45ac07-3a2d-4224-b42c-5213bf304968",
     "a9abb7ec-7230-461e-90e6-91477704638c",
     "ec84ec6b-4def-460d-b1ee-6372775366af",
     "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
-    "bbe24b51-62c6-4249-8de3-a781ba19ae86",
-    "bd12c7b5-951b-4a20-99e9-a8f9be185e3b",
-    "10e7b2c7-f803-451a-8ef8-a899bb5cc93b",
-    "d140f597-5214-433b-b121-c1abb5204f83"
+    "72d3d982-0101-4ffa-9672-a04ee8a5798d",
+    "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
+    "b8f9d61b-069d-4628-b96c-921bc3e5e234"
   ]
 }

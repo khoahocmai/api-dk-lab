@@ -1,5 +1,120 @@
 [
   {
+    "id": "ac210ba6-c156-4080-b8b6-66349abc016d",
+    "timestamp": "2026-09-08T10:10:33.948Z",
+    "method": "POST",
+    "mode": "REST",
+    "url": "https://api.fnb.kiotviet.vn/identity/connect/token",
+    "status": 200,
+    "duration": 187,
+    "request": {
+      "id": "d01d80ee-5f71-41ae-afe3-6d6dae0d0bab",
+      "savedRequestId": "9a4f2cd7-9fa2-4bfa-9c95-6397296fa49b",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
+      "name": "Get Token",
+      "mode": "REST",
+      "method": "POST",
+      "url": "{{Domain-Token}}/identity/connect/token",
+      "params": [],
+      "headersList": [
+        {
+          "id": "edd08aa5-36c4-4aeb-bc8f-04be5829669c",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": ""
+        }
+      ],
+      "headersText": "{}",
+      "auth": {
+        "type": "none",
+        "bearerToken": "",
+        "basicUsername": "",
+        "basicPassword": "",
+        "apiKeyName": "",
+        "apiKeyValue": "",
+        "apiKeyAddTo": "header"
+      },
+      "bodyType": "x-www-form-urlencoded",
+      "restBody": "",
+      "rawText": "",
+      "formData": [],
+      "urlencoded": [
+        {
+          "id": "d63e44a1-5711-43e7-9ca2-f31e7051b124",
+          "key": "scope",
+          "value": "PublicApi.Access.FNB",
+          "enabled": true,
+          "description": "",
+          "type": "text"
+        },
+        {
+          "id": "aec8902c-6c26-4cc0-bc45-8981a7db0442",
+          "key": "grant_type",
+          "value": "client_credentials",
+          "enabled": true,
+          "description": "",
+          "type": "text"
+        },
+        {
+          "id": "70cf8d00-fb7a-499d-8c34-bfde2b337a78",
+          "key": "client_id",
+          "value": "{{KiotViet-ClientId}}",
+          "enabled": true,
+          "description": "",
+          "type": "text"
+        },
+        {
+          "id": "bc15523f-c5bc-4e41-a33a-9b4715dc4c14",
+          "key": "client_secret",
+          "value": "{{KiotViet-ClientSecret}}",
+          "enabled": true,
+          "description": "",
+          "type": "text"
+        },
+        {
+          "id": "de51c464-9689-42f3-a4fd-132095f5c480",
+          "key": "",
+          "value": "",
+          "enabled": false,
+          "description": "",
+          "type": "text"
+        }
+      ],
+      "gqlQuery": "",
+      "gqlVariables": "{}",
+      "preRequestScript": "",
+      "testScript": "const response = pm.response.json();\n\nif (response.access_token) {\n  pm.environment.set(\"KiotViet-Token\", response.access_token);\n\n  console.log(\"KiotViet token saved successfully\");\n  console.log(\"Expires in:\", response.expires_in, \"seconds\");\n} else {\n  console.error(\"Cannot get KiotViet access token\");\n  console.error(response);\n}",
+      "editorTab": "SCRIPTS",
+      "responseTab": "PRETTY",
+      "savedSnapshot": "{\"name\":\"Get Token\",\"url\":\"{{Domain-Token}}/identity/connect/token\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"x-www-form-urlencoded\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[{\"key\":\"scope\",\"value\":\"PublicApi.Access.FNB\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"grant_type\",\"value\":\"client_credentials\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"client_id\",\"value\":\"{{KiotViet-ClientId}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"client_secret\",\"value\":\"{{KiotViet-ClientSecret}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"const response = pm.response.json();\\n\\nif (response.access_token) {\\n  pm.environment.set(\\\"KiotViet-Token\\\", response.access_token);\\n\\n  console.log(\\\"KiotViet token saved successfully\\\");\\n  console.log(\\\"Expires in:\\\", response.expires_in, \\\"seconds\\\");\\n} else {\\n  console.error(\\\"Cannot get KiotViet access token\\\");\\n  console.error(response);\\n}\",\"presets\":[],\"activePresetId\":\"\"}",
+      "presets": []
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "time": "187 ms",
+      "size": "827 B",
+      "data": {
+        "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3ODg4NjIyMzUsImV4cCI6MTc4ODk0ODYzNSwiaXNzIjoiaHR0cDovL2FwaS5mbmIua2lvdHZpZXQudm4iLCJjbGllbnRfaWQiOiJhNzI2Y2ZmNC1hNGI3LTQ3MzUtYmE1OC05ZDM1YTdhNTg3YzkiLCJjbGllbnRfUmV0YWlsZXJDb2RlIjoiZHhwc29mdHdhcmUiLCJjbGllbnRfUmV0YWlsZXJJZCI6IjUwMTE4MTI1MiIsImNsaWVudF9Vc2VySWQiOiI0NzIyMDUiLCJpYXQiOjE3ODg4NjIyMzUsInNjb3BlIjpbIlB1YmxpY0FwaS5BY2Nlc3MuRk5CIl19.bMZzP0CDMFq3pwJURJY7bQBe4BUrDDS2B1gQIZcys8GuPfv3n_n3lqTzeG-CIN49JkWEbYLBNHMojpxlnqNPRjA7McBm9VblslSHyeUqyEyJw4WzrwEvLgQHlkSkKfgGcXPHyGOROtwszyyjMsLh-srpKnclgNXRoZ6rTG38_ywUrWq35z9006l0-FDRZ1rDJLGzQQkBjFet5Bz4UuqREpUXGQz2AJHtPVGziDKwvN4nb_1_ZiqpAGDiZsmAK-pFMrDv81-6nfikOsP-p1taniWhzU6IC4VwR76znkV6qP3FK8Og0pjUAxCqG38yt-n4WcRmUHJCO0oTi1PsCLSewA",
+        "expires_in": 86400,
+        "token_type": "Bearer",
+        "scope": "PublicApi.Access.FNB"
+      },
+      "headers": {
+        "content-type": "application/json; charset=UTF-8",
+        "transfer-encoding": "chunked",
+        "date": "Tue, 08 Sep 2026 10:10:35 GMT",
+        "cache-control": "no-store, no-cache, max-age=0",
+        "pragma": "no-cache",
+        "server": "kiotviet",
+        "vary": "Accept-Encoding"
+      },
+      "isNetworkError": false
+    }
+  },
+  {
     "id": "10a27994-9061-445e-acf9-8077fc8b8698",
     "timestamp": "2026-09-07T07:06:15.491Z",
     "method": "GQL",
@@ -26789,89 +26904,6 @@
         "content-type": "application/json; charset=utf-8",
         "content-length": "926",
         "date": "Thu, 27 Aug 2026 03:09:30 GMT",
-        "connection": "keep-alive",
-        "keep-alive": "timeout=72"
-      },
-      "isNetworkError": false
-    }
-  },
-  {
-    "id": "b5cbb1bc-8efe-466f-99a7-faec7dd8cf89",
-    "timestamp": "2026-08-27T03:08:57.906Z",
-    "method": "GQL",
-    "mode": "GRAPHQL",
-    "url": "http://localhost:3030/graphql",
-    "status": 200,
-    "duration": 18,
-    "request": {
-      "id": "5c8e8731-5051-4e82-a02b-e6a6a52de76c",
-      "savedRequestId": "8d932c9d-6266-4fb7-9e27-361e7c6537df",
-      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
-      "folderId": "58f397c3-0b7c-47ec-a41e-7a4f0a9e859b",
-      "name": "KiotViet product get by id",
-      "graphqlRootField": "kiotVietProductGetById",
-      "mode": "GRAPHQL",
-      "method": "POST",
-      "url": "{{Domain}}/graphql",
-      "params": [],
-      "headersList": [
-        {
-          "id": "1e895dae-959f-49d6-9ecf-c9564b754962",
-          "key": "X-Requested-Portal",
-          "value": "IT",
-          "enabled": true,
-          "description": "",
-          "type": "text"
-        },
-        {
-          "id": "b775a4d8-e34b-44bc-a562-f333f758bcd5",
-          "key": "",
-          "value": "",
-          "enabled": false,
-          "description": "",
-          "type": "text"
-        }
-      ],
-      "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
-      "auth": {
-        "type": "bearer",
-        "bearerToken": "{{Token}}",
-        "basicUsername": "",
-        "basicPassword": "",
-        "apiKeyName": "",
-        "apiKeyValue": "",
-        "apiKeyAddTo": "header"
-      },
-      "bodyType": "none",
-      "restBody": "",
-      "rawText": "",
-      "formData": [],
-      "urlencoded": [],
-      "gqlQuery": "query KiotVietProductGetById($request: RequestParams!) {\n  kiotVietProductGetById(request: $request) {\n    id\n    kiotvietProductId\n  }\n}",
-      "gqlVariables": "{\n  \"request\": {\n    \"id\": \"01a00e77-043b-74ed-b467-e28b437f0fac\"\n  }\n}",
-      "testScript": "",
-      "editorTab": "BODY",
-      "responseTab": "PRETTY"
-    },
-    "response": {
-      "status": 200,
-      "statusText": "OK",
-      "time": "18 ms",
-      "size": "111 B",
-      "data": {
-        "data": {
-          "kiotVietProductGetById": {
-            "id": "01a00e77-043b-74ed-b467-e28b437f0fac",
-            "kiotvietProductId": "5709834"
-          }
-        }
-      },
-      "headers": {
-        "vary": "Origin",
-        "cache-control": "no-store",
-        "content-type": "application/json; charset=utf-8",
-        "content-length": "112",
-        "date": "Thu, 27 Aug 2026 03:08:59 GMT",
         "connection": "keep-alive",
         "keep-alive": "timeout=72"
       },

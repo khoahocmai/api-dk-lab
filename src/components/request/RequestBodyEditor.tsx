@@ -48,30 +48,18 @@ export function RequestBodyEditor({
   const handleBodyTypeChange = (type: BodyType) => {
     const patch: Partial<RequestItem> = { bodyType: type }
 
-    // Auto-sync Content-Type header in headersList if present or standard
-    const contentTypeMap: Record<BodyType, string | null> = {
-      json: 'application/json',
-      'form-data': 'multipart/form-data',
-      'x-www-form-urlencoded': 'application/x-www-form-urlencoded',
-      raw: 'text/plain',
-      none: null,
-    }
-
-    const targetContentType = contentTypeMap[type]
+    // Strip redundant Content-Type: application/json if present in user headers
     const currentHeaders = activeTab.headersList || []
-    const contentTypeHeaderIdx = currentHeaders.findIndex(
-      (h) => h.key.trim().toLowerCase() === 'content-type',
+    const filteredHeaders = currentHeaders.filter(
+      (h) =>
+        !(
+          h.key.trim().toLowerCase() === 'content-type' &&
+          h.value.trim().toLowerCase() === 'application/json'
+        ),
     )
-
-    if (targetContentType) {
-      if (contentTypeHeaderIdx >= 0) {
-        // If Content-Type exists in headers list, update it
-        const updatedHeaders = currentHeaders.map((h, i) =>
-          i === contentTypeHeaderIdx ? { ...h, value: targetContentType, enabled: true } : h,
-        )
-        patch.headersList = updatedHeaders
-        patch.headersText = convertRowsToHeadersJson(updatedHeaders)
-      }
+    if (filteredHeaders.length !== currentHeaders.length) {
+      patch.headersList = filteredHeaders
+      patch.headersText = convertRowsToHeadersJson(filteredHeaders)
     }
 
     onUpdateTab(patch)

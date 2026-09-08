@@ -46,6 +46,7 @@ import {
   saveEnvironments,
   saveHistory,
   saveSettings,
+  stripRedundantContentTypeHeader,
   stripTransientRequest,
 } from './services/storageService'
 import {
@@ -63,7 +64,7 @@ import {
   getIntrospectionEndpointAndHeaders,
   parseRelaxedJSON,
 } from './services/graphqlService'
-import { isLocalhostUrl, parseUrlToQueryParams } from './utils/urlHelper'
+import { convertRowsToHeadersJson, isLocalhostUrl, parseUrlToQueryParams } from './utils/urlHelper'
 import { exportPostmanCollectionV2, importPostmanCollectionV2 } from './utils/postmanHelper'
 import { moveFolderItem, moveRequestItem } from './utils/treeHelper'
 import { executeScript, type ScriptContext } from './services/scriptRunner'
@@ -831,17 +832,16 @@ function App() {
       setActiveTabId(existingTab.id)
       setMobileView('REQUEST')
     } else {
-      const initialSnapshot = createRequestSnapshot(saved.request)
+      const cleanReq = stripRedundantContentTypeHeader(saved.request)
       const opened = reviveRequest({
-        ...saved.request,
+        ...cleanReq,
         id: createId(),
         savedRequestId: saved.id,
         collectionId: saved.collectionId,
         folderId: saved.folderId,
         name: saved.name,
-        savedSnapshot: initialSnapshot,
       })
-      opened.savedSnapshot = initialSnapshot
+      opened.savedSnapshot = createRequestSnapshot(opened)
       setTabs((current) => [...current, opened])
       setActiveTabId(opened.id)
       setMobileView('REQUEST')
@@ -1596,11 +1596,12 @@ function App() {
           query: resolveTemplates(activeTab.gqlQuery, effectiveEnvironment),
           variables: parsedVariables,
         }
-        if (!headers['Content-Type'] && !headers['content-type']) {
+        const hasContentType = Object.keys(headers).some((k) => k.toLowerCase() === 'content-type')
+        if (!hasContentType) {
           headers['Content-Type'] = 'application/json'
         }
       } else {
-        const hasContentType = Boolean(headers['Content-Type'] || headers['content-type'])
+        const hasContentType = Object.keys(headers).some((k) => k.toLowerCase() === 'content-type')
 
         if (activeTab.bodyType === 'json') {
           if (activeTab.restBody && activeTab.restBody.trim()) {
@@ -1916,12 +1917,18 @@ function App() {
       activeTab && activeTab.url.trim() ? activeTab.url.trim() : baseRequest.url
     const inheritedHeadersList =
       activeTab && activeTab.headersList && activeTab.headersList.length > 0
-        ? activeTab.headersList
-        : baseRequest.headersList
+        ? activeTab.headersList.filter(
+            (h) =>
+              !(
+                h.key.trim().toLowerCase() === 'content-type' &&
+                h.value.trim().toLowerCase() === 'application/json'
+              ),
+          )
+        : []
     const inheritedHeadersText =
-      activeTab && activeTab.headersText
-        ? activeTab.headersText
-        : baseRequest.headersText
+      inheritedHeadersList.length > 0
+        ? convertRowsToHeadersJson(inheritedHeadersList)
+        : '{}'
     const inheritedAuth =
       activeTab && activeTab.auth ? activeTab.auth : baseRequest.auth
 
@@ -2054,12 +2061,18 @@ function App() {
       activeTab && activeTab.url.trim() ? activeTab.url.trim() : baseRequest.url
     const inheritedHeadersList =
       activeTab && activeTab.headersList && activeTab.headersList.length > 0
-        ? activeTab.headersList
-        : baseRequest.headersList
+        ? activeTab.headersList.filter(
+            (h) =>
+              !(
+                h.key.trim().toLowerCase() === 'content-type' &&
+                h.value.trim().toLowerCase() === 'application/json'
+              ),
+          )
+        : []
     const inheritedHeadersText =
-      activeTab && activeTab.headersText
-        ? activeTab.headersText
-        : baseRequest.headersText
+      inheritedHeadersList.length > 0
+        ? convertRowsToHeadersJson(inheritedHeadersList)
+        : '{}'
     const inheritedAuth =
       activeTab && activeTab.auth ? activeTab.auth : baseRequest.auth
 

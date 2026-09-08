@@ -340,7 +340,7 @@ export function parseCurlCommand(rawCurl: string): Partial<RequestItem> | null {
   let method: HttpMethod = 'GET'
   let hasExplicitMethod = false
   let url = ''
-  const headersList: KeyValueRow[] = []
+  let headersList: KeyValueRow[] = []
   const headersRecord: Record<string, string> = {}
   let bodyType: BodyType = 'none'
   let rawBody = ''
@@ -677,6 +677,16 @@ export function parseCurlCommand(rawCurl: string): Partial<RequestItem> | null {
 
   const { params } = parseUrlToQueryParams(url)
   const pathVariables = syncPathVariables(url, [])
+
+  if (mode === 'GRAPHQL' || bodyType === 'json') {
+    headersList = headersList.filter(
+      (h) =>
+        !(
+          h.key.trim().toLowerCase() === 'content-type' &&
+          h.value.trim().toLowerCase() === 'application/json'
+        ),
+    )
+  }
 
   const headersText =
     headersList.length > 0
