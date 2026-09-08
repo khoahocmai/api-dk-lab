@@ -155,6 +155,58 @@ export function RequestEditor({
   )
   const isScriptsActive = activeTab.editorTab === 'SCRIPTS' || activeTab.editorTab === 'TESTS'
 
+  const hasBodyContent = useMemo(() => {
+    if (isGraphQL) {
+      return Boolean(activeTab.gqlQuery && activeTab.gqlQuery.trim())
+    }
+
+    const { bodyType, restBody, rawText, urlencoded, formData } = activeTab
+
+    if (!bodyType || bodyType === 'none') {
+      return false
+    }
+
+    if (bodyType === 'json') {
+      const trimmed = (restBody || '').trim()
+      const compact = trimmed.replace(/\s+/g, '')
+      return trimmed.length > 0 && compact !== '{}' && compact !== '[]'
+    }
+
+    if (bodyType === 'raw') {
+      const trimmed = (rawText || '').trim()
+      const compact = trimmed.replace(/\s+/g, '')
+      return trimmed.length > 0 && compact !== '{}'
+    }
+
+    if (bodyType === 'x-www-form-urlencoded') {
+      return (urlencoded || []).some(
+        (row) => row.enabled && Boolean((row.key && row.key.trim()) || (row.value && row.value.trim())),
+      )
+    }
+
+    if (bodyType === 'form-data') {
+      return (formData || []).some(
+        (row) =>
+          row.enabled &&
+          Boolean(
+            (row.key && row.key.trim()) ||
+              (row.value && row.value.trim()) ||
+              (row.fileName && row.fileName.trim()),
+          ),
+      )
+    }
+
+    return false
+  }, [
+    isGraphQL,
+    activeTab.gqlQuery,
+    activeTab.bodyType,
+    activeTab.restBody,
+    activeTab.rawText,
+    activeTab.urlencoded,
+    activeTab.formData,
+  ])
+
   return (
     <div className="request-editor" style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%', minHeight: 0, overflow: 'hidden' }}>
       {/* 1. HÀNG SUB-TABS TRÊN CÙNG (CỐ ĐỊNH) */}
@@ -168,7 +220,7 @@ export function RequestEditor({
                 onClick={() => onUpdateTab({ editorTab: 'BODY' })}
                 className={`editor-tab ${isQueryTabActive ? 'is-active' : ''}`}
               >
-                Query
+                Query {hasBodyContent && <span className="tab-indicator-dot" title="GraphQL has query content" />}
               </button>
 
               <button
@@ -227,7 +279,7 @@ export function RequestEditor({
                 onClick={() => onUpdateTab({ editorTab: 'BODY' })}
                 className={`editor-tab ${activeTab.editorTab === 'BODY' ? 'is-active' : ''}`}
               >
-                Body
+                Body {hasBodyContent && <span className="tab-indicator-dot" title="Request has body content" />}
               </button>
 
               <button

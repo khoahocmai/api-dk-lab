@@ -2210,6 +2210,17 @@
   background: var(--primary-subtle);
 }
 
+/* Tab Active Indicator Dot (e.g. Body has content) */
+.tab-indicator-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
+  flex-shrink: 0;
+}
+
 /* ==========================================================================
    KEY VALUE TABLE (Params, Headers, FormData)
    ========================================================================== */
