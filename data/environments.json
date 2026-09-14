@@ -12,7 +12,7 @@
       {
         "id": "68e78681-e640-4795-8c0d-f92c307a183f",
         "key": "Token",
-        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imtob2EuZGRkQHRhcHRhcC5jb20udm4iLCJzdWIiOiIwMTljMzg5ZC0yNmUyLTcxMWUtYjE3Ni02OTJlNTgwYTE2YjYiLCJ0ZW5hbnRJZCI6IjAxOTJmZGE0LWJhMWItNzZlZi1iYjFhLTY0YzA0M2E4ZTRhNCIsInBvcnRhbHMiOlsiSVQiXSwibmFtZSI6IsSQ4buXIETGsMahbmcgxJDEg25nIEtob2EiLCJlbWFpbCI6Imtob2EuZGRkQHRhcHRhcC5jb20udm4iLCJpYXQiOjE3ODg3NTA5MjAsImV4cCI6MTc4ODc5NDEyMCwiaXNzIjoiRFhQIEF1dGggU2VydmljZSJ9.-c-15xgYWDTI8YDKxsgadTXMyti9rHe7ywPAaKIMmzU",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imtob2EuZGRkQHRhcHRhcC5jb20udm4iLCJzdWIiOiIwMTljMzg5ZC0yNmUyLTcxMWUtYjE3Ni02OTJlNTgwYTE2YjYiLCJ0ZW5hbnRJZCI6IjAxOTJmZGE0LWJhMWItNzZlZi1iYjFhLTY0YzA0M2E4ZTRhNCIsInBvcnRhbHMiOlsiSVQiXSwibmFtZSI6IsSQ4buXIETGsMahbmcgxJDEg25nIEtob2EiLCJlbWFpbCI6Imtob2EuZGRkQHRhcHRhcC5jb20udm4iLCJpYXQiOjE3ODkzNTU1OTYsImV4cCI6MTc4OTM5ODc5NiwiaXNzIjoiRFhQIEF1dGggU2VydmljZSJ9.r7-UCcnevbugP-Dys2iW8hT-wmoLMNhyUNKGfOdG5nk",
         "enabled": true,
         "secret": false
       }
@@ -31,7 +31,7 @@
       {
         "id": "c30b2312-1442-4af3-af04-71d99b7f105f",
         "key": "Token",
-        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRhbmcua2hvYS5kZGQiLCJzdWIiOiIwMTljMzg5ZC0yNmUyLTcxMWUtYjE3Ni02OTJlNTgwYTE2YjYiLCJ0ZW5hbnRJZCI6IjAxOTJmZGE0LWJhMWItNzZlZi1iYjFhLTY0YzA0M2E4ZTRhNCIsInBvcnRhbHMiOlsiSVQiXSwibmFtZSI6IsSQ4buXIETGsMahbmcgxJDEg25nIEtob2EiLCJlbWFpbCI6Imtob2EuZGRkQHRhcHRhcC5jb20udm4iLCJpYXQiOjE3ODg3NDcyNDEsImV4cCI6MTc4ODc5MDQ0MSwiaXNzIjoiRFhQIEF1dGggU2VydmljZSJ9.JLWqs0caR9n7Ti4ukaqUMfDLU5bpVQ7Pg_A7N-YbdqM",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRhbmcua2hvYS5kZGQiLCJzdWIiOiIwMTljMzg5ZC0yNmUyLTcxMWUtYjE3Ni02OTJlNTgwYTE2YjYiLCJ0ZW5hbnRJZCI6IjAxOTJmZGE0LWJhMWItNzZlZi1iYjFhLTY0YzA0M2E4ZTRhNCIsInBvcnRhbHMiOlsiSVQiXSwibmFtZSI6IsSQ4buXIETGsMahbmcgxJDEg25nIEtob2EiLCJlbWFpbCI6Imtob2EuZGRkQHRhcHRhcC5jb20udm4iLCJpYXQiOjE3ODg5Mjg2OTYsImV4cCI6MTc4ODk3MTg5NiwiaXNzIjoiRFhQIEF1dGggU2VydmljZSJ9.ZBVHEYjwQ_CPVLczTpfQj4nHMu1iIn7UNcjeCVhxQtY",
         "enabled": true,
         "secret": false
       }
@@ -68,7 +68,7 @@
       },
       {
         "id": "feb7ab0b-f5e8-4c0e-b6f6-cd1220a850d6",
-        "key": "token",
+        "key": "Token",
         "value": "EAAAl3FywnIbTOAqDynTVSM7tGwYo2KsYjDGEHRTEzp_-NG08WxfD26-2CcE4AcT",
         "enabled": true,
         "secret": true
@@ -114,6 +114,50 @@
         "key": "KiotViet-Token",
         "value": "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3ODg4NjIyMzUsImV4cCI6MTc4ODk0ODYzNSwiaXNzIjoiaHR0cDovL2FwaS5mbmIua2lvdHZpZXQudm4iLCJjbGllbnRfaWQiOiJhNzI2Y2ZmNC1hNGI3LTQ3MzUtYmE1OC05ZDM1YTdhNTg3YzkiLCJjbGllbnRfUmV0YWlsZXJDb2RlIjoiZHhwc29mdHdhcmUiLCJjbGllbnRfUmV0YWlsZXJJZCI6IjUwMTE4MTI1MiIsImNsaWVudF9Vc2VySWQiOiI0NzIyMDUiLCJpYXQiOjE3ODg4NjIyMzUsInNjb3BlIjpbIlB1YmxpY0FwaS5BY2Nlc3MuRk5CIl19.bMZzP0CDMFq3pwJURJY7bQBe4BUrDDS2B1gQIZcys8GuPfv3n_n3lqTzeG-CIN49JkWEbYLBNHMojpxlnqNPRjA7McBm9VblslSHyeUqyEyJw4WzrwEvLgQHlkSkKfgGcXPHyGOROtwszyyjMsLh-srpKnclgNXRoZ6rTG38_ywUrWq35z9006l0-FDRZ1rDJLGzQQkBjFet5Bz4UuqREpUXGQz2AJHtPVGziDKwvN4nb_1_ZiqpAGDiZsmAK-pFMrDv81-6nfikOsP-p1taniWhzU6IC4VwR76znkV6qP3FK8Og0pjUAxCqG38yt-n4WcRmUHJCO0oTi1PsCLSewA",
         "enabled": true
+      }
+    ]
+  },
+  {
+    "id": "a773c41d-563c-41f9-a468-763cc262deff",
+    "name": "Dxp - voicebot - local",
+    "variables": [
+      {
+        "id": "aab996e6-34d9-4cec-875f-ebff05d9d47c",
+        "key": "Domain-supervisor-nginx",
+        "value": "http://localhost:8791",
+        "enabled": true
+      },
+      {
+        "id": "42e09522-2b38-4ba9-836c-66b648ce0398",
+        "key": "Token-supervisor-nginx",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6InN1cGVydmlzb3IiLCJpYXQiOjE3ODkzNzAwMjMsImV4cCI6MTc4OTM5ODgyM30.XYOX6FesSxeak4mzycRQm5PylgMtkyHxpJ8S5LBUhew",
+        "enabled": true,
+        "secret": true
+      },
+      {
+        "id": "f7bfe4a7-3f7a-4ad7-9bdf-d6e29ec3e4b8",
+        "key": "Domain",
+        "value": "http://localhost:8781",
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "id": "aaeeadc4-7c93-40d2-82bc-c37e7da7498d",
+    "name": "Dxp - RAA - local",
+    "variables": [
+      {
+        "id": "8a3794c9-0ac0-4d06-aba5-bb9401e494a6",
+        "key": "Domain",
+        "value": "http://localhost:8091",
+        "enabled": true
+      },
+      {
+        "id": "b40fd093-a1df-43f4-957f-4429d71bff81",
+        "key": "Token",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwMWEwOGZkZC0wYmEwLTcyZWEtOGJjNS0zNDlhMThhZDA3NGYiLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6InN1cGVydmlzb3IiLCJpYXQiOjE3ODkxNzg4ODQsImV4cCI6MTc4OTIwNzY4NH0.iRee8dydhRJDsORzVYEYHYTa1OCr-Lo3BLt4l-Hl2Ww",
+        "enabled": true,
+        "secret": true
       }
     ]
   }

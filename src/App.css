@@ -709,6 +709,8 @@
   gap: 6px;
   outline: none;
   transition: color 0.12s ease, border-color 0.12s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .editor-tab:hover {
@@ -3609,6 +3611,8 @@ input::selection {
   min-height: 0;
   overflow: hidden;
   background: #12141a;
+  container-type: inline-size;
+  container-name: scripts-editor;
 }
 
 .scripts-editor-toolbar {
@@ -3617,28 +3621,35 @@ input::selection {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 12px;
+  padding: 0 10px;
   background: var(--bg-input, #161922);
   border-bottom: 1px solid #232736;
   flex-shrink: 0;
   gap: 8px;
+  overflow: hidden;
+  white-space: nowrap;
+  container-type: inline-size;
+  container-name: scripts-toolbar;
 }
 
 .scripts-segmented-control {
   display: inline-flex;
   align-items: center;
   padding: 2px;
-  gap: 2px;
+  gap: 3px;
   background: #111319;
   border: 1px solid #282e42;
   border-radius: 6px;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .scripts-segment-btn {
-  height: 24px;
+  height: 26px;
   padding: 0 10px;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   font-size: 11.5px;
   font-weight: 500;
@@ -3649,6 +3660,9 @@ input::selection {
   cursor: pointer;
   transition: all 0.15s ease;
   user-select: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  position: relative;
 }
 
 .scripts-segment-btn:hover:not(.is-active) {
@@ -3663,11 +3677,18 @@ input::selection {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
+.scripts-tab-text {
+  white-space: nowrap;
+  line-height: 1;
+}
+
 .scripts-dot-indicator {
   display: inline-block;
   width: 6px;
   height: 6px;
   border-radius: 50%;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
 }
 
 .scripts-dot-prerequest {
@@ -3684,15 +3705,18 @@ input::selection {
   display: flex;
   align-items: center;
   gap: 6px;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .scripts-toolbar-btn {
-  height: 24px;
+  height: 26px;
   padding: 0 8px;
   font-size: 11px;
   font-weight: 500;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 5px;
   border-radius: 4px;
   border: 1px solid #282e42;
@@ -3700,6 +3724,9 @@ input::selection {
   color: #cbd5e1;
   cursor: pointer;
   transition: all 0.12s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  position: relative;
 }
 
 .scripts-toolbar-btn:hover {
@@ -3707,6 +3734,114 @@ input::selection {
   background: #282e42;
   color: #ffffff;
 }
+
+.scripts-btn-text {
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.scripts-toolbar-snippets-btn {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: #60a5fa;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.scripts-toolbar-snippets-btn:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.5);
+  color: #93c5fd;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.scripts-toolbar-snippets-icon {
+  color: #60a5fa;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   RESPONSIVE SUB-TABS & ACTIONS (Icon-Only Mode)
+   ========================================================================== */
+
+/* Utility fallback */
+.hidden {
+  display: none !important;
+}
+
+/* 1. When toolbar container is narrow (e.g. panel resized < 580px) */
+@container scripts-toolbar (max-width: 580px) {
+  .scripts-tab-text,
+  .scripts-btn-text {
+    display: none !important;
+  }
+
+  .scripts-segment-btn {
+    width: 28px !important;
+    min-width: 28px !important;
+    height: 26px !important;
+    padding: 0 !important;
+    justify-content: center !important;
+    gap: 0 !important;
+  }
+
+  .scripts-toolbar-btn {
+    width: 28px !important;
+    min-width: 28px !important;
+    height: 26px !important;
+    padding: 0 !important;
+    justify-content: center !important;
+    gap: 0 !important;
+  }
+
+  .scripts-dot-indicator {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 5px;
+    height: 5px;
+  }
+}
+
+/* 2. Media query breakpoint fallback for screens <= 1100px */
+@media (max-width: 1100px) {
+  .scripts-tab-text,
+  .scripts-btn-text,
+  .max-\[1100px\]\:hidden {
+    display: none !important;
+  }
+
+  .scripts-segment-btn {
+    width: 28px !important;
+    min-width: 28px !important;
+    height: 26px !important;
+    padding: 0 !important;
+    justify-content: center !important;
+    gap: 0 !important;
+  }
+
+  .scripts-toolbar-btn {
+    width: 28px !important;
+    min-width: 28px !important;
+    height: 26px !important;
+    padding: 0 !important;
+    justify-content: center !important;
+    gap: 0 !important;
+  }
+
+  .scripts-dot-indicator {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 5px;
+    height: 5px;
+  }
+}
+
+/* ==========================================================================
+   SCRIPTS EDITOR CONTENT & PANES (Flex layout)
+   ========================================================================== */
 
 .scripts-editor-content {
   flex: 1 1 0%;
@@ -3737,12 +3872,21 @@ input::selection {
   background: #12141a !important;
   height: 100% !important;
   max-height: 100% !important;
+  width: 100% !important;
+  flex: 1 1 0%;
+  min-width: 0;
 }
 
+.scripts-editor-pane .codemirror-wrapper .cm-editor {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+/* Snippets Collapsible Sidebar (210px) */
 .scripts-snippets-sidebar {
-  width: 240px;
-  min-width: 240px;
-  max-width: 240px;
+  width: 210px;
+  min-width: 210px;
+  max-width: 210px;
   flex-shrink: 0;
   height: 100%;
   border-left: 1px solid #232736;
@@ -3750,13 +3894,43 @@ input::selection {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  box-sizing: border-box;
+  transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              min-width 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              max-width 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.2s ease,
+              opacity 0.15s ease;
+}
+
+.scripts-snippets-sidebar.is-collapsed {
+  width: 0 !important;
+  min-width: 0 !important;
+  max-width: 0 !important;
+  border-left-width: 0 !important;
+  border-left-color: transparent !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  display: none !important;
+}
+
+.scripts-snippets-inner {
+  width: 210px;
+  min-width: 210px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .scripts-snippets-header {
-  padding: 8px 12px;
+  height: 36px;
+  min-height: 36px;
+  padding: 0 8px 0 10px;
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: space-between;
   border-bottom: 1px solid #1e2230;
   font-size: 11px;
   font-weight: 700;
@@ -3764,6 +3938,39 @@ input::selection {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   flex-shrink: 0;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.scripts-snippets-header-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scripts-snippets-collapse-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.scripts-snippets-collapse-btn:hover {
+  background: #1f2433;
+  border-color: #2e354b;
+  color: #f1f5f9;
 }
 
 .scripts-snippets-list {
@@ -3773,7 +3980,7 @@ input::selection {
   padding: 8px 10px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
 }
 
 .scripts-snippet-item {
@@ -3788,6 +3995,7 @@ input::selection {
   flex-direction: column;
   gap: 2px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .scripts-snippet-item:hover {
@@ -3802,6 +4010,8 @@ input::selection {
   font-weight: 600;
   font-size: 11px;
   color: #f1f5f9;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .scripts-snippet-desc {
@@ -3809,6 +4019,11 @@ input::selection {
   color: #64748b;
   line-height: 1.25;
   padding-left: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 /* ==========================================================================

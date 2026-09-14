@@ -10,8 +10,12 @@
     },
     {
       "id": "9112c630-a645-4c34-83a2-832cecf83531",
-      "name": "KiotViet POS",
+      "name": "KiotViet POS - Retail",
       "description": ""
+    },
+    {
+      "id": "11da27a5-66b9-4761-b989-861ccacff7ab",
+      "name": "Dxp - AI"
     }
   ],
   "folders": [
@@ -310,10 +314,70 @@
       "name": "Sổ quỹ"
     },
     {
+      "id": "293c5dc2-d9c0-4283-86ed-9108b1cd8e62",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
+      "name": "Webhook"
+    },
+    {
       "id": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
       "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
       "parentId": "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
       "name": "3rd call api"
+    },
+    {
+      "id": "50994c7d-8516-453e-a683-424d8fd3d6a3",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": null,
+      "name": "Notification"
+    },
+    {
+      "id": "2252affd-36b7-4808-b836-c03af4bbe261",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "parentId": "50994c7d-8516-453e-a683-424d8fd3d6a3",
+      "name": "Novu"
+    },
+    {
+      "id": "1a8478d3-0bc2-49f1-99fd-c0fc88ae9623",
+      "collectionId": "11da27a5-66b9-4761-b989-861ccacff7ab",
+      "parentId": "7e5cd782-969a-4ed5-8301-4807419ec5c3",
+      "name": "Auth"
+    },
+    {
+      "id": "d54343c4-5791-4e9c-b438-c88b5999799d",
+      "collectionId": "11da27a5-66b9-4761-b989-861ccacff7ab",
+      "parentId": "7e5cd782-969a-4ed5-8301-4807419ec5c3",
+      "name": "Dashboard"
+    },
+    {
+      "id": "11b39cc6-0ddb-4d37-942c-7c93556b5792",
+      "collectionId": "11da27a5-66b9-4761-b989-861ccacff7ab",
+      "parentId": "d6aa9c18-59e9-4848-b29c-200efc49f2e3",
+      "name": "Dashboard"
+    },
+    {
+      "id": "857c7815-eefb-45e1-8aa4-a6a0e8da1a83",
+      "collectionId": "11da27a5-66b9-4761-b989-861ccacff7ab",
+      "parentId": null,
+      "name": "Voicebot"
+    },
+    {
+      "id": "c440ae29-3b73-4d2d-8cbc-df68e4e92521",
+      "collectionId": "11da27a5-66b9-4761-b989-861ccacff7ab",
+      "parentId": null,
+      "name": "RAA"
+    },
+    {
+      "id": "7e5cd782-969a-4ed5-8301-4807419ec5c3",
+      "collectionId": "11da27a5-66b9-4761-b989-861ccacff7ab",
+      "parentId": "857c7815-eefb-45e1-8aa4-a6a0e8da1a83",
+      "name": "Supervisor"
+    },
+    {
+      "id": "d6aa9c18-59e9-4848-b29c-200efc49f2e3",
+      "collectionId": "11da27a5-66b9-4761-b989-861ccacff7ab",
+      "parentId": "c440ae29-3b73-4d2d-8cbc-df68e4e92521",
+      "name": "Supervisor"
     }
   ],
   "savedRequests": [
@@ -453,7 +517,7 @@
       "folderId": null,
       "name": "Health",
       "request": {
-        "id": "64aa25c4-2712-4f73-b7d1-213fa82ddebc",
+        "id": "9052173a-7ee6-4cd3-b58e-f39277bea294",
         "savedRequestId": "e0c7a17f-afa5-4166-abb3-5eb22132a9e6",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": null,
@@ -489,12 +553,15 @@
         "urlencoded": [],
         "gqlQuery": "query Health {\n  health {\n    message\n  }\n}",
         "gqlVariables": "{}",
+        "preRequestScript": "",
         "testScript": "",
         "editorTab": "BODY",
-        "responseTab": "PRETTY"
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Health\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"health\",\"params\":[],\"pathVariables\":[],\"headersList\":[],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query Health {\\n  health {\\n    message\\n  }\\n}\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
       },
       "createdAt": "2026-08-21T05:26:37.459Z",
-      "updatedAt": "2026-08-27T02:13:40.650Z"
+      "updatedAt": "2026-09-11T04:49:14.868Z"
     },
     {
       "id": "a7f0d1cb-18e4-4f38-ae78-60a482ab92c9",
@@ -614,7 +681,7 @@
       "folderId": "3eba61de-7e93-497e-ab02-0daac97727ae",
       "name": "KiotViet branch get pagination",
       "request": {
-        "id": "461f7e02-3135-4ebd-91c9-f54f06065e93",
+        "id": "99449ae3-42c5-4201-8334-8800e2674c66",
         "savedRequestId": "c1ad8d59-9cce-45dc-b91e-f91ef779b4de",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": "3eba61de-7e93-497e-ab02-0daac97727ae",
@@ -625,13 +692,6 @@
         "url": "{{Domain}}/graphql",
         "params": [],
         "headersList": [
-          {
-            "id": "98f17cce-b64a-4fc7-8071-3348748b9f25",
-            "key": "Authorization",
-            "value": "Bearer {{token}}",
-            "enabled": true,
-            "description": ""
-          },
           {
             "id": "19d8cd28-a2be-4779-9f9c-6d2a33effa58",
             "key": "X-Requested-Portal",
@@ -647,10 +707,10 @@
             "description": ""
           }
         ],
-        "headersText": "{\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
         "auth": {
-          "type": "none",
-          "bearerToken": "",
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
           "basicUsername": "",
           "basicPassword": "",
           "apiKeyName": "",
@@ -664,13 +724,15 @@
         "urlencoded": [],
         "gqlQuery": "query KiotVietBranchGetPagination($filters: KiotVietBranchGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietBranchGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      kiotvietBranchId\n      branchName\n      retailerId\n      email\n      kiotvietModifiedAt\n      kiotvietCreatedAt\n      lastSyncedAt\n      locationName\n      address\n      wardName\n    }\n  }\n}",
         "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+        "preRequestScript": "",
         "testScript": "",
-        "editorTab": "BODY",
+        "editorTab": "HEADERS",
         "responseTab": "PRETTY",
-        "savedSnapshot": "{\"name\":\"KiotViet branch get pagination\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietBranchGetPagination\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Authorization\",\"value\":\"Bearer {{token}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietBranchGetPagination($filters: KiotVietBranchGetPaginationFilterDto!, $params: PaginationDto!) {\\n  kiotVietBranchGetPagination(filters: $filters, params: $params) {\\n    total\\n    items {\\n      id\\n      kiotvietBranchId\\n      branchName\\n      retailerId\\n      email\\n      kiotvietModifiedAt\\n      kiotvietCreatedAt\\n      lastSyncedAt\\n      locationName\\n      address\\n    }\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"filters\\\": {\\n    \\\"keywords\\\": \\\"\\\"\\n  },\\n  \\\"params\\\": {\\n    \\\"page\\\": 1,\\n    \\\"pageSize\\\": 20,\\n    \\\"sortBy\\\": \\\"createdAt\\\",\\n    \\\"sortDirection\\\": \\\"DESC\\\"\\n  }\\n}\",\"testScript\":\"\"}"
+        "savedSnapshot": "{\"name\":\"KiotViet branch get pagination\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietBranchGetPagination\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Authorization\",\"value\":\"Bearer {{token}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietBranchGetPagination($filters: KiotVietBranchGetPaginationFilterDto!, $params: PaginationDto!) {\\n  kiotVietBranchGetPagination(filters: $filters, params: $params) {\\n    total\\n    items {\\n      id\\n      kiotvietBranchId\\n      branchName\\n      retailerId\\n      email\\n      kiotvietModifiedAt\\n      kiotvietCreatedAt\\n      lastSyncedAt\\n      locationName\\n      address\\n      wardName\\n    }\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"filters\\\": {\\n    \\\"keywords\\\": \\\"\\\"\\n  },\\n  \\\"params\\\": {\\n    \\\"page\\\": 1,\\n    \\\"pageSize\\\": 20,\\n    \\\"sortBy\\\": \\\"createdAt\\\",\\n    \\\"sortDirection\\\": \\\"DESC\\\"\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
       },
       "createdAt": "2026-08-21T10:24:01.220Z",
-      "updatedAt": "2026-08-27T03:20:29.463Z"
+      "updatedAt": "2026-09-09T02:46:27.548Z"
     },
     {
       "id": "d25c79ba-a8bd-455d-b536-3b5282933bbe",
@@ -678,7 +740,7 @@
       "folderId": "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
       "name": "KiotViet check connection",
       "request": {
-        "id": "203c545e-5cff-413c-a9ba-52dba952ebe9",
+        "id": "00cdd940-4f4e-4835-ad0d-16a015a64239",
         "savedRequestId": "d25c79ba-a8bd-455d-b536-3b5282933bbe",
         "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
         "folderId": "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
@@ -690,12 +752,6 @@
         "params": [],
         "headersList": [
           {
-            "id": "7b8d3666-0dca-486a-9b93-1f66611e1dd6",
-            "key": "Authorization",
-            "value": "Bearer {{token}}",
-            "enabled": true
-          },
-          {
             "id": "6e05d7a5-465e-4d7b-837a-57e0c458b191",
             "key": "X-Requested-Portal",
             "value": "IT",
@@ -706,14 +762,14 @@
             "id": "476ee6ee-e9bd-4179-9470-87b27384b30d",
             "key": "",
             "value": "",
-            "enabled": true,
+            "enabled": false,
             "description": ""
           }
         ],
-        "headersText": "{\n  \"Authorization\": \"Bearer {{token}}\",\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
         "auth": {
-          "type": "none",
-          "bearerToken": "",
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
           "basicUsername": "",
           "basicPassword": "",
           "apiKeyName": "",
@@ -727,12 +783,15 @@
         "urlencoded": [],
         "gqlQuery": "query KiotVietCheckConnection($data: KiotVietCheckConnectInputDto!) {\n  kiotVietCheckConnection(data: $data)\n}",
         "gqlVariables": "{\n  \"data\": {\n    \"clientId\": \"\",\n    \"clientSecret\": \"\"\n  }\n}",
+        "preRequestScript": "",
         "testScript": "",
         "editorTab": "BODY",
-        "responseTab": "PRETTY"
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"KiotViet check connection\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietCheckConnection\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Authorization\",\"value\":\"Bearer {{token}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"},{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietCheckConnection($data: KiotVietCheckConnectInputDto!) {\\n  kiotVietCheckConnection(data: $data)\\n}\",\"gqlVariables\":\"{\\n  \\\"data\\\": {\\n    \\\"clientId\\\": \\\"\\\",\\n    \\\"clientSecret\\\": \\\"\\\"\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
       },
       "createdAt": "2026-08-21T10:24:52.692Z",
-      "updatedAt": "2026-08-21T10:24:52.692Z"
+      "updatedAt": "2026-09-11T06:55:10.456Z"
     },
     {
       "id": "a9319f73-0d27-43d1-a7db-bf213ac3f4c3",
@@ -7608,6 +7667,64 @@
       "updatedAt": "2026-09-08T09:40:06.688Z"
     },
     {
+      "id": "50809d01-0411-47cf-8e4b-3f29e592567c",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
+      "name": "Delete Webhook",
+      "request": {
+        "id": "931ca8c2-1a05-4902-bab7-58b53fe1603d",
+        "savedRequestId": "50809d01-0411-47cf-8e4b-3f29e592567c",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
+        "name": "Delete Webhook",
+        "mode": "REST",
+        "method": "DELETE",
+        "url": "https://publicfnb.kiotapi.com/webhooks/:id",
+        "params": [],
+        "headersList": [
+          {
+            "id": "29210815-dc8d-480f-8b08-377ef8ab108d",
+            "key": "Retailer",
+            "value": "{{Retailer}}",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "e18982a9-7f5c-4515-9f7d-e0cd5904fa50",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"Retailer\": \"{{Retailer}}\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{KiotViet-Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "{\n  \"Webhook\": {\n    \"Type\": \"customer.update\",\n    \"Url\": \"https://api.dxpdemos.com/kiotviet/webhooks/customer/update?noecho\",\n    \"IsActive\": true,\n    \"Description\": \"URL Webhook customer update\"\n  }\n}",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "PARAMS",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Post Webhook Copy\",\"url\":\"https://publicfnb.kiotapi.com/webhooks\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"Retailer\",\"value\":\"{{Retailer}}\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{KiotViet-Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"{\\n  \\\"Webhook\\\": {\\n    \\\"Type\\\": \\\"customer.update\\\",\\n    \\\"Url\\\": \\\"https://api.dxpdemos.com/kiotviet/webhooks/customer/update?noecho\\\",\\n    \\\"IsActive\\\": true,\\n    \\\"Description\\\": \\\"URL Webhook customer update\\\"\\n  }\\n}\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-09T02:45:03.383Z",
+      "updatedAt": "2026-09-09T03:28:24.597Z"
+    },
+    {
       "id": "c7b2ea77-7c23-495c-b197-f23842249246",
       "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
       "folderId": "b8f9d61b-069d-4628-b96c-921bc3e5e234",
@@ -7935,19 +8052,1015 @@
       },
       "createdAt": "2026-09-08T09:43:19.539Z",
       "updatedAt": "2026-09-08T09:43:25.871Z"
+    },
+    {
+      "id": "5ae8cd45-ea0e-43c6-ac88-5f4c9b39071a",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "293c5dc2-d9c0-4283-86ed-9108b1cd8e62",
+      "name": "KiotViet webhook get pagination",
+      "request": {
+        "id": "48b973ce-3263-447d-ad7e-7dda731e7537",
+        "savedRequestId": "5ae8cd45-ea0e-43c6-ac88-5f4c9b39071a",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "293c5dc2-d9c0-4283-86ed-9108b1cd8e62",
+        "name": "KiotViet webhook get pagination",
+        "graphqlRootField": "kiotVietWebhookGetPagination",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "d6cce8ea-f9d3-46cd-832c-033cb14ada4a",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "ab5b3332-8e5d-44e9-bd86-f207c6f7b3c5",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query KiotVietWebhookGetPagination($filters: KiotVietWebhookGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietWebhookGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      webhookType\n      kiotvietWebhookId\n      url\n      isActive\n      description\n      retailerId\n      createdAt\n      lastUpdatedAt\n    }\n  }\n}",
+        "gqlVariables": "{\n  \"filters\": {\n    \"webhookType\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"KiotViet webhook get pagination\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietWebhookGetPagination\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietWebhookGetPagination($filters: KiotVietWebhookGetPaginationFilterDto!, $params: PaginationDto!) {\\n  kiotVietWebhookGetPagination(filters: $filters, params: $params) {\\n    total\\n    items {\\n      id\\n      webhookType\\n      kiotvietWebhookId\\n      url\\n      isActive\\n      description\\n      retailerId\\n      createdAt\\n      lastUpdatedAt\\n    }\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"filters\\\": {\\n    \\\"webhookType\\\": \\\"\\\"\\n  },\\n  \\\"params\\\": {\\n    \\\"page\\\": 1,\\n    \\\"pageSize\\\": 20,\\n    \\\"sortBy\\\": \\\"createdAt\\\",\\n    \\\"sortDirection\\\": \\\"DESC\\\"\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-09T02:46:56.726Z",
+      "updatedAt": "2026-09-09T04:15:08.320Z"
+    },
+    {
+      "id": "abfd16ec-4964-45e1-894c-b81d7c0125ea",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "293c5dc2-d9c0-4283-86ed-9108b1cd8e62",
+      "name": "KiotViet webhook get by id",
+      "request": {
+        "id": "4eca0d77-0d6e-489a-a230-0f9a0243aaf3",
+        "savedRequestId": "abfd16ec-4964-45e1-894c-b81d7c0125ea",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "293c5dc2-d9c0-4283-86ed-9108b1cd8e62",
+        "name": "KiotViet webhook get by id",
+        "graphqlRootField": "kiotVietWebhookGetById",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "d6cce8ea-f9d3-46cd-832c-033cb14ada4a",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "ab5b3332-8e5d-44e9-bd86-f207c6f7b3c5",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query KiotVietWebhookGetById($request: RequestParams!) {\n  kiotVietWebhookGetById(request: $request) {\n    id\n    webhookType\n    kiotvietWebhookId\n    url\n    isActive\n    description\n    retailerId\n    createdAt\n    lastUpdatedAt\n  }\n}",
+        "gqlVariables": "{\n  \"request\": {\n    \"id\": \"01a00dcf-83d1-76cb-a1da-61e5f805cb77\"\n  }\n}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"kiotVietWebhookGetById\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietWebhookGetById\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietWebhookGetById($request: RequestParams!) {\\n  kiotVietWebhookGetById(request: $request) {\\n    id\\n    webhookType\\n    kiotvietWebhookId\\n    url\\n    isActive\\n    description\\n    retailerId\\n    createdAt\\n    lastUpdatedAt\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"\\\",\\n    \\\"slug\\\": \\\"\\\"\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-09T02:47:57.923Z",
+      "updatedAt": "2026-09-09T02:47:57.923Z"
+    },
+    {
+      "id": "660fe7f1-4fc9-4b8a-82a2-9da01ac63e63",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "293c5dc2-d9c0-4283-86ed-9108b1cd8e62",
+      "name": "KiotViet webhook event get pagination",
+      "request": {
+        "id": "fd994a42-6379-4581-8d04-a3ff20872f26",
+        "savedRequestId": "660fe7f1-4fc9-4b8a-82a2-9da01ac63e63",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "293c5dc2-d9c0-4283-86ed-9108b1cd8e62",
+        "name": "KiotViet webhook event get pagination",
+        "graphqlRootField": "kiotVietWebhookEventGetPagination",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "d6cce8ea-f9d3-46cd-832c-033cb14ada4a",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "ab5b3332-8e5d-44e9-bd86-f207c6f7b3c5",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query KiotVietWebhookEventGetPagination($filters: KiotVietWebhookEventGetPaginationFilterDto!, $params: PaginationDto!) {\n  kiotVietWebhookEventGetPagination(filters: $filters, params: $params) {\n    total\n    items {\n      id\n      direction\n      action\n      kiotvietWebhookId\n      kiotvietEventId\n      webhookType\n      url\n      requestPayload\n      responsePayload\n      status\n      processedCount\n      errorMessage\n      createdAt\n      lastUpdatedAt\n    }\n  }\n}",
+        "gqlVariables": "{\n  \"filters\": {\n    \"keywords\": \"\"\n  },\n  \"params\": {\n    \"page\": 1,\n    \"pageSize\": 20,\n    \"sortBy\": \"createdAt\",\n    \"sortDirection\": \"DESC\"\n  }\n}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"kiotVietWebhookEventGetPagination\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietWebhookEventGetPagination\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietWebhookEventGetPagination($params: PaginationDto!) {\\n  kiotVietWebhookEventGetPagination(params: $params) {\\n    total\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"params\\\": {\\n    \\\"page\\\": 0,\\n    \\\"pageSize\\\": 0\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-09T03:04:25.933Z",
+      "updatedAt": "2026-09-09T03:04:25.933Z"
+    },
+    {
+      "id": "df89ab0f-8971-48d8-ba75-1b536c575a51",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "293c5dc2-d9c0-4283-86ed-9108b1cd8e62",
+      "name": "KiotViet webhook event get by id",
+      "request": {
+        "id": "75352ab4-ba8a-4d26-b214-172abe3c1708",
+        "savedRequestId": "df89ab0f-8971-48d8-ba75-1b536c575a51",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "293c5dc2-d9c0-4283-86ed-9108b1cd8e62",
+        "name": "KiotViet webhook event get by id",
+        "graphqlRootField": "kiotVietWebhookEventGetById",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "d6cce8ea-f9d3-46cd-832c-033cb14ada4a",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "ab5b3332-8e5d-44e9-bd86-f207c6f7b3c5",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query KiotVietWebhookEventGetById($request: RequestParams!) {\n  kiotVietWebhookEventGetById(request: $request) {\n    id\n    direction\n    action\n    kiotvietWebhookId\n    kiotvietEventId\n    webhookType\n    url\n    requestPayload\n    responsePayload\n    status\n    processedCount\n    errorMessage\n    createdAt\n    lastUpdatedAt\n  }\n}",
+        "gqlVariables": "{\n  \"request\": {\n    \"id\": \"\"\n  }\n}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"kiotVietWebhookEventGetById\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietWebhookEventGetById\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query KiotVietWebhookEventGetById($request: RequestParams!) {\\n  kiotVietWebhookEventGetById(request: $request) {\\n    id\\n    direction\\n    action\\n    kiotvietWebhookId\\n    kiotvietEventId\\n    webhookType\\n    url\\n    requestPayload\\n    responsePayload\\n    status\\n    processedCount\\n    errorMessage\\n    createdAt\\n    lastUpdatedAt\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"\\\",\\n    \\\"slug\\\": \\\"\\\"\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-09T03:04:49.331Z",
+      "updatedAt": "2026-09-09T03:04:49.331Z"
+    },
+    {
+      "id": "f1a79c73-d935-48c9-941c-cd7b68e73870",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "293c5dc2-d9c0-4283-86ed-9108b1cd8e62",
+      "name": "KiotViet webhook register",
+      "request": {
+        "id": "d8e51e94-1c1e-484c-896e-9f2fe51cb121",
+        "savedRequestId": "f1a79c73-d935-48c9-941c-cd7b68e73870",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "293c5dc2-d9c0-4283-86ed-9108b1cd8e62",
+        "name": "KiotViet webhook register",
+        "graphqlRootField": "kiotVietWebhookRegister",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "d6cce8ea-f9d3-46cd-832c-033cb14ada4a",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "ab5b3332-8e5d-44e9-bd86-f207c6f7b3c5",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "mutation KiotVietWebhookRegister($data: KiotVietWebhookRegisterInputDto!) {\n  kiotVietWebhookRegister(data: $data) {\n    id\n    type\n    url\n    isActive\n    description\n    retailerId\n  }\n}",
+        "gqlVariables": "{\n  \"data\": {\n    \"type\": \"CUSTOMER_UPDATE\",\n    \"url\": \"https://api.ec.dxpdemos.com/kiotviet/webhooks/customer/update\",\n    \"isActive\": true,\n    \"description\": \"\"\n  }\n}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"KiotViet webhook register\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietWebhookRegister\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"mutation KiotVietWebhookRegister($data: KiotVietWebhookRegisterInputDto!) {\\n  kiotVietWebhookRegister(data: $data) {\\n    id\\n    type\\n    url\\n    isActive\\n    description\\n    retailerId\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"data\\\": {\\n    \\\"type\\\": \\\"CUSTOMER_UPDATE\\\",\\n    \\\"url\\\": \\\"https://api.ec.dxpdemos.com/kiotviet/webhooks/customer/update\\\",\\n    \\\"isActive\\\": true,\\n    \\\"description\\\": \\\"\\\"\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[{\"id\":\"637b2958-2039-486f-a258-66b369a9835f\",\"name\":\"Local\",\"content\":\"{\\n  \\\"data\\\": {\\n    \\\"type\\\": \\\"CUSTOMER_UPDATE\\\",\\n    \\\"url\\\": \\\"https://4ada-113-161-62-1.ngrok-free.app/kiotviet/webhooks/customer/update\\\",\\n    \\\"isActive\\\": true,\\n    \\\"description\\\": \\\"\\\"\\n  }\\n}\"},{\"id\":\"59a847bc-6cf0-4786-9040-9a6c54d92090\",\"name\":\"Dev\",\"content\":\"{\\n  \\\"data\\\": {\\n    \\\"type\\\": \\\"CUSTOMER_UPDATE\\\",\\n    \\\"url\\\": \\\"https://api.ec.dxpdemos.com//kiotviet/webhooks/customer/update\\\",\\n    \\\"isActive\\\": true,\\n    \\\"description\\\": \\\"\\\"\\n  }\\n}\"}],\"activePresetId\":\"59a847bc-6cf0-4786-9040-9a6c54d92090\"}",
+        "presets": [
+          {
+            "id": "637b2958-2039-486f-a258-66b369a9835f",
+            "name": "Local",
+            "content": "{\n  \"data\": {\n    \"type\": \"CUSTOMER_UPDATE\",\n    \"url\": \"https://4ada-113-161-62-1.ngrok-free.app/kiotviet/webhooks/customer/update\",\n    \"isActive\": true,\n    \"description\": \"\"\n  }\n}",
+            "createdAt": 1788928887673
+          },
+          {
+            "id": "59a847bc-6cf0-4786-9040-9a6c54d92090",
+            "name": "Dev",
+            "content": "{\n  \"data\": {\n    \"type\": \"CUSTOMER_UPDATE\",\n    \"url\": \"https://api.ec.dxpdemos.com/kiotviet/webhooks/customer/update\",\n    \"isActive\": true,\n    \"description\": \"\"\n  }\n}",
+            "createdAt": 1788928895763
+          }
+        ],
+        "activePresetId": "59a847bc-6cf0-4786-9040-9a6c54d92090"
+      },
+      "createdAt": "2026-09-09T03:06:12.969Z",
+      "updatedAt": "2026-09-09T04:41:49.621Z"
+    },
+    {
+      "id": "6423607e-dc1d-48e1-b4dc-3e87f1906b2e",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "293c5dc2-d9c0-4283-86ed-9108b1cd8e62",
+      "name": "KiotViet webhook unregister",
+      "request": {
+        "id": "26080c4b-4eda-4a40-98ab-9428ba54fc3e",
+        "savedRequestId": "6423607e-dc1d-48e1-b4dc-3e87f1906b2e",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "293c5dc2-d9c0-4283-86ed-9108b1cd8e62",
+        "name": "KiotViet webhook unregister",
+        "graphqlRootField": "kiotVietWebhookUnregister",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "d6cce8ea-f9d3-46cd-832c-033cb14ada4a",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": "",
+            "type": "text"
+          },
+          {
+            "id": "ab5b3332-8e5d-44e9-bd86-f207c6f7b3c5",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": "",
+            "type": "text"
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "mutation KiotVietWebhookUnregister($request: RequestParams!) {\n  kiotVietWebhookUnregister(request: $request) {\n    success\n  }\n}",
+        "gqlVariables": "{\n  \"request\": {\n    \"id\": \"01a08460-22d7-7711-8ed1-cfab1e73a0bf\"\n  }\n}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"KiotViet webhook unregister\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"kiotVietWebhookUnregister\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"mutation KiotVietWebhookUnregister($request: RequestParams!) {\\n  kiotVietWebhookUnregister(request: $request) {\\n    success\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"01a08435-1c42-712a-8b74-23a3aa3f4138\\\"\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-09T03:27:41.429Z",
+      "updatedAt": "2026-09-09T04:15:06.153Z"
+    },
+    {
+      "id": "2ee0f23f-33c0-42bd-9487-be303523250e",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "bd12c7b5-951b-4a20-99e9-a8f9be185e3b",
+      "name": "Store bulk update products and combos",
+      "request": {
+        "id": "84aa1aca-8899-4978-97db-5baff990f51a",
+        "savedRequestId": "2ee0f23f-33c0-42bd-9487-be303523250e",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "bd12c7b5-951b-4a20-99e9-a8f9be185e3b",
+        "name": "Store bulk update products and combos",
+        "graphqlRootField": "storeBulkUpdateProductsAndCombos",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "d6cce8ea-f9d3-46cd-832c-033cb14ada4a",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "ab5b3332-8e5d-44e9-bd86-f207c6f7b3c5",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "mutation StoreBulkUpdateProductsAndCombos($request: StoreBulkUpdateProductsAndCombosDto!) {\n  storeBulkUpdateProductsAndCombos(request: $request) {\n    success\n    updatedProductCount\n    updatedComboCount\n    message\n  }\n}",
+        "gqlVariables": "{\n  \"request\": {\n    \"listStore\": [\n      \"0196486d-d25a-7f24-86c8-115e0c77026b\"\n    ],\n    \"listVariant\": [\n      \"0199a5a1-1cc4-747d-a569-8c91d5a88231\"\n    ],\n    \"onHand\": 0,\n    \"reasons\": \"Lý do khác\",\n    \"note\": \"Hết hạn\",\n    \"isSendEmail\": true\n  }\n}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"storeBulkUpdateProductsAndCombos\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"storeBulkUpdateProductsAndCombos\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"mutation StoreBulkUpdateProductsAndCombos($request: StoreBulkUpdateProductsAndCombosDto!) {\\n  storeBulkUpdateProductsAndCombos(request: $request) {\\n    success\\n    updatedProductCount\\n    updatedComboCount\\n    message\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"listVariant\\\": [],\\n    \\\"listCombo\\\": []\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-09T08:55:43.796Z",
+      "updatedAt": "2026-09-09T08:55:43.799Z"
+    },
+    {
+      "id": "a9e5e820-80ed-4d8f-8122-774edda0f5ea",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "2252affd-36b7-4808-b836-c03af4bbe261",
+      "name": "Notification novu workflow status",
+      "request": {
+        "id": "5644008c-b985-4647-9596-b6921b585c20",
+        "savedRequestId": "a9e5e820-80ed-4d8f-8122-774edda0f5ea",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "2252affd-36b7-4808-b836-c03af4bbe261",
+        "name": "Notification novu workflow status",
+        "graphqlRootField": "notificationNovuWorkflowStatus",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "62c0d41a-488a-4ce4-968a-0d1aaa9921ef",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "48753b76-2aa9-4b50-98e1-1757f56b9aef",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "query NotificationNovuWorkflowStatus {\n  notificationNovuWorkflowStatus {\n    managedWorkflows\n    cloudWorkflows\n    unmanagedWorkflows\n    syncInProgress\n    environment {\n      name\n      id\n      apiUrl\n      isProduction\n    }\n  }\n}",
+        "gqlVariables": "{}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"notificationNovuWorkflowStatus\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"notificationNovuWorkflowStatus\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"query NotificationNovuWorkflowStatus {\\n  notificationNovuWorkflowStatus {\\n    managedWorkflows\\n    cloudWorkflows\\n    unmanagedWorkflows\\n    syncInProgress\\n  }\\n}\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-10T04:53:54.221Z",
+      "updatedAt": "2026-09-10T04:53:54.221Z"
+    },
+    {
+      "id": "ce482300-9aa1-4eef-8713-d384e2d596ca",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "2252affd-36b7-4808-b836-c03af4bbe261",
+      "name": "Notification novu workflow validate",
+      "request": {
+        "id": "a8a0ffc1-1f14-49ed-8992-c072033ab2c0",
+        "savedRequestId": "ce482300-9aa1-4eef-8713-d384e2d596ca",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "2252affd-36b7-4808-b836-c03af4bbe261",
+        "name": "Notification novu workflow validate",
+        "graphqlRootField": "notificationNovuWorkflowValidate",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "62c0d41a-488a-4ce4-968a-0d1aaa9921ef",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "48753b76-2aa9-4b50-98e1-1757f56b9aef",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "mutation NotificationNovuWorkflowValidate {\n  notificationNovuWorkflowValidate {\n    valid\n    managedWorkflows\n    errors\n    warnings\n  }\n}",
+        "gqlVariables": "{}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"notificationNovuWorkflowValidate\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"notificationNovuWorkflowValidate\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"mutation NotificationNovuWorkflowValidate {\\n  notificationNovuWorkflowValidate {\\n    valid\\n    managedWorkflows\\n    errors\\n    warnings\\n  }\\n}\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-10T04:54:33.013Z",
+      "updatedAt": "2026-09-10T04:54:33.013Z"
+    },
+    {
+      "id": "593a9bf4-6e7e-4200-847e-0d1d3dae06c4",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "2252affd-36b7-4808-b836-c03af4bbe261",
+      "name": "Notification novu workflow sync",
+      "request": {
+        "id": "94c4a417-133f-440e-a8df-09560c6e8097",
+        "savedRequestId": "593a9bf4-6e7e-4200-847e-0d1d3dae06c4",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "2252affd-36b7-4808-b836-c03af4bbe261",
+        "name": "Notification novu workflow sync",
+        "graphqlRootField": "notificationNovuWorkflowSync",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "62c0d41a-488a-4ce4-968a-0d1aaa9921ef",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "48753b76-2aa9-4b50-98e1-1757f56b9aef",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "mutation NotificationNovuWorkflowSync($input: NotificationNovuWorkflowSyncInputDto) {\n  notificationNovuWorkflowSync(input: $input) {\n    dryRun\n    managed\n    created\n    updated\n    wouldCreate\n    wouldUpdate\n    unmanagedUntouched\n    errors\n    results {\n      workflowId\n      action\n      id\n      stepId\n      status\n    }\n  }\n}",
+        "gqlVariables": "{\n  \"input\": {\n    \"dryRun\": false\n  }\n}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"notificationNovuWorkflowSync\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"notificationNovuWorkflowSync\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"mutation NotificationNovuWorkflowSync($input: NotificationNovuWorkflowSyncInputDto) {\\n  notificationNovuWorkflowSync(input: $input) {\\n    dryRun\\n    managed\\n    created\\n    updated\\n    wouldCreate\\n    wouldUpdate\\n    unmanagedUntouched\\n    errors\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"input\\\": {\\n    \\\"dryRun\\\": false\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-10T04:54:53.943Z",
+      "updatedAt": "2026-09-10T04:54:53.943Z"
+    },
+    {
+      "id": "faec1656-b8fd-42c7-a61d-7ad69c455ab4",
+      "collectionId": "11da27a5-66b9-4761-b989-861ccacff7ab",
+      "folderId": "1a8478d3-0bc2-49f1-99fd-c0fc88ae9623",
+      "name": "Login",
+      "request": {
+        "id": "d5c89b07-2f26-4b74-a603-b9cc0da8d27b",
+        "savedRequestId": "faec1656-b8fd-42c7-a61d-7ad69c455ab4",
+        "collectionId": "11da27a5-66b9-4761-b989-861ccacff7ab",
+        "folderId": "1a8478d3-0bc2-49f1-99fd-c0fc88ae9623",
+        "name": "Login",
+        "mode": "REST",
+        "method": "POST",
+        "url": "{{Domain-supervisor-nginx}}/auth/login",
+        "params": [],
+        "headersList": [],
+        "headersText": "{}",
+        "auth": {
+          "type": "none",
+          "bearerToken": "",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "json",
+        "restBody": "{\n  \"username\": \"admin\",\n  \"password\": \"admin\"\n}",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "preRequestScript": "",
+        "testScript": "const response = pm.response.json();\n\nif (response && response.token) {\n    // Lưu vào biến môi trường (Environment Variable)\n    pm.environment.set(\"Token-supervisor-nginx\", response.token);\n    \n    console.log(\"✅ Token saved successfully:\", response.token);\n} else {\n    console.error(\"❌ Cannot get token from response\", response);\n}",
+        "editorTab": "SCRIPTS",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Login\",\"url\":\"{{Domain-supervisor-nginx}}/auth/login\",\"method\":\"POST\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"json\",\"restBody\":\"{\\n  \\\"username\\\": \\\"admin\\\",\\n  \\\"password\\\": \\\"admin\\\"\\n}\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"const response = pm.response.json();\\n\\nif (response && response.token) {\\n    // Lưu vào biến môi trường (Environment Variable)\\n    pm.environment.set(\\\"Token\\\", response.token);\\n    \\n    console.log(\\\"✅ Token saved successfully:\\\", response.token);\\n} else {\\n    console.error(\\\"❌ Cannot get token from response\\\", response);\\n}\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-11T04:53:25.518Z",
+      "updatedAt": "2026-09-14T07:13:41.849Z"
+    },
+    {
+      "id": "8487f4aa-da6c-4730-824d-4b4c2b4bf54a",
+      "collectionId": "11da27a5-66b9-4761-b989-861ccacff7ab",
+      "folderId": "11b39cc6-0ddb-4d37-942c-7c93556b5792",
+      "name": "Get overview",
+      "request": {
+        "id": "dc65babe-1a34-49cd-af47-468b6c9679af",
+        "savedRequestId": "8487f4aa-da6c-4730-824d-4b4c2b4bf54a",
+        "collectionId": "2f3bbea6-5456-40a4-a3b9-8003dddd0e8a",
+        "folderId": null,
+        "name": "Get overview",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/api/dashboard/overview",
+        "params": [],
+        "headersList": [],
+        "headersText": "{}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "AUTH",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"New Request\",\"url\":\"\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-11T09:33:07.505Z",
+      "updatedAt": "2026-09-14T04:43:09.116Z"
+    },
+    {
+      "id": "7259783d-b8c1-44bf-ae42-1e60dd93ee74",
+      "collectionId": "11da27a5-66b9-4761-b989-861ccacff7ab",
+      "folderId": "11b39cc6-0ddb-4d37-942c-7c93556b5792",
+      "name": "Get call volume",
+      "request": {
+        "id": "978757f8-d368-4842-86de-e9083e2b5101",
+        "savedRequestId": "7259783d-b8c1-44bf-ae42-1e60dd93ee74",
+        "collectionId": "2f3bbea6-5456-40a4-a3b9-8003dddd0e8a",
+        "folderId": null,
+        "name": "Get call volume",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/api/dashboard/call-volume",
+        "params": [],
+        "headersList": [],
+        "headersText": "{}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "AUTH",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Get call volume\",\"url\":\"{{Domain}}/api/dashboard/call-volume\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-11T09:33:41.210Z",
+      "updatedAt": "2026-09-14T04:43:09.116Z"
+    },
+    {
+      "id": "1d44eee5-6e61-45ff-889d-9d932a972b1b",
+      "collectionId": "11da27a5-66b9-4761-b989-861ccacff7ab",
+      "folderId": "11b39cc6-0ddb-4d37-942c-7c93556b5792",
+      "name": "Get agent performance",
+      "request": {
+        "id": "53376a9e-c2e9-4333-89ed-0343e8dbe0a0",
+        "savedRequestId": "1d44eee5-6e61-45ff-889d-9d932a972b1b",
+        "collectionId": "2f3bbea6-5456-40a4-a3b9-8003dddd0e8a",
+        "folderId": null,
+        "name": "Get agent performance",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/api/dashboard/agent-performance",
+        "params": [],
+        "headersList": [],
+        "headersText": "{}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "AUTH",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"New Request\",\"url\":\"\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-11T09:34:13.835Z",
+      "updatedAt": "2026-09-14T04:43:09.116Z"
+    },
+    {
+      "id": "a51888ef-5f8e-405b-8ada-b71d16322f15",
+      "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+      "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
+      "name": "Order update fulfillment status",
+      "request": {
+        "id": "59defbee-6d96-4122-abb7-f47eb7bd4f1a",
+        "savedRequestId": "a51888ef-5f8e-405b-8ada-b71d16322f15",
+        "collectionId": "925ff10c-6428-4f56-b1e6-bd84786a0fb2",
+        "folderId": "785cea12-b358-4f53-bf46-46ebd0bf368c",
+        "name": "Order update fulfillment status",
+        "graphqlRootField": "orderUpdateFulfillmentStatus",
+        "mode": "GRAPHQL",
+        "method": "POST",
+        "url": "{{Domain}}/graphql",
+        "params": [],
+        "headersList": [
+          {
+            "id": "333c833b-9ada-48da-afa3-c737d8e6ae78",
+            "key": "X-Requested-Portal",
+            "value": "IT",
+            "enabled": true,
+            "description": ""
+          },
+          {
+            "id": "143f7dc1-67b4-4046-b9db-3453c8b570fd",
+            "key": "",
+            "value": "",
+            "enabled": false,
+            "description": ""
+          }
+        ],
+        "headersText": "{\n  \"X-Requested-Portal\": \"IT\"\n}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "mutation OrderUpdateFulfillmentStatus($request: OrderUpdateFulfillmentStatusDto!) {\n  orderUpdateFulfillmentStatus(request: $request) {\n    success\n  }\n}",
+        "gqlVariables": "{\n  \"request\": {\n    \"id\": \"\",\n    \"fulfillmentStatus\": \"SHIPPED\"\n  }\n}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "BODY",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Order update fulfillment status\",\"url\":\"{{Domain}}/graphql\",\"method\":\"POST\",\"mode\":\"GRAPHQL\",\"graphqlRootField\":\"orderUpdateFulfillmentStatus\",\"params\":[],\"pathVariables\":[],\"headersList\":[{\"key\":\"X-Requested-Portal\",\"value\":\"IT\",\"enabled\":true,\"type\":\"text\",\"fileName\":\"\",\"description\":\"\"}],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"mutation OrderUpdateFulfillmentStatus($request: OrderUpdateFulfillmentStatusDto!) {\\n  orderUpdateFulfillmentStatus(request: $request) {\\n    success\\n  }\\n}\",\"gqlVariables\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"\\\",\\n    \\\"fulfillmentStatus\\\": \\\"SHIPPING\\\"\\n  }\\n}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[{\"id\":\"2c8323db-984f-4a4d-b69a-fdb72ad4e8b6\",\"name\":\"Đã hoàn thành\",\"content\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"\\\",\\n    \\\"fulfillmentStatus\\\": \\\"SHIPPED\\\"\\n  }\\n}\"},{\"id\":\"2e9bcb98-7b5f-42cf-8baf-5f4f363ea742\",\"name\":\"Đang chế biến\",\"content\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"\\\",\\n    \\\"fulfillmentStatus\\\": \\\"SERVING\\\"\\n  }\\n}\"},{\"id\":\"2f59c17b-a5e7-4f95-aa2d-13a679739917\",\"name\":\"Đang vận chuyển\",\"content\":\"{\\n  \\\"request\\\": {\\n    \\\"id\\\": \\\"\\\",\\n    \\\"fulfillmentStatus\\\": \\\"SHIPPING\\\"\\n  }\\n}\"}],\"activePresetId\":\"2f59c17b-a5e7-4f95-aa2d-13a679739917\"}",
+        "presets": [
+          {
+            "id": "2c8323db-984f-4a4d-b69a-fdb72ad4e8b6",
+            "name": "Đã hoàn thành",
+            "content": "{\n  \"request\": {\n    \"id\": \"\",\n    \"fulfillmentStatus\": \"SHIPPED\"\n  }\n}",
+            "createdAt": 1789355877598
+          },
+          {
+            "id": "2e9bcb98-7b5f-42cf-8baf-5f4f363ea742",
+            "name": "Đang chế biến",
+            "content": "{\n  \"request\": {\n    \"id\": \"\",\n    \"fulfillmentStatus\": \"SERVING\"\n  }\n}",
+            "createdAt": 1789355892456
+          },
+          {
+            "id": "2f59c17b-a5e7-4f95-aa2d-13a679739917",
+            "name": "Đang vận chuyển",
+            "content": "{\n  \"request\": {\n    \"id\": \"\",\n    \"fulfillmentStatus\": \"SHIPPING\"\n  }\n}",
+            "createdAt": 1789355916186
+          }
+        ],
+        "activePresetId": "2c8323db-984f-4a4d-b69a-fdb72ad4e8b6"
+      },
+      "createdAt": "2026-09-14T03:19:18.072Z",
+      "updatedAt": "2026-09-14T04:41:58.917Z"
+    },
+    {
+      "id": "935c5962-b680-4016-86dc-5b37f9daa39d",
+      "collectionId": "11da27a5-66b9-4761-b989-861ccacff7ab",
+      "folderId": "d54343c4-5791-4e9c-b438-c88b5999799d",
+      "name": "Get performance",
+      "request": {
+        "id": "d4a6d2da-02c3-47ec-b110-228833c9487a",
+        "savedRequestId": "935c5962-b680-4016-86dc-5b37f9daa39d",
+        "collectionId": "11da27a5-66b9-4761-b989-861ccacff7ab",
+        "folderId": "d54343c4-5791-4e9c-b438-c88b5999799d",
+        "name": "Get performance",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain-supervisor-nginx}}/api/dashboard/performance",
+        "params": [],
+        "headersList": [],
+        "headersText": "{}",
+        "auth": {
+          "type": "bearer",
+          "bearerToken": "{{Token-supervisor-nginx}}",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "AUTH",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"Get performance\",\"url\":\"{{Domain}}/api/dashboard/performance\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[],\"auth\":{\"type\":\"bearer\",\"bearerToken\":\"{{Token-supervisor-nginx}}\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-11T04:51:37.785Z",
+      "updatedAt": "2026-09-14T07:14:02.408Z"
+    },
+    {
+      "id": "3b6d92db-6555-45a3-9398-52b24892316e",
+      "collectionId": "11da27a5-66b9-4761-b989-861ccacff7ab",
+      "folderId": "857c7815-eefb-45e1-8aa4-a6a0e8da1a83",
+      "name": "Healthz",
+      "request": {
+        "id": "d2aef002-3ea4-4ee1-9bf9-09da29c5e43e",
+        "savedRequestId": "3b6d92db-6555-45a3-9398-52b24892316e",
+        "collectionId": "11da27a5-66b9-4761-b989-861ccacff7ab",
+        "folderId": "857c7815-eefb-45e1-8aa4-a6a0e8da1a83",
+        "name": "Healthz",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/healthz",
+        "params": [],
+        "headersList": [],
+        "headersText": "{}",
+        "auth": {
+          "type": "none",
+          "bearerToken": "",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "PARAMS",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"New Request\",\"url\":\"\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-14T07:12:54.427Z",
+      "updatedAt": "2026-09-14T07:12:54.427Z"
+    },
+    {
+      "id": "7972cb42-0495-4d82-985b-a1292584fac9",
+      "collectionId": "11da27a5-66b9-4761-b989-861ccacff7ab",
+      "folderId": "857c7815-eefb-45e1-8aa4-a6a0e8da1a83",
+      "name": "Metrics",
+      "request": {
+        "id": "3ba4bd96-7ce8-43d3-8194-89399927c3f0",
+        "savedRequestId": "7972cb42-0495-4d82-985b-a1292584fac9",
+        "collectionId": "11da27a5-66b9-4761-b989-861ccacff7ab",
+        "folderId": "857c7815-eefb-45e1-8aa4-a6a0e8da1a83",
+        "name": "Metrics",
+        "mode": "REST",
+        "method": "GET",
+        "url": "{{Domain}}/metrics",
+        "params": [],
+        "headersList": [],
+        "headersText": "{}",
+        "auth": {
+          "type": "none",
+          "bearerToken": "",
+          "basicUsername": "",
+          "basicPassword": "",
+          "apiKeyName": "",
+          "apiKeyValue": "",
+          "apiKeyAddTo": "header"
+        },
+        "bodyType": "none",
+        "restBody": "",
+        "rawText": "",
+        "formData": [],
+        "urlencoded": [],
+        "gqlQuery": "",
+        "gqlVariables": "{}",
+        "preRequestScript": "",
+        "testScript": "",
+        "editorTab": "PARAMS",
+        "responseTab": "PRETTY",
+        "savedSnapshot": "{\"name\":\"New Request\",\"url\":\"\",\"method\":\"GET\",\"mode\":\"REST\",\"graphqlRootField\":\"\",\"params\":[],\"pathVariables\":[],\"headersList\":[],\"auth\":{\"type\":\"none\",\"bearerToken\":\"\",\"basicUsername\":\"\",\"basicPassword\":\"\",\"apiKeyName\":\"\",\"apiKeyValue\":\"\",\"apiKeyAddTo\":\"header\"},\"bodyType\":\"none\",\"restBody\":\"\",\"rawText\":\"\",\"formData\":[],\"urlencoded\":[],\"gqlQuery\":\"\",\"gqlVariables\":\"{}\",\"preRequestScript\":\"\",\"testScript\":\"\",\"presets\":[],\"activePresetId\":\"\"}",
+        "presets": []
+      },
+      "createdAt": "2026-09-14T07:15:27.941Z",
+      "updatedAt": "2026-09-14T07:15:27.941Z"
     }
   ],
   "expandedCollectionIds": [
     "821d46f0-a5ed-4549-8828-22161e5552a2",
-    "925ff10c-6428-4f56-b1e6-bd84786a0fb2"
+    "2f3bbea6-5456-40a4-a3b9-8003dddd0e8a"
   ],
   "expandedFolderIds": [
-    "3f45ac07-3a2d-4224-b42c-5213bf304968",
-    "a9abb7ec-7230-461e-90e6-91477704638c",
     "ec84ec6b-4def-460d-b1ee-6372775366af",
-    "3bd48a75-0a8c-4312-9be3-c4545f7a3164",
-    "72d3d982-0101-4ffa-9672-a04ee8a5798d",
+    "bd12c7b5-951b-4a20-99e9-a8f9be185e3b",
+    "2252affd-36b7-4808-b836-c03af4bbe261",
     "d9a90d69-ded1-45d4-994b-ca7cf3d6129f",
-    "b8f9d61b-069d-4628-b96c-921bc3e5e234"
+    "3f45ac07-3a2d-4224-b42c-5213bf304968",
+    "785cea12-b358-4f53-bf46-46ebd0bf368c",
+    "7e5cd782-969a-4ed5-8301-4807419ec5c3"
   ]
 }

@@ -93,11 +93,6 @@ export function RequestEditor({
       activePresetId: preset.id,
     })
     triggerToast(`Đã áp dụng preset: "${preset.name}"`, 'success')
-    if (onSyncToExplorer) {
-      setTimeout(() => {
-        onSyncToExplorer()
-      }, 50)
-    }
   }
 
   const handleUpdatePresets = (newPresets: DataPreset[], nextActivePresetId?: string) => {
@@ -151,7 +146,7 @@ export function RequestEditor({
   const hasAuth = activeTab.auth && activeTab.auth.type !== 'none'
   const hasScripts = Boolean(
     (activeTab.preRequestScript && activeTab.preRequestScript.trim()) ||
-      (activeTab.testScript && activeTab.testScript.trim()),
+    (activeTab.testScript && activeTab.testScript.trim()),
   )
   const isScriptsActive = activeTab.editorTab === 'SCRIPTS' || activeTab.editorTab === 'TESTS'
 
@@ -190,8 +185,8 @@ export function RequestEditor({
           row.enabled &&
           Boolean(
             (row.key && row.key.trim()) ||
-              (row.value && row.value.trim()) ||
-              (row.fileName && row.fileName.trim()),
+            (row.value && row.value.trim()) ||
+            (row.fileName && row.fileName.trim()),
           ),
       )
     }
@@ -243,6 +238,7 @@ export function RequestEditor({
                 type="button"
                 onClick={() => onUpdateTab({ editorTab: 'SCRIPTS' })}
                 className={`editor-tab ${isScriptsActive ? 'is-active' : ''}`}
+                title="Scripts (Pre-request & Test Scripts)"
               >
                 Scripts {hasScripts && <span className="tab-counter"><FlaskConical size={10} /></span>}
               </button>
@@ -286,6 +282,7 @@ export function RequestEditor({
                 type="button"
                 onClick={() => onUpdateTab({ editorTab: 'SCRIPTS' })}
                 className={`editor-tab ${isScriptsActive ? 'is-active' : ''}`}
+                title="Scripts (Pre-request & Test Scripts)"
               >
                 Scripts {hasScripts && <span className="tab-counter"><FlaskConical size={10} /></span>}
               </button>
@@ -294,7 +291,7 @@ export function RequestEditor({
         </div>
 
         {/* REST mode Toolbar buttons */}
-        {!isGraphQL && activeTab.editorTab !== 'BODY' && (
+        {!isGraphQL && activeTab.editorTab !== 'BODY' && !isScriptsActive && (
           <div className="row wrap">
             <button onClick={onClear} className="button button-sm" type="button">
               <Trash2 size={13} />
@@ -306,7 +303,7 @@ export function RequestEditor({
 
       {/* 2. NỘI DUNG CHÍNH (BẮT BUỘC CHIẾM TRỌN DIỆN TÍCH flex-1 min-h-0) */}
       <div className="editor-body" style={{ flex: '1 1 0%', minHeight: 0, height: '100%', width: '100%', display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden' }}>
-        
+
         {/* GRAPHQL UNIFIED QUERY & VARIABLES PANE (VERTICAL RESIZABLE SPLIT PANE) */}
         {isGraphQL && isQueryTabActive && (
           <div style={{ flex: '1 1 0%', display: 'flex', flexDirection: 'column', height: '100%', width: '100%', minHeight: 0, overflow: 'hidden' }}>
