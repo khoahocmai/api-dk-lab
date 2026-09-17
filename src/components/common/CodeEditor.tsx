@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
-import CodeMirror, { EditorView, Extension } from '@uiw/react-codemirror'
+import CodeMirror, { Extension } from '@uiw/react-codemirror'
+import { EditorView } from '@codemirror/view'
 import { json } from '@codemirror/lang-json'
 import { javascript } from '@codemirror/lang-javascript'
 import { oneDark } from '@codemirror/theme-one-dark'
@@ -27,7 +28,7 @@ export function CodeEditor({
   minHeight = '0px',
   maxHeight,
   fontSize,
-  wrapLines = false,
+  wrapLines = true,
 }: CodeEditorProps) {
   const extensions = useMemo(() => {
     const ext: Extension[] = [oneDark]

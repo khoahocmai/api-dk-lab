@@ -2557,6 +2557,12 @@
   min-height: 100% !important;
 }
 
+.cm-content,
+.cm-line {
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+}
+
 .codemirror-wrapper .cm-gutters,
 .cm-gutters {
   background: var(--bg-sidebar) !important;
@@ -3563,6 +3569,12 @@ input::selection {
   border: 0;
   border-radius: 0;
   background: #12141a;
+}
+
+.body-editor-pane .cm-content,
+.body-editor-pane .cm-line {
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
 }
 
 .body-editor-scroll-pane {

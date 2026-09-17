@@ -211,6 +211,7 @@ export function RequestBodyEditor({
               height="100%"
               minHeight="100%"
               fontSize={editorFontSize}
+              wrapLines={true}
             />
           </div>
         )}
@@ -226,6 +227,7 @@ export function RequestBodyEditor({
               height="100%"
               minHeight="100%"
               fontSize={editorFontSize}
+              wrapLines={true}
             />
           </div>
         )}
