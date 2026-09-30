@@ -7,6 +7,16 @@ declare namespace NodeJS {
   }
 }
 
+export interface FormDataFieldItem {
+  key: string
+  type?: 'text' | 'file'
+  value?: string
+  fileName?: string
+  filePath?: string
+  mimeType?: string
+  buffer?: number[]
+}
+
 export interface HttpRequestOptions {
   method?: string
   url: string
@@ -16,6 +26,8 @@ export interface HttpRequestOptions {
   rejectUnauthorized?: boolean
   disableLocalhostTimeout?: boolean
   requestId?: string
+  isFormData?: boolean
+  formDataItems?: FormDataFieldItem[]
 }
 
 export interface HttpResponseData {
@@ -42,6 +54,7 @@ declare global {
       writeStorage(fileName: string, data: unknown): Promise<boolean>
       setZoomFactor(factor: number): void
       getZoomFactor(): number
+      getPathForFile?(file: File): string
     }
   }
 }

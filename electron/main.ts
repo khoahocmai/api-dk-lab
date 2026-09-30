@@ -3,7 +3,9 @@ import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import http from 'node:http'
 import https from 'node:https'
+import fs from 'node:fs'
 import axios, { AxiosRequestConfig } from 'axios'
+import FormData from 'form-data'
 import { registerStorageIpcHandlers } from './storage'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -108,6 +110,16 @@ function registerIpcHandlers() {
     rejectUnauthorized?: boolean
     disableLocalhostTimeout?: boolean
     requestId?: string
+    isFormData?: boolean
+    formDataItems?: Array<{
+      key: string
+      type?: 'text' | 'file'
+      value?: string
+      fileName?: string
+      filePath?: string
+      mimeType?: string
+      buffer?: number[]
+    }>
   }) => {
     // High-precision timing using process.hrtime.bigint()
     const startTime = process.hrtime.bigint()
@@ -130,16 +142,59 @@ function registerIpcHandlers() {
 
       const customHeaders = options.headers || {}
       // Automatically include Accept-Encoding for gzip/deflate/br compression
-      const headers = {
+      const headers: Record<string, string> = {
         'Accept-Encoding': 'gzip, deflate, br',
         ...customHeaders,
+      }
+
+      let requestData = options.data
+
+      if (options.isFormData && Array.isArray(options.formDataItems)) {
+        const formData = new FormData()
+        for (const item of options.formDataItems) {
+          const fieldKey = item.key?.trim() || 'file'
+          if (item.type === 'file') {
+            const fileName = item.fileName || (item.filePath ? path.basename(item.filePath) : 'file')
+            if (item.filePath && fs.existsSync(item.filePath)) {
+              const stream = fs.createReadStream(item.filePath)
+              formData.append(fieldKey, stream, {
+                filename: fileName,
+                contentType: item.mimeType || undefined,
+              })
+            } else if (
+              item.buffer &&
+              (Array.isArray(item.buffer) || Buffer.isBuffer(item.buffer) || (item.buffer as unknown) instanceof Uint8Array)
+            ) {
+              const buf = Buffer.from(item.buffer as any)
+              formData.append(fieldKey, buf, {
+                filename: fileName,
+                contentType: item.mimeType || undefined,
+              })
+            } else if (item.value) {
+              formData.append(fieldKey, item.value)
+            }
+          } else {
+            formData.append(fieldKey, item.value ?? '')
+          }
+        }
+
+        // Strip any pre-existing or manual Content-Type without boundary to prevent "Multipart: Unexpected end of form"
+        for (const k of Object.keys(headers)) {
+          if (k.toLowerCase() === 'content-type') {
+            delete headers[k]
+          }
+        }
+
+        // Assign correct Content-Type with boundary from Node FormData
+        Object.assign(headers, formData.getHeaders())
+        requestData = formData
       }
 
       const config: AxiosRequestConfig = {
         method: options.method || 'GET',
         url: options.url,
         headers,
-        data: options.data,
+        data: requestData,
         timeout: effectiveTimeout,
         signal: abortController.signal,
         validateStatus: () => true,

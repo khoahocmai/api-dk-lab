@@ -31,6 +31,22 @@ export async function sendHttpRequest(options: HttpRequestOptions): Promise<Http
     }
   }
 
+  // Sanitize headers: If isFormData, ensure Content-Type without boundary is completely stripped
+  const cleanedHeaders = { ...(options.headers || {}) }
+  if (options.isFormData) {
+    for (const k of Object.keys(cleanedHeaders)) {
+      if (k.toLowerCase() === 'content-type') {
+        const ctVal = (cleanedHeaders[k] || '').trim().toLowerCase()
+        if (
+          ctVal === 'multipart/form-data' ||
+          (ctVal.startsWith('multipart/form-data') && !ctVal.includes('boundary='))
+        ) {
+          delete cleanedHeaders[k]
+        }
+      }
+    }
+  }
+
   // If running inside Electron desktop environment, use IPC to bypass CORS
   if (window.desktopApi?.invoke) {
     let abortListener: (() => void) | undefined
@@ -48,6 +64,7 @@ export async function sendHttpRequest(options: HttpRequestOptions): Promise<Http
     try {
       return await window.desktopApi.invoke<HttpResponseData>('http-request', {
         ...options,
+        headers: cleanedHeaders,
         data: sanitizedData,
         timeout: effectiveTimeout,
       })
@@ -81,12 +98,32 @@ export async function sendHttpRequest(options: HttpRequestOptions): Promise<Http
   // Fallback for browser / test environments
   const startTime = performance.now()
   try {
+    if (options.isFormData && Array.isArray(options.formDataItems)) {
+      const browserFormData = new FormData()
+      for (const item of options.formDataItems) {
+        const fieldKey = item.key || 'file'
+        if (item.type === 'file') {
+          if (item.buffer && item.buffer.length > 0) {
+            const blob = new Blob([new Uint8Array(item.buffer)], {
+              type: item.mimeType || 'application/octet-stream',
+            })
+            browserFormData.append(fieldKey, blob, item.fileName || 'file')
+          } else if (item.value) {
+            browserFormData.append(fieldKey, item.value)
+          }
+        } else {
+          browserFormData.append(fieldKey, item.value ?? '')
+        }
+      }
+      sanitizedData = browserFormData
+    }
+
     const config: AxiosRequestConfig = {
       method: options.method || 'GET',
       url: options.url,
       headers: {
         'Accept-Encoding': 'gzip, deflate, br',
-        ...(options.headers || {}),
+        ...cleanedHeaders,
       },
       data: sanitizedData,
       timeout: effectiveTimeout,

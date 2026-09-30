@@ -701,7 +701,8 @@ export function exportPostmanCollectionV2(
       body.formdata = r.formData.map((f) => ({
         key: f.key,
         value: f.value,
-        type: 'text',
+        type: f.type === 'file' ? 'file' : 'text',
+        src: f.type === 'file' ? (f.filePath || f.fileName || f.value) : undefined,
         disabled: !f.enabled,
         description: f.description,
       }))

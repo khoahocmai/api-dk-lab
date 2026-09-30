@@ -21,6 +21,7 @@ export interface KeyValueRow {
   description?: string
   type?: 'text' | 'file'
   fileName?: string
+  filePath?: string
 }
 
 export type ResponseState = {
@@ -128,6 +129,16 @@ export type PersistedWorkspace = {
   isExplorerOpen?: boolean
 }
 
+export interface FormDataFieldItem {
+  key: string
+  type?: 'text' | 'file'
+  value?: string
+  fileName?: string
+  filePath?: string
+  mimeType?: string
+  buffer?: number[]
+}
+
 export interface HttpRequestOptions {
   method?: string
   url: string
@@ -138,6 +149,8 @@ export interface HttpRequestOptions {
   disableLocalhostTimeout?: boolean
   requestId?: string
   signal?: AbortSignal
+  isFormData?: boolean
+  formDataItems?: FormDataFieldItem[]
 }
 
 export interface HttpResponseData {

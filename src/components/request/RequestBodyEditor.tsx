@@ -48,15 +48,18 @@ export function RequestBodyEditor({
   const handleBodyTypeChange = (type: BodyType) => {
     const patch: Partial<RequestItem> = { bodyType: type }
 
-    // Strip redundant Content-Type: application/json if present in user headers
+    // Strip redundant Content-Type (application/json or multipart/form-data) if present in user headers
     const currentHeaders = activeTab.headersList || []
-    const filteredHeaders = currentHeaders.filter(
-      (h) =>
-        !(
-          h.key.trim().toLowerCase() === 'content-type' &&
-          h.value.trim().toLowerCase() === 'application/json'
-        ),
-    )
+    const filteredHeaders = currentHeaders.filter((h) => {
+      const k = h.key.trim().toLowerCase()
+      const v = h.value.trim().toLowerCase()
+      if (k === 'content-type') {
+        if (type === 'json' && v === 'application/json') return false
+        if (type === 'form-data' && (v === 'multipart/form-data' || (v.startsWith('multipart/form-data') && !v.includes('boundary=')))) return false
+        if (type === 'x-www-form-urlencoded' && v === 'application/x-www-form-urlencoded') return false
+      }
+      return true
+    })
     if (filteredHeaders.length !== currentHeaders.length) {
       patch.headersList = filteredHeaders
       patch.headersText = convertRowsToHeadersJson(filteredHeaders)

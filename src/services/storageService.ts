@@ -146,8 +146,9 @@ export function stripRedundantContentTypeHeader<T extends Partial<PersistedReque
   const bodyType = request.bodyType ?? (mode === 'GRAPHQL' ? 'none' : 'none')
   const isGraphQL = mode === 'GRAPHQL'
   const isJsonBody = !isGraphQL && bodyType === 'json'
+  const isFormData = !isGraphQL && bodyType === 'form-data'
 
-  if (!isGraphQL && !isJsonBody) {
+  if (!isGraphQL && !isJsonBody && !isFormData) {
     return request
   }
 
@@ -157,10 +158,18 @@ export function stripRedundantContentTypeHeader<T extends Partial<PersistedReque
   if (Array.isArray(newHeadersList)) {
     const filtered = newHeadersList.filter((h) => {
       const isContentType = h.key?.trim().toLowerCase() === 'content-type'
-      const isAppJson = h.value?.trim().toLowerCase() === 'application/json'
-      if (isContentType && isAppJson) {
-        modified = true
-        return false
+      const val = h.value?.trim().toLowerCase() || ''
+      const isAppJson = val === 'application/json'
+      const isMultipart = val === 'multipart/form-data' || (val.startsWith('multipart/form-data') && !val.includes('boundary='))
+      if (isContentType) {
+        if ((isGraphQL || isJsonBody) && isAppJson) {
+          modified = true
+          return false
+        }
+        if (isFormData && isMultipart) {
+          modified = true
+          return false
+        }
       }
       return true
     })
@@ -176,12 +185,14 @@ export function stripRedundantContentTypeHeader<T extends Partial<PersistedReque
       let textModified = false
       if (typeof parsed === 'object' && parsed !== null) {
         for (const key of Object.keys(parsed)) {
-          if (
-            key.trim().toLowerCase() === 'content-type' &&
-            String(parsed[key]).trim().toLowerCase() === 'application/json'
-          ) {
-            delete parsed[key]
-            textModified = true
+          if (key.trim().toLowerCase() === 'content-type') {
+            const val = String(parsed[key]).trim().toLowerCase()
+            const isAppJson = val === 'application/json'
+            const isMultipart = val === 'multipart/form-data' || (val.startsWith('multipart/form-data') && !val.includes('boundary='))
+            if (((isGraphQL || isJsonBody) && isAppJson) || (isFormData && isMultipart)) {
+              delete parsed[key]
+              textModified = true
+            }
           }
         }
       }

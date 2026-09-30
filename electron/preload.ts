@@ -1,4 +1,4 @@
-import { contextBridge, ipcRenderer, webFrame } from 'electron'
+import { contextBridge, ipcRenderer, webFrame, webUtils } from 'electron'
 
 const allowedInvokeChannels = new Set<string>([
   'http-request',
@@ -50,5 +50,13 @@ contextBridge.exposeInMainWorld('desktopApi', {
 
   getZoomFactor() {
     return webFrame.getZoomFactor()
+  },
+
+  getPathForFile(file: File) {
+    try {
+      return webUtils.getPathForFile(file)
+    } catch {
+      return (file as unknown as { path?: string }).path || ''
+    }
   },
 })

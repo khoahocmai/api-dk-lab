@@ -503,10 +503,18 @@ export function parseCurlCommand(rawCurl: string): Partial<RequestItem> | null {
         bodyType = 'form-data'
         const eqIdx = val.indexOf('=')
         if (eqIdx !== -1) {
+          const k = val.slice(0, eqIdx).trim()
+          const rawV = val.slice(eqIdx + 1).trim()
+          const isFile = rawV.startsWith('@')
+          const cleanPath = isFile ? rawV.slice(1).trim() : rawV
+          const fileName = isFile ? cleanPath.split(/[/\\]/).pop() || cleanPath : ''
           formData.push({
             id: createId(),
-            key: val.slice(0, eqIdx).trim(),
-            value: val.slice(eqIdx + 1).trim(),
+            key: k,
+            value: isFile ? fileName : cleanPath,
+            type: isFile ? 'file' : 'text',
+            fileName: isFile ? fileName : undefined,
+            filePath: isFile ? cleanPath : undefined,
             enabled: true,
           })
         } else {
@@ -514,6 +522,7 @@ export function parseCurlCommand(rawCurl: string): Partial<RequestItem> | null {
             id: createId(),
             key: val.trim(),
             value: '',
+            type: 'text',
             enabled: true,
           })
         }
@@ -526,10 +535,18 @@ export function parseCurlCommand(rawCurl: string): Partial<RequestItem> | null {
       const val = token.slice(2)
       const eqIdx = val.indexOf('=')
       if (eqIdx !== -1) {
+        const k = val.slice(0, eqIdx).trim()
+        const rawV = val.slice(eqIdx + 1).trim()
+        const isFile = rawV.startsWith('@')
+        const cleanPath = isFile ? rawV.slice(1).trim() : rawV
+        const fileName = isFile ? cleanPath.split(/[/\\]/).pop() || cleanPath : ''
         formData.push({
           id: createId(),
-          key: val.slice(0, eqIdx).trim(),
-          value: val.slice(eqIdx + 1).trim(),
+          key: k,
+          value: isFile ? fileName : cleanPath,
+          type: isFile ? 'file' : 'text',
+          fileName: isFile ? fileName : undefined,
+          filePath: isFile ? cleanPath : undefined,
           enabled: true,
         })
       }
@@ -754,6 +771,14 @@ export function generateCurlCommand(
 
   // Add headers to curl lines
   Object.entries(headersRecord).forEach(([k, v]) => {
+    // If request has form-data, omit Content-Type: multipart/form-data because -F flag automatically sets multipart boundary
+    if (
+      request.bodyType === 'form-data' &&
+      k.toLowerCase() === 'content-type' &&
+      (v.toLowerCase() === 'multipart/form-data' || v.toLowerCase().startsWith('multipart/form-data'))
+    ) {
+      return
+    }
     lines.push(`--header '${k}: ${v.replace(/'/g, "\\'")}'`)
   })
 
@@ -794,11 +819,17 @@ export function generateCurlCommand(
       }
     } else if (request.bodyType === 'form-data') {
       request.formData
-        .filter((r) => r.enabled && r.key.trim())
+        .filter((r) => r.enabled && ((r.key && r.key.trim()) || r.type === 'file' || (r.value && r.value.trim())))
         .forEach((r) => {
-          const k = resolveTemplates(r.key.trim(), environment)
-          const v = resolveTemplates(r.value, environment)
-          lines.push(`--form '${k}=${v.replace(/'/g, "\\'")}'`)
+          const k = resolveTemplates(r.key.trim() || 'file', environment)
+          if (r.type === 'file') {
+            const rawPath = r.filePath || r.fileName || r.value || 'file'
+            const normalizedPath = rawPath.replace(/\\/g, '/')
+            lines.push(`-F '${k}=@${normalizedPath.replace(/'/g, "\\'")}'`)
+          } else {
+            const v = resolveTemplates(r.value, environment)
+            lines.push(`-F '${k}=${v.replace(/'/g, "\\'")}'`)
+          }
         })
     }
   }

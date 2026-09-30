@@ -8,14 +8,17 @@ pnpm-debug.log*
 lerna-debug.log*
 
 # Dependencies
-node_modules
+node_modules/
 
 # Build outputs
-dist
-dist-ssr
-dist-electron
-release
-out
+dist/
+dist-ssr/
+dist-electron/
+release/
+out/
+
+# App Data & Local Database
+data/
 
 # Env files
 .env

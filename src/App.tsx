@@ -7,6 +7,7 @@ import type {
   EnvironmentItem,
   EnvironmentVariable,
   FolderItem,
+  FormDataFieldItem,
   GraphArg,
   GraphExplorerState,
   GraphField,
@@ -30,6 +31,7 @@ import {
 } from './utils/formatters'
 import { formatAndPrettifyJson, sanitizeTrailingCommas } from './utils/jsonHelper'
 import { formatGraphQLQuery } from './utils/curlHelper'
+import { getRegisteredFile } from './utils/fileRegistry'
 import {
   buildFinalHeaders,
   injectAuthToUrl,
@@ -1646,16 +1648,84 @@ function App() {
             }
           }
         } else if (activeTab.bodyType === 'form-data') {
-          const formObject: Record<string, string> = {}
-          activeTab.formData
-            .filter((r) => r.enabled && r.key.trim())
-            .forEach((r) => {
-              formObject[resolveTemplates(r.key.trim(), effectiveEnvironment)] =
-                resolveTemplates(r.value, effectiveEnvironment)
-            })
-          requestOptions.data = formObject
-          if (!hasContentType) {
-            headers['Content-Type'] = 'multipart/form-data'
+          const formItems: FormDataFieldItem[] = []
+          const activeRows = (activeTab.formData || []).filter(
+            (r) =>
+              r.enabled &&
+              ((r.key && r.key.trim()) || r.type === 'file' || (r.value && r.value.trim())),
+          )
+
+          for (const r of activeRows) {
+            const rawKey = r.key?.trim() || ''
+            const fieldKey = rawKey
+              ? resolveTemplates(rawKey, effectiveEnvironment)
+              : r.type === 'file'
+              ? 'file'
+              : ''
+
+            if (!fieldKey) continue
+
+            if (r.type === 'file') {
+              const fileObj = getRegisteredFile(r.id)
+              const fileName = r.fileName || fileObj?.name || r.value || 'file'
+              let filePath = r.filePath || ''
+
+              if (!filePath && fileObj) {
+                if (window.desktopApi?.getPathForFile) {
+                  try {
+                    filePath = window.desktopApi.getPathForFile(fileObj)
+                  } catch {
+                    // ignore
+                  }
+                }
+                if (!filePath && (fileObj as unknown as { path?: string }).path) {
+                  filePath = (fileObj as unknown as { path?: string }).path || ''
+                }
+              }
+
+              let buffer: number[] | undefined
+              if (!filePath && fileObj) {
+                try {
+                  const ab = await fileObj.arrayBuffer()
+                  buffer = Array.from(new Uint8Array(ab))
+                } catch (e) {
+                  console.warn('Failed to read file buffer:', e)
+                }
+              }
+
+              formItems.push({
+                key: fieldKey,
+                type: 'file',
+                fileName,
+                filePath: filePath || undefined,
+                mimeType: fileObj?.type || 'application/octet-stream',
+                buffer,
+              })
+            } else {
+              const val = resolveTemplates(r.value || '', effectiveEnvironment)
+              formItems.push({
+                key: fieldKey,
+                type: 'text',
+                value: val,
+              })
+            }
+          }
+
+          requestOptions.isFormData = true
+          requestOptions.formDataItems = formItems
+          requestOptions.data = formItems
+
+          // Ensure Content-Type without boundary is completely stripped from headers to prevent "Multipart: Unexpected end of form"
+          for (const k of Object.keys(headers)) {
+            if (k.toLowerCase() === 'content-type') {
+              const ctVal = (headers[k] || '').trim().toLowerCase()
+              if (
+                ctVal === 'multipart/form-data' ||
+                (ctVal.startsWith('multipart/form-data') && !ctVal.includes('boundary='))
+              ) {
+                delete headers[k]
+              }
+            }
           }
         }
       }

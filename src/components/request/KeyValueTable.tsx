@@ -2,6 +2,7 @@ import React, { useMemo, useRef, useState } from 'react'
 import { Eye, EyeOff, FileText, Lock, Plus, Trash2, Upload, X } from 'lucide-react'
 import type { EnvironmentItem, KeyValueRow } from '../../types'
 import { createId } from '../../utils/formatters'
+import { registerFile, removeRegisteredFile } from '../../utils/fileRegistry'
 import { TemplateInput } from '../common/TemplateInput'
 
 export interface KeyValueTableProps {
@@ -171,6 +172,7 @@ export function KeyValueTable({
   }
 
   const removeRow = (id: string) => {
+    removeRegisteredFile(id)
     let nextRows = currentRows.filter((row) => row.id !== id)
     if (!isPathVariableTable) {
       while (
@@ -211,11 +213,32 @@ export function KeyValueTable({
   const handleFileSelect = (id: string, index: number, e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (file) {
+      let filePath = ''
+      try {
+        if (window.desktopApi?.getPathForFile) {
+          filePath = window.desktopApi.getPathForFile(file)
+        }
+      } catch {
+        // fallback
+      }
+      if (!filePath && (file as unknown as { path?: string }).path) {
+        filePath = (file as unknown as { path?: string }).path || ''
+      }
+
+      registerFile(id, file)
+
+      const currentRow = displayRows[index] || currentRows.find((r) => r.id === id)
+      const currentKey = currentRow?.key?.trim() || ''
+      const defaultKey = currentKey || 'file'
+
       updateRow(
         id,
         {
+          key: defaultKey,
           value: file.name,
           fileName: file.name,
+          filePath: filePath || undefined,
+          enabled: true,
         },
         index,
       )
@@ -372,14 +395,16 @@ export function KeyValueTable({
 
               <div className="kv-col-key">
                 <input
-                  className={`input input-sm kv-input ${isPathVariableTable ? 'is-readonly' : ''}`}
-                  placeholder={keyPlaceholder}
+                  className={`input input-sm kv-input ${isPathVariableTable ? 'is-readonly' : ''} ${isFileType && !row.key.trim() ? 'border-amber-500/50' : ''}`}
+                  placeholder={isFileType ? 'Key (e.g. file)' : keyPlaceholder}
                   value={row.key}
                   readOnly={isPathVariableTable}
                   disabled={isPathVariableTable}
                   title={
                     isPathVariableTable
                       ? `Tên biến đường dẫn trích xuất tự động từ URL (:${row.key})`
+                      : isFileType && !row.key.trim()
+                      ? 'Field name is required for multipart file upload (default: file)'
                       : undefined
                   }
                   onChange={(e) => updateRow(row.id, { key: e.target.value }, index)}
@@ -393,15 +418,17 @@ export function KeyValueTable({
                     value={row.type || 'text'}
                     onChange={(e) => {
                       const newType = e.target.value as 'text' | 'file'
-                      updateRow(
-                        row.id,
-                        {
-                          type: newType,
-                          value: '',
-                          fileName: undefined,
-                        },
-                        index,
-                      )
+                      removeRegisteredFile(row.id)
+                      const patch: Partial<KeyValueRow> = {
+                        type: newType,
+                        value: '',
+                        fileName: undefined,
+                        filePath: undefined,
+                      }
+                      if (newType === 'file' && !row.key.trim()) {
+                        patch.key = 'file'
+                      }
+                      updateRow(row.id, patch, index)
                     }}
                   >
                     <option value="text">Text</option>
@@ -424,7 +451,7 @@ export function KeyValueTable({
                     {row.value || row.fileName ? (
                       <div className="kv-file-selected">
                         <FileText size={13} className="text-primary-bright flex-shrink-0" />
-                        <span className="kv-file-name" title={row.fileName || row.value}>
+                        <span className="kv-file-name" title={row.filePath || row.fileName || row.value}>
                           {row.fileName || row.value}
                         </span>
                         <button
@@ -432,10 +459,11 @@ export function KeyValueTable({
                           className="kv-file-clear"
                           title="Clear file"
                           onClick={() => {
+                            removeRegisteredFile(row.id)
                             if (fileInputRefs.current[row.id]) {
                               fileInputRefs.current[row.id]!.value = ''
                             }
-                            updateRow(row.id, { value: '', fileName: undefined }, index)
+                            updateRow(row.id, { value: '', fileName: undefined, filePath: undefined }, index)
                           }}
                         >
                           <X size={11} />
