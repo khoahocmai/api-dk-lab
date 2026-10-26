@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   ChevronDown,
   ChevronRight,
@@ -34,6 +34,7 @@ interface CollectionsTreeProps {
   savedRequests: SavedRequestItem[]
   expandedCollectionIds: string[]
   expandedFolderIds: string[]
+  activeSavedRequestId?: string
   onToggleCollection: (id: string) => void
   onToggleFolder: (id: string) => void
   onOpenSavedRequest: (item: SavedRequestItem) => void
@@ -69,6 +70,7 @@ export function CollectionsTree({
   savedRequests,
   expandedCollectionIds,
   expandedFolderIds,
+  activeSavedRequestId,
   onToggleCollection,
   onToggleFolder,
   onOpenSavedRequest,
@@ -98,6 +100,18 @@ export function CollectionsTree({
   const [dropTarget, setDropTarget] = useState<DropTarget | null>(null)
 
   const isEditingAny = Boolean(editingCollectionId || editingFolderId || editingRequestId)
+
+  useEffect(() => {
+    if (activeSavedRequestId) {
+      const timer = setTimeout(() => {
+        const activeEl = document.querySelector(`[data-request-id="${activeSavedRequestId}"]`)
+        if (activeEl) {
+          activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+        }
+      }, 50)
+      return () => clearTimeout(timer)
+    }
+  }, [activeSavedRequestId, expandedFolderIds, expandedCollectionIds])
 
   const handleStartRenameCollection = (collection: CollectionItem) => {
     setEditingCollectionId(collection.id)
@@ -428,6 +442,7 @@ export function CollectionsTree({
 
         {childRequests.map((item) => {
           const isEditing = editingRequestId === item.id
+          const isActive = Boolean(activeSavedRequestId && item.id === activeSavedRequestId)
           const isItemDragging = draggedItem?.type === 'REQUEST' && draggedItem.id === item.id
           const isTargetBefore =
             dropTarget?.type === 'REQUEST' &&
@@ -441,9 +456,12 @@ export function CollectionsTree({
           return (
             <div
               key={item.id}
-              className={`saved-row group-hover-row tree-item-draggable ${isItemDragging ? 'is-dragging' : ''
-                } ${isTargetBefore ? 'drop-target-before' : ''} ${isTargetAfter ? 'drop-target-after' : ''
-                }`}
+              data-request-id={item.id}
+              className={`saved-row group-hover-row tree-item-draggable ${
+                isActive ? 'is-active' : ''
+              } ${isItemDragging ? 'is-dragging' : ''} ${
+                isTargetBefore ? 'drop-target-before' : ''
+              } ${isTargetAfter ? 'drop-target-after' : ''}`}
               draggable={!isEditingAny}
               onDragStart={(e) => handleRequestDragStart(e, item)}
               onDragOver={(e) => handleRequestDragOver(e, item)}

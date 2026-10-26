@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Group, Panel, Separator } from 'react-resizable-panels'
 import { parse } from 'graphql'
 import type {
@@ -68,7 +68,7 @@ import {
 } from './services/graphqlService'
 import { convertRowsToHeadersJson, isLocalhostUrl, parseUrlToQueryParams } from './utils/urlHelper'
 import { exportPostmanCollectionV2, importPostmanCollectionV2 } from './utils/postmanHelper'
-import { moveFolderItem, moveRequestItem } from './utils/treeHelper'
+import { getAncestorIdsForRequest, moveFolderItem, moveRequestItem } from './utils/treeHelper'
 import { executeScript, type ScriptContext } from './services/scriptRunner'
 import { MobileNav } from './components/layout/MobileNav'
 import { Sidebar } from './components/layout/Sidebar'
@@ -169,6 +169,46 @@ function App() {
     () => (activeTabId ? tabs.find((item) => item.id === activeTabId) : undefined) ?? (tabs.length > 0 ? tabs[0] : undefined),
     [tabs, activeTabId],
   )
+
+  const activeSavedRequestId = activeTab?.savedRequestId
+
+  const revealRequestInCollections = useCallback(
+    (requestId: string) => {
+      const { collectionId, ancestorFolderIds } = getAncestorIdsForRequest(
+        savedRequests,
+        folders,
+        requestId,
+      )
+
+      if (collectionId) {
+        setExpandedCollectionIds((prev) =>
+          prev.includes(collectionId) ? prev : [...prev, collectionId],
+        )
+      }
+
+      if (ancestorFolderIds.length > 0) {
+        setExpandedFolderIds((prev) => {
+          const missing = ancestorFolderIds.filter((id) => !prev.includes(id))
+          return missing.length > 0 ? [...prev, ...missing] : prev
+        })
+      }
+    },
+    [savedRequests, folders],
+  )
+
+  useEffect(() => {
+    if (activeSavedRequestId) {
+      revealRequestInCollections(activeSavedRequestId)
+    }
+  }, [activeSavedRequestId, revealRequestInCollections])
+
+  const handleSelectTab = (tabId: string) => {
+    setActiveTabId(tabId)
+    const target = tabs.find((t) => t.id === tabId)
+    if (target?.savedRequestId) {
+      revealRequestInCollections(target.savedRequestId)
+    }
+  }
 
   const activeEnvironment = useMemo(() => {
     if (activeEnvironmentId === 'NO_ENV') return null
@@ -829,6 +869,7 @@ function App() {
   }
 
   const openSavedRequest = (saved: SavedRequestItem) => {
+    revealRequestInCollections(saved.id)
     const existingTab = tabs.find((item) => item.savedRequestId === saved.id)
     if (existingTab) {
       setActiveTabId(existingTab.id)
@@ -2477,7 +2518,7 @@ function App() {
             onToggleSplitLayout={() =>
               setSplitLayout((prev) => (prev === 'horizontal' ? 'vertical' : 'horizontal'))
             }
-            onSelectTab={setActiveTabId}
+            onSelectTab={handleSelectTab}
             onDuplicateTab={duplicateTab}
             onCloseTab={handleRequestCloseTab}
             onCloseOthers={handleCloseOthers}
@@ -2523,6 +2564,7 @@ function App() {
                 savedRequests={savedRequests}
                 expandedCollectionIds={expandedCollectionIds}
                 expandedFolderIds={expandedFolderIds}
+                activeSavedRequestId={activeSavedRequestId}
                 onAddTab={() => addTab('GRAPHQL')}
                 onAddEnvironment={addEnvironment}
                 onDuplicateEnvironment={handleDuplicateEnvironment}

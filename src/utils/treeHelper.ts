@@ -148,3 +148,33 @@ export function moveFolderItem(
 
   return { folders: finalFolders, requests: finalRequests }
 }
+
+/**
+ * Resolves the parent collection ID and all ancestor folder IDs for a given saved request.
+ */
+export function getAncestorIdsForRequest(
+  savedRequests: SavedRequestItem[],
+  folders: FolderItem[],
+  requestId: string,
+): { collectionId: string | null; ancestorFolderIds: string[] } {
+  const req = savedRequests.find((r) => r.id === requestId)
+  if (!req) return { collectionId: null, ancestorFolderIds: [] }
+
+  const collectionId = req.collectionId || null
+  const ancestorFolderIds: string[] = []
+
+  let currentFolderId: string | null = req.folderId || null
+  const visited = new Set<string>()
+
+  while (currentFolderId) {
+    if (visited.has(currentFolderId)) break
+    visited.add(currentFolderId)
+    ancestorFolderIds.push(currentFolderId)
+
+    const folder = folders.find((f) => f.id === currentFolderId)
+    currentFolderId = folder?.parentId || null
+  }
+
+  return { collectionId, ancestorFolderIds }
+}
+

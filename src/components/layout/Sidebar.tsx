@@ -29,6 +29,7 @@ interface SidebarProps {
   savedRequests: SavedRequestItem[]
   expandedCollectionIds: string[]
   expandedFolderIds: string[]
+  activeSavedRequestId?: string
   onAddTab: () => void
   onAddEnvironment: () => void
   onDuplicateEnvironment: (id: string) => void
@@ -84,6 +85,7 @@ export function Sidebar({
   savedRequests,
   expandedCollectionIds,
   expandedFolderIds,
+  activeSavedRequestId,
   onAddTab,
   onAddEnvironment,
   onDuplicateEnvironment,
@@ -185,6 +187,7 @@ export function Sidebar({
             savedRequests={savedRequests}
             expandedCollectionIds={expandedCollectionIds}
             expandedFolderIds={expandedFolderIds}
+            activeSavedRequestId={activeSavedRequestId}
             onToggleCollection={onToggleCollection}
             onToggleFolder={onToggleFolder}
             onOpenSavedRequest={onOpenSavedRequest}

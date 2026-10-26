@@ -1237,6 +1237,33 @@
   color: var(--text-primary);
 }
 
+/* Active Saved Request Row in Collections Tree */
+.saved-row.is-active {
+  background: rgba(59, 130, 246, 0.16);
+  border-left: 3px solid #3b82f6;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding-left: 4px;
+}
+
+.saved-row.is-active:hover {
+  background: rgba(59, 130, 246, 0.24);
+}
+
+.saved-row.is-active .request-icon {
+  color: #60a5fa;
+  filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.5));
+}
+
+.saved-row.is-active .saved-request-name {
+  color: #93c5fd;
+  font-weight: 600;
+}
+
+.saved-row.is-active .method-badge {
+  filter: brightness(1.2) saturate(1.2);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+}
+
 /* Method Badges */
 .method-badge {
   font-size: 9.5px;
