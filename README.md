@@ -71,7 +71,8 @@
 * **Syntax Highlighting trực tiếp:** Tô màu chữ và in đậm riêng biệt cho các biến `{{...}}` ngay trên ô nhập liệu URL. Rê chuột (hover) để xem Popover hiển thị giá trị phân giải thực tế và môi trường đang áp dụng.
 * **Chế độ bảo mật (Secret Mask):** Ẩn các giá trị nhạy cảm (JWT Token, Client Secret, API Key) dưới dạng ký tự chấm tròn `••••••••` và cung cấp nút bật/tắt hiển thị con mắt.
 * **Cảnh báo Domain Mismatch Guard:** Tự động cảnh báo màu vàng khi người dùng gửi request tới một host khác với `{{Domain}}` của môi trường đang chọn, tránh rò rỉ token bảo mật sang domain lạ.
-* **Chuyển đổi môi trường nhanh (Quick Switcher):** Dropdown tiện lợi ngay trên thanh Header Topbar.
+* **Chuyển đổi môi trường nhanh (Quick Switcher):** Dropdown tiện lợi ngay trên thanh Header Topbar. Khi request thuộc Collection đã gắn Project, dropdown chỉ hiển thị các môi trường của Project đó.
+* **Nhóm môi trường theo Project:** Mỗi Project (ví dụ `Dxp`, `Knowledge Base`) chứa nhiều môi trường (`local`, `dev`, ...) và có **biến dùng chung** cho mọi môi trường trong Project (biến của môi trường được ưu tiên khi trùng tên). Mỗi Project nhớ môi trường đang chọn riêng, và có thể gắn với Collection để tự chuyển đúng môi trường.
 * **Phím tắt thông minh Alt + Click:** Nhấn giữ phím `Alt` và click vào checkbox của một biến bất kỳ trong bảng để **kích hoạt duy nhất biến đó và tắt toàn bộ các biến còn lại** (Isolate Variable).
 
 ### 📦 4. Bộ Dữ Liệu Mẫu Đầu Vào (Variables & Body Presets)
@@ -170,12 +171,12 @@ Dưới đây là các kịch bản sử dụng thực tế giúp bạn nhanh ch
 
 ### A. Thiết Lập Môi Trường & Biến (Environments)
 1. **Mở Quản lý Môi trường:** Nhấp vào tab **Environments** ở thanh Sidebar bên trái.
-2. **Tạo Môi trường:** Bấm vào nút **"+ New"** và đặt tên cho môi trường (ví dụ: `Development`, `Staging`, hoặc `Local`).
+2. **Tạo Project & Môi trường:** Bấm **"Project"** để tạo nhóm (ví dụ `Dxp`), rồi bấm dấu **+** trên Project để thêm môi trường (ví dụ: `local`, `dev`, `staging`). Biến dùng chung cho cả Project khai báo ở biểu tượng `{}` của Project. Môi trường cũ chưa phân nhóm nằm ở mục **Ungrouped** — dùng nút **Move to project** để chuyển vào Project.
 3. **Khai báo các biến:** Bấm **"+ Variable"** để thêm các cặp khóa - giá trị:
    * `Domain`: `http://localhost:3000` hoặc `https://api.example.com`
    * `token`: Nhập mã JWT token hoặc Bearer token của bạn.
    * *Mẹo bảo mật:* Bấm vào biểu tượng **Con mắt** (👁️) tại dòng `token` để chuyển sang chế độ bí mật (`secret: true`), giá trị sẽ được che giấu an toàn khi trình chiếu màn hình.
-4. **Kích hoạt môi trường:** Sử dụng thanh **Quick Switcher** ở góc trên cùng của Topbar để chọn môi trường làm việc hiện tại.
+4. **Kích hoạt môi trường:** Sử dụng thanh **Quick Switcher** ở góc trên cùng của Topbar để chọn môi trường làm việc hiện tại. Để tự động lọc đúng môi trường theo Collection, rê chuột vào Collection và bấm biểu tượng liên kết để gắn Project.
 5. **Mẹo phím tắt Isolate Variable:** Trong bảng danh sách biến, nhấn giữ phím `Alt` và click vào checkbox của 1 biến bất kỳ — hệ thống sẽ tự động bật biến đó và tắt toàn bộ các biến còn lại.
 
 ---
@@ -289,6 +290,7 @@ api-dk-lab/
 ├── data/                               # DỮ LIỆU LƯU TRỮ CỤC BỘ (JSON STORAGE)
 │   ├── collections.json                # Lưu Collections, Thư mục và Requests
 │   ├── environments.json               # Lưu danh sách Môi trường và Biến Key-Value
+│   ├── environment-groups.json         # Lưu các Project (nhóm môi trường) và biến dùng chung
 │   ├── history.json                    # Nhật ký các lần gửi request gần nhất
 │   └── settings.json                   # Lưu cấu hình ứng dụng và trạng thái các Tabs
 ├── docs/                               # TÀI LIỆU DỰ ÁN

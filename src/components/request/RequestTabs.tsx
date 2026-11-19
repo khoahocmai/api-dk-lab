@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { BookOpen, Copy, Globe, Layers3, PanelRightClose, PanelRightOpen, Plus, X } from 'lucide-react'
-import type { EnvironmentItem, Mode, RequestItem } from '../../types'
+import type { EnvironmentGroup, EnvironmentItem, Mode, RequestItem } from '../../types'
 import { EnvironmentSelector } from '../common/EnvironmentSelector'
 import { getMethodBadgeClass, isTabDirty } from '../../utils/formatters'
 
@@ -15,6 +15,8 @@ interface RequestTabsProps {
   tabs: RequestItem[]
   activeTabId: string
   environments: EnvironmentItem[]
+  environmentGroups: EnvironmentGroup[]
+  contextGroupId: string | null
   activeEnvironmentId: string
   activeEnvironment: EnvironmentItem | null
   isSidebarCollapsed?: boolean
@@ -37,6 +39,8 @@ export function RequestTabs({
   tabs,
   activeTabId,
   environments,
+  environmentGroups,
+  contextGroupId,
   activeEnvironmentId,
   activeEnvironment,
   isSidebarCollapsed,
@@ -365,6 +369,8 @@ export function RequestTabs({
       <div className="row" style={{ gap: 6, marginLeft: 4, flexShrink: 0 }}>
         <EnvironmentSelector
           environments={environments}
+          environmentGroups={environmentGroups}
+          contextGroupId={contextGroupId}
           activeEnvironmentId={activeEnvironmentId}
           activeEnvironment={activeEnvironment}
           onSelectEnvironment={onSelectEnvironment}

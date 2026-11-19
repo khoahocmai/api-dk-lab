@@ -1,6 +1,6 @@
 import { Group, Panel, Separator } from 'react-resizable-panels'
 import { Globe, Layers3, Plus, Terminal } from 'lucide-react'
-import type { EnvironmentItem, Mode, RequestItem, SplitLayout } from '../../types'
+import type { EnvironmentGroup, EnvironmentItem, Mode, RequestItem, SplitLayout } from '../../types'
 import { RequestTabs } from '../request/RequestTabs'
 import { UrlBar } from '../request/UrlBar'
 import { RequestEditor } from '../request/RequestEditor'
@@ -12,6 +12,8 @@ interface MainPanelProps {
   activeTabId: string
   activeTab: RequestItem | undefined
   environments: EnvironmentItem[]
+  environmentGroups: EnvironmentGroup[]
+  contextGroupId: string | null
   activeEnvironmentId: string
   activeEnvironment: EnvironmentItem | null
   previewUrl: string
@@ -52,6 +54,8 @@ export function MainPanel({
   activeTabId,
   activeTab,
   environments,
+  environmentGroups,
+  contextGroupId,
   activeEnvironmentId,
   activeEnvironment,
   previewUrl,
@@ -91,6 +95,8 @@ export function MainPanel({
         tabs={tabs}
         activeTabId={activeTabId}
         environments={environments}
+        environmentGroups={environmentGroups}
+        contextGroupId={contextGroupId}
         activeEnvironmentId={activeEnvironmentId}
         activeEnvironment={activeEnvironment}
         isSidebarCollapsed={isSidebarCollapsed}

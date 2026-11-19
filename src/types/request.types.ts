@@ -92,6 +92,8 @@ export type CollectionItem = {
   id: string
   name: string
   description?: string
+  /** Environment group (project) linked to this collection. */
+  environmentGroupId?: string | null
 }
 
 export type FolderItem = {

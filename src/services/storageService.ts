@@ -1,6 +1,7 @@
 import type {
   AuthConfig,
   CollectionItem,
+  EnvironmentGroup,
   EnvironmentItem,
   FolderItem,
   HistoryItem,
@@ -23,6 +24,7 @@ import {
 
 export const STORAGE_FILES = {
   ENVIRONMENTS: 'environments.json',
+  ENVIRONMENT_GROUPS: 'environment-groups.json',
   COLLECTIONS: 'collections.json',
   HISTORY: 'history.json',
   SETTINGS: 'settings.json',
@@ -93,8 +95,7 @@ export function createDefaultEnvironment(name: string, domain: string): Environm
     name,
     variables: [
       { id: createId(), key: 'Domain', value: domain, enabled: true },
-      { id: createId(), key: 'token', value: '', enabled: true, secret: true },
-      { id: createId(), key: 'tenantId', value: '', enabled: true },
+      { id: createId(), key: 'Token', value: '', enabled: true, secret: true },
     ],
   }
 }
@@ -438,6 +439,22 @@ export async function saveEnvironments(environments: EnvironmentItem[]): Promise
   return await writeStorage(STORAGE_FILES.ENVIRONMENTS, environments)
 }
 
+export async function loadEnvironmentGroups(): Promise<EnvironmentGroup[]> {
+  const data = await readStorage<EnvironmentGroup[]>(STORAGE_FILES.ENVIRONMENT_GROUPS)
+  if (Array.isArray(data)) {
+    return data.map((g) => ({
+      id: g.id,
+      name: g.name,
+      variables: Array.isArray(g.variables) ? g.variables : [],
+    }))
+  }
+  return []
+}
+
+export async function saveEnvironmentGroups(groups: EnvironmentGroup[]): Promise<boolean> {
+  return await writeStorage(STORAGE_FILES.ENVIRONMENT_GROUPS, groups)
+}
+
 export interface PersistedCollectionsData {
   collections: CollectionItem[]
   folders?: FolderItem[]
@@ -516,6 +533,7 @@ export async function saveHistory(history: HistoryItem[]): Promise<boolean> {
 export interface PersistedSettingsData {
   settings: AppSettings
   activeEnvironmentId?: string
+  activeEnvByGroup?: Record<string, string>
   activeTabId?: string
   tabs?: PersistedRequestItem[]
   splitLayout?: SplitLayout
@@ -563,6 +581,10 @@ export async function loadSettings(): Promise<PersistedSettingsData> {
     return {
       settings,
       activeEnvironmentId: data.activeEnvironmentId,
+      activeEnvByGroup:
+        data.activeEnvByGroup && typeof data.activeEnvByGroup === 'object'
+          ? data.activeEnvByGroup
+          : {},
       activeTabId: data.activeTabId,
       tabs: Array.isArray(data.tabs) ? data.tabs.map((tab) => stripRedundantContentTypeHeader(tab)) : [],
       splitLayout: data.splitLayout,
@@ -574,6 +596,7 @@ export async function loadSettings(): Promise<PersistedSettingsData> {
   return {
     settings: DEFAULT_APP_SETTINGS,
     activeEnvironmentId: '',
+    activeEnvByGroup: {},
     activeTabId: '',
     tabs: [],
     splitLayout: 'horizontal',
@@ -588,12 +611,14 @@ export async function saveSettings(data: PersistedSettingsData): Promise<boolean
 
 export async function loadAllWorkspaceData(): Promise<{
   environments: EnvironmentItem[]
+  environmentGroups: EnvironmentGroup[]
   collectionsData: PersistedCollectionsData
   history: HistoryItem[]
   settingsData: PersistedSettingsData
 }> {
-  const [envRes, collectionsData, history, settingsData] = await Promise.all([
+  const [envRes, environmentGroups, collectionsData, history, settingsData] = await Promise.all([
     loadEnvironments(),
+    loadEnvironmentGroups(),
     loadCollections(),
     loadHistory(),
     loadSettings(),
@@ -601,6 +626,7 @@ export async function loadAllWorkspaceData(): Promise<{
 
   return {
     environments: envRes.environments,
+    environmentGroups,
     collectionsData,
     history,
     settingsData,

@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { Check, ChevronDown, Globe, Layers, Plus } from 'lucide-react'
-import type { EnvironmentItem } from '../../types'
+import type { EnvironmentGroup, EnvironmentItem } from '../../types'
 
 interface EnvironmentSelectorProps {
   environments: EnvironmentItem[]
+  environmentGroups?: EnvironmentGroup[]
+  /** Group (project) of the current request's collection; limits the list to its environments. */
+  contextGroupId?: string | null
   activeEnvironmentId: string
   activeEnvironment: EnvironmentItem | null
   onSelectEnvironment: (id: string) => void
@@ -13,6 +16,8 @@ interface EnvironmentSelectorProps {
 
 export function EnvironmentSelector({
   environments,
+  environmentGroups = [],
+  contextGroupId = null,
   activeEnvironmentId,
   activeEnvironment,
   onSelectEnvironment,
@@ -23,7 +28,43 @@ export function EnvironmentSelector({
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   const isNoEnv = !activeEnvironment || activeEnvironmentId === 'NO_ENV'
-  const displayName = isNoEnv ? 'No Environment' : activeEnvironment.name
+  const activeGroupName = activeEnvironment?.groupId
+    ? environmentGroups.find((g) => g.id === activeEnvironment.groupId)?.name
+    : undefined
+  const displayName = isNoEnv
+    ? 'No Environment'
+    : activeGroupName
+      ? `${activeGroupName} / ${activeEnvironment.name}`
+      : activeEnvironment.name
+
+  // Sections shown in the dropdown: only the linked project, or every project + ungrouped
+  const sections: { key: string; label: string; envs: EnvironmentItem[] }[] = (() => {
+    if (contextGroupId) {
+      const group = environmentGroups.find((g) => g.id === contextGroupId)
+      return [
+        {
+          key: contextGroupId,
+          label: group?.name ?? 'Project',
+          envs: environments.filter((e) => e.groupId === contextGroupId),
+        },
+      ]
+    }
+    const result = environmentGroups
+      .map((g) => ({
+        key: g.id,
+        label: g.name,
+        envs: environments.filter((e) => e.groupId === g.id),
+      }))
+      .filter((section) => section.envs.length > 0)
+    const ungrouped = environments.filter(
+      (e) => !e.groupId || !environmentGroups.some((g) => g.id === e.groupId),
+    )
+    if (ungrouped.length > 0) {
+      result.push({ key: '__ungrouped', label: 'Ungrouped', envs: ungrouped })
+    }
+    return result
+  })()
+  const showSectionLabels = !contextGroupId
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -173,8 +214,29 @@ export function EnvironmentSelector({
           <div style={{ height: 1, background: 'var(--border)', margin: '4px 0' }} />
 
           {/* Environments list */}
-          <div style={{ maxHeight: 180, overflowY: 'auto' }}>
-            {environments.map((env) => {
+          <div style={{ maxHeight: 260, overflowY: 'auto' }}>
+            {sections.length === 0 && (
+              <div style={{ padding: '6px 8px', fontSize: 11, color: 'var(--text-dim)' }}>
+                No environments in this project yet.
+              </div>
+            )}
+            {sections.map((section) => (
+              <div key={section.key}>
+                {showSectionLabels && (
+                  <div
+                    style={{
+                      padding: '6px 8px 2px',
+                      fontSize: 10,
+                      fontWeight: 700,
+                      letterSpacing: '0.04em',
+                      textTransform: 'uppercase',
+                      color: 'var(--text-dim)',
+                    }}
+                  >
+                    {section.label}
+                  </div>
+                )}
+                {section.envs.map((env) => {
               const isSelected = !isNoEnv && activeEnvironment?.id === env.id
               const varCount = env.variables.length
               return (
@@ -230,6 +292,8 @@ export function EnvironmentSelector({
                 </button>
               )
             })}
+              </div>
+            ))}
           </div>
 
           {/* Footer Action */}

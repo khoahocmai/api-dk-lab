@@ -4,6 +4,7 @@ import { parse } from 'graphql'
 import type {
   AppSettings,
   CollectionItem,
+  EnvironmentGroup,
   EnvironmentItem,
   EnvironmentVariable,
   FolderItem,
@@ -45,6 +46,7 @@ import {
   loadAllWorkspaceData,
   reviveRequest,
   saveCollections,
+  saveEnvironmentGroups,
   saveEnvironments,
   saveHistory,
   saveSettings,
@@ -68,6 +70,12 @@ import {
 } from './services/graphqlService'
 import { convertRowsToHeadersJson, isLocalhostUrl, parseUrlToQueryParams } from './utils/urlHelper'
 import { exportPostmanCollectionV2, importPostmanCollectionV2 } from './utils/postmanHelper'
+import {
+  NO_ENV,
+  mergeEnvironmentWithGroup,
+  resolveEffectiveEnvironmentId,
+  stripInheritedVariables,
+} from './utils/environmentHelper'
 import { getAncestorIdsForRequest, moveFolderItem, moveRequestItem } from './utils/treeHelper'
 import { executeScript, type ScriptContext } from './services/scriptRunner'
 import { MobileNav } from './components/layout/MobileNav'
@@ -96,7 +104,9 @@ function App() {
   const [expandedCollectionIds, setExpandedCollectionIds] = useState<string[]>([])
   const [expandedFolderIds, setExpandedFolderIds] = useState<string[]>([])
   const [environments, setEnvironments] = useState<EnvironmentItem[]>([])
+  const [environmentGroups, setEnvironmentGroups] = useState<EnvironmentGroup[]>([])
   const [activeEnvironmentId, setActiveEnvironmentId] = useState('')
+  const [activeEnvByGroup, setActiveEnvByGroup] = useState<Record<string, string>>({})
   const [mobileView, setMobileView] = useState<MobileView>('REQUEST')
   const [splitLayout, setSplitLayout] = useState<SplitLayout>('horizontal')
   const [sidebarTab, setSidebarTab] = useState<SidebarTab>('COLLECTIONS')
@@ -210,15 +220,41 @@ function App() {
     }
   }
 
+  // Environment group (project) linked to the collection of the current request
+  const contextGroupId = useMemo(() => {
+    const collectionId = activeTab?.collectionId
+    if (!collectionId) return null
+    const groupId = collections.find((c) => c.id === collectionId)?.environmentGroupId
+    return groupId && environmentGroups.some((g) => g.id === groupId) ? groupId : null
+  }, [activeTab?.collectionId, collections, environmentGroups])
+
+  // Id of the environment that is active for the current request context
+  const effectiveEnvironmentId = useMemo(
+    () =>
+      resolveEffectiveEnvironmentId(
+        environments,
+        contextGroupId,
+        activeEnvByGroup,
+        activeEnvironmentId,
+      ),
+    [environments, contextGroupId, activeEnvByGroup, activeEnvironmentId],
+  )
+
+  // Active environment with group variables merged in (environment variables win)
   const activeEnvironment = useMemo(() => {
-    if (activeEnvironmentId === 'NO_ENV') return null
-    if (!activeEnvironmentId) return environments[0] ?? null
-    return (
-      environments.find((item) => item.id === activeEnvironmentId) ??
-      environments[0] ??
-      null
-    )
-  }, [environments, activeEnvironmentId])
+    let base: EnvironmentItem | null
+    if (effectiveEnvironmentId === NO_ENV) base = null
+    else if (!effectiveEnvironmentId) base = environments[0] ?? null
+    else {
+      base =
+        environments.find((item) => item.id === effectiveEnvironmentId) ??
+        (contextGroupId ? null : environments[0]) ??
+        null
+    }
+    if (!base) return null
+    const group = environmentGroups.find((g) => g.id === base!.groupId)
+    return mergeEnvironmentWithGroup(base, group)
+  }, [environments, environmentGroups, effectiveEnvironmentId, contextGroupId])
 
   const currentGraphOperationKind =
     graphExplorer.activeTab === 'MUTATION' ? 'mutation' : 'query'
@@ -286,6 +322,7 @@ function App() {
       try {
         const {
           environments: loadedEnvs,
+          environmentGroups: loadedGroups,
           collectionsData,
           history: loadedHistory,
           settingsData,
@@ -294,6 +331,8 @@ function App() {
         if (!isMounted) return
 
         setEnvironments(loadedEnvs)
+        setEnvironmentGroups(loadedGroups)
+        setActiveEnvByGroup(settingsData.activeEnvByGroup || {})
 
         setCollections(collectionsData.collections)
         setFolders(collectionsData.folders || [])
@@ -391,6 +430,17 @@ function App() {
     return () => window.clearTimeout(timer)
   }, [environments, isHydrated])
 
+  // Realtime Save: Environment Groups (data/environment-groups.json)
+  useEffect(() => {
+    if (!isHydrated) return
+
+    const timer = window.setTimeout(() => {
+      void saveEnvironmentGroups(environmentGroups)
+    }, 150)
+
+    return () => window.clearTimeout(timer)
+  }, [environmentGroups, isHydrated])
+
   // Realtime Save: Collections & Folders & Saved Requests (data/collections.json)
   useEffect(() => {
     if (!isHydrated) return
@@ -427,6 +477,7 @@ function App() {
       void saveSettings({
         settings,
         activeEnvironmentId,
+        activeEnvByGroup,
         activeTabId,
         tabs: tabs.map(stripTransientRequest),
         splitLayout,
@@ -439,6 +490,7 @@ function App() {
   }, [
     settings,
     activeEnvironmentId,
+    activeEnvByGroup,
     activeTabId,
     tabs,
     splitLayout,
@@ -1179,10 +1231,21 @@ function App() {
     )
   }
 
+  // Electron (Windows) can leave inputs unfocusable after a native confirm dialog;
+  // blur/focus the window afterwards to restore typing.
+  const confirmWithFocusFix = (message: string) => {
+    const result = window.confirm(message)
+    setTimeout(() => {
+      window.blur()
+      window.focus()
+    }, 0)
+    return result
+  }
+
   const handleDeleteEnvironment = (envId: string) => {
     if (environments.length <= 1) return
     const target = environments.find((e) => e.id === envId)
-    const confirmed = window.confirm(
+    const confirmed = confirmWithFocusFix(
       `Bạn có chắc chắn muốn xóa môi trường "${target?.name || 'Environment'}"?`,
     )
     if (!confirmed) return
@@ -1192,6 +1255,13 @@ function App() {
     if (activeEnvironmentId === envId && remaining[0]) {
       setActiveEnvironmentId(remaining[0].id)
     }
+    setActiveEnvByGroup((prev) => {
+      const next = { ...prev }
+      Object.keys(next).forEach((gid) => {
+        if (next[gid] === envId) delete next[gid]
+      })
+      return next
+    })
   }
 
   // Export Postman Collection
@@ -1232,13 +1302,35 @@ function App() {
 
 
 
-  const addEnvironment = () => {
-    const env = createDefaultEnvironment(
-      `Env ${environments.length + 1}`,
-      'http://localhost:3030',
-    )
+  // Activate an environment inside its own scope (group or global)
+  const activateEnvironment = (envId: string, groupId?: string | null) => {
+    if (groupId) {
+      setActiveEnvByGroup((prev) => ({ ...prev, [groupId]: envId }))
+    } else {
+      setActiveEnvironmentId(envId)
+    }
+  }
+
+  const handleSelectEnvironment = (envId: string) => {
+    if (envId === NO_ENV) {
+      activateEnvironment(NO_ENV, contextGroupId)
+      return
+    }
+    const env = environments.find((e) => e.id === envId)
+    if (!env) return
+    activateEnvironment(env.id, env.groupId)
+  }
+
+  const addEnvironment = (groupId?: string | null) => {
+    const targetGroupId =
+      typeof groupId === 'string' ? groupId : groupId === null ? null : contextGroupId
+    const siblings = environments.filter((e) => (e.groupId ?? null) === (targetGroupId ?? null))
+    const env: EnvironmentItem = {
+      ...createDefaultEnvironment(`Env ${siblings.length + 1}`, 'http://localhost:3030'),
+      groupId: targetGroupId,
+    }
     setEnvironments((current) => [...current, env])
-    setActiveEnvironmentId(env.id)
+    activateEnvironment(env.id, targetGroupId)
   }
 
   const handleDuplicateEnvironment = (envId: string) => {
@@ -1254,8 +1346,14 @@ function App() {
       })),
     }
     setEnvironments((current) => [...current, duplicated])
-    setActiveEnvironmentId(duplicated.id)
+    activateEnvironment(duplicated.id, duplicated.groupId)
     showToast(`Đã nhân bản môi trường "${source.name}"`, 'success')
+  }
+
+  const handleMoveEnvironmentToGroup = (envId: string, groupId: string | null) => {
+    setEnvironments((current) =>
+      current.map((env) => (env.id === envId ? { ...env, groupId } : env)),
+    )
   }
 
   const updateEnvironmentVariable = (
@@ -1304,6 +1402,100 @@ function App() {
               ...env,
               variables: env.variables.filter((item) => item.id !== varId),
             },
+      ),
+    )
+  }
+
+  // ---- Environment Groups (projects) ----
+  const handleAddEnvironmentGroup = (name: string) => {
+    const trimmed = name.trim()
+    if (!trimmed) return
+    const group: EnvironmentGroup = { id: createId(), name: trimmed, variables: [] }
+    setEnvironmentGroups((current) => [...current, group])
+  }
+
+  const handleRenameEnvironmentGroup = (groupId: string, newName: string) => {
+    const trimmed = newName.trim()
+    if (!trimmed) return
+    setEnvironmentGroups((current) =>
+      current.map((g) => (g.id === groupId ? { ...g, name: trimmed } : g)),
+    )
+  }
+
+  const handleDeleteEnvironmentGroup = (groupId: string) => {
+    const target = environmentGroups.find((g) => g.id === groupId)
+    const envCount = environments.filter((e) => e.groupId === groupId).length
+    const confirmed = confirmWithFocusFix(
+      `Xóa project "${target?.name || 'Group'}"? ${envCount} environment bên trong sẽ chuyển sang mục Ungrouped (không bị xóa).`,
+    )
+    if (!confirmed) return
+
+    setEnvironmentGroups((current) => current.filter((g) => g.id !== groupId))
+    setEnvironments((current) =>
+      current.map((env) => (env.groupId === groupId ? { ...env, groupId: null } : env)),
+    )
+    setCollections((current) =>
+      current.map((c) =>
+        c.environmentGroupId === groupId ? { ...c, environmentGroupId: null } : c,
+      ),
+    )
+    setActiveEnvByGroup((prev) => {
+      const next = { ...prev }
+      delete next[groupId]
+      return next
+    })
+  }
+
+  const handleReorderEnvironmentGroups = (fromId: string, toId: string) => {
+    if (fromId === toId) return
+    setEnvironmentGroups((current) => {
+      const from = current.findIndex((g) => g.id === fromId)
+      const to = current.findIndex((g) => g.id === toId)
+      if (from < 0 || to < 0) return current
+      const next = [...current]
+      const [moved] = next.splice(from, 1)
+      next.splice(to, 0, moved)
+      return next
+    })
+  }
+
+  const handleLinkCollectionToGroup = (collectionId: string, groupId: string | null) => {
+    setCollections((current) =>
+      current.map((c) => (c.id === collectionId ? { ...c, environmentGroupId: groupId } : c)),
+    )
+  }
+
+  const addEnvironmentGroupVariable = (groupId: string) => {
+    setEnvironmentGroups((current) =>
+      current.map((g) =>
+        g.id !== groupId
+          ? g
+          : {
+              ...g,
+              variables: [...g.variables, { id: createId(), key: '', value: '', enabled: true }],
+            },
+      ),
+    )
+  }
+
+  const updateEnvironmentGroupVariable = (
+    groupId: string,
+    varId: string,
+    patch: Partial<EnvironmentVariable>,
+  ) => {
+    setEnvironmentGroups((current) =>
+      current.map((g) =>
+        g.id !== groupId
+          ? g
+          : { ...g, variables: g.variables.map((v) => (v.id === varId ? { ...v, ...patch } : v)) },
+      ),
+    )
+  }
+
+  const deleteEnvironmentGroupVariable = (groupId: string, varId: string) => {
+    setEnvironmentGroups((current) =>
+      current.map((g) =>
+        g.id !== groupId ? g : { ...g, variables: g.variables.filter((v) => v.id !== varId) },
       ),
     )
   }
@@ -1506,6 +1698,9 @@ function App() {
           }
         : null
 
+      const contextGroupOfEnv =
+        environmentGroups.find((g) => g.id === activeEnvironment?.groupId) ?? null
+
       const currentEnvDict: Record<string, string> = {}
       if (effectiveEnvironment?.variables) {
         effectiveEnvironment.variables
@@ -1570,10 +1765,11 @@ function App() {
             })
             effectiveEnvironment = { ...effectiveEnvironment, variables: updatedVars }
 
-            // Update React environment state & persist
+            // Update React environment state & persist (group-inherited variables stay in the group)
+            const persistedEnv = stripInheritedVariables(effectiveEnvironment, contextGroupOfEnv)
             setEnvironments((envs) => {
               const nextEnvs = envs.map((env) =>
-                env.id === effectiveEnvironment!.id ? effectiveEnvironment! : env,
+                env.id === persistedEnv.id ? persistedEnv : env,
               )
               void saveEnvironments(nextEnvs)
               return nextEnvs
@@ -1861,9 +2057,10 @@ function App() {
             })
             effectiveEnvironment = { ...effectiveEnvironment, variables: updatedVars }
 
+            const persistedEnv = stripInheritedVariables(effectiveEnvironment, contextGroupOfEnv)
             setEnvironments((envs) => {
               const nextEnvs = envs.map((env) =>
-                env.id === effectiveEnvironment!.id ? effectiveEnvironment! : env,
+                env.id === persistedEnv.id ? persistedEnv : env,
               )
               void saveEnvironments(nextEnvs)
               return nextEnvs
@@ -2500,15 +2697,17 @@ function App() {
             activeTabId={activeTabId}
             activeTab={activeTab}
             environments={environments}
-            activeEnvironmentId={activeEnvironmentId}
+            environmentGroups={environmentGroups}
+            contextGroupId={contextGroupId}
+            activeEnvironmentId={effectiveEnvironmentId}
             activeEnvironment={activeEnvironment}
             previewUrl={previewUrl}
             splitLayout={splitLayout}
             editorFontSize={settings.editorFontSize}
             isSidebarCollapsed={isSidebarCollapsed}
             isExplorerOpen={isExplorerOpen}
-            onSelectEnvironment={setActiveEnvironmentId}
-            onAddEnvironment={addEnvironment}
+            onSelectEnvironment={handleSelectEnvironment}
+            onAddEnvironment={() => addEnvironment()}
             onOpenManageEnvironments={() => {
               setIsSidebarCollapsed(false)
               setSidebarTab('ENVIRONMENTS')
@@ -2557,6 +2756,8 @@ function App() {
                 activeSidebarTab={sidebarTab}
                 onSelectSidebarTab={setSidebarTab}
                 environments={environments}
+                environmentGroups={environmentGroups}
+                activeEnvByGroup={activeEnvByGroup}
                 activeEnvironmentId={activeEnvironmentId}
                 activeEnvironment={activeEnvironment}
                 collections={collections}
@@ -2568,7 +2769,16 @@ function App() {
                 onAddTab={() => addTab('GRAPHQL')}
                 onAddEnvironment={addEnvironment}
                 onDuplicateEnvironment={handleDuplicateEnvironment}
-                onSelectEnvironment={setActiveEnvironmentId}
+                onSelectEnvironment={handleSelectEnvironment}
+                onMoveEnvironmentToGroup={handleMoveEnvironmentToGroup}
+                onAddEnvironmentGroup={handleAddEnvironmentGroup}
+                onRenameEnvironmentGroup={handleRenameEnvironmentGroup}
+                onDeleteEnvironmentGroup={handleDeleteEnvironmentGroup}
+                onReorderEnvironmentGroups={handleReorderEnvironmentGroups}
+                onAddGroupVariable={addEnvironmentGroupVariable}
+                onUpdateGroupVariable={updateEnvironmentGroupVariable}
+                onDeleteGroupVariable={deleteEnvironmentGroupVariable}
+                onLinkCollectionToGroup={handleLinkCollectionToGroup}
                 onRenameEnvironment={handleRenameEnvironment}
                 onDeleteEnvironment={handleDeleteEnvironment}
                 onUpdateEnvironmentVariable={updateEnvironmentVariable}

@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 import type {
   CollectionItem,
+  EnvironmentGroup,
   EnvironmentItem,
   EnvironmentVariable,
   FolderItem,
@@ -22,6 +23,8 @@ interface SidebarProps {
   activeSidebarTab?: SidebarTab
   onSelectSidebarTab?: (tab: SidebarTab) => void
   environments: EnvironmentItem[]
+  environmentGroups: EnvironmentGroup[]
+  activeEnvByGroup: Record<string, string>
   activeEnvironmentId: string
   activeEnvironment: EnvironmentItem | null
   collections: CollectionItem[]
@@ -31,7 +34,20 @@ interface SidebarProps {
   expandedFolderIds: string[]
   activeSavedRequestId?: string
   onAddTab: () => void
-  onAddEnvironment: () => void
+  onAddEnvironment: (groupId?: string | null) => void
+  onMoveEnvironmentToGroup: (envId: string, groupId: string | null) => void
+  onAddEnvironmentGroup: (name: string) => void
+  onRenameEnvironmentGroup: (groupId: string, name: string) => void
+  onDeleteEnvironmentGroup: (groupId: string) => void
+  onReorderEnvironmentGroups: (fromId: string, toId: string) => void
+  onAddGroupVariable: (groupId: string) => void
+  onUpdateGroupVariable: (
+    groupId: string,
+    varId: string,
+    patch: Partial<EnvironmentVariable>,
+  ) => void
+  onDeleteGroupVariable: (groupId: string, varId: string) => void
+  onLinkCollectionToGroup: (collectionId: string, groupId: string | null) => void
   onDuplicateEnvironment: (id: string) => void
   onSelectEnvironment: (id: string) => void
   onRenameEnvironment: (id: string, newName: string) => void
@@ -79,6 +95,8 @@ export function Sidebar({
   activeSidebarTab: controlledTab,
   onSelectSidebarTab: setControlledTab,
   environments,
+  environmentGroups,
+  activeEnvByGroup,
   activeEnvironmentId,
   collections,
   folders,
@@ -88,6 +106,15 @@ export function Sidebar({
   activeSavedRequestId,
   onAddTab,
   onAddEnvironment,
+  onMoveEnvironmentToGroup,
+  onAddEnvironmentGroup,
+  onRenameEnvironmentGroup,
+  onDeleteEnvironmentGroup,
+  onReorderEnvironmentGroups,
+  onAddGroupVariable,
+  onUpdateGroupVariable,
+  onDeleteGroupVariable,
+  onLinkCollectionToGroup,
   onDuplicateEnvironment,
   onSelectEnvironment,
   onRenameEnvironment,
@@ -183,6 +210,8 @@ export function Sidebar({
         {activeTab === 'COLLECTIONS' ? (
           <CollectionsTree
             collections={collections}
+            environmentGroups={environmentGroups}
+            onLinkCollectionToGroup={onLinkCollectionToGroup}
             folders={folders}
             savedRequests={savedRequests}
             expandedCollectionIds={expandedCollectionIds}
@@ -207,9 +236,19 @@ export function Sidebar({
         ) : (
           <EnvironmentsManager
             environments={environments}
+            environmentGroups={environmentGroups}
+            activeEnvByGroup={activeEnvByGroup}
             activeEnvironmentId={activeEnvironmentId}
             onSelectEnvironment={onSelectEnvironment}
             onAddEnvironment={onAddEnvironment}
+            onMoveEnvironmentToGroup={onMoveEnvironmentToGroup}
+            onAddEnvironmentGroup={onAddEnvironmentGroup}
+            onRenameEnvironmentGroup={onRenameEnvironmentGroup}
+            onDeleteEnvironmentGroup={onDeleteEnvironmentGroup}
+            onReorderEnvironmentGroups={onReorderEnvironmentGroups}
+            onAddGroupVariable={onAddGroupVariable}
+            onUpdateGroupVariable={onUpdateGroupVariable}
+            onDeleteGroupVariable={onDeleteGroupVariable}
             onDuplicateEnvironment={onDuplicateEnvironment}
             onRenameEnvironment={onRenameEnvironment}
             onDeleteEnvironment={onDeleteEnvironment}
