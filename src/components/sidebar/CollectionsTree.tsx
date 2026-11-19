@@ -6,12 +6,18 @@ import {
   FileCode,
   Folder,
   FolderPlus,
+  Link2,
   Pencil,
   Plus,
   Trash2,
   Upload,
 } from 'lucide-react'
-import type { CollectionItem, FolderItem, SavedRequestItem } from '../../types'
+import type {
+  CollectionItem,
+  EnvironmentGroup,
+  FolderItem,
+  SavedRequestItem,
+} from '../../types'
 import { isDescendantFolder } from '../../utils/treeHelper'
 import { getMethodBadgeClass } from '../../utils/formatters'
 
@@ -30,6 +36,8 @@ export interface DropTarget {
 
 interface CollectionsTreeProps {
   collections: CollectionItem[]
+  environmentGroups?: EnvironmentGroup[]
+  onLinkCollectionToGroup?: (collectionId: string, groupId: string | null) => void
   folders: FolderItem[]
   savedRequests: SavedRequestItem[]
   expandedCollectionIds: string[]
@@ -66,6 +74,8 @@ interface CollectionsTreeProps {
 
 export function CollectionsTree({
   collections,
+  environmentGroups = [],
+  onLinkCollectionToGroup,
   folders,
   savedRequests,
   expandedCollectionIds,
@@ -89,6 +99,8 @@ export function CollectionsTree({
 }: CollectionsTreeProps) {
   const [editingCollectionId, setEditingCollectionId] = useState<string | null>(null)
   const [editingCollectionName, setEditingCollectionName] = useState('')
+
+  const [linkingCollectionId, setLinkingCollectionId] = useState<string | null>(null)
 
   const [editingFolderId, setEditingFolderId] = useState<string | null>(null)
   const [editingFolderName, setEditingFolderName] = useState('')
@@ -619,12 +631,35 @@ export function CollectionsTree({
                     </span>
                     <Folder size={14} style={{ color: 'var(--primary-bright)', flexShrink: 0 }} />
                     <span className="collection-title-text">{collection.name}</span>
+                    {collection.environmentGroupId &&
+                      environmentGroups.some((g) => g.id === collection.environmentGroupId) && (
+                        <span
+                          className="collection-env-badge"
+                          title="Environment group (project) linked to this collection"
+                        >
+                          {environmentGroups.find((g) => g.id === collection.environmentGroupId)?.name}
+                        </span>
+                      )}
                   </div>
 
                   <div
                     className="hover-actions"
                     onClick={(e) => e.stopPropagation()}
                   >
+                    {onLinkCollectionToGroup && (
+                      <button
+                        type="button"
+                        className="icon-button icon-button-sm"
+                        onClick={() =>
+                          setLinkingCollectionId((prev) =>
+                            prev === collection.id ? null : collection.id,
+                          )
+                        }
+                        title="Link to Environment Group (project)"
+                      >
+                        <Link2 size={12} />
+                      </button>
+                    )}
                     <button
                       type="button"
                       className="icon-button icon-button-sm rename-btn"
@@ -659,6 +694,29 @@ export function CollectionsTree({
                       <Trash2 size={12} />
                     </button>
                   </div>
+                </div>
+              )}
+
+              {linkingCollectionId === collection.id && onLinkCollectionToGroup && (
+                <div className="collection-link-row" onClick={(e) => e.stopPropagation()}>
+                  <span className="collection-link-label">Environment group</span>
+                  <select
+                    className="input input-sm"
+                    value={collection.environmentGroupId ?? ''}
+                    onChange={(e) => {
+                      onLinkCollectionToGroup(collection.id, e.target.value || null)
+                      setLinkingCollectionId(null)
+                    }}
+                    autoFocus
+                    onBlur={() => setLinkingCollectionId(null)}
+                  >
+                    <option value="">— None (global environment) —</option>
+                    {environmentGroups.map((g) => (
+                      <option key={g.id} value={g.id}>
+                        {g.name}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               )}
 

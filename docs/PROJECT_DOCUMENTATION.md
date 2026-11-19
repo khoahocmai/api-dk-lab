@@ -146,6 +146,7 @@ api-dk-lab/
 ├── data/                               # Dữ liệu cục bộ (JSON Schema v4)
 │   ├── collections.json                # Danh mục Collections, Folders, Requests đã lưu
 │   ├── environments.json               # Danh sách Môi trường và các cặp Key-Value biến
+│   ├── environment-groups.json         # Các Project (nhóm môi trường) và biến dùng chung
 │   ├── history.json                    # Lịch sử các lần gửi request
 │   └── settings.json                   # Cấu hình ứng dụng và trạng thái phiên làm việc (Tabs)
 ├── docs/                               # Tài liệu kiến trúc & đặc tả kỹ thuật dự án
@@ -308,6 +309,10 @@ api-dk-lab/
 - **Quản lý Môi trường Chuyên sâu (Environments Manager):**
   - Quản lý danh sách môi trường tại tab riêng trên Sidebar.
   - Hỗ trợ tạo mới, đổi tên, nhân bản môi trường (Duplicate), xóa môi trường, và thêm/bớt từng dòng biến tiện lợi.
+- **Nhóm môi trường theo Project (Environment Groups):**
+  - Danh sách hiển thị dạng cây `Project → Environment`, có ô tìm kiếm, thu gọn/mở rộng từng Project và mục `Ungrouped` cho môi trường chưa phân nhóm.
+  - Mỗi Project có **biến dùng chung**; khi resolve `{{variable}}`, biến của Environment được ưu tiên hơn biến của Project (gộp qua `mergeEnvironmentWithGroup`). Script pre/post chỉ ghi giá trị mới vào Environment, không làm lẫn biến Project vào Environment (`stripInheritedVariables`).
+  - Mỗi Project lưu môi trường đang chọn riêng (`activeEnvByGroup`). Collection gắn với một Project qua `environmentGroupId`; request thuộc Collection đó sẽ dùng môi trường active của Project và Quick Switcher chỉ liệt kê môi trường của Project. Request không thuộc Collection nào dùng `activeEnvironmentId` toàn cục.
 
 ---
 
@@ -397,13 +402,24 @@ export interface EnvironmentVariable {
   value: string;       // Giá trị thực tế
   enabled: boolean;    // Kích hoạt / Tắt
   secret?: boolean;    // Mặt nạ bảo mật (mask)
+  inherited?: boolean; // Chỉ dùng lúc chạy: biến đến từ Project, không lưu vào Environment
 }
 
 export interface EnvironmentItem {
   id: string;
-  name: string;        // Tên môi trường (VD: "Local", "Staging", "Production")
+  name: string;        // Tên môi trường (VD: "local", "dev", "staging")
+  groupId?: string | null; // Project chứa môi trường này (rỗng = Ungrouped)
   variables: EnvironmentVariable[];
 }
+
+// data/environment-groups.json
+export interface EnvironmentGroup {
+  id: string;
+  name: string;        // Tên Project (VD: "Dxp", "Knowledge Base")
+  variables: EnvironmentVariable[]; // Biến dùng chung cho mọi môi trường của Project
+}
+
+// CollectionItem.environmentGroupId?: string | null  -> Project gắn với Collection
 ```
 
 ### 5.3. Mô hình Cài đặt & Phiên làm việc (`data/settings.json`)
@@ -419,7 +435,8 @@ export interface AppSettings {
 
 export interface PersistedWorkspaceSettings {
   settings: AppSettings;
-  activeEnvironmentId: string | null;
+  activeEnvironmentId: string | null;          // Môi trường active toàn cục (dùng cho môi trường Ungrouped)
+  activeEnvByGroup: Record<string, string>;    // Môi trường active của từng Project (groupId -> envId)
   activeTabId: string | null;
   tabs: PersistedRequestItem[];    // Trạng thái các tab đang mở
   splitLayout: 'horizontal' | 'vertical';
