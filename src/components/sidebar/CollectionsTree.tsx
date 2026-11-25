@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {
   ChevronDown,
   ChevronRight,
@@ -32,6 +32,20 @@ export interface DropTarget {
   id: string
   collectionId: string
   position: DropPosition
+}
+
+/** How long a drag has to rest on a collapsed row before it opens. */
+const AUTO_EXPAND_DELAY_MS = 600
+
+/** Share of a folder row, at its top and bottom, that reorders instead of nesting. */
+const REORDER_EDGE_RATIO = 0.15
+
+function getFolderDropPosition(e: React.DragEvent): DropPosition {
+  const rect = e.currentTarget.getBoundingClientRect()
+  const offsetY = e.clientY - rect.top
+  if (offsetY < rect.height * REORDER_EDGE_RATIO) return 'before'
+  if (offsetY > rect.height * (1 - REORDER_EDGE_RATIO)) return 'after'
+  return 'inside'
 }
 
 interface CollectionsTreeProps {
@@ -116,6 +130,17 @@ export function CollectionsTree({
 
   const isEditingAny = Boolean(editingCollectionId || editingFolderId || editingRequestId)
 
+  const dragStartTimerRef = useRef<number>()
+  const autoExpandRef = useRef<{ id: string; timer: number } | null>(null)
+
+  useEffect(
+    () => () => {
+      window.clearTimeout(dragStartTimerRef.current)
+      window.clearTimeout(autoExpandRef.current?.timer)
+    },
+    [],
+  )
+
   useEffect(() => {
     if (activeSavedRequestId) {
       const timer = setTimeout(() => {
@@ -169,16 +194,44 @@ export function CollectionsTree({
 
   // --- Drag and Drop Handlers ---
 
+  const cancelAutoExpand = () => {
+    window.clearTimeout(autoExpandRef.current?.timer)
+    autoExpandRef.current = null
+  }
+
+  // Open a collapsed collection or folder once the drag rests on it
+  const scheduleAutoExpand = (id: string, expand: () => void) => {
+    if (autoExpandRef.current?.id === id) return
+    cancelAutoExpand()
+    autoExpandRef.current = { id, timer: window.setTimeout(expand, AUTO_EXPAND_DELAY_MS) }
+  }
+
+  // Marking an item as dragged adds drop zones to the tree. Doing that inside the
+  // dragstart event can shift the source row, and Chromium then cancels the drag.
+  const beginDrag = (item: DragItem) => {
+    window.clearTimeout(dragStartTimerRef.current)
+    dragStartTimerRef.current = window.setTimeout(() => setDraggedItem(item), 0)
+  }
+
   const handleDragEnd = () => {
+    window.clearTimeout(dragStartTimerRef.current)
+    cancelAutoExpand()
     setDraggedItem(null)
     setDropTarget(null)
+  }
+
+  // dragleave also fires when moving onto a child element, which is not leaving the row
+  const handleRowDragLeave = (e: React.DragEvent, id: string) => {
+    if (e.currentTarget.contains(e.relatedTarget as Node | null)) return
+    if (autoExpandRef.current?.id === id) cancelAutoExpand()
+    if (dropTarget?.id === id) setDropTarget(null)
   }
 
   // Request Drag & Drop
   const handleRequestDragStart = (e: React.DragEvent, item: SavedRequestItem) => {
     e.dataTransfer.setData('text/plain', item.id)
     e.dataTransfer.effectAllowed = 'move'
-    setDraggedItem({
+    beginDrag({
       type: 'REQUEST',
       id: item.id,
       collectionId: item.collectionId,
@@ -189,6 +242,7 @@ export function CollectionsTree({
   const handleRequestDragOver = (e: React.DragEvent, targetItem: SavedRequestItem) => {
     e.preventDefault()
     e.stopPropagation()
+    cancelAutoExpand()
     if (!draggedItem || draggedItem.id === targetItem.id) return
 
     const rect = e.currentTarget.getBoundingClientRect()
@@ -233,7 +287,7 @@ export function CollectionsTree({
   const handleFolderDragStart = (e: React.DragEvent, folder: FolderItem) => {
     e.dataTransfer.setData('text/plain', folder.id)
     e.dataTransfer.effectAllowed = 'move'
-    setDraggedItem({
+    beginDrag({
       type: 'FOLDER',
       id: folder.id,
       collectionId: folder.collectionId,
@@ -252,16 +306,11 @@ export function CollectionsTree({
       return
     }
 
-    const rect = e.currentTarget.getBoundingClientRect()
-    const offsetY = e.clientY - rect.top
-    let position: DropPosition = 'inside'
-
-    if (offsetY < rect.height * 0.25) {
-      position = 'before'
-    } else if (offsetY > rect.height * 0.75) {
-      position = 'after'
+    const position = getFolderDropPosition(e)
+    if (position === 'inside' && !expandedFolderIds.includes(targetFolder.id)) {
+      scheduleAutoExpand(targetFolder.id, () => onToggleFolder(targetFolder.id))
     } else {
-      position = 'inside'
+      cancelAutoExpand()
     }
 
     setDropTarget({
@@ -277,17 +326,11 @@ export function CollectionsTree({
     e.stopPropagation()
     if (!draggedItem || draggedItem.id === targetFolder.id) return
 
-    const rect = e.currentTarget.getBoundingClientRect()
-    const offsetY = e.clientY - rect.top
-    let position: DropPosition = 'inside'
+    dropIntoFolder(targetFolder, getFolderDropPosition(e))
+  }
 
-    if (offsetY < rect.height * 0.25) {
-      position = 'before'
-    } else if (offsetY > rect.height * 0.75) {
-      position = 'after'
-    } else {
-      position = 'inside'
-    }
+  const dropIntoFolder = (targetFolder: FolderItem, position: DropPosition) => {
+    if (!draggedItem || draggedItem.id === targetFolder.id) return
 
     if (draggedItem.type === 'REQUEST' && onMoveRequest) {
       if (position === 'inside') {
@@ -316,11 +359,53 @@ export function CollectionsTree({
     handleDragEnd()
   }
 
+  // "Empty folder" placeholder: dropping anywhere on it moves the item inside
+  const handleEmptyZoneDragOver = (
+    e: React.DragEvent,
+    collectionId: string,
+    parentId: string | null,
+  ) => {
+    if (!parentId) {
+      handleCollectionDragOver(e, collectionId)
+      return
+    }
+    e.preventDefault()
+    e.stopPropagation()
+    cancelAutoExpand()
+    if (!draggedItem) return
+    if (draggedItem.type === 'FOLDER' && isDescendantFolder(folders, draggedItem.id, parentId)) {
+      e.dataTransfer.dropEffect = 'none'
+      return
+    }
+    setDropTarget({ type: 'FOLDER', id: parentId, collectionId, position: 'inside' })
+  }
+
+  const handleEmptyZoneDrop = (
+    e: React.DragEvent,
+    collectionId: string,
+    parentId: string | null,
+  ) => {
+    if (!parentId) {
+      handleCollectionDrop(e, collectionId)
+      return
+    }
+    e.preventDefault()
+    e.stopPropagation()
+    const targetFolder = folders.find((f) => f.id === parentId)
+    if (targetFolder) dropIntoFolder(targetFolder, 'inside')
+  }
+
   // Collection Card Drag & Drop (Drop to Root of Collection)
   const handleCollectionDragOver = (e: React.DragEvent, collectionId: string) => {
     e.preventDefault()
     e.stopPropagation()
     if (!draggedItem) return
+
+    if (expandedCollectionIds.includes(collectionId)) {
+      cancelAutoExpand()
+    } else {
+      scheduleAutoExpand(collectionId, () => onToggleCollection(collectionId))
+    }
 
     setDropTarget({
       type: 'COLLECTION',
@@ -420,9 +505,7 @@ export function CollectionsTree({
                   draggable={!isEditingAny}
                   onDragStart={(e) => handleFolderDragStart(e, folder)}
                   onDragOver={(e) => handleFolderDragOver(e, folder)}
-                  onDragLeave={() => {
-                    if (dropTarget?.id === folder.id) setDropTarget(null)
-                  }}
+                  onDragLeave={(e) => handleRowDragLeave(e, folder.id)}
                   onDrop={(e) => handleFolderDrop(e, folder)}
                   onDragEnd={handleDragEnd}
                   onClick={() => onToggleFolder(folder.id)}
@@ -605,22 +688,15 @@ export function CollectionsTree({
 
         {childFolders.length === 0 && childRequests.length === 0 && (
           <div
-            className={`empty-folder-drop-zone ${dropTarget?.type === 'FOLDER' && dropTarget.id === parentId
+            className={`empty-folder-drop-zone ${
+              dropTarget?.type === 'FOLDER' &&
+              dropTarget.id === parentId &&
+              dropTarget.position === 'inside'
                 ? 'drop-target-inside'
                 : ''
-              }`}
-            onDragOver={(e) => {
-              if (parentId) {
-                const targetFolder = folders.find((f) => f.id === parentId)
-                if (targetFolder) handleFolderDragOver(e, targetFolder)
-              }
-            }}
-            onDrop={(e) => {
-              if (parentId) {
-                const targetFolder = folders.find((f) => f.id === parentId)
-                if (targetFolder) handleFolderDrop(e, targetFolder)
-              }
-            }}
+            }`}
+            onDragOver={(e) => handleEmptyZoneDragOver(e, collectionId, parentId)}
+            onDrop={(e) => handleEmptyZoneDrop(e, collectionId, parentId)}
           >
             Empty folder
           </div>
@@ -686,9 +762,7 @@ export function CollectionsTree({
                   className="collection-header group-hover-row"
                   onClick={() => onToggleCollection(collection.id)}
                   onDragOver={(e) => handleCollectionDragOver(e, collection.id)}
-                  onDragLeave={() => {
-                    if (dropTarget?.id === collection.id) setDropTarget(null)
-                  }}
+                  onDragLeave={(e) => handleRowDragLeave(e, collection.id)}
                   onDrop={(e) => handleCollectionDrop(e, collection.id)}
                 >
                   <div
