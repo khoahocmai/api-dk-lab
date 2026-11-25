@@ -39,114 +39,118 @@ export function getDescendantFolderIds(folders: FolderItem[], folderId: string):
   return result
 }
 
-/**
- * Moves a saved request to a new collection/folder or reorders it relative to a target request.
- */
-export function moveRequestItem(
-  requests: SavedRequestItem[],
-  requestId: string,
-  targetCollectionId: string,
-  targetFolderId: string | null,
-  targetRequestId?: string,
-  position?: 'before' | 'after',
-): SavedRequestItem[] {
-  const reqIndex = requests.findIndex((r) => r.id === requestId)
-  if (reqIndex === -1) return requests
+export type TreeItemRef = { type: 'FOLDER' | 'REQUEST'; id: string }
 
-  const req = requests[reqIndex]
-  const updatedReq: SavedRequestItem = {
-    ...req,
-    collectionId: targetCollectionId,
-    folderId: targetFolderId,
-    updatedAt: new Date().toISOString(),
-  }
+export interface TreeMoveTarget {
+  collectionId: string
+  /** Destination folder; null is the collection root. */
+  folderId: string | null
+  /** Sibling to place the moved items next to; only applies to items of its type. */
+  anchor?: TreeItemRef & { position: 'before' | 'after' }
+}
 
-  const withoutReq = requests.filter((r) => r.id !== requestId)
-
-  if (targetRequestId && position && targetRequestId !== requestId) {
-    const targetIndex = withoutReq.findIndex((r) => r.id === targetRequestId)
-    if (targetIndex !== -1) {
-      const insertIndex = position === 'before' ? targetIndex : targetIndex + 1
-      const next = [...withoutReq]
-      next.splice(insertIndex, 0, updatedReq)
-      return next
-    }
-  }
-
-  return [...withoutReq, updatedReq]
+/** Inserts `moved` next to the anchor, or appends it when there is no usable anchor. */
+function placeItems<T extends { id: string }>(
+  rest: T[],
+  moved: T[],
+  anchorId: string | undefined,
+  position: 'before' | 'after' | undefined,
+): T[] {
+  const anchorIndex = rest.findIndex((item) => item.id === anchorId)
+  if (anchorIndex === -1) return [...rest, ...moved]
+  const next = [...rest]
+  next.splice(position === 'before' ? anchorIndex : anchorIndex + 1, 0, ...moved)
+  return next
 }
 
 /**
- * Moves a folder to a new collection/parent folder or reorders it relative to a target folder.
- * Also returns updated requests if collectionId changed.
+ * Moves several folders and requests at once, keeping the order of `items`.
+ * Items already inside a moved folder travel with it and keep their structure.
+ * Returns the inputs unchanged when the move would nest a folder inside itself.
  */
-export function moveFolderItem(
+export function moveTreeItems(
   folders: FolderItem[],
   requests: SavedRequestItem[],
-  folderId: string,
-  targetCollectionId: string,
-  targetParentFolderId: string | null,
-  targetFolderId?: string,
-  position?: 'before' | 'after',
+  items: TreeItemRef[],
+  target: TreeMoveTarget,
 ): { folders: FolderItem[]; requests: SavedRequestItem[] } {
-  // Prevent circular nesting
-  if (targetParentFolderId && isDescendantFolder(folders, folderId, targetParentFolderId)) {
-    return { folders, requests }
+  const unchanged = { folders, requests }
+  const selectedFolderIds = new Set(items.filter((i) => i.type === 'FOLDER').map((i) => i.id))
+
+  const isInsideSelected = (folderId: string | null | undefined) => {
+    const visited = new Set<string>()
+    let currentId = folderId
+    while (currentId && !visited.has(currentId)) {
+      if (selectedFolderIds.has(currentId)) return true
+      visited.add(currentId)
+      currentId = folders.find((f) => f.id === currentId)?.parentId
+    }
+    return false
   }
 
-  const currentFolder = folders.find((f) => f.id === folderId)
-  if (!currentFolder) return { folders, requests }
+  if (isInsideSelected(target.folderId)) return unchanged
 
-  const descendantFolderIds = getDescendantFolderIds(folders, folderId)
-  const collectionChanged = currentFolder.collectionId !== targetCollectionId
+  const movedFolders: FolderItem[] = []
+  const movedRequests: SavedRequestItem[] = []
+  const now = new Date().toISOString()
 
-  // Update folder & descendants
-  const updatedFoldersList = folders.map((f) => {
-    if (f.id === folderId) {
-      return {
-        ...f,
-        collectionId: targetCollectionId,
-        parentId: targetParentFolderId,
-      }
+  items.forEach((item) => {
+    if (item.type === 'FOLDER') {
+      const folder = folders.find((f) => f.id === item.id)
+      if (!folder || isInsideSelected(folder.parentId)) return
+      movedFolders.push({ ...folder, collectionId: target.collectionId, parentId: target.folderId })
+    } else {
+      const request = requests.find((r) => r.id === item.id)
+      if (!request || isInsideSelected(request.folderId)) return
+      movedRequests.push({
+        ...request,
+        collectionId: target.collectionId,
+        folderId: target.folderId,
+        updatedAt: now,
+      })
     }
-    if (collectionChanged && descendantFolderIds.has(f.id)) {
-      return {
-        ...f,
-        collectionId: targetCollectionId,
-      }
-    }
-    return f
   })
 
-  let finalFolders = updatedFoldersList
-  if (targetFolderId && position && targetFolderId !== folderId) {
-    const movedItem = updatedFoldersList.find((f) => f.id === folderId)!
-    const withoutFolder = updatedFoldersList.filter((f) => f.id !== folderId)
-    const targetIndex = withoutFolder.findIndex((f) => f.id === targetFolderId)
-    if (targetIndex !== -1) {
-      const insertIndex = position === 'before' ? targetIndex : targetIndex + 1
-      const next = [...withoutFolder]
-      next.splice(insertIndex, 0, movedItem)
-      finalFolders = next
-    }
-  }
+  if (movedFolders.length === 0 && movedRequests.length === 0) return unchanged
 
-  // Update requests if collection changed
-  let finalRequests = requests
-  if (collectionChanged) {
-    finalRequests = requests.map((r) => {
-      if (r.folderId && descendantFolderIds.has(r.folderId)) {
-        return {
-          ...r,
-          collectionId: targetCollectionId,
-          updatedAt: new Date().toISOString(),
-        }
-      }
-      return r
-    })
-  }
+  // Everything below a moved folder follows it into the target collection
+  const descendantIds = new Set<string>()
+  movedFolders.forEach((folder) => {
+    getDescendantFolderIds(folders, folder.id).forEach((id) => descendantIds.add(id))
+  })
+  const movedFolderIds = new Set(movedFolders.map((f) => f.id))
+  const movedRequestIds = new Set(movedRequests.map((r) => r.id))
 
-  return { folders: finalFolders, requests: finalRequests }
+  const remainingFolders = folders
+    .filter((f) => !movedFolderIds.has(f.id))
+    .map((f) =>
+      descendantIds.has(f.id) && f.collectionId !== target.collectionId
+        ? { ...f, collectionId: target.collectionId }
+        : f,
+    )
+  const remainingRequests = requests
+    .filter((r) => !movedRequestIds.has(r.id))
+    .map((r) =>
+      r.folderId && descendantIds.has(r.folderId) && r.collectionId !== target.collectionId
+        ? { ...r, collectionId: target.collectionId, updatedAt: now }
+        : r,
+    )
+
+  const { anchor } = target
+  return {
+    folders: placeItems(
+      remainingFolders,
+      movedFolders,
+      anchor?.type === 'FOLDER' ? anchor.id : undefined,
+      anchor?.position,
+    ),
+    requests: placeItems(
+      remainingRequests,
+      movedRequests,
+      anchor?.type === 'REQUEST' ? anchor.id : undefined,
+      anchor?.position,
+    ),
+  }
 }
 
 /**
