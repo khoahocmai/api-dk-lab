@@ -38,6 +38,7 @@ interface CollectionsTreeProps {
   collections: CollectionItem[]
   environmentGroups?: EnvironmentGroup[]
   onLinkCollectionToGroup?: (collectionId: string, groupId: string | null) => void
+  onLinkFolderToGroup?: (folderId: string, groupId: string | null) => void
   folders: FolderItem[]
   savedRequests: SavedRequestItem[]
   expandedCollectionIds: string[]
@@ -76,6 +77,7 @@ export function CollectionsTree({
   collections,
   environmentGroups = [],
   onLinkCollectionToGroup,
+  onLinkFolderToGroup,
   folders,
   savedRequests,
   expandedCollectionIds,
@@ -104,6 +106,7 @@ export function CollectionsTree({
 
   const [editingFolderId, setEditingFolderId] = useState<string | null>(null)
   const [editingFolderName, setEditingFolderName] = useState('')
+  const [linkingFolderId, setLinkingFolderId] = useState<string | null>(null)
 
   const [editingRequestId, setEditingRequestId] = useState<string | null>(null)
   const [editingRequestName, setEditingRequestName] = useState('')
@@ -374,6 +377,8 @@ export function CollectionsTree({
             dropTarget.id === folder.id &&
             dropTarget.position === 'after'
 
+          const linkedGroup = environmentGroups.find((g) => g.id === folder.environmentGroupId)
+
           return (
             <div key={folder.id} className="folder-node">
               {isEditing ? (
@@ -412,9 +417,29 @@ export function CollectionsTree({
                     </span>
                     <Folder size={13} className="folder-icon" />
                     <span className="folder-name">{folder.name}</span>
+                    {linkedGroup && (
+                      <span
+                        className="collection-env-badge"
+                        title={`Environment group (project) linked to this folder: ${linkedGroup.name}`}
+                      >
+                        {linkedGroup.name}
+                      </span>
+                    )}
                   </div>
 
                   <div className="hover-actions" onClick={(e) => e.stopPropagation()}>
+                    {onLinkFolderToGroup && (
+                      <button
+                        type="button"
+                        className="icon-button icon-button-sm"
+                        onClick={() =>
+                          setLinkingFolderId((prev) => (prev === folder.id ? null : folder.id))
+                        }
+                        title="Link to Environment Group (project)"
+                      >
+                        <Link2 size={12} />
+                      </button>
+                    )}
                     <button
                       type="button"
                       className="icon-button icon-button-sm rename-btn"
@@ -440,6 +465,29 @@ export function CollectionsTree({
                       <Trash2 size={12} />
                     </button>
                   </div>
+                </div>
+              )}
+
+              {linkingFolderId === folder.id && onLinkFolderToGroup && (
+                <div className="collection-link-row">
+                  <span className="collection-link-label">Environment group</span>
+                  <select
+                    className="input input-sm"
+                    value={linkedGroup?.id ?? ''}
+                    onChange={(e) => {
+                      onLinkFolderToGroup(folder.id, e.target.value || null)
+                      setLinkingFolderId(null)
+                    }}
+                    autoFocus
+                    onBlur={() => setLinkingFolderId(null)}
+                  >
+                    <option value="">— Inherit from parent —</option>
+                    {environmentGroups.map((g) => (
+                      <option key={g.id} value={g.id}>
+                        {g.name}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               )}
 

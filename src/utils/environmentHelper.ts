@@ -1,4 +1,10 @@
-import type { EnvironmentGroup, EnvironmentItem, EnvironmentVariable } from '../types'
+import type {
+  CollectionItem,
+  EnvironmentGroup,
+  EnvironmentItem,
+  EnvironmentVariable,
+  FolderItem,
+} from '../types'
 
 export const NO_ENV = 'NO_ENV'
 
@@ -45,6 +51,35 @@ export function stripInheritedVariables(
       return rest
     })
   return { ...env, variables }
+}
+
+/**
+ * Environment group of a request: the nearest linked folder (walking up the
+ * parents), then the collection. Links to groups that no longer exist are skipped.
+ */
+export function resolveContextGroupId(
+  collectionId: string | undefined,
+  folderId: string | null | undefined,
+  collections: CollectionItem[],
+  folders: FolderItem[],
+  groups: EnvironmentGroup[],
+): string | null {
+  if (!collectionId) return null
+  const exists = (id: string | null | undefined): id is string =>
+    Boolean(id) && groups.some((g) => g.id === id)
+
+  const visited = new Set<string>()
+  let currentId = folderId
+  while (currentId && !visited.has(currentId)) {
+    visited.add(currentId)
+    const folder = folders.find((f) => f.id === currentId && f.collectionId === collectionId)
+    if (!folder) break
+    if (exists(folder.environmentGroupId)) return folder.environmentGroupId
+    currentId = folder.parentId
+  }
+
+  const groupId = collections.find((c) => c.id === collectionId)?.environmentGroupId
+  return exists(groupId) ? groupId : null
 }
 
 /** Environment id that should be active for a collection's group (or the global one). */

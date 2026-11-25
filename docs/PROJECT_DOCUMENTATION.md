@@ -312,7 +312,8 @@ api-dk-lab/
 - **Nhóm môi trường theo Project (Environment Groups):**
   - Danh sách hiển thị dạng cây `Project → Environment`, có ô tìm kiếm, thu gọn/mở rộng từng Project và mục `Ungrouped` cho môi trường chưa phân nhóm.
   - Mỗi Project có **biến dùng chung**; khi resolve `{{variable}}`, biến của Environment được ưu tiên hơn biến của Project (gộp qua `mergeEnvironmentWithGroup`). Script pre/post chỉ ghi giá trị mới vào Environment, không làm lẫn biến Project vào Environment (`stripInheritedVariables`).
-  - Mỗi Project lưu môi trường đang chọn riêng (`activeEnvByGroup`). Collection gắn với một Project qua `environmentGroupId`; request thuộc Collection đó sẽ dùng môi trường active của Project và Quick Switcher chỉ liệt kê môi trường của Project. Request không thuộc Collection nào, hoặc Collection chưa gắn Project, dùng `activeEnvironmentId` toàn cục (có thể là môi trường của bất kỳ Project nào).
+  - Mỗi Project lưu môi trường đang chọn riêng (`activeEnvByGroup`). Collection gắn với một Project qua `environmentGroupId`; request thuộc Collection đó sẽ dùng môi trường active của Project và Quick Switcher chỉ liệt kê môi trường của Project. Request chưa gắn Project (qua Folder hoặc Collection) dùng `activeEnvironmentId` toàn cục (có thể là môi trường của bất kỳ Project nào).
+  - Folder cũng gắn được Project riêng (`FolderItem.environmentGroupId`). App chọn Project theo folder gần nhất có liên kết (đi ngược lên các folder cha), sau đó tới Collection (`resolveContextGroupId`). Folder không chọn thì kế thừa cấp trên; chỉ folder tự chọn mới hiện nhãn. Xóa Project sẽ gỡ liên kết ở cả Collection và Folder.
 
 ---
 

@@ -101,6 +101,8 @@ export type FolderItem = {
   collectionId: string
   parentId?: string | null
   name: string
+  /** Environment group (project) linked to this folder; empty inherits from the parent. */
+  environmentGroupId?: string | null
 }
 
 export type SavedRequestItem = {
