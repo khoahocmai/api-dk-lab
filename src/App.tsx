@@ -1302,11 +1302,13 @@ function App() {
 
 
 
-  // Activate an environment inside its own scope (group or global)
+  // Activate an environment inside its own scope (group or global). When the current
+  // request isn't linked to a project, the global selection follows as well.
   const activateEnvironment = (envId: string, groupId?: string | null) => {
     if (groupId) {
       setActiveEnvByGroup((prev) => ({ ...prev, [groupId]: envId }))
-    } else {
+    }
+    if (!groupId || !contextGroupId) {
       setActiveEnvironmentId(envId)
     }
   }
