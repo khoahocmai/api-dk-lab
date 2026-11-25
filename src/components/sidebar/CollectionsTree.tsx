@@ -18,7 +18,7 @@ import type {
   FolderItem,
   SavedRequestItem,
 } from '../../types'
-import { isDescendantFolder } from '../../utils/treeHelper'
+import { getDescendantFolderIds, isDescendantFolder } from '../../utils/treeHelper'
 import { getMethodBadgeClass } from '../../utils/formatters'
 
 export type DragItem =
@@ -344,6 +344,22 @@ export function CollectionsTree({
     handleDragEnd()
   }
 
+  // Marker on a parent row when folders nested inside it have their own project link
+  const renderChildLinkHint = (childFolders: FolderItem[]) => {
+    const links = childFolders.flatMap((child) => {
+      const group = environmentGroups.find((g) => g.id === child.environmentGroupId)
+      return group ? [`${child.name} → ${group.name}`] : []
+    })
+    if (links.length === 0) return null
+    const title = `Folders inside with their own environment group:\n${links.join('\n')}`
+    return (
+      <span className="child-env-hint" title={title} aria-label={title}>
+        <Link2 size={9} />
+        {links.length}
+      </span>
+    )
+  }
+
   // --- Render Folder Tree ---
 
   const renderFolderItems = (
@@ -417,6 +433,11 @@ export function CollectionsTree({
                     </span>
                     <Folder size={13} className="folder-icon" />
                     <span className="folder-name">{folder.name}</span>
+                    {renderChildLinkHint(
+                      Array.from(getDescendantFolderIds(folders, folder.id))
+                        .filter((id) => id !== folder.id)
+                        .flatMap((id) => folders.filter((f) => f.id === id)),
+                    )}
                     {linkedGroup && (
                       <span
                         className="collection-env-badge"
@@ -679,6 +700,7 @@ export function CollectionsTree({
                     </span>
                     <Folder size={14} style={{ color: 'var(--primary-bright)', flexShrink: 0 }} />
                     <span className="collection-title-text">{collection.name}</span>
+                    {renderChildLinkHint(folders.filter((f) => f.collectionId === collection.id))}
                     {collection.environmentGroupId &&
                       environmentGroups.some((g) => g.id === collection.environmentGroupId) && (
                         <span
