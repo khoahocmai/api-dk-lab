@@ -73,6 +73,7 @@ import { exportPostmanCollectionV2, importPostmanCollectionV2 } from './utils/po
 import {
   NO_ENV,
   mergeEnvironmentWithGroup,
+  resolveContextGroupId,
   resolveEffectiveEnvironmentId,
   stripInheritedVariables,
 } from './utils/environmentHelper'
@@ -220,13 +221,18 @@ function App() {
     }
   }
 
-  // Environment group (project) linked to the collection of the current request
-  const contextGroupId = useMemo(() => {
-    const collectionId = activeTab?.collectionId
-    if (!collectionId) return null
-    const groupId = collections.find((c) => c.id === collectionId)?.environmentGroupId
-    return groupId && environmentGroups.some((g) => g.id === groupId) ? groupId : null
-  }, [activeTab?.collectionId, collections, environmentGroups])
+  // Environment group (project) linked to the folder or collection of the current request
+  const contextGroupId = useMemo(
+    () =>
+      resolveContextGroupId(
+        activeTab?.collectionId,
+        activeTab?.folderId,
+        collections,
+        folders,
+        environmentGroups,
+      ),
+    [activeTab?.collectionId, activeTab?.folderId, collections, folders, environmentGroups],
+  )
 
   // Id of the environment that is active for the current request context
   const effectiveEnvironmentId = useMemo(
@@ -1302,11 +1308,13 @@ function App() {
 
 
 
-  // Activate an environment inside its own scope (group or global)
+  // Activate an environment inside its own scope (group or global). When the current
+  // request isn't linked to a project, the global selection follows as well.
   const activateEnvironment = (envId: string, groupId?: string | null) => {
     if (groupId) {
       setActiveEnvByGroup((prev) => ({ ...prev, [groupId]: envId }))
-    } else {
+    }
+    if (!groupId || !contextGroupId) {
       setActiveEnvironmentId(envId)
     }
   }
@@ -1439,6 +1447,11 @@ function App() {
         c.environmentGroupId === groupId ? { ...c, environmentGroupId: null } : c,
       ),
     )
+    setFolders((current) =>
+      current.map((f) =>
+        f.environmentGroupId === groupId ? { ...f, environmentGroupId: null } : f,
+      ),
+    )
     setActiveEnvByGroup((prev) => {
       const next = { ...prev }
       delete next[groupId]
@@ -1462,6 +1475,12 @@ function App() {
   const handleLinkCollectionToGroup = (collectionId: string, groupId: string | null) => {
     setCollections((current) =>
       current.map((c) => (c.id === collectionId ? { ...c, environmentGroupId: groupId } : c)),
+    )
+  }
+
+  const handleLinkFolderToGroup = (folderId: string, groupId: string | null) => {
+    setFolders((current) =>
+      current.map((f) => (f.id === folderId ? { ...f, environmentGroupId: groupId } : f)),
     )
   }
 
@@ -2779,6 +2798,7 @@ function App() {
                 onUpdateGroupVariable={updateEnvironmentGroupVariable}
                 onDeleteGroupVariable={deleteEnvironmentGroupVariable}
                 onLinkCollectionToGroup={handleLinkCollectionToGroup}
+                onLinkFolderToGroup={handleLinkFolderToGroup}
                 onRenameEnvironment={handleRenameEnvironment}
                 onDeleteEnvironment={handleDeleteEnvironment}
                 onUpdateEnvironmentVariable={updateEnvironmentVariable}

@@ -1109,6 +1109,20 @@
   margin-left: 4px;
 }
 
+.child-env-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--primary-bright);
+  border: 1px dashed rgba(59, 130, 246, 0.45);
+  border-radius: 999px;
+  padding: 0 5px;
+  margin-left: 4px;
+}
+
 /* Variables Table */
 .env-variables-section {
   display: flex;
@@ -1542,13 +1556,19 @@
   align-items: center;
   gap: 2px;
   flex-shrink: 0;
+  /* Take no room until shown, so names and env badges reach the right edge */
+  width: 0;
+  overflow: hidden;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.12s ease;
 }
 
 .group-hover-row:hover .hover-actions,
-.hover-actions:hover {
+.hover-actions:hover,
+.hover-actions:focus-within {
+  width: auto;
+  overflow: visible;
   opacity: 1;
   pointer-events: auto;
 }

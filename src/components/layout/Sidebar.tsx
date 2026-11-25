@@ -48,6 +48,7 @@ interface SidebarProps {
   ) => void
   onDeleteGroupVariable: (groupId: string, varId: string) => void
   onLinkCollectionToGroup: (collectionId: string, groupId: string | null) => void
+  onLinkFolderToGroup: (folderId: string, groupId: string | null) => void
   onDuplicateEnvironment: (id: string) => void
   onSelectEnvironment: (id: string) => void
   onRenameEnvironment: (id: string, newName: string) => void
@@ -115,6 +116,7 @@ export function Sidebar({
   onUpdateGroupVariable,
   onDeleteGroupVariable,
   onLinkCollectionToGroup,
+  onLinkFolderToGroup,
   onDuplicateEnvironment,
   onSelectEnvironment,
   onRenameEnvironment,
@@ -212,6 +214,7 @@ export function Sidebar({
             collections={collections}
             environmentGroups={environmentGroups}
             onLinkCollectionToGroup={onLinkCollectionToGroup}
+            onLinkFolderToGroup={onLinkFolderToGroup}
             folders={folders}
             savedRequests={savedRequests}
             expandedCollectionIds={expandedCollectionIds}
