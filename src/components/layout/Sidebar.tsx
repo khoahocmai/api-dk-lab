@@ -15,6 +15,7 @@ import type {
   SavedRequestItem,
   SidebarTab,
 } from '../../types'
+import type { TreeItemRef, TreeMoveTarget } from '../../utils/treeHelper'
 import { CollectionsTree } from '../sidebar/CollectionsTree'
 import { EnvironmentsManager } from '../sidebar/EnvironmentsManager'
 
@@ -73,20 +74,7 @@ interface SidebarProps {
   onRenameRequest?: (id: string, newName: string) => void
   onImportPostman: () => void
   onExportCollection: (c: CollectionItem) => void
-  onMoveRequest?: (
-    requestId: string,
-    targetCollectionId: string,
-    targetFolderId: string | null,
-    targetRequestId?: string,
-    position?: 'before' | 'after',
-  ) => void
-  onMoveFolder?: (
-    folderId: string,
-    targetCollectionId: string,
-    targetParentFolderId: string | null,
-    targetFolderId?: string,
-    position?: 'before' | 'after',
-  ) => void
+  onMoveItems?: (items: TreeItemRef[], target: TreeMoveTarget) => void
   onOpenSettings: () => void
   onToggleCollapseSidebar?: () => void
 }
@@ -137,8 +125,7 @@ export function Sidebar({
   onRenameRequest,
   onImportPostman,
   onExportCollection,
-  onMoveRequest,
-  onMoveFolder,
+  onMoveItems,
   onOpenSettings,
   onToggleCollapseSidebar,
 }: SidebarProps) {
@@ -233,8 +220,7 @@ export function Sidebar({
             onRenameRequest={onRenameRequest}
             onImportPostman={onImportPostman}
             onExportCollection={onExportCollection}
-            onMoveRequest={onMoveRequest}
-            onMoveFolder={onMoveFolder}
+            onMoveItems={onMoveItems}
           />
         ) : (
           <EnvironmentsManager

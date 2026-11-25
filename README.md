@@ -252,7 +252,7 @@ Tính năng Presets giúp bạn kiểm tra nhiều kịch bản đầu vào khá
    * Đặt tên cho Request.
    * Duyệt cây thư mục qua Tree Picker, bạn có thể tạo Collection mới hoặc tạo Folder con lồng nhau.
    * Bấm **Save** để lưu bền vững vào `data/collections.json`.
-3. **Kéo & Thả (Drag and Drop):** Trên cây thư mục Sidebar, bạn có thể kéo thả tự do để đổi vị trí request, đưa request vào trong folder hoặc di chuyển ra ngoài thư mục gốc.
+3. **Kéo & Thả (Drag and Drop):** Trên cây thư mục Sidebar, bạn có thể kéo thả tự do để đổi vị trí request, đưa request vào trong folder hoặc di chuyển ra ngoài thư mục gốc. Dùng `Ctrl`/`Cmd` + click để chọn từng mục, `Shift` + click để chọn một dải, rồi kéo cả nhóm folder và request cùng lúc (`Esc` để bỏ chọn). Giữ trên một mục đang đóng để nó tự mở.
 
 ---
 

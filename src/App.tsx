@@ -77,7 +77,12 @@ import {
   resolveEffectiveEnvironmentId,
   stripInheritedVariables,
 } from './utils/environmentHelper'
-import { getAncestorIdsForRequest, moveFolderItem, moveRequestItem } from './utils/treeHelper'
+import {
+  getAncestorIdsForRequest,
+  moveTreeItems,
+  type TreeItemRef,
+  type TreeMoveTarget,
+} from './utils/treeHelper'
 import { executeScript, type ScriptContext } from './services/scriptRunner'
 import { MobileNav } from './components/layout/MobileNav'
 import { Sidebar } from './components/layout/Sidebar'
@@ -1155,79 +1160,28 @@ function App() {
     showToast('Request renamed successfully')
   }
 
-  const handleMoveRequest = (
-    requestId: string,
-    targetCollectionId: string,
-    targetFolderId: string | null,
-    targetRequestId?: string,
-    position?: 'before' | 'after',
-  ) => {
-    setSavedRequests((prev) =>
-      moveRequestItem(
-        prev,
-        requestId,
-        targetCollectionId,
-        targetFolderId,
-        targetRequestId,
-        position,
-      ),
-    )
+  const handleMoveTreeItems = (items: TreeItemRef[], target: TreeMoveTarget) => {
+    const result = moveTreeItems(folders, savedRequests, items, target)
+    if (result.folders === folders && result.requests === savedRequests) return
+
+    setFolders(result.folders)
+    setSavedRequests(result.requests)
     setTabs((prev) =>
-      prev.map((t) =>
-        t.savedRequestId === requestId
-          ? { ...t, collectionId: targetCollectionId, folderId: targetFolderId }
-          : t,
-      ),
+      prev.map((t) => {
+        const saved = result.requests.find((r) => r.id === t.savedRequestId)
+        if (!saved) return t
+        if (saved.collectionId === t.collectionId && saved.folderId === t.folderId) return t
+        return { ...t, collectionId: saved.collectionId, folderId: saved.folderId }
+      }),
     )
+    const targetFolderId = target.folderId
     if (targetFolderId) {
       setExpandedFolderIds((prev) =>
         prev.includes(targetFolderId) ? prev : [...prev, targetFolderId],
       )
     }
     setExpandedCollectionIds((prev) =>
-      prev.includes(targetCollectionId) ? prev : [...prev, targetCollectionId],
-    )
-  }
-
-  const handleMoveFolder = (
-    folderId: string,
-    targetCollectionId: string,
-    targetParentFolderId: string | null,
-    targetFolderId?: string,
-    position?: 'before' | 'after',
-  ) => {
-    const result = moveFolderItem(
-      folders,
-      savedRequests,
-      folderId,
-      targetCollectionId,
-      targetParentFolderId,
-      targetFolderId,
-      position,
-    )
-    setFolders(result.folders)
-    setSavedRequests(result.requests)
-    setTabs((prev) =>
-      prev.map((t) => {
-        if (!t.savedRequestId) return t
-        const matchingSaved = result.requests.find((r) => r.id === t.savedRequestId)
-        if (matchingSaved && matchingSaved.collectionId !== t.collectionId) {
-          return {
-            ...t,
-            collectionId: matchingSaved.collectionId,
-            folderId: matchingSaved.folderId,
-          }
-        }
-        return t
-      }),
-    )
-    if (targetParentFolderId) {
-      setExpandedFolderIds((prev) =>
-        prev.includes(targetParentFolderId) ? prev : [...prev, targetParentFolderId],
-      )
-    }
-    setExpandedCollectionIds((prev) =>
-      prev.includes(targetCollectionId) ? prev : [...prev, targetCollectionId],
+      prev.includes(target.collectionId) ? prev : [...prev, target.collectionId],
     )
   }
 
@@ -2817,8 +2771,7 @@ function App() {
                 onRenameRequest={handleRenameRequest}
                 onImportPostman={() => setImportPostmanModalOpen(true)}
                 onExportCollection={handleExportPostmanCollection}
-                onMoveRequest={handleMoveRequest}
-                onMoveFolder={handleMoveFolder}
+                onMoveItems={handleMoveTreeItems}
                 onOpenSettings={() => setSettingsModalOpen(true)}
                 onToggleCollapseSidebar={() => setIsSidebarCollapsed(true)}
               />
